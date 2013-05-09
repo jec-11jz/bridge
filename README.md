@@ -1,6 +1,10 @@
 bridge
 ======
 
+### MAMPでローカル環境構築のまとめ
+
+ここが詳しい→ [MAMPでローカル環境構築のまとめ](http://webscripter.jp/technical-note/summary-of-building-local-mamp-environment/)
+
 ### GitHubに登録したFuelPHPアプリケーションをcloneする
 
 保存したいディレクトリで以下のコマンドを実行
