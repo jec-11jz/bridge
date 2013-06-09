@@ -19,24 +19,27 @@
 		<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 	</head>
 	<body>
-            <table>
 		<h1>コメント設定</h1>
-		<form action="cgi-bin/abc.cgi" method="post">
-			<p>コメントの受付<br>
-                        <input type="radio" name="Yes" value="Yes"> 受け付ける
-                        <input type="radio" name="No" value="No"> 受け付けない
-                        </p>
-                        <p>コメントの公開方法<br>
-                        <input type="radio" name="AllOpen" value="AllOpen"> 全て公開
-                        <input type="radio" name="AfterApproval" value="AfterApproval"> 承認後に公開
-                        </p>
-	        </form>
+		<form action="" method="post">
+			<table>
+				<tr>
+					<th><label class="control-label">コメントの受付</label></th>
+	                <td><label class="controls-row" for="Accept"><input type="radio" name="CommentAcceptance" value="Yes" id="Accept">受け付ける</label></td>
+	                <td><label class="controls-row" for="Refuse"><input type="radio" name="CommentAcceptance" value="No" id="Refuse"> 受け付けない</label></td>
+                </tr>
+                <tr>
+	                <th><label class="control-label">コメントの公開方法</label></th>
+	                <td><label class="controls-row" for="AllOpen"><input type="radio" name="CommentOpenSetup" value="AllOpen" id="AllOpen"> 全て公開</label></td>
+	                <td><label class="controls-row" for="AfterApproval"><input type="radio" name="CommentOpenSetup" value="AfterApproval" id="AfterApproval"> 承認後に公開</label></td>
+	                <td><label class="controls-row" for="NotOpen"><input type="radio" name="CommentOpenSetup" value="AllOpen" id="NotOpen"> 公開しない</label></td>
+                </tr>
+            </table>
+        </form>
 
 		<footer>
 			<p>
 				&copy; Copyright  by shinnya
 			</p>
 		</footer>
-             </table>
 	</body>
 </html>
