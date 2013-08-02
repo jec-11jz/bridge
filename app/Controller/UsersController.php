@@ -31,25 +31,13 @@ App::uses('Controller', 'Controller');
  * @package		app.Controller
  * @link		http://book.cakephp.org/2.0/en/controllers.html#the-app-controller
  */
-class UsersController extends Controller {
+class UsersController extends AppController {
     
-    public $components = array(
-        'Session',
-        'Auth' => array(
-            'authenticate' => array(
-                'Form' => array (
-                    'fields' => array('username' => 'mail_address'),
-                    'userModel' => 'User'
-                )
-            ),
-            'loginRedirect' => array('controller' => 'home', 'action' => 'home'),
-            'logoutRedirect' => array('controller' => 'home', 'action' => 'index'),
-            'authorize' => array('Controller')
-        )
-    );
     
     public function beforeFilter() {
         parent::beforeFilter();
+        
+        $this->Auth->allow(array('login'));
     }
     
     public function login() {
