@@ -42,8 +42,7 @@ class User extends Model {
 		//ユーザー名のvalidation
 		'nickname' => array(
 			'allowEmpty' => array(
-				'rule' => 'allowEmpty',
-				'required' => false
+				'rule' => array('allowEmpty',true)
 			),
 			'maxLength' => array(
 				'rule'=>array('maxLength', '30'),
@@ -74,10 +73,13 @@ class User extends Model {
 		),
 		
 		//メールアドレスのvalidation
-		'email' => array()
+		'email' => array(
+	        'rule' => array('email', true),
+	        //'message' => 'メールアドレスを正しく入力してください。'
+			)
 	);
 	
-	//### パスワード同一チェック ###
+	//パスワード同一チェック
 	function sameCheck($data, $target) {
 		return strcmp(array_shift($data), $this->data[$this->name][$target]) == 0;
 	}

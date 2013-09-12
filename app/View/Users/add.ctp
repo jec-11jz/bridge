@@ -73,7 +73,15 @@
 					</td>
 				</tr>
 				<tr>
-					<td><?php echo $this->Form->input('email', array('label'=>'メールアドレス')); ?></td>
+					<td>
+						<?php 
+							echo $this->Form->input('email', array(
+								'label' => 'メールアドレス',
+								'type' => 'email',
+								'error' => array(
+									'email' => __('メールアドレスを正しく入力してください。', true)))); 
+						?>
+					</td>
 				</tr>
 			</table>
 			<?php echo $this->Form->submit('新規登録'); ?>
