@@ -14,8 +14,7 @@ class UsersController extends Controller {
 
 	}
 	
-	public function addCheck() {
-		$this -> autoRender = false;
+	public function add_check() {
 		$this->User->set($this->request->data);
 		
 		if($this->User->validates()){

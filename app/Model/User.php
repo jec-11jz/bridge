@@ -4,7 +4,7 @@ App::uses('AppModel', 'Model');
  * User Model
  *
  */
-class User extends Model {
+class User extends AppModel {
 
 /**
  * Display field
@@ -41,9 +41,9 @@ class User extends Model {
 		
 		//ユーザー名のvalidation
 		'nickname' => array(
-			'allowEmpty' => array(
+			/*'allowEmpty' => array(
 				'rule' => array('allowEmpty',true)
-			),
+			),*/
 			'maxLength' => array(
 				'rule'=>array('maxLength', '30'),
 				//'message'=>'30文字以内で入力してください'
