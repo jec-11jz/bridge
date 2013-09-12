@@ -4,7 +4,7 @@ App::uses('AppModel', 'Model');
  * User Model
  *
  */
-class User extends AppModel {
+class User extends Model {
 
 /**
  * Display field
@@ -19,61 +19,66 @@ class User extends AppModel {
  * @var array
  */
 	public $validate = array(
+	
+		//ユーザーIDのvalidation
 		'id' => array(
+			'isUnique' => array(
+				'rule' => 'isUnique',
+				'required' => true,
+				//'message' => 'そのユーザーIDは既に使われています'
+			),
 			'alphanumeric' => array(
-				'rule' => array('alphanumeric'),
-				//'message' => 'Your custom message here',
-				//'allowEmpty' => false,
-				//'required' => false,
-				//'last' => false, // Stop validation after this rule
-				//'on' => 'create', // Limit validation to 'create' or 'update' operations
-			),
-			'maxlength' => array(
-				'rule' => array('maxlength'),
-				//'message' => 'Your custom message here',
-				//'allowEmpty' => false,
-				//'required' => false,
-				//'last' => false, // Stop validation after this rule
-				//'on' => 'create', // Limit validation to 'create' or 'update' operations
-			),
-			'notempty' => array(
-				'rule' => array('notempty'),
-				//'message' => 'Your custom message here',
-				//'allowEmpty' => false,
-				//'required' => false,
-				//'last' => false, // Stop validation after this rule
-				//'on' => 'create', // Limit validation to 'create' or 'update' operations
-			),
+                'rule' => 'alphaNumeric',
+                'required' => true,
+                //'message' => '半角英数字のみ使用できます'
+            ),
+            'minLength' => array(
+				'rule' => array('minLength', '15'),
+				'required' => true,
+				//'message' => '15文字以内で入力してください'
+			)
 		),
+		
+		//ユーザー名のvalidation
 		'nickname' => array(
-			'maxlength' => array(
-				'rule' => array('maxlength'),
-				//'message' => 'Your custom message here',
-				//'allowEmpty' => false,
-				//'required' => false,
-				//'last' => false, // Stop validation after this rule
-				//'on' => 'create', // Limit validation to 'create' or 'update' operations
+			'allowEmpty' => array(
+				'rule' => 'allowEmpty',
+				'required' => false
+			),
+			'maxLength' => array(
+				'rule'=>array('maxLength', '30'),
+				//'message'=>'30文字以内で入力してください'
 			),
 		),
-		'email' => array(
-			'email' => array(
-				'rule' => array('email'),
-				//'message' => 'Your custom message here',
-				//'allowEmpty' => false,
-				//'required' => false,
-				//'last' => false, // Stop validation after this rule
-				//'on' => 'create', // Limit validation to 'create' or 'update' operations
-			),
-		),
+		
+		//パスワードのvalidation
 		'password' => array(
-			'notempty' => array(
-				'rule' => array('notempty'),
-				//'message' => 'Your custom message here',
-				//'allowEmpty' => false,
-				//'required' => false,
-				//'last' => false, // Stop validation after this rule
-				//'on' => 'create', // Limit validation to 'create' or 'update' operations
-			),
+			'notEmpty' => array(
+				'rule' => 'notEmpty',
+				//'message' => 'パスワードを入力してください。'
+			)
 		),
+		
+		//パスワードの再入力のvalidation
+		'password_check' => array(
+			'notEmpty' => array(
+				'rule' => 'notEmpty',
+				'required' => true,
+				//'message' => 'パスワード(再入力)を入力してください。',
+				'last' => true
+			),
+			'sameCheck' => array(
+				'rule' => array('sameCheck', 'password'),
+				//'message' => 'パスワード(再入力)がパスワードと異なります。'
+			)	
+		),
+		
+		//メールアドレスのvalidation
+		'email' => array()
 	);
+	
+	//### パスワード同一チェック ###
+	function sameCheck($data, $target) {
+		return strcmp(array_shift($data), $this->data[$this->name][$target]) == 0;
+	}
 }

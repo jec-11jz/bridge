@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html>
 	<head>
 		<meta charset="UTF-8">
 		<title>Register</title>
@@ -27,28 +27,56 @@
 			<?php echo $this->Form->create('User', array( 'type'=>'post', 'url'=>'addCheck'));?>
 			<table>
 				<tr>
-					<th><?php echo $this->Form->label('id','ユーザーID'); ?></th>
-					<td><?php echo $this->Form->text('id'); ?></td>
+					<td>
+						<?php 
+							echo $this->Form->input('id', array(
+								'label'=>'ユーザーID', 
+								'type'=>'text',
+								'error' => array(
+									'isUnique' => __('そのユーザーIDは既に使われています', true),
+									'alphanumeric' => __('半角英数字のみ使用できます', true),
+									'minLength' => __('15文字以内で入力してください', true)))); 
+						?>
+					</td>
 				</tr>
 				<tr>
-					<th><?php echo $this->Form->label('nickname','ユーザー名'); ?></th>
-					<td><?php echo $this->Form->text('nickname') ?></td>
+					<td>
+						<?php 
+							echo $this->Form->input('nickname', array(
+								'label' => 'ユーザー名',
+								'error' => array(
+									'maxLength' => __('30文字以内で入力してください', true)))); 
+						?>
+					</td>
 				</tr>
 				<tr>
-					<th><?php echo $this->Form->label('パスワード') ?></th>
-					<td><?php echo $this->Form->text('password') ?></td>
+					<td>
+						<?php 
+							echo $this->Form->input('password',array(
+								'label' => 'パスワード',
+								'type' => 'password',
+								'error' => array(
+									'notEmpty' => __('パスワードを入力してください。', true)))); 
+						?>
+					</td>
 				</tr>
 				<tr>
-					<th><?php echo $this->Form->label('パスワードの再入力'); ?></th>
-					<td><?php echo $this->Form->text('') ?></td>
+					<td>
+						<?php 
+							echo $this->Form->input('password_check', array(
+								'label' => 'パスワードの再入力', 
+								'type' => 'password',
+								'error' => array(
+									'notEmpty' => __('パスワード(再入力)を入力してください。', true),
+									'sameCheck' => __('パスワード(再入力)がパスワードと異なります。', true)))); 
+						?>
+					</td>
 				</tr>
 				<tr>
-					<th><?php echo $this->Form->label('email','メールアドレス'); ?></th>
-					<td><?php echo $this->Form->text('email') ?></td>
+					<td><?php echo $this->Form->input('email', array('label'=>'メールアドレス')); ?></td>
 				</tr>
-
 			</table>
-			<?php echo $this->Form->submit('新規登録') ?>
+			<?php echo $this->Form->submit('新規登録'); ?>
 			<?php echo $this->Form->end(); ?>
 			<!-- //Contents -->
 			<hr />

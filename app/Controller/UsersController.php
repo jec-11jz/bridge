@@ -15,8 +15,15 @@ class UsersController extends Controller {
 	}
 	
 	public function addCheck() {
-		if ($this->request->is('post')) {
-	      $this->User->save($this->request->data);
-	    }
+		$this -> autoRender = false;
+		$this->User->set($this->request->data);
+		
+		if($this->User->validates()){
+			if ($this->request->is('post')) {
+		      $this->User->save($this->request->data);
+		    }
+		} else {
+			
+		}
 	}
 }
