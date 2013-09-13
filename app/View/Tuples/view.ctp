@@ -35,7 +35,8 @@
                 width: 200px;
                 height: 100%;
                 position:absolute;
-                background-color: #272B2E;
+                background-color: #509B49;
+                background-color: rgb(76, 146, 31);
                 color: #DDDDDD;
                 float: left;
             }
@@ -51,7 +52,7 @@
             .line-up {
                 margin: 0;
                 padding: 0;
-                margin-top: 60px;
+                margin-top: 50px;
             }
             .side-menu ul, .side-menu li {
                 margin: 0;
@@ -59,14 +60,17 @@
             } 
             .side-menu li {
                 list-style-type: none;
-                background-color: #373B3E;
+                background-color: #60AB59;
+                background-color: rgb(96, 166, 51);
             }
             .side-profile {
                 width: 100%;
                 height: 100%;
                 margin: 0 auto;
+                padding-top: 10px;
                 text-align: center;
-                background-color: #2F3334;
+                background-color: #60AB59;
+                background-color: rgb(96, 166, 51);
             }
             .side-menu .menu {
                 margin-top: 20px;
@@ -83,15 +87,19 @@
             }
             .side-menu li:hover {
                 background-color: #474B4E;
+                background-color: rgb(126, 196, 81);
             }
             .side-menu li.active {
-                background-color: #DDDDDD;
+                background-color: #80CB79;
+                background-color: rgb(116, 186, 71);
                 color: #333;
+                /*
                 border-top: solid 1px #111;
                 border-bottom: solid 1px #111;
+                */
             }
             .side-menu li.active a {
-                color: #333;
+                color: #fff;
             }
             .side-menu li a {
                 margin: 0;
@@ -131,7 +139,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
               </button>
-              <a class="navbar-brand" href="#">Bridge</a>
+              <a class="navbar-brand" href="#">Hulu</a>
             </div>
           </div>
         </div>
