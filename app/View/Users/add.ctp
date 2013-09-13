@@ -24,7 +24,7 @@
 
 			<hr />
 			<!-- Contents -->
-			<?php echo $this->Form->create('User', array( 'type'=>'post', 'url'=>'add_check'));?>
+			<?php echo $this->Form->create('User', array( 'type'=>'post', 'action'=>'add'));?>
 			<table>
 				<tr>
 					<td>
@@ -79,12 +79,14 @@
 								'label' => 'メールアドレス',
 								'type' => 'email',
 								'error' => array(
-									'email' => __('メールアドレスを正しく入力してください。', true)))); 
+									'email' => __('メールアドレスを正しく入力してください。', true),
+									'isUnique' => __('そのメールアドレスは既に使われています', true)))); 
 						?>
 					</td>
 				</tr>
 			</table>
-			<?php echo $this->Form->submit('新規登録'); ?>
+			<?php echo $this->Form->input('confirm', array('type' => 'hidden', 'value' => true)); ?>
+			<?php echo $this->Form->end(array('label' => 'Confirm', 'class' => 'btn btn-primary')); ?>
 			<?php echo $this->Form->end(); ?>
 			<!-- //Contents -->
 			<hr />

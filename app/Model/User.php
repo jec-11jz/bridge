@@ -32,8 +32,8 @@ class User extends AppModel {
                 'required' => true,
                 //'message' => '半角英数字のみ使用できます'
             ),
-            'minLength' => array(
-				'rule' => array('minLength', '15'),
+            'maxLength' => array(
+				'rule' => array('maxLength', '15'),
 				'required' => true,
 				//'message' => '15文字以内で入力してください'
 			)
@@ -74,9 +74,16 @@ class User extends AppModel {
 		
 		//メールアドレスのvalidation
 		'email' => array(
-	        'rule' => array('email', true),
-	        //'message' => 'メールアドレスを正しく入力してください。'
+			'email' => array(
+		        'rule' => array('email', true),
+		        //'message' => 'メールアドレスを正しく入力してください。'
+			),
+			'isUnique' => array(
+				'rule' => 'isUnique',
+				'required' => true,
+				//'message' => 'そのユーザーIDは既に使われています'
 			)
+		)
 	);
 	
 	//パスワード同一チェック
