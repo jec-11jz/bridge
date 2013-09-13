@@ -20,6 +20,7 @@
                 padding: 0;
             }
             body {
+                background-image: url('/img/backgroudImage.png');
             }
             div.container {
                 margin: 0;
@@ -45,6 +46,7 @@
                 position: relative;
                 height: 100%;
                 float: left;
+                
             }
             .line-up {
                 margin: 0;
@@ -104,6 +106,19 @@
             }
             header {
                 width: 100%;
+            }
+            .navbar .navbar-brand {
+                color: #46A546;
+                
+            }
+            .navbar-inverse {
+                background-image: none;
+                background-color: #FFFFFF;
+                border-bottom: 2px solid #f0f0f0;
+                
+                /*
+                background-image: url('/img/backgroudImage.png');
+                */
             }
         </style>
     </head>
