@@ -22,32 +22,30 @@ class User extends AppModel {
 	
 		//ユーザーIDのvalidation
 		'id' => array(
+			//上書きされる
 			'isUnique' => array(
 				'rule' => 'isUnique',
 				'required' => true,
 				//'message' => 'そのユーザーIDは既に使われています'
 			),
-			'alphanumeric' => array(
+			//働かない
+			'alphaumeric' => array(
                 'rule' => 'alphaNumeric',
-                'required' => true,
                 //'message' => '半角英数字のみ使用できます'
             ),
             'maxLength' => array(
 				'rule' => array('maxLength', '15'),
-				'required' => true,
 				//'message' => '15文字以内で入力してください'
 			)
 		),
 		
 		//ユーザー名のvalidation
 		'nickname' => array(
-			/*'allowEmpty' => array(
-				'rule' => array('allowEmpty',true)
-			),*/
 			'maxLength' => array(
-				'rule'=>array('maxLength', '30'),
+				'rule' => array('maxLength', '30'),
+				'allowEmpty'=>true,
 				//'message'=>'30文字以内で入力してください'
-			),
+			)
 		),
 		
 		//パスワードのvalidation
@@ -55,6 +53,10 @@ class User extends AppModel {
 			'notEmpty' => array(
 				'rule' => 'notEmpty',
 				//'message' => 'パスワードを入力してください。'
+			),
+			'between' => array(
+				'rule' => array('between', 6, 15),
+				//'message' => '6文字以上15文字以内で入力してください'
 			)
 		),
 		
@@ -69,19 +71,20 @@ class User extends AppModel {
 			'sameCheck' => array(
 				'rule' => array('sameCheck', 'password'),
 				//'message' => 'パスワード(再入力)がパスワードと異なります。'
-			)	
+			)
 		),
 		
 		//メールアドレスのvalidation
 		'email' => array(
 			'email' => array(
-		        'rule' => array('email', true),
+				'rule' => array('email', true), 
+		        'required' => true
 		        //'message' => 'メールアドレスを正しく入力してください。'
 			),
 			'isUnique' => array(
 				'rule' => 'isUnique',
 				'required' => true,
-				//'message' => 'そのユーザーIDは既に使われています'
+				//'message' => 'そのユーザーメールアドレスは既に使われています'
 			)
 		)
 	);

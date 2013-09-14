@@ -24,7 +24,7 @@
 
 			<hr />
 			<!-- Contents -->
-			<?php echo $this->Form->create('User', array( 'type'=>'post', 'action'=>'add'));?>
+			<?php echo $this->Form->create('User', array( 'type'=>'post', 'action'=>'add')); ?>
 			<table>
 				<tr>
 					<td>
@@ -56,7 +56,8 @@
 								'label' => 'パスワード',
 								'type' => 'password',
 								'error' => array(
-									'notEmpty' => __('パスワードを入力してください。', true)))); 
+									'notEmpty' => __('パスワードを入力してください。', true),
+									'between' => __('6文字以上15文字以内で入力してください', true)))); 
 						?>
 					</td>
 				</tr>
@@ -80,14 +81,14 @@
 								'type' => 'email',
 								'error' => array(
 									'email' => __('メールアドレスを正しく入力してください。', true),
-									'isUnique' => __('そのメールアドレスは既に使われています', true)))); 
+									'isUnique' => __('そのメールアドレスは既に使用されています', true)))); 
 						?>
 					</td>
 				</tr>
 			</table>
-			<?php echo $this->Form->input('confirm', array('type' => 'hidden', 'value' => true)); ?>
-			<?php echo $this->Form->end(array('label' => 'Confirm', 'class' => 'btn btn-primary')); ?>
-			<?php echo $this->Form->end(); ?>
+			<?php echo $this->Form->end('新規登録'); ?>
+			<?php echo $this->Form->create('User',array('type'=>'post', 'action'=>'index')); ?>
+			<?php echo $this->Form->end('キャンセル'); ?>
 			<!-- //Contents -->
 			<hr />
 

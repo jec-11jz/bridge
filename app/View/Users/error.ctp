@@ -24,11 +24,8 @@
 
 			<hr />
 			<!-- Contents -->
-			<p><h1>HELLO Welcom to Bridge</h1></p>
-			<?php echo $this->Form->create('User', array( 'type'=>'post', 'action'=>'login'));?>
-			<?php echo $this->Form->end('ログイン'); ?>
-			<?php echo $this->Form->create('User', array( 'type'=>'post', 'url'=>'add')); ?>
-			<?php echo $this->Form->end('新規登録'); ?>
+			<p>エラー</p>
+			<?php echo $this->Session->flash('register'); ?>
 			<!-- //Contents -->
 			<hr />
 

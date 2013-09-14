@@ -1,75 +1,75 @@
 <?php
 App::uses('AppController', 'Controller');
+App::uses('Sanitize', 'Utility');
 /**
  * Users Controller
  *
  * @property User $User
  */
-class UsersController extends Controller {
+class UsersController extends AppController {
+	
 	//モデルの指定
 	public $uses = array('User');
-	//ユーザー認証を使用する
-	public $components = array('Auth');
-	//認証が無くてもアクセスできるページ
-	public function beforeFilter() {
- 		$this->Auth->allow('index');
-		$this->Auth->allow('add'); //ひとまずaddも追加しておく
-		$this->Auth->allow('confirm'); 
-		$this->Auth->allow('done');
-		$this->Auth->allow('logout');
-	}
+	//コンポーネントの設定
+	public $components = Array(
+            'Session',
+            'Auth' => Array(
+            	//ログイン後のリダイレクト先
+                'loginRedirect' => Array('controller'  => 'users', 'action' => 'done'),
+                //ログアウト後のリダイレクト先
+                'logoutRedirect' => Array('controller' => 'users', 'action' => 'login'),
+                //ログインしていない場合のリダイレクト先
+                'loginAction' => Array('controller' => 'users', 'action' => 'login'),
+                //ログインにデフォルトの username ではなく email を使うためここで書き換えています
+                'authenticate' => Array('Form' => Array('fields' => Array('username' => 'email')))
+            )
+    );
+	
+	//ログイン認証前にアクセスできるアクション
+	public function beforeFilter()
+    {
+        parent::beforeFilter();
+		//ログイン認証前にアクセスできるアクション
+        $this->Auth->allow('add', 'login', 'index', 'done');
+    }
+
 	public function index() {
-		
+		//index.ctpの表示
 	}
 	
+	//ログイン処理
+	public function login() {
+        if($this->request->is('post')) {
+            if($this->Auth->login()) {
+                return $this->redirect($this->Auth->redirect('done'));
+            } else {
+                $this->Session->setFlash(__('Username or password is incorrect'), 'default', array(), 'auth');
+            }
+        }
+    }
+	
+	//ログアウト処理
+	public function logout($id = null)
+    {
+        $this->redirect($this->Auth->logout());
+    }
+	
+	//ユーザの新規登録
 	public function add() {
-		print_r($this->data);
-		//Confirmの値がtrue(addからの移動なら)
-		if(!empty($this->request->data['User']['confirm'])) {
-			if($this->User->saveAll($this->request->data, array('validate' => 'only'))) {
-				//確認画面を呼び出す
-				$this->render('confirm');
-			}
-		} else if(!empty($this->request->data['User']['cancel'])) {
-			//キャンセルの場合
-		} else if (!empty($this->request->data['User']['send'])) {
-			//Tokenとセッションが同じ場合
- 			if($this->Session->read('Token')==$this->request->data['User']['Token']) {
-				$this->Session->setFlash('Some error...');
- 				$this->redirect(array('action' => 'add'));
-			}
-			//セッションを破棄
-			$this->Session->delete('Token');
-			//データがある場合
-			if ($this->data) {
- 				$this->User->create();
-				if($this->User->save($this->data)) {
-					$this->Session->setFlash('Succedd');
-					$this->redirect(array('action' => 'done'));
-				} else {
-					//保存に失敗した場合
-					$this->Session->setFlash('Some error Error');
-					$this->redirect(array('action' => 'add'));
-				}
-			} else {
-				//Tokenとセッションが違う場合
-				$this->Session->setFlash('Session Error');
-				$this->redirect(array('action' => 'add'));
-			}
-		}	
-		/*$this->User->set($this->request->data);
-		 if($this->User->validates()){
-			if ($this->request->is('post')) {
-		      $this->User->save($this->request->data);
-		    }
-		} else {
-			
-		}*/
-	}
+		//メールを送信 -> add_form.ctpを表示 -> 登録実行  
+        if($this->request->is('post')) {
+            $this->User->create();
+            if ($this->User->save($this->request->data)) {
+                $this->Session->setFlash(__('The user has been saved'));
+                $this->redirect(array('action' => 'done'));
+            } else {
+            	//$this->render('error');
+                $this->Session->setFlash(__('登録に失敗しました'), 'default', array(), 'register');
+            }
+        }
+    }
 	
 	public function done() {
-		
+		//新規ユーザ登録が完了した時に表示する done.ctp の表示
 	}
-	
 }
-?>
