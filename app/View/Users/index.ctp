@@ -32,8 +32,12 @@
 			<?php echo $this->Form->end('ログイン'); ?>
 			<?php echo $this->Form->create('User', array( 'type'=>'post', 'action'=>'add')); ?>
 			<?php echo $this->Form->end('新規登録'); ?>
-			<?php echo $this->Form->create('User', array( 'type'=>'post', 'action'=>'edit')); ?>
-			<?php echo $this->Form->end('ユーザー編集'); ?>
+			<table>
+				<tr>
+					<th>とりあえずルートユーザを呼び出してる</th>
+					<td><?php echo $this->Html->link('ユーザー編集',array('action'=>'edit',$user['User']['id'])); ?></td>
+				</tr>
+			</table>
 			<!-- //Contents -->
 			<hr />
 
