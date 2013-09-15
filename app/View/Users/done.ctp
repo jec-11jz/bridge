@@ -25,6 +25,8 @@
 			<hr />
 			<!-- Contents -->
 			<p>登録完了</p>
+			<p><?php echo $this->Form->create('User', array( 'type'=>'post', 'url'=>'index')); ?>
+			<?php echo $this->Form->end('Index'); ?></p>
 			<!-- //Contents -->
 			<hr />
 

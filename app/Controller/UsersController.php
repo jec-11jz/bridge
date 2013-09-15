@@ -11,17 +11,20 @@ class UsersController extends AppController {
 	//モデルの指定
 	public $uses = array('User');
 	//コンポーネントの設定
-	public $components = Array(
+	public $components = array(
             'Session',
-            'Auth' => Array(
+            'Auth' => array(
             	//ログイン後のリダイレクト先
-                'loginRedirect' => Array('controller'  => 'users', 'action' => 'done'),
+                'loginRedirect' => array('controller'  => 'users', 'action' => 'done'),
                 //ログアウト後のリダイレクト先
-                'logoutRedirect' => Array('controller' => 'users', 'action' => 'login'),
+                'logoutRedirect' => array('controller' => 'users', 'action' => 'login'),
                 //ログインしていない場合のリダイレクト先
-                'loginAction' => Array('controller' => 'users', 'action' => 'login'),
+                'loginAction' => array('controller' => 'users', 'action' => 'login'),
                 //ログインにデフォルトの username ではなく email を使うためここで書き換えています
-                'authenticate' => Array('Form' => Array('fields' => Array('username' => 'email')))
+                'authenticate' => array('Form' => Array('fields' => array('username' => 'id'),
+														'Basic' => array('userModel' => 'Member'),
+										    			'Form' => array('userModel' => 'Member'),
+														'passwordHasher' => 'Blowfish'))
             )
     );
 	
@@ -30,7 +33,7 @@ class UsersController extends AppController {
     {
         parent::beforeFilter();
 		//ログイン認証前にアクセスできるアクション
-        $this->Auth->allow('add', 'login', 'index', 'done');
+        $this->Auth->allow('add', 'login', 'index', 'done', 'edit');
     }
 
 	public function index() {
@@ -39,12 +42,33 @@ class UsersController extends AppController {
 	
 	//ログイン処理
 	public function login() {
-        if($this->request->is('post')) {
-            if($this->Auth->login()) {
-                return $this->redirect($this->Auth->redirect('done'));
+		if(!empty($this->request->data)) {
+	        if($this->request->is('post')) {
+	            if($this->Auth->login()) {
+	                return $this->redirect($this->Auth->redirectUrl());
+	            } else {
+	                $this->Session->setFlash(__('ユーザーIDまたはパスワードが違います/(-_-)ヽ ｺﾏｯﾀｰ'), 'default', array(), 'auth');
+	            }
+	        }
+        }
+    }
+
+	//ユーザーの編集
+    public function edit($id = null) {
+        $this->User->id = $id;
+        if (!$this->User->exists()) {
+            throw new NotFoundException(__('Invalid user'));
+        }
+        if ($this->request->is('post') || $this->request->is('put')) {
+            if ($this->User->save($this->request->data)) {
+                $this->Session->setFlash(__('The user has been saved'));
+                $this->redirect(array('action' => 'index'));
             } else {
-                $this->Session->setFlash(__('Username or password is incorrect'), 'default', array(), 'auth');
+                $this->Session->setFlash(__('The user could not be saved. Please, try again.'));
             }
+        } else {
+            $this->request->data = $this->User->read(null, $id);
+            unset($this->request->data['User']['password']);
         }
     }
 	
@@ -56,17 +80,19 @@ class UsersController extends AppController {
 	
 	//ユーザの新規登録
 	public function add() {
-		//メールを送信 -> add_form.ctpを表示 -> 登録実行  
-        if($this->request->is('post')) {
-            $this->User->create();
-            if ($this->User->save($this->request->data)) {
-                $this->Session->setFlash(__('The user has been saved'));
-                $this->redirect(array('action' => 'done'));
-            } else {
-            	//$this->render('error');
-                $this->Session->setFlash(__('登録に失敗しました'), 'default', array(), 'register');
-            }
-        }
+		//メールを送信 -> add_form.ctpを表示 -> 登録実行
+		if(!empty($this->request->data)) {
+	        if($this->request->is('post')) {
+	            $this->User->create();
+	            if ($this->User->save($this->request->data)) {
+	                $this->Session->setFlash(__('登録完了 (｡･_･｡)ﾉ'));
+	                $this->redirect(array('action' => 'done'));
+	            } else {
+	            	//$this->render('error');
+	                $this->Session->setFlash(__('登録に失敗しました（￣□￣；）！！'), 'default', array(), 'register');
+	            }
+	        }
+		}
     }
 	
 	public function done() {

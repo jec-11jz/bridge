@@ -25,10 +25,15 @@
 			<hr />
 			<!-- Contents -->
 			<p><h1>HELLO Welcom to Bridge</h1></p>
+			<!-- CakePHPのバージョン表示 -->
+			<p><?php echo Configure::version() ?></p>
+			<!-- 各機能へのリンク -->
 			<?php echo $this->Form->create('User', array( 'type'=>'post', 'action'=>'login'));?>
 			<?php echo $this->Form->end('ログイン'); ?>
-			<?php echo $this->Form->create('User', array( 'type'=>'post', 'url'=>'add')); ?>
+			<?php echo $this->Form->create('User', array( 'type'=>'post', 'action'=>'add')); ?>
 			<?php echo $this->Form->end('新規登録'); ?>
+			<?php echo $this->Form->create('User', array( 'type'=>'post', 'action'=>'edit')); ?>
+			<?php echo $this->Form->end('ユーザー編集'); ?>
 			<!-- //Contents -->
 			<hr />
 

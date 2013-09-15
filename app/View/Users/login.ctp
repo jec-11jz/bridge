@@ -25,15 +25,15 @@
 			<hr />
 			<!-- Contents -->
 			<?php echo $this->Session->flash('auth'); ?>
-			<?php echo $this->Form->create('User', array( 'type'=>'post', 'action'=>'login'));?>
+			<?php echo $this->Form->create('User', array( 'type'=>'post', 'action'=>'login')); ?>
 			<table>
 				<tr>
-					<th><?php echo $this->Form->label('email','メールアドレス'); ?></th>
-					<td><?php echo $this->Form->input('email', array('label' => 'メールアドレス', 'type' => 'email', 'label' => false)); ?></td>
+					<th>ユーザーID</th>
+					<td><?php echo $this->Form->input('id', array('type' => 'text', 'label' => false)); ?></td>
 				</tr>
 				<tr>
-					<th><?php echo $this->Form->label('パスワード') ?></th>
-					<td><?php echo $this->Form->input('password', array('label' => 'パスワード','type' => 'password', 'label' => false)); ?></td>
+					<th>パスワード</th>
+					<td><?php echo $this->Form->input('password', array('type' => 'password', 'label' => false)); ?></td>
 				</tr>
 			</table>
 			<?php echo $this->Form->end('ログイン'); ?>
