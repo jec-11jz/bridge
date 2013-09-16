@@ -81,18 +81,16 @@ class UsersController extends AppController {
 	//ユーザの新規登録
 	public function add() {
 		//メールを送信 -> add_form.ctpを表示 -> 登録実行
-		if(!empty($this->request->data)) {
-	        if($this->request->is('post')) {
-	            $this->User->create();
-	            if ($this->User->save($this->request->data)) {
-	                $this->Session->setFlash(__('登録完了 (｡･_･｡)ﾉ'));
-	                $this->redirect(array('action' => 'done'));
-	            } else {
-	            	//$this->render('error');
-	                $this->Session->setFlash(__('登録に失敗しました（￣□￣；）！！'), 'default', array(), 'register');
-	            }
-	        }
-		}
+        if($this->request->is('post')) {
+            $this->User->create();
+            if ($this->User->save($this->request->data)) {
+                $this->Session->setFlash(__('登録完了 (｡･_･｡)ﾉ'));
+                $this->redirect(array('action' => 'done'));
+            } else {
+            	//$this->render('error');
+                $this->Session->setFlash(__('登録に失敗しました（￣□￣；）！！'), 'default', array(), 'register');
+            }
+        }
     }
 	
 	public function done() {
