@@ -96,24 +96,6 @@ Configure::write('Dispatcher.filters', array(
 	'CacheDispatcher'
 ));
 
-//security http://weble.org/2012/03/22/cakephp-2x-auth
-Configure::write('Security', array(
-    'level' => 'high',
-    'salt' => 'qwertyuiopasdfghjklzxcvbnm',
-    'cipherSeed' => '12345678900987654321'
-));
-Configure::write('Session', array(
-    'defaults' => 'database',
-    'cookie' => 'SID',
-    'timeout' => 259200,
-    'ini' => Array(
-        'session.cookie_lifetime' => 2580000,
-        'session.gc_maxlifetime' => 2580000,
-        'session.gc_probability' => 1,
-        'session.gc_divisor' => 100
-    )
-));
-
 /**
  * Configures default file logging options
  */
