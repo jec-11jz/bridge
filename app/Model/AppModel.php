@@ -32,4 +32,10 @@ App::uses('Model', 'Model');
  * @package       app.Model
  */
 class AppModel extends Model {
+	
+	//login中のユーザ情報の取得 $this->_getCurrentUser()　で呼び出す
+	protected function _getCurrentUser() {
+    	App::uses('AuthComponent',  'Controller/Component');
+    	return AuthComponent::user();
+	}
 }

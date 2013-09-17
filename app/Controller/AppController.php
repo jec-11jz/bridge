@@ -45,8 +45,16 @@ class AppController extends Controller {
             'loginAction' => array('controller' => 'home', 'action' => 'index'),
             'loginRedirect' => array('controller' => 'home', 'action' => 'home'),
             'logoutRedirect' => array('controller' => 'home', 'action' => 'index'),
-            // 'authorize' => array('Controller')
+            'authorize' => array('Controller')
         )
     );
+	
+	public function isAuthorized($user) {
+        $result = false;
+        if ( 'グループIDの判定処理をココに書く' ) {
+            $result = true; //成功→ loginRedirectへリダイレクト
+        }
+        return $result;
+    }
     
 }

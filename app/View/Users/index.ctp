@@ -26,18 +26,13 @@
 			<!-- Contents -->
 			<p><h1>HELLO Welcom to Bridge</h1></p>
 			<!-- CakePHPのバージョン表示 -->
-			<p><?php echo Configure::version() ?></p>
+			<p>CakePHP verson : <?php echo Configure::version() ?></p>
+			<p>ログイン情報 : <?php echo h($loginInformation); ?></p>
 			<!-- 各機能へのリンク -->
-			<?php echo $this->Form->create('User', array( 'type'=>'post', 'action'=>'login'));?>
-			<?php echo $this->Form->end('ログイン'); ?>
-			<?php echo $this->Form->create('User', array( 'type'=>'post', 'action'=>'add')); ?>
-			<?php echo $this->Form->end('新規登録'); ?>
-			<table>
-				<tr>
-					<th>とりあえずルートユーザを呼び出してる</th>
-					<td><?php echo $this->Html->link('ユーザー編集',array('action'=>'edit',$user['User']['id'])); ?></td>
-				</tr>
-			</table>
+			<h1><?php echo $this->Html->link('ログイン',array('action'=>'login')); ?></h1>
+			<h1><?php echo $this->Html->link('新規登録',array('action'=>'add')); ?></h1>
+			<h1><?php echo $this->Html->link('ユーザー編集',array('action'=>'edit',$user['User']['id'])); ?></h1>
+			<h1><?php echo $this->Html->link('ログアウト',array('action'=>'logout')); ?></h1>
 			<!-- //Contents -->
 			<hr />
 

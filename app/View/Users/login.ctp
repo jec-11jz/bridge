@@ -24,21 +24,15 @@
 
 			<hr />
 			<!-- Contents -->
-			<?php echo $this->Session->flash('auth'); ?>
-			<?php echo $this->Form->create('User', array( 'type'=>'post', 'action'=>'login')); ?>
-			<table>
-				<tr>
-					<th>ユーザーID</th>
-					<td><?php echo $this->Form->input('id', array('type' => 'text', 'label' => false)); ?></td>
-				</tr>
-				<tr>
-					<th>パスワード</th>
-					<td><?php echo $this->Form->input('password', array('type' => 'password', 'label' => false)); ?></td>
-				</tr>
-			</table>
-			<?php echo $this->Form->end('ログイン'); ?>
-			<?php echo $this->Form->create('User', array( 'type'=>'post', 'url'=>'add')); ?>
-			<?php echo $this->Form->end('新規登録'); ?>
+			<div class='login form'>
+				<?php echo $this->Session->flash('auth'); ?>
+				
+				<?php echo $this->Form->create('User', array( 'type'=>'post', 'action'=>'login')); ?>
+					<?php echo $this->Form->input('id', array('type' => 'text', 'label' => 'ユーザーID')); ?>
+					<?php echo $this->Form->input('password', array('type' => 'password', 'label' => 'password')); ?>
+				<?php echo $this->Form->end('ログイン'); ?>
+			</div>
+			<h1><?php echo $this->Html->link('新規登録',array('action'=>'add')); ?></h1>
 			<!-- //Contents -->
 			<hr />
 

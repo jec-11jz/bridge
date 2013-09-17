@@ -18,15 +18,14 @@
 		<div id="container">
 			<!-- Header -->
 			<header id="header">
-				<h1>ユーザー登録</h1>
+				<h1>実行完了</h1>
 			</header>
 			<!-- //Header -->
 
 			<hr />
 			<!-- Contents -->
-			<p>登録完了</p>
-			<p><?php echo $this->Form->create('User', array( 'type'=>'post', 'url'=>'index')); ?>
-			<?php echo $this->Form->end('Index'); ?></p>
+			<h1><?php echo $this->Html->link('Index',array('action'=>'index')); ?></h1>
+			<h1><?php echo $this->Html->link('ログアウト',array('action'=>'logout')); ?></h1>
 			<!-- //Contents -->
 			<hr />
 
