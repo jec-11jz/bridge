@@ -32,7 +32,7 @@
 					<?php echo $this->Form->input('password', array('type' => 'password', 'label' => 'password')); ?>
 				<?php echo $this->Form->end('ログイン'); ?>
 			</div>
-			<h1><?php echo $this->Html->link('新規登録',array('action'=>'add')); ?></h1>
+			<h1><?php echo $this->Html->link('Index',array('action'=>'index')); ?></h1>
 			<!-- //Contents -->
 			<hr />
 

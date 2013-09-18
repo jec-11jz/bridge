@@ -46,6 +46,7 @@ class AppController extends Controller {
             'loginRedirect' => array('controller' => 'home', 'action' => 'home'),
             'logoutRedirect' => array('controller' => 'home', 'action' => 'index'),
             'authorize' => array('Controller')
+			
         )
     );
 	
@@ -56,5 +57,11 @@ class AppController extends Controller {
         }
         return $result;
     }
+	
+	public function beforeRender(){
+		$this->set('loginInformation', $this->Auth->User());
+		$this->Auth->loginError = 'ログインエラーです';
+		$this->Auth->authError = '権限がありません';
+	}
     
 }

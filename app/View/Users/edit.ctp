@@ -28,6 +28,7 @@
 			<table>
 				<tr>
 					<td>
+						<?php echo 'ユーザＩＤ : ' . $loginInformation['id']; ?>
 						<?php 
 							echo $this->Form->input('id', array(
 								'label'=>'ユーザーID', 
@@ -52,30 +53,6 @@
 				<tr>
 					<td>
 						<?php 
-							echo $this->Form->input('password',array(
-								'label' => 'パスワード',
-								'type' => 'password',
-								'error' => array(
-									'notEmpty' => __('パスワードを入力してください。', true),
-									'between' => __('6文字以上15文字以内で入力してください', true)))); 
-						?>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<?php 
-							echo $this->Form->input('password_check', array(
-								'label' => 'パスワードの再入力', 
-								'type' => 'password',
-								'error' => array(
-									'notEmpty' => __('パスワード(再入力)を入力してください。', true),
-									'sameCheck' => __('パスワード(再入力)がパスワードと異なります。', true)))); 
-						?>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<?php 
 							echo $this->Form->input('email', array(
 								'label' => 'メールアドレス',
 								'type' => 'email',
@@ -86,7 +63,7 @@
 					</td>
 				</tr>
 			</table>
-			<?php echo $this->Form->end('更新'); ?>
+			<?php echo $this->Form->end('変更を保存'); ?>
 			<?php echo $this->Form->create('User',array('type'=>'post', 'action'=>'index')); ?>
 			<?php echo $this->Form->end('キャンセル'); ?>
 			<!-- //Contents -->

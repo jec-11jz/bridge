@@ -19,77 +19,78 @@ class UsersController extends AppController {
                 //ログアウト後のリダイレクト先
                 'logoutRedirect' => array('controller' => 'users', 'action' => 'login'),
                 //ログインしていない場合のリダイレクト先
-                'loginAction' => array('controller' => 'users', 'action' => 'login'),
+                'loginAction' => array('controller' => 'users', 'action' => 'index'),
                 //ログインにデフォルトの username ではなく email を使うためここで書き換えています
-                'authenticate' => array('Form' => array('fields' => array('username' => 'id'))),
+                'authenticate' => array('Form' => array('fields' => array('username' => 'id')))
                 
             )
     );
 	
-	
+	//AppControllerをオーバーライド
 	public function beforeFilter()
     {
         parent::beforeFilter();
 		//ログイン認証前にアクセスできるアクション
-        $this->Auth->allow('add', 'login', 'index', 'edit');
-		
-		// 現在ログイン中のユーザ情報（AppControllerで記述すればサイト全体に反映できる）
-		//isAuthorized()はログイン後の細かい設定　-> 参考URL　http://24nwakahana.wordpress.com/2013/02/10/
-	    debug(
-	        __('Anyone was Logged', true) .' = '. $this->Auth->isAuthorized(). ', ' .
-	        __('UserID', true) .' = '. $this->Auth->user('id'). ', '.
-	        __('Nickname', true) .' = '. $this->Auth->user('nickname')
-	    );
+        $this->Auth->allow('add', 'login', 'index');
 	    
-
     }
 
 	public function index() {
 		//index.ctpの表示
-		
-		// セッションから自分の情報を取得
-	    $loginInformation = $this->Session->read('auth');
-	    // ビューに渡す
-	    $this->set('loginInformation', $loginInformation);
+		$this->set('userList', $this->User->find('all'));
 	}
 	
 	//ログイン処理
 	public function login() {
-        if($this->request->is('post')) {
-            if($this->Auth->login()) {
-            	$this->Session->setFlash(__('ログイン成功ヽ(ﾟ｀∀´ﾟ)ﾉｳﾋｮ'));
-                return $this->redirect($this->Auth->redirectUrl());
-            } else {
-                $this->Session->setFlash(__('ユーザーIDまたはパスワードが違います┐(´･c_･｀ ;)┌　ﾀﾞﾒﾀﾞｺﾘｬ・・・'), 'default', array(), 'auth');
-            }
-        }
+		$this->User->id = $this->Auth->user('id');
+		//ログイン認証されたユーザかどうか調べる
+        if ($data = $this->User->findById($this->Auth->user('id'))) {
+        	//既にログインしていた場合ログイン後のリダイレクト先に飛ばす
+        	$this->redirect($this->Auth->redirectUrl());
+        } else {
+        	
+	        if($this->request->is('post')) {
+	            if($this->Auth->login()) {
+	            	$this->Session->setFlash(__('ログイン成功ヽ(ﾟ｀∀´ﾟ)ﾉｳﾋｮ'));
+	                return $this->redirect($this->Auth->redirectUrl());
+	            } else {
+	                $this->Session->setFlash(__('ユーザーIDまたはパスワードが違います┐(´･c_･｀ ;)┌　ﾀﾞﾒﾀﾞｺﾘｬ・・・'), 'default', array(), 'auth');
+	            }
+	        }
+		}
         
     }
 
 	//ユーザーの編集
     public function edit($id = null) {
-        $this->User->id = $id;
-        if (!$this->User->exists()) {
-            throw new NotFoundException(__('そんなユーザーいません(ﾉ｀Д´)ﾉ ｷｨｨｨ'));
-        }
-        if ($this->request->is('post') || $this->request->is('put')) {
-            if ($this->User->save($this->request->data)) {
-                $this->Session->setFlash(__('更新完了です。 (｡･_･｡)ﾉ'));
-				
-				//Authを再設定するためにログアウト->ログイン
-				$cond = $this->Auth->user('id');
-				$user = $this->User->findByid($cond);
-				$this->Auth->logout();//ログアウトして
-				$this->Auth->login($id);//再びログイン
-				
-                $this->redirect(array('action' => 'index'));
-            } else {
-                $this->Session->setFlash(__('The user could not be saved. Please, try again.'));
-            }
+        $this->User->id = $this->Auth->user('id');
+		
+		//ログイン中のユーザのIDからのユーザ情報を検索
+        if ($data = $this->User->findById($this->Auth->user('id'))) {
+	        if ($this->request->is('post') || $this->request->is('put')) {
+	        	//
+	        	$this->set('userID', $data);
+	            if ($this->User->save($this->data, TRUE, array('nickname', 'email'))) {
+	            	
+					//セッション情報の更新
+	            	$this->Auth->logout();
+	            	$this->Auth->login($this->Auth->user('id'));
+					
+	                $this->Session->setFlash(__('更新完了です。 (｡･_･｡)ﾉ'));
+					$this->redirect(array('action' => 'index'));
+					
+	            } else {
+	                $this->Session->setFlash(__('The user could not be saved. Please, try again.'));
+	            }
+	        } else {
+	            $this->request->data = $this->User->read(null, $id);
+	            unset($this->request->data['User']['password']);
+	        }
         } else {
-            $this->request->data = $this->User->read(null, $id);
-            unset($this->request->data['User']['password']);
+        	$this->render('login');
         }
+		
+
     }
 	
 	//ログアウト処理
@@ -107,7 +108,6 @@ class UsersController extends AppController {
                 $this->Session->setFlash(__('登録完了です。 (｡･_･｡)ﾉ'));
                 $this->redirect(array('action' => 'index'));
             } else {
-            	//$this->render('error');
                 $this->Session->setFlash(__('登録に失敗しました（￣□￣；）！！'), 'default', array(), 'register');
             }
         }
