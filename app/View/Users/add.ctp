@@ -87,6 +87,8 @@
 				</tr>
 			</table>
 			<?php echo $this->Form->end('新規登録'); ?>
+			<?php echo $this->Form->create('User',array('type'=>'post', 'action'=>'index')); ?>
+			<?php echo $this->Form->end('キャンセル'); ?>
 			<!-- //Contents -->
 			<hr />
 

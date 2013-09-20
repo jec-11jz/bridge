@@ -95,6 +95,7 @@ class User extends AppModel {
 		return strcmp(array_shift($data), $this->data[$this->name][$target]) == 0;
 	}
 	
+	//パスワードのハッシュ化
 	public function beforeSave($options = array()) {
 		if (isset($this->data[$this->alias]['password'])) {
 			$this->data[$this->alias]['password'] = AuthComponent::password($this->data[$this->alias]['password']);
