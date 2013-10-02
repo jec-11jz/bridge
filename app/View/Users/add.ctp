@@ -29,12 +29,12 @@
 				<tr>
 					<td>
 						<?php 
-							echo $this->Form->input('id', array(
+							echo $this->Form->input('name', array(
 								'label'=>'ユーザーID', 
 								'type'=>'text',
 								'error' => array(
 									'isUnique' => __('そのユーザーIDは既に使われています', true),
-									'alphanumeric' => __('半角英数字のみ使用できます', true),
+									'custom' => __('半角英数字のみ使用できます', true),
 									'minLength' => __('15文字以内で入力してください', true)))); 
 						?>
 					</td>
@@ -86,6 +86,7 @@
 					</td>
 				</tr>
 			</table>
+			<?php echo $this->Form->button('リセット' ,array('type' => 'reset')); ?>
 			<?php echo $this->Form->end('新規登録'); ?>
 			<?php echo $this->Form->create('User',array('type'=>'post', 'action'=>'index')); ?>
 			<?php echo $this->Form->end('キャンセル'); ?>

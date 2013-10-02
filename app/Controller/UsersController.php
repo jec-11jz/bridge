@@ -10,39 +10,27 @@ class UsersController extends AppController {
 	
 	//モデルの指定
 	public $uses = array('User');
-	//コンポーネントの設定（普通はAppControllerに書くかも...）
-	public $components = array(
-            'Session',
-            'Auth' => array(
-            	//ログイン後のリダイレクト先
-                'loginRedirect' => array('controller'  => 'users', 'action' => 'done'),
-                //ログアウト後のリダイレクト先
-                'logoutRedirect' => array('controller' => 'users', 'action' => 'login'),
-                //ログインしていない場合のリダイレクト先
-                'loginAction' => array('controller' => 'users', 'action' => 'index'),
-                //ログインにデフォルトの username ではなく email を使うためここで書き換えています
-                'authenticate' => array('Form' => array('fields' => array('username' => 'id')))
-                
-            )
-    );
 	
 	//AppControllerをオーバーライド
 	public function beforeFilter()
     {
+    	//親クラス（AppController）読み込み
         parent::beforeFilter();
 		//ログイン認証前にアクセスできるアクション
         $this->Auth->allow('add', 'login', 'index');
+		$this->set('loginInformation', $this->Auth->User());
 	    
     }
 
 	public function index() {
+		$seved_data = $this->Auth->user();
 		//index.ctpの表示
 		$this->set('userList', $this->User->find('all'));
 	}
 	
 	//ログイン処理
 	public function login() {
-		$this->User->id = $this->Auth->user('id');
+		
 		//ログイン認証されたユーザかどうか調べる
         if ($data = $this->User->findById($this->Auth->user('id'))) {
         	//既にログインしていた場合ログイン後のリダイレクト先に飛ばす
@@ -50,6 +38,11 @@ class UsersController extends AppController {
         } else {
         	
 	        if($this->request->is('post')) {
+	        	if(strstr($this->data['User']['name'],'@')){
+	        		$this->User->email = $this->Auth->user('name');
+		        	$this->data['User']['email'] = $this->data['User']['name'];
+		        	$this->Auth->fields['id'] = 'email';
+		        }
 	            if($this->Auth->login()) {
 	            	$this->Session->setFlash(__('ログイン成功ヽ(ﾟ｀∀´ﾟ)ﾉｳﾋｮ'));
 	                return $this->redirect($this->Auth->redirectUrl());
@@ -68,13 +61,11 @@ class UsersController extends AppController {
 		//ログイン中のユーザのIDからのユーザ情報を検索
         if ($data = $this->User->findById($this->Auth->user('id'))) {
 	        if ($this->request->is('post') || $this->request->is('put')) {
-	        	//
-	        	$this->set('userID', $data);
-	            if ($this->User->save($this->data, TRUE, array('nickname', 'email'))) {
+	            if ($saved_data = $this->User->save($this->data, TRUE, array('nickname', 'email'))) {
 	            	
 					//セッション情報の更新
-	            	$this->Auth->logout();
-	            	$this->Auth->login($this->Auth->user('id'));
+					$this->Session->write('Auth.User.nickname', $saved_data['User']['nickname']);
+					$this->Session->write('Auth.User.email', $saved_data['User']['email']);
 					
 	                $this->Session->setFlash(__('更新完了です。 (｡･_･｡)ﾉ'));
 					$this->redirect(array('action' => 'index'));
@@ -116,4 +107,5 @@ class UsersController extends AppController {
 	public function done() {
 		//ログインが完了した時に表示する(beforefilterで許可していないアクション)
 	}
+	
 }

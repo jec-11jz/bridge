@@ -23,16 +23,20 @@ class User extends AppModel {
 	
 		//ユーザーIDのvalidation
 		'id' => array(
-			//上書きされる
+			
+		),
+		
+		//ユーザIDのvalidation
+		'name' => array(
 			'isUnique' => array(
 				'rule' => 'isUnique',
 				'required' => true,
 				//'message' => 'そのユーザーIDは既に使われています'
 			),
 			//働かない
-			'alphaumeric' => array(
-                'rule' => 'alphaNumeric',
-                //'message' => '半角英数字のみ使用できます'
+			'custom' => array(
+				'rule' => array('custom', '/^[a-z\d]*$/'), 
+				//'message' => '半角英数字じゃない'
             ),
             'maxLength' => array(
 				'rule' => array('maxLength', '15'),
@@ -40,7 +44,7 @@ class User extends AppModel {
 			)
 		),
 		
-		//ユーザー名のvalidation
+		//ニックネームのvalidation
 		'nickname' => array(
 			'maxLength' => array(
 				'rule' => array('maxLength', '30'),
@@ -102,4 +106,5 @@ class User extends AppModel {
 		}
 		return true;
 	}
+
 }

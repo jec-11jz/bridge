@@ -28,9 +28,9 @@
 			<table>
 				<tr>
 					<td>
-						<?php echo 'ユーザＩＤ : ' . $loginInformation['id']; ?>
+						<?php echo 'ユーザＩＤ : ' . $loginInformation['name']; ?>
 						<?php 
-							echo $this->Form->input('id', array(
+							echo $this->Form->input('name', array(
 								'label'=>'ユーザーID', 
 								'type'=>'text',
 								'error' => array(
@@ -59,6 +59,15 @@
 								'error' => array(
 									'email' => __('メールアドレスを正しく入力してください。', true),
 									'isUnique' => __('そのメールアドレスは既に使用されています', true)))); 
+						?>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<?php 
+							echo $this->Form->input('profile', array(
+								'label' => 'プロフィール',
+								'type' => 'text')); 
 						?>
 					</td>
 				</tr>

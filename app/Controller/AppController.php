@@ -38,18 +38,22 @@ class AppController extends Controller {
         'Auth' => array(
             'authenticate' => array(
                 'Form' => array (
-                    'fields' => array('username' => 'mail_address'),
+                    'fields' => array('username' => 'name'),
                     'userModel' => 'User'
                 )
             ),
-            'loginAction' => array('controller' => 'home', 'action' => 'index'),
-            'loginRedirect' => array('controller' => 'home', 'action' => 'home'),
-            'logoutRedirect' => array('controller' => 'home', 'action' => 'index'),
-            'authorize' => array('Controller')
-			
-        )
+            	//ログイン後のリダイレクト先
+                'loginRedirect' => array('controller'  => 'users', 'action' => 'done'),
+                //ログアウト後のリダイレクト先
+                'logoutRedirect' => array('controller' => 'users', 'action' => 'login'),
+                //ログインしていない場合のリダイレクト先
+                'loginAction' => array('controller' => 'home', 'action' => 'index'),
+                //ログインにデフォルトの username ではなく email を使うためここで書き換えています			
+        ),
+        'DebugKit.Toolbar'
     );
 	
+	//現在はtrueで返している
 	public function isAuthorized($user) {
         $result = false;
         if ( 'グループIDの判定処理をココに書く' ) {
@@ -59,9 +63,7 @@ class AppController extends Controller {
     }
 	
 	public function beforeRender(){
-		$this->set('loginInformation', $this->Auth->User());
-		$this->Auth->loginError = 'ログインエラーです';
-		$this->Auth->authError = '権限がありません';
+		
 	}
     
 }

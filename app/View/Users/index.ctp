@@ -43,7 +43,7 @@
 				       <!-- 配列のデータを取り出してechoで出力する、h()はエスケープ -->
 				        	<tr>
 					        	<th>UserID</th>
-					        	<td><?php echo h($list['User']['id']); ?></td>
+					        	<td><?php echo h($list['User']['name']); ?></td>
 					        	<th>Nickname</th>
 					        	<td><?php echo h($list['User']['nickname']); ?></td>
 					        	<th>email</th>
