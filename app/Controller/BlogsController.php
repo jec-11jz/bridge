@@ -5,7 +5,11 @@ App::uses('AppController', 'Controller');
  *
  * @property User $User
  */
-class TuplesController extends Controller {
+class BlogsController extends Controller {
+	
+	public function index() {
+		
+	}
     
     public function create() {
         $this->layout = '';
