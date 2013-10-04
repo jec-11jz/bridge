@@ -29,6 +29,11 @@ $cakeDescription = __d('cake_dev', 'CakePHP: the rapid development php framework
 	</title>
 	<?php
 		echo $this->Html->meta('icon');
+		
+		echo $this->Html->css('bootstrap.min');
+		echo $this->Html->script('jquery-1.10.2.min');
+		echo $this->Html->script('jquery.backstretch.min');
+		echo $this->Html->script('bootstrap.min');
 
 		echo $this->Html->css('cake.generic');
 
