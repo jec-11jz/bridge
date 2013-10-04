@@ -1,13 +1,11 @@
 # User specific & automatically generated files #
 #################################################
 /app/Config/database.php
+/app/Config/email.php
 /app/tmp
-/lib/Cake/Console/Templates/skel/tmp/
-/plugins
-/vendors
-/build
-/dist
-/tags
+/app/Plugin
+/Vendor
+composer.phar
 
 # OS generated files #
 ######################
@@ -21,3 +19,6 @@ ehthumbs.db
 Thumbs.db
 .settings
 .idea/
+.metadata/
+.project
+.editorconfig

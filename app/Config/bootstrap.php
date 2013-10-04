@@ -92,7 +92,6 @@ Cache::config('default', array('engine' => 'File'));
  * ));
  */
  
-CakePlugin::load('DebugKit');
 Configure::write('Dispatcher.filters', array(
 	'AssetDispatcher',
 	'CacheDispatcher'
@@ -112,3 +111,9 @@ CakeLog::config('error', array(
 	'types' => array('warning', 'error', 'critical', 'alert', 'emergency'),
 	'file' => 'error',
 ));
+
+
+App::import('Vendor', 'autoload');
+spl_autoload_unregister(array('App', 'load'));
+spl_autoload_register(array('App', 'load'), true, true);
+

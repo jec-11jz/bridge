@@ -1,0 +1,41 @@
+{
+    "name": "jec-11jz/bridge",
+    "authors": [
+        {
+            "name": "jec-11jz",
+            "email": "tky.c10ver@gmail.com"
+        }
+    ],
+    "repositories": [
+        {
+            "type": "pear",
+            "url": "http://pear.cakephp.org"
+        }
+    ],
+    "require": {
+        "pear-cakephp/cakephp": ">=2.3.4"
+    },
+    "require-dev": {
+        "cakephp/debug_kit": ">=2.2.1",
+        "phpunit/phpunit": ">=3.7.5",
+        "phpdocumentor/phpdocumentor": ">=2",
+        "sebastian/phpcpd": ">=1.4.3",
+        "phpmd/phpmd": ">=1.5.0",
+        "squizlabs/php_codesniffer": ">=1.4.6",
+        "pear-cakephp/CakePHP_CodeSniffer": "*",
+        "phing/phing": "*"
+    },
+    "config": {
+        "vendor-dir": "Vendor/"
+    },
+    "extra": {
+        "installer-paths": {
+            "app/Plugin/DebugKit": ["cakephp/debug_kit"]
+        }
+    },
+    "scripts": {
+        "post-install-cmd": [
+            "cp -R Vendor/pear-pear.cakephp.org/CakePHP_CodeSniffer/PHP/CodeSniffer/Standards/CakePHP Vendor/squizlabs/php_codesniffer/CodeSniffer/Standards/"
+        ]
+    }
+}
