@@ -5,6 +5,7 @@
 /app/tmp
 /app/Plugin
 /Vendor
+/plugins
 composer.phar
 
 # OS generated files #
