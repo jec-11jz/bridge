@@ -10,114 +10,59 @@
 		<!--[if lt IE 9]>
 		<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 		<![endif]-->
-		<link rel="stylesheet" href="../../webroot/css/cake.generic.css">
-		<link rel="stylesheet" href="../../webroot/css/bootstrap.css">
-		<link rel="stylesheet" href="../../webroot/css/bootstrap.min.css">
-		<link rel="stylesheet" href="../../webroot/css/login.css">
+		<link rel="stylesheet" href="../../css/login.css">
+		<link rel="stylesheet" href="../../css/bootstrap.min.css">
+		<link rel="stylesheet" href="../../css/bootstrap.css">
+		
 		<script src="../../webroot/js/empty"></script>
 		<script type='text/javascript' src='js/jquery.modal.js'></script>
 		<script type='text/javascript' src='js/site.js'></script>
 		<script type="text/javascript" src="jquery-1.10.2.min.js"></script>
 		
 		<style>
-			body {
-				background-image: url("<?php echo $this -> Html -> url('../img/a1180_008305_m.jpg'); ?>");
-				background-repeat: no-repeat;
-				background-attachment: fixed;
+			h1 {
+				color: #FFFFFF;
+			}
+			h3 {
+				color: rgba(255,255,255, 0.85);
 			}
 		</style>
 		
-		
-
 	</head>
 	<body>
 		<!-- Container -->
-		<div id="container">
+		<div id="login_form">
 			<!-- Header -->
-			<header id="header">
-				<h1>ログイン</h1>
+			<header id="login_header">
+				<h3>ログイン</h3>
 			</header>
 			<!-- //Header -->
 
-			<hr />
+			
 			<!-- Contents -->
-			<div id='modal'>
-				<div class='login_form'>
-					<?php echo $this -> Session -> flash('auth'); ?>
-					
-					<?php echo $this -> Form -> create('User', array('type' => 'post', 'action' => 'login')); ?>
-						<?php echo $this -> Form -> input('name', array('type' => '', 'label' => 'ユーザーIDまたはメールアドレス')); ?>
-						<?php echo $this -> Form -> input('password', array('type' => 'password', 'label' => 'password')); ?>
-					<?php echo $this -> Form -> end('ログイン'); ?>
-				</div>
+			<div class='form'>
+				<?php echo $this -> Session -> flash('auth'); ?>
+				<?php echo $this -> Form -> create('User', array('type' => 'post', 'action' => 'login')); ?>
+				<div class="form-group">
+				    <?php echo $this -> Form -> input('email', array('type' => 'email', 'label' => 'メールアドレス', 'class' => 'input_email')); ?>
+			  	</div>
+		 		<div class="form-group">
+				    <?php echo $this -> Form -> input('password', array('type' => 'password', 'label' => 'password', 'class' => 'input_password')); ?>
+		  		</div>
+			  	<div class="form-group">	
+			  		<?php echo $this -> form->submit('Login', array('type' => 'submit', 'class' => 'btn btn-lg btn-primary ')); ?>
+			    	<?php echo $this -> Form -> end(); ?>
+			    </div>	
 			</div>
-			
-			<script>
-				$(function() {
-					setModal();
-				})
-				function setModal() {
-
-					//HTML読み込み時にモーダルウィンドウの位置をセンターに調整
-					adjustCenter("div#modal div.container");
-
-					//ウィンドウリサイズ時にモーダルウィンドウの位置をセンターに調整
-					$(window).resize(function() {
-						adjustCenter("div#modal div.container");
-					});
-
-					//背景がクリックされた時にモーダルウィンドウを閉じる
-					$("div#modal div.background").click(function() {
-						displayModal(false);
-					});
-
-					//リンクがクリックされた時にAjaxでコンテンツを読み込む
-					$("a.modal").click(function() {
-						$("div#modal div.container").load($(this).attr("href"), data = "html", onComplete);
-						return false;
-					});
-
-					//コンテンツの読み込み完了時にモーダルウィンドウを開く
-					function onComplete() {
-						displayModal(true);
-						$("div#modal div.container a.close").click(function() {
-							displayModal(false);
-							return false;
-						});
-					}
-
-				}
-
-				//モーダルウィンドウを開く
-				function displayModal(sign) {
-					if (sign) {
-						$("div#modal").fadeIn(500);
-					} else {
-						$("div#modal").fadeOut(250);
-					}
-				}
-
-				//ウィンドウの位置をセンターに調整
-				function adjustCenter(target) {
-					var margin_top = ($(window).height() - $(target).height()) / 2;
-					var margin_left = ($(window).width() - $(target).width()) / 2;
-					$(target).css({
-						top : margin_top + "px",
-						left : margin_left + "px"
-					});
-				}
-			</script>
-			
 			<h4><?php echo $this -> Html -> link('Index', array('action' => 'index')); ?></h4>
 			<!-- //Contents -->
-			<hr />
 
 			<!-- footer -->
-			<footer id="footer">
+			<!-- <footer id="footer">
 				<p class="copyright">
 					<small>copyright &copy; Bridge</small>
 				</p>
-			</footer>
+			</footer> -->
 			<!-- //footer -->
 
 		</div>

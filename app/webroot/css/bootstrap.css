@@ -1036,9 +1036,9 @@ input,
 button,
 select,
 textarea {
-  font-size: 14px;
+  font-size: 20px;
   font-weight: normal;
-  line-height: 20px;
+  line-height: 40px;
 }
 
 input,
@@ -1051,6 +1051,7 @@ textarea {
 label {
   display: block;
   margin-bottom: 5px;
+  font-size: 16px;
 }
 
 select,
@@ -1071,10 +1072,10 @@ input[type="tel"],
 input[type="color"],
 .uneditable-input {
   display: inline-block;
-  height: 20px;
+  height: 40px;
   padding: 4px 6px;
   margin-bottom: 10px;
-  font-size: 14px;
+  font-size: 18px;
   line-height: 20px;
   color: #555555;
   vertical-align: middle;
@@ -3553,7 +3554,7 @@ input[type="submit"].btn.btn-mini {
 }
 
 .btn-link:hover {
-  color: #005580;
+  color: #58E91E;
   text-decoration: underline;
   background-color: transparent;
 }

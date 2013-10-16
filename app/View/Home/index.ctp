@@ -1,91 +1,111 @@
 <!DOCTYPE html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title>Bridge</title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width">
-
-        <link rel="stylesheet" href="css/bootstrap.min.css">
-        <style>
-            body {
-                padding-top: 60px;
-                padding-bottom: 40px;
-            }
-            .hero-unit {
-            	width: 400px;
-            	background-color: rgba(224, 224, 224, 0.9);
-            }
-        </style>
-        <link rel="stylesheet" href="css/bootstrap-responsive.min.css">
-        <link rel="stylesheet" href="css/main.css">
-		<link rel="stylesheet" href="css/login.css">
+<html lang="ja">
+	<head>
+		<meta charset="UTF-8">
+		<title>Bridge | TopPage</title>
+		<meta name="keywords" content="bridge登録" />
+		<meta name="description" content="Register Bridge" />
+		<meta name="author" content="shinya" />
+		<meta name="copyright" content="Bridge">
+		<!--[if lt IE 9]>
+		<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+		<link rel="stylesheet" href="../../css/bootstrap.css">
+		<link rel="stylesheet" href="../../css/bootstrap.min.css">
+		<link rel="stylesheet" href="../../css/background.css">
+		<script src="../../webroot/js/empty"></script>
+		<script type='text/javascript' src='js/jquery.modal.js'></script>
+		<script type='text/javascript' src='js/site.js'></script>
+		<script type="text/javascript" src="jquery-1.10.2.min.js"></script>
 		
-        <script src="js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
-    </head>
-    <body>
-        <!--[if lt IE 7]>
-            <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
-        <![endif]-->
+		<style>
+			
+			li.logo {
+				width: 250px;
+				height: 250px;
+				background-color: rgba(255,255,255, 0.85);
+				background-repeat: no-repeat;
+				background-attachment: fixed;
+				margin: 10% 0px 0px 6%; /*　上　右　下　左 */
+				border-radius: 20px;
+				text-align: center;
+				font-size: 30px;
+				color: rgba(0,0,0, 0.7);
+				text-shadow: 2px 2px 2px #999999, -2px -2px 2px #999999;
+			}
+			footer#footer{
+				height: 10px;
+				position: absolute;
+				bottom: 0;
+			}
+			div#toppage {
+			
+			}
+			div#link{
+				width: 100%;
+				margin: 0 auto; /*センタリング*/
+			}
+			img.logo{
+				width: 230px;
+				height: 230px;
+				border-radius: 20px;
+			}
+			li.link_name{
+				color: #FFFFFF
+				clear: both;
+			}
+		</style>
+		<SCRIPT language="JavaScript">
+			// // ランダムに背景を変更する (動かない)
+			bgi = new Array();
+			bgi[0] = url("<?php echo $this -> Html -> url('../img/loginImage03.jpg'); ?>");
+			bgi[1] = url("<?php echo $this -> Html -> url('../img/loginImage02.jpg'); ?>");
+			bgi[2] = url("<?php echo $this -> Html -> url('../img/loginImage01.jpg'); ?>");
+			bgi[3] = url("<?php echo $this -> Html -> url('../img/loginImage04.jpg'); ?>");
+			bgi[4] = url("<?php echo $this -> Html -> url('../img/loginImage05.jpg'); ?>");
+			bgi[5] = url("<?php echo $this -> Html -> url('../img/loginImage06.jpg'); ?>");
+			
+			function change(){   
+				n = Math.floor(Math.random()*bgi.length);
+				document.body.background = bgi[n]
+			}
+		</SCRIPT>
+	</head>
+	
+	<body onload="javascript: change();">
+		<!-- Container -->
+		<div id="toppage">
+			<!-- Header -->
+			
+			<!-- //Header -->
 
-        <!-- This code is taken from http://twitter.github.com/bootstrap/examples/hero.html -->
+			<!-- Contents -->
+			<div id='modal'>
+				<div id='link'>
+					<ul style="list-style:none">
+						<li style="float: left" class="logo"><?php echo $this->Html->image('../img/icon02.jpg',
+									array('url'=>array('controller'=>'users','action'=>'index'), 'class' => 'logo'));?><br/>作品検索</li>
+						<li style="float: left" class="logo"><?php echo $this->Html->image('../img/icon07.jpeg',
+									array('url'=>array('controller'=>'users','action'=>'add'), 'class' => 'logo'));?><br/>登録</li>
+						<li style="float: left" class="logo"><?php echo $this->Html->image('../img/icon06.jpg',
+									array('url'=>array('controller'=>'users','action'=>'login'), 'class' => 'logo'));?><br/>ログイン</li>
+					</ul>
+				</div>
+			</div>
+			<!-- //Contents -->
+			<!-- footer -->
+			<footer id="footer">
+				<p class="copyright">
+					<small>copyright &copy; Bridge</small>
+				</p>
+			</footer>
+			<!-- //footer -->
 
-        <div class="navbar navbar-inverse navbar-fixed-top">
-            <div class="navbar-inner">
-                <div class="container">
-                    <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </a>
-                    <a class="brand" href="#">Bridge</a>
-                </div>
-            </div>
-        </div>
-
-        <div class="container">
-
-            <!-- Main hero unit for a primary marketing message or call to action -->
-            <div class="hero-unit">
-            	<form class="form-horizontal">
-            		<fieldset>
-            			<legend>ログイン</legend>
-            			<div class="control-group">
-            				<label class="control-label" for="inputLoginId">ログインID</label>
-            				<div class="controls">
-            					<input type="text" id="inputLoginId" placeholder="ログインID" />
-            				</div>
-            			</div>
-            			<div class="control-group">
-            				<label class="control-label" for="inputPassword">パスワード</label>
-            				<div class="controls">
-            					<input type="password" id="inputPassword" placeholder="パスワード" />
-            				</div>
-            			</div>
-            			<div class="control-group">
-							<div class="controls">
-								<button type="submit" class="btn btn-primary">ログイン</button>
-							</div>
-						</div>
-            		</fieldset>
-            	</form>
-            </div>
-            
-            <footer>
-                <p>&copy; Company 2012</p>
-            </footer>
-
-        </div> <!-- /container -->
-
-        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
-        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.9.0.min.js"><\/script>')</script>
-
-        <script src="js/vendor/bootstrap.min.js"></script>
-
-        <script src="js/main.js"></script>
-    </body>
+		</div>
+		<!-- //Container -->
+	<div id="backgroud">
+	<div id="over">
+	</div>
+	</div>
+	</body>
 </html>

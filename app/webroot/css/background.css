@@ -1,0 +1,11 @@
+body{
+	background: #fff url("../img/icon08.png") no-repeat fixed center bottom;
+	background-image: url("../img/icon08.png");
+	background-position-x: 50%;
+	background-position-y: 10%;
+	background-size 30%:
+	background-attachment: fixed;
+	background-origin: initial;		/*背景をパディングボックスに対して相対的に適用する（初期値）*/
+	background-color: rgb(240, 240, 240, 0.85);
+}
+

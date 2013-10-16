@@ -4,7 +4,11 @@ class HomeController extends AppController {
 	
 	public function index()
 	{
-		$this->redirect(array('controller' => 'users', 'action' => 'login'));
+		$this->layout = 'menu';
+	}
+	
+	public function test(){
+		$this->layout = '';
 	}
 }
 
