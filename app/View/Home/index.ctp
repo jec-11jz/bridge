@@ -13,7 +13,7 @@
 		<link rel="stylesheet" href="../../css/bootstrap.css">
 		<link rel="stylesheet" href="../../css/bootstrap.min.css">
 		<link rel="stylesheet" href="../../css/background.css">
-		<script src="../../webroot/js/empty"></script>
+		
 		<script type='text/javascript' src='js/jquery.modal.js'></script>
 		<script type='text/javascript' src='js/site.js'></script>
 		<script type="text/javascript" src="jquery-1.10.2.min.js"></script>
@@ -23,7 +23,7 @@
 			li.logo {
 				width: 250px;
 				height: 250px;
-				background-color: rgba(255,255,255, 0.85);
+				background-color: rgba(20,220,45, 0.25);
 				background-repeat: no-repeat;
 				background-attachment: fixed;
 				margin: 10% 0px 0px 6%; /*　上　右　下　左 */
@@ -80,17 +80,21 @@
 			<!-- //Header -->
 
 			<!-- Contents -->
-			<div id='modal'>
-				<div id='link'>
-					<ul style="list-style:none">
-						<li style="float: left" class="logo"><?php echo $this->Html->image('../img/icon02.jpg',
-									array('url'=>array('controller'=>'users','action'=>'index'), 'class' => 'logo'));?><br/>作品検索</li>
-						<li style="float: left" class="logo"><?php echo $this->Html->image('../img/icon07.jpeg',
-									array('url'=>array('controller'=>'users','action'=>'add'), 'class' => 'logo'));?><br/>登録</li>
-						<li style="float: left" class="logo"><?php echo $this->Html->image('../img/icon06.jpg',
-									array('url'=>array('controller'=>'users','action'=>'login'), 'class' => 'logo'));?><br/>ログイン</li>
-					</ul>
-				</div>
+			    <!-- ここのコンテンツ -->
+			<div id='link'>
+				<ul style="list-style:none">
+					<li style="float: left" class="logo"><?php echo $this->Html->image('../img/icon02.jpg',
+								array('url'=>array('controller'=>'users','action'=>'index'), 'class' => 'logo'));?><br/>作品検索</li>
+					<li style="float: left" class="logo"><?php echo $this->Html->image('../img/icon07.jpeg',
+								array('url'=>array('controller'=>'users','action'=>'add'), 'class' => 'logo'));?><br/>登録</li>
+					<li style="float: left" class="logo"><?php echo $this->Html->image('../img/icon06.jpg',
+								array('url'=>array('controller'=>'users','action'=>'login'), 'class' => 'logo'));?><br/>ログイン</li>
+				</ul>
+			</div>
+			<a class="modalLink"><?php echo $this->Html->link('ログイン',array('controller' => 'users','action'=>'login')); ?></a>
+			<div class="modal">
+				<div class="overlay"></div>
+				<a href="#" class="closeBtn">Close Me</a>
 			</div>
 			<!-- //Contents -->
 			<!-- footer -->

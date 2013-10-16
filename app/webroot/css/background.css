@@ -3,9 +3,9 @@ body{
 	background-image: url("../img/icon08.png");
 	background-position-x: 50%;
 	background-position-y: 10%;
-	background-size 30%:
+	background-size: auto;
 	background-attachment: fixed;
 	background-origin: initial;		/*背景をパディングボックスに対して相対的に適用する（初期値）*/
-	background-color: rgb(240, 240, 240, 0.85);
+	background-color: rgb(24, 240, 70, 0.85);
 }
 
