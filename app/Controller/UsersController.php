@@ -31,7 +31,6 @@ class UsersController extends AppController {
 	
 	//ログイン処理
 	public function login() {
-		$this->layout = 'menu';
 		//ログイン認証されたユーザかどうか調べる
         if ($data = $this->User->findById($this->Auth->user('id'))) {
         	//既にログインしていた場合ログイン後のリダイレクト先に飛ばす
