@@ -24,25 +24,28 @@ a {
 	clear: both;
 }
 
-.form {
-	background-color: rgba(91,225,96, 0.70);
+div.form {
+	background-color: rgba(235,235,236, 0.70);
 	background-repeat: no-repeat;
 	background-attachment: fixed;
 	width: 50%;
 	height: 50%;
 	margin: 50px 0px 0px 30px; /*　上　右　下　左 */
 	border-radius: 20px;
+	font-size: 30px;
+	color: rgba(0,0,0, 0.70);
+	text-shadow: 3px 3px 3px #999999, -2px -2px 2px #999999;
 }
 
-.form-group {
+div.form-group {
 	margin: 10px 0px 0px 40px;
 	padding: 10px 0px 0px 0px;
 }
 
-.input_email {
+input.input_email {
 	width: 80%;
 }
-.input_password {
+input.input_password {
 	width: 80%;
 }
 h1 {
