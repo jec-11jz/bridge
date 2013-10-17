@@ -14,10 +14,14 @@ a{
 	display:block; padding:10px
 }
 ul#menu{
-	
+	text-align: left;
+}
+ul#right{
+	float:right;
 }
 header#header{
     position:relative;
+    width: auto;
     background: rgba(25,235,66, 0.70);
     color: #58E91E;
     padding-top: 25px;

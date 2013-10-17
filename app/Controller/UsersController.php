@@ -7,6 +7,7 @@ App::uses('Sanitize', 'Utility');
  * @property User $User
  */
 class UsersController extends AppController {
+	public $layout = 'menu';
 	
 	//モデルの指定
 	public $uses = array('User');

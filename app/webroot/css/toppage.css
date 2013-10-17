@@ -1,0 +1,30 @@
+li.logo {
+	width: 250px;
+	height: 250px;
+	background-color: rgba(20,220,45, 0.25);
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	margin: 10% 0px 0px 6%; /*　上　右　下　左 */
+	border-radius: 20px;
+	text-align: center;
+	font-size: 30px;
+	color: rgba(0,0,0, 0.7);
+	text-shadow: 2px 2px 2px #999999, -2px -2px 2px #999999;
+}
+footer#footer{
+	height: 10px;
+	position: absolute;
+	bottom: 0;
+}
+div#toppage {
+
+}
+div#link{
+	width: 100%;
+	margin: 0 auto; /* センタリング */
+}
+img.logo{
+	width: 230px;
+	height: 230px;
+	border-radius: 20px;
+}
