@@ -7,6 +7,7 @@ App::uses('Sanitize', 'Utility');
  * @property User $User
  */
 class UsersController extends AppController {
+	public $layout = 'menu';
 	
 	//モデルの指定
 	public $uses = array('User');
@@ -17,7 +18,7 @@ class UsersController extends AppController {
     	//親クラス（AppController）読み込み
         parent::beforeFilter();
 		//ログイン認証前にアクセスできるアクション
-        $this->Auth->allow('add', 'login', 'index');
+        $this->Auth->allow('add', 'login', 'index', 'test');
 		$this->set('loginInformation', $this->Auth->User());
 	    
     }
@@ -30,7 +31,6 @@ class UsersController extends AppController {
 	
 	//ログイン処理
 	public function login() {
-		$this->layout = 'logged';
 		//ログイン認証されたユーザかどうか調べる
         if ($data = $this->User->findById($this->Auth->user('id'))) {
         	//既にログインしていた場合ログイン後のリダイレクト先に飛ばす
@@ -38,11 +38,11 @@ class UsersController extends AppController {
         } else {
         	
 	        if($this->request->is('post')) {
-	        	if(strstr($this->data['User']['name'],'@')){
-	        		$this->User->email = $this->Auth->user('name');
-		        	$this->data['User']['email'] = $this->data['User']['name'];
-		        	$this->Auth->fields['id'] = 'email';
-		        }
+	        	// if(strstr($this->data['User']['name'],'@')){
+	        		// $this->User->email = $this->Auth->user('name');
+		        	// $this->data['User']['email'] = $this->data['User']['name'];
+		        	// $this->Auth->fields['id'] = 'email';
+		        // }
 	            if($this->Auth->login()) {
 	            	$this->Session->setFlash(__('ログイン成功ヽ(ﾟ｀∀´ﾟ)ﾉｳﾋｮ'));
 	                return $this->redirect($this->Auth->redirectUrl());
@@ -106,6 +106,10 @@ class UsersController extends AppController {
 	
 	public function done() {
 		//ログインが完了した時に表示する(beforefilterで許可していないアクション)
+	}
+	
+	public function test(){
+		$this->layout = "";
 	}
 	
 }

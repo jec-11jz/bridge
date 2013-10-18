@@ -1,47 +1,41 @@
-
-/* --- ナビゲーションバー --- */
-div.nav {
-	width: 220px; /* ナビゲーションの幅 */
-	height: 100%;
-	font-size: 80%;
-	background-color: #46A546;
+* {
+	margin:0;padding:0
 }
-
-/* --- メニューエリア --- */
-div.nav ul.nl {
-	margin: 0;
-	padding: 0;
-	list-style-type: none;
+body{
+	font-size: 1.2em;
+	width: 100%;
+	height: 100%;
+	padding: 0px;
+}
+p{
+	margin:0 10px 10px
+}
+a{
+	display:block; padding:10px
+}
+ul#menu{
 	text-align: left;
 }
-
-/* --- メニュー項目 --- */
-div.nav ul.nl li {
-
-	border-bottom: 1px #46A546; /* 項目の下境界線 */
-	margin-bottom: 2px;
-	
+ul#right{
+	float:right;
+}
+header#header{
+    position:relative;
+    width: auto;
+    background: rgba(235,235,236, 0.80);
+    color: #58E91E;
+    padding-top: 25px;
+    padding-bottom: 20px;
+    padding-left: 20px;
+    font-size: 14px;
+}
+div#navi{
+	margin: -30px 0px 0px 0px;
 }
 
-/* --- リンク --- */
-div.nav ul.nl li a {
-	display: block;
-	position: relative; /* IE6用 */
-	padding: 12px 10px; /* リンクエリアのパディング（上下、左右） */
-	background: #FFFFFF url(ver_menu5_3off.gif) repeat-y right; /* リンクエリアの背景 */
-	color: #46A546; /* 文字色 */
-	text-decoration: none; /* テキストの下線（なし） */
+div#footer{
+	/*position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 100px;*/
 }
-/* --- ポイント時の設定 --- */
-div.nav ul.nl li a:hover {
-	background: #CEF9DC url(ver_menu5_3on.gif) repeat-y right; /* ポイント時の背景 */
-	text-decoration: underline; /* テキストの下線（あり） */
-}
-
-/* --- イメージ --- */
-img.navImg {
-	height: 260px;
-	width: 220px;
-}
-
-
