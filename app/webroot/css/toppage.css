@@ -1,6 +1,6 @@
 li.logo {
-	width: 250px;
-	height: 250px;
+	width: 10%;
+	height: 10%;
 	background-color: rgba(235,235,236, 0.60);
 	margin: 10px 0px 0px 30px; /*　上　右　下　左 */
 	border-radius: 20px;
@@ -12,23 +12,55 @@ li.logo {
 div#toppage {
 	
 }
+a.logo{
+	font-size: 30px;
+	color: rgba(0,0,0, 0.70);
+	text-align: center;
+	text-shadow: 3px 3px 3px #999999, -2px -2px 2px #999999;
+}
 div#toppage_link{
 	background-color: rgba(235,235,236, 0.70);
 	width: 80%;
+	height: 30%;
 	border-radius: 20px;
-	text-align: center;
 	margin: 50px 0px 0px 50px;
 	float: left;
-	font-size: 30px;
-	color: rgba(0,0,0, 0.70);
-	text-shadow: 3px 3px 3px #999999, -2px -2px 2px #999999;
+	
 }
-img.logo{
+div.logo{
 	width: 230px;
 	height: 230px;
 	border-radius: 20px;
 	margin: 10px 0px 10px 30px;
 	float: left;
+}
+
+div.img-book {
+	background-image: url('../img/icon10.jpg');
+	-moz-background-size:cover;
+	background-size:cover;
+	background-position-x: 40%;
+	background-position-y: 0%;
+	
+}
+div.img-book2{
+	background-image: url('../img/icon07.jpeg');
+	-moz-background-size:cover;
+	background-size:cover;
+	background-position-x: 20%;
+	background-position-y: 0%;
+}
+div.img-book3{
+	background-image: url('../img/icon06.jpg');
+	-moz-background-size:cover;
+	background-size:cover;
+	background-position-x: 20%;
+	background-position-y: 0%;
+}
+a.logo:hover div {
+	border: 3px solid #97F95A;
+	opacity: 0.6;
+	filter: alpha(opacity=60);
 }
 
 a.logo{

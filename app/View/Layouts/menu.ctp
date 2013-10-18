@@ -9,7 +9,6 @@
 		echo $this->Html->css('background');
 		echo $this->Html->css('font-awesome.min');
 		echo $this->Html->css('bootstrap.min');
-		echo $this->Html->css('buttons.css');
 		echo $this->Html->css('bootstrap');
 		
 		echo $this->Html->script('bootstrap.min');

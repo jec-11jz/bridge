@@ -1,44 +1,32 @@
-* {
-	margin: 0;
-	padding: 0
-}
-body {
-	font-size: 1.2em;
-	width: 100%;
-	height: 100%;
-}
-p {
-	margin: 0 10px 10px;
-}
-a {
-	display: block;
-	padding: 10px
-}
-
-#login_form {
-	margin: 30px 0px 0px 40px; /*　上　右　下　左 */
-}
-#login_header {
-	position: relative;
-	background: transparent;
-	clear: both;
-}
-
-div.form {
+div.user_add{
 	background-color: rgba(235,235,236, 0.70);
 	background-repeat: no-repeat;
 	background-attachment: fixed;
 	width: 50%;
-	height: 50%;
+	height: 70%;
 	margin: 50px 0px 0px 30px; /*　上　右　下　左 */
 	border-radius: 20px;
 	font-size: 30px;
 	color: rgba(0,0,0, 0.70);
 	text-shadow: 3px 3px 3px #999999, -2px -2px 2px #999999;
 }
+div.add_form{
+	margin: 10px 0px 30px 40px;
+	padding: 10px 0px 0px 0px;
+}
+div.add_button{
+	margin: 0px 30px 90px 0px;
+	padding: 10px 0px 0px 0px;
+}
+label{
+	font-size: 18px;
+	color: rgba(0,0,0, 0.70);
+	text-shadow: 3px 3px 3px #999999, -2px -2px 2px #999999;
+}
 *.btn-custom{
-	margin: 0px 30px 50px 0px;
-	float: right;
+	margin: 10px 0px 50px 40px;
+	height: 50px;
+	float: left;
 	display: inline-block;
 	font-size: 14px;
 	font-weight: bold;
@@ -58,24 +46,27 @@ div.form {
 	background: -ms-linear-gradient(#001ca8, #2476ff);
 	background: linear-gradient(#001ca8, #2476ff);
 }
-
-div.form-group {
-	margin: 10px 0px 30px 40px;
-	padding: 10px 0px 0px 0px;
+*.right{
+	float: right;
 }
-
-input.input_email {
+*.left{
+	float: left;
+}
+*.input_form{
 	width: 80%;
 }
-input.input_password {
-	width: 80%;
+*.btn:hover {
+	color: #a2eb7f;
+	background-position: 0;
+	border: 3px solid #97F95A;
+	opacity: 0.9;
+	filter: alpha(opacity=60);
 }
-h1 {
-	color: #FFFFFF;
+*.btn-custom:hover {
+	color: #a2eb7f;
+	background-position: 0;
+	border: 3px solid #97F95A;
+	opacity: 0.9;
+	filter: alpha(opacity=60);
 }
-h3 {
-	color: rgba(255,255,255, 0.85);
-}
-
-
 

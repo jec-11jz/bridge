@@ -1,92 +1,70 @@
-<!DOCTYPE html>
-<html>
-	<head>
-		<meta charset="UTF-8">
-		<title>Register</title>
-		<meta name="keywords" content="bridge登録" />
-		<meta name="description" content="Register Bridge" />
-		<meta name="author" content="shinya" />
-		<meta name="copyright" content="Bridge">
-		<!--[if lt IE 9]>
-		<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-		<![endif]-->
-		<link rel="stylesheet" href="../../webroot/css/cake.generic.css">
-		<script src="../../webroot/js/empty"></script>
-	</head>
-	<body>
-		<!-- Container -->
-		<div id="container">
-			<!-- Header -->
-			<header id="header">
-				<h1>ユーザー登録</h1>
-			</header>
-			<!-- //Header -->
 
-			<hr />
-			<!-- Contents -->
-			<?php echo $this->Form->create('User', array( 'type'=>'post', 'action'=>'edit')); ?>
-			<table>
-				<tr>
-					<td>
-						<?php echo 'ユーザＩＤ : ' . $loginInformation['name']; ?>
-						<?php 
-							echo $this->Form->input('name', array(
-								'label'=>'ユーザーID', 
-								'type'=>'text',
-								'error' => array(
-									'isUnique' => __('そのユーザーIDは既に使われています', true),
-									'alphanumeric' => __('半角英数字のみ使用できます', true),
-									'minLength' => __('15文字以内で入力してください', true)))); 
-						?>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<?php 
-							echo $this->Form->input('nickname', array(
-								'label' => 'ユーザー名',
-								'error' => array(
-									'maxLength' => __('30文字以内で入力してください', true)))); 
-						?>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<?php 
-							echo $this->Form->input('email', array(
-								'label' => 'メールアドレス',
-								'type' => 'email',
-								'error' => array(
-									'email' => __('メールアドレスを正しく入力してください。', true),
-									'isUnique' => __('そのメールアドレスは既に使用されています', true)))); 
-						?>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<?php 
-							echo $this->Form->input('profile', array(
-								'label' => 'プロフィール',
-								'type' => 'text')); 
-						?>
-					</td>
-				</tr>
-			</table>
-			<?php echo $this->Form->end('変更を保存'); ?>
-			<?php echo $this->Form->create('User',array('type'=>'post', 'action'=>'index')); ?>
-			<?php echo $this->Form->end('キャンセル'); ?>
-			<!-- //Contents -->
-			<hr />
-
-			<!-- footer -->
-			<footer id="footer">
-				<p class="copyright">
-					<small>copyright &copy; Bridge</small>
-				</p>
-			</footer>
-			<!-- //footer -->
-
+<body>
+	<!-- Container -->
+	<div id="user_edit">
+		<!-- Header --><!-- //Header -->
+		
+		<!-- Contents -->
+		<p>ユーザ編集</p>
+		<?php echo $this->Form->create('User', array( 'type'=>'post', 'action'=>'add')); ?>
+		<div class="user_add">
+			<div class="add_form">
+				<?php 
+					echo $this->Form->input('name', array(
+						'label'=>'ユーザーID', 
+						'type'=>'text',
+						'class'=>'input_form',
+						'error' => array(
+							'isUnique' => __('そのユーザーIDは既に使われています', true),
+							'custom' => __('半角英数字のみ使用できます', true),
+							'minLength' => __('15文字以内で入力してください', true)))); 
+				?>
+				<?php 
+					echo $this->Form->input('nickname', array(
+						'label' => 'ユーザー名',
+						'class'=>'input_form',
+						'error' => array(
+							'maxLength' => __('30文字以内で入力してください', true)))); 
+				?>
+				<?php 
+					echo $this->Form->input('password',array(
+						'label' => 'パスワード',
+						'type' => 'password',
+						'class'=>'input_form',
+						'error' => array(
+							'notEmpty' => __('パスワードを入力してください。', true),
+							'between' => __('6文字以上15文字以内で入力してください', true)))); 
+				?>
+				<?php 
+					echo $this->Form->input('password_check', array(
+						'label' => 'パスワードの再入力', 
+						'type' => 'password',
+						'class'=>'input_form',
+						'error' => array(
+							'notEmpty' => __('パスワード(再入力)を入力してください。', true),
+							'sameCheck' => __('パスワード(再入力)がパスワードと異なります。', true)))); 
+				?>
+				<?php 
+					echo $this->Form->input('email', array(
+						'label' => 'メールアドレス',
+						'type' => 'email',
+						'class'=>'input_form',
+						'error' => array(
+							'email' => __('メールアドレスを正しく入力してください。', true),
+							'isUnique' => __('そのメールアドレスは既に使用されています', true)))); 
+				?>
+			</div>
+			<div class="add_button">
+				<a href="../home/index" class="btn-custom left">キャンセル</a>
+				<?php echo $this->Form->button('リセット' ,array('type' => 'reset', 'class' => 'btn-custom btn left')); ?>
+				<?php echo $this ->Form->submit('登録', array('type' => 'submit', 'class' => 'btn-custom btn right')); ?>
+				<?php echo $this->Form->end(); ?>
+			</div>
 		</div>
-		<!-- //Container -->
-	</body>
-</html>
+		<!-- //Contents -->
+
+		<!-- footer --><!-- //footer -->
+
+	</div>
+	<!-- //Container -->
+</body>
