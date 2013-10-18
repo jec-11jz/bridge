@@ -6,7 +6,7 @@
 <body>
 	<div id="login_form">
 		<!-- Header --><!-- //Header -->
-
+		
 		<!-- Contents -->
 		<div class='form'>
 			<?php echo $this -> Form -> create('User', array('type' => 'post', 'action' => 'login')); ?>
@@ -21,24 +21,10 @@
 		    	<?php echo $this -> Form -> end(); ?>
 		    </div>	
 		</div>
-		<!-- //Contents -->
-
-		<!-- footer --><!-- //footer -->
 	</div>
-	<!-- Container -->
+	
 	<div id="toppage">
-		<!-- Header --><!-- //Header -->
-		
-		<!-- Contents -->
-		<!-- <div id='toppage_link'>
-			<a class="logo"><?php echo $this->Html->image('../img/icon10.jpg',
-						array('url'=>array('controller'=>'users','action'=>'index'), 'class' => 'logo'));?><br/>作品検索</a>
-			<a class="logo"><?php echo $this->Html->image('../img/icon07.jpeg',
-						array('url'=>array('controller'=>'users','action'=>'add'), 'class' => 'logo'));?><br/>登録</a>
-			<a class="logo"><?php echo $this->Html->image('../img/icon06.jpg',
-						array('url'=>array('controller'=>'users','action'=>'login'), 'class' => 'logo'));?><br/>日記作成</a>
-		</div> -->
-		<div id='toppage_link'>
+		<div class='toppage_link'>
 			<a class="logo" href="../users/index"><div class="logo img-book"></div><br/>作品検索</a>
 			<a class="logo" href="../users/add"><div class="logo img-book2"></div><br/>登録</a>
 			<a class="logo" href="../blogs/index"><div class="logo img-book3"></div><br/>日記作成</a>

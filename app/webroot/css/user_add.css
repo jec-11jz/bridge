@@ -20,11 +20,12 @@ div.add_button{
 }
 label{
 	font-size: 18px;
-	color: rgba(0,0,0, 0.70);
+	color: rgba(0,0,0, 0.80);
 	text-shadow: 3px 3px 3px #999999, -2px -2px 2px #999999;
+	font-weight: bold;
 }
 *.btn-custom{
-	margin: 10px 0px 50px 40px;
+	margin: 10px 0px 30px 40px;
 	height: 50px;
 	float: left;
 	display: inline-block;
@@ -38,7 +39,6 @@ label{
 	border-radius: 6px;
 	text-decoration: none;
 	padding: 15px 40px;
-	font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
 	background: -webkit-gradient(linear, left top, left bottom, color-stop(0.00, #001ca8), color-stop(1.00, #2476ff));
 	background: -webkit-linear-gradient(#001ca8, #2476ff);
 	background: -moz-linear-gradient(#001ca8, #2476ff);

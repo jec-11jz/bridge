@@ -1,4 +1,6 @@
-
+<?php
+	echo $this->Html->css('user_add');
+?>
 <body>
 	<!-- Container -->
 	<div id="user_edit">
