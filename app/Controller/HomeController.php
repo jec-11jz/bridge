@@ -2,9 +2,11 @@
 
 class HomeController extends AppController {
 	
+	public $layout = 'menu';
+	
 	public function index()
 	{
-		$this->layout = 'menu';
+		
 	}
 	
 	public function test(){

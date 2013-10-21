@@ -24,6 +24,7 @@ class UsersController extends AppController {
     }
 
 	public function index() {
+		$this->layout = 'default';
 		$seved_data = $this->Auth->user();
 		//show registered user
 		$this->set('userList', $this->User->find('all'));
