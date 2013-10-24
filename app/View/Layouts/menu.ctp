@@ -14,7 +14,6 @@
 		echo $this->Html->script('bootstrap.min');
 		echo $this->Html->script('menu');
 		echo $this->Html->script('jquery-1.10.2.min');
-		echo $this->Html->script('jquery.backstretch.min');
 		echo $this->Html->script('footerFixed'); //フッターをウィンドウの一番下に固定する(現在はcssで実装している)
 
 
