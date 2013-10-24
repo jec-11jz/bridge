@@ -17,15 +17,16 @@ class UsersController extends AppController {
     {
     	//親クラス（AppController）読み込み
         parent::beforeFilter();
-		//ログイン認証前にアクセスできるアクション
+		//permitted access before login
         $this->Auth->allow('add', 'login', 'index', 'test');
 		$this->set('loginInformation', $this->Auth->User());
 	    
     }
 
 	public function index() {
+		$this->layout = 'default';
 		$seved_data = $this->Auth->user();
-		//index.ctpの表示
+		//show registered user
 		$this->set('userList', $this->User->find('all'));
 	}
 	

@@ -6,9 +6,6 @@ a {
 	padding: 10px
 }
 
-#login_form {
-	padding: 20px 0px 0px 0px; /*　上　右　下　左 */
-}
 div.form {
 	background-color: rgba(235,235,236, 0.70);
 	background-repeat: no-repeat;

@@ -3,10 +3,11 @@
 ?>
 <body>
 	<!-- Container -->
-	<div id="user_edit">
+	<div id="container">
 		<!-- Header --><!-- //Header -->
 		
 		<!-- Contents -->
+		<div id="contents">
 		<p>ユーザ編集</p>
 		<?php echo $this->Form->create('User', array( 'type'=>'post', 'action'=>'add')); ?>
 		<div class="user_add">
@@ -62,6 +63,7 @@
 				<?php echo $this ->Form->submit('登録', array('type' => 'submit', 'class' => 'btn-custom btn right')); ?>
 				<?php echo $this->Form->end(); ?>
 			</div>
+		</div>
 		</div>
 		<!-- //Contents -->
 
