@@ -28,9 +28,10 @@
 				<div id="navi">
 					<div id='link'>
 						<!-- 各機能へのリンク -->
-						<ul style="list-style:none" id="menu">
-							<li style="float: left" id="home_logo"><?php echo $this->Html->image('../img/icon01.png',
-										array('url'=>array('controller'=>'home','action'=>'index')));?></li>
+						<a clas="home_logo" href="../home/index" style="float:right"><div class="home_logo"></div></a>
+						<ul style="list-style:none" id="menu" style="float:left">
+							
+							<!-- <a clas="home_logo" href="bridge.com/"><img src="../img/Bridge_cool.gif"></img></a> -->
 							<li style="float:left"><?php echo $this->Html->link('ユーザー編集',array('controller' => 'users','action'=>'edit')); ?></li>
 							<li style="float:left"><?php echo $this->Html->link('ログアウト',array('controller' => 'users','action'=>'logout')); ?></li>
 							<li style="float:left"><?php echo $this->Html->link('テスト(ﾟﾟ;)',array('controller' => 'users','action'=>'test')); ?></li>
