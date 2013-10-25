@@ -2,7 +2,7 @@
 	margin:0;padding:0
 }
 body{
-	font-size: 1.2em;
+	font-size: 0.9em;
 	width: 100%;
 	height: 100%;
 	padding: 0px;
@@ -49,6 +49,6 @@ div.home_logo{
 	background-position-y: 50%;
 	
 }
-a.home_logo{
-	margin-top: -50px;
+.home_logo{
+	margin-top: -20px;
 }

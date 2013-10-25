@@ -1,7 +1,6 @@
 <?php
 App::uses('AppController', 'Controller');
 
-
 /**
  * Users Controller
  *

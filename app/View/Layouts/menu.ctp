@@ -5,12 +5,11 @@
 <title>Bridge</title>
 	<?php
 		echo $this->Html->meta('icon');
+		
+		echo $this->Html->css('bootstrap.min');
 		echo $this->Html->css('menu');
 		echo $this->Html->css('background');
-		echo $this->Html->css('font-awesome.min');
-		echo $this->Html->css('bootstrap.min');
-		echo $this->Html->css('bootstrap');
-		
+	
 		echo $this->Html->script('bootstrap.min');
 		echo $this->Html->script('menu');
 		echo $this->Html->script('jquery-1.10.2.min');

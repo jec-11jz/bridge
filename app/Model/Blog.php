@@ -7,7 +7,6 @@ class Blog extends AppModel {
         'User' => array(
             'className'  => 'User',
             'foreignKey'   => 'user_id',
-            'conditions' => array('User.approved' => '1'),
             'department' => 'true'
         )
     );

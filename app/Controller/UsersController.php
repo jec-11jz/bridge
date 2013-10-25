@@ -34,7 +34,7 @@ class UsersController extends AppController {
 	public function login() {
 		//ログイン認証されたユーザかどうか調べる
         if ($data = $this->User->findById($this->Auth->user('id'))) {
-        	//既にログインしていた場合ログイン後のリダイレクト先に飛ばす
+        	$this->Session->setFlash(__('ログアウトしてください'));
         	$this->redirect($this->Auth->redirectUrl());
         } else {
         	
@@ -93,12 +93,14 @@ class UsersController extends AppController {
 	
 	//ユーザの新規登録
 	public function add() {
+		
 		//メールを送信 -> addを実行-> 登録実行
         if($this->request->is('post')) {
             $this->User->create();
             if ($this->User->save($this->request->data)) {
                 $this->Session->setFlash(__('登録完了です。 (｡･_･｡)ﾉ'));
-                $this->redirect(array('action' => 'index'));
+				$this->Auth->login();
+				$this->redirect(array('controller' => 'home', 'action' => 'index'));
             } else {
                 $this->Session->setFlash(__('登録に失敗しました（￣□￣；）！！'), 'default', array(), 'register');
             }
