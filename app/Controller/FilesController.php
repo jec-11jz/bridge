@@ -16,7 +16,7 @@ class FilesController extends AppController {
     public $name = 'Files';
     public $uses = array();
     public $components = array('RequestHandler');
-        public $helpers = array('Js', 'Html');
+    public $helpers = array('Js', 'Html');
     public $opts = array(
             //'debug' => false,
             'roots' => array(

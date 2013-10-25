@@ -43,7 +43,7 @@ class AppController extends Controller {
                 )
             ),
             	//ログイン後のリダイレクト先
-                'loginRedirect' => array('controller'  => 'users', 'action' => 'done'),
+                'loginRedirect' => array('controller'  => 'home', 'action' => 'index'),
                 //ログアウト後のリダイレクト先
                 'logoutRedirect' => array('controller' => 'users', 'action' => 'login'),
                 //ログインしていない場合のリダイレクト先
@@ -63,7 +63,7 @@ class AppController extends Controller {
     }
 	
 	public function beforeRender(){
-		
+		$this->set('user', $this->Auth->user());
 	}
     
 }

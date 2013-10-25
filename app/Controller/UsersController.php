@@ -48,7 +48,7 @@ class UsersController extends AppController {
 	            	$this->Session->setFlash(__('ログイン成功ヽ(ﾟ｀∀´ﾟ)ﾉｳﾋｮ'));
 	                return $this->redirect($this->Auth->redirectUrl());
 	            } else {
-	                $this->Session->setFlash(__('ユーザーIDまたはパスワードが違います┐(´･c_･｀ ;)┌　ﾀﾞﾒﾀﾞｺﾘｬ・・・'), 'default', array(), 'auth');
+	                $this->Session->setFlash(__('ユーザーIDまたはパスワードが違います'), 'default', array(), 'auth');
 	            }
 	        }
 		}
