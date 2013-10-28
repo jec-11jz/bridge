@@ -17,11 +17,11 @@
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright (c) Cake Software Foundation, Inc. (http://cakefoundation.org)
- * @link          http://cakephp.org CakePHP(tm) Project
- * @package       app.Config
- * @since         CakePHP(tm) v 0.10.8.2117
- * @license       http://www.opensource.org/licenses/mit-license.php MIT License
+ * @copyright     Copyright (c) Cake Software Foundation, Inc. (http://cakefoundation.org)
+ * @link          http://cakephp.org CakePHP(tm) Project
+ * @package       app.Config
+ * @since         CakePHP(tm) v 0.10.8.2117
+ * @license       http://www.opensource.org/licenses/mit-license.php MIT License
  */
 
 // Setup a 'default' cache configuration for use in the application.
@@ -31,24 +31,24 @@ Cache::config('default', array('engine' => 'File'));
  * The settings below can be used to set additional paths to models, views and controllers.
  *
  * App::build(array(
- *     'Model'                     => array('/path/to/models', '/next/path/to/models'),
- *     'Model/Behavior'            => array('/path/to/behaviors', '/next/path/to/behaviors'),
- *     'Model/Datasource'          => array('/path/to/datasources', '/next/path/to/datasources'),
- *     'Model/Datasource/Database' => array('/path/to/databases', '/next/path/to/database'),
- *     'Model/Datasource/Session'  => array('/path/to/sessions', '/next/path/to/sessions'),
- *     'Controller'                => array('/path/to/controllers', '/next/path/to/controllers'),
- *     'Controller/Component'      => array('/path/to/components', '/next/path/to/components'),
- *     'Controller/Component/Auth' => array('/path/to/auths', '/next/path/to/auths'),
- *     'Controller/Component/Acl'  => array('/path/to/acls', '/next/path/to/acls'),
- *     'View'                      => array('/path/to/views', '/next/path/to/views'),
- *     'View/Helper'               => array('/path/to/helpers', '/next/path/to/helpers'),
- *     'Console'                   => array('/path/to/consoles', '/next/path/to/consoles'),
- *     'Console/Command'           => array('/path/to/commands', '/next/path/to/commands'),
- *     'Console/Command/Task'      => array('/path/to/tasks', '/next/path/to/tasks'),
- *     'Lib'                       => array('/path/to/libs', '/next/path/to/libs'),
- *     'Locale'                    => array('/path/to/locales', '/next/path/to/locales'),
- *     'Vendor'                    => array('/path/to/vendors', '/next/path/to/vendors'),
- *     'Plugin'                    => array('/path/to/plugins', '/next/path/to/plugins'),
+ *     'Model'                     => array('/path/to/models', '/next/path/to/models'),
+ *     'Model/Behavior'            => array('/path/to/behaviors', '/next/path/to/behaviors'),
+ *     'Model/Datasource'          => array('/path/to/datasources', '/next/path/to/datasources'),
+ *     'Model/Datasource/Database' => array('/path/to/databases', '/next/path/to/database'),
+ *     'Model/Datasource/Session'  => array('/path/to/sessions', '/next/path/to/sessions'),
+ *     'Controller'                => array('/path/to/controllers', '/next/path/to/controllers'),
+ *     'Controller/Component'      => array('/path/to/components', '/next/path/to/components'),
+ *     'Controller/Component/Auth' => array('/path/to/auths', '/next/path/to/auths'),
+ *     'Controller/Component/Acl'  => array('/path/to/acls', '/next/path/to/acls'),
+ *     'View'                      => array('/path/to/views', '/next/path/to/views'),
+ *     'View/Helper'               => array('/path/to/helpers', '/next/path/to/helpers'),
+ *     'Console'                   => array('/path/to/consoles', '/next/path/to/consoles'),
+ *     'Console/Command'           => array('/path/to/commands', '/next/path/to/commands'),
+ *     'Console/Command/Task'      => array('/path/to/tasks', '/next/path/to/tasks'),
+ *     'Lib'                       => array('/path/to/libs', '/next/path/to/libs'),
+ *     'Locale'                    => array('/path/to/locales', '/next/path/to/locales'),
+ *     'Vendor'                    => array('/path/to/vendors', '/next/path/to/vendors'),
+ *     'Plugin'                    => array('/path/to/plugins', '/next/path/to/plugins'),
  * ));
  *
  */
@@ -84,17 +84,17 @@ Cache::config('default', array('engine' => 'File'));
  * Feel free to remove or add filters as you see fit for your application. A few examples:
  *
  * Configure::write('Dispatcher.filters', array(
- *		'MyCacheFilter', //  will use MyCacheFilter class from the Routing/Filter package in your app.
- *		'MyPlugin.MyFilter', // will use MyFilter class from the Routing/Filter package in MyPlugin plugin.
- * 		array('callable' => $aFunction, 'on' => 'before', 'priority' => 9), // A valid PHP callback type to be called on beforeDispatch
- *		array('callable' => $anotherMethod, 'on' => 'after'), // A valid PHP callback type to be called on afterDispatch
+ *'MyCacheFilter', //  will use MyCacheFilter class from the Routing/Filter package in your app.
+ *'MyPlugin.MyFilter', // will use MyFilter class from the Routing/Filter package in MyPlugin plugin.
+ * array('callable' => $aFunction, 'on' => 'before', 'priority' => 9), // A valid PHP callback type to be called on beforeDispatch
+ *array('callable' => $anotherMethod, 'on' => 'after'), // A valid PHP callback type to be called on afterDispatch
  *
  * ));
  */
  
 Configure::write('Dispatcher.filters', array(
-	'AssetDispatcher',
-	'CacheDispatcher'
+'AssetDispatcher',
+'CacheDispatcher'
 ));
 
 /**
@@ -102,14 +102,14 @@ Configure::write('Dispatcher.filters', array(
  */
 App::uses('CakeLog', 'Log');
 CakeLog::config('debug', array(
-	'engine' => 'FileLog',
-	'types' => array('notice', 'info', 'debug'),
-	'file' => 'debug',
+'engine' => 'FileLog',
+'types' => array('notice', 'info', 'debug'),
+'file' => 'debug',
 ));
 CakeLog::config('error', array(
-	'engine' => 'FileLog',
-	'types' => array('warning', 'error', 'critical', 'alert', 'emergency'),
-	'file' => 'error',
+'engine' => 'FileLog',
+'types' => array('warning', 'error', 'critical', 'alert', 'emergency'),
+'file' => 'error',
 ));
 
 
@@ -117,3 +117,66 @@ App::import('Vendor', 'autoload');
 spl_autoload_unregister(array('App', 'load'));
 spl_autoload_register(array('App', 'load'), true, true);
 
+/* -------------------------------------------------------------------
+ * The settings below have to be loaded to make the acl plugin work.
+ * -------------------------------------------------------------------
+ *
+ * See how to include these settings in the README file
+ */
+
+/*
+ * The model name used for the user role (typically 'Role' or 'Group')
+ */
+Configure :: write('acl.aro.role.model', 'Role');
+
+/*
+ * The foreign key's name for the roles
+ *
+ * (can be left empty if your foreign key's name follows CakePHP conventions)(e.g. 'role_id')
+ */
+Configure :: write('acl.aro.role.foreign_key', '');
+
+/*
+ * The model name used for the user (typically 'User')
+ */
+Configure :: write('acl.aro.user.model', 'User');
+
+/*
+ * The name of the database field that can be used to display the role name
+ */
+Configure :: write('acl.aro.role.display_field', 'name');
+
+/*
+ * You can add here role id(s) that are always allowed to access the ACL plugin (by bypassing the ACL check)
+ * (This may prevent a user from being rejected from the ACL plugin after a ACL permission update)
+ */
+Configure :: write('acl.role.access_plugin_role_ids', array());
+
+/*
+ * You can add here users id(s) that are always allowed to access the ACL plugin (by bypassing the ACL check)
+ * (This may prevent a user from being rejected from the ACL plugin after a ACL permission update)
+ */
+Configure :: write('acl.role.access_plugin_user_ids', array(1));
+
+/*
+ * The users table field used as username in the views
+ * It may be a table field or a SQL expression such as "CONCAT(User.lastname, ' ', User.firstname)" for MySQL or "User.lastname||' '||User.firstname" for PostgreSQL
+ */
+Configure :: write('acl.user.display_name', "User.username");
+
+/*
+ * Indicates whether the presence of the Acl behavior in the user and role models must be verified when the ACL plugin is accessed
+ */
+Configure :: write('acl.check_act_as_requester', true);
+
+/*
+ * Add the ACL plugin 'locale' folder to your application locales' folders
+ */
+App :: build(array('locales' => APP . 'plugins' . DS . 'acl' . DS . 'locale'));
+//App :: build(array('locales' => ROOT . DS . 'plugins' . DS . 'acl' . DS . 'locale')); //Depending where you placed the plugin, uncomment this line
+
+/*
+ * Indicates whether the roles permissions page must load through Ajax
+ */
+Configure :: write('acl.gui.roles_permissions.ajax', false);
+?>

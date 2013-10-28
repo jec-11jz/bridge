@@ -78,7 +78,17 @@ class BlogsController extends AppController {
         $this->set('blog', $this->Blog->read());
     }
     
-    public function delete() {
-        
+    public function delete($id = null) {
+    	$this->autoRender = false;
+        // HTTP GETリクエストか確認
+        if($this->request->is('get')) {
+            // 削除ボタン以外でこのページに来た場合はエラー
+            throw new MethodNotAllowedException();
+        }
+        if($this->Blog->delete($id)) {
+            // 削除成功した場合はメッセージを出し、indexへリダイレクト
+            $this->Session->setFlash('記事'. $id . 'を削除しました');
+            $this->redirect(array('action' => 'index'));
+        }
     }
 }

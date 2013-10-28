@@ -20,6 +20,24 @@ class User extends AppModel {
  * @var array
  */
  	public $name = 'User';
+    var $belongsTo = array('Group');
+    var $actsAs = array('Acl' => 'requester');
+	
+	function parentNode() {
+        if (!$this->id && empty($this->data)) {
+            return null;
+        }
+        $data = $this->data;
+        if (empty($this->data)) {
+            $data = $this->read();
+        }
+        if (!$data['User']['group_id']) {
+            return null;
+        } else {
+            return array('Group' => array('id' => $data['User']['group_id']));
+        }
+    }
+	
  	public $hasMany = array(
         'Blog' => array(
             'className'     => 'Blog', //関連付けたいモデルのクラス名

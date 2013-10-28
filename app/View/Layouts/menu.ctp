@@ -40,7 +40,7 @@
 						</ul>
 						<!--　モーダルウィンドウ -->
 						
-						<div class='form md-modal md-effect-2' id="modal-2">
+						<div class='form md-modal md-effect-1' id="modal-1">
 							<div class="form-group md-content">
 								<?php echo $this -> Form -> create('User', array('type' => 'post', 'action' => 'login')); ?>
 							    <?php echo $this -> Form -> input('email', array('type' => 'email', 'label' => 'メールアドレス', 'class' => 'input_email')); ?>
@@ -50,7 +50,7 @@
 						    </div>
 						    <button class="md-close">Close me!</button>
 						</div>
-						<div class='user_add md-modal md-effect-4' id="modal-4">
+						<div class='user_add md-modal md-effect-1' id="modal-1">
 							<div class="add_form md-content">
 								<?php echo $this->Form->create('User', array( 'type'=>'post', 'action'=>'add')); ?>
 								<?php 
@@ -116,10 +116,10 @@
 							<ul style="list-style: none" id="right" style="float: right;">
 								<?php if($user == null) {?>
 									<div style="float:left">
-										<li style="float:left"><a class="md-trigger" data-modal="modal-2">sign in</a></li>
+										<li style="float:left"><a class="md-trigger" data-modal="modal-1">sign in</a></li>
 									</div>
 									<div style="float: left">
-										<li style="float:left"><a class="md-trigger" data-modal="modal-4">sign up</a></li>
+										<li style="float:left"><a class="md-trigger" data-modal="modal-1">sign up</a></li>
 									</div>
 								<?php } else { ?>
 										<li style="float:right"><a href=""><?php echo $user['name']; ?></a></li>
