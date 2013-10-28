@@ -62,9 +62,10 @@
 			?>
 		</div>
 		<div class="add_button">
-			<a href="../home/index" class="btn-custom left">キャンセル</a>
+
 			<!-- <?php echo $this->Form->button('リセット' ,array('type' => 'reset', 'class' => 'btn-custom btn left')); ?> -->
 			<?php echo $this ->Form->submit('登録', array('type' => 'submit', 'class' => 'btn-custom btn right')); ?>
+			<a href="../home/index" class="btn-custom left">キャンセル</a>
 			<?php echo $this->Form->end(); ?>
 		</div>
 	</div>
