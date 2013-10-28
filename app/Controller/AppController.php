@@ -66,17 +66,5 @@ class AppController extends Controller {
 		$this->set('user', $this->Auth->user());
 	}
 	
-	function beforeFilter() {
-		
-		$this->Auth->allow('*');
- 
-        $this->Auth->actionPath = 'controllers/';
-        $this->Auth->authorize = 'actions';
-         
-        // 以下必要に応じてAuthコンポーネントのメソッドを設定してください
-         
-        $this->Auth->authError = 'ログインしてください';
-        $this->Auth->loginError = 'ログインに失敗しました。';
-    }
     
 }
