@@ -13,6 +13,7 @@
 		echo $this->Html->css('background');
 		echo $this->Html->css('login');
 		echo $this->Html->css('user_add');
+		echo $this->Html->css('modal');
 	
 		echo $this->Html->script('jquery-1.10.2.min');
 		echo $this->Html->script('bootstrap.min');
@@ -48,7 +49,7 @@
 							    <?php echo $this -> Form -> input('password', array('type' => 'password', 'label' => false, 'class' => 'input_form' , 'placeholder' => 'パスワード' )); ?>
 						  		<?php echo $this -> Form-> submit('Login', array('type' => 'submit', 'class' => 'btn btn-custom')); ?>
 						    	<?php echo $this -> Form -> end(); ?>
-						    	<button class="md-close btn-custom">Fuck me!</button>
+						    	<button class="md-close btn-custom modal-close">Fuck me!</button>
 						    </div>
 	    			    	
 						</div>
@@ -104,11 +105,9 @@
 											'email' => __('※メールアドレスを正しく入力してください。', true),
 											'isUnique' => __('※そのメールアドレスは既に使用されています', true)))); 
 								?>
-							</div>
-							<div class="add_button">
-								<?php echo $this ->Form->submit('登録', array('type' => 'submit', 'class' => 'btn-custom btn right')); ?>
-								<?php echo $this->Form->end(); ?>
-								<button class="md-close btn-custom">Fuck me!</button>
+									<?php echo $this ->Form->submit('登録', array('type' => 'submit', 'class' => 'btn-custom btn right add_button')); ?>
+									<?php echo $this->Form->end(); ?>
+									<button class="md-close btn-custom add_button">Fuck me!</button>
 							</div>
 						</div>
 							
