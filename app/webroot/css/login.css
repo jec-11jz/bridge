@@ -19,14 +19,9 @@ div.form {
 	color: rgba(0,0,0, 0.70);
 	text-shadow: 3px 3px 3px #999999, -2px -2px 2px #999999;
 }
-label{
-	font-size: 20px;
-	color: rgba(0,0,0, 0.80);
-	text-shadow: 3px 3px 3px #999999, -2px -2px 2px #999999;
-	font-weight: bold;
-}
+
 *.btn-custom{
-	margin: -15px 40px 10px 0px;
+	margin: 10px 40px 10px 0px;
 	float: right;
 	display: inline-block;
 	font-size: 14px;
@@ -49,19 +44,21 @@ label{
 *.btn:hover {
 	color: #a2eb7f;
 	background-position: 0;
-	border: 1px solid #97F95A;
-	opacity: 0.8;
-	filter: alpha(opacity=80);
+	border: 2px solid #80D54B;
+	opacity: 0.9;
+	filter: alpha(opacity=60);
+	box-shadow: 0px 0px 4px 4px rgba(128,213,75,0.5);
 }
 div.form-group {
-	margin: 10px 0px 30px 40px;
+	margin: 10px 0px 40px 40px;
+	padding: 30px 0 0 0;
 }
 
 input.input_email {
-	width: 80%;
+	width: 70%;
 }
 input.input_password {
-	width: 80%;
+	width: 70%;
 }
 
 

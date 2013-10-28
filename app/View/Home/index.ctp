@@ -9,19 +9,6 @@
 		
 		<!-- Contents -->
 		<div class="contents">
-			<div class='form'>
-				<?php echo $this -> Form -> create('User', array('type' => 'post', 'action' => 'login')); ?>
-				<div class="form-group">
-				    <?php echo $this -> Form -> input('email', array('type' => 'email', 'label' => 'メールアドレス', 'class' => 'input_email')); ?>
-			  	</div>
-		 		<div class="form-group">
-				    <?php echo $this -> Form -> input('password', array('type' => 'password', 'label' => 'password', 'class' => 'input_password')); ?>
-		  		</div>
-			  	<div class="form-group">	
-			  		<?php echo $this -> form->submit('Login', array('type' => 'submit', 'class' => 'btn btn-custom')); ?>
-			    	<?php echo $this -> Form -> end(); ?>
-			    </div>	
-			</div>
 		
 		<div id="toppage">
 			<div class='toppage_link'>

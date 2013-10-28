@@ -1,5 +1,6 @@
 <?php
 App::uses('AppController', 'Controller');
+
 /**
  * Users Controller
  *
@@ -7,6 +8,7 @@ App::uses('AppController', 'Controller');
  */
 class BlogsController extends AppController {
 	public $layout = 'menu';
+	
 	
 	public function beforeFilter()
     {
@@ -20,15 +22,14 @@ class BlogsController extends AppController {
         // Modelから記事一覧を取得 ⇒ Viewへ送る
         $this->set('blogs', $this->Blog->find('all'));
 	}
-    
   
 	 public function add() {
+		
         // 以下は送信ボタンを押した後に実行される
         // HTTP POSTリクエストか確認
         if ($this->request->is('post')) {
             // 新規レコード生成
             $this->Blog->create();
- 
             // フォームから受信したPOSTデータ
             if ($this->Blog->save($this->request->data)) {
                 //メッセージを出力
@@ -77,7 +78,17 @@ class BlogsController extends AppController {
         $this->set('blog', $this->Blog->read());
     }
     
-    public function delete() {
-        
+    public function delete($id = null) {
+    	$this->autoRender = false;
+        // HTTP GETリクエストか確認
+        if($this->request->is('get')) {
+            // 削除ボタン以外でこのページに来た場合はエラー
+            throw new MethodNotAllowedException();
+        }
+        if($this->Blog->delete($id)) {
+            // 削除成功した場合はメッセージを出し、indexへリダイレクト
+            $this->Session->setFlash('記事'. $id . 'を削除しました');
+            $this->redirect(array('action' => 'index'));
+        }
     }
 }

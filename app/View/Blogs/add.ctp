@@ -29,8 +29,8 @@ $('#editor').elrte(opts);
 								'custom' => __('半角英数字のみ使用できます', true),
 								'minLength' => __('15文字以内で入力してください', true)))); 
 					 
-					// バリデーションのエラーメッセージを指定
-					echo $this->Form->input('content', array(
+						// バリデーションのエラーメッセージを指定
+						echo $this->Form->input('content', array(
 							'label'=>'本文', 
 							'type'=>'textarea',
 							'class'=>'input_form blog',
@@ -38,8 +38,8 @@ $('#editor').elrte(opts);
 								'isUnique' => __('そのユーザーIDは既に使われています', true),
 								'custom' => __('半角英数字のみ使用できます', true),
 								'minLength' => __('15文字以内で入力してください', true)))); 
-					// 「保存」ボタンの配置
-					echo $this->Form->end('保存');?>
+					?>
+					<?php echo $this->Form->end('保存');?>
 				</div>				
 			</div>
 		</div>

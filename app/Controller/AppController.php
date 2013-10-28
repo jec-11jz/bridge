@@ -43,9 +43,9 @@ class AppController extends Controller {
                 )
             ),
             	//ログイン後のリダイレクト先
-                'loginRedirect' => array('controller'  => 'users', 'action' => 'done'),
+                'loginRedirect' => array('controller'  => 'home', 'action' => 'index'),
                 //ログアウト後のリダイレクト先
-                'logoutRedirect' => array('controller' => 'users', 'action' => 'login'),
+                'logoutRedirect' => array('controller' => 'home', 'action' => 'index'),
                 //ログインしていない場合のリダイレクト先
                 'loginAction' => array('controller' => 'home', 'action' => 'index'),
                 //ログインにデフォルトの username ではなく email を使うためここで書き換えています			
@@ -63,7 +63,20 @@ class AppController extends Controller {
     }
 	
 	public function beforeRender(){
-		
+		$this->set('user', $this->Auth->user());
 	}
+	
+	function beforeFilter() {
+		
+		$this->Auth->allow('*');
+ 
+        $this->Auth->actionPath = 'controllers/';
+        $this->Auth->authorize = 'actions';
+         
+        // 以下必要に応じてAuthコンポーネントのメソッドを設定してください
+         
+        $this->Auth->authError = 'ログインしてください';
+        $this->Auth->loginError = 'ログインに失敗しました。';
+    }
     
 }

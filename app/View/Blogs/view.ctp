@@ -11,9 +11,9 @@
 			    array('action' => 'index'));
 		?>
 		<hr />
-		<h3><?php echo h($blog['Blog']['title']); ?></h3>
+		<h3><?php echo $this->Html->link($blog['Blog']['title'], array('controller' => 'blogs', 'action' => 'edit')); ?></h3>
 		<p>
-		<small>投稿日: <?php echo $blog['Blog']['created']; ?></small>
+			<small>投稿日: <?php echo $blog['Blog']['created']; ?></small>
 		</p>
 		<hr />
 		<p><?php echo h($blog['Blog']['content']); ?></p>

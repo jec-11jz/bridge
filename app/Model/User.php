@@ -19,6 +19,36 @@ class User extends AppModel {
  *
  * @var array
  */
+ 	public $name = 'User';
+    var $belongsTo = array('Group');
+    var $actsAs = array('Acl' => 'requester');
+	
+	function parentNode() {
+        if (!$this->id && empty($this->data)) {
+            return null;
+        }
+        $data = $this->data;
+        if (empty($this->data)) {
+            $data = $this->read();
+        }
+        if (!$data['User']['group_id']) {
+            return null;
+        } else {
+            return array('Group' => array('id' => $data['User']['group_id']));
+        }
+    }
+	
+ 	public $hasMany = array(
+        'Blog' => array(
+            'className'     => 'Blog', //関連付けたいモデルのクラス名
+            'foreignKey'    => 'user_id',
+            'dependent'     => true //true に設定すると、モデルのデータの削除時に関連しているモデル側のデータも削除される。
+            // 'conditions'    => //hasMany で取得したいデータの条件を指定する。 SQL の条件文。
+            // 'order'         =>'User.created DESC' //関連するモデルのデータの並び順。SQL の ORDER 句の指定方法。テーブル名をカラム名の前に付ける
+            // 'limit'         => 5 //Cake が取り出す関連モデルのデータの最大数。
+            
+        )
+    );
 	public $validate = array(
 	
 		//ユーザーIDのvalidation
