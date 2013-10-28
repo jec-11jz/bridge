@@ -6,12 +6,13 @@
 	<?php
 		echo $this->Html->meta('icon');
 		
-		echo $this->Html->css('ModalWindowEffects/default');
+		// echo $this->Html->css('ModalWindowEffects/default');
 		echo $this->Html->css('ModalWindowEffects/component');
 		echo $this->Html->css('bootstrap.min');
 		echo $this->Html->css('menu');
 		echo $this->Html->css('background');
 		echo $this->Html->css('login');
+		echo $this->Html->css('user_add');
 	
 		echo $this->Html->script('jquery-1.10.2.min');
 		echo $this->Html->script('bootstrap.min');
@@ -40,17 +41,18 @@
 						</ul>
 						<!--　モーダルウィンドウ -->
 						
-						<div class='form md-modal md-effect-2' id="modal-2">
+						<div class='form md-modal md-effect-1' id="modal-1">
 							<div class="form-group md-content">
 								<?php echo $this -> Form -> create('User', array('type' => 'post', 'action' => 'login')); ?>
-							    <?php echo $this -> Form -> input('email', array('type' => 'email', 'label' => 'メールアドレス', 'class' => 'input_email')); ?>
-							    <?php echo $this -> Form -> input('password', array('type' => 'password', 'label' => 'password', 'class' => 'input_password')); ?>
-						  		<?php echo $this -> form-> submit('Login', array('type' => 'submit', 'class' => 'btn btn-custom')); ?>
+							    <?php echo $this -> Form -> input('email', array('type' => 'email', 'label' => false, 'class' => 'input_form', 'placeholder' => 'ユーザー名')); ?>
+							    <?php echo $this -> Form -> input('password', array('type' => 'password', 'label' => false, 'class' => 'input_form' , 'placeholder' => 'パスワード' )); ?>
+						  		<?php echo $this -> Form-> submit('Login', array('type' => 'submit', 'class' => 'btn btn-custom')); ?>
 						    	<?php echo $this -> Form -> end(); ?>
+						    	<button class="md-close btn-custom">Fuck me!</button>
 						    </div>
-						    <button class="md-close">Close me!</button>
+	    			    	
 						</div>
-						<div class='user_add md-modal md-effect-4' id="modal-4">
+						<div class='user_add md-modal md-effect-18' id="modal-18">
 							<div class="add_form md-content">
 								<?php echo $this->Form->create('User', array( 'type'=>'post', 'action'=>'add')); ?>
 								<?php 
@@ -104,11 +106,9 @@
 								?>
 							</div>
 							<div class="add_button">
-								<a href="../home/index" class="btn-custom left">キャンセル</a>
-								<!-- <?php echo $this->Form->button('リセット' ,array('type' => 'reset', 'class' => 'btn-custom btn left')); ?> -->
 								<?php echo $this ->Form->submit('登録', array('type' => 'submit', 'class' => 'btn-custom btn right')); ?>
 								<?php echo $this->Form->end(); ?>
-								<button class="md-close">Close me!</button>
+								<button class="md-close btn-custom">Fuck me!</button>
 							</div>
 						</div>
 							
@@ -116,10 +116,10 @@
 							<ul style="list-style: none" id="right" style="float: right;">
 								<?php if($user == null) {?>
 									<div style="float:left">
-										<li style="float:left"><a class="md-trigger" data-modal="modal-2">sign in</a></li>
+										<li style="float:left"><a class="md-trigger" data-modal="modal-1">sign in</a></li>
 									</div>
 									<div style="float: left">
-										<li style="float:left"><a class="md-trigger" data-modal="modal-4">sign up</a></li>
+										<li style="float:left"><a class="md-trigger" data-modal="modal-18">sign up</a></li>
 									</div>
 								<?php } else { ?>
 										<li style="float:right"><a href=""><?php echo $user['name']; ?></a></li>

@@ -44,9 +44,10 @@ div.form {
 *.btn:hover {
 	color: #a2eb7f;
 	background-position: 0;
-	border: 1px solid #97F95A;
-	opacity: 0.8;
-	filter: alpha(opacity=80);
+	border: 2px solid #80D54B;
+	opacity: 0.9;
+	filter: alpha(opacity=60);
+	box-shadow: 0px 0px 4px 4px rgba(128,213,75,0.5);
 }
 div.form-group {
 	margin: 10px 0px 40px 40px;
