@@ -2,7 +2,7 @@ div.user_add{
 	background-color: rgba(235,235,236, 0.70);
 	background-repeat: no-repeat;
 	background-attachment: fixed;
-	width: 50%;
+	width: 47%;
 	height: 70%;
 	margin: 50px 0px 0px 10px; /*　上　右　下　左 */
 	border-radius: 20px;
@@ -11,12 +11,21 @@ div.user_add{
 	text-shadow: 3px 3px 3px #999999, -2px -2px 2px #999999;
 }
 div.add_form{
-	margin: 10px 0px 30px 40px;
-	padding: 10px 0px 0px 0px;
+	margin: 10px 0px 30px 0px;
+	padding: 10px 10% 0px 10%;
 }
 div.add_button{
 	margin: 0px 30px 90px 0px;
 	padding: 10px 0px 0px 0px;
+}
+div.error-message{
+	margin-left: 10px;
+	color: red;
+	font-size: 20px
+
+}
+input.input_form{
+	margin: 10px 0px 0px 10px;
 }
 label{
 	font-size: 18px;
@@ -25,11 +34,12 @@ label{
 	font-weight: bold;
 }
 *.btn-custom{
-	margin: 10px 0px 30px 40px;
+	margin: 10px 0px 20px 20px;
 	height: 50px;
-	float: left;
+	width: 161px;
+	float: right;
 	display: inline-block;
-	font-size: 14px;
+	font-size: 15px;
 	font-weight: bold;
 	color: #f0f7ff;
 	text-shadow: 0 -1px 1px rgba(0, 0, 0, 0.4), 0 1px 1px rgba(255, 255, 255, 0.5);
@@ -39,21 +49,31 @@ label{
 	border-radius: 6px;
 	text-decoration: none;
 	padding: 15px 40px;
-	background: -webkit-gradient(linear, left top, left bottom, color-stop(0.00, #001ca8), color-stop(1.00, #2476ff));
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0.00, #001ca8), color-stop(1.00, #2476ff));-siz
 	background: -webkit-linear-gradient(#001ca8, #2476ff);
 	background: -moz-linear-gradient(#001ca8, #2476ff);
 	background: -o-linear-gradient(#001ca8, #2476ff);
 	background: -ms-linear-gradient(#001ca8, #2476ff);
 	background: linear-gradient(#001ca8, #2476ff);
 }
-*.right{
-	float: right;
-}
-*.left{
-	float: left;
-}
+
 *.input_form{
-	width: 80%;
+	width: 70%;
+	height: 90%;
+	margin: 0px 0px 0px 50%;
+	font-size: 20px;
+	/*border-radius: 5px;*/
+}
+*.input_form:focus {
+	/*outline: 3px solid #97F95A;
+	
+	border: 3px solid;
+	border-color: rgba(151,249,90,0.4);*/
+	
+	
+  outline: thin dotted #97F95A;
+  outline: 5px auto -webkit-focus-ring-color;
+  outline-offset: -2px;
 }
 *.btn:hover {
 	color: #a2eb7f;
