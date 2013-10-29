@@ -20,10 +20,28 @@ class User extends AppModel {
  * @var array
  */
  	public $name = 'User';
+	public $belongsTo = array('Group');
+	public $actsAs = array('Acl' => array('type' => 'requester'));
+	
+	public function parentNode() {
+		if (!$this->id && empty($this->data)) {
+			return null;
+		}
+		if (isset($this->data['User']['group_id'])) {
+			$groupId = $this->data['User']['group_id'];
+		} else {
+			$groupId = $this->field('group_id');
+		}
+		if (!$groupId) {
+			return null;
+		} else {
+			return array('Group' => array('id' => $groupId));
+		}
+	}
 	
  	public $hasMany = array(
         'Blog' => array(
-            'className'     => 'Blog', //関連付けたいモデルのクラス名
+            'className'     => 'Blog',
             'foreignKey'    => 'user_id',
             'dependent'     => true //true に設定すると、モデルのデータの削除時に関連しているモデル側のデータも削除される。
             // 'conditions'    => //hasMany で取得したいデータの条件を指定する。 SQL の条件文。
@@ -44,16 +62,13 @@ class User extends AppModel {
 			'isUnique' => array(
 				'rule' => 'isUnique',
 				'required' => true,
-				//'message' => 'そのユーザーIDは既に使われています'
 			),
 			//働かない
 			'custom' => array(
 				'rule' => array('custom', '/^[a-z\d]*$/'), 
-				//'message' => '半角英数字じゃない'
             ),
             'maxLength' => array(
 				'rule' => array('maxLength', '15'),
-				//'message' => '15文字以内で入力してください'
 			)
 		),
 		
@@ -62,7 +77,6 @@ class User extends AppModel {
 			'maxLength' => array(
 				'rule' => array('maxLength', '30'),
 				'allowEmpty'=>true,
-				//'message'=>'30文字以内で入力してください'
 			)
 		),
 		
@@ -70,11 +84,9 @@ class User extends AppModel {
 		'password' => array(
 			'notEmpty' => array(
 				'rule' => 'notEmpty',
-				//'message' => 'パスワードを入力してください。'
 			),
 			'between' => array(
 				'rule' => array('between', 6, 15),
-				//'message' => '6文字以上15文字以内で入力してください'
 			)
 		),
 		
@@ -83,12 +95,10 @@ class User extends AppModel {
 			'notEmpty' => array(
 				'rule' => 'notEmpty',
 				'required' => true,
-				//'message' => 'パスワード(再入力)を入力してください。',
 				'last' => true
 			),
 			'sameCheck' => array(
 				'rule' => array('sameCheck', 'password'),
-				//'message' => 'パスワード(再入力)がパスワードと異なります。'
 			)
 		),
 		
@@ -97,12 +107,10 @@ class User extends AppModel {
 			'email' => array(
 				'rule' => array('email', true), 
 		        'required' => true
-		        //'message' => 'メールアドレスを正しく入力してください。'
 			),
 			'isUnique' => array(
 				'rule' => 'isUnique',
 				'required' => true,
-				//'message' => 'そのユーザーメールアドレスは既に使われています'
 			)
 		)
 	);
