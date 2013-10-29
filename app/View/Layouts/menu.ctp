@@ -42,8 +42,9 @@
 						</ul>
 						<!--　モーダルウィンドウ -->
 						
-						<div class='form md-modal md-effect-1' id="modal-1">
+						<div class='user-add-in md-modal md-effect-1' id="modal-1">
 							<div class="form-group md-content">
+								<p class="title">ログイン</p>
 								<?php echo $this -> Form -> create('User', array('type' => 'post', 'action' => 'login')); ?>
 							    <?php echo $this -> Form -> input('email', array('type' => 'email', 'label' => false, 'class' => 'input_form', 'placeholder' => 'ユーザー名')); ?>
 							    <?php echo $this -> Form -> input('password', array('type' => 'password', 'label' => false, 'class' => 'input_form' , 'placeholder' => 'パスワード' )); ?>
@@ -53,8 +54,9 @@
 						    </div>
 	    			    	
 						</div>
-						<div class='user_add md-modal md-effect-18' id="modal-18">
+						<div class='user-add-up md-modal md-effect-18' id="modal-18">
 							<div class="add_form md-content">
+								<p class="title">会員登録</p>
 								<?php echo $this->Form->create('User', array( 'type'=>'post', 'action'=>'add')); ?>
 								<?php 
 									echo $this->Form->input('name', array(
