@@ -1,4 +1,6 @@
-
+<?php
+	echo $this->Html->css('user_add');
+?>
 <body>
 	<!-- Container -->
 	<div id="container">
@@ -6,12 +8,14 @@
 		
 		<!-- Contents -->
 		<div id="contents">
-		<p>
-		<?php 
-		echo $this->Html->link("新規投稿", array(
-		    'controller' => 'blogs',
-		    'action' => 'add')); ?>
-		</p>
+		<button type='button' class'btn-custom user-add'>
+			<p>
+			<?php 
+			echo $this->Html->link("新規投稿", array(
+			    'controller' => 'blogs',
+			    'action' => 'add')); ?>
+			</p>
+		</button>
 		<table>
 	    <th>タイトル</th>
 	    <th>操作</th>

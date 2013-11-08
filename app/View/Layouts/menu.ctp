@@ -14,6 +14,7 @@
 		echo $this->Html->css('login');
 		echo $this->Html->css('user_add');
 		echo $this->Html->css('modal');
+		echo $this->Html->css('fonts');
 	
 		echo $this->Html->script('jquery-1.10.2.min');
 		echo $this->Html->script('bootstrap.min');
@@ -44,7 +45,7 @@
 						
 						<div class='user-add-in md-modal md-effect-1' id="modal-1">
 							<div class="form-group md-content">
-								<p class="title">ログイン</p>
+								<p class="title">Login</p>
 								<?php echo $this -> Form -> create('User', array('type' => 'post', 'action' => 'login')); ?>
 							    <?php echo $this -> Form -> input('email', array('type' => 'email', 'label' => false, 'class' => 'input_form', 'placeholder' => 'ユーザー名')); ?>
 							    <?php echo $this -> Form -> input('password', array('type' => 'password', 'label' => false, 'class' => 'input_form' , 'placeholder' => 'パスワード' )); ?>
@@ -52,11 +53,11 @@
 						    	<?php echo $this -> Form -> end(); ?>
 						    	<button class="md-close btn-custom modal-close">Fuck me!</button>
 						    </div>
-	    			    	
+	    			  
 						</div>
 						<div class='user-add-up md-modal md-effect-18' id="modal-18">
 							<div class="add_form md-content">
-								<p class="title">会員登録</p>
+								<p class="title">Registration</p>
 								<?php echo $this->Form->create('User', array( 'type'=>'post', 'action'=>'add')); ?>
 								<?php 
 									echo $this->Form->input('name', array(
@@ -107,7 +108,7 @@
 											'email' => __('※メールアドレスを正しく入力してください。', true),
 											'isUnique' => __('※そのメールアドレスは既に使用されています', true)))); 
 								?>
-									<?php echo $this ->Form->submit('登録', array('type' => 'submit', 'class' => 'btn-custom btn right add_button')); ?>
+									<?php echo $this ->Form->submit('Regist', array('type' => 'submit', 'class' => 'btn-custom btn right add_button')); ?>
 									<?php echo $this->Form->end(); ?>
 									<button class="md-close btn-custom add_button">Fuck me!</button>
 							</div>
