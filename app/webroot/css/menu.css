@@ -40,7 +40,7 @@ div#footer{
     height: 100px;*/
 }
 div.home_logo{
-	background-image: url('../img/Bridge_cool.gif');
+	background-image: url('../img/Bridge_cool.png');
 	-moz-background-size:cover;
 	background-size:cover;
 	width: 200px;

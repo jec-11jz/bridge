@@ -8,14 +8,9 @@
 		
 		<!-- Contents -->
 		<div id="contents">
-		<button type='button' class'btn-custom user-add'>
-			<p>
-			<?php 
-			echo $this->Html->link("新規投稿", array(
-			    'controller' => 'blogs',
-			    'action' => 'add')); ?>
-			</p>
-		</button>
+		<p>
+			<a href="/blogs/add" class="btn-custom user-add">新規作成</a>
+		</p>
 		<table>
 	    <th>タイトル</th>
 	    <th>操作</th>
