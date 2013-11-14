@@ -1,5 +1,6 @@
 <?php
 	echo $this->Html->css('user_add');
+	echo $this->Html->css('bootstrap.min');
 ?>
 <body>
 	<!-- Container -->

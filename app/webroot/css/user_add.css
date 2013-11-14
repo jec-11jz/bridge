@@ -7,6 +7,7 @@ div.user_add{
 	margin: 50px 0px 0px 10px; /*　上　右　下　左 */
 	border-radius: 20px;
 	font-size: 5px;
+	font-family: 'Poiret One';
 	color: rgba(0,0,0, 0.70);
 	text-shadow: 3px 3px 3px #999999, -2px -2px 2px #999999;
 }
@@ -26,9 +27,12 @@ div.error-message{
 }
 input.input_form{
 	margin: 10px 0px 0px 10px;
+	font-size: 14px;
+	height: 25px;
 }
 label{
 	font-size: 18px;
+	font-family: 'Poiret One';
 	color: rgba(0,0,0, 0.80);
 	text-shadow: 3px 3px 3px #999999, -2px -2px 2px #999999;
 	font-weight: bold;
@@ -59,7 +63,8 @@ label{
 	width: 161px;
 	float: right;
 	display: inline-block;
-	font-size: 15px;
+	font-size: 14px;
+	font-family: 'Poiret One';
 	color: white;
 	text-shadow: none;
 	letter-spacing: 0;
