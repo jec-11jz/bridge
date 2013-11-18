@@ -1,5 +1,7 @@
 <?php
-	echo $this->Html->css('user_add');
+		echo $this->Html->css('btn_custom');
+		echo $this->Html->css('diary');
+		
 ?>
 <body>
 	<!-- Container -->
@@ -9,9 +11,9 @@
 		<!-- Contents -->
 		<div id="contents">
 		<p>
-			<a href="/blogs/add" class="btn-custom user-add">新規作成</a>
+			<a href="/blogs/add" class="btn btn-custom">新規作成</a>
 		</p>
-		<table>
+		<table class="table table-hover">
 	    <th>タイトル</th>
 	    <th>操作</th>
 	    <th>作成日時</th>

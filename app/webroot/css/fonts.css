@@ -1,8 +1,17 @@
 body {
-	
+	font-family: 'OpenSans';
+}
+
+*.input_form{
+	font-family: Default;
 }
 
 @font-face{
 	font-family: 'Poiret One';
 	src: url('../fonts/PoiretOne-Regular.ttf');
+}
+
+@font-face{
+	font-family: 'OpenSans';
+	src: url('../fonts/OpenSans/OpenSans-Regular.ttf');
 }

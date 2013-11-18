@@ -6,30 +6,26 @@
 	<?php
 		echo $this->Html->meta('icon');
 		
-		// echo $this->Html->css('ModalWindowEffects/default');
-		echo $this->Html->css('ModalWindowEffects/component');
 		echo $this->Html->css('bootstrap.min');
 		echo $this->Html->css('menu');
-		echo $this->Html->css('background');
-		echo $this->Html->css('login');
-		echo $this->Html->css('user_add');
 		echo $this->Html->css('fonts');
+		echo $this->Html->css('btn_custom');
 		echo $this->Html->css('modal/modal');
+		echo $this->Html->css('modal/modal_custom');
 	
 		echo $this->Html->script('jquery-1.10.2.min');
 		echo $this->Html->script('bootstrap.min');
 		echo $this->Html->script('menu');
 		echo $this->Html->script('footerFixed'); //フッターをウィンドウの一番下に固定する(現在はcssで実装している)
-		echo $this->Html->script('ModalWindowEffects/modernizr.custom');
-		
-
 
 		echo $this->fetch('meta');
 		echo $this->fetch('css');
 		echo $this->fetch('script');
 	?>
 	
-
+	<script>
+		$('.dropdown-toggle').dropdown()
+	</script>
 	
 	
 </head>
@@ -41,13 +37,23 @@
 						<!-- 各機能へのリンク -->
 						<a clas="home_logo" href="../home/index" style="float:right"><div class="home_logo"></div></a>
 						<ul style="list-style:none" id="menu" style="float:left">
-							<li style="float:left"><?php echo $this->Html->link('ユーザー編集',array('controller' => 'users','action'=>'edit')); ?></li>
-							<li style="float:left"><?php echo $this->Html->link('ログアウト',array('controller' => 'users','action'=>'logout')); ?></li>
+							
+							<li class="dropdown" id="menu11" style="float:left">
+								<a class="dropdown-toggle" data-toggle="dropdown" href="#menu11">
+									Create
+								</a>
+								<ul class="dropdown-menu">
+									<li><a href="/blogs/index">日記作成</a></li>
+									<li><a href="#">作品登録</a></li>
+									<li><a href="#">タグ編集</a></li>
+								</ul>
+							</li>
+							
+							
 							<li style="float:left"><?php echo $this->Html->link('テスト(ﾟﾟ;)',array('controller' => 'users','action'=>'test')); ?></li>
 						</ul>
 						<!--　モーダルウィンドウ -->
-						<section class="semantic-content" id="modal-text" tabindex="-1"
-					        role="dialog" aria-labelledby="modal-label" aria-hidden="true">
+						<section class="semantic-content" id="modal-text" tabindex="-1"role="dialog" aria-labelledby="modal-label" aria-hidden="true">
 					 	
 						    <div class="modal-inner">
 						        <header id="modal-label">Login</header>
@@ -56,10 +62,11 @@
 									<?php echo $this -> Form -> create('User', array('type' => 'post', 'action' => 'login')); ?>
 								    <?php echo $this -> Form -> input('email', array('type' => 'email', 'label' => false, 'class' => 'input_form', 'placeholder' => 'ユーザー名')); ?>
 								    <?php echo $this -> Form -> input('password', array('type' => 'password', 'label' => false, 'class' => 'input_form' , 'placeholder' => 'パスワード' )); ?>
-							  		<?php echo $this -> Form-> submit('Login', array('type' => 'submit', 'class' => 'btn btn-custom')); ?>
-							    	<?php echo $this -> Form -> end(); ?>
 						        </div>
-						        <footer>ログインするおｗｗｗ</footer>
+						        <footer class="modal-footer">
+						        	<?php echo $this -> Form-> submit('Login', array('type' => 'submit', 'class' => 'btn-custom btn-sign')); ?>
+							    	<?php echo $this -> Form -> end(); ?>
+						        </footer>
 						    </div>
 						 
 						    <a href="#!" class="modal-close" title="Close this modal"
@@ -67,11 +74,10 @@
 						</section>
 						
 						<!-- モーダルウィンドウ 登録画面 -->
-					    <section class="semantic-content" id="modal-text2" tabindex="-1"
-					        role="dialog" aria-labelledby="modal-label" aria-hidden="true">
+					    <section class="semantic-content" id="modal-text2" tabindex="-1"role="dialog" aria-labelledby="modal-label" aria-hidden="true">
 					 	
 						    <div class="modal-inner">
-						        <header id="modal-label">Sign in</header>
+						        <header id="modal-label">Sign up</header>
 						        <!-- モーダルウィンドウの記述 -->
 						        <div class="modal-content">
 						        	<?php echo $this->Form->create('User', array( 'type'=>'post', 'action'=>'add')); ?>
@@ -124,35 +130,36 @@
 												'email' => __('※メールアドレスを正しく入力してください。', true),
 												'isUnique' => __('※そのメールアドレスは既に使用されています', true)))); 
 									?>
-									<?php echo $this ->Form->submit('Regist', array('type' => 'submit', 'class' => 'btn-custom btn right add_button')); ?>
-									<?php echo $this->Form->end(); ?>
-						
-								
 						        </div>
-						        <footer>登録してちょｗｗｗ</footer>
+						        <footer class="modal-footer">
+						        	<?php echo $this ->Form->submit('Sign up', array('type' => 'submit', 'class' => 'btn-custom btn-sign')); ?>
+									<?php echo $this->Form->end(); ?>
+						        </footer>
 						    </div>
-						 
-						    <a href="#!" class="modal-close" title="Close this modal"
-						        data-dismiss="modal">×</a>
+						    <a href="#!" class="modal-close" title="Close this modal"data-dismiss="modal">×</a>
 						</section>
 						<div class="auth">
-									<ul style="list-style: none" id="right" style="float: right;">
-										<?php if($user == null) {?>
-											<div style="float:left">
-												<li style="float:left"><p class='trigger_id' <?php echo $this->Html->link('sign in',array('controller' => 'users', 'action'=>'index', 'class'=>'inline')); ?> </p></li>
-											</div>
-											<div style="float: left">
-												<li style="float:left"><a class="trigger_id" data-modal="modal-18">sign up</a></li>
-											</div>
-										<?php } else { ?>
-												<li style="float:right"><a href=""><?php echo $user['name']; ?></a></li>
-										<?php }?>
-									</ul>
-						        </div>
-						<a href="#modal-text" style="float:right">Login</a>
-						<a href="#modal-text2" style="float:right">Sign up</a>
+							<ul style="list-style: none" id="right" style="float: right;">
+								<?php if($user == null) {?>
+									<a href="#modal-text" style="float:right">Login</a>
+									<a href="#modal-text2" style="float:right">Sign up</a>
+								<?php } else { ?>
+									<li class="dropdown" id="menu1" style="float:right">
+										<a class="dropdown-toggle" data-toggle="dropdown" href="#menu1">
+											<?php echo $user['name']; ?>
+										</a>
+										<ul class="dropdown-menu">
+											<li><a href="/users/edit">ユーザー編集</a></li>
+											<li><a href="#">お気に入りリスト</a></li>
+											<li><a href="#">設定</a></li>
+											<li class="divider"></li>
+											<li style="float:left"><?php echo $this->Html->link('ログアウト',array('controller' => 'users','action'=>'logout')); ?></li>
+										</ul>
+									</li>
+								<?php }?>
+							</ul>
+				        </div>
 					</div>
-					
 				</div>
 			</header>
 		</div>
@@ -167,11 +174,6 @@
 				<small>&copy; Bridge</small>
 			</p>
 		</footer>
-		
-		<?php
-			echo $this->Html->script('ModalWindowEffects/classie');
-			echo $this->Html->script('ModalWindowEffects/modalEffects');
-		?>
 		
 		<script>
 			// this is important for IEs

@@ -1,0 +1,38 @@
+a.btn-custom{
+	-webkit-transition: 0.2s;
+	-o-transition: 0.2s;
+	transition: 0.2s;
+	display: inline-block;
+	background-color: #fff;
+	text-decoration: none;
+	color: #111;
+	border-radius: 2px;
+	padding: 0.5em 1em;
+	border: none;
+	
+	
+	float: left;
+	margin: 15px 0  15px 0;
+}
+
+input.btn-custom.btn-sign{
+	-webkit-transition: 0.2s;
+	-o-transition: 0.2s;
+	transition: 0.2s;
+	display: inline-block;
+	background-color: #111;
+	text-decoration: none;
+	color: #fff;
+	border-radius: 2px;
+	padding: 0.5em 1em;
+	border: none;
+	
+	
+	float: left;
+	margin: 15px 0  15px 0;
+
+}
+
+.btn-custom:hover{
+	background: #3db3e5;
+}
