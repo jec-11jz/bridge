@@ -1,12 +1,14 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html>
 <head>
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Bridge</title>
 	<?php
 		echo $this->Html->meta('icon');
 		
 		echo $this->Html->css('bootstrap.min');
+		echo $this->Html->css('all');
 		echo $this->Html->css('menu');
 		echo $this->Html->css('fonts');
 		echo $this->Html->css('btn_custom');
@@ -25,8 +27,10 @@
 	
 	<script>
 		$('.dropdown-toggle').dropdown()
+		$('#loginModal').modal()$('#signModal').modal()
+		
 	</script>
-	
+
 	
 </head>
 	<body>
@@ -38,8 +42,8 @@
 						<a clas="home_logo" href="../home/index" style="float:right"><div class="home_logo"></div></a>
 						<ul style="list-style:none" id="menu" style="float:left">
 							
-							<li class="dropdown" id="menu11" style="float:left">
-								<a class="dropdown-toggle" data-toggle="dropdown" href="#menu11">
+							<li class="dropdown" id="menu-create" style="float:left">
+								<a class="dropdown-toggle" data-toggle="dropdown" href="#menu-create" data-toggle="dropdown">
 									Create
 								</a>
 								<ul class="dropdown-menu">
@@ -48,41 +52,45 @@
 									<li><a href="#">タグ編集</a></li>
 								</ul>
 							</li>
-							
-							
 							<!-- <li style="float:left"><?php echo $this->Html->link('テスト(ﾟﾟ;)',array('controller' => 'users','action'=>'test')); ?></li> -->
-							<li style="float:left"><a class="menu-caption">Caption</a></li>
-							<li style="float:left"><a class="menu-caption2">Caption2</a></li>
-							<li style="float:left"><a class="menu-caption3">Caption3</a></li>
+							<li style="float:left"><a>Search</a></li>
+							<li style="float:left"><a>Gallery</a></li>
+							<li style="float:left"><a>About Us</a></li>
 						</ul>
-						<!--　モーダルウィンドウ -->
-						<section class="semantic-content" id="modal-text" tabindex="-1"role="dialog" aria-labelledby="modal-label" aria-hidden="true">
-					 	
-						    <div class="modal-inner">
-						        <header id="modal-label">Login</header>
-						        <!-- モーダルウィンドウの記述 -->
-						        <div class="modal-content">
-									<?php echo $this -> Form -> create('User', array('type' => 'post', 'action' => 'login')); ?>
+						
+						<!-- ログインモーダル -->
+						<div class="modal fade" id="loginModal">
+						  <div class="modal-dialog">
+						    <div class="modal-content">
+						      <div class="modal-header">
+						        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+						        <h4 class="modal-title">Login</h4>
+						      </div>
+						      <div class="modal-body">
+						        <p>
+						        	<?php echo $this -> Form -> create('User', array('type' => 'post', 'action' => 'login')); ?>
 								    <?php echo $this -> Form -> input('email', array('type' => 'email', 'label' => false, 'class' => 'input_form', 'placeholder' => 'ユーザー名')); ?>
 								    <?php echo $this -> Form -> input('password', array('type' => 'password', 'label' => false, 'class' => 'input_form' , 'placeholder' => 'パスワード' )); ?>
-						        </div>
-						        <footer class="modal-footer">
-						        	<?php echo $this -> Form -> submit('Login', array('type' => 'submit', 'class' => 'btn-custom btn-sign')); ?>
-							    	<?php echo $this -> Form -> end(); ?>
-						        </footer>
-						    </div>
-						 
-						    <a href="#!" class="modal-close" title="Close this modal"
-						        data-dismiss="modal">×</a>
-						</section>
+						        </p>
+						      </div>
+						      <div class="modal-footer">
+						      	<?php echo $this -> Form -> submit('Login', array('type' => 'submit', 'class' => 'btn-custom btn-sign')); ?>
+						    	<?php echo $this -> Form -> end(); ?>
+						      </div>
+						    </div><!-- /.modal-content -->
+						  </div><!-- /.modal-dialog -->
+						</div><!-- /.modal -->
 						
-						<!-- モーダルウィンドウ 登録画面 -->
-					    <section class="semantic-content" id="modal-text2" tabindex="-1"role="dialog" aria-labelledby="modal-label" aria-hidden="true">
-					 	
-						    <div class="modal-inner">
-						        <header id="modal-label">Sign up</header>
-						        <!-- モーダルウィンドウの記述 -->
-						        <div class="modal-content">
+						
+						<div class="modal fade" id="signModal">
+						  <div class="modal-dialog">
+						    <div class="modal-content">
+						      <div class="modal-header">
+						        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+						        <h4 class="modal-title">Sign up</h4>
+						      </div>
+						      <div class="modal-body">
+						        <p>
 						        	<?php echo $this->Form->create('User', array( 'type'=>'post', 'action'=>'add')); ?>
 									<?php 
 									echo $this->Form->input('name', array(
@@ -133,22 +141,27 @@
 												'email' => __('※メールアドレスを正しく入力してください。', true),
 												'isUnique' => __('※そのメールアドレスは既に使用されています', true)))); 
 									?>
-						        </div>
-						        <footer class="modal-footer">
-						        	<?php echo $this ->Form->submit('Sign up', array('type' => 'submit', 'class' => 'btn-custom btn-sign')); ?>
-									<?php echo $this->Form->end(); ?>
-						        </footer>
-						    </div>
-						    <a href="#!" class="modal-close" title="Close this modal"data-dismiss="modal">×</a>
-						</section>
+						        </p>
+						      </div>
+						      <div class="modal-footer">
+						      	<?php echo $this ->Form->submit('Sign up', array('type' => 'submit', 'class' => 'btn-custom btn-sign')); ?>
+								<?php echo $this->Form->end(); ?>
+						      </div>
+						    </div><!-- /.modal-content -->
+						  </div><!-- /.modal-dialog -->
+						</div><!-- /.modal -->
+						
+						
+						
 						<div class="auth">
 							<ul style="list-style: none" id="right" style="float: right;">
 								<?php if($user == null) {?>
-									<a href="#modal-text" style="float:right">Login</a>
-									<a href="#modal-text2" style="float:right">Sign up</a>
+									<a href="#loginModal" data-toggle="modal" class="menu-list" style="float:right">Login</a>
+									<a href="#signModal" data-toggle="modal" class="menu-list" style="float:right">Sign up</a>
 								<?php } else { ?>
-									<li class="dropdown" id="menu1" style="float:right">
-										<a class="dropdown-toggle" data-toggle="dropdown" href="#menu1">
+									<li class="dropdown" id="menu-user" style="float:right">
+										<a class="dropdown-toggle" data-toggle="dropdown" href="#menu-user">
+											<i class="glyphicon glyphicon-user"></i>
 											<?php echo $user['name']; ?>
 										</a>
 										<ul class="dropdown-menu">
@@ -156,7 +169,7 @@
 											<li><a href="#">お気に入りリスト</a></li>
 											<li><a href="#">設定</a></li>
 											<li class="divider"></li>
-											<li style="float:left"><?php echo $this->Html->link('ログアウト',array('controller' => 'users','action'=>'logout')); ?></li>
+											<li><?php echo $this->Html->link('ログアウト',array('controller' => 'users','action'=>'logout')); ?></li>
 										</ul>
 									</li>
 								<?php }?>
@@ -183,9 +196,5 @@
 			var polyfilter_scriptpath = '/js/';
 		</script>
 		
-		<?php
-			echo $this->Html->script('ModalWindowEffects/cssParser');
-			echo $this->Html->script('ModalWindowEffects/css-filters-polyfill');
-		?>
 	</body>
 </html>
