@@ -1,4 +1,13 @@
+
+
 th {
 	font-size: 14px;
-	color: #000;
+	color: #313131;
+}
+td {
+	font-size: 11px;
+}
+
+table > tbody > tr > td > a {
+	font-size: 12px;
 }

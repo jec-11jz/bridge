@@ -50,7 +50,10 @@
 							</li>
 							
 							
-							<li style="float:left"><?php echo $this->Html->link('テスト(ﾟﾟ;)',array('controller' => 'users','action'=>'test')); ?></li>
+							<!-- <li style="float:left"><?php echo $this->Html->link('テスト(ﾟﾟ;)',array('controller' => 'users','action'=>'test')); ?></li> -->
+							<li style="float:left"><a class="menu-caption">Caption</a></li>
+							<li style="float:left"><a class="menu-caption2">Caption2</a></li>
+							<li style="float:left"><a class="menu-caption3">Caption3</a></li>
 						</ul>
 						<!--　モーダルウィンドウ -->
 						<section class="semantic-content" id="modal-text" tabindex="-1"role="dialog" aria-labelledby="modal-label" aria-hidden="true">
@@ -64,7 +67,7 @@
 								    <?php echo $this -> Form -> input('password', array('type' => 'password', 'label' => false, 'class' => 'input_form' , 'placeholder' => 'パスワード' )); ?>
 						        </div>
 						        <footer class="modal-footer">
-						        	<?php echo $this -> Form-> submit('Login', array('type' => 'submit', 'class' => 'btn-custom btn-sign')); ?>
+						        	<?php echo $this -> Form -> submit('Login', array('type' => 'submit', 'class' => 'btn-custom btn-sign')); ?>
 							    	<?php echo $this -> Form -> end(); ?>
 						        </footer>
 						    </div>

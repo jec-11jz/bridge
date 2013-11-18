@@ -6,9 +6,9 @@ body{
 	-moz-background-size:cover;
 	background-size:cover;
 	background-attachment: fixed;
-	background-origin: initial;		/*背景をパディングボックスに対して相対的に適用する（初期値）*/
+	background-origin: initial;		
 	background-color: rgb(24, 240, 70, 0.85);
-}
+} 
 
 a.logo{
 	font-size: 30px;

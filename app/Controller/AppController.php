@@ -47,7 +47,7 @@ class AppController extends Controller {
                 //ログアウト後のリダイレクト先
                 'logoutRedirect' => array('controller' => 'home', 'action' => 'index'),
                 //ログインしていない場合のリダイレクト先
-                'loginAction' => array('controller' => 'home', 'action' => 'index'),
+                'loginAction' => array('controller' => 'users', 'action' => 'login'),
                 //ログインにデフォルトの username ではなく email を使うためここで書き換えています			
         ),
         'DebugKit.Toolbar'

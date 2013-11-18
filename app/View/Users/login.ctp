@@ -1,3 +1,6 @@
+<?php
+	echo $this->Html->css('toppage');
+?>
 <body>
 	<!-- Container -->
 	<div id="container">

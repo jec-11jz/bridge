@@ -1,6 +1,7 @@
 <?php
 	echo $this->Html->css('blog_view');
 	echo $this->Html->css('latest/themes/default.min');
+	echo $this->Html->css('btn_custom');
 	
 	echo $this->Html->script('latest/jquery.sceditor.bbcode.min');
 	
@@ -39,7 +40,8 @@ $('#editor').elrte(opts);
 								'custom' => __('半角英数字のみ使用できます', true),
 								'minLength' => __('15文字以内で入力してください', true)))); 
 					?>
-					<?php echo $this->Form->end('保存');?>
+					<?php echo $this -> Form -> submit('保存', array('type' => 'submit', 'class' => 'btn-custom btn-sign')); ?>
+					<?php echo $this->Form->end();?>
 				</div>				
 			</div>
 		</div>
