@@ -1,6 +1,5 @@
 <?php
 	echo $this->Html->css('toppage.css');
-	echo $this->Html->css('login.css');
 ?>
 	
 <body>

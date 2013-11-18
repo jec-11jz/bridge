@@ -1,6 +1,3 @@
-<?php
-	echo $this->Html->css('login.css');
-?>
 <body>
 	<!-- Container -->
 	<div id="container">
