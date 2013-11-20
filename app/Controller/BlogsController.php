@@ -24,7 +24,6 @@ class BlogsController extends AppController {
 	}
   
 	 public function add() {
-		
         // 以下は送信ボタンを押した後に実行される
         // HTTP POSTリクエストか確認
         if ($this->request->is('post')) {

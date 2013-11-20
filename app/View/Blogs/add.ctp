@@ -2,18 +2,9 @@
 	echo $this->Html->css('blog_view');
 	echo $this->Html->css('latest/themes/default.min');
 	
-	echo $this->Html->script('latest/jquery.sceditor.bbcode.min');
+	echo $this->Html->script('ckeditor/ckeditor');
 	
 ?>
-<script>
-$(function() {
-	$("textarea").sceditor({
-		plugins: "bbcode",
-		style: "latest/jquery.sceditor.default.min.css"
-	});
-});
-$('#editor').elrte(opts);
-</script>  
 <body>
 	<div id="container">
 		<div id="contents">
@@ -33,12 +24,16 @@ $('#editor').elrte(opts);
 						echo $this->Form->input('content', array(
 							'label'=>'本文', 
 							'type'=>'textarea',
+							'id'=>'ckeditor',
 							'class'=>'input_form blog',
 							'error' => array(
 								'isUnique' => __('そのユーザーIDは既に使われています', true),
 								'custom' => __('半角英数字のみ使用できます', true),
 								'minLength' => __('15文字以内で入力してください', true)))); 
 					?>
+					<script type="text/javascript">  
+						var editor = CKEDITOR.replace('ckeditor');  
+					</script>  
 					<?php echo $this->Form->end('保存');?>
 				</div>				
 			</div>
