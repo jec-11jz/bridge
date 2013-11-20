@@ -11,6 +11,12 @@ $col-limegreen:#38CB7D;
   border-radius: 2px;
 }
 
+@mixin btn-hover{
+  background-color: $col-green;
+  text-decoration: none;
+  color:#fff;
+}
+
 
 
 a:hover {

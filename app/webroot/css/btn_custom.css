@@ -1,4 +1,4 @@
-/* line 1, ../sass/btn_custom.scss */
+/* line 3, ../sass/btn_custom.scss */
 a.btn-custom {
   -webkit-transition: 0.2s;
   -o-transition: 0.2s;
@@ -13,7 +13,7 @@ a.btn-custom {
   float: left;
   margin: 15px 0  15px 0; }
 
-/* line 18, ../sass/btn_custom.scss */
+/* line 20, ../sass/btn_custom.scss */
 input.btn-sign {
   -webkit-transition: 0.2s;
   -o-transition: 0.2s;
@@ -28,6 +28,6 @@ input.btn-sign {
   float: left;
   margin: 15px 0  15px 0; }
 
-/* line 35, ../sass/btn_custom.scss */
+/* line 37, ../sass/btn_custom.scss */
 *.btn-custom:hover {
   background: #45b329; }
