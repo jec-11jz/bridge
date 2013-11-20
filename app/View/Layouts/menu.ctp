@@ -1,19 +1,17 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html>
 <head>
-<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Bridge</title>
 	<?php
 		echo $this->Html->meta('icon');
 		
 		echo $this->Html->css('bootstrap.min');
+		echo $this->Html->css('bootstrap-glyphicons');
 		echo $this->Html->css('all');
 		echo $this->Html->css('menu');
 		echo $this->Html->css('fonts');
 		echo $this->Html->css('btn_custom');
-		echo $this->Html->css('modal/modal');
-		echo $this->Html->css('modal/modal_custom');
 	
 		echo $this->Html->script('jquery-1.10.2.min');
 		echo $this->Html->script('bootstrap.min');
@@ -27,7 +25,8 @@
 	
 	<script>
 		$('.dropdown-toggle').dropdown()
-		$('#loginModal').modal()$('#signModal').modal()
+		$('#loginModal').modal()
+		$('#signModal').modal()
 		
 	</script>
 
@@ -43,13 +42,14 @@
 						<ul style="list-style:none" id="menu" style="float:left">
 							
 							<li class="dropdown" id="menu-create" style="float:left">
-								<a class="dropdown-toggle" data-toggle="dropdown" href="#menu-create" data-toggle="dropdown">
+								<a class="dropdown-toggle" data-toggle="dropdown" href="#menu-create">
 									Create
+									<span class="caret"></span>
 								</a>
 								<ul class="dropdown-menu">
-									<li><a href="/blogs/index">日記作成</a></li>
-									<li><a href="#">作品登録</a></li>
-									<li><a href="#">タグ編集</a></li>
+									<li><a href="/blogs/index"><i class="glyphicon glyphicon-pencil"></i>　日記作成</a></li>
+									<li><a href="#"><i class="glyphicon glyphicon-film"></i>　作品登録</a></li>
+									<li><a href="#"><i class="glyphicon glyphicon-tags"></i>　タグ編集</a></li>
 								</ul>
 							</li>
 							<!-- <li style="float:left"><?php echo $this->Html->link('テスト(ﾟﾟ;)',array('controller' => 'users','action'=>'test')); ?></li> -->
@@ -152,7 +152,6 @@
 						</div><!-- /.modal -->
 						
 						
-						
 						<div class="auth">
 							<ul style="list-style: none" id="right" style="float: right;">
 								<?php if($user == null) {?>
@@ -161,15 +160,15 @@
 								<?php } else { ?>
 									<li class="dropdown" id="menu-user" style="float:right">
 										<a class="dropdown-toggle" data-toggle="dropdown" href="#menu-user">
-											<i class="glyphicon glyphicon-user"></i>
 											<?php echo $user['name']; ?>
+											<span class="caret"></span>
 										</a>
 										<ul class="dropdown-menu">
-											<li><a href="/users/edit">ユーザー編集</a></li>
-											<li><a href="#">お気に入りリスト</a></li>
-											<li><a href="#">設定</a></li>
+											<li><a href="/users/edit"><i class="glyphicon glyphicon-user"> ユーザー編集</i></a></li> 
+											<li><a href="#"><i class="glyphicon glyphicon-star"> お気に入り</i></a></li> 
+											<li><a href="#"><i class="glyphicon glyphicon-wrench"> 設定</i></a></li>
 											<li class="divider"></li>
-											<li><?php echo $this->Html->link('ログアウト',array('controller' => 'users','action'=>'logout')); ?></li>
+											<li><a><i class="glyphicon glyphicon-log-out"></i><?php echo $this->Html->link('ログアウト',array('controller' => 'users','action'=>'logout')); ?></a></li>
 										</ul>
 									</li>
 								<?php }?>
