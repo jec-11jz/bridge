@@ -6,20 +6,18 @@ body{
 	-moz-background-size:cover;
 	background-size:cover;
 	background-attachment: fixed;
-	background-origin: initial;		/*背景をパディングボックスに対して相対的に適用する（初期値）*/
+	background-origin: initial;		
 	background-color: rgb(24, 240, 70, 0.85);
-}
+} 
 
 a.logo{
 	font-size: 30px;
-	color: rgba(0,0,0, 0.70);
 	text-align: center;
-	text-shadow: 3px 3px 3px #999999, -2px -2px 2px #999999;
 	width: 100%;
 	z-index: 10;
 }
 div.toppage_link{
-	background-color: rgba(235,235,236, 0.70);
+	background-color: rgba(255,255,255, 0.92);
 	width: 80%;
 	height: 30%;
 	border-radius: 20px;
@@ -39,7 +37,6 @@ div.logo{
 
 div.img-book {
 	background-image: url('../img/icon10.jpg');
-	-moz-background-size:cover;
 	background-size:cover;
 	background-position-x: 40%;
 	background-position-y: 0%;
@@ -48,7 +45,6 @@ div.img-book {
 }
 div.img-book2{
 	background-image: url('../img/icon07.jpeg');
-	-moz-background-size:cover;
 	background-size:cover;
 	background-position-x: 20%;
 	background-position-y: 0%;
@@ -56,7 +52,6 @@ div.img-book2{
 }
 div.img-book3{
 	background-image: url('../img/icon06.jpg');
-	-moz-background-size:cover;
 	background-size:cover;
 	background-position-x: 20%;
 	background-position-y: 0%;
@@ -72,4 +67,9 @@ a.logo:hover{
 	background-position: 0;
 	opacity: 0.6;
 	filter: alpha(opacity=60);
+}
+
+
+#debug-kit-toolbar #panel-tabs {
+	float:left;
 }

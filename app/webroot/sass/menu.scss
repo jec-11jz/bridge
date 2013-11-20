@@ -1,0 +1,97 @@
+@import "../sass/all.scss";
+
+body{
+  line-height: 20px;
+}
+
+p{
+  margin:0 10px 10px;
+}
+
+a{
+  display:block; 
+  padding:10px;
+  color: #000;
+  
+  &.menu-list{
+    @include btn-fade;
+    &:hover{
+      background-color: $col-green;
+      text-decoration: none;
+      color:#fff;
+    }
+  }
+}
+
+li{
+  a{
+    @include btn-fade;
+    margin: 0 1px 0 0;
+    
+    &:hover, &:focus{
+      background-color: $col-green;
+      text-decoration: none;
+      color:#fff;
+    }
+  }
+}
+
+ul{
+  #menu{
+    text-align: left;
+  }
+  #right{
+    float:right;
+  }
+}
+
+header#header{
+    position:relative;
+    width: auto;
+    background: rgba(255,255,255, 0.90);
+    padding-top: 20px;
+    padding-bottom: 20px;
+    font-size: 21px;
+}
+div#navi{
+  margin: -30px 0px 0px 0px;
+}
+
+
+.dropdown-menu{
+  margin: 0 0 0 -5px;
+  min-width: 0px;
+  font-size: 16px;
+  
+  .divider {
+    margin: 4px 0;
+    border-bottom:1px solid #717171;
+  }
+  
+  li>a {
+    margin:0;
+    padding: 5px 10px 5px 10px;
+    
+    &:hover, &:focus{
+      color: #fff;
+      text-decoration: none;
+      background-color: #45b329;
+      background-image: none;
+    }
+  }
+}
+
+.container {
+    min-height: 100%;
+}
+
+div.modal-content{
+  .input_form{
+    width: 90%;
+    margin: 10px;
+  }
+}
+.modal {
+  width: 35%;
+  left: 54%;
+}
