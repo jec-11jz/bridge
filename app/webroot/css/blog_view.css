@@ -97,9 +97,7 @@ div.form{
 	margin: 50px 0px 0px 30px; /*　上　右　下　左 */
 	padding: 0 0 50px 0;
 	border-radius: 20px;
-	font-size: 30px;
 	color: rgba(0,0,0, 0.80);
-	text-shadow: 3px 3px 3px #999999, -2px -2px 2px #999999;
 }
 div.form-group {
 	margin: 10px 0px 30px 40px;
@@ -113,3 +111,18 @@ textarea.blog{
 	opacity: 0.6;
 	filter: alpha(opacity=60);
 }
+
+label {
+	margin: 15px 0 0 0;
+	font-size: 20px;
+	text-shadow: none;
+}
+
+.input_form{
+	width: 100%;
+	font-size: 14px;
+}
+.btn-custom {
+	font-size: 18px;
+}
+
