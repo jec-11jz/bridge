@@ -50,17 +50,26 @@ class AppController extends Controller {
                 'loginAction' => array('controller' => 'home', 'action' => 'index'),
                 //ログインにデフォルトの username ではなく email を使うためここで書き換えています			
         ),
-        'DebugKit.Toolbar'
+        'DebugKit.Toolbar',
+        // 'authorize' => array('Controller')
     );
 	
 	//現在はtrueで返している
+	// public function isAuthorized($user) {
+        // $result = false;
+        // if ( 'グループIDの判定処理をココに書く' ) {
+            // $result = true; //成功→ loginRedirectへリダイレクト
+        // }
+        // return $result;
+    // }
 	public function isAuthorized($user) {
-        $result = false;
-        if ( 'グループIDの判定処理をココに書く' ) {
-            $result = true; //成功→ loginRedirectへリダイレクト
-        }
-        return $result;
-    }
+	    if (isset($user['group_id']) && $user['group_id'] === '2') {
+	        return true;
+	    }
+	    // デフォルトは拒否
+	    return false;
+	}
+		
 	
 	public function beforeRender(){
 		$this->set('user', $this->Auth->user());

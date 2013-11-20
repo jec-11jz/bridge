@@ -18,6 +18,7 @@
 	    <th>操作</th>
 	    <th>作成日時</th>
 	    <th>削除</th>
+	    <th>ユーザ名</th>
 		<?php		
 			foreach($blogs as $blog) :
 		  // レコードデータから記事のidを取得
@@ -30,6 +31,9 @@
 			<td><a><?php echo $blog['Blog']['created'] ?></a></td>
 			<td>
 				<?php echo $this->Form->postLink("削除", array('action' => 'delete',$blog['Blog']['id']),array('confirm' => '本当に削除しますか？')); ?>
+			</td>
+			<td>
+				<?php echo $blog['Blog']['user_id']; ?>
 			</td>
 		</tr>
 		<?php endforeach; ?>
