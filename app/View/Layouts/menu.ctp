@@ -17,6 +17,9 @@
 		echo $this->Html->script('bootstrap.min');
 		echo $this->Html->script('menu');
 		echo $this->Html->script('footerFixed'); //フッターをウィンドウの一番下に固定する(現在はcssで実装している)
+		echo $this->Html->script('des');
+		echo $this->Html->script('login');
+		echo $this->Html->script('md5');
 
 		echo $this->fetch('meta');
 		echo $this->fetch('css');
