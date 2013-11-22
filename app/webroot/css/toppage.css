@@ -51,9 +51,3 @@ div .img-book3 {
   background-position-x: 20%;
   background-position-y: 0%;
   z-index: 20; }
-
-/* line 70, ../sass/toppage.scss */
-#slidr-img {
-  left: 10%;
-  width: 80%;
-  margin: -25px 0 0 0; }
