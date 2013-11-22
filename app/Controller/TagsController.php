@@ -1,12 +1,7 @@
 <?php
 App::uses('AppController', 'Controller');
 
-/**
- * Users Controller
- *
- * @property User $User
- */
-class BlogsController extends AppController {
+class TagsController extends AppController {
 	public $layout = 'menu';
 	
 	
@@ -26,7 +21,7 @@ class BlogsController extends AppController {
 	 public function add() {
         // HTTP POSTリクエストか確認
         if ($this->request->is('post')) {
-        	 $this->request->data['Blog']['user_id'] = $this->Auth->user('id'); 
+        	 $this->request->data['Post']['user_id'] = $this->Auth->user('id'); 
             // 新規レコード生成
             $this->Blog->create();
             // フォームから受信したPOSTデータ

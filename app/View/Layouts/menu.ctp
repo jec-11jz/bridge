@@ -13,12 +13,13 @@
 		echo $this->Html->css('fonts');
 	
 		echo $this->Html->script('jquery-1.10.2.min');
+		echo $this->Html->script('jquery.ajaxFrom');
+		echo $this->Html->script('login');
+		echo $this->Html->script('userAdd');
 		echo $this->Html->script('bootstrap.min');
 		echo $this->Html->script('menu');
 		echo $this->Html->script('footerFixed'); //フッターをウィンドウの一番下に固定する(現在はcssで実装している)
-		echo $this->Html->script('des');
-		echo $this->Html->script('login');
-		echo $this->Html->script('md5');
+		
 
 		echo $this->fetch('meta');
 		echo $this->fetch('css');
@@ -26,13 +27,10 @@
 	?>
 	
 	<script>
-		$('.dropdown-toggle').dropdown()
-		$('#loginModal').modal()
-		$('#signModal').modal()
-		
+		$('.dropdown-toggle').dropdown();
+		$('#loginModal').modal();
+		$('#signModal').modal();
 	</script>
-
-	
 </head>
 	<body>
 		<div id="container">
@@ -61,26 +59,14 @@
 							<li style="float:left"><a>About Us</a></li>
 						</ul>
 						
-						
-					    <p>
-				        	<?php echo $this -> Form -> create('User', array('type' => 'post', 'action' => 'login')); ?>
-						    <?php echo $this -> Form -> input('email', array('type' => 'email', 'label' => false, 'class' => 'input_form', 'placeholder' => 'ユーザー名')); ?>
-						    <?php echo $this -> Form -> input('password', array('type' => 'password', 'label' => false, 'class' => 'input_form' , 'placeholder' => 'パスワード' )); ?>
-				        </p>
-				        <?php echo $this -> Form -> submit('Login', array('type' => 'submit', 'class' => 'btn-custom btn-sign', 'onclick'=>"login_from_form(this.form)")); ?>
-						<?php echo $this -> Form -> end(); ?>
-						
-						
-						
-						
 						<div class="auth">
 							<ul style="list-style: none" id="right" style="float: right;">
 								<?php if($user == null) {?>
 									<li>
-										<a href="#loginModal" data-toggle="modal" class="menu-list" style="float:right">Login</a>
+										<a href="#" data-target="#loginModal" data-toggle="modal" class="menu-list" style="float:right">Login</a>
 									</li>
 									<li>
-										<a href="#signModal" data-toggle="modal" class="menu-list" style="float:right">Sign up</a>
+										<a href="#" data-target="#signModal" data-toggle="modal" class="menu-list" style="float:right">Sign up</a>
 									</li>
 								<?php } else { ?>
 									<li class="dropdown" id="menu-user" style="float:right">
@@ -107,99 +93,91 @@
 
 		<!-- ログインモーダル -->
 		<div class="modal fade" id="loginModal">
-		  <div class="modal-dialog">
-		    <div class="modal-content">
-		      <div class="modal-header">
-		        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-		        <h4 class="modal-title">Login</h4>
-		      </div>
-		      <div class="modal-body">
-		        <p>
-		        	<?php echo $this -> Form -> create('User', array('type' => 'post', 'action' => 'login')); ?>
-				    <?php echo $this -> Form -> input('email', array('type' => 'email', 'label' => false, 'class' => 'input_form', 'placeholder' => 'ユーザー名')); ?>
-				    <?php echo $this -> Form -> input('password', array('type' => 'password', 'label' => false, 'class' => 'input_form' , 'placeholder' => 'パスワード' )); ?>
-		        </p>
-		      </div>
-		      <div class="modal-footer">
-		      	<?php echo $this -> Form -> submit('Login', array('type' => 'submit', 'class' => 'btn-a')); ?>
-		    	<?php echo $this -> Form -> end(); ?>
-		      </div>
-		    </div><!-- /.modal-content -->
-		  </div><!-- /.modal-dialog -->
+  			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+						<h4 class="modal-title">Login</h4>
+					</div>
+					<div class="modal-body">
+						<div id="loginContent" class="container">
+							<?php echo $this -> Form -> create('User', array('type' => 'post', 'id'=>'loginForm')); ?>
+							<?php echo $this -> Form -> input('email', array('type' => 'email', 'label' => false, 'id'=>'email', 'class' => 'input_form', 'placeholder' => 'ユーザー名')); ?>
+							<?php echo $this -> Form -> input('password', array('type' => 'password', 'label' => false, 'id'=>'password', 'class' => 'input_form' , 'placeholder' => 'パスワード' )); ?>
+						</div>
+						<div class="modal-footer">
+							<?php echo $this -> Form -> submit('Login', array('type' => 'submit', 'class' => 'btn-a')); ?>
+							<?php echo $this -> Form -> end(); ?>
+						</div>
+					</div>
+				</div><!-- /.modal-content -->
+			</div><!-- /.modal-dialog -->
 		</div><!-- /.modal -->
-						
-		
+			
 		<div class="modal fade" id="signModal">
-		  <div class="modal-dialog">
-		    <div class="modal-content">
-		      <div class="modal-header">
-		        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-		        <h4 class="modal-title">Sign up</h4>
-		      </div>
-		      <div class="modal-body">
-		        <p>
-		        	<?php echo $this->Form->create('User', array( 'type'=>'post', 'action'=>'add')); ?>
-					<?php 
-					echo $this->Form->input('name', array(
-						'label' => false,
-						'type'=>'text',
-						'class'=>'input_form',
-						'placeholder' =>'ユーザーID',
-						'error' => array(
-							'isUnique' => __('※そのユーザーIDは既に使われています', true),
-							'custom' => __('※半角英数字のみ使用できます', true),
-							'minLength' => __('※15文字以内で入力してください', true)))); 
-					?>
-					<?php 
-						echo $this->Form->input('nickname', array(
-							'label' => false,
-							'class'=>'input_form',
-							'placeholder' =>'ユーザー名',
-							'error' => array(
-								'maxLength' => __('※30文字以内で入力してください', true)))); 
-					?>
-					<?php 
-						echo $this->Form->input('password',array(
-							'label' => false,
-							'type' => 'password',
-							'class'=>'input_form',
-							'placeholder' =>'パスワード',
-							'error' => array(
-								'notEmpty' => __('※パスワードを入力してください。', true),
-								'between' => __('※6文字以上15文字以内で入力してください', true)))); 
-					?>
-					<?php 
-						echo $this->Form->input('password_check', array(
-							'label' => false, 
-							'type' => 'password',
-							'class'=>'input_form',
-							'placeholder' =>'パスワードの再入力',
-							'error' => array(
-								'notEmpty' => __('※パスワード(再入力)を入力してください。', true),
-								'sameCheck' => __('※パスワード(再入力)がパスワードと異なります。', true)))); 
-					?>
-					<?php 
-						echo $this->Form->input('email', array(
-							'label' => false,
-							'type' => 'email',
-							'class'=>'input_form',
-							'placeholder' =>'メールアドレス',
-							'error' => array(
-								'email' => __('※メールアドレスを正しく入力してください。', true),
-								'isUnique' => __('※そのメールアドレスは既に使用されています', true)))); 
-					?>
-		        </p>
-		      </div>
-		      <div class="modal-footer">
-		      	<?php echo $this ->Form->submit('Sign up', array('type' => 'submit', 'class' => 'btn-a')); ?>
-				<?php echo $this->Form->end(); ?>
-		      </div>
-		    </div><!-- /.modal-content -->
-		  </div><!-- /.modal-dialog -->
-		</div><!-- /.modal -->				
-						
-		
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+						<h4 class="modal-title">Sign up</h4>
+					</div>
+					<div class="modal-body">
+						<div id="addContent" class="container">
+							<?php echo $this->Form->create('User', array( 'type'=>'post', 'action'=>'add', 'id'=>'addForm')); ?>
+							<?php 
+								echo $this->Form->input('name', array(
+										'label' => false,
+										'type'=>'text',
+										'id'=>'name',
+										'class'=>'input_form',
+										'placeholder' =>'ユーザーID'));
+							?>
+							<?php 
+								echo $this->Form->input('password',array(
+										'label' => false,
+										'type' => 'password',
+										'id'=>'password',
+										'class'=>'input_form',
+										'placeholder' =>'パスワード',
+										'error' => array(
+											'notEmpty' => __('※パスワードを入力してください。', true),
+											'between' => __('※6文字以上15文字以内で入力してください', true)))); 
+							?>
+							<?php 
+								echo $this->Form->input('password_check', array(
+										'label' => false, 
+										'type' => 'password',
+										'id'=>'confirm',
+										'class'=>'input_form',
+										'placeholder' =>'パスワードの再入力',
+										'error' => array(
+											'notEmpty' => __('※パスワード(再入力)を入力してください。', true),
+											'sameCheck' => __('※パスワード(再入力)がパスワードと異なります。', true)))); 
+							?>
+							<?php 
+								echo $this->Form->input('email', array(
+										'label' => false,
+										'type' => 'email',
+										'id'=>'email',
+										'class'=>'input_form',
+										'placeholder' =>'メールアドレス',
+										'error' => array(
+											'email' => __('※メールアドレスを正しく入力してください。', true),
+											'isUnique' => __('※そのメールアドレスは既に使用されています', true)))); 
+							?>
+						</div>
+						<div class="modal-footer">
+							<?php echo $this ->Form->submit('Sign up', array('type' => 'submit', 'class' => 'btn-a')); ?>
+							<?php echo $this->Form->end(); ?>
+						</div>
+					</div>
+				</div><!-- /.modal-content -->
+			</div><!-- /.modal-dialog -->
+		</div><!-- /.modal -->
+
 		<div id="contents">
+			<div id="loginResult" style="display:none;"></div>
+			<?php echo $this->Session->flash('auth'); ?>
 			<?php echo $this->fetch('content'); ?>
 		</div>
 		
