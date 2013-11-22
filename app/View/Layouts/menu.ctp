@@ -38,7 +38,7 @@
 				<div id="navi">
 					<div id='link'>
 						<!-- 各機能へのリンク -->
-						<a clas="home_logo" href="../home/index" style="float:right"><div class="home_logo"></div></a>
+						<a id="home-logo" class="home_logo" href="../home/index" style="float:right"><div class="home_logo"></div></a>
 						<ul style="list-style:none" id="menu" style="float:left">
 							
 							<li class="dropdown" id="menu-create" style="float:left">
@@ -101,7 +101,7 @@
 					</div>
 					<div class="modal-body">
 						<div id="loginContent" class="container">
-							<?php echo $this -> Form -> create('User', array('type' => 'post', 'id'=>'loginForm')); ?>
+							<?php echo $this -> Form -> create('User', array('type' => 'post', 'action'=>'login', 'id'=>'loginForm')); ?>
 							<?php echo $this -> Form -> input('email', array('type' => 'email', 'label' => false, 'id'=>'email', 'class' => 'input_form', 'placeholder' => 'ユーザー名')); ?>
 							<?php echo $this -> Form -> input('password', array('type' => 'password', 'label' => false, 'id'=>'password', 'class' => 'input_form' , 'placeholder' => 'パスワード' )); ?>
 						</div>

@@ -2,13 +2,13 @@ $(document).ready(function(){
   $("form#loginForm").submit(function() { // loginForm is submitted
     var email = $('#email').val(); // get username
     var password = $('#password').val(); // get password
-    var homeUrl = "http://bridge.com/";
-	console.log(email);
-	console.log(password);
+    var homeUrl = $("#home-logo").attr("href");
+    var action = $("#loginForm").attr("action");
+    
     if (email && password) { // values are not empty
       $.ajax({
         type: "POST",
-        url: "http://bridge.com/users/login", // URL of the Perl script
+        url: action, // URL of the Perl script
         // send username and password as parameters to the Perl script
         data: "data[User][email]=" + email + "&data[User][password]=" + password,
         // script call was *not* successful
