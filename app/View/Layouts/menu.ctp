@@ -6,8 +6,9 @@
 	<?php
 		echo $this->Html->meta('icon');
 		
-		echo $this->Html->css('bootstrap.min');
 		echo $this->Html->css('bootstrap-glyphicons');
+		echo $this->Html->css('bootstrap.min');
+		echo $this->Html->css('bootstrap-theme');
 		echo $this->Html->css('all');
 		echo $this->Html->css('menu');
 		echo $this->Html->css('fonts');

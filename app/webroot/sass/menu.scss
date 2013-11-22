@@ -87,18 +87,43 @@ div{
     min-height: 100%;
 }
 
-div.modal-content{
-  z-index:1001;
-  .input_form{
-    width: 90%;
-    margin: 10px;
+div{
+  .modal-content{
+    z-index:1001;
   }
+  .input_form{
+    width: 100%;
+    margin-bottom: 10px;
+  }
+  .modal{
+    width: 35%;
+    left: 54%;
+    display:none;
+  }
+  .modal-body{
+    @include mp-clear;
+  }
+  .modal-dialog{
+    width: 30%;
+    @include mp-clear;
+    margin-top: 40px;
+    left: 35%;
+  }
+  .container{
+    width: 100%;
+    padding: 15px 15px 0 15px;
+  }
+  .modal-footer{
+    padding: 15px;
+  }
+  
 }
-.modal {
-  width: 35%;
-  left: 54%;
-  display: none;
+
+.modal-body{
+  @include mp-clear;
 }
+
+
 
 
 
