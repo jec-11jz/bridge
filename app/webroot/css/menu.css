@@ -140,4 +140,5 @@ div.modal-content {
 /* line 97, ../sass/menu.scss */
 .modal {
   width: 35%;
-  left: 54%; }
+  left: 54%;
+  display: none; }
