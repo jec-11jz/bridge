@@ -62,13 +62,6 @@
 						</ul>
 						
 						
-					    <p>
-				        	<?php echo $this -> Form -> create('User', array('type' => 'post', 'action' => 'login')); ?>
-						    <?php echo $this -> Form -> input('email', array('type' => 'email', 'label' => false, 'class' => 'input_form', 'placeholder' => 'ユーザー名')); ?>
-						    <?php echo $this -> Form -> input('password', array('type' => 'password', 'label' => false, 'class' => 'input_form' , 'placeholder' => 'パスワード' )); ?>
-				        </p>
-				        <?php echo $this -> Form -> submit('Login', array('type' => 'submit', 'class' => 'btn-custom btn-sign', 'onclick'=>"login_from_form(this.form)")); ?>
-						<?php echo $this -> Form -> end(); ?>
 						
 						
 						
@@ -106,28 +99,31 @@
 		</div>
 
 		<!-- ログインモーダル -->
-		<div class="modal fade" id="loginModal">
-		  <div class="modal-dialog">
-		    <div class="modal-content">
-		      <div class="modal-header">
-		        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-		        <h4 class="modal-title">Login</h4>
-		      </div>
-		      <div class="modal-body">
-		        <p>
-		        	<?php echo $this -> Form -> create('User', array('type' => 'post', 'action' => 'login')); ?>
-				    <?php echo $this -> Form -> input('email', array('type' => 'email', 'label' => false, 'class' => 'input_form', 'placeholder' => 'ユーザー名')); ?>
-				    <?php echo $this -> Form -> input('password', array('type' => 'password', 'label' => false, 'class' => 'input_form' , 'placeholder' => 'パスワード' )); ?>
-		        </p>
-		      </div>
-		      <div class="modal-footer">
-		      	<?php echo $this -> Form -> submit('Login', array('type' => 'submit', 'class' => 'btn-a')); ?>
-		    	<?php echo $this -> Form -> end(); ?>
-		      </div>
-		    </div><!-- /.modal-content -->
-		  </div><!-- /.modal-dialog -->
-		</div><!-- /.modal -->
-						
+						<div class="modal fade" id="loginModal">
+						  <div class="modal-dialog">
+						    <div class="modal-content">
+						      <div class="modal-header">
+						        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+						        <h4 class="modal-title">Login</h4>
+						      </div>
+						      <div class="modal-body">
+						        <p>
+						        	<?php echo $this -> Form -> create('User', array('type' => 'post', 'action' => 'login')); ?>
+								    <?php echo $this -> Form -> input('email', array('type' => 'email', 'label' => false, 'class' => 'input_form', 'placeholder' => 'ユーザー名')); ?>
+								    <?php echo $this -> Form -> input('password', array('type' => 'password', 'label' => false, 'class' => 'input_form' , 'placeholder' => 'パスワード' )); ?>
+						        </p>
+						      </div>
+						      <div class="modal-footer">
+						      	<?php echo $this -> Form -> submit('Login', array('type' => 'submit', 'class' => 'btn-a')); ?>
+						    	<?php echo $this -> Form -> end(); ?>
+						      </div>
+						    </div><!-- /.modal-content -->
+						  </div><!-- /.modal-dialog -->
+						</div><!-- /.modal -->
+		<div id="contents">
+			<?php echo $this->fetch('content'); ?>
+		</div>
+		
 		
 		<div class="modal fade" id="signModal">
 		  <div class="modal-dialog">
@@ -196,12 +192,7 @@
 		      </div>
 		    </div><!-- /.modal-content -->
 		  </div><!-- /.modal-dialog -->
-		</div><!-- /.modal -->				
-						
-		
-		<div id="contents">
-			<?php echo $this->fetch('content'); ?>
-		</div>
+					</div><!-- /.modal -->
 		
 		<footer id="footer">
 			<p class="copyright">
