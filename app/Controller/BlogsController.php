@@ -15,7 +15,7 @@ class BlogsController extends AppController {
     	//親クラス（AppController）読み込み
         parent::beforeFilter();
 		//permitted access before login
-        $this->Auth->allow('index', 'view', 'add');
+        //$this->Auth->allow();
     }
 	
 	public function index() {
@@ -24,9 +24,9 @@ class BlogsController extends AppController {
 	}
   
 	 public function add() {
-        // 以下は送信ボタンを押した後に実行される
         // HTTP POSTリクエストか確認
         if ($this->request->is('post')) {
+        	 $this->request->data['Post']['user_id'] = $this->Auth->user('id'); 
             // 新規レコード生成
             $this->Blog->create();
             // フォームから受信したPOSTデータ
@@ -42,39 +42,56 @@ class BlogsController extends AppController {
     }
     
     public function edit($id = null) {
-        $this->User->id = $this->Auth->user('id');
-		
-		//ログイン中のユーザのIDからのユーザ情報を検索
-        if ($data = $this->User->findById($this->Auth->user('id'))) {
-	        if ($this->request->is('post') || $this->request->is('put')) {
-	            if ($saved_data = $this->User->save($this->data, TRUE, array('nickname', 'email'))) {
-	            	
-					//セッション情報の更新
-					$this->Session->write('Auth.User.nickname', $saved_data['User']['nickname']);
-					$this->Session->write('Auth.User.email', $saved_data['User']['email']);
-					
-	                $this->Session->setFlash(__('更新完了です。 (｡･_･｡)ﾉ'));
-					$this->redirect(array('action' => 'index'));
-					
-	            } else {
-	                $this->Session->setFlash(__('The user could not be saved. Please, try again.'));
-	            }
-	        } else {
-	            $this->request->data = $this->User->read(null, $id);
-	            unset($this->request->data['User']['password']);
-	        }
-        } else {
-        	$this->render('login');
-        }
-		
+        if (!$id) {
+        	throw new NotFoundException(__('Invalid post'));
+    	}
 
+	    $post = $this->Blog->findById($id);
+	    if (!$post) {
+	        throw new NotFoundException(__('Invalid post'));
+	    }
+	
+	    if ($this->request->is(array('post', 'put'))) {
+	        $this->Blog->id = $id;
+	        if ($this->Blog->save($this->request->data)) {
+	            $this->Session->setFlash(__('Your post has been updated.'));
+	            return $this->redirect(array('action' => 'index'));
+	        }
+	        $this->Session->setFlash(__('Unable to update your post.'));
+	    }
+	
+	    if (!$this->request->data) {
+	        $this->request->data = $post;
+	    }
     }
+
+	public function isAuthorized($user) {
+	    // 登録済ユーザーは投稿できる
+	    if ($this->action === 'add') {
+	        return true;
+	    }
+	
+	    // 投稿のオーナーは編集や削除ができる
+	    if (in_array($this->action, array('edit', 'delete'))) {
+	        $postId = $this->request->params['pass'][0];
+	        if ($this->Post->isOwnedBy($postId, $user['id'])) {
+	            return true;
+	        }
+	    }
+	
+	    return parent::isAuthorized($user);
+	}
     
     public function view($id = null) {
-        // レコードを選択
-        $this->Blog->id = $id;
-        // レコードデータを取得しビューへ送る
-        $this->set('blog', $this->Blog->read());
+        if (!$id) {
+            throw new NotFoundException(__('Invalid post'));
+        }
+
+        $post = $this->Blog->findById($id);
+        if (!$post) {
+            throw new NotFoundException(__('Invalid post'));
+        }
+        $this->set('post', $post);
     }
     
     public function delete($id = null) {

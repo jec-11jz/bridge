@@ -11,12 +11,11 @@
 			    array('action' => 'index'));
 		?>
 		<hr />
-		<h3><?php echo $this->Html->link($blog['Blog']['title'], array('controller' => 'blogs', 'action' => 'edit')); ?></h3>
-		<p>
-			<small>投稿日: <?php echo $blog['Blog']['created']; ?></small>
-		</p>
-		<hr />
-		<p><?php echo h($blog['Blog']['content']); ?></p>
+		<h1><?php echo h($post['Post']['title']); ?></h1>
+
+		<p><small>Created: <?php echo $post['Post']['created']; ?></small></p>
+		
+		<p><?php echo h($post['Post']['body']); ?></p>
 		</div>
 		<!-- //Contents -->
 

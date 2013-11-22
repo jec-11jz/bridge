@@ -62,6 +62,13 @@
 						</ul>
 						
 						
+					    <p>
+				        	<?php echo $this -> Form -> create('User', array('type' => 'post', 'action' => 'login')); ?>
+						    <?php echo $this -> Form -> input('email', array('type' => 'email', 'label' => false, 'class' => 'input_form', 'placeholder' => 'ユーザー名')); ?>
+						    <?php echo $this -> Form -> input('password', array('type' => 'password', 'label' => false, 'class' => 'input_form' , 'placeholder' => 'パスワード' )); ?>
+				        </p>
+				        <?php echo $this -> Form -> submit('Login', array('type' => 'submit', 'class' => 'btn-custom btn-sign', 'onclick'=>"login_from_form(this.form)")); ?>
+						<?php echo $this -> Form -> end(); ?>
 						
 						
 						
