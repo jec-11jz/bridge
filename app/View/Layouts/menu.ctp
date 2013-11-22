@@ -8,10 +8,11 @@
 		
 		echo $this->Html->css('bootstrap-glyphicons');
 		echo $this->Html->css('bootstrap.min');
-		echo $this->Html->css('bootstrap-theme');
+		// echo $this->Html->css('bootstrap-theme.min');
 		echo $this->Html->css('all');
 		echo $this->Html->css('menu');
 		echo $this->Html->css('fonts');
+		// echo $this->Html->css('bootstrap.min');
 	
 		echo $this->Html->script('jquery-1.10.2.min');
 		echo $this->Html->script('jquery.ajaxFrom');
@@ -21,7 +22,6 @@
 		echo $this->Html->script('menu');
 		echo $this->Html->script('footerFixed'); //フッターをウィンドウの一番下に固定する(現在はcssで実装している)
 		
-
 		echo $this->fetch('meta');
 		echo $this->fetch('css');
 		echo $this->fetch('script');
@@ -103,8 +103,8 @@
 					<div class="modal-body">
 						<div id="loginContent" class="container">
 							<?php echo $this -> Form -> create('User', array('type' => 'post', 'action'=>'login', 'id'=>'loginForm')); ?>
-							<?php echo $this -> Form -> input('email', array('type' => 'email', 'label' => false, 'id'=>'email', 'class' => 'input_form', 'placeholder' => 'ユーザー名')); ?>
-							<?php echo $this -> Form -> input('password', array('type' => 'password', 'label' => false, 'id'=>'password', 'class' => 'input_form' , 'placeholder' => 'パスワード' )); ?>
+							<?php echo $this -> Form -> input('email', array('type' => 'email', 'label' => false, 'id'=>'email', 'class' => 'input_form form-control', 'placeholder' => 'ユーザー名')); ?>
+							<?php echo $this -> Form -> input('password', array('type' => 'password', 'label' => false, 'id'=>'password', 'class' => 'input_form form-control' , 'placeholder' => 'パスワード' )); ?>
 						</div>
 						<div class="modal-footer">
 							<?php echo $this -> Form -> submit('Login', array('type' => 'submit', 'class' => 'btn-a')); ?>
@@ -130,7 +130,7 @@
 										'label' => false,
 										'type'=>'text',
 										'id'=>'name',
-										'class'=>'input_form',
+										'class'=>'input_form form-control',
 										'placeholder' =>'ユーザーID'));
 							?>
 							<?php 
@@ -138,7 +138,7 @@
 										'label' => false,
 										'type' => 'password',
 										'id'=>'password',
-										'class'=>'input_form',
+										'class'=>'input_form form-control',
 										'placeholder' =>'パスワード',
 										'error' => array(
 											'notEmpty' => __('※パスワードを入力してください。', true),
@@ -149,7 +149,7 @@
 										'label' => false, 
 										'type' => 'password',
 										'id'=>'confirm',
-										'class'=>'input_form',
+										'class'=>'input_form form-control',
 										'placeholder' =>'パスワードの再入力',
 										'error' => array(
 											'notEmpty' => __('※パスワード(再入力)を入力してください。', true),
@@ -160,7 +160,7 @@
 										'label' => false,
 										'type' => 'email',
 										'id'=>'email',
-										'class'=>'input_form',
+										'class'=>'input_form form-control',
 										'placeholder' =>'メールアドレス',
 										'error' => array(
 											'email' => __('※メールアドレスを正しく入力してください。', true),

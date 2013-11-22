@@ -68,7 +68,7 @@ li a {
   border-radius: 2px;
   margin: 0 1px 0 0; }
   /* line 24, ../sass/menu.scss */
-  li a:hover, li a:focus {
+  li a:hover, li a:focus, li a:active {
     background-color: #4ab134;
     text-decoration: none;
     color: #fff; }
@@ -76,7 +76,7 @@ li a {
   li a .menu-list {
     @iclude btn-fade; }
     /* line 29, ../sass/menu.scss */
-    li a .menu-list:hover {
+    li a .menu-list:hover, li a .menu-list:focus, li a .menu-list:active {
       @iclude btn-hover; }
 
 /* line 37, ../sass/menu.scss */
@@ -120,7 +120,7 @@ div #navi {
     margin: 0;
     padding: 5px 10px 5px 10px; }
     /* line 80, ../sass/menu.scss */
-    .dropdown-menu li > a:hover, .dropdown-menu li > a:focus {
+    .dropdown-menu li > a:hover, .dropdown-menu li > a:focus, .dropdown-menu li > a:active {
       background-color: #4ab134;
       text-decoration: none;
       color: #fff; }
