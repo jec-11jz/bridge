@@ -2,36 +2,33 @@
 
 body{
   line-height: 20px;
+  z-index:1;
 }
 
-p{
-  margin:0 10px 10px;
-}
+p{margin:0 10px 10px;}
 
 a{
   display:block; 
   padding:10px;
   color: #000;
-  
-  &.menu-list{
-    @include btn-fade;
-    &:hover{
-      background-color: $col-green;
-      text-decoration: none;
-      color:#fff;
-    }
-  }
 }
 
+.btn-a{
+  float: right;
+}
 li{
   a{
     @include btn-fade;
     margin: 0 1px 0 0;
     
     &:hover, &:focus{
-      background-color: $col-green;
-      text-decoration: none;
-      color:#fff;
+      @include btn-hover;
+    }
+    .menu-list{
+      @iclude btn-fade;
+      &:hover{
+        @iclude btn-hover;
+      }
     }
   }
 }
@@ -46,15 +43,24 @@ ul{
 }
 
 header#header{
-    position:relative;
-    width: auto;
+    position: fixed;
+    width: 100%;
     background: rgba(255,255,255, 0.90);
     padding-top: 20px;
     padding-bottom: 20px;
-    font-size: 21px;
+    font-size: 19px;
+    z-index: 1000;
+    // border-bottom: 1px solid $col-black4;
+    @include box-shadow;
+    
 }
-div#navi{
-  margin: -30px 0px 0px 0px;
+div{
+  #singModal, #loginModal{
+    z-index:2;
+  }
+  #navi{
+    margin: -30px 0px 0px 0px;
+  }
 }
 
 
@@ -65,18 +71,14 @@ div#navi{
   
   .divider {
     margin: 4px 0;
-    border-bottom:1px solid #717171;
+    border-bottom:1px solid $col-black4;
   }
-  
   li>a {
     margin:0;
     padding: 5px 10px 5px 10px;
     
     &:hover, &:focus{
-      color: #fff;
-      text-decoration: none;
-      background-color: #45b329;
-      background-image: none;
+      @include btn-hover;
     }
   }
 }
@@ -86,6 +88,7 @@ div#navi{
 }
 
 div.modal-content{
+  z-index:1001;
   .input_form{
     width: 90%;
     margin: 10px;
@@ -95,3 +98,8 @@ div.modal-content{
   width: 35%;
   left: 54%;
 }
+
+
+
+
+

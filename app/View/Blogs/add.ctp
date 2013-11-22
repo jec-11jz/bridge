@@ -1,9 +1,11 @@
 <?php
-	echo $this->Html->css('blog_view');
+	// echo $this->Html->css('blog_view');
+	
 	echo $this->Html->css('latest/themes/default.min');
 	
 	echo $this->Html->script('ckeditor/ckeditor');
 	
+	echo $this->Html->css('diary');
 ?>
 <body>
 	<div id="container">

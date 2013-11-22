@@ -1,0 +1,74 @@
+@import "compass/css3";
+
+// body{
+  // background: #fff url("../img/bridge_bg12.jpg") no-repeat fixed center bottom;
+  // background-image: url("../img/bridge_bg12.jpg");
+  // background-position-x: 0%;
+  // background-position-y: 0%;
+  // background-size:cover;
+  // background-attachment: fixed;
+  // background-origin: initial;   
+// } 
+
+body{
+  background-image: url("../img/backgroudImage.png");
+}
+
+
+a.logo{
+  font-size: 30px;
+  text-align: center;
+  width: 100%;
+  z-index: 10;
+  &:hover{
+    color: #a2eb7f;
+    background-position: 0;
+    opacity: 0.6;
+    filter: alpha(opacity=60);
+  }
+}
+div{
+  .toppage_link{
+    background-color: rgba(255,255,255, 0.92);
+    width: 80%;
+    height: 30%;
+    border-radius: 20px;
+    margin: 50px 0px 0px 50px;
+    float: left;
+    z-index: 30;
+  }
+  .logo{
+    width: 230px;
+    height: 230px;
+    border-radius: 20px;
+    margin: 15px 0px 10px 30px;
+    float: left;
+    z-index: 20;
+    &:hover{
+    border: 3px solid #97F95A;
+    opacity: 0.6;
+    filter: alpha(opacity=60);
+    }
+  }
+  
+  .img-book {
+    background-image: url('../img/icon10.jpg');
+    background-size:cover;
+    background-position-x: 40%;
+    background-position-y: 0%;
+    z-index: 20;
+  }
+  .img-book3{
+    background-image: url('../img/icon06.jpg');
+    background-size:cover;
+    background-position-x: 20%;
+    background-position-y: 0%;
+    z-index: 20;
+  }
+}
+
+#slidr-img{
+  left: 10%;
+  width: 80%;
+  margin: -25px 0 0 0;
+}

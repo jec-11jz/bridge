@@ -1,48 +1,65 @@
-/* line 22, ../sass/all.scss */
+/* line 41, ../sass/all.scss */
 a:hover {
   color: #4ab134; }
 
-/* line 28, ../sass/all.scss */
+/* line 46, ../sass/all.scss */
+.btn-a {
+  -webkit-transition: 0.2s;
+  -o-transition: 0.2s;
+  transition: 0.2s;
+  display: inline-block;
+  border-radius: 2px;
+  background-color: #313131;
+  text-decoration: none;
+  color: #fff;
+  padding: 0.5em 1em;
+  border: none;
+  float: left; }
+  /* line 49, ../sass/all.scss */
+  .btn-a:hover {
+    background-color: #4ab134;
+    text-decoration: none;
+    color: #fff; }
+
+/* line 54, ../sass/all.scss */
+div#head-all {
+  height: 40px; }
+
+/* line 58, ../sass/all.scss */
 div.home_logo {
   background-image: url("../img/Bridge_cool.png");
   background-size: contain;
   position: static;
   width: 120px;
   height: 86px;
-  background-repeat: no-repeat; }
-
-/* line 37, ../sass/all.scss */
-.home_logo {
+  background-repeat: no-repeat;
   margin-top: -30px;
   margin-right: -30px; }
 
+/* line 69, ../sass/all.scss */
+#debug-kit-toolbar #panel-tabs {
+  float: left; }
+
 /* line 3, ../sass/menu.scss */
 body {
-  line-height: 20px; }
+  line-height: 20px;
+  z-index: 1; }
 
-/* line 7, ../sass/menu.scss */
+/* line 8, ../sass/menu.scss */
 p {
   margin: 0 10px 10px; }
 
-/* line 11, ../sass/menu.scss */
+/* line 10, ../sass/menu.scss */
 a {
   display: block;
   padding: 10px;
   color: #000; }
-  /* line 16, ../sass/menu.scss */
-  a.menu-list {
-    -webkit-transition: 0.2s;
-    -o-transition: 0.2s;
-    transition: 0.2s;
-    display: inline-block;
-    border-radius: 2px; }
-    /* line 18, ../sass/menu.scss */
-    a.menu-list:hover {
-      background-color: #4ab134;
-      text-decoration: none;
-      color: #fff; }
 
-/* line 27, ../sass/menu.scss */
+/* line 16, ../sass/menu.scss */
+.btn-a {
+  float: right; }
+
+/* line 20, ../sass/menu.scss */
 li a {
   -webkit-transition: 0.2s;
   -o-transition: 0.2s;
@@ -50,62 +67,77 @@ li a {
   display: inline-block;
   border-radius: 2px;
   margin: 0 1px 0 0; }
-  /* line 31, ../sass/menu.scss */
+  /* line 24, ../sass/menu.scss */
   li a:hover, li a:focus {
     background-color: #4ab134;
     text-decoration: none;
     color: #fff; }
+  /* line 27, ../sass/menu.scss */
+  li a .menu-list {
+    @iclude btn-fade; }
+    /* line 29, ../sass/menu.scss */
+    li a .menu-list:hover {
+      @iclude btn-hover; }
 
-/* line 40, ../sass/menu.scss */
+/* line 37, ../sass/menu.scss */
 ul #menu {
   text-align: left; }
-/* line 43, ../sass/menu.scss */
+/* line 40, ../sass/menu.scss */
 ul #right {
   float: right; }
 
-/* line 48, ../sass/menu.scss */
+/* line 45, ../sass/menu.scss */
 header#header {
-  position: relative;
-  width: auto;
+  position: fixed;
+  width: 100%;
   background: rgba(255, 255, 255, 0.9);
   padding-top: 20px;
   padding-bottom: 20px;
-  font-size: 21px; }
+  font-size: 19px;
+  z-index: 1000;
+  -webkit-box-shadow: 0px 0px 5px #333333;
+  -moz-box-shadow: 0px 0px 5px #333333;
+  box-shadow: 0px 0px 5px #333333; }
 
-/* line 56, ../sass/menu.scss */
-div#navi {
+/* line 58, ../sass/menu.scss */
+div #singModal, div #loginModal {
+  z-index: 2; }
+/* line 61, ../sass/menu.scss */
+div #navi {
   margin: -30px 0px 0px 0px; }
 
-/* line 61, ../sass/menu.scss */
+/* line 67, ../sass/menu.scss */
 .dropdown-menu {
   margin: 0 0 0 -5px;
   min-width: 0px;
   font-size: 16px; }
-  /* line 66, ../sass/menu.scss */
+  /* line 72, ../sass/menu.scss */
   .dropdown-menu .divider {
     margin: 4px 0;
-    border-bottom: 1px solid #717171; }
-  /* line 71, ../sass/menu.scss */
+    border-bottom: 1px solid #777777; }
+  /* line 76, ../sass/menu.scss */
   .dropdown-menu li > a {
     margin: 0;
     padding: 5px 10px 5px 10px; }
-    /* line 75, ../sass/menu.scss */
+    /* line 80, ../sass/menu.scss */
     .dropdown-menu li > a:hover, .dropdown-menu li > a:focus {
-      color: #fff;
+      background-color: #4ab134;
       text-decoration: none;
-      background-color: #45b329;
-      background-image: none; }
+      color: #fff; }
 
-/* line 84, ../sass/menu.scss */
+/* line 86, ../sass/menu.scss */
 .container {
   min-height: 100%; }
 
-/* line 89, ../sass/menu.scss */
-div.modal-content .input_form {
-  width: 90%;
-  margin: 10px; }
+/* line 90, ../sass/menu.scss */
+div.modal-content {
+  z-index: 1001; }
+  /* line 92, ../sass/menu.scss */
+  div.modal-content .input_form {
+    width: 90%;
+    margin: 10px; }
 
-/* line 94, ../sass/menu.scss */
+/* line 97, ../sass/menu.scss */
 .modal {
   width: 35%;
   left: 54%; }

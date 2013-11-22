@@ -1,7 +1,11 @@
+    //　ーー宣言ーー
 @import "compass";
 
 $col-green:#4ab134;
 $col-limegreen:#38CB7D;
+$col-black5: #313131;$col-black4: #777777;
+
+
 
 @mixin btn-fade {
   -webkit-transition: 0.2s;
@@ -11,19 +15,45 @@ $col-limegreen:#38CB7D;
   border-radius: 2px;
 }
 
+@mixin btn{
+  background-color: #313131;
+  text-decoration: none;
+  color: #fff;
+  padding: 0.5em 1em;
+  border: none;
+  
+  float: left;
+}
+
 @mixin btn-hover{
   background-color: $col-green;
   text-decoration: none;
   color:#fff;
 }
 
-
-
+@mixin mp-clear{
+  margin: 0;
+  padding: 0;
+}
+    // ーー宣言終了ーー
+    
+    
 a:hover {
-  color: #4ab134;
+  color: $col-green;
 
 }
 
+.btn-a{
+  @include btn-fade;
+  @include btn;
+  &:hover{
+    @include btn-hover;
+  }
+}
+
+div#head-all{
+  height:40px
+}
 
 div.home_logo{
   background-image: url('../img/Bridge_cool.png');
@@ -32,9 +62,10 @@ div.home_logo{
   width: 120px;
   height: 86px;
   background-repeat: no-repeat;
-  
-}
-.home_logo{
   margin-top: -30px;
   margin-right: -30px;
+}
+
+#debug-kit-toolbar #panel-tabs {
+  float:left;
 }

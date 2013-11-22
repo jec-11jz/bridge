@@ -11,7 +11,6 @@
 		echo $this->Html->css('all');
 		echo $this->Html->css('menu');
 		echo $this->Html->css('fonts');
-		echo $this->Html->css('btn_custom');
 	
 		echo $this->Html->script('jquery-1.10.2.min');
 		echo $this->Html->script('bootstrap.min');
@@ -58,108 +57,24 @@
 							<!-- <li style="float:left"><?php echo $this->Html->link('テスト(ﾟﾟ;)',array('controller' => 'users','action'=>'test')); ?></li> -->
 							<li style="float:left"><a>Search</a></li>
 							<li style="float:left"><a>Gallery</a></li>
+							<li style="float:left"><a href="/images/index">アップロード</a></li>
 							<li style="float:left"><a>About Us</a></li>
 						</ul>
 						
-						<!-- ログインモーダル -->
-						<div class="modal fade" id="loginModal">
-						  <div class="modal-dialog">
-						    <div class="modal-content">
-						      <div class="modal-header">
-						        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-						        <h4 class="modal-title">Login</h4>
-						      </div>
-						      <div class="modal-body">
-						        <p>
-						        	<?php echo $this -> Form -> create('User', array('type' => 'post', 'action' => 'login')); ?>
-								    <?php echo $this -> Form -> input('email', array('type' => 'email', 'label' => false, 'class' => 'input_form', 'placeholder' => 'ユーザー名')); ?>
-								    <?php echo $this -> Form -> input('password', array('type' => 'password', 'label' => false, 'class' => 'input_form' , 'placeholder' => 'パスワード' )); ?>
-						        </p>
-						      </div>
-						      <div class="modal-footer">
-						      	<?php echo $this -> Form -> submit('Login', array('type' => 'submit', 'class' => 'btn-custom btn-sign')); ?>
-						    	<?php echo $this -> Form -> end(); ?>
-						      </div>
-						    </div><!-- /.modal-content -->
-						  </div><!-- /.modal-dialog -->
-						</div><!-- /.modal -->
 						
 						
-						<div class="modal fade" id="signModal">
-						  <div class="modal-dialog">
-						    <div class="modal-content">
-						      <div class="modal-header">
-						        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-						        <h4 class="modal-title">Sign up</h4>
-						      </div>
-						      <div class="modal-body">
-						        <p>
-						        	<?php echo $this->Form->create('User', array( 'type'=>'post', 'action'=>'add')); ?>
-									<?php 
-									echo $this->Form->input('name', array(
-										'label' => false,
-										'type'=>'text',
-										'class'=>'input_form',
-										'placeholder' =>'ユーザーID',
-										'error' => array(
-											'isUnique' => __('※そのユーザーIDは既に使われています', true),
-											'custom' => __('※半角英数字のみ使用できます', true),
-											'minLength' => __('※15文字以内で入力してください', true)))); 
-									?>
-									<?php 
-										echo $this->Form->input('nickname', array(
-											'label' => false,
-											'class'=>'input_form',
-											'placeholder' =>'ユーザー名',
-											'error' => array(
-												'maxLength' => __('※30文字以内で入力してください', true)))); 
-									?>
-									<?php 
-										echo $this->Form->input('password',array(
-											'label' => false,
-											'type' => 'password',
-											'class'=>'input_form',
-											'placeholder' =>'パスワード',
-											'error' => array(
-												'notEmpty' => __('※パスワードを入力してください。', true),
-												'between' => __('※6文字以上15文字以内で入力してください', true)))); 
-									?>
-									<?php 
-										echo $this->Form->input('password_check', array(
-											'label' => false, 
-											'type' => 'password',
-											'class'=>'input_form',
-											'placeholder' =>'パスワードの再入力',
-											'error' => array(
-												'notEmpty' => __('※パスワード(再入力)を入力してください。', true),
-												'sameCheck' => __('※パスワード(再入力)がパスワードと異なります。', true)))); 
-									?>
-									<?php 
-										echo $this->Form->input('email', array(
-											'label' => false,
-											'type' => 'email',
-											'class'=>'input_form',
-											'placeholder' =>'メールアドレス',
-											'error' => array(
-												'email' => __('※メールアドレスを正しく入力してください。', true),
-												'isUnique' => __('※そのメールアドレスは既に使用されています', true)))); 
-									?>
-						        </p>
-						      </div>
-						      <div class="modal-footer">
-						      	<?php echo $this ->Form->submit('Sign up', array('type' => 'submit', 'class' => 'btn-custom btn-sign')); ?>
-								<?php echo $this->Form->end(); ?>
-						      </div>
-						    </div><!-- /.modal-content -->
-						  </div><!-- /.modal-dialog -->
-						</div><!-- /.modal -->
+						
 						
 						
 						<div class="auth">
 							<ul style="list-style: none" id="right" style="float: right;">
 								<?php if($user == null) {?>
-									<a href="#loginModal" data-toggle="modal" class="menu-list" style="float:right">Login</a>
-									<a href="#signModal" data-toggle="modal" class="menu-list" style="float:right">Sign up</a>
+									<li>
+										<a href="#loginModal" data-toggle="modal" class="menu-list" style="float:right">Login</a>
+									</li>
+									<li>
+										<a href="#signModal" data-toggle="modal" class="menu-list" style="float:right">Sign up</a>
+									</li>
 								<?php } else { ?>
 									<li class="dropdown" id="menu-user" style="float:right">
 										<a class="dropdown-toggle" data-toggle="dropdown" href="#menu-user">
@@ -167,13 +82,14 @@
 											<span class="caret"></span>
 										</a>
 										<ul class="dropdown-menu">
-											<li><a href="/users/edit"><i class="glyphicon glyphicon-user"> ユーザー編集</i></a></li> 
+											<li><a href="/users/edit"><i class="glyphicon glyphicon-user">　ユーザー編集</i></a></li> 
 											<li><a href="#"><i class="glyphicon glyphicon-star"> お気に入り</i></a></li> 
 											<li><a href="#"><i class="glyphicon glyphicon-wrench"> 設定</i></a></li>
 											<li class="divider"></li>
-											<li><a><i class="glyphicon glyphicon-log-out"></i><?php echo $this->Html->link('ログアウト',array('controller' => 'users','action'=>'logout')); ?></a></li>
+											<li><a href="/users/logout"><i class="glyphicon glyphicon-log-out"></i>　ログアウト</a></li>
 										</ul>
 									</li>
+									
 								<?php }?>
 							</ul>
 				        </div>
@@ -182,6 +98,99 @@
 			</header>
 		</div>
 
+		<!-- ログインモーダル -->
+		<div class="modal fade" id="loginModal">
+		  <div class="modal-dialog">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+		        <h4 class="modal-title">Login</h4>
+		      </div>
+		      <div class="modal-body">
+		        <p>
+		        	<?php echo $this -> Form -> create('User', array('type' => 'post', 'action' => 'login')); ?>
+				    <?php echo $this -> Form -> input('email', array('type' => 'email', 'label' => false, 'class' => 'input_form', 'placeholder' => 'ユーザー名')); ?>
+				    <?php echo $this -> Form -> input('password', array('type' => 'password', 'label' => false, 'class' => 'input_form' , 'placeholder' => 'パスワード' )); ?>
+		        </p>
+		      </div>
+		      <div class="modal-footer">
+		      	<?php echo $this -> Form -> submit('Login', array('type' => 'submit', 'class' => 'btn-a')); ?>
+		    	<?php echo $this -> Form -> end(); ?>
+		      </div>
+		    </div><!-- /.modal-content -->
+		  </div><!-- /.modal-dialog -->
+		</div><!-- /.modal -->
+						
+		
+		<div class="modal fade" id="signModal">
+		  <div class="modal-dialog">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+		        <h4 class="modal-title">Sign up</h4>
+		      </div>
+		      <div class="modal-body">
+		        <p>
+		        	<?php echo $this->Form->create('User', array( 'type'=>'post', 'action'=>'add')); ?>
+					<?php 
+					echo $this->Form->input('name', array(
+						'label' => false,
+						'type'=>'text',
+						'class'=>'input_form',
+						'placeholder' =>'ユーザーID',
+						'error' => array(
+							'isUnique' => __('※そのユーザーIDは既に使われています', true),
+							'custom' => __('※半角英数字のみ使用できます', true),
+							'minLength' => __('※15文字以内で入力してください', true)))); 
+					?>
+					<?php 
+						echo $this->Form->input('nickname', array(
+							'label' => false,
+							'class'=>'input_form',
+							'placeholder' =>'ユーザー名',
+							'error' => array(
+								'maxLength' => __('※30文字以内で入力してください', true)))); 
+					?>
+					<?php 
+						echo $this->Form->input('password',array(
+							'label' => false,
+							'type' => 'password',
+							'class'=>'input_form',
+							'placeholder' =>'パスワード',
+							'error' => array(
+								'notEmpty' => __('※パスワードを入力してください。', true),
+								'between' => __('※6文字以上15文字以内で入力してください', true)))); 
+					?>
+					<?php 
+						echo $this->Form->input('password_check', array(
+							'label' => false, 
+							'type' => 'password',
+							'class'=>'input_form',
+							'placeholder' =>'パスワードの再入力',
+							'error' => array(
+								'notEmpty' => __('※パスワード(再入力)を入力してください。', true),
+								'sameCheck' => __('※パスワード(再入力)がパスワードと異なります。', true)))); 
+					?>
+					<?php 
+						echo $this->Form->input('email', array(
+							'label' => false,
+							'type' => 'email',
+							'class'=>'input_form',
+							'placeholder' =>'メールアドレス',
+							'error' => array(
+								'email' => __('※メールアドレスを正しく入力してください。', true),
+								'isUnique' => __('※そのメールアドレスは既に使用されています', true)))); 
+					?>
+		        </p>
+		      </div>
+		      <div class="modal-footer">
+		      	<?php echo $this ->Form->submit('Sign up', array('type' => 'submit', 'class' => 'btn-a')); ?>
+				<?php echo $this->Form->end(); ?>
+		      </div>
+		    </div><!-- /.modal-content -->
+		  </div><!-- /.modal-dialog -->
+		</div><!-- /.modal -->				
+						
 		
 		<div id="contents">
 			<?php echo $this->fetch('content'); ?>

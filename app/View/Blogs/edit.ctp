@@ -1,5 +1,5 @@
 <?php
-	echo $this->Html->css('blog_view');
+	echo $this->Html->css('diary');
 	echo $this->Html->css('sce_editer/themes/default.min');
 	echo $this->Html->script('sce_editer/jquery.sceditor.bbcode.min');
 	
