@@ -35,22 +35,23 @@ class User extends AppModel {
 	public $validate = array(
 	
 		//ユーザーIDのvalidation
-		'id' => array(
-			
-		),
+		'id' => array(),
 		
 		//ユーザIDのvalidation
 		'name' => array(
 			'isUnique' => array(
 				'rule' => 'isUnique',
 				'required' => true,
+				'message' => '※そのユーザーIDは既に使われています',
 			),
-			//働かない
 			'custom' => array(
 				'rule' => array('custom', '/^[a-z\d]*$/'), 
+				'last' => true,
+				'message' => '※半角英数字のみ使用できます',
             ),
             'maxLength' => array(
 				'rule' => array('maxLength', '15'),
+				'message' => '※15文字以内で入力してください',
 			)
 		),
 		

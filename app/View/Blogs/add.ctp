@@ -1,14 +1,26 @@
 <?php
 	echo $this->Html->css('blog_view');
 	echo $this->Html->css('latest/themes/default.min');
+	echo $this->Html->css('tag/tags');
 	
 	echo $this->Html->script('ckeditor/ckeditor');
+	echo $this->Html->script('tag/tags');
+	
 	
 ?>
 <body>
 	<div id="container">
 		<div id="contents">
 			<div class='form'>
+			<input type="text" id="tags" name="tags" />
+			<script type="text/javascript">
+				$(function() {
+				  $('#tags').tagbox({
+				    url : ["api","blog","bootstrap","carousel","comments","configuration","content","css","database","date","drafts","email","experiment","fancybox","flickr","forum","google","html5","images","installation","jquery","js","json","kirbytext","language","maps","markdown","masonry","metatags","pagination","panel","plugin","releases","rss","search","security","server","tags","thumbnails","toolkit","tutorial","twitter","typography","uri","use case","videos","yaml"], 
+				    lowercase : true
+				  });
+				});
+			</script>
 			<?php echo $this->Form->create('Blog'); ?>
 				<div class="form-group">
 					<?php echo $this->Form->input('title', array(

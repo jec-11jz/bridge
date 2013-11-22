@@ -51,6 +51,7 @@ class AppController extends Controller {
                 //ログインにデフォルトの username ではなく email を使うためここで書き換えています			
         ),
         'DebugKit.Toolbar',
+        'RequestHandler',
         // 'authorize' => array('Controller')
     );
 	
