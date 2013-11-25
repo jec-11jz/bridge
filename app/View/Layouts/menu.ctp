@@ -12,7 +12,9 @@
 		echo $this->Html->css('all');
 		echo $this->Html->css('menu');
 		echo $this->Html->css('fonts');
-		// echo $this->Html->css('bootstrap.min');
+		echo $this->Html->css('dropdown/style4');
+		echo $this->Html->css('dropdown/style4-2');
+		
 	
 		echo $this->Html->script('jquery-1.10.2.min');
 		echo $this->Html->script('jquery.ajaxFrom');
@@ -20,6 +22,9 @@
 		echo $this->Html->script('userAdd');
 		echo $this->Html->script('bootstrap.min');
 		echo $this->Html->script('menu');
+		echo $this->Html->script('dropdown/jquery.dropdown');
+		echo $this->Html->script('dropdown/modernizr.custom.63321');
+		echo $this->Html->script('dropdown/jump');
 		
 		echo $this->fetch('meta');
 		echo $this->fetch('css');
@@ -30,6 +35,11 @@
 		$('.dropdown-toggle').dropdown();
 		$('#loginModal').modal();
 		$('#signModal').modal();
+		$( function() {
+				
+				$( '#cd-dropdown' ).dropdown();
+
+		});
 	</script>
 </head>
 	<body>
@@ -52,11 +62,23 @@
 									<li><a href="#"><i class="glyphicon glyphicon-tags"></i>　タグ編集</a></li>
 								</ul>
 							</li>
-							<!-- <li style="float:left"><?php echo $this->Html->link('テスト(ﾟﾟ;)',array('controller' => 'users','action'=>'test')); ?></li> -->
-							<li style="float:left"><a>Search</a></li>
+							
+							<li style="float:left"><a href="/search/index">Search</a></li>
 							<li style="float:left"><a>Gallery</a></li>
 							<li style="float:left"><a href="/images/index">アップロード</a></li>
 							<li style="float:left"><a>About Us</a></li>
+							
+							<li style="float:left">
+								<div class="fleft">
+									<select onchange="top.location.href=value" name="select"  id="cd-dropdown" class="cd-select select">
+										<option value="-1" selected>Create</option>
+										<option value="../../blogs/index">Diary</option>
+										<option value="../../blogs/index">Movies</option>
+										<option value="../../blogs/index">Tags</option>
+										<option value="4">ABE</option>
+									</select>
+								</div>
+							</li>
 						</ul>
 						
 						<div class="auth">
@@ -75,9 +97,9 @@
 											<span class="caret"></span>
 										</a>
 										<ul class="dropdown-menu">
-											<li><a href="/users/edit"><i class="glyphicon glyphicon-user">　ユーザー編集</i></a></li> 
-											<li><a href="#"><i class="glyphicon glyphicon-star"> お気に入り</i></a></li> 
-											<li><a href="#"><i class="glyphicon glyphicon-wrench"> 設定</i></a></li>
+											<li><a href="/users/edit"><i class="glyphicon glyphicon-user"></i>　ユーザー編集</a></li> 
+											<li><a href="#"><i class="glyphicon glyphicon-star"></i>　お気に入り</a></li> 
+											<li><a href="#"><i class="glyphicon glyphicon-star"></i>　設定</a></li>
 											<li class="divider"></li>
 											<li><a href="/users/logout"><i class="glyphicon glyphicon-log-out"></i>　ログアウト</a></li>
 										</ul>

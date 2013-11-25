@@ -1,0 +1,41 @@
+    //　ーー宣言ーー
+@import "compass";
+
+$col-green:#4ab134;
+$col-limegreen:#38CB7D;
+$col-black5: #313131;$col-black4: #777777;
+
+
+@mixin btn-fade {
+  -webkit-transition: 0.2s;
+  -o-transition: 0.2s;
+  transition: 0.2s;
+  display: inline-block;
+  border-radius: 2px;
+}
+
+@mixin btn{
+  background-color: #313131;
+  text-decoration: none;
+  color: #fff;
+  padding: 0.5em 1em;
+  border: none;
+  
+  float: left;
+}
+
+@mixin btn-size3{
+  font-size: 19px;
+  padding: 10px 24px;
+}
+
+@mixin btn-hover{
+  background-color: $col-green;
+  text-decoration: none;
+  color:#fff;
+}
+
+@mixin mp-clear{
+  margin: 0;
+  padding: 0;
+}

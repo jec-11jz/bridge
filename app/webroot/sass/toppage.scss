@@ -1,5 +1,16 @@
 @import "compass/css3";
 
+@mixin back-x{
+  background-image: url("../img/backgroudImage.png");
+}
+@mixin back-y{
+  background-image: url("../img/background-grays.jpg");
+  background-size: 20%;
+}
+
+@mixin back-gray{
+  background-color: #313131;
+}
 // body{
   // background: #fff url("../img/bridge_bg12.jpg") no-repeat fixed center bottom;
   // background-image: url("../img/bridge_bg12.jpg");
@@ -11,7 +22,7 @@
 // } 
 
 body{
-  background-image: url("../img/backgroudImage.png");
+  @include back-y;
 }
 
 
@@ -28,15 +39,6 @@ a.logo{
   }
 }
 div{
-  .toppage_link{
-    background-color: rgba(255,255,255, 0.92);
-    width: 80%;
-    height: 30%;
-    border-radius: 20px;
-    margin: 50px 0px 0px 50px;
-    float: left;
-    z-index: 30;
-  }
   .logo{
     width: 230px;
     height: 230px;
@@ -67,10 +69,14 @@ div{
   }
 }
 
-#slidr-img{
+div#slidr-img{
+  left: 7%;
+  width: 86%;
+  margin-top:20px;
+  z-index: 900;
   img{
-    // left: 10%;
-    // width: 80%;
-    // margin: -25px 0 0 0;
+    width: 100%;
   }
+    
 }
+

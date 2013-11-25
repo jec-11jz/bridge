@@ -1,0 +1,50 @@
+/* line 13, ../../sass/dropdown/style4-2.scss */
+.fleft {
+  min-width: 0px;
+  margin: -19px 0px -20px 0px; }
+
+/* line 20, ../../sass/dropdown/style4-2.scss */
+.cd-dropdown span {
+  width: 70%;
+  height: 40px;
+  font-size: 19px;
+  font-weight: 200;
+  line-height: 20px;
+  padding: 10px 10px; }
+  /* line 23, ../../sass/dropdown/style4-2.scss */
+  .cd-dropdown span:hover {
+    background-color: #4ab134;
+    text-decoration: none;
+    color: #fff; }
+  /* line 26, ../../sass/dropdown/style4-2.scss */
+  .cd-dropdown span:actice {
+    color: #fff; }
+  /* line 29, ../../sass/dropdown/style4-2.scss */
+  .cd-dropdown span:after {
+    border-left: none;
+    padding: 3px; }
+/* line 37, ../../sass/dropdown/style4-2.scss */
+.cd-dropdown ul li span {
+  width: 70%;
+  height: 40px;
+  font-size: 19px;
+  font-weight: 200;
+  line-height: 20px;
+  padding: 10px 10px;
+  color: #313131; }
+
+/* line 45, ../../sass/dropdown/style4-2.scss */
+.cd-active.cd-dropdown > span {
+  color: #313131; }
+
+/* line 49, ../../sass/dropdown/style4-2.scss */
+.cd-active.cd-dropdown ul li span:hover {
+  background-color: #4ab134;
+  text-decoration: none;
+  color: #fff; }
+
+/* line 53, ../../sass/dropdown/style4-2.scss */
+.cd-active.cd-dropdown > span:hover {
+  background-color: #4ab134;
+  text-decoration: none;
+  color: #fff; }

@@ -6,12 +6,10 @@
 ?>
 	
 <body>
-	<div id#head-all></div>
+	<div id="head-all"></div>
 	<div id="container">
 		<div class="contents">
-		<div id="toppage">
-			<div class='toppage_link'>
-				<div>
+			<div id="toppage">	
 				<script>
 					$(function(){
 						var s = slidr.create('slidr-img',{
@@ -21,15 +19,14 @@
 							fade: true,
 							overflow: true
 						})
-						s.add('h',['one','two','three','one']);
+						s.add('h',['one','two','three','four','five','one']);
 						s.start();
 					});
 				</script>
-				</div>
 			</div>
 		</div>
-		</div>
 	</div>
+	<div id="foot-all"></div>
 </body>
 	
 	 
@@ -37,5 +34,7 @@
 	  <img data-slidr="one" src="../../img/Bridge_photoes/iron-man/iron-man1.jpg">
 	  <img data-slidr="two" src="../../img/Bridge_photoes/iron-man/iron-man2.jpg">
 	  <img data-slidr="three" src="../../img/Bridge_photoes/iron-man/iron-man3.jpg">
+	  <img data-slidr="four" src="../../img/Bridge_photoes/iron-man/time.jpg">
+	  <img data-slidr="five" src="../../img/Bridge_photoes/iron-man/iron-man4.jpg">
 	</div>
 	 

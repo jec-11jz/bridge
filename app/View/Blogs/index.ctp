@@ -2,6 +2,7 @@
 		echo $this->Html->css('diary');
 ?>
 <body>
+	<div id="head-all"></div>
 	<!-- Container -->
 	<div id="container">
 		<!-- Header --><!-- //Header -->
@@ -24,7 +25,8 @@
 		<tr>
 		  	<td><a href=""><?php echo $blog['Blog']['title']; ?></a></td>
 		  	<td>
-		  		<?php echo $this->Html->link("編集",array('controller'=>'blogs','action' => 'edit',$blog['Blog']['id'])); ?> 
+		  		<!-- <a class="btn-a"><?php echo $this->Html->link("編集",array('controller'=>'blogs','action' => 'edit',$blog['Blog']['id'] )); ?> </a> -->
+		 			<a class="btn-a"><a href="/blogs/edit/<?php echo $blog['Blog']['id'] ?>" class="btn-a"> 編集</a> 		
 		  	</td>
 			<td><a><?php echo $blog['Blog']['created'] ?></a></td>
 			<td>

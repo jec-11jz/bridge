@@ -1,43 +1,12 @@
-    //　ーー宣言ーー
+
 @import "compass";
+@import "../sass/my-mixin.scss";
 
 $col-green:#4ab134;
 $col-limegreen:#38CB7D;
 $col-black5: #313131;$col-black4: #777777;
 
 
-
-@mixin btn-fade {
-  -webkit-transition: 0.2s;
-  -o-transition: 0.2s;
-  transition: 0.2s;
-  display: inline-block;
-  border-radius: 2px;
-}
-
-@mixin btn{
-  background-color: #313131;
-  text-decoration: none;
-  color: #fff;
-  padding: 0.5em 1em;
-  border: none;
-  
-  float: left;
-}
-
-@mixin btn-hover{
-  background-color: $col-green;
-  text-decoration: none;
-  color:#fff;
-}
-
-@mixin mp-clear{
-  margin: 0;
-  padding: 0;
-}
-    // ーー宣言終了ーー
-    
-    
 a:hover {
   color: $col-green;
 
@@ -51,8 +20,13 @@ a:hover {
   }
 }
 
-div#head-all{
-  height:40px
+div{
+  #head-all{
+    height:40px
+  }
+  #foot-all{
+    // height:
+  }
 }
 
 div.home_logo{
@@ -60,10 +34,12 @@ div.home_logo{
   background-size:contain;
   position: static;
   width: 120px;
-  height: 86px;
+  height: 80px;
   background-repeat: no-repeat;
-  margin-top: -30px;
-  margin-right: -30px;
+  margin-top: -60px;
+  // margin-right: -30px;
+  background-position-x: -16px;
+  background-position-y: 27px;
 }
 
 #debug-kit-toolbar #panel-tabs {

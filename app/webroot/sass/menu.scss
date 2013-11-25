@@ -15,6 +15,7 @@ a{
 
 .btn-a{
   float: right;
+  @include btn-size3;
 }
 li{
   a{
@@ -47,7 +48,6 @@ header#header{
     width: 100%;
     background: rgba(255,255,255, 0.90);
     padding-top: 20px;
-    padding-bottom: 20px;
     font-size: 19px;
     z-index: 1000;
     // border-bottom: 1px solid $col-black4;
@@ -90,6 +90,9 @@ div{
 div{
   .modal-content{
     z-index:1001;
+    h4{
+      font-size: 22px;
+    }
   }
   .input_form{
     width: 100%;

@@ -48,7 +48,8 @@
 					<script type="text/javascript">  
 						var editor = CKEDITOR.replace('ckeditor');  
 					</script>  
-					<?php echo $this->Form->end('保存');?>
+					<?php echo $this -> Form -> submit('Save', array('type' => 'submit', 'class' => 'btn-a')); ?>
+					<?php echo $this -> Form -> end(); ?>
 				</div>				
 			</div>
 		</div>
