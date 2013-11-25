@@ -12,7 +12,8 @@
 		echo $this->Html->css('all');
 		echo $this->Html->css('menu');
 		echo $this->Html->css('fonts');
-		// echo $this->Html->css('bootstrap.min');
+		echo $this->Html->css('jQuery-Validation-Engine-master/validationEngine.jquery');
+		
 	
 		echo $this->Html->script('jquery-1.10.2.min');
 		echo $this->Html->script('jquery.ajaxFrom');
@@ -20,6 +21,12 @@
 		echo $this->Html->script('userAdd');
 		echo $this->Html->script('bootstrap.min');
 		echo $this->Html->script('menu');
+		//echo $this->Html->script('validation');
+		echo $this->Html->script('jQuery-Validation-Engine-master/languages/jquery.validationEngine-ja');
+		echo $this->Html->script('jQuery-Validation-Engine-master/jquery.validationEngine');
+		
+		
+		
 		
 		echo $this->fetch('meta');
 		echo $this->fetch('css');
@@ -30,7 +37,52 @@
 		$('.dropdown-toggle').dropdown();
 		$('#loginModal').modal();
 		$('#signModal').modal();
+		
+		jQuery(document).ready(function(){
+			// binds form submission and fields to the validation engine
+			jQuery("#loginForm").validationEngine();
+		});
+		jQuery(document).ready(function(){
+			// binds form submission and fields to the validation engine
+			jQuery("#addForm").validationEngine();
+		});
+
 	</script>
+	<!-- <script>
+            
+		// This method is called right before the ajax form validation request
+		// it is typically used to setup some visuals ("Please wait...");
+		// you may return a false to stop the request 
+		function beforeCall(form, options){
+			if (window.console) 
+			console.log("Right before the AJAX form validation call");
+			return true;
+		}
+            
+		// Called once the server replies to the ajax form validation request
+		function ajaxValidationCallback(status, form, json, options){
+			if (window.console) 
+			console.log(status);
+                
+			if (status === true) {
+				alert("the form is valid!");
+				// uncomment these lines to submit the form to form.action
+				// form.validationEngine('detach');
+				// form.submit();
+				// or you may use AJAX again to submit the data
+			}
+		}
+            
+		jQuery(document).ready(function(){
+			jQuery("#addForm").validationEngine({
+				ajaxFormValidation: true,
+				ajaxFormValidationMethod: 'post',
+				onAjaxFormComplete: ajaxValidationCallback
+			});
+		});
+	</script> -->
+
+	
 </head>
 	<body>
 		<div id="container">
@@ -55,7 +107,7 @@
 							<!-- <li style="float:left"><?php echo $this->Html->link('テスト(ﾟﾟ;)',array('controller' => 'users','action'=>'test')); ?></li> -->
 							<li style="float:left"><a>Search</a></li>
 							<li style="float:left"><a>Gallery</a></li>
-							<li style="float:left"><a href="/images/index">アップロード</a></li>
+							<li style="float:left"><a href="/images/index">Upload</a></li>
 							<li style="float:left"><a>About Us</a></li>
 						</ul>
 						
@@ -102,11 +154,20 @@
 					<div class="modal-body">
 						<div id="loginContent" class="container">
 							<?php echo $this -> Form -> create('User', array('type' => 'post', 'action'=>'login', 'id'=>'loginForm')); ?>
-							<?php echo $this -> Form -> input('email', array('type' => 'email', 'label' => false, 'id'=>'email', 'class' => 'input_form form-control', 'placeholder' => 'ユーザー名')); ?>
-							<?php echo $this -> Form -> input('password', array('type' => 'password', 'label' => false, 'id'=>'password', 'class' => 'input_form form-control' , 'placeholder' => 'パスワード' )); ?>
+							<?php echo $this -> Form -> input('email', 
+								array('type' => 'email', 'label' => false, 'id'=>'email', 'name'=>'email', 'error'=>false,
+									'class' => 'input_form form-control validate[required,custom[email]]', 'placeholder' => 'メールアドレス',
+									'data-errormessage-value-missing'=>"*必須です!",
+		   							'data-errormessage-custom-error'=>"*正確なメールアドレスを入力してください",
+		    						'data-errormessage'=>"This is the fall-back error message.")); ?>
+							<?php echo $this -> Form -> input('password', 
+								array('type' => 'password', 'label' => false, 'id'=>'password', 'error'=>false,
+									'class' => 'input_form form-control validate[required,minSize[6],maxSize[15]]', 'name'=>'password',  'placeholder' => 'パスワード',
+									'data-errormessage-value-missing'=>"*必須です!",
+		   							'data-errormessage-custom-error'=>"*パスワードを入力してください")); ?>
 						</div>
 						<div class="modal-footer">
-							<?php echo $this -> Form -> submit('Login', array('type' => 'submit', 'class' => 'btn-a')); ?>
+							<?php echo $this -> Form -> submit('Login', array('type' => 'submit', 'id'=>'submit', 'class' => 'btn-a')); ?>
 							<?php echo $this -> Form -> end(); ?>
 						</div>
 					</div>
@@ -125,12 +186,10 @@
 						<div id="addContent" class="container">
 							<?php echo $this->Form->create('User', array( 'type'=>'post', 'action'=>'add', 'id'=>'addForm')); ?>
 							<?php 
-								echo $this->Form->input('name', array(
-										'label' => false,
-										'type'=>'text',
-										'id'=>'name',
-										'class'=>'input_form form-control',
-										'placeholder' =>'ユーザーID'));
+								echo $this->Form->input('name', 
+									array('label' => false, 'type'=>'text', 'id'=>'name', 'name'=>'name',
+										'class'=>'input_form form-control validate[required]', 'placeholder' =>'ユーザーID',
+										'data-errormessage-value-missing'=>"*必須です!"));
 							?>
 							<?php 
 								echo $this->Form->input('password',array(
@@ -169,6 +228,7 @@
 						<div class="modal-footer">
 							<?php echo $this ->Form->submit('Sign up', array('type' => 'submit', 'class' => 'btn-a')); ?>
 							<?php echo $this->Form->end(); ?>
+							
 						</div>
 					</div>
 				</div><!-- /.modal-content -->
@@ -179,6 +239,7 @@
 			<div id="loginResult" style="display:none;"></div>
 			<?php echo $this->Session->flash('auth'); ?>
 			<?php echo $this->fetch('content'); ?>
+			<?php echo h($addInformation); ?>
 		</div>
 		
 		<footer id="footer">

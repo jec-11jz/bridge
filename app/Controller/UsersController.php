@@ -75,7 +75,9 @@ class UsersController extends AppController {
         	$this->Session->setFlash(__('ログアウトしてください'),'default', array(), 'auth');
         } else {
 	        if($this->request->is('post')) {
-	            $this->User->create();
+	        	// $name = $this->request->data;
+				// $this->set('addInformation', $name);
+	        	$this->User->create();
 	            if ($this->User->save($this->request->data)) {
 					$this->Auth->login();
 					$this->Session->setFlash(__('登録完了です。 (｡･_･｡)ﾉ'),'default', array(), 'auth');
@@ -104,9 +106,10 @@ class UsersController extends AppController {
 	//ユーザーの編集
     public function edit($id = null) {
         $this->User->id = $this->Auth->user('id');
+		$data = $this->User->findById($this->Auth->user('id'));
 		
 		//ログイン中のユーザのIDからのユーザ情報を検索
-        if ($data = $this->User->findById($this->Auth->user('id'))) {
+        if ($data) {
 	        if ($this->request->is('post') || $this->request->is('put')) {
 	            if ($saved_data = $this->User->save($this->data, TRUE, array('nickname', 'email'))) {
 	            	

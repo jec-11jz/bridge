@@ -5,17 +5,15 @@ $(document).ready(function(){
     var password = $('#password').val();
     var confirm = $('#confirm').val();
     var email = $('#email').val();
-    var homeUrl = "http://bridge.com/";
-	console.log(email);
-	console.log(password);
+    var homeUrl = $("#home-logo").attr("href");
+    var action = $("#addForm").attr("action");
 	
     if (email && password && confirm && name) { // values are not empty
       $.ajax({
         type: "POST",
-        dataType: "json",
-        url: "http://bridge.com/users/add", // URL of the Perl script
+        url: action, // URL of the Perl script
         // send username and password as parameters to the Perl script
-        data: "data[User][email]=" + email + "&data[User][password]=" + password, "&data[User][name]=" + name, "&data[User][confirm]=" + confirm;
+        data: "data[User][name]=" + name + "&data[User][password]=" + password +  "&data[User][confirm]=" + confirm + "&data[User][email]=" + email,
         // script call was *not* successful
         error: function(XMLHttpRequest, textStatus, errorThrown) { 
           $('div#addResult').text("responseText: " + XMLHttpRequest.responseText

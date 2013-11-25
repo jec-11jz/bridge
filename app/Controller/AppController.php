@@ -73,6 +73,8 @@ class AppController extends Controller {
 		
 	
 	public function beforeRender(){
+		$this->Auth->loginError = 'ユーザ名もしくはパスワードに誤りがあります';
+		$this->Auth->authError = '管理者としてログインする必要があります';
 		$this->set('user', $this->Auth->user());
 	}
 	
