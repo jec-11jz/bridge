@@ -1,14 +1,4 @@
-<?php $this->Html->scriptStart(array('inline' => false))?>
-	$(function(){
-		$('form').on('submit',function(){
-			event.preventDefault();
-			event.stopPropagation();
-			
-			$.post('#',$(this).serialize(),function(event){
-			console.log(event);
-		})
-	});
-<?php $this->Html->scriptEnd() ?>
+<?php echo h($addInformation); ?>
 <p><?php echo $this->Session->flash('register'); ?></p>
 <p>
 	<?php echo $this -> Form -> create('User', array('type' => 'post', 'action' => 'add')); ?>
