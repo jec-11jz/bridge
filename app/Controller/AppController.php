@@ -51,7 +51,6 @@ class AppController extends Controller {
                 //ログインにデフォルトの username ではなく email を使うためここで書き換えています			
         ),
         'DebugKit.Toolbar',
-        'RequestHandler',
         // 'authorize' => array('Controller')
     );
 	
@@ -64,17 +63,15 @@ class AppController extends Controller {
         // return $result;
     // }
 	public function isAuthorized($user) {
-	    if (isset($user['group_id']) && $user['group_id'] === '2') {
-	        return true;
-	    }
+	    // if (isset($user['group_id']) && $user['group_id'] === '2') {
+	        // return true;
+	    // }
 	    // デフォルトは拒否
 	    return false;
 	}
 		
 	
 	public function beforeRender(){
-		$this->Auth->loginError = 'ユーザ名もしくはパスワードに誤りがあります';
-		$this->Auth->authError = '管理者としてログインする必要があります';
 		$this->set('user', $this->Auth->user());
 	}
 	

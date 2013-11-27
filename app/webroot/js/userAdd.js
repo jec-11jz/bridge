@@ -1,19 +1,25 @@
 $(document).ready(function(){
   $("form#addForm").submit(function() { 
   	// addForm is submitted
-  	var name = $('#name').val();  
-    var password = $('#password').val();
-    var confirm = $('#confirm').val();
-    var email = $('#email').val();
+  	var name = $('#addName').val();  
+    var password = $('#addPassword').val();
+    var confirm = $('#addConfirm').val();
+    var email = $('#addEmail').val();
     var homeUrl = $("#home-logo").attr("href");
     var action = $("#addForm").attr("action");
+    
+    console.log(name);
+    console.log(password);
+    console.log(confirm);
+    console.log(email);
+    
 	
-    if (email && password && confirm && name) { // values are not empty
+    if (email && password && name && confirm) { // values are not empty
       $.ajax({
         type: "POST",
         url: action, // URL of the Perl script
         // send username and password as parameters to the Perl script
-        data: "data[User][name]=" + name + "&data[User][password]=" + password +  "&data[User][confirm]=" + confirm + "&data[User][email]=" + email,
+        data: "data[User][name]=" + name + "&data[User][password]=" + password +  "&data[User][password_check]" + confirm + "&data[User][email]=" + email,
         // script call was *not* successful
         error: function(XMLHttpRequest, textStatus, errorThrown) { 
           $('div#addResult').text("responseText: " + XMLHttpRequest.responseText
@@ -32,7 +38,8 @@ $(document).ready(function(){
           } // if
           else { 
           	// add was successful
-          	location.href = homeUrl;
+          	//location.href = homeUrl;
+          	alert(data);
           } //else
         } // success
       }); // ajax

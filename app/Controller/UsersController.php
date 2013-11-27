@@ -75,8 +75,7 @@ class UsersController extends AppController {
         	$this->Session->setFlash(__('ログアウトしてください'),'default', array(), 'auth');
         } else {
 	        if($this->request->is('post')) {
-	        	// $name = $this->request->data;
-				// $this->set('addInformation', $name);
+				$this->request->data['User']['name'] = strtolower($this->request->data['User']['name']);
 	        	$this->User->create();
 	            if ($this->User->save($this->request->data)) {
 					$this->Auth->login();
@@ -94,6 +93,7 @@ class UsersController extends AppController {
 					if($this->request->is('ajax')) {
 						$this->autoRender = false;
 						$this->layout = false;
+						print "save error!!!!!";
 						return;
 					} else {
 						return $this->redirect($this->Auth->redirectUrl());

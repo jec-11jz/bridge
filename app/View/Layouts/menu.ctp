@@ -20,7 +20,7 @@
 		echo $this->Html->script('jquery-1.10.2.min');
 		echo $this->Html->script('jquery.ajaxFrom');
 		echo $this->Html->script('login');
-		echo $this->Html->script('userAdd');
+		//echo $this->Html->script('userAdd');
 		echo $this->Html->script('bootstrap.min');
 		echo $this->Html->script('menu');
 		echo $this->Html->script('dropdown/jquery.dropdown');
@@ -29,47 +29,27 @@
 		//echo $this->Html->script('validation');
 		echo $this->Html->script('jQuery-Validation-Engine-master/languages/jquery.validationEngine-ja');
 		echo $this->Html->script('jQuery-Validation-Engine-master/jquery.validationEngine');
-		
-		
-		
+
 		
 		echo $this->fetch('meta');
 		echo $this->fetch('css');
 		echo $this->fetch('script');
 	?>
-	
 	<script>
 		$('.dropdown-toggle').dropdown();
 		$('#loginModal').modal();
 		$('#signModal').modal();
-		$( function() {
-				
+		$( function() {		
 				$( '#cd-dropdown' ).dropdown();
-
 		});
-		
-		jQuery(document).ready(function(){
-			// binds form submission and fields to the validation engine
-			jQuery("#loginForm").validationEngine();
-		});
-		jQuery(document).ready(function(){
-			// binds form submission and fields to the validation engine
-			jQuery("#addForm").validationEngine();
-		});
-
 	</script>
-	<!-- <script>
-            
-		// This method is called right before the ajax form validation request
-		// it is typically used to setup some visuals ("Please wait...");
-		// you may return a false to stop the request 
+	<script>
 		function beforeCall(form, options){
 			if (window.console) 
 			console.log("Right before the AJAX form validation call");
 			return true;
 		}
-            
-		// Called once the server replies to the ajax form validation request
+
 		function ajaxValidationCallback(status, form, json, options){
 			if (window.console) 
 			console.log(status);
@@ -82,17 +62,33 @@
 				// or you may use AJAX again to submit the data
 			}
 		}
-            
+	</script>
+	<script>
 		jQuery(document).ready(function(){
-			jQuery("#addForm").validationEngine({
-				ajaxFormValidation: true,
-				ajaxFormValidationMethod: 'post',
-				onAjaxFormComplete: ajaxValidationCallback
-			});
+			// binds form submission and fields to the validation engine
+			jQuery("#loginForm").validationEngine();
 		});
-	</script> -->
+		jQuery(document).ready(function(){
+			// binds form submission and fields to the validation engine
+			jQuery("#addForm").validationEngine();
+		});
 
-	
+	</script>
+	<script type="text/javascript">
+        function submitAfterValidation() {
+        	var invalid = false;
+        	if (document.addForm.name.value.length == 0) {
+                alert("text1");
+                return;
+        	}
+            if (document.addForm.email.value.length == 0) {
+                alert("text2");
+                return;
+            }
+          	document.addForm.submit();
+        }
+    </script>
+
 </head>
 	<body>
 		<div id="container">
@@ -177,13 +173,13 @@
 						<div id="loginContent" class="container">
 							<?php echo $this -> Form -> create('User', array('type' => 'post', 'action'=>'login', 'id'=>'loginForm')); ?>
 							<?php echo $this -> Form -> input('email', 
-								array('type' => 'email', 'label' => false, 'id'=>'email', 'name'=>'email', 'error'=>false,
+								array('type' => 'email', 'label' => false, 'id'=>'loginEmail', 'name'=>'email', 'error'=>false,
 									'class' => 'input_form form-control validate[required,custom[email]]', 'placeholder' => 'メールアドレス',
 									'data-errormessage-value-missing'=>"*必須です!",
 		   							'data-errormessage-custom-error'=>"*正確なメールアドレスを入力してください",
 		    						'data-errormessage'=>"This is the fall-back error message.")); ?>
 							<?php echo $this -> Form -> input('password', 
-								array('type' => 'password', 'label' => false, 'id'=>'password', 'error'=>false,
+								array('type' => 'password', 'label' => false, 'id'=>'loginPassword', 'error'=>false,
 									'class' => 'input_form form-control validate[required,minSize[6],maxSize[15]]', 'name'=>'password',  'placeholder' => 'パスワード',
 									'data-errormessage-value-missing'=>"*必須です!",
 		   							'data-errormessage-custom-error'=>"*パスワードを入力してください")); ?>
@@ -209,46 +205,32 @@
 							<?php echo $this->Form->create('User', array( 'type'=>'post', 'action'=>'add', 'id'=>'addForm')); ?>
 							<?php 
 								echo $this->Form->input('name', 
-									array('label' => false, 'type'=>'text', 'id'=>'name', 'name'=>'name',
-										'class'=>'input_form form-control validate[required]', 'placeholder' =>'ユーザーID',
+									array('label' => false, 'type'=>'text', 'id'=>'addName','required'=>FALSE,
+										'class'=>'input_form form-control validate[required,ajax[ajaxUserCallPhp]', 'placeholder' =>'ユーザーID',
 										'data-errormessage-value-missing'=>"*必須です!"));
 							?>
 							<?php 
 								echo $this->Form->input('password',array(
-										'label' => false,
-										'type' => 'password',
-										'id'=>'password',
-										'class'=>'input_form form-control',
-										'placeholder' =>'パスワード',
-										'error' => array(
-											'notEmpty' => __('※パスワードを入力してください。', true),
-											'between' => __('※6文字以上15文字以内で入力してください', true)))); 
+										'type' => 'password', 'label' => false, 'id'=>'addPassword', 'required'=>FALSE,
+										'class'=>'input_form form-control validate[required,minSize[6],maxSize[15]]', 'placeholder' =>'パスワード', 'error'=>false,
+										'data-errormessage-value-missing'=>"*必須です!",
+		   								'data-errormessage-custom-error'=>"*パスワードを入力してください")); 
 							?>
 							<?php 
 								echo $this->Form->input('password_check', array(
-										'label' => false, 
-										'type' => 'password',
-										'id'=>'confirm',
-										'class'=>'input_form form-control',
-										'placeholder' =>'パスワードの再入力',
-										'error' => array(
-											'notEmpty' => __('※パスワード(再入力)を入力してください。', true),
-											'sameCheck' => __('※パスワード(再入力)がパスワードと異なります。', true)))); 
+										'label' => false,  'type' => 'password', 'id'=>'addConfirm','error'=>false, 'required'=>FALSE,
+										'class'=>'input_form form-control validate[required,equals[addPassword]]', 'placeholder' =>'パスワードの再入力')); 
 							?>
 							<?php 
 								echo $this->Form->input('email', array(
-										'label' => false,
-										'type' => 'email',
-										'id'=>'email',
-										'class'=>'input_form form-control',
-										'placeholder' =>'メールアドレス',
-										'error' => array(
-											'email' => __('※メールアドレスを正しく入力してください。', true),
-											'isUnique' => __('※そのメールアドレスは既に使用されています', true)))); 
+										'label' => false, 'type' => 'email', 'id'=>'addEmail','error'=>FALSE, 'required'=>FALSE,
+										'class'=>'input_form form-control validate[required,custom[email]]', 'placeholder' =>'メールアドレス',
+										'data-errormessage-value-missing'=>"*必須です!",
+			   							'data-errormessage-custom-error'=>"*正確なメールアドレスを入力してください")); 
 							?>
 						</div>
 						<div class="modal-footer">
-							<?php echo $this ->Form->submit('Sign up', array('type' => 'submit', 'class' => 'btn-a')); ?>
+							<?php echo $this ->JS->submit('Sign up', array('type' => 'submit', 'id'=>'submit', 'class' => 'btn-a')); ?>
 							<?php echo $this->Form->end(); ?>
 							
 						</div>
@@ -261,7 +243,6 @@
 			<div id="loginResult" style="display:none;"></div>
 			<?php echo $this->Session->flash('auth'); ?>
 			<?php echo $this->fetch('content'); ?>
-			<?php echo h($addInformation); ?>
 		</div>
 		
 		<footer id="footer">

@@ -1,12 +1,11 @@
-<?php echo h($addInformation); ?>
+<?php
+	//echo $this->Html->script('CopyofuserAdd');
+?>
 <p><?php echo $this->Session->flash('register'); ?></p>
 <p>
-	<?php echo $this -> Form -> create('User', array('type' => 'post', 'action' => 'add')); ?>
+	<?php echo $this -> Form -> create('User', array('type' => 'post', 'action' => 'add', 'id'=>'mainform')); ?>
 	<?php
 		echo $this -> Form -> input('name', array('label' => false, 'type' => 'text', 'class' => 'input_form', 'placeholder' => 'ユーザーID'));
-	?>
-	<?php
-		echo $this -> Form -> input('nickname', array('label' => false, 'class' => 'input_form', 'placeholder' => 'ユーザー名', 'error' => array('maxLength' => __('※30文字以内で入力してください', true))));
 	?>
 	<?php
 		echo $this -> Form -> input('password', array('label' => false, 'type' => 'password', 'class' => 'input_form', 'placeholder' => 'パスワード', 'error' => array('notEmpty' => __('※パスワードを入力してください。', true), 'between' => __('※6文字以上15文字以内で入力してください', true))));
@@ -20,6 +19,6 @@
 </p>
 </div>
 <div class="modal-footer">
-	<?php echo $this -> Form -> submit('Sign up', array('type' => 'submit', 'id' => 'form', 'class' => 'btn-custom btn-sign')); ?>
+	<?php echo $this -> JS -> submit('Sign up', array('type' => 'submit', 'id'=>"register", 'class' => 'btn-custom btn-sign')); ?>
 	<?php echo $this -> Form -> end(); ?>
 </div>
