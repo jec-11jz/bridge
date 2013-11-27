@@ -9,11 +9,8 @@
 		echo $this->Html->css('bootstrap-glyphicons');
 		echo $this->Html->css('bootstrap.min');
 		// echo $this->Html->css('bootstrap-theme.min');
-		echo $this->Html->css('all');
 		echo $this->Html->css('menu');
-		echo $this->Html->css('fonts');
 		echo $this->Html->css('dropdown/style4');
-		echo $this->Html->css('dropdown/style4-2');
 		echo $this->Html->css('jQuery-Validation-Engine-master/validationEngine.jquery');
 		
 	
@@ -100,7 +97,7 @@
 				<div id="navi">
 					<div id='link'>
 						<!-- 各機能へのリンク -->
-						<a id="home-logo" class="home_logo" href="../home/index" style="float:right"><div class="home_logo"></div></a>
+						<a id="home-logo" class="home_logo" href="../home/index" style="float:left"><div class="home_logo"></div></a>
 						<ul style="list-style:none" id="menu" style="float:left">
 							
 							<li class="dropdown" id="menu-create" style="float:left">
@@ -122,7 +119,7 @@
 							
 							<li style="float:left">
 								<div class="fleft">
-									<select onchange="top.location.href=value" name="select"  id="cd-dropdown" class="cd-select select">
+									<select onchange="locations.href=value" name="select"  id="cd-dropdown" class="cd-select select">
 										<option value="-1" selected>Create</option>
 										<option value="../../blogs/index">Diary</option>
 										<option value="../../blogs/index">Movies</option>
@@ -132,12 +129,12 @@
 								</div>
 							</li>
 						</ul>
-						
+						<ul class="list-blank" style="float:right"></ul>
 						<div class="auth">
 							<ul style="list-style: none" id="right" style="float: right;">
 								<?php if($user == null) {?>
 									<li>
-										<a href="#" data-target="#loginModal" data-toggle="modal" class="menu-list" style="float:right">Login</a>
+										<a href="#" data-target="#loginModal" data-toggle="modal" class="menu-list list-login" style="float:right">Login</a>
 									</li>
 									<li>
 										<a href="#" data-target="#signModal" data-toggle="modal" class="menu-list" style="float:right">Sign up</a>
@@ -156,6 +153,7 @@
 											<li><a href="/users/logout"><i class="glyphicon glyphicon-log-out"></i>　ログアウト</a></li>
 										</ul>
 									</li>
+									
 									
 								<?php }?>
 							</ul>
@@ -252,6 +250,17 @@
 							<?php echo $this->Form->end(); ?>
 							
 						</div>
+						<div>
+							ニコチン依存治療、若者も保険対象に　厚労省方針
+							朝日新聞デジタル 11月26日(火)9時30分配信
+							　【高橋健次郎】厚生労働省は、ニコチン依存症の治療を若者の患者も受けられるよう、保険診療の対象を広げる方針を固めた。今の仕組みだと２０代の多くが対象外になるため、保険診療の要件を緩めて早めの治療を促す。来年４月から実施する予定だ。
+							
+							　ニコチン依存症の人が急に禁煙したり、たばこを吸う本数を多く減らしたりすると、頭痛や手のふるえといった症状が出る場合がある。医師が禁煙を助ける薬を使う治療には、公的な医療保険が適用され、患者の負担は３～１割で済む。
+							
+							　今の対象は、１日の平均的な喫煙本数に、たばこを吸っている年数を掛けた値が２００以上の人。１日２０本吸う場合、１０年以上となる。厚労省によると、２０代のニコチン依存症患者で、基準を満たす人は２割に満たず、３０代以上に比べて割合が低い。
+							
+							　早めに治療した方が依存症からぬけやすいため、厚労省は、来年４月の診療報酬改定に合わせてこの基準を緩める案を、１５日の中央社会保険医療協議会に提案した。具体的に対象をどこまで広げるかは、引き続き検討する。
+						</div>
 					</div>
 				</div><!-- /.modal-content -->
 			</div><!-- /.modal-dialog -->
@@ -261,7 +270,6 @@
 			<div id="loginResult" style="display:none;"></div>
 			<?php echo $this->Session->flash('auth'); ?>
 			<?php echo $this->fetch('content'); ?>
-			<?php echo h($addInformation); ?>
 		</div>
 		
 		<footer id="footer">

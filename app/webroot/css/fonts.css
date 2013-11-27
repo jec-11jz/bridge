@@ -1,17 +1,23 @@
+/* line 1, ../sass/fonts.scss */
 body {
-	font-family: 'OpenSans';
-}
+  font-family: 'Lato','Mplus'; }
 
-*.input_form{
-	font-family: Default;
-}
+/* line 5, ../sass/fonts.scss */
+*.input_form {
+  font-family: Default; }
 
-@font-face{
-	font-family: 'Poiret One';
-	src: url('../fonts/PoiretOne-Regular.ttf');
-}
+@font-face {
+  font-family: 'Poiret One';
+  src: url("../fonts/PoiretOne-Regular.ttf"); }
 
-@font-face{
-	font-family: 'OpenSans';
-	src: url('../fonts/OpenSans/OpenSans-Regular.ttf');
-}
+@font-face {
+  font-family: 'OpenSans';
+  src: url("../fonts/OpenSans/OpenSans-Regular.ttf"); }
+
+@font-face {
+  font-family: 'Lato';
+  src: url("../fonts/Lato/Lato-light.ttf"); }
+
+@fonf-face {
+  font-family: 'Mplus';
+  src: url("../fonts/mplus/mplus-1p-regular"); }

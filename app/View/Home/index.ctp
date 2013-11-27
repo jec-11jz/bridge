@@ -29,7 +29,7 @@
 	<div id="foot-all"></div>
 </body>
 	
-	 
+	 <!-- トップページの画像 -->
 	<div id="slidr-img" style="display: inline-block">
 	  <img data-slidr="one" src="../../img/Bridge_photoes/iron-man/iron-man1.jpg">
 	  <img data-slidr="two" src="../../img/Bridge_photoes/iron-man/iron-man2.jpg">
