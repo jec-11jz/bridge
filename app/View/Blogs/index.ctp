@@ -28,7 +28,11 @@
 			  	</td>
 				<td><a><?php echo $blog['Blog']['created']; ?></a></td>
 				<td>
-					<img src="<?php echo $blog['UsedBlogImage'][0]['url']; ?>" width="200px" height="auto">
+					<?php if(isset($blog['UsedBlogImage'][0]['url'])) { ?>
+						<img src="<?php echo $blog['UsedBlogImage'][0]['url']; ?>" width="200px" height="auto">
+					<?php } else { ?>
+						<div>画像なし</div>
+					<?php } ?>
 				</td>
 				<td>
 					<?php echo $this->Form->postLink("削除", array('action' => 'delete',$blog['Blog']['id']),array('confirm' => '本当に削除しますか？')); ?>

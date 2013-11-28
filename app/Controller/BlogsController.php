@@ -42,7 +42,7 @@ class BlogsController extends AppController {
                 //メッセージを出力
                 $this->Session->setFlash('記事を保存しました');
                 // index.phpへリダイレクトBlog
-                $this->redirect(array('controller' => 'blog', 'action' => 'index'));
+                $this->redirect(array('controller' => 'blogs', 'action' => 'index'));
             } else {
                 $this->Session->setFlash('記事を保存できません');
             }

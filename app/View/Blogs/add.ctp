@@ -3,12 +3,10 @@
 	
 	echo $this->Html->css('latest/themes/default.min');
 	echo $this->Html->css('tag/tags');
+	echo $this->Html->css('diary');
 	
 	echo $this->Html->script('ckeditor/ckeditor');
 	echo $this->Html->script('tag/tags');
-	
-	
-	echo $this->Html->css('diary');
 ?>
 <body>
 	<div id="container">
