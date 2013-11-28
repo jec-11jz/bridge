@@ -27,18 +27,22 @@
 			  		<a href="/blogs/edit/<?php echo $blog['Blog']['id'] ?>" class="btn-a"> 編集</a> 		
 			  	</td>
 				<td><a><?php echo $blog['Blog']['created']; ?></a></td>
-				<td>
+				<td width="200px" height="auto">
 					<?php if(isset($blog['UsedBlogImage'][0]['url'])) { ?>
 						<img src="<?php echo $blog['UsedBlogImage'][0]['url']; ?>" width="200px" height="auto">
 					<?php } else { ?>
 						<div>画像なし</div>
+						<?php
+							$len = 100;
+							print(mb_strimwidth($blog['Blog']['content'], 0, $len, "...", "UTF-8") . "<br />");
+						?>
 					<?php } ?>
 				</td>
 				<td>
 					<?php echo $this->Form->postLink("削除", array('action' => 'delete',$blog['Blog']['id']),array('confirm' => '本当に削除しますか？')); ?>
 				</td>
 				<td>
-					<?php echo $blog['Blog']['user_id']; ?>
+					<?php echo $users['User']['name']; ?>
 				</td>
 			</tr>
 		<?php endforeach; ?>

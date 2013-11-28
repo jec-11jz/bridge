@@ -22,13 +22,15 @@ class BlogsController extends AppController {
 	public function index() {
         // Modelから記事一覧を取得 ⇒ Viewへ送る
         $blogs = $this->Blog->findAllByUserId($this->Auth->user('id'));
-		if (!is_array($blogs)) {
+		$users = $this->User->findByName($this->Auth->user('name'));
+		if (!is_array($blogs) && !empty($users)) {
 			// error
 			$this->autoRender = false;
 			print 'not found';
 			return;
 		}
 		$this->set('blogs', $blogs);
+		$this->set('users', $users);
 	}
   
 	 public function add() {
@@ -38,7 +40,13 @@ class BlogsController extends AppController {
             // 新規レコード生成
             $this->Blog->create();
             // フォームから受信したPOSTデータ
-            if ($this->Blog->save($this->request->data)) {
+            $result = $this->Blog->save($this->request->data);
+            if ($result) {
+            	//imgタグのsrcをUsedBlogImageテーブルへ保存
+            	$this->UsedBlogImage->saveFromHtml($this->Auth->user('id'), 
+            		$result['Blog']['id'], 
+            		$result['Blog']['content']
+				);
                 //メッセージを出力
                 $this->Session->setFlash('記事を保存しました');
                 // index.phpへリダイレクトBlog
@@ -50,6 +58,7 @@ class BlogsController extends AppController {
     }
     
     public function edit($id = null) {
+    	
         if (!$id) {
         	throw new NotFoundException(__('Invalid post'));
     	}
@@ -58,9 +67,14 @@ class BlogsController extends AppController {
 	    if (!$post) {
 	        throw new NotFoundException(__('Invalid post'));
 	    }
-	
 	    if ($this->request->is(array('post', 'put'))) {
-	        $this->Blog->id = $id;
+	    	$this->Blog->id = $id;
+			//編集前のUsedBlogImageのデータを削除する
+			$this->UsedBlogImage->deleteAll(array('UsedBlogImage.blog_id'=>$id));
+			//imgタグのsrcをUsedBlogImageテーブルへ保存
+	    	$this->UsedBlogImage->saveFromHtml($this->Auth->user('id'), 
+	    		$id, $this->request->data['Blog']['content']);
+				
 	        if ($this->Blog->save($this->request->data)) {
 	            $this->Session->setFlash(__('Your post has been updated.'));
 	            return $this->redirect(array('action' => 'index'));
