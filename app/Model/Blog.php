@@ -35,35 +35,6 @@ class Blog extends AppModel {
 	public function isOwnedBy($post, $user) {
     	return $this->field('id', array('id' => $post, 'user_id' => $user)) === $post;
 	}
-	
-	// public function getImageFromHtml($htmlText){
-		// $dom = new DOMDocument();
-		// //$doc->loadHTML('<html></html>');
-		// //$doc->loadHTMLFile('/path/to/index.html');
-		// $dom->loadHTML($htmlText);
-		// $els = $dom->getElementsByTagName('img');
-		// $imgSources = array();
-		// foreach ($els as $el) {
-			// array_push($imgSources, $el->getAttribute('src'));
-			// //$el -> getAttribute('name');
-		// }
-		// return $imgSources;
-	// }
-	
-	// public function afterSave($create, $options = array()){
-		// $imgSources = $this->getImageFromHtml($this->data['Blog']['content']);
-		// foreach ($imgSources as $url) {
-			// $UsedBlogImage = ClassRegistry::init('UsedBlogImage');
-			// $UsedBlogImage->create();
-			// $UsedBlogImage->set(
-				// array(
-					// 'blog_id' => $this->data['Blog']['id'],
-					// 'user_id' => $this->data['Blog']['user_id'],
-					// 'url' => $url));
-			// $UsedBlogImage->save();
-		// }			
-		// return true;
-	// }
 
 }
 ?>
