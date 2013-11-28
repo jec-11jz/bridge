@@ -13,9 +13,9 @@ class BlogsController extends AppController {
 	public function beforeFilter()
     {
     	//親クラス（AppController）読み込み
-        parent::beforeFilter();
+        //parent::beforeFilter();
 		//permitted access before login
-        $this->Auth->allow();
+        //$this->Auth->allow();
     }
 	
 	public function index() {
