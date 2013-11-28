@@ -16,26 +16,27 @@
 	    <th>タイトル</th>
 	    <th>操作</th>
 	    <th>作成日時</th>
+	    <th>画像</th>
 	    <th>削除</th>
-	    <th>ユーザ名</th>
+	    <th>ユーザID</th>
 		<?php		
-			foreach($blogs as $blog) :
-		  // レコードデータから記事のidを取得
-		  // Postはモデルクラス名、idはカラム名 ?>
-		<tr>
-		  	<td><a href=""><?php echo $blog['Blog']['title']; ?></a></td>
-		  	<td>
-		  		<!-- <a class="btn-a"><?php echo $this->Html->link("編集",array('controller'=>'blogs','action' => 'edit',$blog['Blog']['id'] )); ?> </a> -->
-		 			<a class="btn-a"><a href="/blogs/edit/<?php echo $blog['Blog']['id'] ?>" class="btn-a"> 編集</a> 		
-		  	</td>
-			<td><a><?php echo $blog['Blog']['created'] ?></a></td>
-			<td>
-				<?php echo $this->Form->postLink("削除", array('action' => 'delete',$blog['Blog']['id']),array('confirm' => '本当に削除しますか？')); ?>
-			</td>
-			<td>
-				<?php echo $blog['Blog']['user_id']; ?>
-			</td>
-		</tr>
+			foreach($blogs as $blog) : ?>
+			<tr>
+			  	<td><a href=""><?php echo $blog['Blog']['title']; ?></a></td>
+			  	<td>
+			  		<a href="/blogs/edit/<?php echo $blog['Blog']['id'] ?>" class="btn-a"> 編集</a> 		
+			  	</td>
+				<td><a><?php echo $blog['Blog']['created']; ?></a></td>
+				<td>
+					<img src="<?php echo $blog['UsedBlogImage'][0]['url']; ?>" width="200px" height="auto">
+				</td>
+				<td>
+					<?php echo $this->Form->postLink("削除", array('action' => 'delete',$blog['Blog']['id']),array('confirm' => '本当に削除しますか？')); ?>
+				</td>
+				<td>
+					<?php echo $blog['Blog']['user_id']; ?>
+				</td>
+			</tr>
 		<?php endforeach; ?>
 		</table>
 		<!-- //Contents -->

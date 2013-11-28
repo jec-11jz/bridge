@@ -1,7 +1,5 @@
 <?php
 	echo $this->Html->css('toppage.css');
-	
-	
 	echo $this->Html->script('slidr/slidr-ck');
 ?>
 	

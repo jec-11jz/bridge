@@ -7,6 +7,7 @@ App::uses('AppController', 'Controller');
  * @property User $User
  */
 class BlogsController extends AppController {
+	public $uses = array('Blog', 'UsedBlogImage', 'User');
 	public $layout = 'menu';
 	
 	
@@ -20,7 +21,14 @@ class BlogsController extends AppController {
 	
 	public function index() {
         // Modelから記事一覧を取得 ⇒ Viewへ送る
-        $this->set('blogs', $this->Blog->find('all'));
+        $blogs = $this->Blog->findAllByUserId($this->Auth->user('id'));
+		if (!is_array($blogs)) {
+			// error
+			$this->autoRender = false;
+			print 'not found';
+			return;
+		}
+		$this->set('blogs', $blogs);
 	}
   
 	 public function add() {
@@ -34,7 +42,7 @@ class BlogsController extends AppController {
                 //メッセージを出力
                 $this->Session->setFlash('記事を保存しました');
                 // index.phpへリダイレクトBlog
-                $this->redirect(array('controller' => 'home', 'action' => 'index'));
+                $this->redirect(array('controller' => 'blog', 'action' => 'index'));
             } else {
                 $this->Session->setFlash('記事を保存できません');
             }
