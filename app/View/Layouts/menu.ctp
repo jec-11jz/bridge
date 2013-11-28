@@ -261,7 +261,6 @@
 			<div id="loginResult" style="display:none;"></div>
 			<?php echo $this->Session->flash('auth'); ?>
 			<?php echo $this->fetch('content'); ?>
-			<?php echo h($addInformation); ?>
 		</div>
 		
 		<footer id="footer">
