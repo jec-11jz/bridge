@@ -1,4 +1,4 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<!DOCTYPE HTML>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -11,48 +11,147 @@
 		// echo $this->Html->css('bootstrap-theme.min');
 		echo $this->Html->css('menu');
 		echo $this->Html->css('dropdown/style4');
-		echo $this->Html->css('jQuery-Validation-Engine-master/validationEngine.jquery');
+		echo $this->Html->css('dropdown/style4-2');
 		
 	
 		echo $this->Html->script('jquery-1.10.2.min');
 		echo $this->Html->script('jquery.ajaxFrom');
-		echo $this->Html->script('login');
-		echo $this->Html->script('userAdd');
 		echo $this->Html->script('bootstrap.min');
 		echo $this->Html->script('menu');
 		echo $this->Html->script('dropdown/jquery.dropdown');
 		echo $this->Html->script('dropdown/modernizr.custom.63321');
 		echo $this->Html->script('dropdown/jump');
-		echo $this->Html->script('jQuery-Validation-Engine-master/languages/jquery.validationEngine-ja');
-		echo $this->Html->script('jQuery-Validation-Engine-master/jquery.validationEngine');
+		echo $this->Html->script('jquery-validation/dist/jquery.validate.min');
+		echo $this->Html->script('jquery-validation/dist/additional-methods.min');
+		echo $this->Html->script('jquery-validation/localization/messages_ja');
 
+		
 		echo $this->fetch('meta');
 		echo $this->fetch('css');
 		echo $this->fetch('script');
 	?>
-	
 	<script>
+		/* for Style */
 		$('.dropdown-toggle').dropdown();
 		$('#loginModal').modal();
 		$('#signModal').modal();
-		$( function() {
-				
+		$( function() {		
 				$( '#cd-dropdown' ).dropdown();
+		});
+	
+		$(function(){
+			/* jquery.validate.js for Bootstrap3 */
+			$.validator.setDefaults({
+				highlight: function(element) {
+					$(element).closest('.form-group').addClass('has-error');
+				},
+				unhighlight: function(element) {
+					$(element).closest('.form-group').removeClass('has-error');
+				},
+				errorElement: 'span',
+				errorClass: 'help-block',
+				errorPlacement: function(error, element) {
+					if(element.parent('.input-group').length) {
+						error.insertAfter(element.parent());
+					} else {
+						error.insertAfter(element);
+					}
+				}
+			});
+			
+			var userLoginFormOptions = {
+				rules: {
+					'data[User][email]': {
+						required: true,
+						email: true
+					},
+					'data[User][password]': {
+						required: true
+					}
+				}
+			};
+			
+			var userAddFormOptions = {
+				rules: {
+					'data[User][name]': {
+						required: true,
+						pattern: '[a-zA-Z0-9_]*',
+						rangelength: [3,30]
+					},
+					'data[User][password]': {
+						required: true,
+						minlength: 6
+					},
+					'data[User][password_check]': {
+						required: true,
+						minlength: 6,
+						equalTo: '#UserAddForm input[name="data[User][password]"]'
+					},
+					'data[User][email]': {
+						required: true,
+						email: true
+					}
+				},
+				messages: {
+					'data[User][name]': {
+						pattern: '使用できるのは半角英数字のみです'
+					}
+				}
+			};
 
+			
+			$('#UserLoginForm').validate(userLoginFormOptions);
+			$('#UserAddForm').validate(userAddFormOptions)
+			$('#UserAddForm').ajaxForm({
+				success: function(data) {
+					if (!data.errors) {
+						// success
+						location.reload();
+						return;
+					}
+					
+					// error
+					$.each(data.errors, function(key, error){
+						console.log('key:'+ key);
+						console.log('error: '+ error);
+						var errorBlock = $('#UserAddForm input[name="data[User]['+ key +']"]');
+						errorBlock.closest('.form-group').addClass('has-error');
+						errorBlock.after('<span class="help-block">'+ error +'</span>');
+					});
+				},
+				error: function(data) {
+					console.log(data);
+					alert('connection error');
+					return;
+				}
+			});
+			
+			$('#UserLoginForm').ajaxForm({
+				dataType: 'json',
+				success: function(data) {
+					if (!data.errors) {
+						// success
+						location.reload();
+						return;
+					}
+					
+					// error
+					$.each(data.errors, function(key, error){
+						$('#UserLoginForm .container').prepend('<div class="form-group has-error"><span class="help-block">'+ error +'</span></div>')
+						$('#UserLoginForm .form-group').addClass('has-error');
+					});
+				},
+				error: function(data) {
+					console.log(data);
+					alert('connection error!!');
+					return;
+				}
+			});
+			
+						
 		});
-		
-		jQuery(document).ready(function(){
-			// binds form submission and fields to the validation engine
-			jQuery("#loginForm").validationEngine();
-		});
-		jQuery(document).ready(function(){
-			// binds form submission and fields to the validation engine
-			jQuery("#addForm").validationEngine();
-		});
-
 	</script>
 
-	
 </head>
 	<body>
 		<div id="container">
@@ -129,6 +228,21 @@
 		<!-- ログインモーダル -->
 		<div class="modal fade" id="loginModal">
   			<div class="modal-dialog">
+				<?php
+					echo $this->Form->create('User', array(
+							'type'=>'post',
+							'action'=>'login',
+							'role' => 'form'
+						)
+					);
+					$this->Form->inputDefaults(array(
+						'format' => array('before', 'label', 'between', 'input', 'error', 'after'),
+						'class' => 'input_form form-control',
+						'id' => null,
+						'div' => 'form-group',
+						'label' => false,
+					));
+				?>
 				<div class="modal-content">
 					<div class="modal-header">
 						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
@@ -136,30 +250,46 @@
 					</div>
 					<div class="modal-body">
 						<div id="loginContent" class="container">
-							<?php echo $this -> Form -> create('User', array('type' => 'post', 'action'=>'login', 'id'=>'loginForm')); ?>
-							<?php echo $this -> Form -> input('email', 
-								array('type' => 'email', 'label' => false, 'id'=>'email', 'name'=>'email', 'error'=>false,
-									'class' => 'input_form form-control validate[required,custom[email]]', 'placeholder' => 'メールアドレス',
-									'data-errormessage-value-missing'=>"*必須です!",
-		   							'data-errormessage-custom-error'=>"*正確なメールアドレスを入力してください",
-		    						'data-errormessage'=>"This is the fall-back error message.")); ?>
-							<?php echo $this -> Form -> input('password', 
-								array('type' => 'password', 'label' => false, 'id'=>'password', 'error'=>false,
-									'class' => 'input_form form-control validate[required,minSize[6],maxSize[15]]', 'name'=>'password',  'placeholder' => 'パスワード',
-									'data-errormessage-value-missing'=>"*必須です!",
-		   							'data-errormessage-custom-error'=>"*パスワードを入力してください")); ?>
+							<?php
+								echo $this->Form->input(
+									'email', 
+									array(
+										'placeholder' => 'メールアドレス'
+									)
+								);
+								echo $this->Form->input('password', 
+									array(
+										'placeholder' => 'パスワード'
+									)
+								);
+							?>
 						</div>
 						<div class="modal-footer">
-							<?php echo $this -> Form -> submit('Login', array('type' => 'submit', 'id'=>'submit', 'class' => 'btn-a btn-right')); ?>
-							<?php echo $this -> Form -> end(); ?>
+							<?php echo $this->Form->submit('Login', array('class' => 'btn-a')); ?>
 						</div>
 					</div>
 				</div><!-- /.modal-content -->
+				<?php echo $this->Form->end(); ?>
 			</div><!-- /.modal-dialog -->
 		</div><!-- /.modal -->
 			
 		<div class="modal fade" id="signModal">
 			<div class="modal-dialog">
+				<?php
+					echo $this->Form->create('User', array(
+							'type'=>'post',
+							'action'=>'add',
+							'role' => 'form'
+						)
+					);
+					$this->Form->inputDefaults(array(
+						'format' => array('before', 'label', 'between', 'input', 'error', 'after'),
+						'class' => 'input_form form-control',
+						'id' => null,
+						'div' => 'form-group',
+						'label' => false,
+					));
+				?>
 				<div class="modal-content">
 					<div class="modal-header">
 						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
@@ -167,54 +297,43 @@
 					</div>
 					<div class="modal-body">
 						<div id="addContent" class="container">
-							<?php echo $this->Form->create('User', array( 'type'=>'post', 'action'=>'add', 'id'=>'addForm')); ?>
 							<?php 
-								echo $this->Form->input('name', 
-									array('label' => false, 'type'=>'text', 'id'=>'name', 'name'=>'name',
-										'class'=>'input_form form-control validate[required]', 'placeholder' =>'ユーザーID',
-										'data-errormessage-value-missing'=>"*必須です!"));
-							?>
-							<?php 
-								echo $this->Form->input('password',array(
-										'label' => false,
+								echo $this->Form->input(
+									'name',
+									array(
+										'placeholder' =>'ユーザーID'
+									)
+								);
+								
+								echo $this->Form->input(
+									'password',
+									array(
+										'placeholder' =>'パスワード'
+									)
+								); 
+
+								echo $this->Form->input(
+									'password_check',
+									array(
 										'type' => 'password',
-										'id'=>'password',
-										'class'=>'input_form form-control',
-										'placeholder' =>'パスワード',
-										'error' => array(
-											'notEmpty' => __('※パスワードを入力してください。', true),
-											'between' => __('※6文字以上15文字以内で入力してください', true)))); 
-							?>
-							<?php 
-								echo $this->Form->input('password_check', array(
-										'label' => false, 
-										'type' => 'password',
-										'id'=>'confirm',
-										'class'=>'input_form form-control',
-										'placeholder' =>'パスワードの再入力',
-										'error' => array(
-											'notEmpty' => __('※パスワード(再入力)を入力してください。', true),
-											'sameCheck' => __('※パスワード(再入力)がパスワードと異なります。', true)))); 
-							?>
-							<?php 
-								echo $this->Form->input('email', array(
-										'label' => false,
-										'type' => 'email',
-										'id'=>'email',
-										'class'=>'input_form form-control',
-										'placeholder' =>'メールアドレス',
-										'error' => array(
-											'email' => __('※メールアドレスを正しく入力してください。', true),
-											'isUnique' => __('※そのメールアドレスは既に使用されています', true)))); 
+										'placeholder' =>'パスワードの再入力'
+									)
+								); 
+
+								echo $this->Form->input(
+									'email', 
+									array(
+										'placeholder' =>'メールアドレス'
+									)
+								); 
 							?>
 						</div>
 						<div class="modal-footer">
-							<?php echo $this ->Form->submit('Sign up', array('type' => 'submit', 'class' => 'btn-a btn-right')); ?>
-							<?php echo $this->Form->end(); ?>
-							
+							<?php echo $this->Form->submit('Sign up', array('class' => 'btn-a')); ?>
 						</div>
-					</div>
+					</div><!-- /.modal-body -->
 				</div><!-- /.modal-content -->
+				<?php echo $this->Form->end(); ?>
 			</div><!-- /.modal-dialog -->
 		</div><!-- /.modal -->
 
