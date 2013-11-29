@@ -37,23 +37,25 @@ a:hover {
   text-decoration: none;
   color: #fff;
   padding: 0.5em 1em;
-  border: none;
-  float: left; }
+  border: none; }
   /* line 19, ../sass/all.scss */
+  .btn-a .btn-right {
+    float: right; }
+  /* line 23, ../sass/all.scss */
   .btn-a:hover {
     background-color: #4ab134;
     text-decoration: none;
     color: #fff; }
 
-/* line 25, ../sass/all.scss */
+/* line 29, ../sass/all.scss */
 div #head-all {
   height: 40px; }
 
-/* line 32, ../sass/all.scss */
+/* line 36, ../sass/all.scss */
 a#home-logo.home_logo {
   padding: 1px 15px 0px 15px; }
 
-/* line 36, ../sass/all.scss */
+/* line 40, ../sass/all.scss */
 div.home_logo {
   background-image: url("../img/Bridge_logo_best.png");
   background-size: 92%;
@@ -62,6 +64,6 @@ div.home_logo {
   height: 39px;
   background-repeat: no-repeat; }
 
-/* line 45, ../sass/all.scss */
+/* line 49, ../sass/all.scss */
 #debug-kit-toolbar #panel-tabs {
   float: left; }

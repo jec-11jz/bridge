@@ -153,7 +153,7 @@
 		   							'data-errormessage-custom-error'=>"*パスワードを入力してください")); ?>
 						</div>
 						<div class="modal-footer">
-							<?php echo $this -> Form -> submit('Login', array('type' => 'submit', 'id'=>'submit', 'class' => 'btn-a')); ?>
+							<?php echo $this -> Form -> submit('Login', array('type' => 'submit', 'id'=>'submit', 'class' => 'btn-a btn-right')); ?>
 							<?php echo $this -> Form -> end(); ?>
 						</div>
 					</div>
@@ -212,7 +212,7 @@
 							?>
 						</div>
 						<div class="modal-footer">
-							<?php echo $this ->Form->submit('Sign up', array('type' => 'submit', 'class' => 'btn-a')); ?>
+							<?php echo $this ->Form->submit('Sign up', array('type' => 'submit', 'class' => 'btn-a btn-right')); ?>
 							<?php echo $this->Form->end(); ?>
 							
 						</div>

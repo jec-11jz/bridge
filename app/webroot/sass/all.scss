@@ -16,6 +16,10 @@ a:hover {
 .btn-a{
   @include btn-fade;
   @include btn;
+  .btn-right{
+    float: right;
+  }
+  
   &:hover{
     @include btn-hover;
   }
