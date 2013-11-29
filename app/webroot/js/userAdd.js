@@ -19,7 +19,7 @@ $(document).ready(function(){
         type: "POST",
         url: action, // URL of the Perl script
         // send username and password as parameters to the Perl script
-        data: "data[User][name]=" + name + "&data[User][password]=" + password +  "&data[User][password_check]" + confirm + "&data[User][email]=" + email,
+        data: "data[User][name]=" + name + "&data[User][password]=" + password +  "&data[User][password_check]=" + confirm + "&data[User][email]=" + email,
         // script call was *not* successful
         error: function(XMLHttpRequest, textStatus, errorThrown) { 
           $('div#addResult').text("responseText: " + XMLHttpRequest.responseText

@@ -4,10 +4,6 @@
 	
 	echo $this->Html->script('slidr/slidr-ck');
 ?>
-	
-<body>
-	<div id="head-all"></div>
-	<div id="container">
 		<div class="contents">
 			<div id="toppage">	
 				<script>
@@ -25,9 +21,6 @@
 				</script>
 			</div>
 		</div>
-	</div>
-	<div id="foot-all"></div>
-</body>
 	
 	 
 	<div id="slidr-img" style="display: inline-block">

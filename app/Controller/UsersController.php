@@ -47,18 +47,19 @@ class UsersController extends AppController {
 	            	$this->Session->setFlash(__('ログイン成功ヽ(ﾟ｀∀´ﾟ)ﾉｳﾋｮ'),'default', array(), 'auth');
 					if($this->request->is('ajax')) {
 						$this->autoRender = false;
-						$this->layout = false;
+						$body['success'] = array(
+							'message' => 'Success!!'
+						);
+						print json_encode($body);
 						return;
-					} else {
-						return $this->redirect($this->Auth->redirectUrl());
 					}
-	                    
+					return $this->redirect($this->Auth->redirectUrl());
 	            } else {
 	            	$this->Session->setFlash(__('メールアドレスまたはパスワードが違います'), 'default', array(), 'auth');
 					if($this->request->is('ajax')) {
 						$this->autoRender = false;
-						$this->layout = false;
-	                	print 'error';
+	                	$body['errors'] = array('name_and_pass' => 'メールアドレスまたはパスワードが違います');
+						print json_encode($body);
 					} else {
 						return $this->redirect($this->Auth->redirectUrl());
 					}
@@ -83,7 +84,10 @@ class UsersController extends AppController {
 					
 					if($this->request->is('ajax')) {
 						$this->autoRender = false;
-						$this->layout = false;
+						$body['success'] = array(
+							'message' => 'Success!!'
+						);
+						print json_encode($body);
 						return;
 					} else {
 						return $this->redirect($this->Auth->redirectUrl());
@@ -92,12 +96,16 @@ class UsersController extends AppController {
 	                $this->Session->setFlash(__('登録に失敗しました（￣□￣；）！！'), 'default', array(), 'auth');
 					if($this->request->is('ajax')) {
 						$this->autoRender = false;
-						$this->layout = false;
-						print "save error!!!!!";
+						if ($this->User->validationErrors) {
+							$body['errors'] = $this->User->validationErrors;
+						} else {
+							$body['errors'] = array('sql' => 'sql error');
+						}
+						print json_encode($body);
 						return;
-					} else {
-						return $this->redirect($this->Auth->redirectUrl());
 					}
+					
+					return $this->redirect($this->Auth->redirectUrl());
 	            }
 	        }
 		}
