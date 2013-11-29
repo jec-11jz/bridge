@@ -27,3 +27,4 @@
 	    <?php endforeach; ?>
 	</table>
 	<hr/>
+</div> <!-- END userList -->
