@@ -25,10 +25,7 @@
 		echo $this->Html->script('dropdown/jump');
 		echo $this->Html->script('jQuery-Validation-Engine-master/languages/jquery.validationEngine-ja');
 		echo $this->Html->script('jQuery-Validation-Engine-master/jquery.validationEngine');
-		
-		
-		
-		
+
 		echo $this->fetch('meta');
 		echo $this->fetch('css');
 		echo $this->fetch('script');

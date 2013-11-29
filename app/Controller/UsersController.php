@@ -135,19 +135,10 @@ class UsersController extends AppController {
 		
 
     }
-	
 	//ログアウト処理
 	public function logout($id = null)
     {
         $this->redirect($this->Auth->logout());
     }
-	
-	public function done() {
-		//ログインが完了した時に表示する(beforefilterで許可していないアクション)
-	}
-	
-	public function test(){
-		$this->layout = "";
-	}
 	
 }

@@ -58,7 +58,6 @@ class BlogsController extends AppController {
     }
     
     public function edit($id = null) {
-    	
         if (!$id) {
         	throw new NotFoundException(__('Invalid post'));
     	}
@@ -109,11 +108,11 @@ class BlogsController extends AppController {
             throw new NotFoundException(__('Invalid post'));
         }
 
-        $post = $this->Blog->findById($id);
-        if (!$post) {
+        $blog = $this->Blog->findById($id);
+        if (!$blog) {
             throw new NotFoundException(__('Invalid post'));
         }
-        $this->set('post', $post);
+        $this->set('blog', $blog);
     }
     
     public function delete($id = null) {
