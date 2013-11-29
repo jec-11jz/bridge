@@ -1,0 +1,152 @@
+@import "my-mixin.scss";
+@import "compass/css3";
+@import "compass/css3/transform";
+@import "compass/css3/user-interface";
+@mixin d-span{
+  width: 70%;
+  height: 40px;
+  font-size:19px;
+  font-weight: 200;
+  line-height: 20px;
+  padding: 10px 10px;
+}
+@mixin d-transition{
+  @include transition-property(all);
+  @include transition-duration(0.2s);
+  @include transition-timing-function(linear);
+  @include transition-delay(0s);
+}
+
+
+.fleft {
+  min-width: 0px;
+  margin: -20px 0px -20px 0px;
+}
+.cd-select {
+  border: 1px solid #ddd;
+}
+
+.cd-dropdown,
+.cd-select {
+  position: relative;
+  width: 300px;
+  margin: 20px auto;
+  display: block;
+}
+.cd-dropdown > span,
+.cd-dropdown ul li span {
+  -webkit-backface-visibility: hidden;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  @include user-select(none);
+}
+
+
+.cd-dropdown {
+  @include perspective( 800px );
+  span {
+    height: 60px;
+    line-height: 60px;
+    background: #fff;
+    display: block;
+    position: relative;
+    cursor: pointer;
+    margin: -10px 0px 0px 0px;
+    @include d-span;
+    color: $col-black5;
+    
+    &:hover{
+      @include btn-hover;
+    }
+  }
+  
+  & > span{
+    @include transform-style( preserve-3d );
+    @include transform-origin(50% 0%);
+    
+    -webkit-transition: -webkit-transform .3s;
+    -moz-transition: -moz-transform .3s;
+    -o-transition: -o-transform .3s;
+    -ms-transition: -ms-transform .3s;
+    transition: transform .3s;
+    
+    &:active{
+      @include transform(rotateX(60deg));
+      color:#fff;
+    }
+    &:after{
+      content: '\25BC';
+      position: absolute;
+      right: 0px;
+      top: 15%;
+      width: 50px;
+      text-align: center;
+      font-size: 12px;
+      padding: 3px;
+      height: 70%;
+      line-height: 24px;
+    }
+    &:hover{
+      @include btn-hover;
+    }
+  }
+  
+  ul{
+    position: absolute;
+    top: 0px;
+    margin-top:10px;
+    width: 100%;
+    list-style-type: none;
+    padding: 0;
+    display: block;
+    li{
+      position: absolute;
+      width: 100%;
+      display: block;
+      span{
+        background: #fff;
+        line-height: 60px;
+        display: block;
+        cursor: pointer;
+        @include d-span;
+        color: $col-black5;
+      }
+    }
+  }
+}
+
+
+.cd-dropdown > span,
+.cd-dropdown ul li:nth-last-child(-n+3) span {
+  box-shadow: 0 1px 1px rgba(0,0,0,0.1);
+}
+.cd-active.cd-dropdown > span,
+.cd-active.cd-dropdown ul li span {
+  box-shadow: 0 1px 1px rgba(0,0,0,0.1);
+}
+
+
+.cd-active.cd-dropdown{
+  & > span{
+    color: $col-black5;
+    &:hover{
+      @include btn-hover;
+    }
+    &:after{
+      content: '\25B2';
+    }
+  }
+  ul{
+    li{
+      span{
+        @include d-transition;
+        &:hover{
+          @include btn-hover;
+        }
+      }
+    }
+  }
+}
+
+
+

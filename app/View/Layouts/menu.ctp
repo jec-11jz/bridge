@@ -9,11 +9,8 @@
 		echo $this->Html->css('bootstrap-glyphicons');
 		echo $this->Html->css('bootstrap.min');
 		// echo $this->Html->css('bootstrap-theme.min');
-		echo $this->Html->css('all');
 		echo $this->Html->css('menu');
-		echo $this->Html->css('fonts');
 		echo $this->Html->css('dropdown/style4');
-		echo $this->Html->css('dropdown/style4-2');
 		echo $this->Html->css('jQuery-Validation-Engine-master/validationEngine.jquery');
 		
 	
@@ -26,7 +23,6 @@
 		echo $this->Html->script('dropdown/jquery.dropdown');
 		echo $this->Html->script('dropdown/modernizr.custom.63321');
 		echo $this->Html->script('dropdown/jump');
-		//echo $this->Html->script('validation');
 		echo $this->Html->script('jQuery-Validation-Engine-master/languages/jquery.validationEngine-ja');
 		echo $this->Html->script('jQuery-Validation-Engine-master/jquery.validationEngine');
 		
@@ -58,39 +54,6 @@
 		});
 
 	</script>
-	<!-- <script>
-            
-		// This method is called right before the ajax form validation request
-		// it is typically used to setup some visuals ("Please wait...");
-		// you may return a false to stop the request 
-		function beforeCall(form, options){
-			if (window.console) 
-			console.log("Right before the AJAX form validation call");
-			return true;
-		}
-            
-		// Called once the server replies to the ajax form validation request
-		function ajaxValidationCallback(status, form, json, options){
-			if (window.console) 
-			console.log(status);
-                
-			if (status === true) {
-				alert("the form is valid!");
-				// uncomment these lines to submit the form to form.action
-				// form.validationEngine('detach');
-				// form.submit();
-				// or you may use AJAX again to submit the data
-			}
-		}
-            
-		jQuery(document).ready(function(){
-			jQuery("#addForm").validationEngine({
-				ajaxFormValidation: true,
-				ajaxFormValidationMethod: 'post',
-				onAjaxFormComplete: ajaxValidationCallback
-			});
-		});
-	</script> -->
 
 	
 </head>
@@ -100,7 +63,7 @@
 				<div id="navi">
 					<div id='link'>
 						<!-- 各機能へのリンク -->
-						<a id="home-logo" class="home_logo" href="../home/index" style="float:right"><div class="home_logo"></div></a>
+						<a id="home-logo" class="home_logo" href="../home/index" style="float:left"><div class="home_logo"></div></a>
 						<ul style="list-style:none" id="menu" style="float:left">
 							
 							<li class="dropdown" id="menu-create" style="float:left">
@@ -122,7 +85,7 @@
 							
 							<li style="float:left">
 								<div class="fleft">
-									<select onchange="top.location.href=value" name="select"  id="cd-dropdown" class="cd-select select">
+									<select onchange="locations.href=value" name="select"  id="cd-dropdown" class="cd-select select">
 										<option value="-1" selected>Create</option>
 										<option value="../../blogs/index">Diary</option>
 										<option value="../../blogs/index">Movies</option>
@@ -132,12 +95,12 @@
 								</div>
 							</li>
 						</ul>
-						
+						<ul class="list-blank" style="float:right"></ul>
 						<div class="auth">
 							<ul style="list-style: none" id="right" style="float: right;">
 								<?php if($user == null) {?>
 									<li>
-										<a href="#" data-target="#loginModal" data-toggle="modal" class="menu-list" style="float:right">Login</a>
+										<a href="#" data-target="#loginModal" data-toggle="modal" class="menu-list list-login" style="float:right">Login</a>
 									</li>
 									<li>
 										<a href="#" data-target="#signModal" data-toggle="modal" class="menu-list" style="float:right">Sign up</a>
@@ -156,6 +119,7 @@
 											<li><a href="/users/logout"><i class="glyphicon glyphicon-log-out"></i>　ログアウト</a></li>
 										</ul>
 									</li>
+									
 									
 								<?php }?>
 							</ul>

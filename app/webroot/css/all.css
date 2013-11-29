@@ -1,8 +1,32 @@
-/* line 10, ../sass/all.scss */
+/* line 1, ../sass/fonts.scss */
+body {
+  font-family: 'Lato','Mplus'; }
+
+/* line 5, ../sass/fonts.scss */
+*.input_form {
+  font-family: Default; }
+
+@font-face {
+  font-family: 'Poiret One';
+  src: url("../fonts/PoiretOne-Regular.ttf"); }
+
+@font-face {
+  font-family: 'OpenSans';
+  src: url("../fonts/OpenSans/OpenSans-Regular.ttf"); }
+
+@font-face {
+  font-family: 'Lato';
+  src: url("../fonts/Lato/Lato-light.ttf"); }
+
+@fonf-face {
+  font-family: 'Mplus';
+  src: url("../fonts/mplus/mplus-1p-regular"); }
+
+/* line 11, ../sass/all.scss */
 a:hover {
   color: #4ab134; }
 
-/* line 15, ../sass/all.scss */
+/* line 16, ../sass/all.scss */
 .btn-a {
   -webkit-transition: 0.2s;
   -o-transition: 0.2s;
@@ -15,27 +39,28 @@ a:hover {
   padding: 0.5em 1em;
   border: none;
   float: left; }
-  /* line 18, ../sass/all.scss */
+  /* line 19, ../sass/all.scss */
   .btn-a:hover {
     background-color: #4ab134;
     text-decoration: none;
     color: #fff; }
 
-/* line 24, ../sass/all.scss */
+/* line 25, ../sass/all.scss */
 div #head-all {
   height: 40px; }
 
 /* line 32, ../sass/all.scss */
+a#home-logo.home_logo {
+  padding: 1px 15px 0px 15px; }
+
+/* line 36, ../sass/all.scss */
 div.home_logo {
-  background-image: url("../img/Bridge_cool.png");
-  background-size: contain;
+  background-image: url("../img/Bridge_logo_best.png");
+  background-size: 92%;
   position: static;
-  width: 120px;
-  height: 80px;
-  background-repeat: no-repeat;
-  margin-top: -60px;
-  background-position-x: -16px;
-  background-position-y: 27px; }
+  width: 78px;
+  height: 39px;
+  background-repeat: no-repeat; }
 
 /* line 45, ../sass/all.scss */
 #debug-kit-toolbar #panel-tabs {
