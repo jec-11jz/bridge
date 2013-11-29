@@ -21,7 +21,8 @@
 		<?php		
 			foreach($blogs as $blog) :
 		  // レコードデータから記事のidを取得
-		  // Postはモデルクラス名、idはカラム名 ?>
+		  // Postはモデルクラス名、idはカラム名 
+		?>
 		<tr>
 		  	<td><a href=""><?php echo $blog['Blog']['title']; ?></a></td>
 		  	<td>
