@@ -19,8 +19,7 @@
 	    <th>画像</th>
 	    <th>削除</th>
 	    <th>ユーザID</th>
-		<?php		
-			foreach($blogs as $blog) : ?>
+		<?php foreach($blogs as $blog) : ?>
 			<tr>
 			  	<td><a href=""><?php echo $blog['Blog']['title']; ?></a></td>
 			  	<td>
