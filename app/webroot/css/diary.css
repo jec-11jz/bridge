@@ -202,7 +202,7 @@ div .modal-footer {
 
 /* line 3, ../sass/diary.scss */
 body {
-  background-image: url("../img/backgroudImage.png"); }
+  background: #cecece url("../img/background-2.png"); }
 
 /* line 7, ../sass/diary.scss */
 th {

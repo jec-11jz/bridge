@@ -1,7 +1,7 @@
 @import "../sass/menu.scss";
 
 body{
-  background-image: url("../img/backgroudImage.png");
+  @include back-z;
 }
 
 th {

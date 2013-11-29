@@ -114,7 +114,7 @@
 										<ul class="dropdown-menu">
 											<li><a href="/users/edit"><i class="glyphicon glyphicon-user"></i>　ユーザー編集</a></li> 
 											<li><a href="#"><i class="glyphicon glyphicon-star"></i>　お気に入り</a></li> 
-											<li><a href="#"><i class="glyphicon glyphicon-star"></i>　設定</a></li>
+											<li><a href="#"><i class="glyphicon glyphicon-wrench"></i>　設定</a></li>
 											<li class="divider"></li>
 											<li><a href="/users/logout"><i class="glyphicon glyphicon-log-out"></i>　ログアウト</a></li>
 										</ul>
@@ -143,7 +143,7 @@
 							<?php echo $this -> Form -> input('email', 
 								array('type' => 'email', 'label' => false, 'id'=>'email', 'name'=>'email', 'error'=>false,
 									'class' => 'input_form form-control validate[required,custom[email]]', 'placeholder' => 'メールアドレス',
-									'data-errormessage-value-missing'=>"*必須です!",
+									'data-errormessage-value-missing'=>"*必須でしゅ!",
 		   							'data-errormessage-custom-error'=>"*正確なメールアドレスを入力してください",
 		    						'data-errormessage'=>"This is the fall-back error message.")); ?>
 							<?php echo $this -> Form -> input('password', 
@@ -175,7 +175,7 @@
 								echo $this->Form->input('name', 
 									array('label' => false, 'type'=>'text', 'id'=>'name', 'name'=>'name',
 										'class'=>'input_form form-control validate[required]', 'placeholder' =>'ユーザーID',
-										'data-errormessage-value-missing'=>"*必須です!"));
+										'data-errormessage-value-missing'=>"*必須でしゅ!"));
 							?>
 							<?php 
 								echo $this->Form->input('password',array(

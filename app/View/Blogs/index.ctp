@@ -1,6 +1,16 @@
 <?php
 		echo $this->Html->css('diary');
+		echo $this->Html->css('swipebox/style');
+		
+		echo $this->Html->script('swipebox/jquery.swipebox');
+		echo $this->Html->script('swipebox/jquery-2.0.3.min');
 ?>
+
+<script>
+	jQuery(function($) {
+	$(".swipebox").swipebox();
+	});
+</script>
 <body>
 	<div id="head-all"></div>
 	<!-- Container -->
@@ -38,7 +48,7 @@
 					<?php } ?>
 				</td>
 				<td>
-					<?php echo $this->Form->postLink("削除", array('action' => 'delete',$blog['Blog']['id']),array('confirm' => '本当に削除しますか？')); ?>
+					<a class="btn-a"><?php echo $this->Form->postLink("削除", array('action' => 'delete',$blog['Blog']['id']),array('confirm' => '本当に削除しますか？')); ?></a>
 				</td>
 				<td>
 					<?php echo $users['User']['name']; ?>
@@ -46,6 +56,10 @@
 			</tr>
 		<?php endforeach; ?>
 		</table>
+		
+		<a href="/home/index" class="swipebox" title="My Caption">
+		<img src="../../img/1/1.jpg" alt="image">
+		</a>
 		<!-- //Contents -->
 
 		<!-- footer --><!-- //footer -->

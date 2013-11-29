@@ -1,4 +1,5 @@
 @import "compass/css3";
+@import "_my-mixin.scss";
 
 @mixin back-x{
   background-image: url("../img/backgroudImage.png");
@@ -7,22 +8,11 @@
   background-image: url("../img/background-grays.jpg");
   background-size: 20%;
 }
-@mixin back-z{
-  background: #cecece url("../img/background-2.png");
-}
+
 
 @mixin back-gray{
   background-color: #313131;
 }
-// body{
-  // background: #fff url("../img/bridge_bg12.jpg") no-repeat fixed center bottom;
-  // background-image: url("../img/bridge_bg12.jpg");
-  // background-position-x: 0%;
-  // background-position-y: 0%;
-  // background-size:cover;
-  // background-attachment: fixed;
-  // background-origin: initial;   
-// } 
 
 body{
   @include back-z;
