@@ -58,7 +58,6 @@ class BlogsController extends AppController {
     }
     
     public function edit($id = null) {
-    	
         if (!$id) {
         	throw new NotFoundException(__('Invalid post'));
     	}
