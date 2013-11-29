@@ -1,7 +1,7 @@
 $(document).ready(function(){
   $("form#loginForm").submit(function() { // loginForm is submitted
-    var email = $('#email').val(); // get username
-    var password = $('#password').val(); // get password
+    var email = $('#loginEmail').val(); // get username
+    var password = $('#loginPassword').val(); // get password
     var homeUrl = $("#home-logo").attr("href");
     var action = $("#loginForm").attr("action");
     
