@@ -115,7 +115,7 @@
 								</ul>
 							</li>
 							
-							<li style="float:left"><a href="/search/index">Search</a></li>
+							<li style="float:left"><a href="/searches/index">Search</a></li>
 							<li style="float:left"><a>Gallery</a></li>
 							<li style="float:left"><a href="/images/index">Upload</a></li>
 							<li style="float:left"><a>About Us</a></li>
