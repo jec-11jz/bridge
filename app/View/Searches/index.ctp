@@ -14,11 +14,11 @@
 				 ?>
 				 <hr size="5" />
 				<table class="table table-hover">
-					<tr>
 						<?php foreach($blogs as $blog) : ?>
-							<tr>
-								<td>title : <?php echo $blog['Blog']['title']; ?></td>
-							</tr>
+						<tr>
+							<td>title : <?php echo $blog['Blog']['title']; ?></td>
+						</tr>
+						<tr>
 							<td width="200px" height="auto">
 							<?php if(isset($blog['UsedBlogImage'][0]['url'])) { ?>
 								<img src="<?php echo $blog['UsedBlogImage'][0]['url']; ?>" width="200px" height="auto">
@@ -28,12 +28,13 @@
 								$len = 100;
 								print(mb_strimwidth($blog['Blog']['content'], 0, $len, "...", "UTF-8") . "<br />");
 							?>
-						<?php } ?>
+							<?php } ?>
 						</td>
 						<hr />
 					</tr>
+					<?php endforeach; ?>
 				</table>
-				<?php endforeach; ?>
+				
 			</div>
 		</div>
 	</div>
