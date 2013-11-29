@@ -11,11 +11,11 @@
 			    array('action' => 'index'));
 		?>
 		<hr />
-		<h1><?php echo h($post['Post']['title']); ?></h1>
+		<h1><?php echo h($blog['Blog']['title']); ?></h1>
 
-		<p><small>Created: <?php echo $post['Post']['created']; ?></small></p>
+		<p><small>Created: <?php echo $blog['Blog']['created']; ?></small></p>
 		
-		<p><?php echo h($post['Post']['body']); ?></p>
+		<p><?php echo $blog['Blog']['content']; ?></p>
 		</div>
 		<!-- //Contents -->
 

@@ -1,7 +1,4 @@
 <?php
-	// echo $this->Html->css('blog_view');
-	
-	echo $this->Html->css('latest/themes/default.min');
 	echo $this->Html->css('tag/tags');
 	echo $this->Html->css('diary');
 	
@@ -16,7 +13,10 @@
 			<script type="text/javascript">
 				$(function() {
 				  $('#tags').tagbox({
-				    url : ["api","blog","bootstrap","carousel","comments","configuration","content","css","database","date","drafts","email","experiment","fancybox","flickr","forum","google","html5","images","installation","jquery","js","json","kirbytext","language","maps","markdown","masonry","metatags","pagination","panel","plugin","releases","rss","search","security","server","tags","thumbnails","toolkit","tutorial","twitter","typography","uri","use case","videos","yaml"], 
+				    url : ["api","blog","bootstrap","carousel","comments","configuration","content","css","database",
+					    "date","drafts","email","experiment","fancybox","flickr","forum","google","html5","images","installation","jquery","js","json","kirbytext",
+					    "language","maps","markdown","masonry","metatags","pagination","panel","plugin","releases","rss","search","security","server","tags",
+					    "thumbnails","toolkit","tutorial","twitter","typography","uri","use case","videos","yaml"], 
 				    lowercase : true
 				  });
 				});

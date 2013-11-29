@@ -21,7 +21,7 @@
 	    <th>ユーザID</th>
 		<?php foreach($blogs as $blog) : ?>
 			<tr>
-			  	<td><a href=""><?php echo $blog['Blog']['title']; ?></a></td>
+			  	<td><a href="/blogs/view/<?php echo $blog['Blog']['id'] ?>"><?php echo $blog['Blog']['title']; ?></a></td>
 			  	<td>
 			  		<a href="/blogs/edit/<?php echo $blog['Blog']['id'] ?>" class="btn-a"> 編集</a> 		
 			  	</td>
