@@ -23,10 +23,19 @@ body {
   src: url("../fonts/mplus/mplus-1p-regular"); }
 
 /* line 11, ../sass/all.scss */
+#contents {
+  margin-top: 40px; }
+
+/* line 15, ../sass/all.scss */
+.nav-brand > img {
+  width: 78px;
+  height: 39px; }
+
+/* line 21, ../sass/all.scss */
 a:hover {
   color: #4ab134; }
 
-/* line 16, ../sass/all.scss */
+/* line 26, ../sass/all.scss */
 .btn-a {
   -webkit-transition: 0.2s;
   -o-transition: 0.2s;
@@ -38,33 +47,20 @@ a:hover {
   color: #fff;
   padding: 0.5em 1em;
   border: none; }
-  /* line 19, ../sass/all.scss */
+  /* line 29, ../sass/all.scss */
   .btn-a .btn-right {
     float: right; }
-  /* line 23, ../sass/all.scss */
+  /* line 33, ../sass/all.scss */
   .btn-a:hover {
     background-color: #4ab134;
     text-decoration: none;
     color: #fff; }
 
-/* line 29, ../sass/all.scss */
+/* line 39, ../sass/all.scss */
 div #head-all {
   height: 40px; }
 
-/* line 36, ../sass/all.scss */
-a#home-logo.home_logo {
-  padding: 1px 15px 0px 15px; }
-
-/* line 40, ../sass/all.scss */
-div.home_logo {
-  background-image: url("../img/Bridge_logo_best.png");
-  background-size: 92%;
-  position: static;
-  width: 78px;
-  height: 39px;
-  background-repeat: no-repeat; }
-
-/* line 49, ../sass/all.scss */
+/* line 48, ../sass/all.scss */
 #debug-kit-toolbar #panel-tabs {
   float: left; }
 
@@ -79,38 +75,12 @@ p {
 
 /* line 10, ../sass/menu.scss */
 a {
-  display: block;
-  padding: 10px;
   color: #000; }
 
 /* line 16, ../sass/menu.scss */
 .btn-a {
   font-size: 19px;
   padding: 10px 24px; }
-
-/* line 20, ../sass/menu.scss */
-li a {
-  -webkit-transition: 0.2s;
-  -o-transition: 0.2s;
-  transition: 0.2s;
-  display: inline-block;
-  border-radius: 2px;
-  margin: 0 1px 0 0; }
-  /* line 25, ../sass/menu.scss */
-  li a:hover, li a:focus, li a:active {
-    background-color: #4ab134;
-    text-decoration: none;
-    color: #fff; }
-  /* line 28, ../sass/menu.scss */
-  li a .menu-list {
-    @iclude btn-fade; }
-    /* line 30, ../sass/menu.scss */
-    li a .menu-list:hover, li a .menu-list:focus, li a .menu-list:active {
-      @iclude btn-hover; }
-
-/* line 38, ../sass/menu.scss */
-ul.list-blank {
-  width: 40px; }
 
 /* line 43, ../sass/menu.scss */
 ul #menu {
@@ -121,84 +91,28 @@ ul #right {
 
 /* line 51, ../sass/menu.scss */
 header#header {
+  margin: 0;
+  padding: 0;
   position: fixed;
   width: 100%;
+  height: 40px;
   background: white;
-  padding-top: 20px;
   font-size: 19px;
   z-index: 1000;
   -webkit-box-shadow: 0px 0px 5px #333333;
   -moz-box-shadow: 0px 0px 5px #333333;
   box-shadow: 0px 0px 5px #333333; }
 
-/* line 63, ../sass/menu.scss */
+/* line 65, ../sass/menu.scss */
 div #singModal, div #loginModal {
   z-index: 2; }
-/* line 66, ../sass/menu.scss */
+/* line 68, ../sass/menu.scss */
 div #navi {
   margin: -30px 0px 0px 0px; }
 
-/* line 72, ../sass/menu.scss */
-.dropdown-menu {
-  margin: 0 0 0 -5px;
-  min-width: 0px;
-  font-size: 16px; }
-  /* line 77, ../sass/menu.scss */
-  .dropdown-menu .divider {
-    margin: 4px 0;
-    border-bottom: 1px solid #777777; }
-  /* line 81, ../sass/menu.scss */
-  .dropdown-menu li > a {
-    margin: 0;
-    padding: 5px 10px 5px 10px; }
-    /* line 85, ../sass/menu.scss */
-    .dropdown-menu li > a:hover, .dropdown-menu li > a:focus, .dropdown-menu li > a:active {
-      background-color: #4ab134;
-      text-decoration: none;
-      color: #fff; }
-
-/* line 91, ../sass/menu.scss */
+/* line 94, ../sass/menu.scss */
 .container {
   min-height: 100%; }
-
-/* line 96, ../sass/menu.scss */
-div .modal-content {
-  z-index: 1001; }
-  /* line 98, ../sass/menu.scss */
-  div .modal-content h4 {
-    font-size: 22px; }
-/* line 102, ../sass/menu.scss */
-div .input_form {
-  width: 100%;
-  margin-bottom: 10px; }
-/* line 106, ../sass/menu.scss */
-div .modal {
-  width: 35%;
-  left: 54%;
-  display: none; }
-/* line 111, ../sass/menu.scss */
-div .modal-body {
-  margin: 0;
-  padding: 0; }
-/* line 114, ../sass/menu.scss */
-div .modal-dialog {
-  width: 30%;
-  margin: 0;
-  padding: 0;
-  margin-top: 40px;
-  left: 35%; }
-/* line 120, ../sass/menu.scss */
-div .container {
-  width: 100%;
-  padding: 15px 15px 0 15px; }
-/* line 124, ../sass/menu.scss */
-div .modal-footer {
-  padding: 15px; }
-
-/* line 130, ../sass/menu.scss */
-.modal-body {
-  margin: 0;
-  padding: 0; }
 
 /* line 3, ../sass/diary.scss */
 body {

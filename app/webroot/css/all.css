@@ -23,10 +23,19 @@ body {
   src: url("../fonts/mplus/mplus-1p-regular"); }
 
 /* line 11, ../sass/all.scss */
+#contents {
+  margin: 40px; }
+
+/* line 15, ../sass/all.scss */
+.nav-brand > img {
+  width: 78px;
+  height: 39px; }
+
+/* line 21, ../sass/all.scss */
 a:hover {
   color: #4ab134; }
 
-/* line 16, ../sass/all.scss */
+/* line 26, ../sass/all.scss */
 .btn-a {
   -webkit-transition: 0.2s;
   -o-transition: 0.2s;
@@ -38,32 +47,19 @@ a:hover {
   color: #fff;
   padding: 0.5em 1em;
   border: none; }
-  /* line 19, ../sass/all.scss */
+  /* line 29, ../sass/all.scss */
   .btn-a .btn-right {
     float: right; }
-  /* line 23, ../sass/all.scss */
+  /* line 33, ../sass/all.scss */
   .btn-a:hover {
     background-color: #4ab134;
     text-decoration: none;
     color: #fff; }
 
-/* line 29, ../sass/all.scss */
+/* line 39, ../sass/all.scss */
 div #head-all {
   height: 40px; }
 
-/* line 36, ../sass/all.scss */
-a#home-logo.home_logo {
-  padding: 1px 15px 0px 15px; }
-
-/* line 40, ../sass/all.scss */
-div.home_logo {
-  background-image: url("../img/Bridge_logo_best.png");
-  background-size: 92%;
-  position: static;
-  width: 78px;
-  height: 39px;
-  background-repeat: no-repeat; }
-
-/* line 49, ../sass/all.scss */
+/* line 48, ../sass/all.scss */
 #debug-kit-toolbar #panel-tabs {
   float: left; }
