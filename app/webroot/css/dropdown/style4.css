@@ -123,16 +123,6 @@
         padding: 10px 10px;
         color: #313131; }
 
-/* line 120, ../../sass/dropdown/style4.scss */
-.cd-dropdown > span,
-.cd-dropdown ul li:nth-last-child(-n+3) span {
-  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1); }
-
-/* line 124, ../../sass/dropdown/style4.scss */
-.cd-active.cd-dropdown > span,
-.cd-active.cd-dropdown ul li span {
-  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1); }
-
 /* line 130, ../../sass/dropdown/style4.scss */
 .cd-active.cd-dropdown > span {
   color: #313131; }
