@@ -8,37 +8,37 @@ body{
 p{margin:0 10px 10px;}
 
 a{
-  display:block; 
-  padding:10px;
+//  display:block; 
+//  padding:10px;
   color: #000;
 }
 
 .btn-a{
   @include btn-size3;
 }
-li{
-  a{
-    @include btn-fade;
-    margin: 0 1px 0 0;
-    
-    
-    &:hover, &:focus, &:active{
-      @include btn-hover;
-    }
-    .menu-list{
-      @iclude btn-fade;
-      &:hover, &:focus, &:active{
-        @iclude btn-hover;
-      }
-    }
-    
-  }
-}
-ul{
-  &.list-blank{
-   width: 40px;
-  }
-}
+// li{
+  // a{
+    // @include btn-fade;
+    // margin: 0 1px 0 0;
+//     
+//     
+    // &:hover, &:focus, &:active{
+      // @include btn-hover;
+    // }
+    // .menu-list{
+      // @iclude btn-fade;
+      // &:hover, &:focus, &:active{
+        // @iclude btn-hover;
+      // }
+    // }
+//     
+  // }
+// }
+// ul{
+  // &.list-blank{
+   // width: 40px;
+  // }
+// }
 ul{
   #menu{
     text-align: left;
@@ -48,17 +48,6 @@ ul{
   }
 }
 
-header#header{
-    position: fixed;
-    width: 100%;
-    background: rgba(255,255,255, 1);
-    padding-top: 20px;
-    font-size: 19px;
-    z-index: 1000;
-    // border-bottom: 1px solid $col-black4;
-    @include box-shadow;
-    
-}
 div{
   #singModal, #loginModal{
     z-index:2;
@@ -68,68 +57,10 @@ div{
   }
 }
 
-
-.dropdown-menu{
-  margin: 0 0 0 -5px;
-  min-width: 0px;
-  font-size: 16px;
-  
-  .divider {
-    margin: 4px 0;
-    border-bottom:1px solid $col-black4;
-  }
-  li>a {
-    margin:0;
-    padding: 5px 10px 5px 10px;
-    
-    &:hover, &:focus, &:active{
-      @include btn-hover;
-    }
-  }
-}
-
 .container {
     min-height: 100%;
 }
 
-div{
-  .modal-content{
-    z-index:1001;
-    h4{
-      font-size: 22px;
-    }
-  }
-  .input_form{
-    width: 100%;
-    margin-bottom: 10px;
-  }
-  .modal{
-    width: 35%;
-    left: 54%;
-    display:none;
-  }
-  .modal-body{
-    @include mp-clear;
-  }
-  .modal-dialog{
-    width: 30%;
-    @include mp-clear;
-    margin-top: 40px;
-    left: 35%;
-  }
-  .container{
-    width: 100%;
-    padding: 15px 15px 0 15px;
-  }
-  .modal-footer{
-    padding: 15px;
-  }
-  
-}
-
-.modal-body{
-  @include mp-clear;
-}
 
 
 
