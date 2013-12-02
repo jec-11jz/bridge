@@ -13,7 +13,7 @@ $this->Html->script('dropdown/jquery.dropdown', array('inline' => false));
 $this->Html->script('dropdown/modernizr.custom.63321', array('inline' => false));
 $this->Html->script('dropdown/jump', array('inline' => false));
 ?>
-<div class="navbar navbar-fixed-top" role="navigation">
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
 	<!-- 各機能へのリンク -->
 	<div class="navbar-header">
 	<?php
