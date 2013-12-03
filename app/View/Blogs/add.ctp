@@ -5,31 +5,31 @@
 	echo $this->Html->script('ckeditor/ckeditor');
 	echo $this->Html->script('tag/tags');
 ?>
-<!-- JS tag -->
-<script type="text/javascript">
-	$(function() {
-	  $('#tags').tagbox({
-	    url : ["api","blog","bootstrap","carousel","comments","configuration","content","css","database",
-		    "date","drafts","email","experiment","fancybox","flickr","forum","google","html5","images","installation","jquery","js","json","kirbytext",
-		    "language","maps","markdown","masonry","metatags","pagination","panel","plugin","releases","rss","search","security","server","tags",
-		    "thumbnails","toolkit","tutorial","twitter","typography","uri","use case","videos","yaml"], 
-	    lowercase : true
-	  });
-	});
-</script>
+<div id="head-all"></div>
 <div class='form'>
-	<input type="text" id="tags" name="tags" />
+
+	<!-- ブログ投稿フォーム -->
 	<?php echo $this->Form->create('Blog'); ?>
-	<?php echo $this->Form->input('title', array(
+	
+	<?php 
+		echo $this->Form->input('title', array(
 			'label'=>'タイトル', 
 			'type'=>'text',
 			'class'=>'input_form',
+			// バリデーションのエラーメッセージを指定
 			'error' => array(
 				'isUnique' => __('そのユーザーIDは既に使われています', true),
 				'custom' => __('半角英数字のみ使用できます', true),
 				'minLength' => __('15文字以内で入力してください', true)))); 
+				
+		// タグフォーム
+		echo $this->Form->input('title', array(
+			'label'=>'タグ', 
+			'type'=>'text',
+			'id'=>'tags',
+			'name'=>'data[Tag][name]',
+			'class'=>'input_form')); 
 	 
-		// バリデーションのエラーメッセージを指定
 		echo $this->Form->input('content', array(
 			'label'=>'本文', 
 			'type'=>'textarea',
@@ -46,6 +46,51 @@
 	<?php echo $this -> Form -> submit('Save', array('type' => 'submit', 'class' => 'btn-a')); ?>
 	<?php echo $this -> Form -> end(); ?>			
 </div> <!-- form -->
+<!-- JS tag -->
+<script>
+$(function() {
+	$('#TagAddForm').ajaxForm({
+		success: function(data) {
+			if (!data.errors) {
+				// success
+				location.reload();
+				return;
+			}
+			
+			// error
+			$.each(data.errors, function(key, error){
+				console.log('key:'+ key);
+				console.log('error: '+ error);
+				var errorBlock = $('#TagAddForm input[name="data[Tag]['+ key +']"]');
+				errorBlock.closest('.form-group').addClass('has-error');
+				errorBlock.after('<span class="help-block">'+ error +'</span>');
+			});
+		},
+		error: function(data) {
+			console.log(data);
+			alert('connection error');
+			return;
+		}
+	});
+	// DBからタグを取得
+	var tag = [];
+	$.ajax({
+		type: 'GET',
+		url: '/tags/get',
+		success: function(tags){
+			console.log('success');
+			//tagbox
+			$('#tags').tagbox({
+			    url : JSON.parse(tags),
+    			lowercase : true
+  			});
+		},
+		error: function(tags){
+			console.log('error');
+		}
+	});
+});
+</script>
 
 			
 
