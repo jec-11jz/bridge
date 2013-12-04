@@ -6,6 +6,7 @@
 	echo $this->Html->script('tag/tags');
 ?>
 <div id="head-all"></div>
+
 <div class='form'>
 
 	<!-- ブログ投稿フォーム -->
@@ -23,12 +24,17 @@
 				'minLength' => __('15文字以内で入力してください', true)))); 
 				
 		// タグフォーム
-		echo $this->Form->input('title', array(
+		echo $this->Form->input('Tag.name', array(
 			'label'=>'タグ', 
 			'type'=>'text',
 			'id'=>'tags',
 			'name'=>'data[Tag][name]',
+			'value' => implode(', ', $tags),
 			'class'=>'input_form')); 
+		
+		for($count = 0; $count < count($tags); $count++) {
+			echo h($tags[$count]);
+		 } 
 	 
 		echo $this->Form->input('content', array(
 			'label'=>'本文', 

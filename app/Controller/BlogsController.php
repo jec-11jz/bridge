@@ -72,7 +72,13 @@ class BlogsController extends AppController {
         if (!$id) {
         	throw new NotFoundException(__('Invalid post'));
     	}
-
+		$tag_id = $this->BlogTag->findAllByBlogId($id);
+		for($count = 0; $count < count($tag_id); $count++) {
+			$tagList[0] = $this->Tag->findAllById($tag_id[$count]['BlogTag']['tag_id']);
+			$tagNameList[$count] = $tagList[0][0]['Tag']['name'];
+		}
+		var_dump($tagNameList);
+		$this->set('tags', $tagNameList);
 	    $post = $this->Blog->findById($id);
 	    if (!$post) {
 	        throw new NotFoundException(__('Invalid post'));
