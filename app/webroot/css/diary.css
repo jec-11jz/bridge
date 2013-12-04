@@ -1,6 +1,6 @@
 /* line 1, ../sass/fonts.scss */
-body {
-  font-family: 'Lato','Mplus'; }
+body, h1 {
+  font-family: 'Lato','Mori','Mplus'; }
 
 /* line 5, ../sass/fonts.scss */
 *.input_form {
@@ -20,49 +20,48 @@ body {
 
 @fonf-face {
   font-family: 'Mplus';
-  src: url("../fonts/mplus/mplus-1p-regular"); }
+  src: url("../fonts/mplus/mplus-1p-thin.ttf"); }
 
-/* line 11, ../sass/all.scss */
+@fonf-face {
+  font-family: 'Mori';
+  src: url("../fonts/A-OTF-Jun101Pro-Light.otf"); }
+
+/* line 8, ../sass/all.scss */
 #contents {
   margin-top: 40px; }
 
-/* line 15, ../sass/all.scss */
+/* line 12, ../sass/all.scss */
 .nav-brand > img {
   width: 78px;
   height: 39px; }
 
-/* line 21, ../sass/all.scss */
+/* line 18, ../sass/all.scss */
 a:hover {
   color: #4ab134; }
 
-/* line 26, ../sass/all.scss */
+/* line 23, ../sass/all.scss */
 .btn-a {
   -webkit-transition: 0.2s;
   -o-transition: 0.2s;
   transition: 0.2s;
   display: inline-block;
-  border-radius: 2px;
   background-color: #313131;
   text-decoration: none;
   color: #fff;
   padding: 0.5em 1em;
   border: none; }
-  /* line 29, ../sass/all.scss */
+  /* line 26, ../sass/all.scss */
   .btn-a .btn-right {
     float: right; }
-  /* line 33, ../sass/all.scss */
+  /* line 30, ../sass/all.scss */
   .btn-a:hover {
     background-color: #4ab134;
     text-decoration: none;
     color: #fff; }
 
-/* line 39, ../sass/all.scss */
+/* line 36, ../sass/all.scss */
 div #head-all {
   height: 40px; }
-
-/* line 48, ../sass/all.scss */
-#debug-kit-toolbar #panel-tabs {
-  float: left; }
 
 /* line 3, ../sass/menu.scss */
 body {
@@ -77,26 +76,26 @@ p {
 a {
   color: #000; }
 
-/* line 16, ../sass/menu.scss */
+/* line 14, ../sass/menu.scss */
 .btn-a {
   font-size: 19px;
   padding: 10px 24px; }
 
-/* line 43, ../sass/menu.scss */
+/* line 18, ../sass/menu.scss */
 ul #menu {
   text-align: left; }
-/* line 46, ../sass/menu.scss */
+/* line 21, ../sass/menu.scss */
 ul #right {
   float: right; }
 
-/* line 52, ../sass/menu.scss */
+/* line 27, ../sass/menu.scss */
 div #singModal, div #loginModal {
   z-index: 2; }
-/* line 55, ../sass/menu.scss */
+/* line 30, ../sass/menu.scss */
 div #navi {
   margin: -30px 0px 0px 0px; }
 
-/* line 60, ../sass/menu.scss */
+/* line 35, ../sass/menu.scss */
 .container {
   min-height: 100%; }
 
@@ -253,7 +252,6 @@ a.cke_dialog_ui_button {
   -o-transition: 0.2s;
   transition: 0.2s;
   display: inline-block;
-  border-radius: 2px;
   background-color: #313131;
   text-decoration: none;
   color: #fff;

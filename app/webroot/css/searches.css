@@ -1,0 +1,94 @@
+/* line 1, ../sass/fonts.scss */
+body, h1 {
+  font-family: 'Lato','Mori','Mplus'; }
+
+/* line 5, ../sass/fonts.scss */
+*.input_form {
+  font-family: Default; }
+
+@font-face {
+  font-family: 'Poiret One';
+  src: url("../fonts/PoiretOne-Regular.ttf"); }
+
+@font-face {
+  font-family: 'OpenSans';
+  src: url("../fonts/OpenSans/OpenSans-Regular.ttf"); }
+
+@font-face {
+  font-family: 'Lato';
+  src: url("../fonts/Lato/Lato-light.ttf"); }
+
+@fonf-face {
+  font-family: 'Mplus';
+  src: url("../fonts/mplus/mplus-1p-thin.ttf"); }
+
+@fonf-face {
+  font-family: 'Mori';
+  src: url("../fonts/A-OTF-Jun101Pro-Light.otf"); }
+
+/* line 8, ../sass/all.scss */
+#contents {
+  margin-top: 40px; }
+
+/* line 12, ../sass/all.scss */
+.nav-brand > img {
+  width: 78px;
+  height: 39px; }
+
+/* line 18, ../sass/all.scss */
+a:hover {
+  color: #4ab134; }
+
+/* line 23, ../sass/all.scss */
+.btn-a {
+  -webkit-transition: 0.2s;
+  -o-transition: 0.2s;
+  transition: 0.2s;
+  display: inline-block;
+  background-color: #313131;
+  text-decoration: none;
+  color: #fff;
+  padding: 0.5em 1em;
+  border: none; }
+  /* line 26, ../sass/all.scss */
+  .btn-a .btn-right {
+    float: right; }
+  /* line 30, ../sass/all.scss */
+  .btn-a:hover {
+    background-color: #4ab134;
+    text-decoration: none;
+    color: #fff; }
+
+/* line 36, ../sass/all.scss */
+div #head-all {
+  height: 40px; }
+
+/* line 3, ../sass/searches.scss */
+.form-control {
+  width: 80%;
+  margin: 0px 10px 0px 10px;
+  display: inline;
+  float: left; }
+
+/* line 9, ../sass/searches.scss */
+input.btn-a.btn-search {
+  padding: 7px 17px; }
+
+/* line 13, ../sass/searches.scss */
+.btn-a .btn-search {
+  float: right; }
+
+/* line 18, ../sass/searches.scss */
+#result {
+  margin: 1%;
+  -webkit-box-shadow: 0px 0px 5px #333333;
+  -moz-box-shadow: 0px 0px 5px #333333;
+  box-shadow: 0px 0px 5px #333333;
+  display: inline;
+  float: left;
+  width: 20%;
+  height: auto; }
+  /* line 25, ../sass/searches.scss */
+  #result img {
+    margin: 20px;
+    float: left; }

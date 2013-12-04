@@ -1,11 +1,8 @@
-
+@import "compass/css3";
 @import "compass";
 @import "../sass/my-mixin.scss";
 @import "fonts.scss";
 
-$col-green:#4ab134;
-$col-limegreen:#38CB7D;
-$col-black5: #313131;$col-black4: #777777;
 
 
 #contents {
@@ -40,14 +37,11 @@ div{
     height:40px;
   }
   #foot-all{
-    // height:
   }
 }
 
 
-#debug-kit-toolbar #panel-tabs {
-  float:left;
-}
+
 
 
 

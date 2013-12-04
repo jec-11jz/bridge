@@ -3,7 +3,9 @@
  */
 
 @import "compass";
-@import "../sass/my-mixin.scss";
+@import "my-mixin.scss";
+@import "constants.scss";
+
 
 
 .navbar {
@@ -20,19 +22,21 @@
   padding: 0;
 }
 
-.nav > li > a {
-  padding: 10px;
-}
-
-.navbar-nav > li > a {
-  padding: 10px;
-}
-
-.navbar-nav > li > a:hover,
-.navbar-nav > li > a:focus {
-  color: #fff;
-  text-decoration: none;
-  background-color: #4ab134;
+.nav {
+  .open{
+    & > a:focus{
+      @include btn-hover;
+    }
+  }
+  & > li {
+    & > a {
+      padding: 10px;
+      @include btn-fade;
+      &:hover, &:focus, &:active {
+        @include btn-hover;
+      }
+    } 
+  }
 }
 
 .navbar-nav.navbar-right:last-child {
@@ -59,6 +63,17 @@
   }
 }
 
+div{
+  #result{
+    @include btn-fade;
+    &:hover{
+      @include btn-hover;
+      a{
+        color:white;
+      }
+    }
+  }
+}
 
 .modal-content{
   z-index:1001;
@@ -70,21 +85,14 @@
   width: 100%;
   margin-bottom: 10px;
 }
-.modal{
-  // width: 35%;
-  // left: 54%;
-  // display:none;
-}
-.modal-body{
-//  @include mp-clear;
+.form-control{
+  border-radius: 0px;
 }
 .modal-dialog{
   width: 30%;
-//  @include mp-clear;
   margin-top: 40px;
-//  left: 35%;
 }
 .modal-footer{
-  margin: 0;
+  @include mp-clear;
   padding: 15px;
 }

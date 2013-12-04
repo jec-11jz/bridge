@@ -1,0 +1,30 @@
+@import "all.scss";
+
+.form-control{
+  width: 80%;
+  margin:0px 10px 0px 10px;
+  display: inline;
+  float: left;
+}
+input.btn-a.btn-search{
+  padding: 7px 17px;
+}
+.btn-a{
+  .btn-search{
+    float: right;
+  }
+}
+
+#result{
+  margin: 1%;
+  @include box-shadow;
+  display: inline;
+  float: left;
+  width: 20%;
+  height: auto;
+  img{
+    margin: 20px;
+    float: left;
+  }
+}
+

@@ -1,5 +1,5 @@
 <?php
-	echo $this->element('menu', array('user', $user));
+	echo $this->element('headder', array('user', $user));
 	echo $this->element('login_signup_modals');
 ?>
 <div id="contents">

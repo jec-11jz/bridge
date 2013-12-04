@@ -8,37 +8,12 @@ body{
 p{margin:0 10px 10px;}
 
 a{
-//  display:block; 
-//  padding:10px;
   color: #000;
 }
 
 .btn-a{
   @include btn-size3;
 }
-// li{
-  // a{
-    // @include btn-fade;
-    // margin: 0 1px 0 0;
-//     
-//     
-    // &:hover, &:focus, &:active{
-      // @include btn-hover;
-    // }
-    // .menu-list{
-      // @iclude btn-fade;
-      // &:hover, &:focus, &:active{
-        // @iclude btn-hover;
-      // }
-    // }
-//     
-  // }
-// }
-// ul{
-  // &.list-blank{
-   // width: 40px;
-  // }
-// }
 ul{
   #menu{
     text-align: left;

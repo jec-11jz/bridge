@@ -3,7 +3,6 @@
 	$this->Html->script('slidr/slidr-ck', array('inline' => false));
 	
 	$this->extend('/Common/index');
-	$this->assign('user', $user);
 ?>
 <div id="toppage">	
 	<script>

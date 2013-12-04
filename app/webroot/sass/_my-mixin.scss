@@ -1,17 +1,13 @@
     //　ーー宣言ーー
 @import "compass";
-
-$col-green:#4ab134;
-$col-limegreen:#38CB7D;
-$col-black5: #313131;$col-black4: #777777;
-
+@import "constants";
 
 @mixin btn-fade {
   -webkit-transition: 0.2s;
   -o-transition: 0.2s;
   transition: 0.2s;
   display: inline-block;
-  border-radius: 2px;
+  // border-radius: 2px;
 }
 
 @mixin btn{
@@ -41,3 +37,11 @@ $col-black5: #313131;$col-black4: #777777;
 @mixin back-z{
   background: #cecece url("../img/background-2.png");
 }
+@mixin back-x{
+  background-image: url("../img/backgroudImage.png");
+}
+@mixin back-y{
+  background-image: url("../img/background-grays.jpg");
+  background-size: 20%;
+}
+
