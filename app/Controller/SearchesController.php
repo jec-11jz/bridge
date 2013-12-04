@@ -1,7 +1,6 @@
 <?php
 class SearchesController extends AppController {
 	public $uses = array('Blog', 'User');
-	public $layout = 'menu';
 	
 	public function index(){
 		//リクエストがPOSTの場合

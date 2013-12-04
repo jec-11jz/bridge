@@ -2,7 +2,6 @@
 App::uses('AppController', 'Controller');
 
 class TagsController extends AppController {
-	public $layout = 'menu';
 	
 	
 	public function beforeFilter()

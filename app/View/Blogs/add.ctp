@@ -4,6 +4,8 @@
 	
 	echo $this->Html->script('ckeditor/ckeditor');
 	echo $this->Html->script('tag/tags');
+	
+	$this->extend('/Common/index');
 ?>
 <div id="head-all"></div>
 <div class='form'>

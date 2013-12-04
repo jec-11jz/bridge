@@ -1,5 +1,6 @@
 <?php
 		echo $this->Html->css('diary');
+		$this->extend('/Common/index');
 ?>
 <table class="table table-hover">
 	<th>タイトル</th>

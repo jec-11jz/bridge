@@ -4,11 +4,12 @@
 	
 	echo $this->Html->script('ckeditor/ckeditor');
 	echo $this->Html->script('tag/tags');
+	
+	$this->extend('/Common/index');
 ?>
 <div id="head-all"></div>
 
 <div class='form'>
-
 	<!-- ブログ投稿フォーム -->
 	<?php echo $this->Form->create('Blog'); ?>
 	
@@ -31,16 +32,13 @@
 			'name'=>'data[Tag][name]',
 			'value' => implode(', ', $tags),
 			'class'=>'input_form')); 
-		
-		for($count = 0; $count < count($tags); $count++) {
-			echo h($tags[$count]);
-		 } 
 	 
 		echo $this->Form->input('content', array(
 			'label'=>'本文', 
 			'type'=>'textarea',
 			'id'=>'ckeditor',
 			'class'=>'input_form blog',
+			// バリデーションのエラーメッセージを指定
 			'error' => array(
 				'isUnique' => __('そのユーザーIDは既に使われています', true),
 				'custom' => __('半角英数字のみ使用できます', true),

@@ -33,7 +33,7 @@ $this->Html->script('dropdown/jump', array('inline' => false));
 			<ul class="dropdown-menu">
 				<li><a href="/blogs/index"><span class="glyphicon glyphicon-pencil"></i>　日記作成</a></li>
 				<li><a href="#"><span class="glyphicon glyphicon-film"></i>　作品登録</a></li>
-				<li><a href="#"><span class="glyphicon glyphicon-tags"></i>　タグ編集</a></li>
+				<li><a href="/tags/index"><span class="glyphicon glyphicon-tags"></i>　タグ編集</a></li>
 			</ul>
 		</li>
 		
