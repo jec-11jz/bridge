@@ -7,7 +7,7 @@ App::uses('AppController', 'Controller');
  * @property User $User
  */
 class BlogsController extends AppController {
-	public $uses = array('Blog', 'UsedBlogImage', 'User');
+	public $uses = array('Blog', 'UsedBlogImage', 'User', 'Tag', 'BlogTag');
 	public $layout = 'menu';
 	
 	
@@ -36,17 +36,28 @@ class BlogsController extends AppController {
 	 public function add() {
         // HTTP POSTリクエストか確認
         if ($this->request->is('post')) {
-        	 $this->request->data['Blog']['user_id'] = $this->Auth->user('id'); 
+        	$this->request->data['Blog']['user_id'] = $this->Auth->user('id'); 
             // 新規レコード生成
             $this->Blog->create();
             // フォームから受信したPOSTデータ
             $result = $this->Blog->save($this->request->data);
             if ($result) {
             	//imgタグのsrcをUsedBlogImageテーブルへ保存
-            	$this->UsedBlogImage->saveFromHtml($this->Auth->user('id'), 
+            	$this->UsedBlogImage->saveFromHtml(
+            		$this->Auth->user('id'), 
             		$result['Blog']['id'], 
             		$result['Blog']['content']
 				);
+				//タグ登録
+				$this->Tag->addTags(
+					$this->request->data['Tag']['name'],
+					$this->Auth->user('id')
+				);
+				$this->BlogTag->addBlogTags(
+					$this->request->data['Tag']['name'],
+					$result['Blog']['id']
+				);
+
                 //メッセージを出力
                 $this->Session->setFlash('記事を保存しました');
                 // index.phpへリダイレクトBlog
@@ -61,7 +72,13 @@ class BlogsController extends AppController {
         if (!$id) {
         	throw new NotFoundException(__('Invalid post'));
     	}
-
+		$tag_id = $this->BlogTag->findAllByBlogId($id);
+		for($count = 0; $count < count($tag_id); $count++) {
+			$tagList[0] = $this->Tag->findAllById($tag_id[$count]['BlogTag']['tag_id']);
+			$tagNameList[$count] = $tagList[0][0]['Tag']['name'];
+		}
+		var_dump($tagNameList);
+		$this->set('tags', $tagNameList);
 	    $post = $this->Blog->findById($id);
 	    if (!$post) {
 	        throw new NotFoundException(__('Invalid post'));

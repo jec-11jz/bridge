@@ -1,52 +1,102 @@
 <?php
+	echo $this->Html->css('tag/tags');
 	echo $this->Html->css('diary');
-	echo $this->Html->css('blog_view');
 	
 	echo $this->Html->script('ckeditor/ckeditor');
-
-	
+	echo $this->Html->script('tag/tags');
 ?>
-<body>
-	<div id="container">
-		<div id="contents">
-			<div class='form'>
-			<input type="text" id="tags" name="tags" />
-			<script type="text/javascript">
-				$(function() {
-				  $('#tags').tagbox({
-				    url : ["api","blog","bootstrap","carousel","comments","configuration","content","css","database","date","drafts","email","experiment","fancybox","flickr","forum","google","html5","images","installation","jquery","js","json","kirbytext","language","maps","markdown","masonry","metatags","pagination","panel","plugin","releases","rss","search","security","server","tags","thumbnails","toolkit","tutorial","twitter","typography","uri","use case","videos","yaml"], 
-				    lowercase : true
-				  });
-				});
-			</script>
-			<?php echo $this->Form->create('Blog'); ?>
-				<div class="form-group">
-					<?php echo $this->Form->input('title', array(
-							'label'=>'タイトル', 
-							'type'=>'text',
-							'class'=>'input_form',
-							'error' => array(
-								'isUnique' => __('そのユーザーIDは既に使われています', true),
-								'custom' => __('半角英数字のみ使用できます', true),
-								'minLength' => __('15文字以内で入力してください', true)))); 
-					 
-						// バリデーションのエラーメッセージを指定
-						echo $this->Form->input('content', array(
-							'label'=>'本文', 
-							'type'=>'textarea',
-							'id'=>'ckeditor',
-							'class'=>'input_form blog',
-							'error' => array(
-								'isUnique' => __('そのユーザーIDは既に使われています', true),
-								'custom' => __('半角英数字のみ使用できます', true),
-								'minLength' => __('15文字以内で入力してください', true)))); 
-					?>
-					<script type="text/javascript">  
-						var editor = CKEDITOR.replace('ckeditor');  
-					</script>  
-					<?php echo $this->Form->end('保存');?>
-				</div>				
-			</div>
-		</div>
-    </div><!-- /.container -->
-</body>
+<div id="head-all"></div>
+
+<div class='form'>
+
+	<!-- ブログ投稿フォーム -->
+	<?php echo $this->Form->create('Blog'); ?>
+	
+	<?php 
+		echo $this->Form->input('title', array(
+			'label'=>'タイトル', 
+			'type'=>'text',
+			'class'=>'input_form',
+			// バリデーションのエラーメッセージを指定
+			'error' => array(
+				'isUnique' => __('そのユーザーIDは既に使われています', true),
+				'custom' => __('半角英数字のみ使用できます', true),
+				'minLength' => __('15文字以内で入力してください', true)))); 
+				
+		// タグフォーム
+		echo $this->Form->input('Tag.name', array(
+			'label'=>'タグ', 
+			'type'=>'text',
+			'id'=>'tags',
+			'name'=>'data[Tag][name]',
+			'value' => implode(', ', $tags),
+			'class'=>'input_form')); 
+		
+		for($count = 0; $count < count($tags); $count++) {
+			echo h($tags[$count]);
+		 } 
+	 
+		echo $this->Form->input('content', array(
+			'label'=>'本文', 
+			'type'=>'textarea',
+			'id'=>'ckeditor',
+			'class'=>'input_form blog',
+			'error' => array(
+				'isUnique' => __('そのユーザーIDは既に使われています', true),
+				'custom' => __('半角英数字のみ使用できます', true),
+				'minLength' => __('15文字以内で入力してください', true)))); 
+	?>
+	<script type="text/javascript">  
+		var editor = CKEDITOR.replace('ckeditor');  
+	</script>
+	<?php echo $this -> Form -> submit('Save', array('type' => 'submit', 'class' => 'btn-a')); ?>
+	<?php echo $this -> Form -> end(); ?>			
+</div> <!-- form -->
+<!-- JS tag -->
+<script>
+$(function() {
+	$('#TagAddForm').ajaxForm({
+		success: function(data) {
+			if (!data.errors) {
+				// success
+				location.reload();
+				return;
+			}
+			
+			// error
+			$.each(data.errors, function(key, error){
+				console.log('key:'+ key);
+				console.log('error: '+ error);
+				var errorBlock = $('#TagAddForm input[name="data[Tag]['+ key +']"]');
+				errorBlock.closest('.form-group').addClass('has-error');
+				errorBlock.after('<span class="help-block">'+ error +'</span>');
+			});
+		},
+		error: function(data) {
+			console.log(data);
+			alert('connection error');
+			return;
+		}
+	});
+	// DBからタグを取得
+	var tag = [];
+	$.ajax({
+		type: 'GET',
+		url: '/tags/get',
+		success: function(tags){
+			console.log('success');
+			//tagbox
+			$('#tags').tagbox({
+			    url : JSON.parse(tags),
+    			lowercase : true
+  			});
+		},
+		error: function(tags){
+			console.log('error');
+		}
+	});
+});
+</script>
+
+			
+
