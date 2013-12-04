@@ -119,7 +119,8 @@ class UsersController extends AppController {
 		//ログイン中のユーザのIDからのユーザ情報を検索
         if ($data) {
 	        if ($this->request->is('post') || $this->request->is('put')) {
-	            if ($saved_data = $this->User->save($this->data, TRUE, array('nickname', 'email'))) {
+	        	$saved_data = $this->User->save($this->data, TRUE, array('nickname', 'email'));
+	            if ($saved_data) {
 	            	
 					//セッション情報の更新
 					$this->Session->write('Auth.User.nickname', $saved_data['User']['nickname']);

@@ -7,8 +7,7 @@ App::uses('AppController', 'Controller');
  * @property User $User
  */
 class BlogsController extends AppController {
-	public $uses = array('Blog', 'UsedBlogImage', 'User');
-	public $layout = 'menu';
+	public $uses = array('Blog', 'UsedBlogImage', 'User', 'Tag', 'BlogTag');
 	
 	
 	public function beforeFilter()
@@ -36,17 +35,28 @@ class BlogsController extends AppController {
 	 public function add() {
         // HTTP POSTリクエストか確認
         if ($this->request->is('post')) {
-        	 $this->request->data['Blog']['user_id'] = $this->Auth->user('id'); 
+        	$this->request->data['Blog']['user_id'] = $this->Auth->user('id'); 
             // 新規レコード生成
             $this->Blog->create();
             // フォームから受信したPOSTデータ
             $result = $this->Blog->save($this->request->data);
             if ($result) {
             	//imgタグのsrcをUsedBlogImageテーブルへ保存
-            	$this->UsedBlogImage->saveFromHtml($this->Auth->user('id'), 
+            	$this->UsedBlogImage->saveFromHtml(
+            		$this->Auth->user('id'), 
             		$result['Blog']['id'], 
             		$result['Blog']['content']
 				);
+				//タグ登録
+				$this->Tag->addTags(
+					$this->request->data['Tag']['name'],
+					$this->Auth->user('id')
+				);
+				$this->BlogTag->addBlogTags(
+					$this->request->data['Tag']['name'],
+					$result['Blog']['id']
+				);
+
                 //メッセージを出力
                 $this->Session->setFlash('記事を保存しました');
                 // index.phpへリダイレクトBlog
@@ -61,7 +71,14 @@ class BlogsController extends AppController {
         if (!$id) {
         	throw new NotFoundException(__('Invalid post'));
     	}
-
+		//ブログに付加されているタグを配列でViewに渡す
+		$tag_id = $this->BlogTag->findAllByBlogId($id);
+		for($count = 0; $count < count($tag_id); $count++) {
+			$tagList[0] = $this->Tag->findAllById($tag_id[$count]['BlogTag']['tag_id']);
+			$tagNameList[$count] = $tagList[0][0]['Tag']['name'];
+		}
+		$this->set('tags', $tagNameList);
+		//ブログが存在するかどうかを確かめる
 	    $post = $this->Blog->findById($id);
 	    if (!$post) {
 	        throw new NotFoundException(__('Invalid post'));
@@ -70,15 +87,35 @@ class BlogsController extends AppController {
 	    	$this->Blog->id = $id;
 			//編集前のUsedBlogImageのデータを削除する
 			$this->UsedBlogImage->deleteAll(array('UsedBlogImage.blog_id'=>$id));
-			//imgタグのsrcをUsedBlogImageテーブルへ保存
-	    	$this->UsedBlogImage->saveFromHtml($this->Auth->user('id'), 
-	    		$id, $this->request->data['Blog']['content']);
-				
-	        if ($this->Blog->save($this->request->data)) {
-	            $this->Session->setFlash(__('Your post has been updated.'));
-	            return $this->redirect(array('action' => 'index'));
-	        }
-	        $this->Session->setFlash(__('Unable to update your post.'));
+			//ブログとタグのリレーションを削除する
+			$this->BlogTag->deleteAll(array('BlogTag.blog_id'=>$id));
+            //フォームから受信したPOSTデータ
+            $result = $this->Blog->save($this->request->data);
+            if ($result) {
+            	//imgタグのsrcをUsedBlogImageテーブルへ保存
+            	$this->UsedBlogImage->saveFromHtml(
+            		$this->Auth->user('id'), 
+            		$id, 
+            		$result['Blog']['content']
+				);
+				//タグ登録
+				$this->Tag->addTags(
+					$this->request->data['Tag']['name'],
+					$this->Auth->user('id')
+				);
+				//ブログタグ登録
+				$this->BlogTag->addBlogTags(
+					$this->request->data['Tag']['name'],
+					$id
+				);
+
+                //メッセージを出力
+                $this->Session->setFlash('記事を保存しました');
+                // index.phpへリダイレクトBlog
+                $this->redirect(array('controller' => 'blogs', 'action' => 'index'));
+            } else {
+                $this->Session->setFlash('記事を保存できません');
+            }
 	    }
 	
 	    if (!$this->request->data) {
