@@ -1,6 +1,6 @@
 /* line 1, ../sass/fonts.scss */
-body, h1 {
-  font-family: 'Lato','Mori','Mplus'; }
+body, h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+  font-family: 'Lato','Osaka1','Mplus'; }
 
 /* line 5, ../sass/fonts.scss */
 *.input_form {
@@ -18,13 +18,13 @@ body, h1 {
   font-family: 'Lato';
   src: url("../fonts/Lato/Lato-light.ttf"); }
 
+@font-face {
+  font-family: 'Osaka1';
+  font-weight: lighter; }
+
 @fonf-face {
   font-family: 'Mplus';
   src: url("../fonts/mplus/mplus-1p-thin.ttf"); }
-
-@fonf-face {
-  font-family: 'Mori';
-  src: url("../fonts/A-OTF-Jun101Pro-Light.otf"); }
 
 /* line 8, ../sass/all.scss */
 #contents {
@@ -101,36 +101,68 @@ div #navi {
 
 /* line 3, ../sass/diary.scss */
 body {
-  background: #cecece url("../img/background-2.png"); }
+  background-image: url("../img/backgroudImage.png"); }
 
-/* line 7, ../sass/diary.scss */
+/* line 6, ../sass/diary.scss */
 th {
   font-size: 14px;
   color: #313131; }
 
-/* line 11, ../sass/diary.scss */
+/* line 10, ../sass/diary.scss */
 td {
   font-size: 11px; }
 
-/* line 15, ../sass/diary.scss */
+/* line 14, ../sass/diary.scss */
 table > tbody > tr > td > a {
   font-size: 12px; }
 
-/* line 20, ../sass/diary.scss */
+/* line 18, ../sass/diary.scss */
+div#diary {
+  margin: 20px; }
+
+/* line 22, ../sass/diary.scss */
+div#diary-index .cont {
+  margin: 20px; }
+  /* line 24, ../sass/diary.scss */
+  div#diary-index .cont img {
+    display: block; }
+
+/* line 30, ../sass/diary.scss */
 form#BlogAddForm label {
   font-size: 23px;
-  padding: 10px 0 10px 0; }
-/* line 24, ../sass/diary.scss */
+  padding: 10px 0;
+  margin: 10px 30px; }
+/* line 35, ../sass/diary.scss */
 form#BlogAddForm #BlogTitle {
   height: 35px;
   width: 90%;
   font-size: 17px;
   display: block; }
-/* line 31, ../sass/diary.scss */
+/* line 42, ../sass/diary.scss */
 form#BlogAddForm #ckeditor label {
   font-size: 90px; }
+/* line 46, ../sass/diary.scss */
+form#BlogAddForm .form-control {
+  margin: 0px 30px; }
+/* line 49, ../sass/diary.scss */
+form#BlogAddForm div.tagbox {
+  width: 90%;
+  margin: 0px 30px;
+  border-radius: 0px;
+  -webkit-box-shadow: black 0px 0px 0px 0px;
+  -moz-box-shadow: black 0px 0px 0px 0px;
+  box-shadow: black 0px 0px 0px 0px; }
+  /* line 54, ../sass/diary.scss */
+  form#BlogAddForm div.tagbox ul {
+    border-radius: 0px;
+    -webkit-box-shadow: black 0px 0px 0px 0px;
+    -moz-box-shadow: black 0px 0px 0px 0px;
+    box-shadow: black 0px 0px 0px 0px; }
+/* line 59, ../sass/diary.scss */
+form#BlogAddForm #cke_ckeditor {
+  margin: 0px 30px; }
 
-/* line 38, ../sass/diary.scss */
+/* line 65, ../sass/diary.scss */
 div .container {
   margin: 0;
   padding: 0;
@@ -139,7 +171,7 @@ div .container {
   min-height: 100%;
   width: 100%;
   min-width: 860px; }
-/* line 46, ../sass/diary.scss */
+/* line 73, ../sass/diary.scss */
 div .main {
   width: 100%;
   min-width: 600px;
@@ -147,12 +179,12 @@ div .main {
   position: relative;
   height: 100%;
   float: left; }
-/* line 54, ../sass/diary.scss */
+/* line 81, ../sass/diary.scss */
 div .line-up {
   margin: 0;
   padding: 0;
   margin-top: 50px; }
-/* line 58, ../sass/diary.scss */
+/* line 85, ../sass/diary.scss */
 div form {
   background-color: rgba(235, 235, 236, 0.8);
   background-repeat: no-repeat;
@@ -163,11 +195,11 @@ div form {
   padding: 0 0 50px 0;
   border-radius: 20px;
   color: rgba(0, 0, 0, 0.8); }
-/* line 69, ../sass/diary.scss */
+/* line 96, ../sass/diary.scss */
 div .form-group {
   margin: 10px 0 30px 40px; }
 
-/* line 73, ../sass/diary.scss */
+/* line 100, ../sass/diary.scss */
 .side-menu {
   width: 200px;
   height: 100%;
@@ -176,29 +208,29 @@ div .form-group {
   background-color: #4c921f;
   color: #DDDDDD;
   float: left; }
-  /* line 82, ../sass/diary.scss */
+  /* line 109, ../sass/diary.scss */
   .side-menu .menu {
     margin-top: 20px; }
-    /* line 84, ../sass/diary.scss */
+    /* line 111, ../sass/diary.scss */
     .side-menu .menu .icon {
       width: 20px;
       height: 20px;
       text-align: center;
       margin: 0;
       padding: 0; }
-    /* line 91, ../sass/diary.scss */
+    /* line 118, ../sass/diary.scss */
     .side-menu .menu .name {
       margin-left: 10px; }
-  /* line 96, ../sass/diary.scss */
+  /* line 123, ../sass/diary.scss */
   .side-menu li {
     list-style-type: none;
     background-color: #60AB59;
     background-color: #60a633; }
-    /* line 100, ../sass/diary.scss */
+    /* line 127, ../sass/diary.scss */
     .side-menu li:hover {
       background-color: #474B4E;
       background-color: #7ec451; }
-    /* line 104, ../sass/diary.scss */
+    /* line 131, ../sass/diary.scss */
     .side-menu li:active {
       background-color: #80CB79;
       background-color: #74ba47;
@@ -207,10 +239,10 @@ div .form-group {
       border-top: solid 1px #111;
       border-bottom: solid 1px #111;
       */ }
-      /* line 112, ../sass/diary.scss */
+      /* line 139, ../sass/diary.scss */
       .side-menu li:active a {
         color: #fff; }
-    /* line 116, ../sass/diary.scss */
+    /* line 143, ../sass/diary.scss */
     .side-menu li a {
       margin: 0;
       padding: 0;
@@ -221,12 +253,12 @@ div .form-group {
       margin: 1px 0;
       display: block;
       text-decoration: none; }
-  /* line 128, ../sass/diary.scss */
+  /* line 155, ../sass/diary.scss */
   .side-menu ul, .side-menu li {
     margin: 0;
     padding: 0; }
 
-/* line 134, ../sass/diary.scss */
+/* line 161, ../sass/diary.scss */
 .side-profile {
   width: 100%;
   height: 100%;
@@ -236,17 +268,17 @@ div .form-group {
   background-color: #60AB59;
   background-color: #60a633; }
 
-/* line 143, ../sass/diary.scss */
+/* line 170, ../sass/diary.scss */
 textarea.blog {
   width: 80%;
   height: 400px; }
-  /* line 146, ../sass/diary.scss */
+  /* line 173, ../sass/diary.scss */
   textarea.blog:hover {
     border: 3px solid #97F95A;
     opacity: 0.6;
     filter: alpha(opacity=60); }
 
-/* line 153, ../sass/diary.scss */
+/* line 180, ../sass/diary.scss */
 a.cke_dialog_ui_button {
   -webkit-transition: 0.2s;
   -o-transition: 0.2s;

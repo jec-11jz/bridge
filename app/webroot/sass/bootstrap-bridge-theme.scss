@@ -7,9 +7,10 @@
 @import "constants.scss";
 
 
-
+::selection{background: $col-selection;}::-moz-selection {background: $col-selection;}
+:focus{outline:none!important;}
 .navbar {
-  background-color: rgba(255,255,255, 1);
+  background-color: $col-navbar;
   border: 0px solid #fff;
   min-height: 40px;
   height: 40px;
@@ -43,29 +44,33 @@
   margin-right: 40px;
 }
 
-.dropdown-menu {
-/* 意図的なもの？ */
-  margin: 0 0 0 -5px;
-  min-width: 0px;
-  font-size: 16px;
-  
-  .divider {
-    margin: 4px 0;
-    border-bottom:1px solid $col-black4;
+
+ul#dropdownmenu{
+  @include btn-fade;
+  &:hover{
+    @include btn-hover;
   }
-  li>a {
-    margin:0;
-    padding: 5px 10px 5px 10px;
-    
-    &:hover, &:focus, &:active{
+  a{
+    @include btn-fade;
+    background-color: $col-navbar;
+    &:hover{
       @include btn-hover;
     }
+  }
+  li ul li a{
+    border-top: solid 1px $col-black2;
+    border-left: solid 1px $col-black2;
+    border-right: solid 1px $col-black2;
+    font-size:12px;
   }
 }
 
 div{
   #result{
     @include btn-fade;
+    @include box-shadow;
+    background-color: $col-black1;
+
     &:hover{
       @include btn-hover;
       a{
@@ -81,13 +86,37 @@ div{
     font-size: 22px;
   }
 }
+
 .input_form{
   width: 100%;
   margin-bottom: 10px;
 }
+input:-webkit-autofill {
+  background-image: none !important;
+  background-color: rgb(255, 255, 255) !important;
+  color: rgb(0, 0, 0) !important;
+  -webkit-box-shadow: 0 0 0px 1000px white inset;
+}
+input:-webkit-autofill:focus{
+  @extend input:-webkit-autofill;
+}
 .form-control{
   border-radius: 0px;
+  @include btn-fade;
+  &:focus{
+    @include input-focus;
+  }
 }
+
+.has-error{
+  .form-control{
+    @include box-shadow(black 0px 0px 0px 0px);
+    &:focus{
+        @include box-shadow(black 0px 0px 0px 0px);
+    }
+  }
+}
+
 .modal-dialog{
   width: 30%;
   margin-top: 40px;

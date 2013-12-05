@@ -1,5 +1,5 @@
 <?php
-	echo $this->Html->css('tag/tags');
+	echo $this->Html->css('tag/tags_custom');
 	echo $this->Html->css('diary');
 	
 	$this->extend('/Common/index');
@@ -32,7 +32,7 @@
 			'type'=>'text',
 			'id'=>'tags',
 			'name'=>'data[Tag][name]',
-			'class'=>'input_form')); 
+			'class'=>'input_form form-control')); 
 	 
 		echo $this->Form->input('content', array(
 			'label'=>'本文', 

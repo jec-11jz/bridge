@@ -1,0 +1,32 @@
+@import "../all.scss";
+@import "tags.scss";
+
+.tagbox{
+  &:focus{
+    @include input-focus;
+  }
+  li{
+    .tag {
+      background-color: $col-green8;
+    }
+  }
+  .selected{
+    .tag{
+      background-color: #F06260
+    }
+  }
+}
+
+.autocomplete ul {
+  
+  background-color: $col-black5;
+  li{
+    background-color:$col-green8;
+    &:hover{
+      background-color: $col-green7;
+    }
+    &.over,&.selected{
+      background-color: $col-green7;
+    }
+  }
+}

@@ -2,6 +2,7 @@
 
 ?>
 <script>
+
 $(function(){
 	var userLoginFormOptions = {
 		rules: {

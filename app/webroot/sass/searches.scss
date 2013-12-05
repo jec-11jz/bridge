@@ -1,13 +1,24 @@
 @import "all.scss";
+@import "searches-effects.scss";
+@import "compass/reset";
 
+body{
+  @include back-x;
+  h1{
+    margin: 10px;
+    background-color: white;
+  }
+}
 .form-control{
-  width: 80%;
+  width: 40%;
   margin:0px 10px 0px 10px;
   display: inline;
   float: left;
+
 }
 input.btn-a.btn-search{
-  padding: 7px 17px;
+  padding: 6px 17px;
+  margin: 1px;
 }
 .btn-a{
   .btn-search{
@@ -17,7 +28,6 @@ input.btn-a.btn-search{
 
 #result{
   margin: 1%;
-  @include box-shadow;
   display: inline;
   float: left;
   width: 20%;
@@ -27,4 +37,7 @@ input.btn-a.btn-search{
     float: left;
   }
 }
+
+
+
 
