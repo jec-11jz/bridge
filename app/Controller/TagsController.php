@@ -2,7 +2,7 @@
 App::uses('AppController', 'Controller');
 
 class TagsController extends AppController {
-	
+	public $uses = array('Blog', 'UsedBlogImage', 'User', 'Tag', 'BlogTag');
 	
 	public function beforeFilter()
     {
@@ -63,6 +63,20 @@ class TagsController extends AppController {
         } else {
             $this->Session->setFlash(__('getRequest : タグを登録できませんでした'),'default', array(), 'tag');
         }
+	}
+
+	public function edit(){
+		//ブログに付加されているタグを配列でViewに渡す
+		$blogs = $this->Blog->findAllByUserId($this->Auth->User('id'));
+		if(is_array($blogs)){
+			//ユーザの使用しているタグを取得する
+			$usedTagNames = $this->Blog->getTagNamesFromBlogs($blogs);
+			if(is_array($usedTagNames)){
+				$usedTagNames = implode(', ', $usedTagNames);
+			}
+		}
+		
+		 $this->set('tags', $usedTagNames);
 	}
 
 	public function get(){

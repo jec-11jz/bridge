@@ -25,10 +25,11 @@
 				'minLength' => __('15文字以内で入力してください', true)))); 
 				
 		// タグフォーム
-		echo $this->Form->input('title', array(
+		echo $this->Form->input('Tag.name', array(
 			'label'=>'タグ', 
 			'type'=>'text',
 			'id'=>'tags',
+			'value'=>"",
 			'name'=>'data[Tag][name]',
 			'class'=>'input_form')); 
 	 
