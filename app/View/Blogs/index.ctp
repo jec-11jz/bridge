@@ -1,6 +1,11 @@
 <?php
 		echo $this->Html->css('diary');
+		echo $this->Html->css('swipebox/style');
+		
 		$this->extend('/Common/index');
+		
+		echo $this->Html->script('swipebox/jquery.swipebox');
+		echo $this->Html->script('swipebox/jquery-2.0.3.min');
 ?>
 <table class="table table-hover">
 	<th>タイトル</th>

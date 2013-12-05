@@ -2,7 +2,7 @@
 /**
  * for Bootstrap theame
  */
-/* line 9, ../sass/bootstrap-bridge-theme.scss */
+/* line 11, ../sass/bootstrap-bridge-theme.scss */
 .navbar {
   background-color: white;
   border: 0px solid #fff;
@@ -13,68 +13,91 @@
   -moz-box-shadow: 0px 0px 5px #333333;
   box-shadow: 0px 0px 5px #333333; }
 
-/* line 18, ../sass/bootstrap-bridge-theme.scss */
+/* line 20, ../sass/bootstrap-bridge-theme.scss */
 .nav-brand {
   margin: 0 15px;
   padding: 0; }
 
-/* line 23, ../sass/bootstrap-bridge-theme.scss */
-.nav > li > a {
-  padding: 10px; }
-
 /* line 27, ../sass/bootstrap-bridge-theme.scss */
-.navbar-nav > li > a {
-  padding: 10px; }
-
-/* line 32, ../sass/bootstrap-bridge-theme.scss */
-.navbar-nav > li > a:hover,
-.navbar-nav > li > a:focus {
-  color: #fff;
+.nav .open > a:focus {
+  background-color: #4ab134;
   text-decoration: none;
-  background-color: #4ab134; }
+  color: #fff; }
+/* line 32, ../sass/bootstrap-bridge-theme.scss */
+.nav > li > a {
+  padding: 10px;
+  -webkit-transition: 0.2s;
+  -o-transition: 0.2s;
+  transition: 0.2s;
+  display: inline-block; }
+  /* line 35, ../sass/bootstrap-bridge-theme.scss */
+  .nav > li > a:hover, .nav > li > a:focus, .nav > li > a:active {
+    background-color: #4ab134;
+    text-decoration: none;
+    color: #fff; }
 
-/* line 38, ../sass/bootstrap-bridge-theme.scss */
+/* line 42, ../sass/bootstrap-bridge-theme.scss */
 .navbar-nav.navbar-right:last-child {
   margin-right: 40px; }
 
-/* line 42, ../sass/bootstrap-bridge-theme.scss */
+/* line 46, ../sass/bootstrap-bridge-theme.scss */
 .dropdown-menu {
   /* 意図的なもの？ */
   margin: 0 0 0 -5px;
   min-width: 0px;
   font-size: 16px; }
-  /* line 48, ../sass/bootstrap-bridge-theme.scss */
+  /* line 52, ../sass/bootstrap-bridge-theme.scss */
   .dropdown-menu .divider {
     margin: 4px 0;
     border-bottom: 1px solid #777777; }
-  /* line 52, ../sass/bootstrap-bridge-theme.scss */
+  /* line 56, ../sass/bootstrap-bridge-theme.scss */
   .dropdown-menu li > a {
     margin: 0;
     padding: 5px 10px 5px 10px; }
-    /* line 56, ../sass/bootstrap-bridge-theme.scss */
+    /* line 60, ../sass/bootstrap-bridge-theme.scss */
     .dropdown-menu li > a:hover, .dropdown-menu li > a:focus, .dropdown-menu li > a:active {
       background-color: #4ab134;
       text-decoration: none;
       color: #fff; }
 
-/* line 63, ../sass/bootstrap-bridge-theme.scss */
+/* line 67, ../sass/bootstrap-bridge-theme.scss */
+div #result {
+  -webkit-transition: 0.2s;
+  -o-transition: 0.2s;
+  transition: 0.2s;
+  display: inline-block; }
+  /* line 69, ../sass/bootstrap-bridge-theme.scss */
+  div #result:hover {
+    background-color: #4ab134;
+    text-decoration: none;
+    color: #fff; }
+    /* line 71, ../sass/bootstrap-bridge-theme.scss */
+    div #result:hover a {
+      color: white; }
+
+/* line 78, ../sass/bootstrap-bridge-theme.scss */
 .modal-content {
   z-index: 1001; }
-  /* line 65, ../sass/bootstrap-bridge-theme.scss */
+  /* line 80, ../sass/bootstrap-bridge-theme.scss */
   .modal-content h4 {
     font-size: 22px; }
 
-/* line 69, ../sass/bootstrap-bridge-theme.scss */
+/* line 84, ../sass/bootstrap-bridge-theme.scss */
 .input_form {
   width: 100%;
   margin-bottom: 10px; }
 
-/* line 81, ../sass/bootstrap-bridge-theme.scss */
+/* line 88, ../sass/bootstrap-bridge-theme.scss */
+.form-control {
+  border-radius: 0px; }
+
+/* line 91, ../sass/bootstrap-bridge-theme.scss */
 .modal-dialog {
   width: 30%;
   margin-top: 40px; }
 
-/* line 87, ../sass/bootstrap-bridge-theme.scss */
+/* line 95, ../sass/bootstrap-bridge-theme.scss */
 .modal-footer {
   margin: 0;
+  padding: 0;
   padding: 15px; }
