@@ -73,9 +73,15 @@ class BlogsController extends AppController {
     	}
 		//ブログに付加されているタグを配列でViewに渡す
 		$tag_id = $this->BlogTag->findAllByBlogId($id);
-		for($count = 0; $count < count($tag_id); $count++) {
-			$tagList[0] = $this->Tag->findAllById($tag_id[$count]['BlogTag']['tag_id']);
-			$tagNameList[$count] = $tagList[0][0]['Tag']['name'];
+		$tagNameList = '';
+		if($tag_id){
+			for($count = 0; $count < count($tag_id); $count++) {
+				$tagList[0] = $this->Tag->findAllById($tag_id[$count]['BlogTag']['tag_id']);
+				$tagNameList[$count] = $tagList[0][0]['Tag']['name'];
+			}
+			if(is_array($tagNameList)){
+				$tagNameList = implode(', ', $tagNameList);
+			}
 		}
 		$this->set('tags', $tagNameList);
 		//ブログが存在するかどうかを確かめる

@@ -1,6 +1,5 @@
 <?php
 class ProductsController extends AppController {
-	public $layout = 'menu';
 	
 	public function beforeFilter()
     {

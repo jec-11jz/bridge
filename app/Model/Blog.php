@@ -1,5 +1,6 @@
 <?php
 App::uses('AppModel', 'Model');
+App::uses('BlogTag', 'Model');
 
 class Blog extends AppModel {
 	
@@ -43,6 +44,23 @@ class Blog extends AppModel {
 	
 	public function isOwnedBy($post, $user) {
     	return $this->field('id', array('id' => $post, 'user_id' => $user)) === $post;
+	}
+	
+	public function getTagNamesFromBlog($blog) {
+		$BlogTag = ClassRegistry::init('BlogTag');
+		return $BlogTag->getTagNamesFromArray($blog['BlogTag']);
+	}
+
+	public function getTagNamesFromBlogs($blogs) {
+		$arrayTagNames = array();
+		foreach ($blogs as $blog) {
+			$tagNames = $this->getTagNamesFromBlog($blog);
+			if (!is_array($tagNames)) {
+				continue;
+			}
+			$arrayTagNames = array_merge($arrayTagNames, $tagNames);
+		}
+		return $arrayTagNames;
 	}
 
 }

@@ -30,7 +30,7 @@
 			'type'=>'text',
 			'id'=>'tags',
 			'name'=>'data[Tag][name]',
-			'value' => implode(', ', $tags),
+			'value' => $tags,
 			'class'=>'input_form')); 
 	 
 		echo $this->Form->input('content', array(

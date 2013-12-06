@@ -14,7 +14,6 @@ class SearchesController extends AppController {
 			 		'conditions' => array('title like'=>'%'.$condition.'%')));
 			 } else {
 			 	$data = $this->Blog->find('all');
-				print '2';
 			 }
 		} else {
 			 //POST以外の場合
