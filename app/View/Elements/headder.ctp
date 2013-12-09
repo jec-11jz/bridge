@@ -28,7 +28,7 @@ $this->Html->script('dropdown/dropdown', array('inline' => false));
 				<ul>
 					<li><a href="/blogs/index"><i class="fa fa-file-text-o menu"></i>日記一覧</a></li>
 					<li><a href="/blogs/add"><i class="fa fa-pencil-square-o menu"></i>日記作成</a></li>
-					<li><a href="#"><i class="fa fa-film menu"></i>作品登録</a></li>
+					<li><a href="/product/add"><i class="fa fa-film menu"></i>作品登録</a></li>
 					<li><a href="/tags/index"><i class="fa fa-tags menu"></i>タグ編集</a></li>
 				</ul>
 			</li>
@@ -37,8 +37,8 @@ $this->Html->script('dropdown/dropdown', array('inline' => false));
 			<li><a href="#">Search</a>
 				<ul>
 					<li><a href="/searches/index#"><i class="fa fa-search menu"></i>日記検索</a></li>
-					<li><a href="#">ｷﾞｬﾗﾝﾄﾞｩ</a></li>
-					<li><a href="#">ｷﾞｬﾗﾝﾄﾞｩ</a></li>
+					<li><a href="#">タグ検索</a></li>
+					<li><a href="#">作品検索</a></li>
 				</ul>
 			</li>
 		</ul>
@@ -46,15 +46,9 @@ $this->Html->script('dropdown/dropdown', array('inline' => false));
 			<li><a href="#">Gallery</a>
 				<ul>
 					<li><a href="/home/gallery">ｷﾞｬﾗﾝﾄﾞｩ</a></li>
-					<li><a href="#">ｷﾞｬﾗﾝﾄﾞｩ</a></li>
-					<li><a href="#">ｷﾞｬﾗﾝﾄﾞｩ</a></li>
-					<li><a href="#">ｷﾞｬﾗﾝﾄﾞｩ</a></li>
-					<li><a href="#">ｷﾞｬﾗﾝﾄﾞｩ</a></li>
-					<li><a href="#">ｷﾞｬﾗﾝﾄﾞｩ</a></li>
-					<li><a href="#">ｷﾞｬﾗﾝﾄﾞｩ</a></li>
-					<li><a href="#">ｷﾞｬﾗﾝﾄﾞｩ</a></li>
-					<li><a href="#">ｷﾞｬﾗﾝﾄﾞｩ</a></li>
-					<li><a href="#">ｷﾞｬﾗﾝﾄﾞｩ</a></li>
+					<li><a href="/home/gallery">ｷﾞｬﾗﾝﾄﾞｩ</a></li>
+					<li><a href="/home/gallery">ｷﾞｬﾗﾝﾄﾞｩ</a></li>
+					<li><a href="/home/gallery">ｷﾞｬﾗﾝﾄﾞｩ</a></li>
 					
 				</ul>
 			</li>
@@ -62,9 +56,7 @@ $this->Html->script('dropdown/dropdown', array('inline' => false));
 		<ul id="dropdownmenu">
 			<li><a href="#">Upload</a>
 				<ul>
-					<li><a href="/images/index">ここでファック</a></li>
-					<li><a href="#">ギャランドゥ</a></li>
-					<li><a href="#">ドゥドゥドゥ・デ・ダダダ</a></li>
+					<li><a href="/images/index">Upload</a></li>
 				</ul>
 			</li>
 		</ul>
