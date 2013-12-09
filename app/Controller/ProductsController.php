@@ -1,4 +1,6 @@
 <?php
+App::uses('AppController', 'Controller');
+
 class ProductsController extends AppController {
 	
 	public function beforeFilter()
@@ -9,12 +11,11 @@ class ProductsController extends AppController {
         //$this->Auth->allow();
     }
 	
-	public function index()
-	{
+	public function index(){
 		
 	}
 	
-	public function add(){
+    public function add(){
 		
 	}
 }

@@ -8,15 +8,18 @@ CKEDITOR.editorConfig = function( config ) {
 	// config.language = 'fr';
 	// config.uiColor = '#AADC6E';
 	
-	CKEDITOR.config.width = '90%'; //横幅
-	CKEDITOR.config.height = '80%'; //高さ
+	CKEDITOR.config.width = '60%'; //横幅
+	CKEDITOR.config.height = '40%'; //高さ
+	CKEDITOR.config.resize_enabled = true;
 	
 	//CKEditorにKCFinderを認識させるコード
 	config.language = 'ja';
-    config.filebrowserBrowseUrl = '/js/kcfinder/browse.php?type=files';
-    config.filebrowserImageBrowseUrl = '/js/kcfinder/browse.php?type=images';
+	config.filebrowserBrowseUrl = '/js/kcfinder/browse.php?type=files';
+	config.filebrowserImageBrowseUrl = '/js/kcfinder/browse.php?type=images';
     config.filebrowserFlashBrowseUrl = '/js/kcfinder/browse.php?type=flash';
-    config.filebrowserUploadUrl = '/js/kcfinder/upload.php?type=files';
+   	config.filebrowserUploadUrl = '/js/kcfinder/upload.php?type=files';
     config.filebrowserImageUploadUrl = '/js/kcfinder/upload.php?type=images';
     config.filebrowserFlashUploadUrl = '/js/kcfinder/upload.php?type=flash';
+
+	config.skin = 'moonocolor';
 };

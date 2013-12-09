@@ -16,6 +16,11 @@
 // you are using session configuration.
 // See http://kcfinder.sunhater.com/install for setting descriptions
 
+
+session_name('CAKEPHP');
+session_start();
+
+global $_CONFIG;
 $_CONFIG = array(
 
     'disabled' => false,
@@ -27,8 +32,8 @@ $_CONFIG = array(
     'theme' => "dark",
 
     // 'uploadURL' => "upload",
-    'uploadURL' => "/upload",
-    'uploadDir' => "",
+    'uploadURL' => "/upload/",
+    'uploadDir' => "../../upload/",
 
     'dirPerms' => 0755,
     'filePerms' => 0644,
@@ -108,10 +113,47 @@ $_CONFIG = array(
     '_sessionDomain' => ".bridge.com",	// 配置する場所のドメイン名
     '_sessionPath' => "/kcfinder",	// kcfinder置き場
     
-    
-	
-       
 );
 
+//  ユーザー認証
+if (!function_exists('KCF_CheckAuthentication')) {
+    function KCF_CheckAuthentication()
+    {
+        global $_CONFIG;
+
+
+        // ここらへんで適当に認証処理します。
+        // 認証成功するとアカウントIDを返し、失敗するとfalseを返すメソッドを実行したとします。
+        $old_session_name = session_name();
+        
+        $account = $_SESSION['Auth']['User']['id'];
+		// session_name($old_session_name);
+		// session_start();
+        if ($account) {
+            //認証成功時に必要な処理があればする。IDを桁数揃えるとか。
+        } else {
+            // 認証失敗時はfalseを返して終了。
+            
+            return false;
+        }
+
+        // uploadsフォルダの下にアカウントごとにフォルダを作ってファイルを置くとします。
+        $updir = '../../upload/'.$account.'/';
+        // 先にフォルダを作成しておきます。
+        if (!is_dir($updir)) {
+            mkdir($updir);
+            chmod($updir, 0757);
+        }
+
+        // uploadURLなどをそのユーザー用の位置にセットします。
+        $_CONFIG['uploadURL'] = "/upload/".$account;
+        $_CONFIG['uploadDir'] = $updir;
+
+        return true;
+    }
+}
+
+// ユーザー認証の実行
+$_CONFIG['disabled'] = !KCF_CheckAuthentication();
 
 ?>
