@@ -31,10 +31,7 @@
 			</h5>
 			<hr>
 			<?php if(isset($blog['UsedBlogImage'][0]['url'])) { ?>
-				<a href="#" data-target="#myToggle" class="hcaption" ><img  src="<?php echo $blog['UsedBlogImage'][0]['url']; ?>" width="200px" height="auto"></a>
-				<div id="myToggle" class="fade">
-				  <h5>Cupcakes</h5>
-				</div>
+				<img  src="<?php echo $blog['UsedBlogImage'][0]['url']; ?>" width="200px" height="auto">
 			<?php } else { ?>
 				<div>[no images]</div>
 				<?php

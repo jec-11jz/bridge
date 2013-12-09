@@ -45,7 +45,7 @@ $this->Html->script('dropdown/dropdown', array('inline' => false));
 		<ul id="dropdownmenu">
 			<li><a href="#">Gallery</a>
 				<ul>
-					<li><a href="#">ｷﾞｬﾗﾝﾄﾞｩ</a></li>
+					<li><a href="/home/gallery">ｷﾞｬﾗﾝﾄﾞｩ</a></li>
 					<li><a href="#">ｷﾞｬﾗﾝﾄﾞｩ</a></li>
 					<li><a href="#">ｷﾞｬﾗﾝﾄﾞｩ</a></li>
 					<li><a href="#">ｷﾞｬﾗﾝﾄﾞｩ</a></li>

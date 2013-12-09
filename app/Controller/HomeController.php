@@ -16,6 +16,10 @@ class HomeController extends AppController {
 	{
 		
 	}
+	public function gallery()
+	{
+		
+	}
 	
 	public function test(){
 		$this->layout = '';
