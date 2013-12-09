@@ -51,106 +51,140 @@
 .navbar-nav.navbar-right:last-child {
   margin-right: 40px; }
 
-/* line 48, ../sass/bootstrap-bridge-theme.scss */
+/* line 47, ../sass/bootstrap-bridge-theme.scss */
+.fa.menu {
+  margin-right: 0.5em;
+  font-size: 16px; }
+
+/* line 51, ../sass/bootstrap-bridge-theme.scss */
 ul#dropdownmenu {
   -webkit-transition: 0.2s;
   -o-transition: 0.2s;
   transition: 0.2s;
   display: inline-block; }
-  /* line 50, ../sass/bootstrap-bridge-theme.scss */
+  /* line 53, ../sass/bootstrap-bridge-theme.scss */
   ul#dropdownmenu:hover {
     background-color: #4ab134;
     text-decoration: none;
     color: #fff; }
-  /* line 53, ../sass/bootstrap-bridge-theme.scss */
+  /* line 56, ../sass/bootstrap-bridge-theme.scss */
   ul#dropdownmenu a {
     -webkit-transition: 0.2s;
     -o-transition: 0.2s;
     transition: 0.2s;
     display: inline-block;
     background-color: white; }
-    /* line 56, ../sass/bootstrap-bridge-theme.scss */
+    /* line 60, ../sass/bootstrap-bridge-theme.scss */
     ul#dropdownmenu a:hover {
       background-color: #4ab134;
       text-decoration: none;
       color: #fff; }
-  /* line 60, ../sass/bootstrap-bridge-theme.scss */
+  /* line 64, ../sass/bootstrap-bridge-theme.scss */
   ul#dropdownmenu li ul li a {
     border-top: solid 1px #c1c1c1;
     border-left: solid 1px #c1c1c1;
     border-right: solid 1px #c1c1c1;
     font-size: 12px; }
 
-/* line 69, ../sass/bootstrap-bridge-theme.scss */
-div #result {
+/* line 74, ../sass/bootstrap-bridge-theme.scss */
+.btn-a {
+  background-color: #313131;
+  text-decoration: none;
+  color: #fff;
+  padding: 0.5em 1em;
+  border: none; }
+  /* line 76, ../sass/bootstrap-bridge-theme.scss */
+  .btn-a .btn-size-m {
+    font-size: 19px;
+    padding: 10px 24px; }
+  /* line 79, ../sass/bootstrap-bridge-theme.scss */
+  .btn-a .btn-size-s {
+    font-size: 14px;
+    padding: 6px 20px; }
+
+/* line 83, ../sass/bootstrap-bridge-theme.scss */
+input.btn-b {
+  background-color: #ECECEC;
+  text-decoration: none;
+  color: #4a4a4a;
+  padding: 0.5em 1em;
+  border: solid 1px #c1c1c1;
   -webkit-transition: 0.2s;
   -o-transition: 0.2s;
   transition: 0.2s;
-  display: inline-block;
-  -webkit-box-shadow: 0px 0px 5px #333333;
-  -moz-box-shadow: 0px 0px 5px #333333;
-  box-shadow: 0px 0px 5px #333333;
-  background-color: #ececec; }
-  /* line 74, ../sass/bootstrap-bridge-theme.scss */
-  div #result:hover {
+  display: inline-block; }
+  /* line 86, ../sass/bootstrap-bridge-theme.scss */
+  input.btn-b:hover {
     background-color: #4ab134;
     text-decoration: none;
-    color: #fff; }
-    /* line 76, ../sass/bootstrap-bridge-theme.scss */
-    div #result:hover a {
-      color: white; }
+    color: #fff;
+    background-color: #4a4a4a;
+    border: solid 1px #4a4a4a; }
+  /* line 91, ../sass/bootstrap-bridge-theme.scss */
+  input.btn-b .btn-size-m {
+    font-size: 19px;
+    padding: 10px 24px; }
 
-/* line 83, ../sass/bootstrap-bridge-theme.scss */
-.modal-content {
-  z-index: 1001; }
-  /* line 85, ../sass/bootstrap-bridge-theme.scss */
-  .modal-content h4 {
-    font-size: 22px; }
-
-/* line 90, ../sass/bootstrap-bridge-theme.scss */
+/* line 98, ../sass/bootstrap-bridge-theme.scss */
 .input_form {
   width: 100%;
   margin-bottom: 10px; }
 
-/* line 94, ../sass/bootstrap-bridge-theme.scss */
+/* line 102, ../sass/bootstrap-bridge-theme.scss */
 input:-webkit-autofill, input:-webkit-autofill:focus {
   background-image: none !important;
   background-color: white !important;
   color: black !important;
   -webkit-box-shadow: 0 0 0px 1000px white inset; }
 
-/* line 103, ../sass/bootstrap-bridge-theme.scss */
+/* line 111, ../sass/bootstrap-bridge-theme.scss */
 .form-control {
   border-radius: 0px;
   -webkit-transition: 0.2s;
   -o-transition: 0.2s;
   transition: 0.2s;
   display: inline-block; }
-  /* line 106, ../sass/bootstrap-bridge-theme.scss */
+  /* line 114, ../sass/bootstrap-bridge-theme.scss */
   .form-control:focus {
     border-color: #659ec9 #70aedd #a8cfec;
     -webkit-box-shadow: black 0px 0px 0px 0px;
     -moz-box-shadow: black 0px 0px 0px 0px;
     box-shadow: black 0px 0px 0px 0px; }
 
-/* line 112, ../sass/bootstrap-bridge-theme.scss */
+/* line 120, ../sass/bootstrap-bridge-theme.scss */
 .has-error .form-control {
   -webkit-box-shadow: black 0px 0px 0px 0px;
   -moz-box-shadow: black 0px 0px 0px 0px;
   box-shadow: black 0px 0px 0px 0px; }
-  /* line 114, ../sass/bootstrap-bridge-theme.scss */
+  /* line 122, ../sass/bootstrap-bridge-theme.scss */
   .has-error .form-control:focus {
     -webkit-box-shadow: black 0px 0px 0px 0px;
     -moz-box-shadow: black 0px 0px 0px 0px;
     box-shadow: black 0px 0px 0px 0px; }
 
-/* line 120, ../sass/bootstrap-bridge-theme.scss */
+/* line 128, ../sass/bootstrap-bridge-theme.scss */
+.modal-content {
+  z-index: 1001;
+  background: #ECECEC; }
+  /* line 131, ../sass/bootstrap-bridge-theme.scss */
+  .modal-content h4 {
+    font-size: 25px;
+    text-align: center; }
+
+/* line 138, ../sass/bootstrap-bridge-theme.scss */
+div .modal-header {
+  border: none;
+  background-color: rgba(167, 167, 167, 0.18); }
+/* line 142, ../sass/bootstrap-bridge-theme.scss */
+div .modal-footer {
+  margin: 0;
+  padding: 0;
+  border: none; }
+  /* line 145, ../sass/bootstrap-bridge-theme.scss */
+  div .modal-footer .submit a:hover {
+    text-decoration: none; }
+
+/* line 150, ../sass/bootstrap-bridge-theme.scss */
 .modal-dialog {
   width: 30%;
   margin-top: 40px; }
-
-/* line 124, ../sass/bootstrap-bridge-theme.scss */
-.modal-footer {
-  margin: 0;
-  padding: 0;
-  padding: 15px; }

@@ -12,6 +12,7 @@
 		echo $this->Html->css('bootstrap-glyphicons');
 		echo $this->Html->css('bootstrap');
 		echo $this->Html->css('bootstrap-bridge-theme.css');
+		echo $this->Html->css('awesome/font-awesome.css');
 		echo $this->fetch('css');
 	
 		echo $this->Html->script('jquery-1.10.2.min');

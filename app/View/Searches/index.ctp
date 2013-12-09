@@ -33,7 +33,7 @@
 </script>
 
 <div id="search">
-	<h1>Search!!!!!!!!（＾ω＾）</h1>
+	<hr>
 	 <?php
 		 echo $this->Form->create('Search', array('type' => 'post', 'action'=>'index'));
 		 echo $this->Form->input('Words',array('label' => false, 'name' => 'data[Search][condition]','class' => 'form-control','placeholder' => 'Search here...'));
@@ -41,25 +41,35 @@
 		 echo $this->Form->end();
 	 ?>
 	 
-	 <hr>
+	<hr>
+	<div id="result">
 	<?php foreach($blogs as $blog) : ?>
-		<a class='ajax' href="/blogs/view/<?php echo $blog['Blog']['id'] ?>">
-			<div id="result">
-				
-				<span><?php echo $blog['Blog']['title']; ?></span>
-				<?php if(isset($blog['UsedBlogImage'][0]['url'])) { ?>
-						<img src="<?php echo $blog['UsedBlogImage'][0]['url']; ?>" width="200px" height="auto">
-					<?php } else { ?>
-						<div>no images</div>
-						
-						<?php
-							// $len = 100;
-							// print(mb_strimwidth($blog['Blog']['content'], 0, $len, "...", "UTF-8") . "<br />");
-						?>
-				<?php } ?>
-			</div>
-		</a>
+		<div class="cont">
+			<a class='ajax' href="/blogs/view/<?php echo $blog['Blog']['id'] ?>"></a>
+			<span>
+				<?php 
+					if(mb_strlen($blog['Blog']['title']) <= 7){
+						echo $blog['Blog']['title']; 
+					} else {
+						$len = 22;
+						print(mb_strimwidth($blog['Blog']['title'], 0, $len, "...", "UTF-8") . "<br />");
+					}
+				?>
+			</span>
+			<hr>
+			<?php if(isset($blog['UsedBlogImage'][0]['url'])) { ?>
+					<img src="<?php echo $blog['UsedBlogImage'][0]['url']; ?>" width="200px" height="auto">
+				<?php } else { ?>
+					<div>no images</div>
+					
+					<?php
+						// $len = 100;
+						// print(mb_strimwidth($blog['Blog']['content'], 0, $len, "...", "UTF-8") . "<br />");
+					?>
+			<?php } ?>
+		</div>
 	<?php endforeach; ?>
+	</div>
 	
 	
 	

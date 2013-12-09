@@ -1,4 +1,5 @@
 @import "../sass/menu.scss";
+// @import "constants.scss";
 
 body{
   @include back-x;
@@ -21,8 +22,36 @@ div#diary{
 div#diary-index{
   .cont{
     margin: 20px;
-    img{
-      display:block;
+    display: inline;
+    
+    .cont1{
+      position:relative;
+      background-color: $col-black2;
+      @include btn-fade;
+      &:hover{
+        filter:alpha(opacity=50);
+        opacity:0.5;
+      }
+      a.link{
+        display:block;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+      }
+      .title{
+        margin: 10px 0 0 5px;
+      }
+      hr{
+        margin: 10px 2px;
+      }
+      img{
+        display:block;
+        margin: 5px;
+      }
+    }
+    .cont2{
     }
   }
 }

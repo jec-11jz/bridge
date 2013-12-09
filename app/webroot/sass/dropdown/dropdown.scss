@@ -1,3 +1,5 @@
+$tag-width: 105px;
+
 ul#dropdownmenu {
 	*zoom: 1; /*forIE6,7*/
 	list-style:none;
@@ -9,7 +11,7 @@ ul#dropdownmenu {
 		clear: both;
 	}
 	li{
-		width: 115px;
+		width: $tag-width;
 		float: left;
 		*zoom: 1; /*forIE6,7*/
 		white-space: nowrap;
@@ -34,7 +36,7 @@ ul#dropdownmenu li:hover > ul {
 ul#dropdownmenu li ul li {
 	width: auto !important;
 	/*width: 130px;*/
-	min-width: 115px;
+	min-width: $tag-width;
 	clear: left;
 	position: relative;
 }

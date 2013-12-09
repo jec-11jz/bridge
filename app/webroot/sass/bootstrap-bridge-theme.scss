@@ -44,13 +44,17 @@
   margin-right: 40px;
 }
 
-
+.fa.menu{
+    margin-right:0.5em;
+    font-size: 16px;
+}
 ul#dropdownmenu{
   @include btn-fade;
   &:hover{
     @include btn-hover;
   }
   a{
+    // text-indent: 1.0em;
     @include btn-fade;
     background-color: $col-navbar;
     &:hover{
@@ -65,27 +69,31 @@ ul#dropdownmenu{
   }
 }
 
-div{
-  #result{
-    @include btn-fade;
-    @include box-shadow;
-    background-color: $col-black1;
 
-    &:hover{
-      @include btn-hover;
-      a{
-        color:white;
-      }
-    }
+
+.btn-a{
+  @include btn;
+  .btn-size-m{
+    @include btn-size-m;
+  }
+  .btn-size-s{
+    @include btn-size-s;
+  }
+}
+input.btn-b{
+  @include btn-b;
+  @include btn-fade;
+  &:hover{
+    @include btn-hover;
+    background-color: $col-black4;
+    border: solid 1px $col-black4;
+  }
+  .btn-size-m{
+    @include btn-size-m;
   }
 }
 
-.modal-content{
-  z-index:1001;
-  h4{
-    font-size: 22px;
-  }
-}
+
 
 .input_form{
   width: 100%;
@@ -117,11 +125,29 @@ input:-webkit-autofill:focus{
   }
 }
 
+.modal-content{
+  z-index:1001;
+  // background-color: $col-green5;
+  h4{
+    font-size: 25px;
+    text-align: center;
+  }
+  background: #ECECEC;
+}
+div{
+  .modal-header{
+    border: none;
+    background-color: rgba(167, 167, 167, 0.18);
+  }
+  .modal-footer{
+    @include mp-clear;
+    border: none;
+    .submit a:hover{
+      text-decoration: none;
+    }
+  }
+}
 .modal-dialog{
   width: 30%;
   margin-top: 40px;
-}
-.modal-footer{
-  @include mp-clear;
-  padding: 15px;
 }

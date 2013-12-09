@@ -18,6 +18,15 @@
   border: none;
 }
 
+@mixin btn-b{
+  background-color: #ECECEC;
+  text-decoration: none;
+  color: $col-black4;
+  padding: 0.5em 1em;
+  border:solid 1px $col-black2;
+
+}
+
 @mixin btn-size-m{
   font-size: 19px;
   padding: 10px 24px;

@@ -16,5 +16,5 @@
 	
 	</div>
 <hr />
-<a href="/blogs">投稿一覧へ戻る</a>
+<a href="/blogs" style="display:block">投稿一覧へ戻る</a>
 </div>

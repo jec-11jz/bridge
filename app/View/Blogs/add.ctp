@@ -9,7 +9,6 @@
 	
 	$this->extend('/Common/index');
 ?>
-<div id="head-all"></div>
 <div class='form'>
 
 	<!-- ブログ投稿フォーム -->

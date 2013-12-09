@@ -20,23 +20,47 @@ input.btn-a.btn-search{
   padding: 6px 17px;
   margin: 1px;
 }
-.btn-a{
-  .btn-search{
-    float: right;
-  }
-}
 
-#result{
-  margin: 1%;
-  display: inline;
-  float: left;
-  width: 20%;
-  height: auto;
-  img{
-    margin: 20px;
+div#result{
+  .cont{
+    
+    margin: 1%;
+    position: relative;
     float: left;
+    background-color: $col-black2;
+    @include btn-fade;
+    hr{
+      margin: 10px 2px;
+    }
+    a{
+      display: block;
+      top: 0;
+      left: 0;
+      width:100%;
+      height: 100%;
+      position: absolute;
+      &:hover{
+        filter:alpha(opacity=50);
+        opacity:0.5;
+      }
+    }
+    img{
+      margin: 10px;
+    }
   }
 }
+  // #result{
+    // @include btn-fade;
+    // @include box-shadow;
+    // // background-color: $col-black1;
+// 
+    // &:hover{
+      // @include btn-hover;
+      // a{
+        // color:white;
+      // }
+    // }
+  // }
 
 
 

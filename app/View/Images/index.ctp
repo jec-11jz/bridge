@@ -1,3 +1,6 @@
+<?php
+	$this->extend('/Common/index');
+?>
 <div class="images form">
 	<?php echo $this->Form->create('Image', array('action' => 'add', 'type' => 'file')); ?><fieldset>
 	<legend><?php echo __('Add Image'); ?></legend>
