@@ -2,6 +2,7 @@
 
 ?>
 <script>
+
 $(function(){
 	var userLoginFormOptions = {
 		rules: {
@@ -137,7 +138,12 @@ $(function(){
 				?>
 			</div><!-- /.modal-body -->
 			<div class="modal-footer">
-				<?php echo $this->Form->submit('Login', array('class' => 'btn-a')); ?>
+				
+				<?php echo $this->Form->submit('Login', array('class' => 'btn-b btn-size-m')); ?>
+				<div class="checkbox">
+					<input type="checkbox" ><label>Remember me</label>
+				</div>
+				<a href="#">パスワードを忘れちゃうアホはこちら</a>
 			</div>
 		</div><!-- /.modal-content -->
 		<?php echo $this->Form->end(); ?>
@@ -203,7 +209,7 @@ $(function(){
 				?>
 			</div><!-- /.modal-body -->
 			<div class="modal-footer">
-				<?php echo $this->Form->submit('Sign up', array('class' => 'btn-a')); ?>
+				<?php echo $this->Form->submit('Sign up', array('class' => 'btn-b')); ?>
 			</div>
 		</div><!-- /.modal-content -->
 		<?php echo $this->Form->end(); ?>

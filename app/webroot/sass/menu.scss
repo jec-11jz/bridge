@@ -8,12 +8,10 @@ body{
 p{margin:0 10px 10px;}
 
 a{
-  color: #000;
+  color: #333333;
 }
 
-.btn-a{
-  @include btn-size3;
-}
+
 ul{
   #menu{
     text-align: left;
@@ -34,6 +32,36 @@ div{
 
 .container {
     min-height: 100%;
+}
+
+div{
+  .modal-header{
+    padding: 10px 20px;
+  }
+  .modal-body{
+    padding: 20px 20px 0px 20px;
+  }
+  .modal-footer{
+    padding: 0 20px 15px 20px;
+    .submit{
+      float:left;
+    }
+    a{
+      float:right;
+      font-size:11px;
+      margin: 0px 5px 0px 0px;
+      &:hover{
+        text-decoration: none;
+      }
+    }
+    .checkbox{
+      float:left;
+      margin-left:15px;
+      label{
+        margin-right:10px;
+      }
+    }
+  }
 }
 
 

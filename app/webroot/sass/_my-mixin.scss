@@ -18,17 +18,32 @@
   border: none;
 }
 
-@mixin btn-size3{
+@mixin btn-b{
+  background-color: #ECECEC;
+  text-decoration: none;
+  color: $col-black4;
+  padding: 0.5em 1em;
+  border:solid 1px $col-black2;
+
+}
+
+@mixin btn-size-m{
   font-size: 19px;
   padding: 10px 24px;
 }
-
+@mixin btn-size-s{
+  font-size: 14px;
+  padding: 6px 20px;
+}
 @mixin btn-hover{
   background-color: $col-green;
   text-decoration: none;
   color:#fff;
 }
-
+@mixin input-focus{
+    border-color:#659ec9 #70aedd #a8cfec;
+    @include box-shadow(black 0px 0px 0px 0px);
+}
 @mixin mp-clear{
   margin: 0;
   padding: 0;

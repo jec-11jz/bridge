@@ -1,6 +1,6 @@
 /* line 1, ../sass/fonts.scss */
-body, h1 {
-  font-family: 'Lato','Mori','Mplus'; }
+body, h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+  font-family: 'Lato','Osaka1','Mplus'; }
 
 /* line 5, ../sass/fonts.scss */
 *.input_form {
@@ -18,13 +18,13 @@ body, h1 {
   font-family: 'Lato';
   src: url("../fonts/Lato/Lato-light.ttf"); }
 
+@font-face {
+  font-family: 'Osaka1';
+  font-weight: lighter; }
+
 @fonf-face {
   font-family: 'Mplus';
   src: url("../fonts/mplus/mplus-1p-thin.ttf"); }
-
-@fonf-face {
-  font-family: 'Mori';
-  src: url("../fonts/A-OTF-Jun101Pro-Light.otf"); }
 
 /* line 8, ../sass/all.scss */
 #contents {
@@ -74,27 +74,50 @@ p {
 
 /* line 10, ../sass/menu.scss */
 a {
-  color: #000; }
+  color: #333333; }
 
-/* line 14, ../sass/menu.scss */
-.btn-a {
-  font-size: 19px;
-  padding: 10px 24px; }
-
-/* line 18, ../sass/menu.scss */
+/* line 16, ../sass/menu.scss */
 ul #menu {
   text-align: left; }
-/* line 21, ../sass/menu.scss */
+/* line 19, ../sass/menu.scss */
 ul #right {
   float: right; }
 
-/* line 27, ../sass/menu.scss */
+/* line 25, ../sass/menu.scss */
 div #singModal, div #loginModal {
   z-index: 2; }
-/* line 30, ../sass/menu.scss */
+/* line 28, ../sass/menu.scss */
 div #navi {
   margin: -30px 0px 0px 0px; }
 
-/* line 35, ../sass/menu.scss */
+/* line 33, ../sass/menu.scss */
 .container {
   min-height: 100%; }
+
+/* line 38, ../sass/menu.scss */
+div .modal-header {
+  padding: 10px 20px; }
+/* line 41, ../sass/menu.scss */
+div .modal-body {
+  padding: 20px 20px 0px 20px; }
+/* line 44, ../sass/menu.scss */
+div .modal-footer {
+  padding: 0 20px 15px 20px; }
+  /* line 46, ../sass/menu.scss */
+  div .modal-footer .submit {
+    float: left; }
+  /* line 49, ../sass/menu.scss */
+  div .modal-footer a {
+    float: right;
+    font-size: 11px;
+    margin: 0px 5px 0px 0px; }
+    /* line 53, ../sass/menu.scss */
+    div .modal-footer a:hover {
+      text-decoration: none; }
+  /* line 57, ../sass/menu.scss */
+  div .modal-footer .checkbox {
+    float: left;
+    margin-left: 15px; }
+    /* line 60, ../sass/menu.scss */
+    div .modal-footer .checkbox label {
+      margin-right: 10px; }

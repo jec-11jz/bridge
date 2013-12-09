@@ -1,6 +1,6 @@
 /* line 10, ../sass/toppage.scss */
 body {
-  background: #cecece url("../img/background-2.png"); }
+  background-image: url("../img/backgroudImage.png"); }
 
 /* line 15, ../sass/toppage.scss */
 a.logo {

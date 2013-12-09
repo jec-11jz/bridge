@@ -7,9 +7,10 @@
 @import "constants.scss";
 
 
-
+::selection{background: $col-selection;}::-moz-selection {background: $col-selection;}
+:focus{outline:none!important;}
 .navbar {
-  background-color: rgba(255,255,255, 1);
+  background-color: $col-navbar;
   border: 0px solid #fff;
   min-height: 40px;
   height: 40px;
@@ -43,56 +44,110 @@
   margin-right: 40px;
 }
 
-.dropdown-menu {
-/* 意図的なもの？ */
-  margin: 0 0 0 -5px;
-  min-width: 0px;
-  font-size: 16px;
-  
-  .divider {
-    margin: 4px 0;
-    border-bottom:1px solid $col-black4;
+.fa.menu{
+    margin-right:0.5em;
+    font-size: 16px;
+}
+ul#dropdownmenu{
+  @include btn-fade;
+  &:hover{
+    @include btn-hover;
   }
-  li>a {
-    margin:0;
-    padding: 5px 10px 5px 10px;
-    
-    &:hover, &:focus, &:active{
+  a{
+    // text-indent: 1.0em;
+    @include btn-fade;
+    background-color: $col-navbar;
+    &:hover{
       @include btn-hover;
     }
   }
+  li ul li a{
+    border-top: solid 1px $col-black2;
+    border-left: solid 1px $col-black2;
+    border-right: solid 1px $col-black2;
+    font-size:12px;
+  }
 }
 
-div{
-  #result{
-    @include btn-fade;
-    &:hover{
-      @include btn-hover;
-      a{
-        color:white;
-      }
+
+
+.btn-a{
+  @include btn;
+  .btn-size-m{
+    @include btn-size-m;
+  }
+  .btn-size-s{
+    @include btn-size-s;
+  }
+}
+input.btn-b{
+  @include btn-b;
+  @include btn-fade;
+  &:hover{
+    @include btn-hover;
+    background-color: $col-black4;
+    border: solid 1px $col-black4;
+  }
+  .btn-size-m{
+    @include btn-size-m;
+  }
+}
+
+
+
+.input_form{
+  width: 100%;
+  margin-bottom: 10px;
+}
+input:-webkit-autofill {
+  background-image: none !important;
+  background-color: rgb(255, 255, 255) !important;
+  color: rgb(0, 0, 0) !important;
+  -webkit-box-shadow: 0 0 0px 1000px white inset;
+}
+input:-webkit-autofill:focus{
+  @extend input:-webkit-autofill;
+}
+.form-control{
+  border-radius: 0px;
+  @include btn-fade;
+  &:focus{
+    @include input-focus;
+  }
+}
+
+.has-error{
+  .form-control{
+    @include box-shadow(black 0px 0px 0px 0px);
+    &:focus{
+        @include box-shadow(black 0px 0px 0px 0px);
     }
   }
 }
 
 .modal-content{
   z-index:1001;
+  // background-color: $col-green5;
   h4{
-    font-size: 22px;
+    font-size: 25px;
+    text-align: center;
   }
+  background: #ECECEC;
 }
-.input_form{
-  width: 100%;
-  margin-bottom: 10px;
-}
-.form-control{
-  border-radius: 0px;
+div{
+  .modal-header{
+    border: none;
+    background-color: rgba(167, 167, 167, 0.18);
+  }
+  .modal-footer{
+    @include mp-clear;
+    border: none;
+    .submit a:hover{
+      text-decoration: none;
+    }
+  }
 }
 .modal-dialog{
   width: 30%;
   margin-top: 40px;
-}
-.modal-footer{
-  @include mp-clear;
-  padding: 15px;
 }

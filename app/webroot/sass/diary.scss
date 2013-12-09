@@ -1,9 +1,9 @@
 @import "../sass/menu.scss";
+// @import "constants.scss";
 
 body{
-  @include back-z;
+  @include back-x;
 }
-
 th {
   font-size: 14px;
   color: #313131;
@@ -16,10 +16,50 @@ table > tbody > tr > td > a {
   font-size: 12px;
 }
 
+div#diary{
+  margin:20px;
+}
+div#diary-index{
+  .cont{
+    margin: 20px;
+    display: inline;
+    
+    .cont1{
+      position:relative;
+      background-color: $col-black2;
+      @include btn-fade;
+      &:hover{
+        filter:alpha(opacity=50);
+        opacity:0.5;
+      }
+      a.link{
+        display:block;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+      }
+      .title{
+        margin: 10px 0 0 5px;
+      }
+      hr{
+        margin: 10px 2px;
+      }
+      img{
+        display:block;
+        margin: 5px;
+      }
+    }
+    .cont2{
+    }
+  }
+}
 form#BlogAddForm{
   label{
     font-size:23px;
-    padding: 10px 0 10px 0;
+    padding: 10px 0;
+    margin: 10px 30px;
   }
   #BlogTitle{
     height: 35px;
@@ -31,6 +71,22 @@ form#BlogAddForm{
     label{
       font-size:90px;
     }
+  }
+  .form-control{
+    margin: 0px 30px;
+  }
+  div.tagbox{
+    width: 90%;
+    margin: 0px 30px;
+    border-radius: 0px;
+    @include box-shadow(black 0px 0px 0px 0px);
+    ul{
+      border-radius: 0px;
+      @include box-shadow(black 0px 0px 0px 0px);
+    }
+  }
+  #cke_ckeditor{
+    margin: 0px 30px
   }
 }
 
