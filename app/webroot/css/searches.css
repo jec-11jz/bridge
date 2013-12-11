@@ -228,6 +228,38 @@ div#result .cont {
     div#result .cont a:hover {
       filter: alpha(opacity=50);
       opacity: 0.5; }
-  /* line 47, ../sass/searches.scss */
-  div#result .cont img {
-    margin: 10px; }
+
+/* line 65, ../sass/searches.scss */
+.boxgrid {
+  width: 100%;
+  background: #c1c1c1;
+  height: auto;
+  border: solid 1px #555;
+  overflow: hidden;
+  position: relative; }
+  /* line 73, ../sass/searches.scss */
+  .boxgrid a, .boxgrid span {
+    color: white; }
+  /* line 77, ../sass/searches.scss */
+  .boxgrid img {
+    top: 0;
+    left: 0; }
+  /* line 83, ../sass/searches.scss */
+  .boxgrid p {
+    padding: 0 10px;
+    color: #afafaf;
+    font-weight: bold; }
+
+/* line 91, ../sass/searches.scss */
+.boxgrid
+.boxcaption {
+  float: left;
+  position: absolute;
+  background: #000;
+  height: 200px;
+  width: 100%;
+  opacity: .8;
+  /* For IE 5-7 */
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=80);
+  /* For IE 8 */
+  -MS-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=80)"; }

@@ -21,17 +21,12 @@ div#diary{
 }
 div#diary-index{
   .cont{
-    margin: 20px;
+    margin: 10px;
     display: inline;
     
     .cont1{
       position:relative;
       background-color: $col-black2;
-      @include btn-fade;
-      &:hover{
-        filter:alpha(opacity=50);
-        opacity:0.5;
-      }
       a.link{
         display:block;
         top: 0;
@@ -48,7 +43,6 @@ div#diary-index{
       }
       img{
         display:block;
-        margin: 5px;
       }
     }
     .cont2{
@@ -211,3 +205,52 @@ a.cke_dialog_ui_button{
   @include btn;
   background-color: $col-green;
 }
+
+//hover
+
+.boxgrid    {   
+    width: 200px;   
+    background: $col-black2;   
+    height: 200px;  
+    border: solid 1px #555;   
+    overflow: hidden;   
+    position: relative;  
+    
+    a,span{
+      color: white;
+    }
+    
+    img{
+      position: absolute;   
+      top: 0;   
+      left: 0;  
+    }
+    
+    p{   
+      padding: 0 10px;   
+      color: #afafaf;   
+      font-weight:bold;
+    }  
+     
+}  
+.boxgrid 
+.boxcaption{   
+    float: left;   
+    position: absolute;   
+    background: #000;   
+    height: 200px;   
+    width: 100%;   
+    opacity: .8;   
+    /* For IE 5-7 */  
+    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=80);  
+    /* For IE 8 */  
+    -MS-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=80)";  
+}  
+.captionfull .boxcaption {  
+    top: 300px;  
+    left: 0;  
+}  
+.caption .boxcaption {  
+    top: 180px;  
+    left: 0;  
+}  

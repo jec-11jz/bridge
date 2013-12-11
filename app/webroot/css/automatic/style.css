@@ -1,0 +1,10 @@
+/* line 1, ../../sass/automatic/style.scss */
+.am-wrapper {
+  float: left;
+  position: relative;
+  overflow: hidden; }
+
+/* line 6, ../../sass/automatic/style.scss */
+.am-wrapper img {
+  position: absolute;
+  outline: none; }

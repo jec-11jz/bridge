@@ -1,0 +1,200 @@
+@import url("reset.css");
+/* General Demo Style */
+/* line 4, ../../sass/automatic/demo.scss */
+body {
+  background: #fff;
+  color: #fff;
+  font-family: 'PT Sans Narrow', Arial, sans-serif;
+  font-size: 12px; }
+
+/* line 10, ../../sass/automatic/demo.scss */
+a {
+  color: #fff;
+  text-decoration: none; }
+
+/* line 14, ../../sass/automatic/demo.scss */
+.clr {
+  clear: both; }
+
+/* line 17, ../../sass/automatic/demo.scss */
+h1, h5 {
+  font-size: 40px;
+  font-weight: normal;
+  text-transform: uppercase;
+  font-family: 'Monoton', Arial, sans-serif;
+  color: #fff;
+  text-shadow: 1px 1px 1px #000;
+  word-spacing: 10px;
+  line-height: 40px;
+  padding: 10px 5px 0px 0px; }
+
+/* line 28, ../../sass/automatic/demo.scss */
+h1 span, h5 {
+  font-size: 18px;
+  color: #c08763;
+  font-family: Georgia, serif;
+  font-style: italic;
+  text-transform: none;
+  word-spacing: 0px;
+  white-space: nowrap; }
+
+/* line 37, ../../sass/automatic/demo.scss */
+h2 {
+  font-family: Georgia, serif;
+  font-style: italic;
+  padding: 5px 10px 5px 5px;
+  font-size: 14px; }
+
+/* line 43, ../../sass/automatic/demo.scss */
+pre {
+  padding: 15px;
+  white-space: pre-wrap; }
+
+/* Header Style */
+/* line 48, ../../sass/automatic/demo.scss */
+.header {
+  height: 25px;
+  line-height: 24px;
+  font-size: 13px;
+  background: #000;
+  opacity: 0.9;
+  text-transform: uppercase;
+  z-index: 4; }
+
+/* line 57, ../../sass/automatic/demo.scss */
+.header a {
+  padding: 5px 10px;
+  letter-spacing: 1px;
+  text-shadow: 1px 1px 1px #000;
+  color: #ddd;
+  text-align: right; }
+
+/* line 64, ../../sass/automatic/demo.scss */
+.header a:hover {
+  color: #fff; }
+
+/* line 67, ../../sass/automatic/demo.scss */
+.header a span {
+  font-weight: bold; }
+
+/* line 70, ../../sass/automatic/demo.scss */
+.header span.right_ab {
+  position: absolute;
+  right: 4px; }
+
+/* line 74, ../../sass/automatic/demo.scss */
+.content {
+  position: absolute;
+  top: 75px;
+  left: 0px;
+  width: 40%;
+  min-width: 315px;
+  z-index: 100;
+  display: none; }
+
+/* line 83, ../../sass/automatic/demo.scss */
+.inner {
+  padding: 10px;
+  background: transparent url(../images/black.png) repeat top left; }
+
+/* line 88, ../../sass/automatic/demo.scss */
+.more ul {
+  text-transform: uppercase;
+  font-size: 11px;
+  padding: 20px 15px 5px 5px;
+  font-family: 'PT Sans Narrow', Arial, sans-serif;
+  margin: 0 auto; }
+
+/* line 95, ../../sass/automatic/demo.scss */
+.more ul li {
+  display: inline;
+  line-height: 30px;
+  margin: 0px 2px;
+  white-space: nowrap; }
+
+/* line 101, ../../sass/automatic/demo.scss */
+.more ul li:first-child {
+  clear: both;
+  float: none;
+  display: block; }
+
+/* line 107, ../../sass/automatic/demo.scss */
+.more ul li.selected a,
+.more ul li.selected a:hover {
+  background: #f7f7f7;
+  color: #000;
+  text-shadow: none;
+  white-space: nowrap; }
+
+/* line 113, ../../sass/automatic/demo.scss */
+.more ul li a {
+  text-shadow: 1px 1px 1px #000;
+  color: #fff;
+  background: #c08763;
+  padding: 3px 6px;
+  -moz-box-shadow: 1px 1px 2px #000;
+  -webkit-box-shadow: 1px 1px 2px #000;
+  box-shadow: 1px 1px 2px #000; }
+
+/* line 122, ../../sass/automatic/demo.scss */
+.more ul li a:hover {
+  background: #fff;
+  color: #000;
+  text-shadow: none; }
+
+/* line 127, ../../sass/automatic/demo.scss */
+.snippet {
+  padding: 5px; }
+
+/* line 130, ../../sass/automatic/demo.scss */
+.snippet span {
+  font-size: 14px;
+  cursor: pointer;
+  padding: 2px 18px 2px 9px; }
+
+/* line 136, ../../sass/automatic/demo.scss */
+.snippet span.down {
+  background: black url(../images/arrow.png) no-repeat 98% 50%; }
+
+/* line 139, ../../sass/automatic/demo.scss */
+.snippet span.up {
+  background: black url(../images/arrow_up.png) no-repeat 98% 50%; }
+
+/* line 142, ../../sass/automatic/demo.scss */
+.snippet pre {
+  display: none; }
+
+/* line 145, ../../sass/automatic/demo.scss */
+.panel {
+  position: absolute;
+  height: 86px;
+  width: 20px;
+  right: 0px;
+  top: 10px;
+  cursor: pointer; }
+
+/* line 153, ../../sass/automatic/demo.scss */
+.hide {
+  background: transparent url(../images/hide.png) no-repeat center center; }
+
+/* line 156, ../../sass/automatic/demo.scss */
+.show {
+  background: transparent url(../images/show.png) no-repeat center center; }
+
+/* line 159, ../../sass/automatic/demo.scss */
+.loadmore {
+  display: none;
+  width: 700px;
+  line-height: 30px;
+  text-transform: uppercase;
+  background: #333;
+  float: right;
+  font-weight: bold;
+  font-size: 16px;
+  text-align: center;
+  cursor: pointer;
+  text-shadow: 1px 1px 1px #000; }
+
+/* line 172, ../../sass/automatic/demo.scss */
+.loadmore:hover {
+  background: #000; }

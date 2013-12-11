@@ -44,9 +44,6 @@ div#result{
         opacity:0.5;
       }
     }
-    img{
-      margin: 10px;
-    }
   }
 }
   // #result{
@@ -64,4 +61,43 @@ div#result{
 
 
 
+
+.boxgrid    {   
+    width: 100%;   
+    background: $col-black2;   
+    height: auto;  
+    border: solid 1px #555;   
+    overflow: hidden;   
+    position: relative;  
+    
+    a,span{
+      color: white;
+    }
+    
+    img{
+      // position: absolute;   
+      top: 0;   
+      left: 0;  
+    }
+    
+    p{   
+      padding: 0 10px;   
+      color: #afafaf;   
+      font-weight:bold;
+    }  
+     
+}  
+.boxgrid 
+.boxcaption{   
+    float: left;   
+    position: absolute;   
+    background: #000;   
+    height: 200px;   
+    width: 100%;   
+    opacity: .8;   
+    /* For IE 5-7 */  
+    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=80);  
+    /* For IE 8 */  
+    -MS-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=80)";  
+}  
 
