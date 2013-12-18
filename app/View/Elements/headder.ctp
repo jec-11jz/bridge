@@ -28,7 +28,7 @@ $this->Html->script('dropdown/dropdown', array('inline' => false));
 				<ul>
 					<li><a href="/blogs/index"><i class="fa fa-file-text-o menu"></i>日記一覧</a></li>
 					<li><a href="/blogs/add"><i class="fa fa-pencil-square-o menu"></i>日記作成</a></li>
-					<li><a href="/product/add"><i class="fa fa-film menu"></i>作品登録</a></li>
+					<li><a href="/products/add"><i class="fa fa-film menu"></i>作品登録</a></li>
 					<li><a href="/tags/index"><i class="fa fa-tags menu"></i>タグ編集</a></li>
 				</ul>
 			</li>

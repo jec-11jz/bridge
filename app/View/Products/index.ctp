@@ -7,17 +7,31 @@
 	$this->extend('/Common/index');
 ?>
 <div>
-	<form type="post" action="/products/add">
-		<input type="radio" name="template" id="movie" value="movie">
-		<label for="movie">映画</label>
-		<input type="radio" name="template" id="novel" value="novel">
-		<label for="novel">小説</label>
-		<input type="radio" name="template" id="anime" value="anime">
-		<label for="anime">アニメ</label>
-		<input type="radio" name="template" id="other" value="other">
-		<label for="other">その他</label>
-		<input type="submit" value="作成">
-	</form>	
+	<select name="template" class="template-name" id="selected-template">
+		<option value="" disabled>--選択してください--</option>
+		<?php foreach($templates as $template) : ?>
+			<?php if(isset($template['Template']['id'])){ ?>
+				<?php if($template['Template']['id'] == $template_id) { ?>
+					<option value="<?php echo $template['Template']['id']; ?>" selected><?php echo $template['Template']['name']; ?></option>
+				<?php } else { ?>
+					<option value="<?php echo $template['Template']['id']; ?>"><?php echo $template['Template']['name']; ?></option>
+				<?php } ?>
+			<?php } ?>
+		<?php endforeach; ?>
+		<option value="other">テンプレート作成</option>
+	</select>
 </div>
-
+<script>
+	$(function(){
+		//テンプレートが選択されたら編集画面に飛ばす
+		$("#selected-template").change(function() {
+			var temp_id = $('#selected-template').val();
+			console.log(temp_id);
+			if(temp_id == 'other'){
+				location.href="/templates/add";
+				return;
+			}// End if()
+		});// End change()
+	})
+</script>
 
