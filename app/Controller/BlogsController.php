@@ -59,7 +59,7 @@ class BlogsController extends AppController {
 
                 //メッセージを出力
                 $this->Session->setFlash('記事を保存しました');
-                // index.phpへリダイレクトBlog
+                // index.phpへリダイレクト
                 $this->redirect(array('controller' => 'blogs', 'action' => 'index'));
             } else {
                 $this->Session->setFlash('記事を保存できません');
@@ -69,8 +69,16 @@ class BlogsController extends AppController {
     
     public function edit($id = null) {
         if (!$id) {
-        	throw new NotFoundException(__('Invalid post'));
+        	throw new NotFoundException(__('blog_id is not found'));
     	}
+		//ブログが存在するかどうかを確かめる
+	    $post = $this->Blog->findById($id);
+	    if (!$post) {
+	        throw new NotFoundException(__('this blog is not exist'));
+	    }
+		if($this->Auth->user('id') != $post['Blog']['user_id']){
+			 throw new NotFoundException(__('不正アクセス'));
+		}
 		//ブログに付加されているタグを配列でViewに渡す
 		$tag_id = $this->BlogTag->findAllByBlogId($id);
 		$tagNameList = '';
@@ -84,11 +92,7 @@ class BlogsController extends AppController {
 			}
 		}
 		$this->set('tags', $tagNameList);
-		//ブログが存在するかどうかを確かめる
-	    $post = $this->Blog->findById($id);
-	    if (!$post) {
-	        throw new NotFoundException(__('Invalid post'));
-	    }
+
 	    if ($this->request->is(array('post', 'put'))) {
 	    	$this->Blog->id = $id;
 			//編集前のUsedBlogImageのデータを削除する
@@ -117,7 +121,7 @@ class BlogsController extends AppController {
 
                 //メッセージを出力
                 $this->Session->setFlash('記事を保存しました');
-                // index.phpへリダイレクトBlog
+                // index.phpへリダイレクト
                 $this->redirect(array('controller' => 'blogs', 'action' => 'index'));
             } else {
                 $this->Session->setFlash('記事を保存できません');
