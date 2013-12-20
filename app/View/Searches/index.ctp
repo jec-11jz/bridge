@@ -8,6 +8,7 @@
 	// $this->Html->script('liffect', array('inline' => false));
 	$this->Html->script('automatic/jquery.montage', array('inline' => false));
 	
+	
 	// $this->Html->script('colorbox/jquery.colorbox-min', array('inline' => false));
 ?>
 <script>

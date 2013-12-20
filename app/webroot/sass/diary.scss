@@ -2,11 +2,12 @@
 // @import "constants.scss";
 
 body{
-  @include back-x;
+  // @include back-x;
+  background-color: #2C2B2B;
 }
 th {
-  font-size: 14px;
   color: #313131;
+  font-size: 14px;
 }
 td {
   font-size: 11px;
@@ -19,47 +20,81 @@ table > tbody > tr > td > a {
 div#diary{
   margin:20px;
 }
+$bloginfo: 20px;
 div#diary-index{
+  // text-align: center;
+  // width: ;
+  margin: 0 auto;
   .cont{
-    margin: 10px;
+    background-color: #BEBEBE;
     display: inline;
+    overflow: hidden;
+    margin: 10px;
+    margin-top: 0px;
     
-    .cont1{
-      position:relative;
-      background-color: $col-black2;
-      a.link{
-        display:block;
+    a.btn-a.btn-size-ss{
+      @include btn-size-ss;
+      margin: 0.5em 1em;
+    }
+    a.right{
+        float:right;
+        margin: 0.5em 1em;
+    }
+    a.link{
+        position: absolute;
         top: 0;
         left: 0;
+        display:block;
         width: 100%;
         height: 100%;
-        position: absolute;
-      }
-      .title{
-        margin: 10px 0 0 5px;
-      }
-      hr{
-        margin: 10px 2px;
-      }
-      img{
-        display:block;
+        z-index: 550;
+        &:hover{
+          .blog-info{
+            
+        }
       }
     }
-    .cont2{
+    
+    .overlay{
+      width: 100%;
+      height: 100%;
+      opacity:0.8;
+      position: absolute;
+      border-bottom: $bloginfo solid white;
+      z-index: 500;
+    }
+    a.link:hover div.overlay{
+      // background-color: red;
+      border-bottom-width: 200px solid blue;
+    }
+    img{
+      // bottom: -$bloginfo;
+      // margin-bottom: -$bloginfo;
+    }
+    div.blog-info{
+      z-index: 560;
+      position: absolute;
+      bottom: -$bloginfo - 23;
+      display: block;
+      width: 100%;
+      a.blog-title{
+        display: block;
+      }
     }
   }
 }
+
 form#BlogAddForm{
   label{
-    font-size:23px;
-    padding: 10px 0;
     margin: 10px 30px;
+    padding: 10px 0;
+    font-size:23px;
   }
   #BlogTitle{
-    height: 35px;
-    width: 90%;
-    font-size:17px;
     display:block;
+    width: 90%;
+    height: 35px;
+    font-size:17px;
   }
   #ckeditor{
     label{
@@ -70,50 +105,50 @@ form#BlogAddForm{
     margin: 0px 30px;
   }
   div.tagbox{
-    width: 90%;
-    margin: 0px 30px;
-    border-radius: 0px;
     @include box-shadow(black 0px 0px 0px 0px);
+    margin: 0px 30px;
+    width: 90%;
+    border-radius: 0px;
     ul{
-      border-radius: 0px;
       @include box-shadow(black 0px 0px 0px 0px);
+      border-radius: 0px;
     }
   }
   #cke_ckeditor{
-    margin: 0px 30px
+    margin: 0px 30px;
   }
 }
 
 div{
   .container {
     @include mp-clear;
-    height: auto !important;
-    height: 100%;
+    min-width: 860px;
     min-height: 100%;
     width: 100%;
-    min-width: 860px;
+    height: auto !important;
+    height: 100%;
   }
   .main {
-    width: 100%;
-    min-width: 600px;
-    margin-left: 210px;
     position: relative;
-    height: 100%;
     float: left;
+    margin-left: 210px;
+    min-width: 600px;
+    width: 100%;
+    height: 100%;
   }
   .line-up {
     @include mp-clear;
     margin-top: 50px;
   }
   form{
-    background-color: rgba(235,235,236, 0.80);
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    width: 90%;
-    height: 90%;
     margin: 50px 0px 0px 30px; 
     padding: 0 0 50px 0;
+    width: 90%;
+    height: 90%;
     border-radius: 20px;
+    background-color: rgba(235,235,236, 0.80);
+    background-attachment: fixed;
+    background-repeat: no-repeat;
     color: rgba(0,0,0, 0.80);
   }
   .form-group{
@@ -121,22 +156,22 @@ div{
   }
 }
 .side-menu {
-    width: 200px;
-    height: 100%;
     position:absolute;
+    float: left;
+    width: 100%;
+    height: 100%;
     background-color: #509B49;
     background-color: rgb(76, 146, 31);
     color: #DDDDDD;
-    float: left;
     
     .menu{
        margin-top: 20px;
        .icon{
+         margin: 0;
+         padding: 0;
          width: 20px;
          height: 20px;
          text-align: center;
-         margin: 0;
-         padding: 0;
        }
        .name{
          margin-left: 10px;
@@ -144,9 +179,9 @@ div{
     }
     
     li {
-      list-style-type: none;
       background-color: #60AB59;
       background-color: rgb(96, 166, 51);
+      list-style-type: none;
       &:hover{
         background-color: #474B4E;
         background-color: rgb(126, 196, 81);
@@ -165,12 +200,12 @@ div{
       }
       a{
         @include mp-clear;
+        display: block;
+        margin: 1px 0;
+        padding: 10px 5px;
         width: 100%;
         height: 100%;
         color: #DDDDDD;
-        padding: 10px 5px;
-        margin: 1px 0;
-        display: block;
         text-decoration: none;
       }
     }
@@ -179,16 +214,17 @@ div{
       @include mp-clear;
     }
     
+    
 }
 
 .side-profile {
-  width: 100%;
-  height: 100%;
   margin: 0 auto;
   padding-top: 10px;
-  text-align: center;
+  width: 100%;
+  height: 100%;
   background-color: #60AB59;
   background-color: rgb(96, 166, 51);
+  text-align: center;
 }
 textarea.blog{
   width: 80%;
@@ -200,57 +236,9 @@ textarea.blog{
   }
 }
 
-a.cke_dialog_ui_button{
-  @include btn-fade;
-  @include btn;
-  background-color: $col-green;
-}
-
 //hover
 
-.boxgrid    {   
-    width: 200px;   
-    background: $col-black2;   
-    height: 200px;  
-    border: solid 1px #555;   
-    overflow: hidden;   
-    position: relative;  
-    
-    a,span{
-      color: white;
-    }
-    
-    img{
-      position: absolute;   
-      top: 0;   
-      left: 0;  
-    }
-    
-    p{   
-      padding: 0 10px;   
-      color: #afafaf;   
-      font-weight:bold;
-    }  
-     
-}  
-.boxgrid 
-.boxcaption{   
-    float: left;   
-    position: absolute;   
-    background: #000;   
-    height: 200px;   
-    width: 100%;   
-    opacity: .8;   
-    /* For IE 5-7 */  
-    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=80);  
-    /* For IE 8 */  
-    -MS-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=80)";  
-}  
-.captionfull .boxcaption {  
-    top: 300px;  
-    left: 0;  
-}  
-.caption .boxcaption {  
-    top: 180px;  
-    left: 0;  
-}  
+
+
+
+  

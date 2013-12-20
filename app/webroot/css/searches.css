@@ -229,7 +229,7 @@ div#result .cont {
       filter: alpha(opacity=50);
       opacity: 0.5; }
 
-/* line 65, ../sass/searches.scss */
+/* line 54, ../sass/searches.scss */
 .boxgrid {
   width: 100%;
   background: #c1c1c1;
@@ -237,20 +237,20 @@ div#result .cont {
   border: solid 1px #555;
   overflow: hidden;
   position: relative; }
-  /* line 73, ../sass/searches.scss */
+  /* line 62, ../sass/searches.scss */
   .boxgrid a, .boxgrid span {
     color: white; }
-  /* line 77, ../sass/searches.scss */
+  /* line 66, ../sass/searches.scss */
   .boxgrid img {
     top: 0;
     left: 0; }
-  /* line 83, ../sass/searches.scss */
+  /* line 72, ../sass/searches.scss */
   .boxgrid p {
     padding: 0 10px;
     color: #afafaf;
     font-weight: bold; }
 
-/* line 91, ../sass/searches.scss */
+/* line 80, ../sass/searches.scss */
 .boxgrid
 .boxcaption {
   float: left;

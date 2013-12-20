@@ -7,7 +7,7 @@
 <div id="diary">
 	<h4>タイトル</h4>
 	<h1><?php echo h($blog['Blog']['title']); ?></h1>
-	
+	<h4>付けられたタグのひょうじいいいいいいいいいいいいいいいいいいいいいい</h4>
 	<h4>本文</h4>
 	<p><?php echo $blog['Blog']['content']; ?></p>
 	
