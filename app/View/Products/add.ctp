@@ -49,29 +49,29 @@
 		<option value="anime">アニメ</option>
 		<option value="other">その他</option>
 	</select>
-	<label for="title">タイトル：</label>
-		<input type="text" name="title" size="40" maxlength="20" id="title" style="display: block" />
-		<div id="suggestTitle" class="suggest" style="display:none;"></div>
-	<label for="originalTitle">原題：</label>
-		<input type="text" name="originalTitle" size="40" maxlength="20" id="originalTitle" style="display: block" />
-		<div id="suggestOriginalTitle" class="suggest" style="display:none;"></div>
-	<label for="country">製作国：</label>
-		<input type="text" name="country" size="40" maxlength="20" id="country" style="display: block" />
-		<div id="suggestCountry" class="suggest" style="display:none;"></div>
-	<label for="date">製作年：</label>
-		<input type="text" name="date" size="40" maxlength="20" id="date" style="display: block" />
-		<div id="suggestDate" class="suggest" style="display:none;"></div>
-	<label for="time">上映時間：</label>
-		<input type="text" name="time" size="40" maxlength="20" id="time" placeholder="分" style="display: block" />
-		<div id="suggestTime" class="suggest" style="display:none;"></div>
-	<label for="director">監督：</label>
-		<input type="text" name="director" size="40" maxlength="20" id="director" placeholder="監督" style="display: block" />
-		<div id="suggestDirector" class="suggest" style="display:none;"></div>
-	<label for="cast">キャスト：</label>
-		<input type="text" name="cast" size="40" maxlength="20" id="cast" placeholder="キャスト" style="display: block" />
-		<div id="suggestCast" class="suggest" style="display:none;"></div>
-	<label for="cast">あらすじ：</label>
-		<textarea name="outline" cols=40 rows=4 id="outline" style="display: block" /></textarea>
+	<label for="movieTitle" style="display: block">タイトル：</label>
+		<input type="text" name="movieTitle" size="40" maxlength="20" id="movieTitle" style="display: block" />
+		<div id="suggestMovieTitle" class="suggest" style="display:none;"></div>
+	<label for="originalMovieTitle">原題：</label>
+		<input type="text" name="originalMovieTitle" size="40" maxlength="20" id="originalMovieTitle" style="display: block" />
+		<div id="suggestOriginalMovieTitle" class="suggest" style="display:none;"></div>
+	<label for="movieCountry">製作国：</label>
+		<input type="text" name="movieCountry" size="40" maxlength="20" id="movieCountry" style="display: block" />
+		<div id="suggestMovieCountry" class="suggest" style="display:none;"></div>
+	<label for="movieDate">製作年：</label>
+		<input type="text" name="movieDate" size="40" maxlength="20" id="movieDate" style="display: block" />
+		<div id="suggestMovieDate" class="suggest" style="display:none;"></div>
+	<label for="movieTime">上映時間：</label>
+		<input type="text" name="movieTime" size="40" maxlength="20" id="movieTime" placeholder="分" style="display: block" />
+		<div id="suggestMovieTime" class="suggest" style="display:none;"></div>
+	<label for="movieDirector">監督：</label>
+		<input type="text" name="movieDirector" size="40" maxlength="20" id="movieDirector" placeholder="監督" style="display: block" />
+		<div id="suggestMovieDirector" class="suggest" style="display:none;"></div>
+	<label for="movieCast">キャスト：</label>
+		<input type="text" name="movieCast" size="40" maxlength="20" id="movieCast" placeholder="キャスト" style="display: block" />
+		<div id="suggestMovieCast" class="suggest" style="display:none;"></div>
+	<label for="movieOutline">あらすじ：</label>
+		<textarea name="movieOutline" cols=40 rows=4 id="movieOutline" style="display: block" /></textarea>
 	<label>最後の編集者 :</label><a style="display: block">iverson</a>
 	<a>この作品を編集する</a>
 	<input type="button" value="戻る" />
@@ -128,53 +128,47 @@ $(function() {
 			console.log('success');
 			console.log(tags);
 			lowercase : true
-			function startSuggest() {
-				new Suggest.Local(
-			        "title",    // 入力のエレメントID
-			        "suggestTitle", // 補完候補を表示するエリアのID
-			        JSON.parse(tags),      // 補完候補の検索対象となる配列
-			        {dispMax: 10, interval: 1000}); // オプション
+			new Suggest.Local(
+		        "movieTitle",    // 入力のエレメントID
+		        "suggestMovieTitle", // 補完候補を表示するエリアのID
+		        JSON.parse(tags),      // 補完候補の検索対象となる配列
+		        {dispMax: 10, interval: 1000, prefix: true}); // オプション
+	        
+	        new Suggest.Local(
+		        "originalMovieTitle",    // 入力のエレメントID
+		        "suggestOriginalMovieTitle", // 補完候補を表示するエリアのID
+		        JSON.parse(tags),      // 補完候補の検索対象となる配列
+		        {dispMax: 10, interval: 1000, prefix: true}); // オプション
+	        
+	        new Suggest.Local(
+		        "movieCountry",    // 入力のエレメントID
+		        "suggestMovieCountry", // 補完候補を表示するエリアのID
+		        JSON.parse(tags),      // 補完候補の検索対象となる配列
+		        {dispMax: 10, interval: 1000, prefix: true}); // オプション
+	        
+	        new Suggest.Local(
+		        "movieDate",    // 入力のエレメントID
+		        "suggestMovieDate", // 補完候補を表示するエリアのID
+		        JSON.parse(tags),      // 補完候補の検索対象となる配列
+		        {dispMax: 10, interval: 1000, prefix: true}); // オプション
+	        
+	        new Suggest.Local(
+		        "movieTime",    // 入力のエレメントID
+		        "suggestMovieTime", // 補完候補を表示するエリアのID
+		        JSON.parse(tags),      // 補完候補の検索対象となる配列
+		        {dispMax: 10, interval: 1000, prefix: true}); // オプション
 		        
-		        new Suggest.Local(
-			        "originalTitle",    // 入力のエレメントID
-			        "suggestOriginalTitle", // 補完候補を表示するエリアのID
-			        JSON.parse(tags),      // 補完候補の検索対象となる配列
-			        {dispMax: 10, interval: 1000}); // オプション
+	        new Suggest.LocalMulti(
+		        "movieDirector",    // 入力のエレメントID
+		        "suggestMovieDirector", // 補完候補を表示するエリアのID
+		        JSON.parse(tags),      // 補完候補の検索対象となる配列
+		        {dispMax: 10, interval: 1000, prefix: true}); // オプション
 		        
-		        new Suggest.Local(
-			        "country",    // 入力のエレメントID
-			        "suggestCountry", // 補完候補を表示するエリアのID
-			        JSON.parse(tags),      // 補完候補の検索対象となる配列
-			        {dispMax: 10, interval: 1000}); // オプション
-		        
-		        new Suggest.Local(
-			        "date",    // 入力のエレメントID
-			        "suggestDate", // 補完候補を表示するエリアのID
-			        JSON.parse(tags),      // 補完候補の検索対象となる配列
-			        {dispMax: 10, interval: 1000}); // オプション
-		        
-		        new Suggest.Local(
-			        "time",    // 入力のエレメントID
-			        "suggestTime", // 補完候補を表示するエリアのID
-			        JSON.parse(tags),      // 補完候補の検索対象となる配列
-			        {dispMax: 10, interval: 1000}); // オプション
-			        
-		        new Suggest.LocalMulti(
-			        "director",    // 入力のエレメントID
-			        "suggestDirector", // 補完候補を表示するエリアのID
-			        JSON.parse(tags),      // 補完候補の検索対象となる配列
-			        {dispMax: 10, interval: 1000}); // オプション
-			        
-		        new Suggest.LocalMulti(
-			        "cast",    // 入力のエレメントID
-			        "suggestCast", // 補完候補を表示するエリアのID
-			        JSON.parse(tags),      // 補完候補の検索対象となる配列
-			        {dispMax: 10, interval: 1000}); // オプション
-			}
-			
-			window.addEventListener ?
-			window.addEventListener('load', startSuggest, false) :
-			window.attachEvent('onload', startSuggest);
+	        new Suggest.LocalMulti(
+		        "movieCast",    // 入力のエレメントID
+		        "suggestMovieCast", // 補完候補を表示するエリアのID
+		        JSON.parse(tags),      // 補完候補の検索対象となる配列
+		        {dispMax: 10, interval: 1000, prefix: true}); // オプション
 		},
 		error: function(tags){
 			console.log('error');
