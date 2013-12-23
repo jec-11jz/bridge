@@ -89,4 +89,35 @@ class EmailConfig {
 		//'headerCharset' => 'utf-8',
 	);
 
+
+	public $register = array(
+		'from' => array('' => 'Bridge.com'),
+		'sender' => null,
+		'to' => null,
+		'cc' => null,
+		'bcc' => null,
+		'replyTo' => null,
+		'readReceipt' => null,
+		'returnPath' => null,
+		'messageId' => true,
+		'subject' => '[Bridge] 登録確認メール',
+		'message' => null,
+		'headers' => null,
+		'viewRender' => null,
+		'template' => 'email_auth',
+		'layout' => false,
+		'viewVars' => null,
+		'attachments' => null,
+		'emailFormat' => 'text',
+		'transport' => 'Smtp',
+		'host' => 'ssl://smtp.gmail.com',
+		'port' => 465,
+		'timeout' => 30,
+		'username' => '',
+		'password' => '',
+		'client' => null,
+		'log' => true,
+		//'charset' => 'utf-8',
+		//'headerCharset' => 'utf-8',
+    );
 }

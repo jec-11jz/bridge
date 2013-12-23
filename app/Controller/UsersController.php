@@ -1,6 +1,8 @@
 <?php
 App::uses('AppController', 'Controller');
 App::uses('Sanitize', 'Utility');
+App::uses('CakeEmail', 'Network/Email');
+
 /**
  * Users Controller
  *
@@ -11,7 +13,7 @@ class UsersController extends AppController {
 	var $components = array('RequestHandler');
 	
 	//モデルの指定
-	public $uses = array('User');
+	public $uses = array('User', 'EmailAuth');
 	
 	//AppControllerをオーバーライド
 	public function beforeFilter()
@@ -77,8 +79,10 @@ class UsersController extends AppController {
         } else {
 	        if($this->request->is('post')) {
 				$this->request->data['User']['name'] = strtolower($this->request->data['User']['name']);
-	        	$this->User->create();
-	            if ($this->User->save($this->request->data)) {
+                $this->User->create();
+                $result = $this->User->save($this->request->data);
+                if ($result) {
+                    $this->__send_add_email($result['User']['id']);
 					$this->Auth->login();
 					$this->Session->setFlash(__('登録完了です。 (｡･_･｡)ﾉ'),'default', array(), 'auth');
 					
@@ -149,5 +153,45 @@ class UsersController extends AppController {
     {
         $this->redirect($this->Auth->logout());
     }
-	
+
+
+    private function __send_add_email($user_id) {
+        $this->EmailAuth->create();
+        $emailAuth = $this->EmailAuth->findByUserId($user_id);
+        if (!$emailAuth) {
+            // エラーログ出すとか
+            exit;
+        }
+        $body = array(
+            'auth_url' => Router::url(
+                array(
+                    'controller'=>'users',
+                    'action'=>'email_verify',
+                    $user_id,
+                    $emailAuth['EmailAuth']['token']
+                ),
+                true
+            )
+        );
+
+		$email = new CakeEmail('register');
+		$email->to($emailAuth['User']['email']);
+		$email->viewVars($body);
+		$email->send();
+    }
+
+    public function email_verify($user_id, $token) {
+        if (!isset($user_id) || !isset($token)) {
+            print 'param error';
+            exit;
+        }
+        $this->EmailAuth->create();
+        $result = $this->EmailAuth->checkValid($user_id, $token);
+        if (!$result) {
+            print 'token error';
+            exit;
+        }
+
+        $this->redirect('/');
+    }
 }

@@ -1,6 +1,7 @@
 <?php
 App::uses('AppModel', 'Model');
 App::uses('AuthComponent', 'Controller/Component');
+App::uses('EmailAuth', 'Model');
 /**
  * User Model
  *
@@ -127,5 +128,31 @@ class User extends AppModel {
 		}
 		return true;
 	}
+	
+	public function afterSave($created, $options = array()) {
+        if ($created) {
+			$EmailAuth = ClassRegistry::init('EmailAuth');
+			$emailAuth = $EmailAuth->createRecord($this->getLastInsertId());
+		}
+	} 
+	
+	
+	/**
+	 * chengeEmailVerifiedToTrue($id)
+	 * 
+	 * メールアドレス認証済みにする
+	 */
+	public function chengeEmailVerifiedToTrue($id) {
+		$user = $this->findById($id);
+		if ($user) {
+			$this->create();
+			$data = array('User' => array('id' => $id, 'email_verified' => true));
+			$feildList = array('email_verified');
+			if ($this->save($data, false, $feildList)) {
+				return true;
+			}
+		}
+		return false;
+    }
 
 }
