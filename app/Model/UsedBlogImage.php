@@ -6,12 +6,10 @@ class UsedBlogImage extends AppModel {
         'User' => array(
             'className'  => 'User',
             'foreignKey'   => 'user_id',
-            'department' => 'true'
         ),
         'Blog' => array(
             'className'  => 'Blog',
             'foreignKey'   => 'blog_id',
-            'department' => 'true'
         )
 	);
 	public function getImageFromHtml($htmlText){

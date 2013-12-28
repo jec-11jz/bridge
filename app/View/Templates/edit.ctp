@@ -25,6 +25,7 @@
 	<fieldset id="add-attributes">
 		<legend>項目</legend>
 		<!-- アトリビュート表示 -->
+		<input value="作品タイトル" disabled>
 		<?php $count = 0; ?>
 		<?php foreach($attributes as $attribute) :  ?>
 			<?php if($attribute['Attribute']['id']) { ?>

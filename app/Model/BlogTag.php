@@ -19,7 +19,7 @@ class BlogTag extends AppModel {
 	
 	public function addBlogTags($tag_name, $blog_id){
 		$Tag = ClassRegistry::init('Tag');
-    	if(!empty($tag_name)){
+    	if(isset($tag_name)){
 			//送らてきたタグのカンマで区切られた文字列を分解す
 			$tags = explode(",", $tag_name);
 			foreach ($tags as $tag) {

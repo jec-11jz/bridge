@@ -14,7 +14,7 @@ class TemplatesController extends AppController {
     }
 	
 	public function index(){
-		//Attributeの一覧表示
+		//テンプレートの一覧表示
 		$templates = $this->Template->findAllByUserId($this->Auth->user('id'));
 		if(!is_array($templates)){
 			// error
