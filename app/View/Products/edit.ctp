@@ -23,14 +23,20 @@
 }
 </style>
 <div id="formRegisterProduct">
-<form method="post" action="/products/add">
-	<div id="image" onclick="openKCFinder(this)"><div style='margin:5px'>Click here to choose an image</div></div>
+<form method="post" id="formProductEdit" action="/products/edit/<?php echo h($product['Product']['id']); ?>">
+	<div id="image" onclick="openKCFinder(this)">
+		<?php if($product['Product']['image_url']) { ?>
+			<img id="img" src="<?php echo h($product['Product']['image_url']); ?>" width="100%" style="margin: auto; visibility: visible;">
+		<?php } else { ?>
+			<div style='margin:5px'>Click here to choose an image</div>
+		<?php } ?>
+	</div>
 	<legend>テンプレート選択</legend>
 	<select name="template_id" class="template-name product-info" id="selected-template" style="display:block">
 		<option value=""　selected>--選択してください--</option>
 		<?php foreach($templates as $template) : ?>
 			<?php if(isset($template['Template']['id'])){ ?>
-				<?php if($template['Template']['id'] == $template_id) { ?>
+				<?php if($template['Template']['id'] == $product['Product']['template_id']) { ?>
 					<option value="<?php echo $template['Template']['id']; ?>" selected><?php echo $template['Template']['name']; ?></option>
 				<?php } else { ?>
 					<option value="<?php echo $template['Template']['id']; ?>"><?php echo $template['Template']['name']; ?></option>
@@ -40,29 +46,23 @@
 		<option value="other">テンプレート作成</option>
 	</select>
 	<label for="movieTitle">作品タイトル :</label>
-	<input type="text" name="name" class="input product-info tags" id="movieTitle"/>
-		
+	<input type="text" name="name" value="<?php echo h($product_names); ?>" class="input product-info tags" id="movieTitle"/>
+			
 	<!-- アトリビュートの呼び出し -->
 	<fieldset id="product-data">
 		<table class="table">
 			<th>Product Information</th>
-			<?php foreach($templates as $template) : ?>
-				<?php foreach($template['Attribute'] as $attribute) : ?>
+			<?php foreach($attributes as $attribute) : ?>
 				<tr>
-				<?php if(isset($attribute['name'])){ ?>
-					<?php if($attribute['template_id'] == $template_id){ ?>
-						<td><label for="<?php echo $attribute['id']; ?>"><?php echo $attribute['name']; ?> :</label>
-						<input type="text" class="attribute tags" name="value" id="<?php echo $attribute['id']; ?>"></td>
-					<?php } ?>
-				<?php } ?>
+					<td><label for="<?php echo $attribute['Attribute']['id']; ?>"><?php echo $attribute['Attribute']['name']; ?> :</label>
+					<input type="text" class="attribute tags" value="<?php echo $attribute['tagNamesCSV']; ?>" name="value" id="<?php echo $attribute['Attribute']['id']; ?>"></td>
 				</tr>
-				<?php endforeach; ?>
-			<?php endforeach; ?>
+			<?php endforeach; ?><!-- attribute -->
 		</table>
 	</fieldset>
 	
 	<label for="movie-outline">あらすじ：</label>
-		<textarea name="outline" class="product-info" cols="40" rows="4" id="movie-outline" style="display: block" /></textarea>
+		<textarea name="outline" class="product-info" cols="40" rows="4" id="movie-outline" style="display: block" /><?php echo h($product['Product']['outline']); ?></textarea>
 		
 	<label>最後の編集者 :</label><a style="display: block">iverson</a>
 	<a>この作品を編集する</a>
@@ -152,7 +152,7 @@ $(function() {
 		console.log(sendData['data']['Product']['template_id']);
 		$.ajax({
 			type: "POST",
-			url: "/products/add",
+			url: $('#formProductEdit').attr('action'),
 			data: sendData,
 			success: function(){
 				window.location.reload();

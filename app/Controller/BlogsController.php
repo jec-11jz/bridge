@@ -48,9 +48,11 @@ class BlogsController extends AppController {
             		$result['Blog']['content']
 				);
 				//タグ登録
+				$tag_type = 0;
 				$this->Tag->addTags(
 					$this->request->data['Tag']['name'],
-					$this->Auth->user('id')
+					$this->Auth->user('id'),
+					$tag_type
 				);
 				$this->BlogTag->addBlogTags(
 					$this->request->data['Tag']['name'],
@@ -109,9 +111,11 @@ class BlogsController extends AppController {
             		$result['Blog']['content']
 				);
 				//タグ登録
+				$tag_type = 0;
 				$this->Tag->addTags(
 					$this->request->data['Tag']['name'],
-					$this->Auth->user('id')
+					$this->Auth->user('id'),
+					$tag_type
 				);
 				//ブログタグ登録
 				$this->BlogTag->addBlogTags(
@@ -146,7 +150,6 @@ class BlogsController extends AppController {
 	            return true;
 	        }
 	    }
-	
 	    return parent::isAuthorized($user);
 	}
     

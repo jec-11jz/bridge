@@ -6,13 +6,10 @@
 		
 		
 ?>
-
-<script>
-</script>
+<legend>Link</legend>
 <a href="/templates/add" class="btn-a">テンプレート作成</a>
-
-
-
+<a href="/products/index" class="btn-a">作品一覧</a>
+<legend>My Templates and My Attributes</legend>
 <div id="template-index">
 	<!-- テンプレート一覧 -->
 	<h2>テンプレート一覧</h2>
@@ -38,7 +35,6 @@
 			<?php foreach($template['Attribute'] as $attribute) : ?>
 			<tr>
 			<?php if(isset($attribute['name'])){ ?>
-				<?php $fontColor = 0; ?>
 				<td><?php echo $attribute['name']; ?></td>
 				<td><?php echo $attribute['template_id']; ?></td>
 			<?php } ?>

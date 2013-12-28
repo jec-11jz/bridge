@@ -4,7 +4,10 @@
 		$this->extend('/Common/index');
 		echo $this->Html->script('jquery.hcaptions');	
 ?>
+<legend>Link</legend>
 <a href="/templates/index" class="btn-a">一覧へ戻る</a>
+<a href="/products/index" class="btn-a">作品一覧</a>
+<legend>Create Template</legend>
 <p><?php echo $this->Session->flash('template'); ?></p>
 <div>
 	<?php echo $this->Form->create('Template', array('type' => 'post', 'action' => 'add')); ?>
@@ -19,10 +22,11 @@
 		<option value="other" selected>その他</option>
 	</select>
 	<div id="new-template">
-		<input type="text" id="template" value="" />
+		<input type="text" name="data[Template][name]" id="template" value="" />
 	</div>
 	<fieldset id="add-attributes">
 		<legend>項目</legend>
+		<input value="作品タイトル" disabled>
 		<input name="data[Attribute][name][]" class="input" type="text" id="attribute" class="attribute">
 		<input type="button" value="×" id="attribute" class="btn-attribute">
 	</fieldset>

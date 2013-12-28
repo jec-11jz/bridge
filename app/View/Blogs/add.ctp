@@ -2,8 +2,6 @@
 	echo $this->Html->css('tag/tags_custom');
 	echo $this->Html->css('diary');
 	
-	$this->extend('/Common/index');
-	
 	echo $this->Html->script('ckeditor/ckeditor');
 	echo $this->Html->script('tag/tags');
 	
