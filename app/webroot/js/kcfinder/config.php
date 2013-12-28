@@ -16,9 +16,10 @@
 // you are using session configuration.
 // See http://kcfinder.sunhater.com/install for setting descriptions
 
-
+error_reporting(E_ALL & ~E_NOTICE);
 session_name('CAKEPHP');
 session_start();
+
 
 global $_CONFIG;
 $_CONFIG = array(
@@ -108,7 +109,7 @@ $_CONFIG = array(
     
     '_sessionVar' => &$_SESSION['KCFINDER'],
     '_sessionLifetime' => 30,
-    '_sessionDir' => "/var/lib/php/session",	// SESSIONファイル保存先。phpinfo();とかで出てくる「session.save_path」のこと。ここの例はCentOSでのデフォルトなので各自書き換えて！
+    '_sessionDir' => "/Applications/MAMP/tmp/php",	// SESSIONファイル保存先。phpinfo();とかで出てくる「session.save_path」のこと。ここの例はCentOSでのデフォルトなので各自書き換えて！
 
     '_sessionDomain' => ".bridge.com",	// 配置する場所のドメイン名
     '_sessionPath' => "/kcfinder",	// kcfinder置き場
