@@ -7,56 +7,13 @@
 	
 	// $this->Html->script('liffect', array('inline' => false));
 	$this->Html->script('automatic/jquery.montage', array('inline' => false));
+	echo $this->Html->script('masonry.pkgd');
+	echo $this->Html->script('imagesloaded');
+	echo $this->Html->script('jquery.lazyload');
 	
 	
 	// $this->Html->script('colorbox/jquery.colorbox-min', array('inline' => false));
 ?>
-<script>
-			// $(document).ready(function(){
-				// //Examples of how to assign the Colorbox event to elements
-				// $(".group3").colorbox({rel:'group3', transition:"none", width:"75%", height:"75%"});
-				// $(".ajax").colorbox({width:50%});
-				// $(".youtube").colorbox({iframe:true, innerWidth:640, innerHeight:390});
-				// $(".inline").colorbox({inline:true, width:"50%"});
-				// $(".callbacks").colorbox({
-					// onOpen:function(){ alert('onOpen: colorbox is about to open'); },
-					// onLoad:function(){ alert('onLoad: colorbox has started to load the targeted content'); },
-					// onComplete:function(){ alert('onComplete: colorbox has displayed the loaded content'); },
-					// onCleanup:function(){ alert('onCleanup: colorbox has begun the close process'); },
-					// onClosed:function(){ alert('onClosed: colorbox has completely closed'); }
-				// });
-// 
-				// $("#click").click(function(){ 
-					// $('#click').css({"background-color":"#f00", "color":"#fff", "cursor":"inherit"}).text("Open this window again and this message will still be here.");
-					// return false;
-				// });
-			// });
-			
-			
-    $(document).ready(function(){  
-        //マスオーバー時に右にスライド  
-        $('.boxgrid.slideright').hover(function(){  
-            $(".cover", this).stop().animate({left:'450px'},{queue:false,duration:200});  
-        }, function() {  
-            $(".cover", this).stop().animate({left:'0px'},{queue:false,duration:200});  
-        });   
-        //マスオーバー時に右下にスライド  
-        $('.boxgrid.thecombo').hover(function(){  
-            $(".cover", this).stop().animate({top:'300px', left:'450px'},{queue:false,duration:300});  
-        }, function() {  
-            $(".cover", this).stop().animate({top:'0px', left:'0px'},{queue:false,duration:300});  
-        });  
-        //マスオーバー時に上にスライド  
-        $('.boxgrid.slidedown').hover(function(){  
-            $(".cover", this).stop().animate({top:'-300px'},{queue:false,duration:300});  
-        }, function() {  
-            $(".cover", this).stop().animate({top:'0px'},{queue:false,duration:300});  
-        });  
-    });  
-</script>  
-
-			
-
 
 <div id="search">
 	<hr>
@@ -66,22 +23,20 @@
 		 echo $this->Form->submit('検索',array('class' => 'btn-a btn-search'));
 		 echo $this->Form->end();
 	 ?>
-	 
-	<hr>
-	<div id="result">
-		
-	<?php foreach($blogs as $blog) : ?>
-		
+</div> <!-- END search -->
+<hr>
+
+	
+<div id="search-result">
+<?php foreach($blogs as $blog) : ?>
 	<div class="cont" style="float:left">
-		
-		
-		<div class="boxgrid slideright">
+		<div class="boxgrid">
 			<!-- <div class="cont1"> -->
-				<a href="/blogs/view/<?php echo $blog['Blog']['id'] ?>"> </a>
+				<a href="/blogs/view/<?php echo $blog['Blog']['id'] ?>" class="link"></a>
 			    <?php if(isset($blog['UsedBlogImage'][0]['url'])) { ?>
-				<img  src="<?php echo $blog['UsedBlogImage'][0]['url']; ?>" class="cover" width="200px" height="auto">
+				<img  src="<?php echo $blog['UsedBlogImage'][0]['url']; ?>" data-original="<?php echo $blog['UsedBlogImage'][0]['url']; ?>" class="cover" width="220px" height="auto">
 				<?php } else { ?>
-					<div>[no images]</div>
+					<div style="width: 220px;"><?php echo $blog['Blog']['title']?></div>
 					<?php
 						$len = 100;
 						print(mb_strimwidth($blog['Blog']['content'], 0, $len, "...", "UTF-8") . "<br />");
@@ -102,15 +57,7 @@
 	        	</a>
 		    </div> -->
 		</div>
-			
 	</div>
-		
-		
-		
-		
-		
-		
-		
 		<!-- <div class="cont">
 			<a class='ajax' href="/blogs/view/<?php echo $blog['Blog']['id'] ?>"></a>
 			<span>
@@ -135,12 +82,68 @@
 					?>
 			<?php } ?>
 		</div> -->
-	<?php endforeach; ?>
-	</div>
-	
-	
-	
-	
-</div> <!-- END search -->
+<?php endforeach; ?>
+</div>
+
+
+
+<script>
+    // $(document).ready(function(){  
+    //     //マスオーバー時に右にスライド  
+    //     $('.boxgrid.slideright').hover(function(){  
+    //         $(".cover", this).stop().animate({left:'450px'},{queue:false,duration:200});  
+    //     }, function() {  
+    //         $(".cover", this).stop().animate({left:'0px'},{queue:false,duration:200});  
+    //     });   
+    //     //マスオーバー時に右下にスライド  
+    //     $('.boxgrid.thecombo').hover(function(){  
+    //         $(".cover", this).stop().animate({top:'300px', left:'450px'},{queue:false,duration:300});  
+    //     }, function() {  
+    //         $(".cover", this).stop().animate({top:'0px', left:'0px'},{queue:false,duration:300});  
+    //     });  
+    //     //マスオーバー時に上にスライド  
+    //     $('.boxgrid.slidedown').hover(function(){  
+    //         $(".cover", this).stop().animate({top:'-300px'},{queue:false,duration:300});  
+    //     }, function() {  
+    //         $(".cover", this).stop().animate({top:'0px'},{queue:false,duration:300});  
+    //     });  
+    // });  
+
+    var $diary = $('#search-result');
+
+	$(function(){
+		
+		// $diary.imagesLoaded(function(){
+			$diary.masonry({
+	      		itemSelector: '.cont',
+	      		isAnimated: true,
+				isFitWidth: true
+	    	});
+		// });
+		
+    });
+
+
+
+	$(window).on("scroll", function() {
+		var scrollHeight = $(document).height();
+		var scrollPosition = $(window).height() + $(window).scrollTop();
+		if ((scrollHeight - scrollPosition) / scrollHeight === 0) {
+			var elements = $("#search-result").masonry('getItem');
+			$("#search-result").masonry('appended', elements);
+			// $("#search-result").masonry();
+
+			console.log("aa");
+		}
+	});
+	// $(document).ready(function(){  
+	// 	$('img').lazyload({
+	//         effect: 'fadeIn',
+	//         effectspeed: 2000
+	//   });
+	// });
+
+    
+</script>  
 	
 	 

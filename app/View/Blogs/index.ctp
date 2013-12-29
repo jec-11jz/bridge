@@ -1,15 +1,12 @@
 <?php
 		
-		echo $this->Html->css('component');
-
 		$this->extend('/Common/index');
 
 		echo $this->Html->css('diary');
+		echo $this->Html->css('component');
 
 		echo $this->Html->script('masonry.pkgd');
 		echo $this->Html->script('imagesloaded');
-		// echo $this->Html->script('AnimOnScroll');
-		// echo $this->Html->script('classie');
 
 		//ini_set('memory_limit', '64MB');
 		
@@ -23,51 +20,44 @@
 	<?php foreach($blogs as $blog) : ?>
 		<div class="container-item">
 			<div class="item">
+				<a href="/blogs/view/<?php echo $blog['Blog']['id'] ?>" class="link"></a>
 				<?php if(isset($blog['UsedBlogImage'][0]['url'])) { ?>
-					<img src="<?php echo $blog['UsedBlogImage'][0]['url']; ?>" width="220px" height="auto">
+					<a style="background-color: white;width:100%;height100%;"><img src="<?php echo $blog['UsedBlogImage'][0]['url']; ?>" class="diary-pic" width="220px" height="auto"></a>
 					<?php } else { ?>
 					<div>[no images]</div>
-					<div style="width: 220px; height:200px">
+					<div class="text-index" style="width: 220px; height:200px">
 						<?php
 							$len = 100;
 							print(mb_strimwidth($blog['Blog']['content'], 0, $len, "...", "UTF-8") . "<br />");
 						?>
 					</div>
 				<?php } ?>
-				<div class="item-overlay">
-					<a href="#" class="item-button share share-btn"><i class="fa fa-bars"></i></a>
-					<div class="sale-tag"><i class="fa fa-film"></i></div>
-				</div>
+				<!-- 作品アイコン -->
+				<div class="product-tag"><i class="fa fa-film"></i></div>
+				<a class="item-button"><i class="fa fa-chevron-left"></i></a>
 				<div class="item-content">
 					<div class="item-top-content">
 						<div class="item-top-content-inner">
-							<div class="item-top-title">
-								<h5>
-									<?php 
-									if(mb_strlen($blog['Blog']['title']) <= 7){
-										echo $blog['Blog']['title']; 
-									} else {
-										$len = 30;
-										print(mb_strimwidth($blog['Blog']['title'], 0, $len, "...", "UTF-8") . "<br />");
-									}
-									?>
-								</h5>
-							</div> <!-- item-top-title -->
+							<span>
+								<?php 
+								if(mb_strlen($blog['Blog']['title']) <= 7){
+									echo $blog['Blog']['title']; 
+								} else {
+									$len = 30;
+									print(mb_strimwidth($blog['Blog']['title'], 0, $len, "...", "UTF-8") . "<br />");
+								}
+								?>
+							</span>
 						</div>	<!-- item-top content-inner -->
 					</div>　<!-- item-top-content -->
-					<div class="item-add-content">
-						<div class="item-add-content-inner">
-							<a href="/blogs/edit/<?php echo $blog['Blog']['id'] ?>" class="btn buy expand fa fa-pencil-square-o">Edit</a>
-						</div>
-					</div>
-				</div> <!-- item-content -->
+				</div> <!-- item-content-->
 			</div> <!-- item -->
-
-			<div class="item-menu popout-menu">
+			<div class="slide-menu">
 				<ul> <!-- サイドメニュー -->
+					<li><a href="/blogs/edit/<?php echo $blog['Blog']['id'] ?>" class="fa fa-pencil-square-o"></a></li>
 					<li><a href="/blogs/view/<?php echo $blog['Blog']['id'] ?>" class="popout-menu-item"><i class="fa fa-eye"></i></li>
 					<li><a href="#" class="popout-menu-item"><i class="fa fa-star"></i></a></li>
-					<li><?php echo $this->Form->postLink("", array('<action></action>' => 'delete',$blog['Blog']['id']),array('confirm' => '削除しますか？', 'class'=>'fa fa-trash-o')); ?></li>
+					<li><?php echo $this->Form->postLink("", array('action' => 'delete',$blog['Blog']['id']),array('confirm' => '削除しますか？', 'class'=>'fa fa-trash-o')); ?></li>
 				</ul>
 			</div>
 		</div> <!-- container-item -->
@@ -84,32 +74,33 @@
   			$("#body").removeClass("preload");
 		});
 
-		$(".share-btn").mouseenter(function() {
+		$(".item-button").mouseenter(function() {
 			var share_btn = $(this);
 			setTimeout(function() {
-			//$(".item-menu").addClass("visible")
-			share_btn.parents(".container-item:first").find(".item-menu:first").addClass("visible");
+			container_item = share_btn.parents(".container-item:first");
+			container_item.css("z-index: 1000");
+			container_item.find("*").map(function() {
+				$(this).css("z-index: 1000");
+			});
+			share_btn.parents(".container-item:first").find(".slide-menu:first").addClass("visible");
 			}, 400);
 		});
-		$(".share-btn").mouseleave(function() {
+		$(".item-button").mouseleave(function() {
 			setTimeout(function() {
-			// share_btn.parents(".container-item:first").find(".item-menu:first").removeClass("visible");
-			$(".item-menu").removeClass("visible")
+			$(".slide-menu").removeClass("visible")
 			}, 400);
 		});
-		$(".item-menu").hover(function() {
-			share_btn.parents(".container-item:first").find(".item-menu:first").addClass("visible");
-			// $(".item-menu").addClass("visible")
+		$(".slide-menu").hover(function() {
+			share_btn.parents(".container-item:first").find(".slide-menu:first").addClass("visible");
 		});
-		$(".item-menu").mouseleave(function() {
+		$(".slide-menu").mouseleave(function() {
 			setTimeout(function() {
-			// share_btn.parents(".container-item:first").find(".item-menu:first").removeClass("visible");
-			$(".item-menu").removeClass("visible")
+			$(".slide-menu").removeClass("visible")
 			}, 400);
 		});
 		$(".container-item").hover(function() {
 			setTimeout(function() {
-			$(".container-item").css("z-index","1000")
+			//$(".container-item").css("z-index","500")
 			}, 400);
 		});
 
@@ -121,15 +112,21 @@
 
 	
 	$(function(){
-
 		$diary.imagesLoaded(function(){
 			$diary.masonry({
-	      		itemSelector: '.cont',
+	      		itemSelector: '.conteiner-item',
 	      		isAnimated: true,
 				isFitWidth: true
 	    	});
 		});
-
     });
+	// $(document).ready(
+	// 	function(){
+	// 		$(".container-item").hover(function(){
+	// 	    $(".item").fadeTo(100, 0.8); // マウスオーバー時にmormal速度で、透明度を60%にする
+	// 	},function(){
+	// 		$(".item").fadeTo(100, 1.0); // マウスアウト時にmormal速度で、透明度を100%に戻す
+	// 	});
+	// });
 </script>
 

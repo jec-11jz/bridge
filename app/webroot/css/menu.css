@@ -121,3 +121,7 @@ div .modal-footer {
     /* line 60, ../sass/menu.scss */
     div .modal-footer .checkbox label {
       margin-right: 10px; }
+
+/* line 69, ../sass/menu.scss */
+div.navbar ul.dropdown li {
+  text-align: center; }

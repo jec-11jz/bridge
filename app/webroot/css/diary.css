@@ -122,95 +122,85 @@ div .modal-footer {
     div .modal-footer .checkbox label {
       margin-right: 10px; }
 
+/* line 69, ../sass/menu.scss */
+div.navbar ul.dropdown li {
+  text-align: center; }
+
 /* line 4, ../sass/diary.scss */
 body {
-  background-color: #2C2B2B; }
+  background-image: url("../img/backgroudImage.png"); }
 
-/* line 8, ../sass/diary.scss */
+/* line 7, ../sass/diary.scss */
 th {
   color: #313131;
   font-size: 14px; }
 
-/* line 12, ../sass/diary.scss */
+/* line 11, ../sass/diary.scss */
 td {
   font-size: 11px; }
 
-/* line 16, ../sass/diary.scss */
+/* line 15, ../sass/diary.scss */
 table > tbody > tr > td > a {
   font-size: 12px; }
 
-/* line 20, ../sass/diary.scss */
+/* line 19, ../sass/diary.scss */
 div#diary {
   margin: 20px; }
 
-/* line 24, ../sass/diary.scss */
+/* line 25, ../sass/diary.scss */
+a.link:hover img.diary-pic {
+  opacity: 0.8; }
+
+/* line 28, ../sass/diary.scss */
 div#diary-index {
   margin: 0 auto; }
-  /* line 28, ../sass/diary.scss */
+  /* line 30, ../sass/diary.scss */
+  div#diary-index .container-item {
+    background-color: white; }
+  /* line 33, ../sass/diary.scss */
+  div#diary-index a.link {
+    display: block;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: 550; }
+  /* line 37, ../sass/diary.scss */
   div#diary-index .cont {
     background-color: #BEBEBE;
     display: inline;
     overflow: hidden;
     margin: 10px;
     margin-top: 0px; }
-    /* line 35, ../sass/diary.scss */
+    /* line 44, ../sass/diary.scss */
     div#diary-index .cont a.btn-a.btn-size-ss {
       font-size: 14px;
       padding: 3px 12px;
       margin: 0.5em 1em; }
-    /* line 39, ../sass/diary.scss */
+    /* line 48, ../sass/diary.scss */
     div#diary-index .cont a.right {
       float: right;
       margin: 0.5em 1em; }
-    /* line 43, ../sass/diary.scss */
-    div#diary-index .cont a.link {
-      position: absolute;
-      top: 0;
-      left: 0;
-      display: block;
-      width: 100%;
-      height: 100%;
-      z-index: 550; }
-    /* line 58, ../sass/diary.scss */
-    div#diary-index .cont .overlay {
-      width: 100%;
-      height: 100%;
-      opacity: 0.8;
-      position: absolute;
-      border-bottom: 20px solid white;
-      z-index: 500; }
-    /* line 66, ../sass/diary.scss */
-    div#diary-index .cont a.link:hover div.overlay {
-      border-bottom-width: 200px solid blue; }
-    /* line 74, ../sass/diary.scss */
-    div#diary-index .cont div.blog-info {
-      z-index: 560;
-      position: absolute;
-      bottom: -43px;
-      display: block;
-      width: 100%; }
-      /* line 80, ../sass/diary.scss */
-      div#diary-index .cont div.blog-info a.blog-title {
-        display: block; }
 
-/* line 88, ../sass/diary.scss */
+/* line 57, ../sass/diary.scss */
 form#BlogAddForm label {
   margin: 10px 30px;
   padding: 10px 0;
   font-size: 23px; }
-/* line 93, ../sass/diary.scss */
+/* line 62, ../sass/diary.scss */
 form#BlogAddForm #BlogTitle {
   display: block;
   width: 90%;
   height: 35px;
   font-size: 17px; }
-/* line 100, ../sass/diary.scss */
+/* line 69, ../sass/diary.scss */
 form#BlogAddForm #ckeditor label {
   font-size: 90px; }
-/* line 104, ../sass/diary.scss */
+/* line 73, ../sass/diary.scss */
 form#BlogAddForm .form-control {
   margin: 0px 30px; }
-/* line 107, ../sass/diary.scss */
+/* line 76, ../sass/diary.scss */
 form#BlogAddForm div.tagbox {
   -webkit-box-shadow: black 0px 0px 0px 0px;
   -moz-box-shadow: black 0px 0px 0px 0px;
@@ -218,17 +208,17 @@ form#BlogAddForm div.tagbox {
   margin: 0px 30px;
   width: 90%;
   border-radius: 0px; }
-  /* line 112, ../sass/diary.scss */
+  /* line 81, ../sass/diary.scss */
   form#BlogAddForm div.tagbox ul {
     -webkit-box-shadow: black 0px 0px 0px 0px;
     -moz-box-shadow: black 0px 0px 0px 0px;
     box-shadow: black 0px 0px 0px 0px;
     border-radius: 0px; }
-/* line 117, ../sass/diary.scss */
+/* line 86, ../sass/diary.scss */
 form#BlogAddForm #cke_ckeditor {
   margin: 0px 30px; }
 
-/* line 123, ../sass/diary.scss */
+/* line 92, ../sass/diary.scss */
 div .container {
   margin: 0;
   padding: 0;
@@ -237,7 +227,7 @@ div .container {
   width: 100%;
   height: auto !important;
   height: 100%; }
-/* line 131, ../sass/diary.scss */
+/* line 100, ../sass/diary.scss */
 div .main {
   position: relative;
   float: left;
@@ -245,12 +235,12 @@ div .main {
   min-width: 600px;
   width: 100%;
   height: 100%; }
-/* line 139, ../sass/diary.scss */
+/* line 108, ../sass/diary.scss */
 div .line-up {
   margin: 0;
   padding: 0;
   margin-top: 50px; }
-/* line 143, ../sass/diary.scss */
+/* line 112, ../sass/diary.scss */
 div form {
   margin: 50px 0px 0px 30px;
   padding: 0 0 50px 0;
@@ -261,11 +251,11 @@ div form {
   background-attachment: fixed;
   background-repeat: no-repeat;
   color: rgba(0, 0, 0, 0.8); }
-/* line 154, ../sass/diary.scss */
+/* line 123, ../sass/diary.scss */
 div .form-group {
   margin: 10px 0 30px 40px; }
 
-/* line 158, ../sass/diary.scss */
+/* line 127, ../sass/diary.scss */
 .side-menu {
   position: absolute;
   float: left;
@@ -274,29 +264,29 @@ div .form-group {
   background-color: #509B49;
   background-color: #4c921f;
   color: #DDDDDD; }
-  /* line 167, ../sass/diary.scss */
+  /* line 136, ../sass/diary.scss */
   .side-menu .menu {
     margin-top: 20px; }
-    /* line 169, ../sass/diary.scss */
+    /* line 138, ../sass/diary.scss */
     .side-menu .menu .icon {
       margin: 0;
       padding: 0;
       width: 20px;
       height: 20px;
       text-align: center; }
-    /* line 176, ../sass/diary.scss */
+    /* line 145, ../sass/diary.scss */
     .side-menu .menu .name {
       margin-left: 10px; }
-  /* line 181, ../sass/diary.scss */
+  /* line 150, ../sass/diary.scss */
   .side-menu li {
     background-color: #60AB59;
     background-color: #60a633;
     list-style-type: none; }
-    /* line 185, ../sass/diary.scss */
+    /* line 154, ../sass/diary.scss */
     .side-menu li:hover {
       background-color: #474B4E;
       background-color: #7ec451; }
-    /* line 189, ../sass/diary.scss */
+    /* line 158, ../sass/diary.scss */
     .side-menu li:active {
       background-color: #80CB79;
       background-color: #74ba47;
@@ -305,10 +295,10 @@ div .form-group {
       border-top: solid 1px #111;
       border-bottom: solid 1px #111;
       */ }
-      /* line 197, ../sass/diary.scss */
+      /* line 166, ../sass/diary.scss */
       .side-menu li:active a {
         color: #fff; }
-    /* line 201, ../sass/diary.scss */
+    /* line 170, ../sass/diary.scss */
     .side-menu li a {
       margin: 0;
       padding: 0;
@@ -319,12 +309,12 @@ div .form-group {
       height: 100%;
       color: #DDDDDD;
       text-decoration: none; }
-  /* line 213, ../sass/diary.scss */
+  /* line 182, ../sass/diary.scss */
   .side-menu ul, .side-menu li {
     margin: 0;
     padding: 0; }
 
-/* line 220, ../sass/diary.scss */
+/* line 189, ../sass/diary.scss */
 .side-profile {
   margin: 0 auto;
   padding-top: 10px;
@@ -334,11 +324,11 @@ div .form-group {
   background-color: #60a633;
   text-align: center; }
 
-/* line 229, ../sass/diary.scss */
+/* line 198, ../sass/diary.scss */
 textarea.blog {
   width: 80%;
   height: 400px; }
-  /* line 232, ../sass/diary.scss */
+  /* line 201, ../sass/diary.scss */
   textarea.blog:hover {
     border: 3px solid #97F95A;
     opacity: 0.6;
