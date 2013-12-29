@@ -1,11 +1,6 @@
 <?php
 App::uses('AppController', 'Controller');
 
-/**
- * Users Controller
- *
- * @property User $User
- */
 class BlogsController extends AppController {
 	public $uses = array('Blog', 'UsedBlogImage', 'User', 'Tag', 'BlogTag');
 	

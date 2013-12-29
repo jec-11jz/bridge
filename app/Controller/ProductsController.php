@@ -150,5 +150,19 @@ class ProductsController extends AppController {
 			$this->redirect(array('controller' => 'products', 'action' => 'index'));
 		}
 	}
+
+	public function delete($product_id = null) {
+    	$this->autoRender = false;
+        // HTTP GETリクエストか確認
+        if($this->request->is('get')) {
+            // 削除ボタン以外でこのページに来た場合はエラー
+            throw new MethodNotAllowedException();
+        }
+        if($this->Product->delete($product_id)) {
+            // 削除成功した場合はメッセージを出し、indexへリダイレクト
+            $this->Session->setFlash('作品'. $product_id . 'を削除しました');
+            $this->redirect(array('action' => 'index'));
+        }
+    }
 }
 ?>

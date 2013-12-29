@@ -67,7 +67,7 @@
 				<ul> <!-- サイドメニュー -->
 					<li><a href="/blogs/view/<?php echo $blog['Blog']['id'] ?>" class="popout-menu-item"><i class="fa fa-eye"></i></li>
 					<li><a href="#" class="popout-menu-item"><i class="fa fa-star"></i></a></li>
-					<li><?php echo $this->Form->postLink("", array('<action></action>' => 'delete',$blog['Blog']['id']),array('confirm' => '削除しますか？', 'class'=>'fa fa-trash-o')); ?></li>
+					<li><?php echo $this->Form->postLink("", array('action' => 'delete',$blog['Blog']['id']),array('confirm' => '削除しますか？', 'class'=>'fa fa-trash-o')); ?></li>
 				</ul>
 			</div>
 		</div> <!-- container-item -->

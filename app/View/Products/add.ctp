@@ -67,7 +67,7 @@
 	<label>最後の編集者 :</label><a style="display: block">iverson</a>
 	<a>この作品を編集する</a>
 	<input type="button" value="戻る" />
-	<input type="button" id="btn-register" value="登録" />
+	<input type="button" id="btn-register" disabled value="登録" />
 </form>
 </div>
 <!-- KCfinder読み込み -->
@@ -112,9 +112,12 @@ $(function() {
 			console.log('error');
 		}
 	});
+	if($("#selected-template").val() != ""){
+		$('#btn-register').removeAttr('disabled');
+	}
 	//テンプレートが選択されたら編集画面に飛ばす
 	$("#selected-template").change(function() {
-		var temp_id = $('#selected-template').val();
+		var temp_id = $(this).val();
 		console.log(temp_id);
 		if(temp_id == 'other'){
 			location.href="/templates/add";
