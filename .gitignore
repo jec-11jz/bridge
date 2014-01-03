@@ -8,7 +8,8 @@
 /plugins
 composer.phar
 /app/webroot/upload/
-
+/app/webroot/.sass-cache/
+/app/webroot/upload/.thumbs/
 
 # OS generated files #
 ######################
