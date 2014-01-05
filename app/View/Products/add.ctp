@@ -46,17 +46,13 @@
 	<fieldset id="product-data">
 		<table class="table">
 			<th>Product Information</th>
-			<?php foreach($templates as $template) : ?>
-				<?php foreach($template['Attribute'] as $attribute) : ?>
+			<?php foreach($temp_attributes as $temp_attribute) : ?>
 				<tr>
-				<?php if(isset($attribute['name'])){ ?>
-					<?php if($attribute['template_id'] == $template_id){ ?>
-						<td><label for="<?php echo $attribute['id']; ?>"><?php echo $attribute['name']; ?> :</label>
-						<input type="text" class="attribute tags" name="value" id="<?php echo $attribute['id']; ?>"></td>
-					<?php } ?>
+				<?php if(isset($temp_attribute['Attribute']['name'])){ ?>
+					<td><label for="<?php echo $temp_attribute['Attribute']['id']; ?>"><?php echo $temp_attribute['Attribute']['name']; ?> :</label>
+					<input type="text" class="attribute tags" name="value" id="<?php echo $temp_attribute['Attribute']['id']; ?>"></td>
 				<?php } ?>
 				</tr>
-				<?php endforeach; ?>
 			<?php endforeach; ?>
 		</table>
 	</fieldset>
@@ -67,7 +63,7 @@
 	<label>最後の編集者 :</label><a style="display: block">iverson</a>
 	<a>この作品を編集する</a>
 	<input type="button" value="戻る" />
-	<input type="button" id="btn-register" value="登録" />
+	<input type="button" id="btn-register" disabled value="登録" />
 </form>
 </div>
 <!-- KCfinder読み込み -->
@@ -112,9 +108,12 @@ $(function() {
 			console.log('error');
 		}
 	});
+	if($("#selected-template").val() != ""){
+		$('#btn-register').removeAttr('disabled');
+	}
 	//テンプレートが選択されたら編集画面に飛ばす
 	$("#selected-template").change(function() {
-		var temp_id = $('#selected-template').val();
+		var temp_id = $(this).val();
 		console.log(temp_id);
 		if(temp_id == 'other'){
 			location.href="/templates/add";

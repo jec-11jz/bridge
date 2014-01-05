@@ -1,10 +1,11 @@
 <?php
 App::uses('AppModel', 'Model');
+App::uses('Attribuute', 'Model');
 
 class Template extends AppModel {
 	public $hasMany = array(
-        'Attribute' => array(
-            'className'     => 'Attribute',
+        'TemplateAttribute' => array(
+            'className'     => 'TemplateAttribute',
             'foreignKey'    => 'template_id',
             'dependent'     => true, //true に設定すると、モデルのデータの削除時に関連しているモデル側のデータも削除される。
             // 'conditions'    => //hasMany で取得したいデータの条件を指定する。 SQL の条件文。
@@ -35,6 +36,20 @@ class Template extends AppModel {
 			)
 		)
     );
+	
+	public function findAllWithAttributeByUserId($user_id) {
+		$templates = $this->findAllByUserId($user_id);
+		if (!is_array($templates)) {
+			return false;
+		}
+		
+		$Attribute = ClassRegistry::init('Attribute');
+		foreach ($templates as &$template) {
+			$template['Attribute'] = $Attribute->findAllByTemplateId($template['Template']['id']);
+		}
+		unset($template);
+		return $templates;
+	}
 	
 }
 ?>

@@ -26,7 +26,7 @@
 		<legend>項目</legend>
 		<!-- アトリビュート表示 -->
 		<input value="作品タイトル" disabled>
-		<?php $count = 0; ?>
+		<?php $count = 1; ?>
 		<?php foreach($attributes as $attribute) :  ?>
 			<?php if($attribute['Attribute']['id']) { ?>
 				<input name="data[Attribute][name][]" class="input" type="text" id="attribute<?php echo h($count); ?>" class="attribute" value="<?php echo $attribute['Attribute']['name']; ?>">
@@ -85,7 +85,7 @@ $(function(){
 	//アトリビュートフォーム自動生成
 	//追加処理
 	$("#btn-insert").click(function() {
-		var attrCnt = $('#add-attributes input:text').length + 1
+		var attrCnt = $('#add-attributes input:text').length
 		$("#add-attributes").append('<input type=\"text\" name=\"data[Attribute][name][]\" id="attribute' + attrCnt +'"　class="attribute" value=\"\">\n');
 		$("#add-attributes").append('<input type="button" value="×" id="attribute' + attrCnt +'" class="btn-attribute"> \n');
 	});
