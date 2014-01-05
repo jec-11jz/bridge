@@ -3,7 +3,7 @@ App::uses('AppController', 'Controller');
 
 class ProductsController extends AppController {
 	
-	public $uses = array('Template', 'Attribute', 'User', 'Product', 'Tag', 'AttributeTag', 'ProductTag');
+	public $uses = array('TemplateAttribute', 'Template', 'Attribute', 'User', 'Product', 'Tag', 'AttributeTag', 'ProductTag');
 	
 	public function beforeFilter()
     {
@@ -39,13 +39,18 @@ class ProductsController extends AppController {
 		$this->request->data['Product']['user_id'] = $this->Auth->user('id');
 		// send templates to view
 		$templates = $this->Template->findAllByUserId($this->Auth->user('id'));
+		$selected_template = $this->Template->findById($template_id);
+		$template_attributes = $this->TemplateAttribute->findAllByTemplateId($template_id);
+		$temp_attributes = $this->Attribute->getSelectedAttributes($template_attributes); 
 		if(!is_array($templates)){
 			// error
 			$this->autoRender = false;
 			print 'not found';
 			return;
 		}
+		$this->set('temp_attributes', $temp_attributes);
 		$this->set('templates', $templates);
+		$this->set('template_attributes', $template_attributes);
 		$this->set('template_id', $template_id);
 		// after click button of register
 		if($this->request->is(array('post','ajax'))){
