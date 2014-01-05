@@ -198,15 +198,15 @@ body {
   display: inline;
   float: left; }
 
-/* line 19, ../sass/searches.scss */
+/* line 18, ../sass/searches.scss */
 input.btn-a.btn-search {
   padding: 6px 17px;
   margin: 1px; }
 
-/* line 24, ../sass/searches.scss */
+/* line 23, ../sass/searches.scss */
 div#search-result {
   margin: 0 auto; }
-  /* line 26, ../sass/searches.scss */
+  /* line 25, ../sass/searches.scss */
   div#search-result .cont {
     position: relative;
     background-color: #c1c1c1;
@@ -214,49 +214,50 @@ div#search-result {
     -o-transition: 0.2s;
     transition: 0.2s;
     display: inline-block; }
-    /* line 30, ../sass/searches.scss */
+    /* line 29, ../sass/searches.scss */
     div#search-result .cont hr {
       margin: 10px 2px; }
-    /* line 33, ../sass/searches.scss */
+    /* line 32, ../sass/searches.scss */
     div#search-result .cont a.link {
       display: block;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      position: absolute; }
-      /* line 35, ../sass/searches.scss */
-      div#search-result .cont a.link:hover {
-        filter: alpha(opacity=50);
-        opacity: 0.5; }
+      position: absolute;
+      z-index: 600; }
+    /* line 36, ../sass/searches.scss */
+    div#search-result .cont .cont-info {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      background-color: white;
+      opacity: 0.8;
+      -webkit-transform: translate(0, 0);
+      -moz-transform: translate(0, 0);
+      -ms-transform: translate(0, 0);
+      -o-transform: translate(0, 0);
+      transform: translate(0, 0);
+      -webkit-transition: all 0.3s ease-in-out;
+      -moz-transition: all 0.3s ease-in-out;
+      -o-transition: all 0.3s ease-in-out;
+      transition: all 0.3s ease-in-out; }
+      /* line 44, ../sass/searches.scss */
+      div#search-result .cont .cont-info p {
+        font-size: 13px; }
 
-/* line 43, ../sass/searches.scss */
-.boxgrid {
-  width: 100%;
-  background: #c1c1c1;
-  overflow: hidden;
-  position: relative; }
-  /* line 50, ../sass/searches.scss */
-  .boxgrid a, .boxgrid span {
-    color: white; }
-  /* line 54, ../sass/searches.scss */
-  .boxgrid img {
-    top: 0;
-    left: 0; }
-  /* line 60, ../sass/searches.scss */
-  .boxgrid p {
-    padding: 0 10px;
-    color: #afafaf;
-    font-weight: bold; }
-
-/* line 66, ../sass/searches.scss */
-.boxgrid .boxcaption {
-  float: left;
-  position: absolute;
-  background: #000;
-  width: 100%;
-  opacity: .8;
-  /* For IE 5-7 */
-  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=80);
-  /* For IE 8 */
-  -MS-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=80)"; }
+/* line 51, ../sass/searches.scss */
+.cont:hover img {
+  opacity: 0.8; }
+/* line 54, ../sass/searches.scss */
+.cont:hover .cont-info {
+  -webkit-transform: translate(0, 100px);
+  -moz-transform: translate(0, 100px);
+  -ms-transform: translate(0, 100px);
+  -o-transform: translate(0, 100px);
+  transform: translate(0, 100px);
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+  background-color: #000; }

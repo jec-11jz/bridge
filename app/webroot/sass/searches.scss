@@ -14,7 +14,6 @@ body{
   margin:0px 10px 0px 10px;
   display: inline;
   float: left;
-
 }
 input.btn-a.btn-search{
   padding: 6px 17px;
@@ -32,47 +31,29 @@ div#search-result{
     }
     a.link{
       @include link;
-      &:hover{
-        filter:alpha(opacity=50);
-        opacity:0.5;
+      z-index:600;
+    }
+    .cont-info{
+      position: absolute;
+      bottom:0;
+      width: 100%;
+      background-color: white;
+      opacity: 0.8;
+      @include transform(translate(0,0));
+      @include single-transition(all, 0.3s, ease-in-out);
+      p{
+        font-size: 13px;
       }
     }
   }
 }
-
-.boxgrid    {   
-    width: 100%;   
-    background: $col-black2;   
-    // border: solid 1px #555;   
-    overflow: hidden;   
-    position: relative;  
-    
-    a,span{
-      color: white;
-    }
-    
-    img{
-      // position: absolute;   
-      top: 0;   
-      left: 0;  
-    }
-    
-    p{   
-      padding: 0 10px;   
-      color: #afafaf;   
-      font-weight:bold;
-    }  
-}  
-.boxgrid .boxcaption{   
-    float: left;   
-    position: absolute;   
-    background: #000;   
-    // height: 200px;   
-    width: 100%;   
-    opacity: .8;   
-    /* For IE 5-7 */  
-    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=80);  
-    /* For IE 8 */  
-    -MS-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=80)";  
-}  
-
+.cont:hover{
+  img{
+    opacity: 0.8;
+  }
+  .cont-info{
+    @include transform(translate(0,100px));
+    @include single-transition(all, 0.3s, ease-in-out);
+    background-color: #000;
+  }
+}

@@ -64,8 +64,6 @@
 	<?php endforeach; ?>
 </div> <!-- #diary-index -->
 
-		
-
 
 
 <script>
@@ -98,19 +96,17 @@
 			$(".slide-menu").removeClass("visible")
 			}, 400);
 		});
-		$(".container-item").hover(function() {
-			setTimeout(function() {
-			//$(".container-item").css("z-index","500")
-			}, 400);
-		});
+		// $(".container-item").hover(function() {
+		// 	setTimeout(function() {
+		// 	//$(".container-item").css("z-index","500")
+		// 	}, 400);
+		// });
 
 	
 	//画像読み込み後にレイアウト
 	// var $diary = $('#diary-index');
 	//レイアウト後に画像読み込み
 	var $diary = $('#diary-index').masonry();
-
-	
 	$(function(){
 		$diary.imagesLoaded(function(){
 			$diary.masonry({
