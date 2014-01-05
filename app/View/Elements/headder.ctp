@@ -54,7 +54,7 @@ $this->Html->script('dropdown/modernizr.custom.79639', array('inline' => false))
 		<div id="dd" class="wrapper-dropdown-5" tabindex="1"><p>Upload</p>
 			<ul class="dropdown">
 				<li><a href="/images/index">Upload</a></li>
-				<li><a href="http://bridge/js/kcfinder/browse.php?type=images&dir=images">BlogsUp</li>
+				<li><a href="http://bridge/js/kcfinder/browse.php?type=images&dir=images">BlogsUp</a></li>
 			</ul>
 		</div>
 	
