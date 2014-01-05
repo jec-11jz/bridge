@@ -49,52 +49,34 @@ $(function(){
 	$('#UserAddForm').validate(userAddFormOptions);
 	
 	$('#UserAddForm').ajaxForm({
+		dataType: 'json',
 		success: function(data) {
-			if (!data.errors) {
-				// success
-				location.reload();
-				return;
-			}
-			
-			// error
-			$.each(data.errors, function(key, error){
-				console.log('key:'+ key);
-				console.log('error: '+ error);
+			console.log(data);
+			//location.reload();
+		},
+		error: function(xhr, textStatus, errorThrown) {
+			console.log(xhr);
+			return;
+			data = $.parseJSON(xhr.responseText);
+			$.each(data.error.validation.User, function(key, error){
 				var errorBlock = $('#UserAddForm input[name="data[User]['+ key +']"]');
 				errorBlock.closest('.form-group').addClass('has-error');
 				errorBlock.after('<span class="help-block">'+ error +'</span>');
 			});
-		},
-		error: function(data) {
-			console.log(data);
-			alert('connection error');
-			return;
 		}
 	});
 	
 	$('#UserLoginForm').ajaxForm({
 		dataType: 'json',
 		success: function(data) {
-			if (!data.errors) {
-				// success
-				location.reload();
-				return;
-			}
-			
-			// error
-			$.each(data.errors, function(key, error){
-				$('#UserLoginForm .modal-body').prepend('<div class="form-group has-error"><span class="help-block">'+ error +'</span></div>')
-				$('#UserLoginForm .form-group').addClass('has-error');
-			});
+			location.reload();
 		},
-		error: function(data) {
-			console.log(data);
-			alert('connection error!!');
-			return;
+		error: function(xhr, textStatus, errorThrown) {
+			data = $.parseJSON(xhr.responseText);
+			$('#UserLoginForm .modal-body').prepend('<div class="form-group has-error"><span class="help-block">メールアドレスかパスワードが間違っています</span></div>');
+			$('#UserLoginForm .form-group').addClass('has-error');
 		}
 	});
-	
-				
 });
 </script>
 <!--
@@ -104,11 +86,11 @@ $(function(){
 	<div class="modal-dialog">
 		<?php
 			echo $this->Form->create('User', array(
-					'type'=>'post',
-					'action'=>'login',
-					'role' => 'form'
-				)
-			);
+				'id'   => 'UserLoginForm',
+				'type' => 'post',
+				'url'  => '/api/users/login.json',
+				'role' => 'form'
+			));
 			$this->Form->inputDefaults(array(
 				'format' => array('before', 'label', 'between', 'input', 'error', 'after'),
 				'class' => 'input_form form-control',
@@ -158,11 +140,11 @@ $(function(){
 	<div class="modal-dialog">
 		<?php
 			echo $this->Form->create('User', array(
-					'type'=>'post',
-					'action'=>'add',
-					'role' => 'form'
-				)
-			);
+				'id'   => 'UserAddForm',
+				'type' => 'post',
+				'url'  => '/api/users/add.json',
+				'role' => 'form'
+			));
 			$this->Form->inputDefaults(array(
 				'format' => array('before', 'label', 'between', 'input', 'error', 'after'),
 				'class' => 'input_form form-control',

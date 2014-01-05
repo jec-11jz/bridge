@@ -42,17 +42,14 @@ class AppController extends Controller {
                     'userModel' => 'User'
                 )
             ),
-            	//ログイン後のリダイレクト先
                 'loginRedirect' => array('controller'  => 'home', 'action' => 'index'),
-                //ログアウト後のリダイレクト先
                 'logoutRedirect' => array('controller' => 'home', 'action' => 'index'),
-                //ログインしていない場合のリダイレクト先
                 'loginAction' => array('controller' => 'home', 'action' => 'index'),
-                //ログインにデフォルトの username ではなく email を使うためここで書き換えています			
         ),
         'DebugKit.Toolbar',
         // 'authorize' => array('Controller')
-    );
+	);
+	
 	
 	//現在はtrueで返している
 	// public function isAuthorized($user) {
@@ -74,6 +71,37 @@ class AppController extends Controller {
 	public function beforeRender(){
 		$this->set('user', $this->Auth->user());
 	}
+
 	
-    
+	protected $apiResult = array();
+
+	protected function apiSuccess($response = array()) {
+		$this->apiResult['response'] = $response;
+
+		$this->set('response', $this->apiResult['response']);
+		$this->set('_serialize', array('response'));
+	}
+	
+	protected function apiError($message = '', $errorCode = 0, $statusCode = 400) {
+		$this->apiResult['error']['message'] = $message;
+		$this->apiResult['error']['code'] = $errorCode;
+
+		$this->response->statusCode($statusCode);
+		$this->set('error', $this->apiResult['error']);
+		$this->set('_serialize', array('error'));
+	}
+
+
+	protected function apiValidationError($modelName, $validationError = array()) {
+		$this->apiResult['error']['message'] = 'Validation Error';
+		$this->apiResult['error']['code']    = 422;
+		$this->apiResult['error']['validation'][$modelName] = array();
+		foreach ($validationError as $key => $value) {
+			$this->apiResult['error']['validation'][$modelName][$key] = $value[0];
+		}
+		 
+		$this->response->statusCode(400);
+		$this->set('error', $this->apiResult['error']);
+		$this->set('_serialize', array('error'));
+	}
 }

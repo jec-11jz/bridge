@@ -4,7 +4,6 @@ App::uses('AppController', 'Controller');
 class BlogsController extends AppController {
     public $uses = array('Blog', 'UsedBlogImage', 'User', 'Tag', 'BlogTag');
 	public $components = array('RequestHandler');
-    public $paginate = array('limit' => 50);
 	
 	
 	public function beforeFilter()
@@ -16,14 +15,27 @@ class BlogsController extends AppController {
     }
 	
     public function index() {
-		if ($this->params['ext'] == 'json') {
-			$blogs = $this->Blog->findByUserId($this->Auth->user('id'));
-			$this->set(array(
-				'blogs' => $this->paginate(),
-				'_serialize' => array('blogs')
-			));
-			return;
+	}
+
+	public function api_index() {
+		$count = 50;
+		if(isset($this->request->query['count'])) {
+			$count = $this->request->query['count'];
 		}
+		$page = 1;
+		if (isset($this->request->query['page'])) {
+			$page = $this->request->query['page'];
+		}
+
+		$blogs = $this->Blog->findAllByUserId(
+			$this->Auth->user('id'),
+			array(),
+			array(),
+			$count,
+			$page
+		);
+
+		$this->apiSuccess(array('blogs' => $blogs));
 	}
   
 	 public function add() {
@@ -157,8 +169,23 @@ class BlogsController extends AppController {
             throw new NotFoundException(__('Invalid post'));
         }
         $this->set('blog', $blog);
-    }
-    
+	}
+
+	public function api_view() {
+		$id = null;
+		if(isset($this->request->query['id'])) {
+			$id = $this->request->query['id'];
+		}
+
+		$blog = $this->Blog->findById($id);
+		if (!$blog) {
+			$this->apiError('not found', 0, 404);
+			return;
+		}
+
+		$this->apiSuccess($blog);
+	}
+
     public function delete($id = null) {
     	$this->autoRender = false;
         // HTTP GETリクエストか確認
@@ -171,5 +198,5 @@ class BlogsController extends AppController {
             $this->Session->setFlash('記事'. $id . 'を削除しました');
             $this->redirect(array('action' => 'index'));
         }
-    }
+	}
 }

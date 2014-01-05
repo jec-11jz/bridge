@@ -1,6 +1,7 @@
 <?php
 App::uses('AppModel', 'Model');
 App::uses('BlogTag', 'Model');
+App::uses('Tag', 'Model');
 
 class Blog extends AppModel {
 	
@@ -8,30 +9,16 @@ class Blog extends AppModel {
         'UsedBlogImage' => array(
             'className'     => 'UsedBlogImage',
             'foreignKey'    => 'blog_id',
-            'dependent'     => true //true に設定すると、モデルのデータの削除時に関連しているモデル側のデータも削除される。
-            // 'conditions'    => //hasMany で取得したいデータの条件を指定する。 SQL の条件文。
-            // 'order'         =>'User.created DESC' //関連するモデルのデータの並び順。SQL の ORDER 句の指定方法。テーブル名をカラム名の前に付ける
-            // 'limit'         => 5 //Cake が取り出す関連モデルのデータの最大数。
-            
+            'dependent'     => true
         ),
         'BlogTag' => array(
             'className'     => 'BlogTag',
             'foreignKey'    => 'blog_id',
-            'dependent'     => true, //true に設定すると、モデルのデータの削除時に関連しているモデル側のデータも削除される。
-            // 'conditions'    => //hasMany で取得したいデータの条件を指定する。 SQL の条件文。
-            // 'order'         =>'User.created DESC' //関連するモデルのデータの並び順。SQL の ORDER 句の指定方法。テーブル名をカラム名の前に付ける
-            //'limit'         => 50 //Cake が取り出す関連モデルのデータの最大数。
-            
+            'dependent'     => true
         )
     );
 	
-	 public $belognsTo = array(
-        'User' => array(
-            'className'  => 'User',
-            'foreignKey'   => 'user_id',
-            'department' => 'true'
-        )
-    );
+	 public $belongsTo = array('User');
 	
 	public $validate = array(
         'title' => array(
@@ -61,6 +48,14 @@ class Blog extends AppModel {
 			$arrayTagNames = array_merge($arrayTagNames, $tagNames);
 		}
 		return $arrayTagNames;
+	}
+
+	public function afterFind($results, $primary = false) {
+		$Tag = ClassRegistry::init('Tag');
+		foreach ($results as &$result) {
+			//$result['Tag'] = $Tag->findAllByBlogId($result['Blog']['id']);
+		}
+		return $results;
 	}
 
 }
