@@ -10,18 +10,17 @@ App::uses('CakeEmail', 'Network/Email');
  */
 class UsersController extends AppController {
 	public $layout = 'menu';
-	var $components = array('RequestHandler');
-	
 	//モデルの指定
 	public $uses = array('User', 'EmailAuth');
-	
+	public $components = array('RequestHandler');
+
 	//AppControllerをオーバーライド
 	public function beforeFilter()
     {
     	//親クラス（AppController）読み込み
         parent::beforeFilter();
 		//permitted access before login
-        $this->Auth->allow('add', 'login', 'index', 'test');
+        $this->Auth->allow('add', 'api_add', 'login', 'api_login', 'index', 'test');
 		$this->set('loginInformation', $this->Auth->User());
 	    
     }
@@ -36,84 +35,81 @@ class UsersController extends AppController {
 	//ログイン処理
 	public function login() {
 		//ログイン認証されたユーザかどうか調べる
-        if ($this->Auth->user()) {
-        	$this->Session->setFlash(__('ログアウトしてください'),'default', array(), 'auth');
-        } else {
-	        if($this->request->is('post')) {
-	        	// if(strstr($this->data['User']['name'],'@')){
-	        		// $this->User->email = $this->Auth->user('name');
-		        	// $this->data['User']['email'] = $this->data['User']['name'];
-		        	// $this->Auth->fields['id'] = 'email';
-		        // }
-	            if($this->Auth->login()) {
-	            	$this->Session->setFlash(__('ログイン成功ヽ(ﾟ｀∀´ﾟ)ﾉｳﾋｮ'),'default', array(), 'auth');
-					if($this->request->is('ajax')) {
-						$this->autoRender = false;
-						$body['success'] = array(
-							'message' => 'Success!!'
-						);
-						print json_encode($body);
-						return;
-					}
-					return $this->redirect($this->Auth->redirectUrl());
-	            } else {
-	            	$this->Session->setFlash(__('メールアドレスまたはパスワードが違います'), 'default', array(), 'auth');
-					if($this->request->is('ajax')) {
-						$this->autoRender = false;
-	                	$body['errors'] = array('name_and_pass' => 'メールアドレスまたはパスワードが違います');
-						print json_encode($body);
-					} else {
-						return $this->redirect($this->Auth->redirectUrl());
-					}
-					
-	            }
-	        }
+		if ($this->Auth->user()) {
+			$this->Session->setFlash(__('ログアウトしてください'),'default', array(), 'auth');
+			return;
 		}
-        
-    }
+
+		if(!$this->request->is('post')) {
+			return;
+		}
+
+		if($this->Auth->login()) {
+			$this->Session->setFlash(__('ログイン成功ヽ(ﾟ｀∀´ﾟ)ﾉｳﾋｮ'),'default', array(), 'auth');
+		} else {
+			$this->Session->setFlash(__('メールアドレスまたはパスワードが違います'), 'default', array(), 'auth');
+		}
+		return $this->redirect($this->Auth->redirectUrl());
+	}
+
+	public function api_login() {
+		if ($this->request->is('post')) {
+			if ($this->Auth->login()) {
+				$this->apiSuccess();
+				return;
+			}
+		}
+
+		$this->apiError('メールアドレスまたはパスワードが違います');	
+	}
+
 
 	//ユーザの新規登録
 	public function add() {		
 		if ($this->Auth->user()) {
-        	$this->Session->setFlash(__('ログアウトしてください'),'default', array(), 'auth');
-        } else {
-	        if($this->request->is('post')) {
-				$this->request->data['User']['name'] = strtolower($this->request->data['User']['name']);
-                $this->User->create();
-                $result = $this->User->save($this->request->data);
-                if ($result) {
-                    $this->__send_add_email($result['User']['id']);
-					$this->Auth->login();
-					$this->Session->setFlash(__('登録完了です。 (｡･_･｡)ﾉ'),'default', array(), 'auth');
-					
-					if($this->request->is('ajax')) {
-						$this->autoRender = false;
-						$body['success'] = array(
-							'message' => 'Success!!'
-						);
-						print json_encode($body);
-						return;
-					} else {
-						return $this->redirect($this->Auth->redirectUrl());
-					}
-	            } else {
-	                $this->Session->setFlash(__('登録に失敗しました（￣□￣；）！！'), 'default', array(), 'auth');
-					if($this->request->is('ajax')) {
-						$this->autoRender = false;
-						if ($this->User->validationErrors) {
-							$body['errors'] = $this->User->validationErrors;
-						} else {
-							$body['errors'] = array('sql' => 'sql error');
-						}
-						print json_encode($body);
-						return;
-					}
-					
-					return $this->redirect($this->Auth->redirectUrl());
-	            }
-	        }
+			$this->Session->setFlash(__('ログアウトしてください'),'default', array(), 'auth');
+			return;
 		}
-    }
+		if(!$this->request->is('post')) {
+			return;
+		}
+
+		$result = $this->__add();
+		if ($result) {
+			$this->Session->setFlash(__('登録完了です。 (｡･_･｡)ﾉ'),'default', array(), 'auth');
+		} else {
+			$this->Session->setFlash(__('登録に失敗しました（￣□￣；）！！'), 'default', array(), 'auth');
+		}
+		return $this->redirect($this->Auth->redirectUrl());
+	}
+
+	public function api_add() {
+		if ($this->request->is('post')) {
+			$result = $this->__add();
+			if ($result) {
+				$this->apiSuccess();
+				return;
+			}
+		}
+
+		if ($this->User->validationErrors) {
+			$this->apiValidationError('User', $this->User->validationErrors);
+		} else {
+			$this->apiError('add error');
+		}
+	}
+
+	private function __add() {
+		$this->request->data['User']['name'] = strtolower($this->request->data['User']['name']);
+		$this->User->create();
+		$result = $this->User->save($this->request->data);
+		if ($result) {
+			$this->Auth->login();
+			$this->__send_add_email($result['User']['id']);
+		}
+		return $result;
+	}
+
 
 	//ユーザーの編集
     public function edit($id = null) {

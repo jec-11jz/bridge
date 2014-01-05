@@ -1,5 +1,6 @@
 <?php
 App::uses('AppModel', 'Model');
+App::uses('BlogTag', 'Model');
 
 class Tag extends AppModel {
 	public $hasMany = array(
@@ -28,12 +29,7 @@ class Tag extends AppModel {
             // 'limit'         => 50 //Cake が取り出す関連モデルのデータの最大数。 
         )
     );
-	 public $belognsTo = array(
-        'User' => array(
-            'className'  => 'User',
-            'foreignKey'   => 'user_id',
-        )
-    );
+	 public $belongsTo = array('User');
 
 	public function getTags() {
 		$tagList = $this->find('all', array(
@@ -81,5 +77,16 @@ class Tag extends AppModel {
 		}
 		return $tagNames;
 	}
+
+	public function findAllByBlogId($blog_id) {
+		$BlogTag = ClassRegistry::init('BlogTag');
+		$blogTags = $BlogTag->findAllByBlogId($blog_id);
+		return false;
+
+		$tags = array();
+		foreach ($blogTags as $blogTag) {
+			array_push($tags, $blogTag);
+		}
+		return $tags;
+	}
 }
-?>

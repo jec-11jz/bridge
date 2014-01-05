@@ -8,7 +8,6 @@
 	echo $this->Html->script('masonry.pkgd');
 	echo $this->Html->script('imagesloaded');
 	$this->Html->script('//ajax.microsoft.com/ajax/jquery.templates/beta1/jquery.tmpl.min.js', array('inline' => false));
-	$this->Html->script('jquery.inview.min', array('inline' => false));
 ?>
 <div id="diary-index">
 </div> <!-- #diary-index -->
@@ -60,18 +59,14 @@
 		}
 	});
 
-	$('#diary-index:last-child').bind('inview', function(event, isInView, visiblePartX, visiblePartY) {
-		loadBlogs();
-	});
-
-
 	var page = 1;
+	var count = 50;
 	function loadBlogs() {
 		$.ajax({
 			type: 'GET',
-			url: 'http://bridge.com/blogs/index/page:'+ page +'.json',
+			url: 'http://bridge.com/api/blogs.json?count='+ count +'&page='+ page,
 			success: function(data, dataType) {
-				blogs = $('#blogTemplate').tmpl(data['blogs']);
+				blogs = $('#blogTemplate').tmpl(data['response']['blogs']);
 				$('#diary-index').append(blogs);
 				$('#diary-index').imagesLoaded(function() {
 					$('.container-item').removeClass('hidden');
