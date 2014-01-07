@@ -1,33 +1,51 @@
 <?php
 App::uses('AppModel', 'Model');
+App::uses('Attribute', 'Model');
+App::uses('Tag', 'Model');
 
 class Product extends AppModel {
 	
-	public $hasMany = array(
-        'ProductTag' => array(
-            'className'     => 'ProductTag',
-            'foreignKey'    => 'product_id',
-            'dependent'     => true //true に設定すると、モデルのデータの削除時に関連しているモデル側のデータも削除される。
-            // 'conditions'    => //hasMany で取得したいデータの条件を指定する。 SQL の条件文。
-            // 'order'         =>'User.created DESC' //関連するモデルのデータの並び順。SQL の ORDER 句の指定方法。テーブル名をカラム名の前に付ける
-            // 'limit'         => 5 //Cake が取り出す関連モデルのデータの最大数。
-            
-        ),
-        'AttributeTag' => array(
-            'className'     => 'AttributeTag',
-            'foreignKey'    => 'product_id',
-            'dependent'     => true, //true に設定すると、モデルのデータの削除時に関連しているモデル側のデータも削除される。
-            // 'conditions'    => //hasMany で取得したいデータの条件を指定する。 SQL の条件文。
-            // 'order'         =>'User.created DESC' //関連するモデルのデータの並び順。SQL の ORDER 句の指定方法。テーブル名をカラム名の前に付ける
-            //'limit'         => 50 //Cake が取り出す関連モデルのデータの最大数。
-            
-        )
-    );
-	
-    public $belongsTo = array('User', 'Template');
-	
-	public function getRelationedAttributeByid($id) {
-		
+	public $hasMany = array('ProductsTag', 'AttributesTag');
+
+	public $hasAndBelongsToMany = array(
+		'Attribute' => array(
+			'className' => 'Attribute',
+			'joinTable' => 'attributes_tags',
+			'foreginKey' => 'product_id',
+			'associationForeginKey' => 'attribute_id'
+		)
+	);
+
+
+	public function __construct() {
+		parent::__construct();
+		$this->Attribute = ClassRegistry::init('Attribute');
+		$this->Tag       = ClassRegistry::init('Tag');
+	}
+
+	// MEMO
+	// findBy, findAllBy のみテスト
+	// その他に関しては未保証
+	public function afterFind($results, $primary = false) {
+		if (!is_array($results) or empty($results)) {
+			return $results;
+		}
+
+		foreach($results as &$result) {
+			if (!array_key_exists('Attribute', $result)) {
+				continue;
+			}
+			$result['Attribute'] = $this->__associatedAttributeAndTag($result['Attribute'], $result['Product']['id']);
+		}
+		return $results;
+	}
+
+	private function __associatedAttributeAndTag($attributes = array(), $product_id) {
+		$attributes = $this->Attribute->deleteDuplication($attributes);
+		foreach($attributes as &$attribute) {
+			$attribute['Tag'] = $this->Tag->findAllByAttributeIdAndProductId($attribute['id'], $product_id);
+		}
+		unset($attribute);
+		return $attributes;
 	}
 }
-?>

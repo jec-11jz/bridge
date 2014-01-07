@@ -5,20 +5,13 @@ App::uses('Tag', 'Model');
 
 class Blog extends AppModel {
 	
- 	public $hasMany = array(
-        'UsedBlogImage' => array(
-            'className'     => 'UsedBlogImage',
-            'foreignKey'    => 'blog_id',
-            'dependent'     => true
-        ),
-        'BlogTag' => array(
-            'className'     => 'BlogTag',
-            'foreignKey'    => 'blog_id',
-            'dependent'     => true
-        )
-    );
-	
-	 public $belongsTo = array('User');
+	public $belongsTo = array(
+		'User' => array(
+			'fileds' => array('id', 'name', 'nickname', 'profile', 'created', 'modified')
+		)
+	);
+ 	public $hasMany = array('UsedBlogImage');
+	public $hasAndBelongsToMany = array('Tag');
 	
 	public $validate = array(
         'title' => array(
@@ -50,13 +43,4 @@ class Blog extends AppModel {
 		return $arrayTagNames;
 	}
 
-	public function afterFind($results, $primary = false) {
-		$Tag = ClassRegistry::init('Tag');
-		foreach ($results as &$result) {
-			//$result['Tag'] = $Tag->findAllByBlogId($result['Blog']['id']);
-		}
-		return $results;
-	}
-
 }
-?>

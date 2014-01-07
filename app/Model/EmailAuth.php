@@ -4,7 +4,7 @@ App::uses('User', 'Model');
 /**
  * EmailAuth Model
  *
- * @property User $User
+ * @property EmailAuth $EmailAuth
  */
 class EmailAuth extends AppModel {
 

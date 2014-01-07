@@ -1,35 +1,21 @@
 <?php
 App::uses('AppModel', 'Model');
 App::uses('BlogTag', 'Model');
+App::uses('AttributesTag', 'Model');
 
 class Tag extends AppModel {
-	public $hasMany = array(
-        'BlogTag' => array(
-            'className'     => 'BlogTag',
-            'foreignKey'    => 'tag_id',
-            'dependent'     => true, //true に設定すると、モデルのデータの削除時に関連しているモデル側のデータも削除される。
-            // 'conditions'    => //hasMany で取得したいデータの条件を指定する。 SQL の条件文。
-            // 'order'         =>'User.created DESC' //関連するモデルのデータの並び順。SQL の ORDER 句の指定方法。テーブル名をカラム名の前に付ける
-            // 'limit'         => 50 //Cake が取り出す関連モデルのデータの最大数。 
-        ),
-        'AttributeTag' => array(
-            'className'     => 'AttributeTag',
-            'foreignKey'    => 'tag_id',
-            'dependent'     => true, //true に設定すると、モデルのデータの削除時に関連しているモデル側のデータも削除される。
-            // 'conditions'    => //hasMany で取得したいデータの条件を指定する。 SQL の条件文。
-            // 'order'         =>'User.created DESC' //関連するモデルのデータの並び順。SQL の ORDER 句の指定方法。テーブル名をカラム名の前に付ける
-            // 'limit'         => 50 //Cake が取り出す関連モデルのデータの最大数。 
-        ),
-        'ProductTag' => array(
-            'className'     => 'ProductTag',
-            'foreignKey'    => 'tag_id',
-            'dependent'     => true, //true に設定すると、モデルのデータの削除時に関連しているモデル側のデータも削除される。
-            // 'conditions'    => //hasMany で取得したいデータの条件を指定する。 SQL の条件文。
-            // 'order'         =>'User.created DESC' //関連するモデルのデータの並び順。SQL の ORDER 句の指定方法。テーブル名をカラム名の前に付ける
-            // 'limit'         => 50 //Cake が取り出す関連モデルのデータの最大数。 
-        )
-    );
-	 public $belongsTo = array('User');
+	public $hasMany = array('ProductsTag');
+
+	public function findAllByAttributeIdAndProductId($attribute_id, $product_id) {
+		$AttributesTag = ClassRegistry::init('AttributesTag');
+		$attributesTags = $AttributesTag->findAllByAttributeIdAndProductId($attribute_id, $product_id);
+
+		$tags = array();
+		foreach ($attributesTags as $attributesTag) {
+			array_push($tags, $attributesTag['Tag']);
+		}
+		return $tags;
+	}
 
 	public function getTags() {
 		$tagList = $this->find('all', array(
@@ -78,15 +64,4 @@ class Tag extends AppModel {
 		return $tagNames;
 	}
 
-	public function findAllByBlogId($blog_id) {
-		$BlogTag = ClassRegistry::init('BlogTag');
-		$blogTags = $BlogTag->findAllByBlogId($blog_id);
-		return false;
-
-		$tags = array();
-		foreach ($blogTags as $blogTag) {
-			array_push($tags, $blogTag);
-		}
-		return $tags;
-	}
 }

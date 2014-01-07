@@ -2,7 +2,7 @@
 App::uses('AppModel', 'Model');
 App::uses('Tag', 'Model');
 
-class BlogTag extends AppModel {
+class BlogsTag extends AppModel {
 	public $belongsTo = array('Tag', 'Blog');
 
 	
