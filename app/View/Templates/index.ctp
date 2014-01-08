@@ -6,6 +6,11 @@
 		
 		
 ?>
+<style>
+	body {
+		background: #FFFFFF;
+	}
+</style>
 <legend>Link</legend>
 <a href="/templates/add" class="btn-a">テンプレート作成</a>
 <a href="/products/index" class="btn-a">作品一覧</a>
@@ -16,12 +21,14 @@
 	<table class="table">
 		<th>テンプレート名</th>
 		<th>テンプレートID</th>
+		<th>削除</th>
 		<?php foreach($templates as $template) : ?>
 		<tr>
 			<?php if(isset($template['Template']['id'])){ ?>
 				<?php $fontColor = 0; ?>
-				<td><?php echo $template['Template']['name']; ?></td>
+				<td><a href="/templates/edit/<?php echo $template['Template']['id']; ?>"><?php echo $template['Template']['name']; ?></a></td>
 				<td><?php echo $template['Template']['id']; ?></td>
+				<td><?php echo $this->Form->postLink("", array('action' => 'delete',$template['Template']['id']),array('confirm' => '削除しますか？', 'class'=>'fa fa-trash-o')); ?></td>
 			<?php } ?>
 		</tr>
 		<?php endforeach; ?>
@@ -29,17 +36,17 @@
 	<!-- アトリビュート一覧 -->
 	<h2>属性一覧</h2>
 	<table class="table">
-		<th>属性名</th>
-		<th>テンプレートID</th>
 		<?php foreach($templates as $template) : ?>
-			<?php foreach($template['Attribute'] as $attribute) : ?>
-			<tr>
-			<?php if(isset($attribute['name'])){ ?>
-				<td><?php echo $attribute['name']; ?></td>
-				<td><?php echo $attribute['template_id']; ?></td>
+			<?php if($template['Attribute'] != false) { ?>
+				<th><?php echo h($template['Template']['name'] . '：' . $template['Template']['id']); ?></th>
+				<?php foreach($template['Attribute'] as $attribute) : ?>
+					<tr>
+					<?php if(isset($attribute['name'])){ ?>
+						<td><?php echo $attribute['name']; ?></td>
+					<?php } ?>
+					</tr>
+				<?php endforeach; ?>
 			<?php } ?>
-			</tr>
-			<?php endforeach; ?>
 		<?php endforeach; ?>
 	</table>
 </div>

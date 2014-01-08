@@ -3,6 +3,8 @@ App::uses('AppController', 'Controller');
 
 class TagsController extends AppController {
 	public $uses = array('Blog', 'UsedBlogImage', 'User', 'Tag', 'BlogTag');
+	public $components = array('RequestHandler');
+
 	
 	public function beforeFilter()
     {
@@ -13,15 +15,13 @@ class TagsController extends AppController {
     }
 	
 	public function index(){
-		// Modelからタグ一覧を取得 ⇒ Viewへ送る
-        $tags = $this->Tag->findAllByUserId($this->Auth->user('id'));
-		if (!is_array($tags)) {
-			// error
-			//$this->autoRender = false;
-			print 'not found';
-			return;
-		}
+        $tags = $this->Tag->findAll();
 		$this->set('tags', $tags);
+	}
+
+	public function api_index() {
+		$tags = $this->Tag->find('all');
+		$this->apiSuccess($tags);
 	}
 	
 	public function add(){
@@ -79,12 +79,9 @@ class TagsController extends AppController {
 		 $this->set('tags', $usedTagNames);
 	}
 
-	public function get(){
-		$this->autoRender = false;
-		$tags = $this->Tag->getTags();
-		
-		//再びJSにJson形式でデータを渡す
-        echo json_encode($tags);
+	public function api_get_most_used() {
+		$tags = $this->Tag->getMostUsedTags();
+		$this->apiSuccess($tags);
 	}
 	
 	public function delete($id = null) {

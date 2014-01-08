@@ -78,13 +78,13 @@ $(function() {
 	var tag = [];
 	$.ajax({
 		type: 'GET',
-		url: '/tags/get',
+		url: '/api/tags/get_most_used.json',
 		success: function(tags){
 			console.log('success');
 			//tagbox
 			$('#tags').tagbox({
-			    url : JSON.parse(tags),
-    			lowercase : true
+			    url: tags.response,
+    			lowercase: true
   			});
 		},
 		error: function(tags){

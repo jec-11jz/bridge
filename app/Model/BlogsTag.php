@@ -2,25 +2,14 @@
 App::uses('AppModel', 'Model');
 App::uses('Tag', 'Model');
 
-class BlogTag extends AppModel {
-	public $belognsTo = array(
-        'Tag' => array(
-            'className'  => 'Tag',
-            'foreignKey'   => 'tag_id',
-            'department' => 'true'
-        ),
-	    'Blog' => array(
-            'className'  => 'Blog',
-            'foreignKey'   => 'blog_id',
-            'department' => 'true'
-        )
-	);
+class BlogsTag extends AppModel {
+	public $belongsTo = array('Tag', 'Blog');
 
 	
 	public function addBlogTags($tag_name, $blog_id){
 		$Tag = ClassRegistry::init('Tag');
     	if(isset($tag_name)){
-			//送らてきたタグのカンマで区切られた文字列を分解す
+			//送らてきたタグのカンマで区切られた文字列を分解する
 			$tags = explode(",", $tag_name);
 			foreach ($tags as $tag) {
 				$tag = trim($tag);
@@ -53,4 +42,3 @@ class BlogTag extends AppModel {
 	}
 	
 }
-?>

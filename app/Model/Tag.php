@@ -1,53 +1,69 @@
 <?php
 App::uses('AppModel', 'Model');
+App::uses('BlogTag', 'Model');
+App::uses('AttributesTag', 'Model');
 
 class Tag extends AppModel {
-	public $hasMany = array(
-        'BlogTag' => array(
-            'className'     => 'BlogTag',
-            'foreignKey'    => 'tag_id',
-            'dependent'     => true, //true に設定すると、モデルのデータの削除時に関連しているモデル側のデータも削除される。
-            // 'conditions'    => //hasMany で取得したいデータの条件を指定する。 SQL の条件文。
-            // 'order'         =>'User.created DESC' //関連するモデルのデータの並び順。SQL の ORDER 句の指定方法。テーブル名をカラム名の前に付ける
-            // 'limit'         => 50 //Cake が取り出す関連モデルのデータの最大数。 
-        ),
-        'AttributeTag' => array(
-            'className'     => 'AttributeTag',
-            'foreignKey'    => 'tag_id',
-            'dependent'     => true, //true に設定すると、モデルのデータの削除時に関連しているモデル側のデータも削除される。
-            // 'conditions'    => //hasMany で取得したいデータの条件を指定する。 SQL の条件文。
-            // 'order'         =>'User.created DESC' //関連するモデルのデータの並び順。SQL の ORDER 句の指定方法。テーブル名をカラム名の前に付ける
-            // 'limit'         => 50 //Cake が取り出す関連モデルのデータの最大数。 
-        ),
-        'ProductTag' => array(
-            'className'     => 'ProductTag',
-            'foreignKey'    => 'tag_id',
-            'dependent'     => true, //true に設定すると、モデルのデータの削除時に関連しているモデル側のデータも削除される。
-            // 'conditions'    => //hasMany で取得したいデータの条件を指定する。 SQL の条件文。
-            // 'order'         =>'User.created DESC' //関連するモデルのデータの並び順。SQL の ORDER 句の指定方法。テーブル名をカラム名の前に付ける
-            // 'limit'         => 50 //Cake が取り出す関連モデルのデータの最大数。 
-        )
-    );
-	 public $belognsTo = array(
-        'User' => array(
-            'className'  => 'User',
-            'foreignKey'   => 'user_id',
-        )
-    );
 
-	public function getTags() {
-		$tagList = $this->find('all', array(
+	public $validate = array(
+		'name' => array(
+			'rule' => 'isUnique',
+			'message' => 'duplicated'
+		)
+	);
+
+
+	/**
+	 * 作品と結びついたタグを取得する
+	 *
+	 */
+	public function findAllByAttributeIdAndProductId($attribute_id, $product_id) {
+		$AttributesTag = ClassRegistry::init('AttributesTag');
+		$attributesTags = $AttributesTag->findAllByAttributeIdAndProductId($attribute_id, $product_id);
+
+		$tags = array();
+		foreach ($attributesTags as $attributesTag) {
+			array_push($tags, $attributesTag['Tag']);
+		}
+		return $tags;
+	}
+
+	/**
+	 * 最頻出のタグを取得する
+	 *
+	 * 現在はタグを10,000件取得してるのみ
+	 */
+	public function getMostUsedTags() {
+
+		$tags = $this->find('list', array(
 				'fields' => array('Tag.name'),
 				'order' => array('Tag.count DESC', 'Tag.created'),
 				'limit' => 10000
 			)
 		);
 		
-		//タグの添字を削除
-		$tags = Set::extract('/Tag/name', $tagList);
+		return array_values($tags);
+	}
+
+	public function parseTagCSV($tagNames = '') {
+		$tags = explode(',', $tagNames);
+		foreach ($tags as &$tag) {
+			$tag = trim($tag);
+		}
+		unset($tag);
 		return $tags;
 	}
-	
+
+	public function saveFromNameArray($tags = array()) {
+		foreach ($tags as $tag) {
+			$this->create();
+			$this->set('name', $tag);
+			$this->save();
+		}
+		return true;
+	}
+
+	// no used
 	public function addTags($tag_name, $user_id, $tag_type){
     	if(isset($tag_name)){
 			//送らてきたタグのカンマで区切られた文字列を分解す
@@ -77,9 +93,9 @@ class Tag extends AppModel {
 	public function getNamesFromTags($tags) {
 		$tagNames = array();
 		foreach ($tags as $tag) {
-			array_push($tagNames, $tag['Tag']['name']);
+			array_push($tagNames, $tag['name']);
 		}
 		return $tagNames;
 	}
+
 }
-?>

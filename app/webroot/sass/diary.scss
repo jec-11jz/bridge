@@ -2,8 +2,7 @@
 // @import "constants.scss";
 
 body{
-  // @include back-x;
-  background-color: #2C2B2B;
+  @include back-x;
 }
 th {
   color: #313131;
@@ -20,14 +19,24 @@ table > tbody > tr > td > a {
 div#diary{
   margin:20px;
 }
+
 $bloginfo: 20px;
+
+a.link:hover img.diary-pic{
+  opacity: 0.8;
+}
 div#diary-index{
-  // text-align: center;
-  // width: ;
   margin: 0 auto;
   img {
-	  width: 220px;
-	  height: auto;
+    width: 220px;
+    height: auto;
+  }
+  .container-item{
+    background-color:white;
+  }
+  a.link{
+    @include link;
+    z-index: 550;
   }
   .cont{
     background-color: #BEBEBE;
@@ -44,47 +53,7 @@ div#diary-index{
         float:right;
         margin: 0.5em 1em;
     }
-    a.link{
-        position: absolute;
-        top: 0;
-        left: 0;
-        display:block;
-        width: 100%;
-        height: 100%;
-        z-index: 550;
-        &:hover{
-          .blog-info{
-            
-        }
-      }
-    }
-    
-    .overlay{
-      width: 100%;
-      height: 100%;
-      opacity:0.8;
-      position: absolute;
-      border-bottom: $bloginfo solid white;
-      z-index: 500;
-    }
-    a.link:hover div.overlay{
-      // background-color: red;
-      border-bottom-width: 200px solid blue;
-    }
-    img{
-      // bottom: -$bloginfo;
-      // margin-bottom: -$bloginfo;
-    }
-    div.blog-info{
-      z-index: 560;
-      position: absolute;
-      bottom: -$bloginfo - 23;
-      display: block;
-      width: 100%;
-      a.blog-title{
-        display: block;
-      }
-    }
+
   }
 }
 

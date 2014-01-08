@@ -18,6 +18,7 @@
 			'label'=>'タイトル', 
 			'type'=>'text',
 			'class'=>'input_form',
+			'value' => $post['Blog']['title'],
 			// バリデーションのエラーメッセージを指定
 			'error' => array(
 				'isUnique' => __('そのユーザーIDは既に使われています', true),
@@ -25,19 +26,20 @@
 				'minLength' => __('15文字以内で入力してください', true)))); 
 				
 		// タグフォーム
-		echo $this->Form->input('Tag.name', array(
+		echo $this->Form->input('Tag.namesCSV', array(
 			'label'=>'タグ', 
 			'type'=>'text',
 			'id'=>'tags',
 			'name'=>'data[Tag][name]',
-			'value' => $tags,
+			'value' => $post['Tag']['namesCSV'],
 			'class'=>'input_form')); 
 	 
-		echo $this->Form->input('content', array(
+		echo $this->Form->input('Blog.content', array(
 			'label'=>'本文', 
 			'type'=>'textarea',
 			'id'=>'ckeditor',
 			'class'=>'input_form blog',
+			'value' => $post['Blog']['content'],
 			// バリデーションのエラーメッセージを指定
 			'error' => array(
 				'isUnique' => __('そのユーザーIDは既に使われています', true),
@@ -80,12 +82,12 @@ $(function() {
 	var tag = [];
 	$.ajax({
 		type: 'GET',
-		url: '/tags/get',
+		url: '/api/tags/get_most_used.json',
 		success: function(tags){
 			console.log('success');
 			//tagbox
 			$('#tags').tagbox({
-			    url : JSON.parse(tags),
+			    url : tags,
     			lowercase : true
   			});
 		},

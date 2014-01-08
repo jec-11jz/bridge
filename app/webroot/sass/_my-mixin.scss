@@ -52,6 +52,14 @@
   margin: 0;
   padding: 0;
 }
+@mixin link{
+  display: block;
+  top: 0;
+  left: 0;
+  width:100%;
+  height: 100%;
+  position: absolute;
+}
 
 @mixin back-z{
   background: #cecece url("../img/background-2.png");

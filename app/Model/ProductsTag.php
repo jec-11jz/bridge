@@ -2,9 +2,9 @@
 App::uses('AppModel', 'Model');
 App::uses('Tag', 'Model');
 
-class AttributeTag extends AppModel {
+class ProductsTag extends AppModel {
 	
-	public $belognsTo = array(
+	public $belongsTo = array(
         'Product' => array(
             'className'  => 'Product',
             'foreignKey'   => 'product_id'
@@ -12,15 +12,10 @@ class AttributeTag extends AppModel {
         'Tag' => array(
             'className'  => 'Tag',
             'foreignKey' => 'tag_id'
-        ),
-        'Attribute' => array(
-            'className'  => 'Attribute',
-            'foreignKey'   => 'attribute_id'
-		)
+        )
     );
-	public $belongsTo = array('Product','Tag', 'Attribute');
 	
-	public function addAttributeTags($tag_name, $attribute_id, $product_id){
+	public function addProductTags($tag_name, $product_id){
 		$Tag = ClassRegistry::init('Tag');
     	if(isset($tag_name)){
 			//送らてきたタグのカンマで区切られた文字列を分解す
@@ -33,7 +28,6 @@ class AttributeTag extends AppModel {
 		            $this->create();
 					$this->set(array(
 						'tag_id'=>$result['Tag']['id'], 
-						'attribute_id'=>$attribute_id,
 						'product_id'=>$product_id));
 		            $this->save();
 				}

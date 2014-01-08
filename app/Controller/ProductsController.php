@@ -3,34 +3,26 @@ App::uses('AppController', 'Controller');
 
 class ProductsController extends AppController {
 	
-	public $uses = array('Template', 'Attribute', 'User', 'Product', 'Tag', 'AttributeTag', 'ProductTag');
+	public $uses = array('Template', 'Attribute', 'User', 'Product', 'Tag', 'AttributesTag', 'ProductsTag');
 	
 	public function beforeFilter()
     {
     	//親クラス（AppController）読み込み
         //parent::beforeFilter();
 		//permitted access before login
-        //$this->Auth->allow();
-    }
-	
+		//$this->Auth->allow();
+	}
+
 	public function index(){
 		//send templates to view
-		$templates = $this->Template->findAllByUserId($this->Auth->user('id'));
 		$products = $this->Product->find('all');
-		if(!is_array($templates) || !is_array($products)){
-			// error
-			$this->autoRender = false;
-			print 'not found';
-			return;
-		}
+		$templates = $this->Template->findByUserId($this->Auth->user('id'));
 		$this->set('products', $products);
 		$this->set('templates', $templates);
 	}
 	
-    public function add($template_id = null){
-    	if($this->request->is('ajax')){
-    		$this->autoRender = false;
-    	}
+	public function add() {
+		return;
     	// set template_id which selected by user
     	if(isset($_GET['data'])){
     		$template_id = $_GET['data'];
@@ -39,13 +31,18 @@ class ProductsController extends AppController {
 		$this->request->data['Product']['user_id'] = $this->Auth->user('id');
 		// send templates to view
 		$templates = $this->Template->findAllByUserId($this->Auth->user('id'));
+		$selected_template = $this->Template->findById($template_id);
+		$template_attributes = $this->TemplateAttribute->findAllByTemplateId($template_id);
+		$temp_attributes = $this->Attribute->getSelectedAttributes($template_attributes); 
 		if(!is_array($templates)){
 			// error
 			$this->autoRender = false;
 			print 'not found';
 			return;
 		}
+		$this->set('temp_attributes', $temp_attributes);
 		$this->set('templates', $templates);
+		$this->set('template_attributes', $template_attributes);
 		$this->set('template_id', $template_id);
 		// after click button of register
 		if($this->request->is(array('post','ajax'))){
@@ -150,5 +147,19 @@ class ProductsController extends AppController {
 			$this->redirect(array('controller' => 'products', 'action' => 'index'));
 		}
 	}
+
+	public function delete($product_id = null) {
+    	$this->autoRender = false;
+        // HTTP GETリクエストか確認
+        if($this->request->is('get')) {
+            // 削除ボタン以外でこのページに来た場合はエラー
+            throw new MethodNotAllowedException();
+        }
+        if($this->Product->delete($product_id)) {
+            // 削除成功した場合はメッセージを出し、indexへリダイレクト
+            $this->Session->setFlash('作品'. $product_id . 'を削除しました');
+            $this->redirect(array('action' => 'index'));
+        }
+    }
 }
 ?>

@@ -2,16 +2,9 @@
 App::uses('AppModel', 'Model');
 
 class UsedBlogImage extends AppModel {
-	public $belognsTo = array(
-        'User' => array(
-            'className'  => 'User',
-            'foreignKey'   => 'user_id',
-        ),
-        'Blog' => array(
-            'className'  => 'Blog',
-            'foreignKey'   => 'blog_id',
-        )
-	);
+
+	public $belognsTo = array('User', 'Blog');
+
 	public function getImageFromHtml($htmlText){
 		$dom = new DOMDocument();
 		$dom->loadHTML($htmlText);
