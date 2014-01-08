@@ -3,34 +3,26 @@ App::uses('AppController', 'Controller');
 
 class ProductsController extends AppController {
 	
-	public $uses = array('TemplateAttribute', 'Template', 'Attribute', 'User', 'Product', 'Tag', 'AttributeTag', 'ProductTag');
+	public $uses = array('Template', 'Attribute', 'User', 'Product', 'Tag', 'AttributesTag', 'ProductsTag');
 	
 	public function beforeFilter()
     {
     	//親クラス（AppController）読み込み
         //parent::beforeFilter();
 		//permitted access before login
-        //$this->Auth->allow();
-    }
-	
+		//$this->Auth->allow();
+	}
+
 	public function index(){
 		//send templates to view
-		$templates = $this->Template->findAllByUserId($this->Auth->user('id'));
 		$products = $this->Product->find('all');
-		if(!is_array($templates) || !is_array($products)){
-			// error
-			$this->autoRender = false;
-			print 'not found';
-			return;
-		}
+		$templates = $this->Template->findByUserId($this->Auth->user('id'));
 		$this->set('products', $products);
 		$this->set('templates', $templates);
 	}
 	
-    public function add($template_id = null){
-    	if($this->request->is('ajax')){
-    		$this->autoRender = false;
-    	}
+	public function add() {
+		return;
     	// set template_id which selected by user
     	if(isset($_GET['data'])){
     		$template_id = $_GET['data'];

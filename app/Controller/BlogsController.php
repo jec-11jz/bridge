@@ -37,110 +37,101 @@ class BlogsController extends AppController {
 
 		$this->apiSuccess(array('blogs' => $blogs));
 	}
-  
-	 public function add() {
-        // HTTP POSTリクエストか確認
-        if ($this->request->is('post')) {
-        	$this->request->data['Blog']['user_id'] = $this->Auth->user('id'); 
-            // 新規レコード生成
-            $this->Blog->create();
-            // フォームから受信したPOSTデータ
-            $result = $this->Blog->save($this->request->data);
-            if ($result) {
-            	//imgタグのsrcをUsedBlogImageテーブルへ保存
-            	$this->UsedBlogImage->saveFromHtml(
-            		$this->Auth->user('id'), 
-            		$result['Blog']['id'], 
-            		$result['Blog']['content']
-				);
-				//タグ登録
-				$tag_type = 0;
-				$this->Tag->addTags(
-					$this->request->data['Tag']['name'],
-					$this->Auth->user('id'),
-					$tag_type
-				);
-				$this->BlogTag->addBlogTags(
-					$this->request->data['Tag']['name'],
-					$result['Blog']['id']
-				);
 
-                //メッセージを出力
-                $this->Session->setFlash('記事を保存しました');
-                // index.phpへリダイレクト
-                $this->redirect(array('controller' => 'blogs', 'action' => 'index'));
-            } else {
-                $this->Session->setFlash('記事を保存できません');
-            }
-        }
-    }
+	public function add() {
+		if (!$this->request->is('post')) {
+			return;
+		}
+
+		$tagNames = $this->Tag->parseTagCSV($this->request->data['Tag']['name']);
+		$this->Tag->saveFromNameArray($tagNames);
+		$tags = $this->Tag->find('list', array(
+			'conditions' => array(
+				'Tag.name' => $tagNames,
+			),
+			'fields' => array('Tag.id')
+		));
+
+		$blogData = array('Blog' => $this->request->data['Blog']);
+		$blogData['Blog']['user_id'] = $this->Auth->user('id');
+		$blogData['Tag'] = $tags;
+		$this->Blog->create();
+		$result = $this->Blog->saveAll($blogData);
+		if ($result) {
+			//メッセージを出力
+			$this->Session->setFlash('記事を保存しました');
+			// index.phpへリダイレクト
+			$this->redirect(array('controller' => 'blogs', 'action' => 'index'));
+		} else {
+			$this->Session->setFlash('記事を保存できません');
+		}
+	}
+
+	public function api_add() {
+		if (!$this->request->is('post')) {
+			$this->apiError('http method is not "POST"');
+		}
+
+		$this->Tag->saveFromNameArray($this->request->data['Tag']);
+		$tags = $this->Tag->find('list', array(
+			'conditions' => array(
+				'Tag.name' => $this->request->data['Tag']
+			),
+			'fields' => array('Tag.id')
+		));
+		$blogData = array('Blog' => $this->request->data['Blog']);
+		$blogData['Blog']['user_id'] = $this->Auth->user('id');
+		$blogData['Tag'] = $tags;
+		$this->Blog->create();
+		$result = $this->Blog->saveAll($blogData);
+		if ($result) {
+			$this->apiSuccess(array('message' => 'save success'));
+			return;
+		}
+
+		if ($this->Blog->validationErrors) {
+			$this->apiValidationError('Blog', $this->Blog->validationErrors);
+		} else {
+			$this->apiError('add error');
+		}
+	}
     
     public function edit($id = null) {
         if (!$id) {
         	throw new NotFoundException(__('blog_id is not found'));
     	}
 		//ブログが存在するかどうかを確かめる
-	    $post = $this->Blog->findById($id);
+	    $post = $this->Blog->findByIdAndUserId($id, $this->Auth->user('id'));
 	    if (!$post) {
 	        throw new NotFoundException(__('this blog is not exist'));
-	    }
-		if($this->Auth->user('id') != $post['Blog']['user_id']){
-			 throw new NotFoundException(__('不正アクセス'));
 		}
-		//ブログに付加されているタグを配列でViewに渡す
-		$tag_id = $this->BlogTag->findAllByBlogId($id);
-		$tagNameList = '';
-		if($tag_id){
-			for($count = 0; $count < count($tag_id); $count++) {
-				$tagList[0] = $this->Tag->findAllById($tag_id[$count]['BlogTag']['tag_id']);
-				$tagNameList[$count] = $tagList[0][0]['Tag']['name'];
-			}
-			if(is_array($tagNameList)){
-				$tagNameList = implode(', ', $tagNameList);
-			}
-		}
-		$this->set('tags', $tagNameList);
 
-	    if ($this->request->is(array('post', 'put'))) {
-	    	$this->Blog->id = $id;
-			//編集前のUsedBlogImageのデータを削除する
-			$this->UsedBlogImage->deleteAll(array('UsedBlogImage.blog_id'=>$id));
-			//ブログとタグのリレーションを削除する
-			$this->BlogTag->deleteAll(array('BlogTag.blog_id'=>$id));
-            //フォームから受信したPOSTデータ
-            $result = $this->Blog->save($this->request->data);
-            if ($result) {
-            	//imgタグのsrcをUsedBlogImageテーブルへ保存
-            	$this->UsedBlogImage->saveFromHtml(
-            		$this->Auth->user('id'), 
-            		$id, 
-            		$result['Blog']['content']
-				);
-				//タグ登録
-				$tag_type = 0;
-				$this->Tag->addTags(
-					$this->request->data['Tag']['name'],
-					$this->Auth->user('id'),
-					$tag_type
-				);
-				//ブログタグ登録
-				$this->BlogTag->addBlogTags(
-					$this->request->data['Tag']['name'],
-					$id
-				);
-
-                //メッセージを出力
-                $this->Session->setFlash('記事を保存しました');
-                // index.phpへリダイレクト
-                $this->redirect(array('controller' => 'blogs', 'action' => 'index'));
-            } else {
-                $this->Session->setFlash('記事を保存できません');
-            }
-	    }
+		if ($this->request->is('post')) {
+			$tagNames = $this->Tag->parseTagCSV($this->request->data['Tag']['name']);
+			$this->Tag->saveFromNameArray($tagNames);
+			$tags = $this->Tag->find('list', array(
+				'conditions' => array(
+					'Tag.name' => $tagNames,
+				),
+				'fields' => array('Tag.id')
+			));
 	
-	    if (!$this->request->data) {
-	        $this->request->data = $post;
-	    }
+			$blogData = array('Blog' => $this->request->data['Blog']);
+			$blogData['Blog']['id'] = $id;
+			$blogData['Blog']['user_id'] = $this->Auth->user('id');
+			$blogData['Tag'] = $tags;
+			$this->Blog->create();
+			$result = $this->Blog->saveAll($blogData);
+			if ($result) {
+				$this->Session->setFlash('記事を保存しました');
+			} else {
+				$this->Session->setFlash('記事を保存できません');
+			}
+		}
+
+		$post = $this->Blog->findByIdAndUserId($id, $this->Auth->user('id'));
+		$post['Tag']['namesCSV'] = $this->Tag->tagNamesToCSV($post['Tag']);
+		$this->set('post', $post);
     }
 
 	public function isAuthorized($user) {

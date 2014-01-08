@@ -20,7 +20,20 @@ class Blog extends AppModel {
         'body' => array(
             'rule' => 'notEmpty'
         )
-    );
+	);
+
+	public function __construct() {
+		parent::__construct();
+		$this->UsedBlogImage = ClassRegistry::init('UsedBlogImage');
+	}
+
+	public function afterSave($created, $options = array()) {
+		$this->UsedBlogImage->saveFromHtml(
+			$this->data['Blog']['user_id'], 
+       		$this->data['Blog']['id'], 
+       		$this->data['Blog']['content']
+		);
+	}
 	
 	public function isOwnedBy($post, $user) {
     	return $this->field('id', array('id' => $post, 'user_id' => $user)) === $post;
