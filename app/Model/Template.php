@@ -11,7 +11,12 @@ class Template extends AppModel {
         'name' => array(
 			'notEmpty' => array(
 				'rule' => 'notEmpty',
-				'allowEmpty'=>false
+				'allowEmpty'=> false,
+				'message' => '必須項目です'
+			),
+			'isUnique' => array(
+				'rule' => 'isUnique',
+				'message' => 'duplicated'
 			)
 		)
     );

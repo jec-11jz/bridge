@@ -28,7 +28,7 @@
 				<?php $fontColor = 0; ?>
 				<td><a href="/templates/edit/<?php echo $template['Template']['id']; ?>"><?php echo $template['Template']['name']; ?></a></td>
 				<td><?php echo $template['Template']['id']; ?></td>
-				<td><?php echo $this->Form->postLink("", array('action' => 'delete',$template['Template']['id']),array('confirm' => '削除しますか？', 'class'=>'fa fa-trash-o')); ?></td>
+				<td><?php echo $this->Form->postLink("", array('action' => 'delete', $template['Template']['id']), array('confirm' => '削除しますか？', 'class'=>'fa fa-trash-o')); ?></td>
 			<?php } ?>
 		</tr>
 		<?php endforeach; ?>

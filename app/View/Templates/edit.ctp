@@ -21,15 +21,17 @@
 		<?php endforeach; ?>
 		<option value="other">その他</option>
 	</select>
-	<div id="new-template"></div>
+	<div id="new-template">
+	<input type="text" name="data[Template][name]" id="template" value="<?php echo h($template['Template']['name']); ?>" />
+	</div>
 	<fieldset id="add-attributes">
 		<legend>項目</legend>
 		<!-- アトリビュート表示 -->
 		<input value="作品タイトル" disabled>
 		<?php $count = 1; ?>
-		<?php foreach($attributes as $attribute) :  ?>
-			<?php if($attribute['Attribute']['id']) { ?>
-				<input name="data[Attribute][name][]" class="input" type="text" id="attribute<?php echo h($count); ?>" class="attribute" value="<?php echo $attribute['Attribute']['name']; ?>">
+		<?php foreach($template['Attribute'] as $attribute) :  ?>
+			<?php if($attribute['id']) { ?>
+				<input name="data[Attribute][name][]" class="input" type="text" id="attribute<?php echo h($count); ?>" class="attribute" value="<?php echo $attribute['name']; ?>">
 				<input type="button" value="×" id="attribute<?php echo h($count); ?>" class="btn-attribute">
 			<?php } else { ?>
 				<input name="data[Attribute][name][]" class="input" type="text" class="attribute">
