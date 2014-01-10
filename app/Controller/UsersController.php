@@ -45,7 +45,7 @@ class UsersController extends AppController {
 		}
 
 		if($this->Auth->login()) {
-			$this->Session->setFlash(__('ログイン成功ヽ(ﾟ｀∀´ﾟ)ﾉｳﾋｮ'),'default', array(), 'auth');
+			$this->Session->setFlash(__('ログイン成功'),'default', array(), 'auth');
 		} else {
 			$this->Session->setFlash(__('メールアドレスまたはパスワードが違います'), 'default', array(), 'auth');
 		}
