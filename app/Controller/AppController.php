@@ -51,14 +51,6 @@ class AppController extends Controller {
 	);
 	
 	
-	//現在はtrueで返している
-	// public function isAuthorized($user) {
-        // $result = false;
-        // if ( 'グループIDの判定処理をココに書く' ) {
-            // $result = true; //成功→ loginRedirectへリダイレクト
-        // }
-        // return $result;
-    // }
 	public function isAuthorized($user) {
 	    // if (isset($user['group_id']) && $user['group_id'] === '2') {
 	        // return true;
@@ -70,6 +62,7 @@ class AppController extends Controller {
 	
 	public function beforeRender(){
 		$this->set('user', $this->Auth->user());
+		$this->response->disableCache();
 	}
 
 	

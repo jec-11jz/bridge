@@ -30,7 +30,7 @@
 		<option value=""　selected>--選択してください--</option>
 		<?php foreach($templates as $template) : ?>
 			<?php if(isset($template['Template']['id'])){ ?>
-				<?php if($template['Template']['id'] == $template_id) { ?>
+				<?php if($template['Template']['id'] == $selected_template['Template']['id']) { ?>
 					<option value="<?php echo $template['Template']['id']; ?>" selected><?php echo $template['Template']['name']; ?></option>
 				<?php } else { ?>
 					<option value="<?php echo $template['Template']['id']; ?>"><?php echo $template['Template']['name']; ?></option>
@@ -46,11 +46,11 @@
 	<fieldset id="product-data">
 		<table class="table">
 			<th>Product Information</th>
-			<?php foreach($temp_attributes as $temp_attribute) : ?>
+			<?php foreach($selected_template['Attribute'] as $template_attribute) : ?>
 				<tr>
-				<?php if(isset($temp_attribute['Attribute']['name'])){ ?>
-					<td><label for="<?php echo $temp_attribute['Attribute']['id']; ?>"><?php echo $temp_attribute['Attribute']['name']; ?> :</label>
-					<input type="text" class="attribute tags" name="value" id="<?php echo $temp_attribute['Attribute']['id']; ?>"></td>
+				<?php if(isset($template_attribute['name'])){ ?>
+					<td><label for="<?php echo $template_attribute['id']; ?>"><?php echo $template_attribute['name']; ?> :</label>
+					<input type="text" class="attribute tags" name="value" id="<?php echo $template_attribute['id']; ?>"></td>
 				<?php } ?>
 				</tr>
 			<?php endforeach; ?>

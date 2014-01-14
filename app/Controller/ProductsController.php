@@ -3,7 +3,7 @@ App::uses('AppController', 'Controller');
 
 class ProductsController extends AppController {
 	
-	public $uses = array('Template', 'Attribute', 'User', 'Product', 'Tag', 'AttributesTag', 'ProductsTag');
+	public $uses = array('Template', 'Attribute', 'User', 'Product', 'Tag', 'AttributesTag', 'ProductsTag', 'AttributesTemplate');
 	
 	public function beforeFilter()
     {
@@ -16,13 +16,12 @@ class ProductsController extends AppController {
 	public function index(){
 		//send templates to view
 		$products = $this->Product->find('all');
-		$templates = $this->Template->findByUserId($this->Auth->user('id'));
+		$templates = $this->Template->findAllByUserId($this->Auth->user('id'));
 		$this->set('products', $products);
 		$this->set('templates', $templates);
 	}
 	
 	public function add() {
-		return;
     	// set template_id which selected by user
     	if(isset($_GET['data'])){
     		$template_id = $_GET['data'];
@@ -32,18 +31,16 @@ class ProductsController extends AppController {
 		// send templates to view
 		$templates = $this->Template->findAllByUserId($this->Auth->user('id'));
 		$selected_template = $this->Template->findById($template_id);
-		$template_attributes = $this->TemplateAttribute->findAllByTemplateId($template_id);
-		$temp_attributes = $this->Attribute->getSelectedAttributes($template_attributes); 
+		
 		if(!is_array($templates)){
 			// error
 			$this->autoRender = false;
 			print 'not found';
 			return;
 		}
-		$this->set('temp_attributes', $temp_attributes);
 		$this->set('templates', $templates);
-		$this->set('template_attributes', $template_attributes);
-		$this->set('template_id', $template_id);
+		$this->set('selected_template', $selected_template);
+		
 		// after click button of register
 		if($this->request->is(array('post','ajax'))){
 			var_dump($this->request->data);

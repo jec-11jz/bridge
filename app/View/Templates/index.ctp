@@ -25,7 +25,6 @@
 		<?php foreach($templates as $template) : ?>
 		<tr>
 			<?php if(isset($template['Template']['id'])){ ?>
-				<?php $fontColor = 0; ?>
 				<td><a href="/templates/edit/<?php echo $template['Template']['id']; ?>"><?php echo $template['Template']['name']; ?></a></td>
 				<td><?php echo $template['Template']['id']; ?></td>
 				<td><?php echo $this->Form->postLink("", array('action' => 'delete', $template['Template']['id']), array('confirm' => '削除しますか？', 'class'=>'fa fa-trash-o')); ?></td>
@@ -38,7 +37,7 @@
 	<table class="table">
 		<?php foreach($templates as $template) : ?>
 			<?php if($template['Attribute'] != false) { ?>
-				<th><?php echo h($template['Template']['name'] . '：' . $template['Template']['id']); ?></th>
+				<th>【テンプレート名】<?php echo h($template['Template']['name'] . '：' . $template['Template']['id']); ?></th>
 				<?php foreach($template['Attribute'] as $attribute) : ?>
 					<tr>
 					<?php if(isset($attribute['name'])){ ?>

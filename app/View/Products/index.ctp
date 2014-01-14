@@ -36,7 +36,7 @@
 			<option value="other">テンプレート作成</option>
 		</select>
 		<hr size="2">
-		<input type="submit" class="btn-a" value="作品作成" />
+		<input id="add-product" type="submit" class="btn-a" value="Create" disabled />
 	</form>
 	
 </div>
@@ -49,6 +49,8 @@
 			if(temp_id == 'other'){
 				location.href="/templates/add";
 				return;
+			} else if(temp_id != ''){
+				$('#add-product').removeAttr("disabled");
 			}// End if()
 		});// End change()
 	})
