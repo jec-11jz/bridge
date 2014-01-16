@@ -21,21 +21,27 @@ class ProductsController extends AppController {
 		$this->set('templates', $templates);
 	}
 	
-	public function add() {
+	public function add($template_id = null) {
+				
     	// set template_id which selected by user
     	if(isset($_GET['data'])){
     		$template_id = $_GET['data'];
+		} else {
+			// $this->autoRender = false;
+			// print 'ERROR : please select the template by /products/index';
+			// return;
 		}
+		
   		// set user_id of auth to user_id of product
 		$this->request->data['Product']['user_id'] = $this->Auth->user('id');
 		// send templates to view
 		$templates = $this->Template->findAllByUserId($this->Auth->user('id'));
 		$selected_template = $this->Template->findById($template_id);
 		
-		if(!is_array($templates)){
+		if(!is_array($templates) || !is_array($selected_template)){
 			// error
 			$this->autoRender = false;
-			print 'not found';
+			print 'templates or selected_template are not array';
 			return;
 		}
 		$this->set('templates', $templates);
@@ -43,7 +49,6 @@ class ProductsController extends AppController {
 		
 		// after click button of register
 		if($this->request->is(array('post','ajax'))){
-			var_dump($this->request->data);
 			//add product
 			$this->Product->create();
 			$result = $this->Product->save($this->request->data());
