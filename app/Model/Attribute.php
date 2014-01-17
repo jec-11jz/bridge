@@ -7,7 +7,12 @@ class Attribute extends AppModel {
 		'name' => array(
 			'rule' => 'isUnique',
 			'message' => 'duplicated'
-		)
+		),
+		'notEmpty' => array(
+			'rule' => 'notEmpty',
+			'allowEmpty'=> false,
+			'message' => '必須項目です'
+		),
 	);
 
 	public function deleteDuplication($attributes) {
@@ -24,6 +29,9 @@ class Attribute extends AppModel {
 
 	public function saveFromNameArray($attributeNames = array()) {
 		foreach ($attributeNames as $attributeName) {
+			if ($attributeName == '') {
+				continue;
+			}
 			$this->create();
 			$this->set('name', $attributeName);
 			$this->save();

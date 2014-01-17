@@ -7,22 +7,22 @@ class TemplatesController extends AppController {
 	
 	public function beforeFilter()
     {
-    	//親クラス（AppController）読み込み
-        //parent::beforeFilter();
-		//permitted access before login
-        //$this->Auth->allow();
+    	
     }
 	
 	public function index(){
+		$templates = null;
 		$templates = $this->Template->findAllByUserId($this->Auth->user('id'));
 		$this->set('templates', $templates);
 	}
 
 	public function add() {
-		if (!$this->request->is('post')) {
+		// if request is GET, display only screen
+		if ($this->request->is('get')) {
 			return;
 		}
-
+		
+		// if request is POST
 		$this->Attribute->saveFromNameArray($this->request->data['Attribute']['name']);
 		$attributes = $this->Attribute->find('list', array(
 			'conditions' => array(
@@ -30,7 +30,6 @@ class TemplatesController extends AppController {
 			),
 			'fields' => array('Attribute.id')
 		));
-
 
 		$templateData = array('Template' => $this->request->data['Template']);
 		$templateData['Template']['user_id'] = $this->Auth->user('id');
@@ -49,47 +48,48 @@ class TemplatesController extends AppController {
 		} else {
 			$this->Session->setFlash('保存できませんでした');
 		}
-
-
+		// END (if request is POST)
 	}
 
-	public function edit($id = null){
-		//テンプレートが存在するかどうかを確かめる
-	    $template = $this->Template->findByIdAndUserId($id, $this->Auth->user('id'));
-		if(!$template){
-			throw new NotFoundException(__('template is not found'));
+	public function edit($template_id = null){
+		
+		// if request is GET, redirect to /templates/index
+		if ($this->request->is('get')) {
+			$template = $this->Template->findById($template_id);
+			//check whether template exist
+		    $template = $this->Template->findByIdAndUserId($template_id, $this->Auth->user('id'));
+			if(!$template){
+				throw new NotFoundException(__('template is not found'));
+			}
+			$this->set('template', $template);
+			return;
+		}
+	
+		$this->Attribute->saveFromNameArray($this->request->data['Attribute']['name']);
+		$attributes = $this->Attribute->find('list', array(
+			'conditions' => array(
+				'Attribute.name' => $this->request->data['Attribute']['name'],
+			),
+			'fields' => array('Attribute.id')
+		));
+
+		$templateData = array('Template' => $this->request->data['Template']);
+		$templateData['Template']['id'] = $template_id;
+		$templateData['Attribute'] = $attributes;
+
+		$this->Template->create();
+		$result = $this->Template->saveAll($templateData);
+
+		if ($result) {
+			$this->Session->setFlash('保存に成功しました');
+			$this->redirect(array('controller' => 'templates', 'action' => 'index'));
 		}
 
-		if ($this->request->is(array('post', 'put'))) {
-			$this->Attribute->saveFromNameArray($this->request->data['Attribute']['name']);
-			$attributes = $this->Attribute->find('list', array(
-				'conditions' => array(
-					'Attribute.name' => $this->request->data['Attribute']['name'],
-				),
-				'fields' => array('Attribute.id')
-			));
-
-			$templateData = array('Template' => $this->request->data['Template']);
-			$templateData['Template']['id'] = $id;
-			$templateData['Attribute'] = $attributes;
-
-			$this->Template->create();
-			$result = $this->Template->saveAll($templateData);
-
-			if ($result) {
-				$this->Session->setFlash('保存に成功しました');
-			}
-
-			if ($this->Template->validationErrors) {
-				$this->Session->setFlash('バリデーションエラーです');
-			} else {
-				$this->Session->setFlash('保存できませんでした');
-			}
+		if ($this->Template->validationErrors) {
+			$this->Session->setFlash('バリデーションエラーです');
+		} else {
+			$this->Session->setFlash('保存できませんでした');
 		}
-
-		// 現状だとsaveに失敗すると編集していた内容が消える
-		$template = $this->Template->findById($id);
-		$this->set('template', $template);
 	}
 
 	public function api_delete() {

@@ -46,14 +46,16 @@
 	<fieldset id="product-data">
 		<table class="table">
 			<th>Product Information</th>
-			<?php foreach($selected_template['Attribute'] as $template_attribute) : ?>
-				<tr>
-				<?php if(isset($template_attribute['name'])){ ?>
-					<td><label for="<?php echo $template_attribute['id']; ?>"><?php echo $template_attribute['name']; ?> :</label>
-					<input type="text" class="attribute tags" name="value" id="<?php echo $template_attribute['id']; ?>"></td>
-				<?php } ?>
-				</tr>
-			<?php endforeach; ?>
+			<?php if(!empty($selected_template)){ ?>
+				<?php foreach($selected_template['Attribute'] as $template_attribute) : ?>
+					<tr>
+					<?php if(isset($template_attribute['name'])){ ?>
+						<td><label for="<?php echo $template_attribute['id']; ?>"><?php echo $template_attribute['name']; ?> :</label>
+						<input type="text" class="attribute tags" name="value" id="<?php echo $template_attribute['id']; ?>"></td>
+					<?php } ?>
+					</tr>
+				<?php endforeach; ?>
+			<?php } ?> <!-- end empty check -->
 		</table>
 	</fieldset>
 	
@@ -95,13 +97,13 @@ $(function() {
 	var tag = [];
 	$.ajax({
 		type: 'GET',
-		url: '/tags/get',
+		url: '/api/tags/get_most_used.json',
 		success: function(tags){
-			console.log(tags);
+			console.log('success');
 			//tagbox
 			$('.tags').tagbox({
-			    url : JSON.parse(tags),
-    			lowercase : true
+			    url: tags.response,
+    			lowercase: true
   			});
 		},
 		error: function(tags){
