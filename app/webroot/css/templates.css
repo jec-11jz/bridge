@@ -115,35 +115,45 @@ div #navi {
 .container {
   min-height: 100%; }
 
-/* line 38, ../sass/menu.scss */
-div .modal-header {
-  padding: 10px 20px; }
-/* line 41, ../sass/menu.scss */
-div .modal-body {
-  padding: 20px 20px 0px 20px; }
-/* line 44, ../sass/menu.scss */
-div .modal-footer {
-  padding: 0 20px 15px 20px; }
-  /* line 46, ../sass/menu.scss */
-  div .modal-footer .submit {
-    float: left; }
-  /* line 49, ../sass/menu.scss */
-  div .modal-footer a {
-    float: right;
-    font-size: 11px;
-    margin: 0px 5px 0px 0px; }
-    /* line 53, ../sass/menu.scss */
-    div .modal-footer a:hover {
-      text-decoration: none; }
-  /* line 57, ../sass/menu.scss */
-  div .modal-footer .checkbox {
-    float: left;
-    margin-left: 15px; }
-    /* line 60, ../sass/menu.scss */
-    div .modal-footer .checkbox label {
-      margin-right: 10px; }
+/* line 37, ../sass/menu.scss */
+div.modal-content {
+  border: 0px; }
+  /* line 39, ../sass/menu.scss */
+  div.modal-content .modal-header {
+    padding: 10px 20px;
+    -webkit-border-radius: 5px 5px 0 0;
+    -moz-border-radius: 5px 5px 0 0;
+    -ms-border-radius: 5px 5px 0 0;
+    -o-border-radius: 5px 5px 0 0;
+    border-radius: 5px 5px 0 0; }
+  /* line 43, ../sass/menu.scss */
+  div.modal-content .modal-body {
+    padding: 20px 20px 0px 20px; }
+    /* line 45, ../sass/menu.scss */
+    div.modal-content .modal-body .checkbox {
+      margin: -15px 0 0 11px; }
+      /* line 47, ../sass/menu.scss */
+      div.modal-content .modal-body .checkbox label {
+        margin-right: 10px; }
+  /* line 52, ../sass/menu.scss */
+  div.modal-content .modal-footer {
+    padding: 0 20px 15px 20px; }
+    /* line 55, ../sass/menu.scss */
+    div.modal-content .modal-footer a {
+      text-align: right;
+      font-size: 11px;
+      margin: 5px 5px 0px 0px; }
+      /* line 59, ../sass/menu.scss */
+      div.modal-content .modal-footer a:hover {
+        text-decoration: none; }
+    /* line 63, ../sass/menu.scss */
+    div.modal-content .modal-footer .submit {
+      float: right; }
+      /* line 65, ../sass/menu.scss */
+      div.modal-content .modal-footer .submit .btn-b {
+        padding: 0.6em 3em; }
 
-/* line 69, ../sass/menu.scss */
+/* line 74, ../sass/menu.scss */
 div.navbar ul.dropdown li {
   text-align: center; }
 

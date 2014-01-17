@@ -7,7 +7,7 @@
   }
   li{
     .tag {
-      background-color: $col-green8;
+      background-color: $col-flat-blue1;
     }
   }
   .selected{
@@ -19,14 +19,14 @@
 
 .autocomplete ul {
   
-  background-color: $col-black5;
+  background-color: $col-flat-blue2;
   li{
-    background-color:$col-green8;
+    background-color:$col-flat-blue1;
     &:hover{
-      background-color: $col-green7;
+      background-color: $col-flat-blue11;
     }
     &.over,&.selected{
-      background-color: $col-green7;
+      background-color: $col-flat-blue11;
     }
   }
 }

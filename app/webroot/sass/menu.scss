@@ -34,31 +34,36 @@ div{
     min-height: 100%;
 }
 
-div{
+div.modal-content{
+  border: 0px;
   .modal-header{
     padding: 10px 20px;
+    @include border-radius(5px 5px 0 0);
   }
   .modal-body{
     padding: 20px 20px 0px 20px;
+    .checkbox{
+      margin: -15px 0 0 11px;
+      label{
+        margin-right:10px;
+      }
+    }
   }
   .modal-footer{
     padding: 0 20px 15px 20px;
-    .submit{
-      float:left;
-    }
+    
     a{
-      float:right;
+      text-align: right;
       font-size:11px;
-      margin: 0px 5px 0px 0px;
+      margin: 5px 5px 0px 0px;
       &:hover{
         text-decoration: none;
       }
     }
-    .checkbox{
-      float:left;
-      margin-left:15px;
-      label{
-        margin-right:10px;
+    .submit{
+      float:right;
+      .btn-b{
+        padding: 0.6em 3em;
       }
     }
   }

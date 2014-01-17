@@ -234,20 +234,20 @@ div.form.first-content-form {
   box-shadow: black 0px 0px 0px 0px; }
 /* line 9, ../../sass/tag/tags_custom.scss */
 .tagbox li .tag {
-  background-color: #5bb31a; }
+  background-color: #23adc9; }
 /* line 14, ../../sass/tag/tags_custom.scss */
 .tagbox .selected .tag {
   background-color: #f06260; }
 
 /* line 20, ../../sass/tag/tags_custom.scss */
 .autocomplete ul {
-  background-color: #313131; }
+  background-color: #1e94ac; }
   /* line 23, ../../sass/tag/tags_custom.scss */
   .autocomplete ul li {
-    background-color: #5bb31a; }
+    background-color: #23adc9; }
     /* line 25, ../../sass/tag/tags_custom.scss */
     .autocomplete ul li:hover {
-      background-color: #6ad11e; }
+      background-color: #33bfdb; }
     /* line 28, ../../sass/tag/tags_custom.scss */
     .autocomplete ul li.over, .autocomplete ul li.selected {
-      background-color: #6ad11e; }
+      background-color: #33bfdb; }
