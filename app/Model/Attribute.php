@@ -7,7 +7,12 @@ class Attribute extends AppModel {
 		'name' => array(
 			'rule' => 'isUnique',
 			'message' => 'duplicated'
-		)
+		),
+		'notEmpty' => array(
+			'rule' => 'notEmpty',
+			'allowEmpty'=> false,
+			'message' => '必須項目です'
+		),
 	);
 
 	public function deleteDuplication($attributes) {

@@ -15,6 +15,13 @@ class Product extends AppModel {
 			'associationForeginKey' => 'attribute_id'
 		)
 	);
+	
+	public $validate = array(
+        'name' => array(
+        	'requeired',
+            'rule' => 'notEmpty'
+        )
+	);
 
 
 	public function __construct() {
