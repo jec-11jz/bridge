@@ -24,7 +24,7 @@
     display: inline-block;
     position: relative;
     width: 120px;
-    margin: 0;
+    margin: 0 0 0 -4px;
     padding: 10px 15px;
 
     /* Styles */
@@ -81,7 +81,6 @@
 
     /* Styles */
     background: #fff;
-    border-radius: 0 0 5px 5px;
     border: 1px solid rgba(0,0,0,0.2);
     border-top: none;
     border-bottom: none;
@@ -92,7 +91,7 @@
     overflow: hidden;
     
     li{
-      padding: 0 10px ;
+      // padding: 0 10px ;
       a{
         display: block;
         text-decoration: none;
@@ -119,7 +118,7 @@
 /* Hover state */
 
 .wrapper-dropdown-5 .dropdown li:hover a {
-    color: $col-green;
+    @include btn-hover;
 }
 
 /* Active state */

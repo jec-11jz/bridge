@@ -60,35 +60,22 @@
   position: relative;
   overflow: hidden;
   background: #f9f9f9;
-  border: 1px solid #ddd;
-  -webkit-border-radius: 3px;
-  -moz-border-radius: 3px;
-  border-radius: 3px;
-  -webkit-box-shadow: #fff 0px 1px 0px;
-  -moz-box-shadow: #fff 0px 1px 0px;
-  box-shadow: #fff 0px 1px 0px; }
+  border: 1px solid #ddd; }
 
-/* line 65, ../../sass/tag/tags.scss */
+/* line 59, ../../sass/tag/tags.scss */
 .tagbox * {
   margin: 0;
   padding: 0; }
 
-/* line 69, ../../sass/tag/tags.scss */
+/* line 63, ../../sass/tag/tags.scss */
 .tagbox.focus {
   outline: 0; }
 
-/* line 72, ../../sass/tag/tags.scss */
+/* line 66, ../../sass/tag/tags.scss */
 .tagbox ul {
-  overflow: hidden;
-  padding: 10px 10px 6px 10px;
-  -webkit-border-radius: 2px;
-  -moz-border-radius: 2px;
-  border-radius: 2px;
-  -webkit-box-shadow: rgba(0, 0, 0, 0.07) 0px 2px 4px inset;
-  -moz-box-shadow: rgba(0, 0, 0, 0.07) 0px 2px 4px inset;
-  box-shadow: rgba(0, 0, 0, 0.07) 0px 2px 4px inset; }
+  overflow: hidden; }
 
-/* line 82, ../../sass/tag/tags.scss */
+/* line 69, ../../sass/tag/tags.scss */
 .tagbox li {
   position: relative;
   list-style: none;
@@ -96,7 +83,7 @@
   cursor: pointer;
   margin: 0 4px 4px 0; }
 
-/* line 89, ../../sass/tag/tags.scss */
+/* line 76, ../../sass/tag/tags.scss */
 .tagbox li.new input {
   font-family: Arial, sans-serif;
   border: none;
@@ -106,11 +93,11 @@
   font-size: 12px;
   background: none; }
 
-/* line 98, ../../sass/tag/tags.scss */
+/* line 85, ../../sass/tag/tags.scss */
 .tagbox li.new input:focus {
   outline: none; }
 
-/* line 101, ../../sass/tag/tags.scss */
+/* line 88, ../../sass/tag/tags.scss */
 .tagbox li .tag {
   position: relative;
   display: block;
@@ -124,7 +111,7 @@
   padding: 0 30px 0 12px;
   vertical-align: middle; }
 
-/* line 114, ../../sass/tag/tags.scss */
+/* line 101, ../../sass/tag/tags.scss */
 .tagbox li .delete {
   position: absolute;
   font-family: Arial, sans-serif;
@@ -145,6 +132,6 @@
   -moz-border-radius: 20px;
   border-radius: 20px; }
 
-/* line 134, ../../sass/tag/tags.scss */
+/* line 121, ../../sass/tag/tags.scss */
 .tagbox .selected .tag {
   background: red; }

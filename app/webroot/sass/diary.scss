@@ -1,9 +1,7 @@
 @import "../sass/menu.scss";
 // @import "constants.scss";
 
-body{
-  @include back-x;
-}
+
 th {
   color: #313131;
   font-size: 14px;
@@ -57,38 +55,37 @@ div#diary-index{
   }
 }
 
-form#BlogAddForm{
-  label{
-    margin: 10px 30px;
-    padding: 10px 0;
-    font-size:23px;
+form#BlogAddForm, form#BlogEditForm{
+  margin: 0 auto; 
+  padding-bottom: 1em;
+  height: 40%;
+  text-align: center;
+  input{
+    width: 95%;
+    margin: 1em auto;
+    // width: 2000px !important;
   }
-  #BlogTitle{
-    display:block;
-    width: 90%;
-    height: 35px;
-    font-size:17px;
+  .tagbox{
+    margin: 0 auto 1em;
+    ul{
+        margin: 1em 0 0 1em;
+      li{
+
+      }
+    }
   }
   #ckeditor{
     label{
       font-size:90px;
     }
   }
-  .form-control{
-    margin: 0px 30px;
-  }
+
   div.tagbox{
     @include box-shadow(black 0px 0px 0px 0px);
-    margin: 0px 30px;
-    width: 90%;
-    border-radius: 0px;
-    ul{
-      @include box-shadow(black 0px 0px 0px 0px);
-      border-radius: 0px;
-    }
+    width: 95%;
   }
   #cke_ckeditor{
-    margin: 0px 30px;
+    margin: 0 auto;
   }
 }
 
@@ -112,17 +109,6 @@ div{
   .line-up {
     @include mp-clear;
     margin-top: 50px;
-  }
-  form{
-    margin: 50px 0px 0px 30px; 
-    padding: 0 0 50px 0;
-    width: 90%;
-    height: 90%;
-    border-radius: 20px;
-    background-color: rgba(235,235,236, 0.80);
-    background-attachment: fixed;
-    background-repeat: no-repeat;
-    color: rgba(0,0,0, 0.80);
   }
   .form-group{
     margin: 10px 0 30px 40px;

@@ -10,23 +10,6 @@
   // border-radius: 2px;
 }
 
-@mixin btn{
-  background-color: #313131;
-  text-decoration: none;
-  color: #fff;
-  padding: 0.5em 1em;
-  border: none;
-}
-
-@mixin btn-b{
-  background-color: #ECECEC;
-  text-decoration: none;
-  color: $col-black4;
-  padding: 0.5em 1em;
-  border:solid 1px $col-black2;
-
-}
-
 @mixin btn-size-m{
   font-size: 19px;
   padding: 10px 24px;
@@ -40,7 +23,7 @@
   padding: 3px 12px;
 }
 @mixin btn-hover{
-  background-color: $col-green;
+  background-color: $col-flat-green2;
   text-decoration: none;
   color:#fff;
 }
@@ -66,6 +49,9 @@
 }
 @mixin back-x{
   background-image: url("../img/backgroudImage.png");
+}
+@mixin back-all{
+  background-image: url("../img/background/005.jpg");
 }
 @mixin back-y{
   background-image: url("../img/background-grays.jpg");

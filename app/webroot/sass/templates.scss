@@ -1,0 +1,52 @@
+@import "../sass/menu.scss";
+@import "../sass/_constants.scss";
+
+#template-index{
+  background-color: $col-black1;
+  border-radius: 10px;
+  margin: 30px;
+  .cont{
+    display: inline-block;
+    width: 400px;
+  }
+  .fa-trash-o{
+    padding: 2px;
+    border: solid 1px $col-black3;
+  }
+}
+
+
+#temp-list{
+    dt{
+      display:block;
+      width:400px;
+      height:50px;
+      line-height:50px;
+      text-align:center;
+      border:#666 1px solid;
+      cursor:pointer;
+    }
+    dd{
+      background:$col-black2;
+      width:400px;
+      height:50px;
+      line-height:50px;
+      text-align:center;
+      border:#666 1px solid;
+      display:none;
+    }
+} 
+
+
+ul {
+  display: none;
+}
+
+span {
+  cursor: pointer;
+}
+
+li {
+  cursor: pointer;
+}
+

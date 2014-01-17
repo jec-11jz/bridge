@@ -8,8 +8,8 @@ CKEDITOR.editorConfig = function( config ) {
 	// config.language = 'fr';
 	// config.uiColor = '#AADC6E';
 	
-	CKEDITOR.config.width = '90%'; //横幅
-	CKEDITOR.config.height = '80%'; //高さ
+	CKEDITOR.config.width = '95%'; //横幅
+	CKEDITOR.config.height = '20em'; //高さ
 	CKEDITOR.config.resize_enabled = true;
 	CKEDITOR.config.toolbar = [
 		['Source','-','Save','NewPage','Preview','-','Templates']
@@ -17,13 +17,13 @@ CKEDITOR.editorConfig = function( config ) {
 		,['Undo','Redo','-','Find','Replace','-','SelectAll','RemoveFormat']
 		,['Form','Checkbox','Radio','TextField','Textarea','Select','Button','ImageButton','HiddenField']
 		,'/'
-		,['Bold','Italic','Underline','Strike','-','Subscript','Superscript']
 		,['NumberedList','BulletedList','-','Outdent','Indent','Blockquote']
 		,['JustifyLeft','JustifyCenter','JustifyRight','JustifyBlock']
 		,['Link','Unlink','Anchor']
-		,['Image','Flash','Table','HorizontalRule','Smiley','SpecialChar','PageBreak']
+		,['Image','Table','HorizontalRule','Smiley','SpecialChar','PageBreak']
 		,'/'
 		,['Styles','Format','Font','FontSize']
+		,['Bold','Italic','Underline','Strike','-','Subscript','Superscript']
 		,['TextColor','BGColor']
 		,['ShowBlocks']
 	];

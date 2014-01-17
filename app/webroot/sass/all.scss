@@ -4,7 +4,10 @@
 @import "fonts.scss";
 
 
-
+body{
+  @include back-all;
+  background-color: black;
+}
 #contents {
   margin-top: 40px;
 }
@@ -16,32 +19,46 @@
 
 
 a:hover {
-  color: $col-green;
+  color: $col-flat-green2;
 
 }
 
-.btn-a{
-  @include btn-fade;
-  @include btn;
-  .btn-right{
-    float: right;
+
+
+div.form.first-content-form{
+  position: relative;
+  background-color: $col-black2;
+  width: 88%;
+  margin: 5em auto 0;
+  @include border-radius(2px);
+
+  label , h1{
+    color: white;
   }
-  
-  &:hover{
-    @include btn-hover;
+  .form-headder{
+    padding: 1em 0 ;
+    background-color: $col-flat-green2;
+    text-align: center;
+  }
+
+  form{
+    display: block;
+    background-color: $col-flat-green1;
+    @include border-radius(2px);
+    input, .tagbox{
+      margin: 0 auto;
+    }
+  }
+
+  .form-footer{
+    background-color: $col-flat-green2;
+    left:0;
+    bottom:0;
+    padding: 1em 0.5em;
+    width: 100%;
+    text-align: right;
   }
 }
-
-div{
-  #head-all{
-    height:40px;
-  }
-  #foot-all{
-  }
-}
-
-
-
 
 
 
