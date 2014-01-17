@@ -23,10 +23,6 @@
 			var share_btn = $(this);
 			setTimeout(function() {
 				container_item = share_btn.parents(".container-item:first");
-				container_item.css("z-index: 1000");
-				container_item.find("*").map(function() {
-					$(this).css("z-index: 1000");
-				});
 				share_btn.parents(".container-item:first").find(".slide-menu:first").addClass("visible");
 			}, 400);
 		});
@@ -43,11 +39,11 @@
 				$(".slide-menu").removeClass("visible")
 			}, 400);
 		});
-		// $(".container-item").hover(function() {
-		// 	setTimeout(function() {
-		// 	//$(".container-item").css("z-index","500")
-		// 	}, 400);
-		// });
+		$(".container-item").hover(function() {
+			setTimeout(function() {
+			$(".container-item").css("z-index","500")
+			}, 400);
+		});
 	}
 	
 	//画像読み込み後にレイアウト

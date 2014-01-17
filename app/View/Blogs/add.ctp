@@ -7,46 +7,54 @@
 	
 	$this->extend('/Common/index');
 ?>
-<div class='form'>
 
-	<!-- ブログ投稿フォーム -->
-	<?php echo $this->Form->create('Blog'); ?>
-	
-	<?php 
-		echo $this->Form->input('title', array(
-			'label'=>'タイトル', 
-			'type'=>'text',
-			'class'=>'input_form form-control',
-			// バリデーションのエラーメッセージを指定
-			'error' => array(
-				'isUnique' => __('そのユーザーIDは既に使われています', true),
-				'custom' => __('半角英数字のみ使用できます', true),
-				'minLength' => __('15文字以内で入力してください', true)))); 
-				
-		// タグフォーム
-		echo $this->Form->input('Tag.name', array(
-			'label'=>'タグ', 
-			'type'=>'text',
-			'id'=>'tags',
-			'value'=>"",
-			'name'=>'data[Tag][name]',
-			'class'=>'input_form form-control')); 
-	 
-		echo $this->Form->input('content', array(
-			'label'=>'本文', 
-			'type'=>'textarea',
-			'id'=>'ckeditor',
-			'class'=>'input_form blog',
-			'error' => array(
-				'isUnique' => __('そのユーザーIDは既に使われています', true),
-				'custom' => __('半角英数字のみ使用できます', true),
-				'minLength' => __('15文字以内で入力してください', true)))); 
-	?>
-	<script type="text/javascript">  
-		var editor = CKEDITOR.replace('ckeditor');  
-	</script>
-	<?php echo $this -> Form -> submit('Save', array('type' => 'submit', 'class' => 'btn-a')); ?>
-	<?php echo $this -> Form -> end(); ?>			
+<div class="form first-content-form">
+	<div class='cont'>
+		<div class="form-headder">
+			<h1>Create Blog</h1>
+		</div>
+		<!-- ブログ投稿フォーム -->
+		<?php echo $this->Form->create('Blog', array('class'=>'')); ?>
+		
+		<?php 
+			echo $this->Form->input('title', array(
+				'label'=>false, 
+				'type'=>'text',
+				'class'=>'input_form form-control',
+				// バリデーションのエラーメッセージを指定
+				'error' => array(
+					'isUnique' => __('そのユーザーIDは既に使われています', true),
+					'custom' => __('半角英数字のみ使用できます', true),
+					'minLength' => __('15文字以内で入力してください', true)))); 
+					
+			// タグフォーム
+			echo $this->Form->input('Tag.name', array(
+				'label'=>false, 
+				'type'=>'text',
+				'id'=>'tags',
+				'value'=>"",
+				'name'=>'data[Tag][name]',
+				'class'=>'input_form form-control')); 
+		 
+			echo $this->Form->input('content', array(
+				'label'=>false, 
+				'type'=>'textarea',
+				'id'=>'ckeditor',
+				'class'=>'input_form blog',
+				'error' => array(
+					'isUnique' => __('そのユーザーIDは既に使われています', true),
+					'custom' => __('半角英数字のみ使用できます', true),
+					'minLength' => __('15文字以内で入力してください', true)))); 
+		?>
+		<script type="text/javascript">  
+			var editor = CKEDITOR.replace('ckeditor');  
+		</script>
+		
+	</div> <!-- cont -->
+	<div class="form-footer">
+		<?php echo $this -> Form -> submit('Save', array('type' => 'submit', 'class' => 'btn-a')); ?>
+		<?php echo $this -> Form -> end(); ?>	
+	</div> <!-- footer -->
 </div> <!-- form -->
 <!-- JS tag -->
 <script>

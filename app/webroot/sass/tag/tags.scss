@@ -1,3 +1,5 @@
+@import "../sass/my-mixin.scss";
+
 /* autocomplete style */
 .autocomplete {
   position: absolute;
@@ -55,12 +57,6 @@
   overflow: hidden;
   background: #f9f9f9;
   border: 1px solid #ddd;
-  -webkit-border-radius: 3px;
-  -moz-border-radius: 3px;
-  border-radius: 3px;
-  -webkit-box-shadow: #fff 0px 1px 0px;
-  -moz-box-shadow: #fff 0px 1px 0px;
-  box-shadow: #fff 0px 1px 0px;
 }
 .tagbox * {
   margin: 0;
@@ -68,23 +64,17 @@
 }
 .tagbox.focus{  
   outline: 0;
+  @include input-focus;
 }
 .tagbox ul {
   overflow: hidden;
-  padding: 10px 10px 6px 10px;
-  -webkit-border-radius: 2px;
-  -moz-border-radius: 2px;
-  border-radius: 2px;
-  -webkit-box-shadow: rgba(0,0,0,.07) 0px 2px 4px inset;
-  -moz-box-shadow: rgba(0,0,0,.07) 0px 2px 4px inset;
-  box-shadow: rgba(0,0,0,.07) 0px 2px 4px inset;
 }
 .tagbox li {
   position: relative;
   list-style: none;
   float: left;  
   cursor: pointer;
-  margin: 0 4px 4px 0;
+  margin: 0px;
 }
 .tagbox li.new input {
   font-family: Arial, sans-serif;

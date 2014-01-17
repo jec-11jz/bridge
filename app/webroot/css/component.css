@@ -1,18 +1,13 @@
 /* Actual content */
-/* line 7, ../sass/component.scss */
-body {
-  background-image: none;
-  background-color: #2C2B2B; }
-
-/* line 11, ../sass/component.scss */
+/* line 8, ../sass/component.scss */
 .container-item {
   position: relative;
   margin: 0 10px 10px 0px;
   float: left; }
-  /* line 15, ../sass/component.scss */
+  /* line 12, ../sass/component.scss */
   .container-item:hover {
     opacity: 1; }
-  /* line 18, ../sass/component.scss */
+  /* line 15, ../sass/component.scss */
   .container-item .item {
     width: 100%;
     height: 100%;
@@ -30,10 +25,10 @@ body {
     border-radius: 1px;
     -webkit-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.3);
     box-shadow: 0 1px 5px rgba(0, 0, 0, 0.3); }
-    /* line 31, ../sass/component.scss */
+    /* line 28, ../sass/component.scss */
     .container-item .item img {
       position: relative; }
-    /* line 34, ../sass/component.scss */
+    /* line 31, ../sass/component.scss */
     .container-item .item .item-button {
       position: absolute;
       margin: 8px;
@@ -42,16 +37,16 @@ body {
       background-color: #4f4f4f;
       opacity: 0;
       z-index: 560; }
-      /* line 42, ../sass/component.scss */
+      /* line 39, ../sass/component.scss */
       .container-item .item .item-button:hover {
         background-color: #333333; }
-      /* line 46, ../sass/component.scss */
+      /* line 43, ../sass/component.scss */
       .container-item .item .item-button i {
         margin: 4px;
         font-size: 26px;
         color: #eaeaea; }
 
-/* line 56, ../sass/component.scss */
+/* line 53, ../sass/component.scss */
 .item:hover .item-content {
   -webkit-transform: translate(0, 0);
   -moz-transform: translate(0, 0);
@@ -62,11 +57,11 @@ body {
   -moz-transition: all 0.3s ease-in-out;
   -o-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out; }
-/* line 60, ../sass/component.scss */
+/* line 57, ../sass/component.scss */
 .item:hover .item-button {
   opacity: 1; }
 
-/* line 67, ../sass/component.scss */
+/* line 64, ../sass/component.scss */
 .product-tag {
   width: 50px;
   height: 100px;
@@ -79,7 +74,7 @@ body {
   -ms-transform: rotate(-45deg);
   -o-transform: rotate(-45deg);
   transform: rotate(-45deg); }
-  /* line 75, ../sass/component.scss */
+  /* line 72, ../sass/component.scss */
   .product-tag span, .product-tag i {
     position: absolute;
     top: 51px;
@@ -92,7 +87,7 @@ body {
     font-size: 14px;
     color: #fff; }
 
-/* line 84, ../sass/component.scss */
+/* line 81, ../sass/component.scss */
 .item-content {
   position: absolute;
   width: 100%;
@@ -107,10 +102,10 @@ body {
   -moz-transition: all 0.3s ease-in-out;
   -o-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out; }
-  /* line 91, ../sass/component.scss */
+  /* line 88, ../sass/component.scss */
   .item-content .item-top-content {
     position: relative; }
-    /* line 93, ../sass/component.scss */
+    /* line 90, ../sass/component.scss */
     .item-content .item-top-content .item-top-content-inner {
       position: absolute;
       bottom: 0;
@@ -119,7 +114,7 @@ body {
       width: 100%; }
 
 /* Item menu */
-/* line 105, ../sass/component.scss */
+/* line 102, ../sass/component.scss */
 div.slide-menu {
   position: absolute;
   top: 0px;
@@ -143,7 +138,7 @@ div.slide-menu {
   -moz-transition: all 0.3s ease-in-out;
   -o-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out; }
-  /* line 115, ../sass/component.scss */
+  /* line 112, ../sass/component.scss */
   div.slide-menu.visible {
     -webkit-transform: translate(-40px, 0);
     -moz-transform: translate(-40px, 0);
@@ -155,7 +150,7 @@ div.slide-menu {
     -o-transition: all 0.3s ease-in-out;
     transition: all 0.3s ease-in-out;
     z-index: 999; }
-  /* line 120, ../sass/component.scss */
+  /* line 117, ../sass/component.scss */
   div.slide-menu:hover {
     -webkit-transform: translate(-40px, 0);
     -moz-transform: translate(-40px, 0);
@@ -166,29 +161,29 @@ div.slide-menu {
     -moz-transition: all 0.3s ease-in-out;
     -o-transition: all 0.3s ease-in-out;
     transition: all 0.3s ease-in-out; }
-  /* line 124, ../sass/component.scss */
+  /* line 121, ../sass/component.scss */
   div.slide-menu ul {
     list-style-type: none; }
-    /* line 126, ../sass/component.scss */
+    /* line 123, ../sass/component.scss */
     div.slide-menu ul li {
       -webkit-box-shadow: inset, 0px, 1px, rgba(255, 255, 255, 0.1);
       -moz-box-shadow: inset, 0px, 1px, rgba(255, 255, 255, 0.1);
       box-shadow: inset, 0px, 1px, rgba(255, 255, 255, 0.1);
       border-bottom: 1px solid #434343; }
-      /* line 129, ../sass/component.scss */
+      /* line 126, ../sass/component.scss */
       div.slide-menu ul li:hover {
         background: #5bb31a; }
-      /* line 130, ../sass/component.scss */
+      /* line 127, ../sass/component.scss */
       div.slide-menu ul li:first-of-type {
         -webkit-border-radius: 1px;
         -moz-border-radius: 1px;
         -ms-border-radius: 1px;
         -o-border-radius: 1px;
         border-radius: 1px; }
-      /* line 131, ../sass/component.scss */
+      /* line 128, ../sass/component.scss */
       div.slide-menu ul li:last-of-type {
         border-bottom-width: 0px; }
-      /* line 132, ../sass/component.scss */
+      /* line 129, ../sass/component.scss */
       div.slide-menu ul li a {
         color: #eaeaea;
         font-size: 1.3em;

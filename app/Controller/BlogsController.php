@@ -182,7 +182,7 @@ class BlogsController extends AppController {
         // HTTP GETリクエストか確認
         if($this->request->is('get')) {
             // 削除ボタン以外でこのページに来た場合はエラー
-            throw new MethodNotAllowedException();
+            //throw new MethodNotAllowedException();
         }
         if($this->Blog->delete($id)) {
             // 削除成功した場合はメッセージを出し、indexへリダイレクト

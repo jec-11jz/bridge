@@ -146,3 +146,48 @@ div .modal-footer {
 /* line 69, ../sass/menu.scss */
 div.navbar ul.dropdown li {
   text-align: center; }
+
+/* line 4, ../sass/templates.scss */
+#template-index {
+  background-color: #ececec;
+  border-radius: 10px;
+  margin: 30px; }
+  /* line 8, ../sass/templates.scss */
+  #template-index .cont {
+    display: inline-block;
+    width: 400px; }
+  /* line 12, ../sass/templates.scss */
+  #template-index .fa-trash-o {
+    padding: 2px;
+    border: solid 1px #646464; }
+
+/* line 20, ../sass/templates.scss */
+#temp-list dt {
+  display: block;
+  width: 400px;
+  height: 50px;
+  line-height: 50px;
+  text-align: center;
+  border: #666 1px solid;
+  cursor: pointer; }
+/* line 29, ../sass/templates.scss */
+#temp-list dd {
+  background: #c1c1c1;
+  width: 400px;
+  height: 50px;
+  line-height: 50px;
+  text-align: center;
+  border: #666 1px solid;
+  display: none; }
+
+/* line 41, ../sass/templates.scss */
+ul {
+  display: none; }
+
+/* line 45, ../sass/templates.scss */
+span {
+  cursor: pointer; }
+
+/* line 49, ../sass/templates.scss */
+li {
+  cursor: pointer; }

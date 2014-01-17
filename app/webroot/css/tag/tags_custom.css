@@ -8,15 +8,15 @@ body, h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 
 @font-face {
   font-family: 'Poiret One';
-  src: url("../fonts/PoiretOne-Regular.ttf"); }
+  src: url("../../fonts/PoiretOne-Regular.ttf"); }
 
 @font-face {
   font-family: 'OpenSans';
-  src: url("../fonts/OpenSans/OpenSans-Regular.ttf"); }
+  src: url("../../fonts/OpenSans/OpenSans-Regular.ttf"); }
 
 @font-face {
   font-family: 'Lato';
-  src: url("../fonts/Lato/Lato-light.ttf"); }
+  src: url("../../fonts/Lato/Lato-light.ttf"); }
 
 @font-face {
   font-family: 'Osaka1';
@@ -24,58 +24,79 @@ body, h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 
 @fonf-face {
   font-family: 'Mplus';
-  src: url("../fonts/mplus/mplus-1p-thin.ttf"); }
+  src: url("../../fonts/mplus/mplus-1p-thin.ttf"); }
 
-/* line 8, ../../sass/all.scss */
+/* line 7, ../../sass/all.scss */
+body {
+  background-image: url("../img/background/005.jpg");
+  background-color: black; }
+
+/* line 11, ../../sass/all.scss */
 #contents {
   margin-top: 40px; }
 
-/* line 12, ../../sass/all.scss */
+/* line 15, ../../sass/all.scss */
 .nav-brand > img {
   width: 78px;
   height: 39px; }
 
-/* line 18, ../../sass/all.scss */
+/* line 21, ../../sass/all.scss */
 a:hover {
-  color: #4ab134; }
+  color: #58be89; }
 
-/* line 23, ../../sass/all.scss */
-.btn-a {
-  -webkit-transition: 0.2s;
-  -o-transition: 0.2s;
-  transition: 0.2s;
-  display: inline-block;
-  background-color: #313131;
-  text-decoration: none;
-  color: #fff;
-  padding: 0.5em 1em;
-  border: none; }
-  /* line 26, ../../sass/all.scss */
-  .btn-a .btn-right {
-    float: right; }
-  /* line 30, ../../sass/all.scss */
-  .btn-a:hover {
-    background-color: #4ab134;
-    text-decoration: none;
-    color: #fff; }
-
-/* line 36, ../../sass/all.scss */
-div #head-all {
-  height: 40px; }
+/* line 28, ../../sass/all.scss */
+div.form.first-content-form {
+  position: relative;
+  background-color: #c1c1c1;
+  width: 88%;
+  margin: 5em auto 0;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  -ms-border-radius: 2px;
+  -o-border-radius: 2px;
+  border-radius: 2px; }
+  /* line 35, ../../sass/all.scss */
+  div.form.first-content-form label, div.form.first-content-form h1 {
+    color: white; }
+  /* line 38, ../../sass/all.scss */
+  div.form.first-content-form .form-headder {
+    padding: 1em 0;
+    background-color: #58be89;
+    text-align: center; }
+  /* line 44, ../../sass/all.scss */
+  div.form.first-content-form form {
+    display: block;
+    background-color: #ccdfcc;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    -ms-border-radius: 2px;
+    -o-border-radius: 2px;
+    border-radius: 2px; }
+    /* line 48, ../../sass/all.scss */
+    div.form.first-content-form form input, div.form.first-content-form form .tagbox {
+      margin: 0 auto; }
+  /* line 53, ../../sass/all.scss */
+  div.form.first-content-form .form-footer {
+    background-color: #58be89;
+    left: 0;
+    bottom: 0;
+    padding: 1em 0.5em;
+    width: 100%;
+    text-align: right; }
 
 /* autocomplete style */
-/* line 2, ../../sass/tag/tags.scss */
+/* line 4, ../../sass/tag/tags.scss */
 .autocomplete {
   position: absolute;
   padding-top: 5px;
   z-index: 1000; }
 
-/* line 7, ../../sass/tag/tags.scss */
+/* line 9, ../../sass/tag/tags.scss */
 .autocomplete * {
   padding: 0;
   margin: 0; }
 
-/* line 11, ../../sass/tag/tags.scss */
+/* line 13, ../../sass/tag/tags.scss */
 .autocomplete ul:before {
   position: absolute;
   top: -5px;
@@ -85,7 +106,7 @@ div #head-all {
   border-right: 5px solid transparent;
   border-bottom: 5px solid #222; }
 
-/* line 20, ../../sass/tag/tags.scss */
+/* line 22, ../../sass/tag/tags.scss */
 .autocomplete ul {
   position: relative;
   padding: 4px;
@@ -99,7 +120,7 @@ div #head-all {
   -moz-box-shadow: rgba(0, 0, 0, 0.1) 0px 3px 5px;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 3px 5px; }
 
-/* line 33, ../../sass/tag/tags.scss */
+/* line 35, ../../sass/tag/tags.scss */
 .autocomplete li {
   list-style: none;
   text-align: left;
@@ -108,60 +129,51 @@ div #head-all {
   margin-bottom: 1px;
   background: #333; }
 
-/* line 41, ../../sass/tag/tags.scss */
+/* line 43, ../../sass/tag/tags.scss */
 .autocomplete li:last-child {
   border-bottom: none;
   margin-bottom: 0; }
 
-/* line 46, ../../sass/tag/tags.scss */
+/* line 48, ../../sass/tag/tags.scss */
 .autocomplete li.selected,
 .autocomplete li.over {
   background: red;
   color: #fff; }
 
 /* tagbox styles */
-/* line 53, ../../sass/tag/tags.scss */
+/* line 55, ../../sass/tag/tags.scss */
 .tagbox {
   position: relative;
   overflow: hidden;
   background: #f9f9f9;
-  border: 1px solid #ddd;
-  -webkit-border-radius: 3px;
-  -moz-border-radius: 3px;
-  border-radius: 3px;
-  -webkit-box-shadow: #fff 0px 1px 0px;
-  -moz-box-shadow: #fff 0px 1px 0px;
-  box-shadow: #fff 0px 1px 0px; }
+  border: 1px solid #ddd; }
 
-/* line 65, ../../sass/tag/tags.scss */
+/* line 61, ../../sass/tag/tags.scss */
 .tagbox * {
   margin: 0;
   padding: 0; }
 
-/* line 69, ../../sass/tag/tags.scss */
+/* line 65, ../../sass/tag/tags.scss */
 .tagbox.focus {
-  outline: 0; }
+  outline: 0;
+  border-color: #659ec9 #70aedd #a8cfec;
+  -webkit-box-shadow: black 0px 0px 0px 0px;
+  -moz-box-shadow: black 0px 0px 0px 0px;
+  box-shadow: black 0px 0px 0px 0px; }
+
+/* line 69, ../../sass/tag/tags.scss */
+.tagbox ul {
+  overflow: hidden; }
 
 /* line 72, ../../sass/tag/tags.scss */
-.tagbox ul {
-  overflow: hidden;
-  padding: 10px 10px 6px 10px;
-  -webkit-border-radius: 2px;
-  -moz-border-radius: 2px;
-  border-radius: 2px;
-  -webkit-box-shadow: rgba(0, 0, 0, 0.07) 0px 2px 4px inset;
-  -moz-box-shadow: rgba(0, 0, 0, 0.07) 0px 2px 4px inset;
-  box-shadow: rgba(0, 0, 0, 0.07) 0px 2px 4px inset; }
-
-/* line 82, ../../sass/tag/tags.scss */
 .tagbox li {
   position: relative;
   list-style: none;
   float: left;
   cursor: pointer;
-  margin: 0 4px 4px 0; }
+  margin: 0px; }
 
-/* line 89, ../../sass/tag/tags.scss */
+/* line 79, ../../sass/tag/tags.scss */
 .tagbox li.new input {
   font-family: Arial, sans-serif;
   border: none;
@@ -171,11 +183,11 @@ div #head-all {
   font-size: 12px;
   background: none; }
 
-/* line 98, ../../sass/tag/tags.scss */
+/* line 88, ../../sass/tag/tags.scss */
 .tagbox li.new input:focus {
   outline: none; }
 
-/* line 101, ../../sass/tag/tags.scss */
+/* line 91, ../../sass/tag/tags.scss */
 .tagbox li .tag {
   position: relative;
   display: block;
@@ -189,7 +201,7 @@ div #head-all {
   padding: 0 30px 0 12px;
   vertical-align: middle; }
 
-/* line 114, ../../sass/tag/tags.scss */
+/* line 104, ../../sass/tag/tags.scss */
 .tagbox li .delete {
   position: absolute;
   font-family: Arial, sans-serif;
@@ -210,7 +222,7 @@ div #head-all {
   -moz-border-radius: 20px;
   border-radius: 20px; }
 
-/* line 134, ../../sass/tag/tags.scss */
+/* line 124, ../../sass/tag/tags.scss */
 .tagbox .selected .tag {
   background: red; }
 

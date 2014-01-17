@@ -72,24 +72,28 @@ ul#dropdownmenu{
 
 
 .btn-a{
-  @include btn;
-  .btn-size-m{
-    @include btn-size-m;
-  }
-  .btn-size-s{
-    @include btn-size-s;
-  }
-}
-input.btn-b{
-  @include btn-b;
+  background-color: #313131;
+  text-decoration: none;
+  color: #fff;
+  padding: 0.5em 1em;
+  border: none;
   @include btn-fade;
   &:hover{
     @include btn-hover;
-    background-color: $col-black4;
-    border: solid 1px $col-black4;
   }
-  .btn-size-m{
-    @include btn-size-m;
+}
+.btn-b{
+  background-color: #ECECEC;
+  text-decoration: none;
+  color: $col-black4;
+  padding: 0.5em 1em;
+  border:solid 1px $col-black2;
+  @include btn-fade;
+  &:hover{
+    text-decoration: none;
+    background-color: $col-black4;
+    color: white;
+    border: solid 1px $col-black4;
   }
 }
 
@@ -108,13 +112,14 @@ input:-webkit-autofill {
 input:-webkit-autofill:focus{
   @extend input:-webkit-autofill;
 }
-.form-control{
+.form-control, div.tagbox{
   border-radius: 0px;
   @include btn-fade;
   &:focus{
     @include input-focus;
   }
 }
+
 
 .has-error{
   .form-control{
@@ -151,3 +156,6 @@ div{
   width: 30%;
   margin-top: 40px;
 }
+
+
+
