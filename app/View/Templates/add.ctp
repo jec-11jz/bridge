@@ -20,6 +20,7 @@
 }
 #add-attributes {
 	height: 25.000em;
+	margin-top: 3.000em;
 	overflow:scroll;
 	
 }
@@ -31,6 +32,12 @@
 }
 .div-attr {
 	float:left
+}
+.product-title {
+	width: 80%;
+	height: 3.000em;
+	margin-bottom: 4.000em;
+	
 }
 .attr-input {
 	margin-right: 10px;
@@ -58,14 +65,14 @@
 }
 .textarea {
 	margin-top: 3.125em;
-	width: 95%;
+	width: 100%;
 }
 .form-template {
 	padding: 3.125em 0px 0px 3.125em;
 }
 input.template-name {
 	width: 40%;
-	height: 1.875em;
+	height: 3.000em;
 }
 .submit {
 	text-align: right;
@@ -83,7 +90,8 @@ input:focus {
 }
 .dammy-text {
 	margin-right: 5px;
-	height: 24px;
+	height: 25px;
+	width: 19.750em;
 }
 </style>
 <div class="title">
@@ -92,29 +100,33 @@ input:focus {
 </div>
 <div class="field">
 	<?php echo $this->Form->create('Template', array('type' => 'post', 'action' => 'add', 'class'=>'form-template')); ?>
-	<div id="new-template">
-		<h4>Template Name</h4>
-		<input type="text" name="data[Template][name]" id="template" class="template-name" value="" />
+	<div id="new-template" class="row">
+		<div class="col-md-12">
+			<h4>Template Name</h4>
+			<input type="text" name="data[Template][name]" id="template" class="template-name" value="" />
+		</div>
 	</div>
 	<div class="row">
-		<div id="image" class="col-md-4" disabled="disabled"><div style='margin:5px'>image</div></div>
+		<div class="col-md-4">
+			<div id="image" disabled="disabled"><div style='margin:5px'>image</div></div>
+		</div>
 		<div class="col-md-8">
+			<input value="title" class="product-title" disabled>
+			<textarea class="textarea" rows='10' disabled="disabled">outline</textarea>
+		</div>
+	</div>
+	<div>
+		<div class="col-md-12">
 			<fieldset id="add-attributes">
 				<h4>Attribute Name</h4>
-				<input value="タイトル" disabled>
-				<input value="*必須項目です" disabled>
 				<input type="button" value="add" id="attribute" class="btn-add-attribute">
 				<input type="button" id="btn-delete" class="button" value="all delete" />
 				</br>
 				<div id="input-attribute"></div>
 			</fieldset>
-		</div> <!-- col-md-8 -->
+		</div> <!-- col-md-12 -->
 	</div> <!-- row -->
-	<div class="clearFix row">
-		<div class="col-md-12　clearFix">
-			<textarea class="textarea" rows='10' disabled="disabled">outline</textarea>
-		</div>
-	</div>
+	
   	<?php echo $this->Form->submit('登録', array('type' => 'submit', 'class' => 'btn-a btn-register')); ?>	
 	<?php echo $this->Form->end(); ?>	
 </div>
@@ -131,14 +143,10 @@ $(function(){
 	attr_width = 0;
 	while(endFlg == 1) {
 		if((parseInt($("#input-attribute").css("height"))) < parseInt($("#image").css("height"))){
-			$("#input-attribute").append('<div id="attribute' + attrCnt + '" class="div-attr">');
-			$('#attribute' + attrCnt).append('<input type="text" id="attribute' + attrCnt +'" class="attribute attr-input" name="data[Attribute][name][]">');
-			$('#attribute' + attrCnt).append('<input type="text" id="attribute' + attrCnt +'" class="dammy-text attr-input" disabled>');
-			$('#attribute' + attrCnt).append('<input type="button" value="×" id="attribute' + attrCnt +'" class="btn-delete-attribute attribute">');
-			console.log('input-attribute : ' + $("#input-attribute").css("height"));
-			console.log('add-attributes : ' + $("#add-attributes").css("width"));
-			console.log('attr-width : ' + attr_width);
-			console.log('image : ' + $("#image").css("height"));
+			$("#input-attribute").append('<div id="attribute' + attrCnt + '" class="div-attr">\n');
+			$('#attribute' + attrCnt).append('<input type="text" id="attribute' + attrCnt +'" class="attribute attr-input" name="data[Attribute][name][]">\n');
+			$('#attribute' + attrCnt).append('<input type="text" id="attribute' + attrCnt +'" class="dammy-text attr-input" disabled>\n');
+			$('#attribute' + attrCnt).append('<input type="button" value="×" id="attribute' + attrCnt +'" class="btn-delete-attribute attribute">\n');
 			if(attrCnt > 20){
 				endFlg = 0;
 			}
@@ -159,10 +167,10 @@ $(function(){
 		while($('#attribute' + attrCnt).size() > 0){
 			attrCnt++;
 		}
-		$("#input-attribute").append('<div id="attribute' + attrCnt + '" class="div-attr">');
-		$('#attribute' + attrCnt).append('<input type="text" id="attribute' + attrCnt +'" class="attribute attr-input" name="data[Attribute][name][]">');
-		$('#attribute' + attrCnt).append('<input type="text" id="attribute' + attrCnt +'" class="dammy-text attr-input" disabled>');
-		$('#attribute' + attrCnt).append('<input type="button" value="×" id="attribute' + attrCnt +'" class="btn-delete-attribute attribute">');
+		$("#input-attribute").append('<div id="attribute' + attrCnt + '" class="div-attr">\n');
+		$('#attribute' + attrCnt).append('<input type="text" id="attribute' + attrCnt +'" class="attribute attr-input" name="data[Attribute][name][]">\n');
+		$('#attribute' + attrCnt).append('<input type="text" id="attribute' + attrCnt +'" class="dammy-text attr-input" disabled>\n');
+		$('#attribute' + attrCnt).append('<input type="button" value="×" id="attribute' + attrCnt +'" class="btn-delete-attribute attribute">\n');
 	});
 	//削除処理
 	$(document).on('click', '.btn-delete-attribute', function(){

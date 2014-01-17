@@ -29,6 +29,9 @@ class Attribute extends AppModel {
 
 	public function saveFromNameArray($attributeNames = array()) {
 		foreach ($attributeNames as $attributeName) {
+			if ($attributeName == '') {
+				continue;
+			}
 			$this->create();
 			$this->set('name', $attributeName);
 			$this->save();

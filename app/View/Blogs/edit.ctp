@@ -32,7 +32,7 @@
 			'id'=>'tags',
 			'name'=>'data[Tag][name]',
 			'value' => $post['Tag']['namesCSV'],
-			'class'=>'input_form')); 
+			'class'=>'input_form form-control')); 
 	 
 		echo $this->Form->input('Blog.content', array(
 			'label'=>'本文', 
@@ -87,7 +87,7 @@ $(function() {
 			console.log('success');
 			//tagbox
 			$('#tags').tagbox({
-			    url : tags,
+			    url : tags.response,
     			lowercase : true
   			});
 		},

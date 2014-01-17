@@ -52,18 +52,19 @@ class TemplatesController extends AppController {
 	}
 
 	public function edit($template_id = null){
+		
 		// if request is GET, redirect to /templates/index
 		if ($this->request->is('get')) {
-			$this->redirect(array('controller'=>'templates', 'action'=>'index'));
+			$template = $this->Template->findById($template_id);
+			//check whether template exist
+		    $template = $this->Template->findByIdAndUserId($template_id, $this->Auth->user('id'));
+			if(!$template){
+				throw new NotFoundException(__('template is not found'));
+			}
+			$this->set('template', $template);
+			return;
 		}
-		
-		//check whether template exist
-	    $template = $this->Template->findByIdAndUserId($template_id, $this->Auth->user('id'));
-		if(!$template){
-			throw new NotFoundException(__('template is not found'));
-		}
-
-		
+	
 		$this->Attribute->saveFromNameArray($this->request->data['Attribute']['name']);
 		$attributes = $this->Attribute->find('list', array(
 			'conditions' => array(
@@ -89,10 +90,6 @@ class TemplatesController extends AppController {
 		} else {
 			$this->Session->setFlash('保存できませんでした');
 		}
-
-		// 現状だとsaveに失敗すると編集していた内容が消える
-		$template = $this->Template->findById($template_id);
-		$this->set('template', $template);
 	}
 
 	public function api_delete() {
