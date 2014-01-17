@@ -67,22 +67,25 @@ form#BlogAddForm, form#BlogEditForm{
   }
   .tagbox{
     margin: 0 auto 1em;
+    width: 95%;
+    &:focus{
+      @include input-focus;
+    }
     ul{
-        margin: 1em 0 0 1em;
+        margin: 0.5em;
       li{
-
+        margin: 0 0.1em 0 0;
+        &.new input{
+        margin: 0;
       }
+      }
+      
     }
   }
   #ckeditor{
     label{
       font-size:90px;
     }
-  }
-
-  div.tagbox{
-    @include box-shadow(black 0px 0px 0px 0px);
-    width: 95%;
   }
   #cke_ckeditor{
     margin: 0 auto;

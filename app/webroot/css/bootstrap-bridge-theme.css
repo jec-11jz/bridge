@@ -134,53 +134,53 @@ input:-webkit-autofill, input:-webkit-autofill:focus {
   -webkit-box-shadow: 0 0 0px 1000px white inset; }
 
 /* line 115, ../sass/bootstrap-bridge-theme.scss */
-.form-control {
+.form-control, div.tagbox {
   border-radius: 0px;
   -webkit-transition: 0.2s;
   -o-transition: 0.2s;
   transition: 0.2s;
   display: inline-block; }
   /* line 118, ../sass/bootstrap-bridge-theme.scss */
-  .form-control:focus {
+  .form-control:focus, div.tagbox:focus {
     border-color: #659ec9 #70aedd #a8cfec;
     -webkit-box-shadow: black 0px 0px 0px 0px;
     -moz-box-shadow: black 0px 0px 0px 0px;
     box-shadow: black 0px 0px 0px 0px; }
 
-/* line 124, ../sass/bootstrap-bridge-theme.scss */
+/* line 125, ../sass/bootstrap-bridge-theme.scss */
 .has-error .form-control {
   -webkit-box-shadow: black 0px 0px 0px 0px;
   -moz-box-shadow: black 0px 0px 0px 0px;
   box-shadow: black 0px 0px 0px 0px; }
-  /* line 126, ../sass/bootstrap-bridge-theme.scss */
+  /* line 127, ../sass/bootstrap-bridge-theme.scss */
   .has-error .form-control:focus {
     -webkit-box-shadow: black 0px 0px 0px 0px;
     -moz-box-shadow: black 0px 0px 0px 0px;
     box-shadow: black 0px 0px 0px 0px; }
 
-/* line 132, ../sass/bootstrap-bridge-theme.scss */
+/* line 133, ../sass/bootstrap-bridge-theme.scss */
 .modal-content {
   z-index: 1001;
   background: #ECECEC; }
-  /* line 135, ../sass/bootstrap-bridge-theme.scss */
+  /* line 136, ../sass/bootstrap-bridge-theme.scss */
   .modal-content h4 {
     font-size: 25px;
     text-align: center; }
 
-/* line 142, ../sass/bootstrap-bridge-theme.scss */
+/* line 143, ../sass/bootstrap-bridge-theme.scss */
 div .modal-header {
   border: none;
   background-color: rgba(167, 167, 167, 0.18); }
-/* line 146, ../sass/bootstrap-bridge-theme.scss */
+/* line 147, ../sass/bootstrap-bridge-theme.scss */
 div .modal-footer {
   margin: 0;
   padding: 0;
   border: none; }
-  /* line 149, ../sass/bootstrap-bridge-theme.scss */
+  /* line 150, ../sass/bootstrap-bridge-theme.scss */
   div .modal-footer .submit a:hover {
     text-decoration: none; }
 
-/* line 154, ../sass/bootstrap-bridge-theme.scss */
+/* line 155, ../sass/bootstrap-bridge-theme.scss */
 .modal-dialog {
   width: 30%;
   margin-top: 40px; }

@@ -1,3 +1,5 @@
+@import "../sass/my-mixin.scss";
+
 /* autocomplete style */
 .autocomplete {
   position: absolute;
@@ -62,6 +64,7 @@
 }
 .tagbox.focus{  
   outline: 0;
+  @include input-focus;
 }
 .tagbox ul {
   overflow: hidden;
@@ -71,7 +74,7 @@
   list-style: none;
   float: left;  
   cursor: pointer;
-  margin: 0 4px 4px 0;
+  margin: 0px;
 }
 .tagbox li.new input {
   font-family: Arial, sans-serif;
