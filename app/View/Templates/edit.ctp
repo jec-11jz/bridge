@@ -69,6 +69,8 @@
 }
 .form-template {
 	padding: 3.125em 0px 0px 3.125em;
+	width: 90%;
+	margin: 0 auto;
 }
 input.template-name {
 	width: 40%;

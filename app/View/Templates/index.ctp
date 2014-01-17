@@ -1,12 +1,9 @@
 <?php
-		echo $this->Html->css('dia
-			ry');
+		echo $this->Html->css('diary');
 		echo $this->Html->css('templates');
-
+		
 		$this->extend('/Common/index');
-		// echo $this->Html->script('jquery.hcaptions');
-		
-		
+		echo $this->Html->script('jquery.hcaptions');
 ?>
 
 <script>
@@ -37,11 +34,8 @@
 		background: #FFFFFF;
 	}
 </style>
-<legend>Link</legend>
-<a href="/templates/add" class="btn-a">テンプレート作成</a>
-<a href="/products/index" class="btn-a">作品一覧</a>
-<legend>My Templates and My Attributes</legend>
 
+<legend>My Templates and My Attributes</legend>
 <div id="template-index">
 	<!-- テンプレート一覧 -->
 	<h2>テンプレート一覧</h2>
@@ -67,6 +61,7 @@
 			<?php } ?>
 			<!-- <a href="/templates/edit/<?php echo $template['Template']['id']; ?>"> -->
 			<span><?php echo $template['Template']['name']; ?></span>
+			<span><a href="/templates/edit/<?php echo $template['Template']['id']; ?>">edit</a></span>
 			<ul>
 				<li>メニュー 1-1
 				  <ul>
@@ -107,4 +102,10 @@
 			<?php } ?>
 		<?php endforeach; ?>
 	</table>
+</div>
+<div class="link">
+	<h2>Link</h2>
+	<a href="/templates/index" class="btn-b">テンプレート一覧</a>
+	<a href="/products/index" class="btn-b">作品一覧</a>
+	<a href="/templates/add" class="btn-b">テンプレート作成</a>
 </div>

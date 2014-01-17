@@ -69,6 +69,8 @@
 }
 .form-template {
 	padding: 3.125em 0px 0px 3.125em;
+	width: 90%;
+	margin: 0 auto;
 }
 input.template-name {
 	width: 40%;
@@ -126,10 +128,9 @@ input:focus {
 			</fieldset>
 		</div> <!-- col-md-12 -->
 	</div> <!-- row -->
-	
   	<?php echo $this->Form->submit('登録', array('type' => 'submit', 'class' => 'btn-a btn-register')); ?>	
 	<?php echo $this->Form->end(); ?>	
-</div>
+</div><!-- field -->
 <div class="link">
 	<h2>Link</h2>
 	<a href="/templates/index" class="btn-b">テンプレート一覧</a>
