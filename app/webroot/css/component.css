@@ -110,11 +110,12 @@
       position: absolute;
       bottom: 0;
       padding: 2px 3px;
-      background: rgba(255, 255, 255, 0.85);
+      background: rgba(108, 122, 137, 0.5);
+      color: white;
       width: 100%; }
 
 /* Item menu */
-/* line 102, ../sass/component.scss */
+/* line 103, ../sass/component.scss */
 div.slide-menu {
   position: absolute;
   top: 0px;
@@ -138,7 +139,7 @@ div.slide-menu {
   -moz-transition: all 0.3s ease-in-out;
   -o-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out; }
-  /* line 112, ../sass/component.scss */
+  /* line 113, ../sass/component.scss */
   div.slide-menu.visible {
     -webkit-transform: translate(-40px, 0);
     -moz-transform: translate(-40px, 0);
@@ -150,7 +151,7 @@ div.slide-menu {
     -o-transition: all 0.3s ease-in-out;
     transition: all 0.3s ease-in-out;
     z-index: 999; }
-  /* line 117, ../sass/component.scss */
+  /* line 118, ../sass/component.scss */
   div.slide-menu:hover {
     -webkit-transform: translate(-40px, 0);
     -moz-transform: translate(-40px, 0);
@@ -161,29 +162,29 @@ div.slide-menu {
     -moz-transition: all 0.3s ease-in-out;
     -o-transition: all 0.3s ease-in-out;
     transition: all 0.3s ease-in-out; }
-  /* line 121, ../sass/component.scss */
+  /* line 122, ../sass/component.scss */
   div.slide-menu ul {
     list-style-type: none; }
-    /* line 123, ../sass/component.scss */
+    /* line 124, ../sass/component.scss */
     div.slide-menu ul li {
       -webkit-box-shadow: inset, 0px, 1px, rgba(255, 255, 255, 0.1);
       -moz-box-shadow: inset, 0px, 1px, rgba(255, 255, 255, 0.1);
       box-shadow: inset, 0px, 1px, rgba(255, 255, 255, 0.1);
       border-bottom: 1px solid #434343; }
-      /* line 126, ../sass/component.scss */
+      /* line 127, ../sass/component.scss */
       div.slide-menu ul li:hover {
         background: #5bb31a; }
-      /* line 127, ../sass/component.scss */
+      /* line 128, ../sass/component.scss */
       div.slide-menu ul li:first-of-type {
         -webkit-border-radius: 1px;
         -moz-border-radius: 1px;
         -ms-border-radius: 1px;
         -o-border-radius: 1px;
         border-radius: 1px; }
-      /* line 128, ../sass/component.scss */
+      /* line 129, ../sass/component.scss */
       div.slide-menu ul li:last-of-type {
         border-bottom-width: 0px; }
-      /* line 129, ../sass/component.scss */
+      /* line 130, ../sass/component.scss */
       div.slide-menu ul li a {
         color: #eaeaea;
         font-size: 1.3em;

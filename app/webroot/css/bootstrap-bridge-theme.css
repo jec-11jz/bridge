@@ -134,14 +134,14 @@ input:-webkit-autofill, input:-webkit-autofill:focus {
   -webkit-box-shadow: 0 0 0px 1000px white inset; }
 
 /* line 115, ../sass/bootstrap-bridge-theme.scss */
-.form-control, .tagbox {
+.form-control {
   border-radius: 0px;
   -webkit-transition: 0.2s;
   -o-transition: 0.2s;
   transition: 0.2s;
   display: inline-block; }
   /* line 118, ../sass/bootstrap-bridge-theme.scss */
-  .form-control:focus, .tagbox:focus {
+  .form-control:focus {
     border-color: #659ec9 #70aedd #a8cfec;
     -webkit-box-shadow: black 0px 0px 0px 0px;
     -moz-box-shadow: black 0px 0px 0px 0px;

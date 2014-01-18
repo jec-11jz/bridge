@@ -14,7 +14,7 @@
 			<h1>Create Blog</h1>
 		</div>
 		<!-- ブログ投稿フォーム -->
-		<?php echo $this->Form->create('Blog', array('class'=>'')); ?>
+		<?php echo $this->Form->create('Blog'); ?>
 		
 		<?php 
 			echo $this->Form->input('title', array(

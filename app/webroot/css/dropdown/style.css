@@ -9,14 +9,6 @@
   padding: 0;
   margin: 0; }
 
-/* line 14, ../../sass/dropdown/style.scss */
-::selection {
-  background: transparent; }
-
-/* line 15, ../../sass/dropdown/style.scss */
-::-moz-selection {
-  background: transparent; }
-
 /* DEMO 5 */
 /* line 22, ../../sass/dropdown/style.scss */
 .wrapper-dropdown-5 {

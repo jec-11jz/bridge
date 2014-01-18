@@ -37,8 +37,8 @@ div#search-result{
       position: absolute;
       bottom:0;
       width: 100%;
-      background-color: white;
-      opacity: 0.8;
+      background: rgba(108, 122, 137, 0.5);
+      color:white;
       @include transform(translate(0,0));
       @include single-transition(all, 0.3s, ease-in-out);
       p{

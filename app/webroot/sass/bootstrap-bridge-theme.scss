@@ -112,7 +112,7 @@ input:-webkit-autofill {
 input:-webkit-autofill:focus{
   @extend input:-webkit-autofill;
 }
-.form-control, .tagbox{
+.form-control{
   border-radius: 0px;
   @include btn-fade;
   &:focus{

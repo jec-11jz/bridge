@@ -1,6 +1,7 @@
+@charset "UTF-8";
 /* line 1, ../sass/fonts.scss */
 body, h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
-  font-family: 'Lato','Osaka1','Mplus'; }
+  font-family: 'Lato','ヒラギノ角ゴ Pro W3','Mplus'; }
 
 /* line 5, ../sass/fonts.scss */
 *.input_form {
@@ -26,25 +27,26 @@ body, h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
   font-family: 'Mplus';
   src: url("../../fonts/mplus/mplus-1p-thin.ttf"); }
 
+@font-face {}
 /* line 7, ../sass/all.scss */
 body {
-  background-image: url("../img/background/005.jpg");
-  background-color: black; }
+  background-color: #E5E5DE;
+  color: #3f3f3f; }
 
-/* line 11, ../sass/all.scss */
+/* line 12, ../sass/all.scss */
 #contents {
   margin-top: 40px; }
 
-/* line 15, ../sass/all.scss */
+/* line 16, ../sass/all.scss */
 .nav-brand > img {
   width: 78px;
   height: 39px; }
 
-/* line 21, ../sass/all.scss */
+/* line 22, ../sass/all.scss */
 a:hover {
   color: #58be89; }
 
-/* line 28, ../sass/all.scss */
+/* line 29, ../sass/all.scss */
 div.form.first-content-form {
   position: relative;
   background-color: #c1c1c1;
@@ -55,15 +57,15 @@ div.form.first-content-form {
   -ms-border-radius: 2px;
   -o-border-radius: 2px;
   border-radius: 2px; }
-  /* line 35, ../sass/all.scss */
+  /* line 36, ../sass/all.scss */
   div.form.first-content-form label, div.form.first-content-form h1 {
     color: white; }
-  /* line 38, ../sass/all.scss */
+  /* line 39, ../sass/all.scss */
   div.form.first-content-form .form-headder {
     padding: 1em 0;
     background-color: #58be89;
     text-align: center; }
-  /* line 44, ../sass/all.scss */
+  /* line 45, ../sass/all.scss */
   div.form.first-content-form form {
     display: block;
     background-color: #ccdfcc;
@@ -72,10 +74,10 @@ div.form.first-content-form {
     -ms-border-radius: 2px;
     -o-border-radius: 2px;
     border-radius: 2px; }
-    /* line 48, ../sass/all.scss */
+    /* line 49, ../sass/all.scss */
     div.form.first-content-form form input, div.form.first-content-form form .tagbox {
       margin: 0 auto; }
-  /* line 53, ../sass/all.scss */
+  /* line 54, ../sass/all.scss */
   div.form.first-content-form .form-footer {
     background-color: #58be89;
     left: 0;
@@ -252,8 +254,8 @@ div#search-result {
       position: absolute;
       bottom: 0;
       width: 100%;
-      background-color: white;
-      opacity: 0.8;
+      background: rgba(108, 122, 137, 0.5);
+      color: white;
       -webkit-transform: translate(0, 0);
       -moz-transform: translate(0, 0);
       -ms-transform: translate(0, 0);

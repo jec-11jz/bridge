@@ -20,7 +20,7 @@
 			echo $this->Form->input('title', array(
 				'label'=>false, 
 				'type'=>'text',
-				'class'=>'input_form',
+				'class'=>'input_form form-control',
 				'value' => $post['Blog']['title'],
 				// バリデーションのエラーメッセージを指定
 				'error' => array(
