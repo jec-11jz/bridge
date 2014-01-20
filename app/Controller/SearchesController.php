@@ -15,13 +15,7 @@ class SearchesController extends AppController {
 			 } else {
 			 	$data = $this->Blog->find('all');
 			 }
-		} else {
-			 //POST以外の場合
-			 $data = $this->Blog->find('all');
-			 
 		}
-		//データの連想配列をセット
-		$this->set('blogs',$data);
 	}
 	public function test(){
 		//リクエストがPOSTの場合
