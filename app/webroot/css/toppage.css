@@ -1,21 +1,17 @@
-/* line 10, ../sass/toppage.scss */
-body {
-  background-image: url("../img/backgroudImage.png"); }
-
-/* line 15, ../sass/toppage.scss */
+/* line 9, ../sass/toppage.scss */
 a.logo {
   font-size: 30px;
   text-align: center;
   width: 100%;
   z-index: 10; }
-  /* line 20, ../sass/toppage.scss */
+  /* line 14, ../sass/toppage.scss */
   a.logo:hover {
     color: #a2eb7f;
     background-position: 0;
     opacity: 0.6;
     filter: alpha(opacity=60); }
 
-/* line 28, ../sass/toppage.scss */
+/* line 22, ../sass/toppage.scss */
 div .logo {
   width: 230px;
   height: 230px;
@@ -23,32 +19,18 @@ div .logo {
   margin: 15px 0px 10px 30px;
   float: left;
   z-index: 20; }
-  /* line 35, ../sass/toppage.scss */
+  /* line 29, ../sass/toppage.scss */
   div .logo:hover {
     border: 3px solid #97F95A;
     opacity: 0.6;
     filter: alpha(opacity=60); }
-/* line 42, ../sass/toppage.scss */
-div .img-book {
-  background-image: url("../img/icon10.jpg");
-  background-size: cover;
-  background-position-x: 40%;
-  background-position-y: 0%;
-  z-index: 20; }
-/* line 49, ../sass/toppage.scss */
-div .img-book3 {
-  background-image: url("../img/icon06.jpg");
-  background-size: cover;
-  background-position-x: 20%;
-  background-position-y: 0%;
-  z-index: 20; }
 
-/* line 58, ../sass/toppage.scss */
+/* line 39, ../sass/toppage.scss */
 div#slidr-img {
   left: 7%;
   width: 86%;
   margin-top: 20px;
   z-index: 900; }
-  /* line 63, ../sass/toppage.scss */
+  /* line 44, ../sass/toppage.scss */
   div#slidr-img img {
     width: 100%; }

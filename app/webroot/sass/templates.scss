@@ -2,12 +2,15 @@
 @import "../sass/_constants.scss";
 
 #template-index{
-  background-color: $col-black1;
-  border-radius: 10px;
-  margin: 30px;
+  // background-color: $col-black1;
+  text-align: center;
   .cont{
-    display: inline-block;
-    width: 400px;
+    display: inline-flex;
+    width: 33%;
+    padding: 1em 2em;
+    .title{
+      font-size: 2em;
+    }
   }
   .fa-trash-o{
     padding: 2px;
@@ -15,28 +18,22 @@
   }
 }
 
-
-#temp-list{
-    dt{
-      display:block;
-      width:400px;
-      height:50px;
-      line-height:50px;
-      text-align:center;
-      border:#666 1px solid;
-      cursor:pointer;
+.box-flex{
+  .button-full{
+    @include box-flex(3);
+    height: 8em;
+    .btn-b{
+      padding: 3.2em 9.9em;
+      border: none;
+      &.left{
+        border-right: solid $col-black2 1px;
+      }
+      &.right{
+        border-left: solid $col-black2 1px;
+      }
     }
-    dd{
-      background:$col-black2;
-      width:400px;
-      height:50px;
-      line-height:50px;
-      text-align:center;
-      border:#666 1px solid;
-      display:none;
-    }
-} 
-
+  }
+}
 
 ul {
   display: none;
@@ -48,5 +45,7 @@ span {
 
 li {
   cursor: pointer;
+  list-style-type: none;
+  text-indent: 1em;
 }
 

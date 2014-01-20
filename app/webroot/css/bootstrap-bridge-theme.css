@@ -15,7 +15,7 @@
 
 /* line 12, ../sass/bootstrap-bridge-theme.scss */
 .navbar {
-  background-color: white;
+  background-color: #f7f7f7;
   border: 0px solid #fff;
   min-height: 40px;
   height: 40px;
@@ -73,7 +73,7 @@ ul#dropdownmenu {
     -o-transition: 0.2s;
     transition: 0.2s;
     display: inline-block;
-    background-color: white; }
+    background-color: #f7f7f7; }
     /* line 60, ../sass/bootstrap-bridge-theme.scss */
     ul#dropdownmenu a:hover {
       background-color: #58be89;
@@ -107,7 +107,7 @@ ul#dropdownmenu {
 .btn-b {
   background-color: #ECECEC;
   text-decoration: none;
-  color: #4a4a4a;
+  color: #3f3f3f;
   padding: 0.5em 1em;
   border: solid 1px #c1c1c1;
   -webkit-transition: 0.2s;
@@ -121,66 +121,91 @@ ul#dropdownmenu {
     color: white;
     border: solid 1px #4a4a4a; }
 
-/* line 102, ../sass/bootstrap-bridge-theme.scss */
+/* line 100, ../sass/bootstrap-bridge-theme.scss */
+.box-flex {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-box;
+  display: box; }
+  /* line 102, ../sass/bootstrap-bridge-theme.scss */
+  .box-flex .button-full {
+    -webkit-box-flex: 3;
+    -moz-box-flex: 3;
+    -ms-box-flex: 3;
+    box-flex: 3;
+    height: 10em; }
+    /* line 105, ../sass/bootstrap-bridge-theme.scss */
+    .box-flex .button-full .btn, .box-flex .button-full .btn-a, .box-flex .button-full .btn-b {
+      padding: 4em 10em;
+      width: 100%;
+      height: 100%; }
+
+/* line 113, ../sass/bootstrap-bridge-theme.scss */
 .input_form {
   width: 100%;
-  margin-bottom: 10px; }
+  margin-bottom: 10px;
+  -webkit-transition: 0.2s;
+  -o-transition: 0.2s;
+  transition: 0.2s;
+  display: inline-block; }
 
-/* line 106, ../sass/bootstrap-bridge-theme.scss */
+/* line 118, ../sass/bootstrap-bridge-theme.scss */
 input:-webkit-autofill, input:-webkit-autofill:focus {
   background-image: none !important;
   background-color: white !important;
   color: black !important;
   -webkit-box-shadow: 0 0 0px 1000px white inset; }
 
-/* line 115, ../sass/bootstrap-bridge-theme.scss */
+/* line 127, ../sass/bootstrap-bridge-theme.scss */
 .form-control {
   border-radius: 0px;
+  -webkit-box-shadow: inset 0 0px 0px rgba(0, 0, 0, 0.075);
+  box-shadow: inset 0 0px 0px rgba(0, 0, 0, 0.075);
   -webkit-transition: 0.2s;
   -o-transition: 0.2s;
   transition: 0.2s;
   display: inline-block; }
-  /* line 118, ../sass/bootstrap-bridge-theme.scss */
+  /* line 132, ../sass/bootstrap-bridge-theme.scss */
   .form-control:focus {
     border-color: #659ec9 #70aedd #a8cfec;
     -webkit-box-shadow: black 0px 0px 0px 0px;
     -moz-box-shadow: black 0px 0px 0px 0px;
     box-shadow: black 0px 0px 0px 0px; }
 
-/* line 125, ../sass/bootstrap-bridge-theme.scss */
+/* line 139, ../sass/bootstrap-bridge-theme.scss */
 .has-error .form-control {
   -webkit-box-shadow: black 0px 0px 0px 0px;
   -moz-box-shadow: black 0px 0px 0px 0px;
   box-shadow: black 0px 0px 0px 0px; }
-  /* line 127, ../sass/bootstrap-bridge-theme.scss */
+  /* line 141, ../sass/bootstrap-bridge-theme.scss */
   .has-error .form-control:focus {
     -webkit-box-shadow: black 0px 0px 0px 0px;
     -moz-box-shadow: black 0px 0px 0px 0px;
     box-shadow: black 0px 0px 0px 0px; }
 
-/* line 133, ../sass/bootstrap-bridge-theme.scss */
+/* line 147, ../sass/bootstrap-bridge-theme.scss */
 .modal-content {
   z-index: 1001;
   background: #ECECEC; }
-  /* line 136, ../sass/bootstrap-bridge-theme.scss */
+  /* line 150, ../sass/bootstrap-bridge-theme.scss */
   .modal-content h4 {
     font-size: 25px;
     text-align: center; }
 
-/* line 143, ../sass/bootstrap-bridge-theme.scss */
+/* line 157, ../sass/bootstrap-bridge-theme.scss */
 div .modal-header {
   border: none;
   background-color: rgba(167, 167, 167, 0.18); }
-/* line 147, ../sass/bootstrap-bridge-theme.scss */
+/* line 161, ../sass/bootstrap-bridge-theme.scss */
 div .modal-footer {
   margin: 0;
   padding: 0;
   border: none; }
-  /* line 150, ../sass/bootstrap-bridge-theme.scss */
+  /* line 164, ../sass/bootstrap-bridge-theme.scss */
   div .modal-footer .submit a:hover {
     text-decoration: none; }
 
-/* line 155, ../sass/bootstrap-bridge-theme.scss */
+/* line 169, ../sass/bootstrap-bridge-theme.scss */
 .modal-dialog {
   width: 30%;
   margin-top: 40px; }
