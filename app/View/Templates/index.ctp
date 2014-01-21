@@ -1,9 +1,8 @@
 <?php
-		echo $this->Html->css('diary');
+		$this->extend('/Common/index');
+
 		echo $this->Html->css('templates');
 		
-		$this->extend('/Common/index');
-		echo $this->Html->script('jquery.hcaptions');
 ?>
 
 <script>
@@ -32,12 +31,12 @@
 
 <div class="form first-content-form">
 	<div class="form-headder">
-		<h1>My Templates and My Attributes</h1>
+		<h1>My Templates</h1>
 	</div>
 	<div class="box-flex">
-		<div class="button-full"><a href="/templates/index" class="btn-b left">View Templates</a></div>
-		<div class="button-full"><a href="/products/index" class="btn-b">View Products</a></div>
-		<div class="button-full"><a href="/templates/add" class="btn-b right">Create Templates</a></div>
+		<div class="button-full"><a href="/templates/index" class="btn-black left">View Templates</a></div>
+		<div class="button-full"><a href="/products/index" class="btn-black">View Products</a></div>
+		<div class="button-full"><a href="/templates/add" class="btn-black right">Create Templates</a></div>
 	</div>
 
 	<!-- テンプレート一覧 -->

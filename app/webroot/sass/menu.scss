@@ -1,11 +1,12 @@
 @import "../sass/all.scss";
+@import "tag/tags_custom.scss";
 
 body{
   line-height: 20px;
   z-index:1;
 }
 
-p{margin:0 10px 10px;}
+p{margin:0.3em 0.6em;}
 
 a{
   color: #333333;
@@ -62,7 +63,7 @@ div.modal-content{
     }
     .submit{
       float:right;
-      .btn-b{
+      .btn-black{
         padding: 0.6em 3em;
       }
     }

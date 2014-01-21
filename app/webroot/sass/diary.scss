@@ -1,5 +1,4 @@
 @import "../sass/menu.scss";
-//@import "constants.scss";
 
 
 th {
@@ -65,23 +64,19 @@ form#BlogAddForm, form#BlogEditForm{
     margin: 1em auto;
     // width: 2000px !important;
   }
-  .tagbox{
-    margin: 0 auto 1em;
-    width: 95%;
-    &:focus{
-      @include input-focus;
-    }
-    ul{
-        margin: 0.5em;
-      li{
-        margin: 0 0.1em 0 0;
-        &.new input{
+.tagbox{
+  margin: 0 auto 1em;
+  width: 95%;
+  ul{
+      margin: 0.5em;
+    li{
+      margin: 0 0.1em 0 0;
+      &.new input{
         margin: 0;
       }
-      }
-      
     }
   }
+}
   #ckeditor{
     label{
       font-size:90px;

@@ -1,6 +1,4 @@
 @import "all.scss";
-@import "searches-effects.scss";
-@import "compass/reset";
 
 body{
   h1{
@@ -22,9 +20,8 @@ input.btn-a.btn-search{
 div#search-result{
   margin: 0 auto;
   .cont{
+    margin: 15px;
     position: relative;
-    background-color: $col-black2;
-    @include btn-fade;
     hr{
       margin: 10px 2px;
     }

@@ -2,9 +2,7 @@
  * for Bootstrap theame
  */
 
-@import "compass";
 @import "my-mixin.scss";
-@import "constants.scss";
 
 
 ::selection{background: $col-selection;}::-moz-selection {background: $col-selection;}
@@ -82,7 +80,7 @@ ul#dropdownmenu{
     @include btn-hover;
   }
 }
-.btn-b{
+.btn-black{
   background-color: #ECECEC;
   text-decoration: none;
   color: $col-black;
@@ -94,6 +92,42 @@ ul#dropdownmenu{
     background-color: $col-black4;
     color: white;
     border: solid 1px $col-black4;
+  }
+}
+.btn-green{
+  background: $col-flat-green2;
+  text-decoration: none;
+  color: white;
+  border: none;
+  padding: 0.5em 1em;
+  @include btn-fade;
+  &:hover{
+    text-decoration: none;
+    background-color: $col-flat-green3;
+  }
+}
+.btn-blue{
+  background: $col-flat-blue1;
+  text-decoration: none;
+  color: white;
+  border: none;
+  padding: 0.5em 1em;
+  @include btn-fade;
+  &:hover{
+    text-decoration: none;
+    background-color: $col-flat-blue2;
+  }
+}
+.btn-danger{
+  background: $col-danger;
+  text-decoration: none;
+  color: white;
+  border: none;
+  padding: 0.5em 1em;
+  @include btn-fade;
+  &:hover{
+    text-decoration: none;
+    background-color: $col-danger-hover;
   }
 }
 
@@ -111,9 +145,15 @@ ul#dropdownmenu{
 }
 
 .input_form{
-  width: 100%;
+  // width: 100%;
   margin-bottom: 10px;
+  border-radius: 0px;
+  -webkit-box-shadow: inset 0 0px 0px rgba(0, 0, 0, 0.075);
+          box-shadow: inset 0 0px 0px rgba(0, 0, 0, 0.075);
   @include btn-fade;
+  &:focus{
+    @include input-focus;
+  }
 }
 input:-webkit-autofill {
   background-image: none !important;
