@@ -22,7 +22,6 @@
 	height: 25.000em;
 	margin-top: 3.000em;
 	overflow:scroll;
-	
 }
 #input-attribute {
 	overflow:scroll;

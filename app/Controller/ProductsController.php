@@ -4,14 +4,7 @@ App::uses('AppController', 'Controller');
 class ProductsController extends AppController {
 	
 	public $uses = array('Template', 'Attribute', 'User', 'Product', 'Tag', 'AttributesTag', 'ProductsTag', 'AttributesTemplate');
-	
-	public function beforeFilter()
-    {
-    	//親クラス（AppController）読み込み
-        //parent::beforeFilter();
-		//permitted access before login
-		//$this->Auth->allow();
-	}
+	public $components = array('RequestHandler');
 
 	public function index(){
 		//send templates to view
@@ -21,135 +14,150 @@ class ProductsController extends AppController {
 		$this->set('templates', $templates);
 	}
 	
-	public function add($template_id = null) {
-				
-    	// set template_id which selected by user
-    	if(isset($_GET['data'])){
-    		$template_id = $_GET['data'];
-		}
-		
-  		// set user_id of auth to user_id of product
-		$this->request->data['Product']['user_id'] = $this->Auth->user('id');
-		
-		// send templates to view
-		$templates = $this->Template->findAllByUserId($this->Auth->user('id'));
-		if(!is_array($templates)){
-			// error
-			$this->autoRender = false;
-			print 'templates are not array';
-			return;
-		}
-		$this->set('templates', $templates);
-		
-		// set selected template
-		$selected_template = $this->Template->findById($template_id);
-		// if request is GET, display only screen
-		if (is_null($template_id)) {
-			return;
-		}
-		$this->set('selected_template', $selected_template);
-		
-		// after click button of register
-		if($this->request->is(array('post','ajax'))){
-			//add product
-			$this->Product->create();
-			$result = $this->Product->save($this->request->data());
-			if($result){
-				$tag_type = 1;
-				//add ProductTags
-				$this->Tag->addTags(
-					$this->request->data['Product']['name'],
-					$this->Auth->user('id'),
-					$tag_type
-				);
-				$this->ProductTag->addProductTags(
-					$this->request->data['Product']['name'],
-					$result['Product']['id']
-				);
-				$tag_type = 0;
-				foreach($this->request->data['AttributeTag'] as $tags){
-					if(!($tags['tag'] === "")){
-						//add Tags
-						$this->Tag->addTags(
-							$tags['tag'],
-							$this->Auth->user('id'),
-							$tag_type
-						);
-						// add AttirbuteTags
-						$this->AttributeTag->addAttributeTags(
-							$tags['tag'],
-							$tags['attribute_id'],
-							$result['Product']['id']
-						);
-						
-					}
-				}
-				//メッセージを出力
-                $this->Session->setFlash('記事を保存しました');
+	public function add() {
+		// var_dump($this->request->data);
+		if($this->request->is('get')){
+			// send templates to view
+			$templates = $this->Template->findAllByUserId($this->Auth->user('id'));
+			if(!is_array($templates)){
+				// error
+				print 'templates are not array';
+				return;
 			}
-			// リダイレクト
-			$this->redirect(array('controller' => 'products', 'action' => 'index'));
-		} else {
-			// Get method
+			$this->set('templates', $templates);
 		}
 	}
+	
+	public function api_add() {
+		
+		// check http method
+		if (!$this->request->is('post')) {
+			$this->apiError('http method is not "POST"');
+			return;
+		}
+		// set user_id of auth to user_id of product
+		$this->request->data['Product']['user_id'] = $this->Auth->user('id');
+		
+		//add product
+		if(!isset($this->request->data['Product']['name'])) {
+			$this->apiError('Product name field is required');
+			return;
+		}
+		$this->Product->create();
+		$result = $this->Product->save($this->request->data);
+		
+		if ($this->Product->validationErrors) {
+			$this->apiValidationError('Product', $this->Product->validationErrors);
+			return;
+		}
+		
+		if (!$result) {
+			return $this->apiError('product add error');
+		}
 
-	public function edit($product_id = null){
+		//add Tag and ProductTags
+		$this->Tag->saveFromNamesCSV(
+			$this->request->data['Product']['name']
+		);
+		$this->ProductsTag->addProductTags(
+			$this->request->data['Product']['name'],
+			$result['Product']['id']
+		);
+		
+		foreach($this->request->data['AttributeTag'] as $tags) {
+			if(!($tags['tag'] === "")){
+				// add attribute
+				$this->Attribute->set('name', $tags['attribute']);
+				$attr_result = $this->Attribute->save();
+				// add Tags
+				$this->Tag->saveFromNamesCSV(
+					$tags['tag']
+				);
+				// add AttirbuteTags
+				$tag_attribute = $this->Attribute->findByName($tags['attribute']);
+				$this->AttributesTag->addAttributeTags(
+					$tags['tag'],
+					$tag_attribute['Attribute']['id'],
+					$result['Product']['id']
+				);
+			}
+		}
+		// success
+        $this->apiSuccess(array('message' => 'save success'));
+	}
+
+	public function api_edit() {
+		
+		$product_id = $this->request->data['Product']['id'];
+		if (!$this->request->is(array('post','put'))) {
+			$this->apiError(array('message'=>'http method is not "POST or PUT"'));
+			return;
+		}
+		
+		//add product
+		if(!isset($this->request->data['Product']['name'])) {
+			$this->apiError('Product name field is required');
+			return;
+		}
+		
+		$this->Product->id = $product_id;
+		$result = $this->Product->save($this->request->data);
+		
+		if (!$result) {
+			return $this->apiError('Fail to add product');
+		}
+		
+		//一度AttributeTagとProductTagテーブルのデータを削除する
+		$this->AttributesTag->deleteAll(array('AttributesTag.product_id'=>$product_id));
+		$this->ProductsTag->deleteAll(array('ProductsTag.product_id'=>$product_id));
+		
+		//add Tag and ProductTags
+		$this->Tag->saveFromNamesCSV(
+			$this->request->data['Product']['name']
+		);
+		$this->ProductsTag->addProductTags(
+			$this->request->data['Product']['name'],
+			$product_id
+		);
+		
+		foreach($this->request->data['AttributeTag'] as $tags) {
+			if(!($tags['tag'] === "")){
+				// add attribute
+				$this->Attribute->set('name', $tags['attribute']);
+				$attr_result = $this->Attribute->save();
+				// add Tags
+				$this->Tag->saveFromNamesCSV(
+					$tags['tag']
+				);
+				// add AttirbuteTags
+				$tag_attribute = $this->Attribute->findByName($tags['attribute']);
+				$this->AttributesTag->addAttributeTags(
+					$tags['tag'],
+					$tag_attribute['Attribute']['id'],
+					$product_id
+				);
+			}
+		}
+		// success
+        $this->apiSuccess(array('message' => 'save success'));		
+		
+	}
+
+	public function edit($product_id = null) {
 		if(!$product_id){
 			throw new NotFoundException(__('product_id is not found'));
 		}
 		//必要な情報の取得
 		$product = $this->Product->findById($product_id);
 		$product_names = str_replace(',' , ', ' ,$product['Product']['name']);
-		$template_id = $product['Product']['template_id'];
-		$templates = $this->Template->findAllByUserId($this->Auth->user('id'));
-		$attributes = $this->Attribute->findAllByProductIdAndTemplateIdWithTags($product['Product']['id'], $product['Template']['id']);
-		$this->set('product', $product);
-		$this->set('templates', $templates);
-		$this->set('attributes', $attributes);
-		$this->set('product_names', $product_names);
 		
- 		if($this->request->is(array('post','put'))){
-			$this->Product->id = $product_id;
-			$result = $this->Product->save($this->request->data);
-			if($result){
-				//一度AttributeTagとProductTagテーブルのデータを削除する
-				$this->AttributeTag->deleteAll(array('AttributeTag.product_id'=>$product_id));
-				$this->ProductTag->deleteAll(array('ProductTag.product_id'=>$product_id));
-				$tag_type = 1;
-				//add ProductTags
-				$this->Tag->addTags(
-					$this->request->data['Product']['name'],
-					$this->Auth->user('id'),
-					$tag_type
-				);
-				$this->ProductTag->addProductTags(
-					$this->request->data['Product']['name'],
-					$product_id
-				);
-				$tag_type = 0;
-				foreach($this->request->data['AttributeTag'] as $tags){
-					if(!($tags['tag'] === "")){
-						//add Tags
-						$this->Tag->addTags(
-							$tags['tag'],
-							$this->Auth->user('id'),
-							$tag_type
-						);
-						// add AttirbuteTags
-						$this->AttributeTag->addAttributeTags(
-							$tags['tag'],
-							$tags['attribute_id'],
-							$product_id
-						);
-					}
-				}
-				//メッセージを出力
-                $this->Session->setFlash('記事を保存しました');
-			}
-			// リダイレクト
-			$this->redirect(array('controller' => 'products', 'action' => 'index'));
+		foreach($product['Attribute'] as &$product_attr) {
+			$product_attr['Tag']['tagNamesCSV'] = $this->Tag->tagNamesToCSV($product_attr['Tag']);
 		}
+		unset($product_attr);
+		
+		$this->set('product', $product);
+		$this->set('product_names', $product_names);
 	}
 
 	public function delete($product_id = null) {

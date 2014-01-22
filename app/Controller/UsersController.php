@@ -126,7 +126,7 @@ class UsersController extends AppController {
 					$this->Session->write('Auth.User.nickname', $saved_data['User']['nickname']);
 					$this->Session->write('Auth.User.email', $saved_data['User']['email']);
 					
-	                $this->Session->setFlash(__('更新完了です。 (｡･_･｡)ﾉ'),'default', array(), 'auth');
+	                $this->Session->setFlash(__('更新完了です'),'default', array(), 'auth');
 					$this->redirect(array('action' => 'index'));
 					
 	            } else {

@@ -13,18 +13,12 @@
 	
 	$this->extend('/Common/index');
 ?>
-
-
 <script>	
-			$(function() {
-			
-				$( '#sg-panel-container' ).gridgallery();
-			
-			});
+	$(function() {
+		$( '#sg-panel-container' ).gridgallery();
+	});
 </script>
-
-
-		
+	
 <div id="gallery">	
 	<ul id="sg-panel-container">
 			<li data-w="60" data-h="55">

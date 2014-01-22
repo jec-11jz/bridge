@@ -14,7 +14,9 @@ class BlogsController extends AppController {
         //$this->Auth->allow();
     }
 	
-    public function index() {
+	public function index()
+	{
+		
 	}
 
 	public function api_index() {

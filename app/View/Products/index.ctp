@@ -7,8 +7,6 @@
 	$this->extend('/Common/index');
 ?>
 <div>
-	<legend>Link</legend>
-	<a href="/templates/index" class="btn-a">テンプレート一覧</a>
 	<legend>All Production</legend>
 	<table class="table">
 		<th>作品ID</th>
@@ -24,35 +22,7 @@
 			</tr>
 		<?php endforeach; ?>
 	</table>
-	<form method="get" action="/products/add">
-		<legend>テンプレート選択</legend>
-		<select name="data" class="template-name" id="selected-template">
-			<option value="" disabled selected>--選択してください--</option>
-			<?php foreach($templates as $template) : ?>
-				<?php if(isset($template['Template']['id'])){ ?>
-					<option value="<?php echo $template['Template']['id']; ?>"><?php echo $template['Template']['name']; ?></option>
-				<?php } ?>
-			<?php endforeach; ?>
-			<option value="other">テンプレート作成</option>
-		</select>
-		<hr size="2">
-		<input id="add-product" type="submit" class="btn-a" value="Create" disabled />
-	</form>
-	
+	<legend>Link</legend>
+	<a href="/templates/index" class="btn-a">テンプレート一覧</a>
 </div>
-<script>
-	$(function(){
-		//テンプレートが選択されたら編集画面に飛ばす
-		$("#selected-template").change(function() {
-			var temp_id = $('#selected-template').val();
-			console.log(temp_id);
-			if(temp_id == 'other'){
-				location.href="/templates/add";
-				return;
-			} else if(temp_id != ''){
-				$('#add-product').removeAttr("disabled");
-			}// End if()
-		});// End change()
-	})
-</script>
 
