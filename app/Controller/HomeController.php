@@ -2,7 +2,7 @@
 
 class HomeController extends AppController {
 	
-	
+	public $uses = array('Product', 'blog');
 	public $layout = 'menu';
 	public function beforeFilter()
     {
@@ -14,15 +14,22 @@ class HomeController extends AppController {
 	
 	public function index()
 	{
-		
-	}
-	public function gallery()
-	{
-		
+		// $toppage_contents = array();
+		// $toppage_contents['newProduct'] = $this->Product->find(array(
+				// 'order'=>array('Product.created'),
+				// 'limit' => 5,
+		// ));
+		// $this->set('toppage_contents', $toppage_contents);
 	}
 	
-	public function test(){
-		$this->layout = '';
+	public function api_get_toppage_contents (){
+		$toppage_contents = array();
+		$toppage_contents['newProduct'] = $this->Product->find(array(
+				'order'=>array('Product.created'),
+				'limit' => 5,
+		));
+		
+		$this->set('toppage_contents', $toppage_contents);
 	}
 }
 

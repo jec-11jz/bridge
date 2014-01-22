@@ -2,7 +2,7 @@
 App::uses('AppController', 'Controller');
 
 class TemplatesController extends AppController {
-	
+	public $components = array('RequestHandler');
 	public $uses = array('Template', 'Attribute', 'User', 'AttributeTag', 'TemplateAttribute');
 	
 	public function beforeFilter()
@@ -137,10 +137,25 @@ class TemplatesController extends AppController {
 			$this->Session->setFlash('cant delete');
 			$this->redirect(array('controller' => 'templates', 'action' => 'index'));
 			return;
-
 		}
 		
 		$this->Session->setFlash('削除されました');
 		$this->redirect(array('controller' => 'templates', 'action' => 'index'));
+	}
+	
+	public function api_get() {
+		
+		if(!isset($this->request->query['id'])){
+			$this->apiError($this->request->query['id']);
+			return;
+		}
+
+		// set selected template
+		$selected_template = $this->Template->findById($this->request->query['id']);
+		if (empty($selected_template)) {
+			$this->apiError('Nothing this template');
+			return;
+		}
+		$this->apiSuccess($selected_template);		
 	}
 }

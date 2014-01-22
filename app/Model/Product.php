@@ -18,9 +18,11 @@ class Product extends AppModel {
 	
 	public $validate = array(
         'name' => array(
-        	'requeired',
-            'rule' => 'notEmpty'
-        )
+			'notEmpty' => array(
+				'rule' => 'notEmpty',
+        		'message' => 'product_name is empty!'
+			)
+		)
 	);
 
 

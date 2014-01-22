@@ -7,8 +7,10 @@ class Tag extends AppModel {
 
 	public $validate = array(
 		'name' => array(
-			'rule' => 'isUnique',
-			'message' => 'duplicated'
+			'isUnique' => array(
+				'rule' => 'isUnique',
+				'message' => 'duplicated',
+			)
 		)
 	);
 
@@ -53,6 +55,12 @@ class Tag extends AppModel {
 		unset($tag);
 		return $tags;
 	}
+	
+	public function saveFromNamesCSV($tagNames = '') {
+		$tags = $this->parseTagCSV($tagNames);
+		$this->saveFromNameArray($tags);
+		return true;
+	}
 
 	public function saveFromNameArray($tags = array()) {
 		foreach ($tags as $tag) {
@@ -62,28 +70,6 @@ class Tag extends AppModel {
 		}
 		return true;
 	}
-
-	// no used
-	public function addTags($tag_name, $user_id, $tag_type){
-    	if(isset($tag_name)){
-			//送らてきたタグのカンマで区切られた文字列を分解す
-			$tags = explode(",", $tag_name);
-			foreach ($tags as $tag) {
-				$tag = trim($tag);
-				if($this->findByName($tag) || !isset($tag)){
-					//setされていない又はDBに存在するタグは登録しない
-				} else {
-					// 新規レコード生成
-		            $this->create();
-					$this->set(array(
-						'name'=>$tag, 'user_id'=>$user_id, 'tag_type'=>$tag_type
-					));
-		            $this->save();
-				}
-			}
-    	}
-		return true;
-    }
 	
 	public function tagNamesToCSV($tags) {
 		$tagNames = $this->getNamesFromTags($tags);
