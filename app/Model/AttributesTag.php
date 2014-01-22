@@ -6,7 +6,6 @@ class AttributesTag extends AppModel {
 	
 	public $belongsTo = array('Product', 'Tag', 'Attribute');
 
-
 	// TODO: 多分修正必要
 	public function addAttributeTags($tag_name, $attribute_id, $product_id){
 		$Tag = ClassRegistry::init('Tag');

@@ -4,8 +4,6 @@
 		
 		$this->extend('/Common/index');
 ?>
-
-
 <script>
 $(function(){
 	//アトリビュートフォーム自動生成
