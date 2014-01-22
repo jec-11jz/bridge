@@ -146,6 +146,9 @@ $(function() {
 		$('#formRegisterProduct').find('.product-info').each(function(){
 			if($(this).val() != ""){
 				sendData['data']['Product'][$(this).attr('name')] = $(this).val();
+			} else {
+				console.log('aaaaaa');
+				return;
 			}
 		});
 		if(url.attr('src') != null){
