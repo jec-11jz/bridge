@@ -55,7 +55,7 @@
 		<div id="error"></div>
 		<div>
 			<label for="movieTitle"><h4>Title</h4></label>
-			<input type="text" name="name" class="input tags .product-title" id="movieTitle"/>
+			<input type="text" name="name" class="input tags product-info .product-title" id="movieTitle"/>			
 		</div>
 		<div id="image" onclick="openKCFinder(this)"><div style='margin:5px'>Click here to choose an image</div></div>
 		<label for="movie-outline">あらすじ：</label>
@@ -178,6 +178,10 @@ $(function() {
 		$('#formRegisterProduct').find('.product-info').each(function(){
 			if($(this).val() != ""){
 				sendData['data']['Product'][$(this).attr('name')] = $(this).val();
+			} else {
+				console.log('a')
+				return;
+				
 			}
 		});
 		if(url.attr('src') != null){
@@ -209,6 +213,7 @@ $(function() {
 				$('body,html').animate({
 			        scrollTop: 0
 			    }, 100);
+			    console.log('send...' + sendData);
 			    return false;
 			}
 		});

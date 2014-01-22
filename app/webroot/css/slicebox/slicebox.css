@@ -1,4 +1,3 @@
-/* Slicebox Style */
 .sb-slider {
 	margin: 10px auto;
 	position: relative;
@@ -7,7 +6,6 @@
 	list-style-type: none;
 	padding: 0;
 }
-
 .sb-slider li {
 	margin: 0;
 	padding: 0;
