@@ -171,7 +171,7 @@ $(function() {
 			url: "/api/products/edit.json",
 			data: sendData,
 			success: function(data){
-			   　location.href = "/products/index";
+			   location.href = "/products/index";
 			},
 			error: function(xhr, xhrStatus) {
 				$('.div-error').remove();

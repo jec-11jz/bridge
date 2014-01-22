@@ -179,7 +179,7 @@ $(function() {
 			if($(this).val() != ""){
 				sendData['data']['Product'][$(this).attr('name')] = $(this).val();
 			} else {
-				console.log('a')
+				console.log('aaaaaa');
 				return;
 				
 			}
@@ -204,7 +204,7 @@ $(function() {
 			url: "/api/products/add.json",
 			data: sendData,
 			success: function(data){
-			   　location.href = "/products/index";
+			   location.href = "/products/index";
 			},
 			error: function(xhr, xhrStatus) {
 				$('.div-error').remove();
