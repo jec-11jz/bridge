@@ -19,13 +19,8 @@
 	    $(this).next('ul').slideToggle('fast');
 	  });
 
-	  // 子メニュー処理
-	  $('li').click(function(e) {
-	    // メニュー表示/非表示
-	    $(this).children('ul').slideToggle('fast');
-	    e.stopPropagation();
-	  });
 	});
+
 </script>
 
 
@@ -42,6 +37,7 @@
 	<!-- テンプレート一覧 -->
 	<div id="template-index" class="contents">
 		<?php foreach($templates as $template) : ?>
+			<!-- <div class="caption"> -->
 			<div class="cont">
 
 				<span><?php echo $this->Form->postLink("", array('action' => 'delete', $template['Template']['id']), array('confirm' => '削除しますか？', 'class'=>'fa fa-trash-o')); ?></span>
@@ -57,8 +53,30 @@
 				  <?php endforeach; ?>
 				</ul>
 			</div> <!-- cont -->
+			<!-- </div> -->
 		<?php endforeach; ?>
 	</div>
+<!-- 
+	<div id="nav-case" style="overflow: hidden;">
+		<?php foreach($templates as $template) : ?>
+			<div class="cont" style="display:inline-block;">
+				<div id="sampleBtn" class="sampleBtn01" style="display:inline;"><a class="title"><?php echo $template['Template']['name']; ?></a></div>
+				<span><?php echo $this->Form->postLink("", array('action' => 'delete', $template['Template']['id']), array('confirm' => '削除しますか？', 'class'=>'fa fa-trash-o')); ?></span>
+				<a href="/templates/edit/<?php echo $template['Template']['id']; ?>" class="edit">edit</a>
+				<nav class="sample-list1" style="display: none; overflow:hidden;">
+				  <?php foreach($template['Attribute'] as $attribute) : ?>
+					<ul>
+					<?php if(isset($attribute['name'])){ ?>
+						<?php echo $attribute['name']; ?>
+					<?php } ?>
+					</ul>
+				  <?php endforeach; ?>
+				</nav>
+
+			</div>
+		<?php endforeach; ?>
+	</div>  -->
+		
 
 </div> <!-- form -->
 

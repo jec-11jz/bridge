@@ -90,29 +90,34 @@ body h1 {
   margin: 10px;
   background-color: white; }
 
-/* line 9, ../sass/searches.scss */
-.form-control {
-  width: 40%;
-  margin: 0px 10px 0px 10px;
-  display: inline;
-  float: left; }
-
-/* line 15, ../sass/searches.scss */
-input.btn-a.btn-search {
+/* line 11, ../sass/searches.scss */
+.btn-a.search {
   padding: 6px 17px;
   margin: 1px; }
 
-/* line 20, ../sass/searches.scss */
+/* line 16, ../sass/searches.scss */
+#search {
+  margin: 0 auto;
+  text-align: center; }
+  /* line 19, ../sass/searches.scss */
+  #search .input, #search .submit {
+    display: inline; }
+  /* line 22, ../sass/searches.scss */
+  #search .form-control {
+    width: 40%;
+    margin: 0px 10px 0px 10px; }
+
+/* line 30, ../sass/searches.scss */
 div#search-result {
   margin: 0 auto; }
-  /* line 22, ../sass/searches.scss */
+  /* line 33, ../sass/searches.scss */
   div#search-result .cont {
     margin: 15px;
     position: relative; }
-    /* line 25, ../sass/searches.scss */
+    /* line 36, ../sass/searches.scss */
     div#search-result .cont hr {
       margin: 10px 2px; }
-    /* line 28, ../sass/searches.scss */
+    /* line 39, ../sass/searches.scss */
     div#search-result .cont a.link {
       display: block;
       top: 0;
@@ -121,7 +126,7 @@ div#search-result {
       height: 100%;
       position: absolute;
       z-index: 600; }
-    /* line 32, ../sass/searches.scss */
+    /* line 43, ../sass/searches.scss */
     div#search-result .cont .cont-info {
       position: absolute;
       bottom: 0;
@@ -137,14 +142,14 @@ div#search-result {
       -moz-transition: all 0.3s ease-in-out;
       -o-transition: all 0.3s ease-in-out;
       transition: all 0.3s ease-in-out; }
-      /* line 40, ../sass/searches.scss */
+      /* line 51, ../sass/searches.scss */
       div#search-result .cont .cont-info p {
         font-size: 13px; }
 
-/* line 47, ../sass/searches.scss */
+/* line 58, ../sass/searches.scss */
 .cont:hover img {
   opacity: 0.8; }
-/* line 50, ../sass/searches.scss */
+/* line 61, ../sass/searches.scss */
 .cont:hover .cont-info {
   -webkit-transform: translate(0, 100px);
   -moz-transform: translate(0, 100px);

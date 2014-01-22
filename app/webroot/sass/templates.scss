@@ -4,17 +4,24 @@
 
 #template-index{
   text-align: center;
+  // .caption{
+  //   display: inline;
+  //   position: relative;
+  //   overflow: auto;
+  // }
   .cont{
-    display: inline-flex;
+    display: block;
+    overflow: hidden;
+    float:left;
     width: 33%;
     padding: 1em 2em;
     .title{
       font-size: 2em;
     }
     ul {
+      overflow: hidden;
       display: none;
     }
-
     span {
       cursor: pointer;
     }
