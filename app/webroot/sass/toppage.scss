@@ -3,13 +3,7 @@
 
 
 
-@mixin back-gray{
-  background-color: #313131;
-}
 
-body{
-  @include back-x;
-}
 
 
 a.logo{
@@ -39,20 +33,7 @@ div{
     }
   }
   
-  .img-book {
-    background-image: url('../img/icon10.jpg');
-    background-size:cover;
-    background-position-x: 40%;
-    background-position-y: 0%;
-    z-index: 20;
-  }
-  .img-book3{
-    background-image: url('../img/icon06.jpg');
-    background-size:cover;
-    background-position-x: 20%;
-    background-position-y: 0%;
-    z-index: 20;
-  }
+
 }
 
 div#slidr-img{

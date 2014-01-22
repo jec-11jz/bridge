@@ -28,28 +28,27 @@ body, h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
   src: url("../../fonts/mplus/mplus-1p-thin.ttf"); }
 
 @font-face {}
-/* line 7, ../sass/all.scss */
+/* line 5, ../sass/all.scss */
 body {
   background-color: #E5E5DE;
   color: #3f3f3f; }
 
-/* line 12, ../sass/all.scss */
+/* line 10, ../sass/all.scss */
 #contents {
   margin-top: 40px; }
 
-/* line 16, ../sass/all.scss */
+/* line 14, ../sass/all.scss */
 .nav-brand > img {
   width: 78px;
   height: 39px; }
 
-/* line 22, ../sass/all.scss */
+/* line 20, ../sass/all.scss */
 a:hover {
   color: #58be89; }
 
-/* line 29, ../sass/all.scss */
+/* line 27, ../sass/all.scss */
 div.form.first-content-form {
   position: relative;
-  background-color: #c1c1c1;
   width: 88%;
   margin: 5em auto 0;
   -webkit-border-radius: 2px;
@@ -57,16 +56,16 @@ div.form.first-content-form {
   -ms-border-radius: 2px;
   -o-border-radius: 2px;
   border-radius: 2px; }
-  /* line 36, ../sass/all.scss */
+  /* line 33, ../sass/all.scss */
   div.form.first-content-form label, div.form.first-content-form h1 {
     color: white; }
-  /* line 39, ../sass/all.scss */
+  /* line 36, ../sass/all.scss */
   div.form.first-content-form .form-headder {
     padding: 1em 0;
     background-color: #58be89;
     text-align: center; }
-  /* line 45, ../sass/all.scss */
-  div.form.first-content-form form {
+  /* line 42, ../sass/all.scss */
+  div.form.first-content-form form, div.form.first-content-form .contents {
     display: block;
     background-color: #ccdfcc;
     -webkit-border-radius: 2px;
@@ -74,10 +73,10 @@ div.form.first-content-form {
     -ms-border-radius: 2px;
     -o-border-radius: 2px;
     border-radius: 2px; }
-    /* line 49, ../sass/all.scss */
-    div.form.first-content-form form input, div.form.first-content-form form .tagbox {
+    /* line 46, ../sass/all.scss */
+    div.form.first-content-form form input, div.form.first-content-form form .tagbox, div.form.first-content-form .contents input, div.form.first-content-form .contents .tagbox {
       margin: 0 auto; }
-  /* line 54, ../sass/all.scss */
+  /* line 51, ../sass/all.scss */
   div.form.first-content-form .form-footer {
     background-color: #58be89;
     left: 0;

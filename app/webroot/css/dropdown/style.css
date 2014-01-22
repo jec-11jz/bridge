@@ -1,5 +1,5 @@
 /* GLOBALS */
-/* line 6, ../../sass/dropdown/style.scss */
+/* line 7, ../../sass/dropdown/style.scss */
 *,
 *:after,
 *:before {
@@ -10,7 +10,7 @@
   margin: 0; }
 
 /* DEMO 5 */
-/* line 22, ../../sass/dropdown/style.scss */
+/* line 23, ../../sass/dropdown/style.scss */
 .wrapper-dropdown-5 {
   /* Size & position */
   display: inline-block;
@@ -19,19 +19,19 @@
   margin: 0 0 0 -4px;
   padding: 10px 15px;
   /* Styles */
-  background: #fff;
+  background: #f7f7f7;
   cursor: pointer;
   outline: none;
   -webkit-transition: 0.2s;
   -o-transition: 0.2s;
   transition: 0.2s;
   display: inline-block; }
-  /* line 36, ../../sass/dropdown/style.scss */
+  /* line 37, ../../sass/dropdown/style.scss */
   .wrapper-dropdown-5:hover {
     background-color: #58be89;
     text-decoration: none;
     color: #fff; }
-  /* line 39, ../../sass/dropdown/style.scss */
+  /* line 40, ../../sass/dropdown/style.scss */
   .wrapper-dropdown-5:focus {
     background-color: #58be89;
     text-decoration: none;
@@ -39,15 +39,15 @@
     box-shadow: none;
     border-bottom: none;
     color: white; }
-    /* line 44, ../../sass/dropdown/style.scss */
+    /* line 45, ../../sass/dropdown/style.scss */
     .wrapper-dropdown-5:focus:after {
       border-color: #82d1ff transparent; }
-  /* line 49, ../../sass/dropdown/style.scss */
+  /* line 50, ../../sass/dropdown/style.scss */
   .wrapper-dropdown-5 p {
     text-align: center;
     margin: 0; }
 
-/* line 56, ../../sass/dropdown/style.scss */
+/* line 57, ../../sass/dropdown/style.scss */
 .wrapper-dropdown-5:focus .dropdown {
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
   max-height: 400px;
@@ -56,7 +56,7 @@
   -o-transition: all 0.5s ease-in-out;
   transition: all 0.5s ease-in-out; }
 
-/* line 62, ../../sass/dropdown/style.scss */
+/* line 63, ../../sass/dropdown/style.scss */
 .wrapper-dropdown-5:after {
   /* Little arrow */
   width: 0;
@@ -69,7 +69,7 @@
   border-style: solid;
   border-color: #4cbeff transparent; }
 
-/* line 75, ../../sass/dropdown/style.scss */
+/* line 76, ../../sass/dropdown/style.scss */
 .wrapper-dropdown-5 .dropdown {
   /* Size & position */
   position: absolute;
@@ -85,7 +85,7 @@
   /* Hiding */
   max-height: 0;
   overflow: hidden; }
-  /* line 95, ../../sass/dropdown/style.scss */
+  /* line 96, ../../sass/dropdown/style.scss */
   .wrapper-dropdown-5 .dropdown li a {
     display: block;
     text-decoration: none;
@@ -95,29 +95,29 @@
     transition: all 0.3s ease-out;
     border-bottom: 1px solid #e6e8ea; }
 
-/* line 108, ../../sass/dropdown/style.scss */
+/* line 109, ../../sass/dropdown/style.scss */
 .wrapper-dropdown-5 .dropdown li:last-of-type a {
   border: none; }
 
-/* line 112, ../../sass/dropdown/style.scss */
+/* line 113, ../../sass/dropdown/style.scss */
 .wrapper-dropdown-5 .dropdown li i {
   margin-right: 5px;
   color: inherit;
   vertical-align: middle; }
 
 /* Hover state */
-/* line 120, ../../sass/dropdown/style.scss */
+/* line 121, ../../sass/dropdown/style.scss */
 .wrapper-dropdown-5 .dropdown li:hover a {
   background-color: #58be89;
   text-decoration: none;
   color: #fff; }
 
 /* Active state */
-/* line 127, ../../sass/dropdown/style.scss */
+/* line 128, ../../sass/dropdown/style.scss */
 .wrapper-dropdown-5.active:after {
   border-color: #82d1ff transparent; }
 
-/* line 131, ../../sass/dropdown/style.scss */
+/* line 132, ../../sass/dropdown/style.scss */
 .wrapper-dropdown-5.active .dropdown {
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
   max-height: 400px; }

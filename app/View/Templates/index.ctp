@@ -1,9 +1,8 @@
 <?php
-		echo $this->Html->css('diary');
+		$this->extend('/Common/index');
+
 		echo $this->Html->css('templates');
 		
-		$this->extend('/Common/index');
-		echo $this->Html->script('jquery.hcaptions');
 ?>
 
 <script>
@@ -20,92 +19,64 @@
 	    $(this).next('ul').slideToggle('fast');
 	  });
 
-	  // 子メニュー処理
-	  $('li').click(function(e) {
-	    // メニュー表示/非表示
-	    $(this).children('ul').slideToggle('fast');
-	    e.stopPropagation();
-	  });
 	});
+
 </script>
 
-<style>
-	body {
-		background: #FFFFFF;
-	}
-</style>
 
-<legend>My Templates and My Attributes</legend>
-<div id="template-index">
+<div class="form first-content-form">
+	<div class="form-headder">
+		<h1>My Templates</h1>
+	</div>
+	<div class="box-flex">
+		<div class="button-full"><a href="/templates/index" class="btn-black left">View Templates</a></div>
+		<div class="button-full"><a href="/products/index" class="btn-black">View Products</a></div>
+		<div class="button-full"><a href="/templates/add" class="btn-black right">Create Templates</a></div>
+	</div>
+
 	<!-- テンプレート一覧 -->
-	<h2>テンプレート一覧</h2>
-
-	<?php foreach($templates as $template) : ?>
-		<div class="cont">
-			<?php if(isset($template['Template']['id'])){ ?>
-				<!-- <dl id="temp-list">
-				    <dt>テンプレタイトル：<a href="/templates/edit/<?php echo $template['Template']['id']; ?>"><?php echo $template['Template']['name']; ?></a></dt>
-				    <?php foreach($template['Attribute'] as $attribute) : ?>
-					    <li>
-						    <?php if(isset($attribute['name'])){ ?>
-							<?php echo $attribute['name']; ?>
-							<?php } ?>
-						</li>
-					<?php endforeach; ?>
-					<dd>aaa</dd>
-				    <dt>ID:<?php echo $template['Template']['id']; ?></dt>
-				    <dd>アコーディオンメニューが開く。</dd>
-				</dl>
-			
-				<span><?php echo $this->Form->postLink("", array('action' => 'delete', $template['Template']['id']), array('confirm' => '削除しますか？', 'class'=>'fa fa-trash-o')); ?></span> -->
-			<?php } ?>
-			<!-- <a href="/templates/edit/<?php echo $template['Template']['id']; ?>"> -->
-			<span><?php echo $template['Template']['name']; ?></span>
-			<span><a href="/templates/edit/<?php echo $template['Template']['id']; ?>">edit</a></span>
-			<ul>
-				<li>メニュー 1-1
-				  <ul>
-				  <li>メニュー 1-1-1
-				    <ul>
-				    <li><a href="#">メニュー 1-1-1-1</a></li>
-				    <li><a href="#">メニュー 1-1-1-2</a></li>
-				    <li><a href="#">メニュー 1-1-1-3</a></li>
-				    </ul>
-				  </li>
-				  <li>メニュー 1-1-2
-				    <ul>
-				    <li><a href="#">メニュー 1-1-2-1</a></li>
-				    <li><a href="#">メニュー 1-1-2-2</a></li>
-				    <li><a href="#">メニュー 1-1-2-2</a></li>
-				    </ul>
-				  </li>
-				  </ul>
-				</li>
-			</ul>
-		</div>
-	<?php endforeach; ?>
-	
-
-	<!-- アトリビュート一覧 -->
-	<h2>属性一覧</h2>
-	<table class="table">
+	<div id="template-index" class="contents">
 		<?php foreach($templates as $template) : ?>
-			<?php if($template['Attribute'] != false) { ?>
-				<th>【テンプレート名】<?php echo h($template['Template']['name'] . '：' . $template['Template']['id']); ?></th>
-				<?php foreach($template['Attribute'] as $attribute) : ?>
-					<tr>
+			<!-- <div class="caption"> -->
+			<div class="cont">
+
+				<span><?php echo $this->Form->postLink("", array('action' => 'delete', $template['Template']['id']), array('confirm' => '削除しますか？', 'class'=>'fa fa-trash-o')); ?></span>
+				<a href="/templates/edit/<?php echo $template['Template']['id']; ?>" class="edit">edit</a>
+				<span class="title"><?php echo $template['Template']['name']; ?></span>
+				<ul>
+				  <?php foreach($template['Attribute'] as $attribute) : ?>
+					<li>
 					<?php if(isset($attribute['name'])){ ?>
-						<td><?php echo $attribute['name']; ?></td>
+						<?php echo $attribute['name']; ?>
 					<?php } ?>
-					</tr>
-				<?php endforeach; ?>
-			<?php } ?>
+					</li>
+				  <?php endforeach; ?>
+				</ul>
+			</div> <!-- cont -->
+			<!-- </div> -->
 		<?php endforeach; ?>
-	</table>
-</div>
-<div class="link">
-	<h2>Link</h2>
-	<a href="/templates/index" class="btn-b">テンプレート一覧</a>
-	<a href="/products/index" class="btn-b">作品一覧</a>
-	<a href="/templates/add" class="btn-b">テンプレート作成</a>
-</div>
+	</div>
+<!-- 
+	<div id="nav-case" style="overflow: hidden;">
+		<?php foreach($templates as $template) : ?>
+			<div class="cont" style="display:inline-block;">
+				<div id="sampleBtn" class="sampleBtn01" style="display:inline;"><a class="title"><?php echo $template['Template']['name']; ?></a></div>
+				<span><?php echo $this->Form->postLink("", array('action' => 'delete', $template['Template']['id']), array('confirm' => '削除しますか？', 'class'=>'fa fa-trash-o')); ?></span>
+				<a href="/templates/edit/<?php echo $template['Template']['id']; ?>" class="edit">edit</a>
+				<nav class="sample-list1" style="display: none; overflow:hidden;">
+				  <?php foreach($template['Attribute'] as $attribute) : ?>
+					<ul>
+					<?php if(isset($attribute['name'])){ ?>
+						<?php echo $attribute['name']; ?>
+					<?php } ?>
+					</ul>
+				  <?php endforeach; ?>
+				</nav>
+
+			</div>
+		<?php endforeach; ?>
+	</div>  -->
+		
+
+</div> <!-- form -->
+

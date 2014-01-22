@@ -8,7 +8,6 @@
 	$this->Html->script('automatic/jquery.montage', array('inline' => false));
 	echo $this->Html->script('masonry.pkgd');
 	echo $this->Html->script('imagesloaded');
-	echo $this->Html->script('jquery.lazyload');
 	$this->Html->script('//ajax.microsoft.com/ajax/jquery.templates/beta1/jquery.tmpl.min.js', array('inline' => false));
 ?>
 
@@ -17,7 +16,7 @@
 	 <?php
 		 echo $this->Form->create('Search', array('type' => 'post', 'action'=>'index'));
 		 echo $this->Form->input('Words',array('label' => false, 'name' => 'data[Search][condition]','class' => 'form-control','placeholder' => 'Search here...'));
-		 echo $this->Form->submit('検索',array('class' => 'btn-a btn-search'));
+		 echo $this->Form->submit('検索',array('class' => 'btn-a search'));
 		 echo $this->Form->end();
 	 ?>
 </div> <!-- END search -->
@@ -68,7 +67,7 @@
 </script>
 
 <script id="searchTemplate" type="text/x-jquery-tmpl">
-<div class="cont" style="float:left">
+<div class="cont hidden" style="float:left">
 	<div class="cont-pic">
 		<a href="/blogs/view/${Blog.id}" class="link"></a>
 		{{if UsedBlogImage.length != 0}}

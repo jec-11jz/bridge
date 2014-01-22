@@ -1,5 +1,3 @@
-@import "compass/css3";
-@import "compass";
 @import "../sass/my-mixin.scss";
 @import "fonts.scss";
 
@@ -28,7 +26,6 @@ a:hover {
 
 div.form.first-content-form{
   position: relative;
-  background-color: $col-black2;
   width: 88%;
   margin: 5em auto 0;
   @include border-radius(2px);
@@ -42,7 +39,7 @@ div.form.first-content-form{
     text-align: center;
   }
 
-  form{
+  form, .contents{
     display: block;
     background-color: $col-flat-green1;
     @include border-radius(2px);

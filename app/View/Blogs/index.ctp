@@ -12,7 +12,9 @@
 <div id="diary-index">
 </div> <!-- #diary-index -->
 
+
 <script>
+
 
 	$("window").load(function() {
   		$("#body").removeClass("preload");

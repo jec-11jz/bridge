@@ -1,13 +1,36 @@
 @import "../sass/menu.scss";
-@import "../sass/_constants.scss";
+
+
 
 #template-index{
-  background-color: $col-black1;
-  border-radius: 10px;
-  margin: 30px;
+  text-align: center;
+  // .caption{
+  //   display: inline;
+  //   position: relative;
+  //   overflow: auto;
+  // }
   .cont{
-    display: inline-block;
-    width: 400px;
+    display: block;
+    overflow: hidden;
+    float:left;
+    width: 33%;
+    padding: 1em 2em;
+    .title{
+      font-size: 2em;
+    }
+    ul {
+      overflow: hidden;
+      display: none;
+    }
+    span {
+      cursor: pointer;
+    }
+
+    li {
+      cursor: pointer;
+      list-style-type: none;
+      text-indent: 1em;
+    }
   }
   .fa-trash-o{
     padding: 2px;
@@ -15,38 +38,90 @@
   }
 }
 
-
-#temp-list{
-    dt{
-      display:block;
-      width:400px;
-      height:50px;
-      line-height:50px;
-      text-align:center;
-      border:#666 1px solid;
-      cursor:pointer;
+#template-edit{
+  .form-template {
+    padding: 3em;
+    .cont1{
+      .title{
+        width: 100%;
+      }
     }
-    dd{
-      background:$col-black2;
-      width:400px;
-      height:50px;
-      line-height:50px;
-      text-align:center;
-      border:#666 1px solid;
-      display:none;
+    .cont2{
+      margin: 3em 0 0 0;
+      .btn-blue{
+        &.add{
+          width: 20%;
+        }
+        &.del{
+          width: 10%;
+        }
+      }
     }
-} 
-
-
-ul {
-  display: none;
+    .cont3{
+      margin: 0 auto;
+      padding: 0 0 2em  0;
+      .attr {
+        float:left;
+        margin: 1em 2.3em 1em 0;
+        .form-control{
+          width: 90%;
+          border-right: none;
+          &.default{
+            border: solid #ccc 1px;
+            width: 108.5%;
+          }
+        }
+        .btn-delete-attribute {
+          font-size: 26px;
+          position: absolute;
+          width: 34px;
+          height: 34px;
+          border:solid #cccccc 1px;
+          border-left: none;
+          background-color: $col-danger;
+          color: white;
+          @include btn-fade;
+          &:hover{
+            background-color: $col-danger-hover;
+          }
+        }
+      }
+    }
+  }
+  
+  
+  
+  .submit {
+    text-align: right;
+  }
+  .btn-register {
+    margin: 1.875em 0;
+  }
+  
 }
 
-span {
-  cursor: pointer;
-}
+#add-attributes {
+    overflow:auto;
+  }
+  #input-attribute {
+    overflow:auto;
+  }
 
-li {
-  cursor: pointer;
+.box-flex{
+  .button-full{
+    @include box-flex(3);
+    height: 8em;
+    .btn-black{
+      padding: 3.2em 9.9em;
+      border: none;
+      width:100%;
+      height:100%;
+      &.left{
+        border-right: solid $col-black2 1px;
+      }
+      &.right{
+        border-left: solid $col-black2 1px;
+      }
+    }
+  }
 }
-

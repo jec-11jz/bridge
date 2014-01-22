@@ -124,7 +124,7 @@ $(function(){
 			</div><!-- /.modal-body -->
 			<div class="modal-footer">
 				
-				<?php echo $this->Form->submit('Login', array('class' => 'btn-b btn-size-m')); ?>
+				<?php echo $this->Form->submit('Login', array('class' => 'btn-black btn-size-m')); ?>
 
 				<!-- <a href="#">パスワードを忘れた方はこちら</a> -->
 			</div>

@@ -28,28 +28,27 @@ body, h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
   src: url("../../fonts/mplus/mplus-1p-thin.ttf"); }
 
 @font-face {}
-/* line 7, ../sass/all.scss */
+/* line 5, ../sass/all.scss */
 body {
   background-color: #E5E5DE;
   color: #3f3f3f; }
 
-/* line 12, ../sass/all.scss */
+/* line 10, ../sass/all.scss */
 #contents {
   margin-top: 40px; }
 
-/* line 16, ../sass/all.scss */
+/* line 14, ../sass/all.scss */
 .nav-brand > img {
   width: 78px;
   height: 39px; }
 
-/* line 22, ../sass/all.scss */
+/* line 20, ../sass/all.scss */
 a:hover {
   color: #58be89; }
 
-/* line 29, ../sass/all.scss */
+/* line 27, ../sass/all.scss */
 div.form.first-content-form {
   position: relative;
-  background-color: #c1c1c1;
   width: 88%;
   margin: 5em auto 0;
   -webkit-border-radius: 2px;
@@ -57,16 +56,16 @@ div.form.first-content-form {
   -ms-border-radius: 2px;
   -o-border-radius: 2px;
   border-radius: 2px; }
-  /* line 36, ../sass/all.scss */
+  /* line 33, ../sass/all.scss */
   div.form.first-content-form label, div.form.first-content-form h1 {
     color: white; }
-  /* line 39, ../sass/all.scss */
+  /* line 36, ../sass/all.scss */
   div.form.first-content-form .form-headder {
     padding: 1em 0;
     background-color: #58be89;
     text-align: center; }
-  /* line 45, ../sass/all.scss */
-  div.form.first-content-form form {
+  /* line 42, ../sass/all.scss */
+  div.form.first-content-form form, div.form.first-content-form .contents {
     display: block;
     background-color: #ccdfcc;
     -webkit-border-radius: 2px;
@@ -74,10 +73,10 @@ div.form.first-content-form {
     -ms-border-radius: 2px;
     -o-border-radius: 2px;
     border-radius: 2px; }
-    /* line 49, ../sass/all.scss */
-    div.form.first-content-form form input, div.form.first-content-form form .tagbox {
+    /* line 46, ../sass/all.scss */
+    div.form.first-content-form form input, div.form.first-content-form form .tagbox, div.form.first-content-form .contents input, div.form.first-content-form .contents .tagbox {
       margin: 0 auto; }
-  /* line 54, ../sass/all.scss */
+  /* line 51, ../sass/all.scss */
   div.form.first-content-form .form-footer {
     background-color: #58be89;
     left: 0;
@@ -86,41 +85,215 @@ div.form.first-content-form {
     width: 100%;
     text-align: right; }
 
-/* line 3, ../sass/menu.scss */
+/* autocomplete style */
+/* line 4, ../sass/tag/tags.scss */
+.autocomplete {
+  position: absolute;
+  padding-top: 5px;
+  z-index: 1000; }
+
+/* line 9, ../sass/tag/tags.scss */
+.autocomplete * {
+  padding: 0;
+  margin: 0; }
+
+/* line 13, ../sass/tag/tags.scss */
+.autocomplete ul:before {
+  position: absolute;
+  top: -5px;
+  left: 10px;
+  content: "";
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-bottom: 5px solid #222; }
+
+/* line 22, ../sass/tag/tags.scss */
+.autocomplete ul {
+  position: relative;
+  padding: 4px;
+  background: #222;
+  color: #fff;
+  min-width: 150px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.1) 0px 3px 5px;
+  -moz-box-shadow: rgba(0, 0, 0, 0.1) 0px 3px 5px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 3px 5px; }
+
+/* line 35, ../sass/tag/tags.scss */
+.autocomplete li {
+  list-style: none;
+  text-align: left;
+  padding: 4px 50px 4px 10px;
+  cursor: pointer;
+  margin-bottom: 1px;
+  background: #333; }
+
+/* line 43, ../sass/tag/tags.scss */
+.autocomplete li:last-child {
+  border-bottom: none;
+  margin-bottom: 0; }
+
+/* line 48, ../sass/tag/tags.scss */
+.autocomplete li.selected,
+.autocomplete li.over {
+  background: red;
+  color: #fff; }
+
+/* tagbox styles */
+/* line 55, ../sass/tag/tags.scss */
+.tagbox {
+  position: relative;
+  overflow: hidden;
+  background: #f9f9f9;
+  border: 1px solid #ddd; }
+
+/* line 61, ../sass/tag/tags.scss */
+.tagbox * {
+  margin: 0;
+  padding: 0; }
+
+/* line 65, ../sass/tag/tags.scss */
+.tagbox.focus {
+  outline: 0;
+  border-color: #659ec9 #70aedd #a8cfec;
+  -webkit-box-shadow: black 0px 0px 0px 0px;
+  -moz-box-shadow: black 0px 0px 0px 0px;
+  box-shadow: black 0px 0px 0px 0px; }
+
+/* line 69, ../sass/tag/tags.scss */
+.tagbox ul {
+  overflow: hidden; }
+
+/* line 72, ../sass/tag/tags.scss */
+.tagbox li {
+  position: relative;
+  list-style: none;
+  float: left;
+  cursor: pointer;
+  margin: 0px; }
+
+/* line 79, ../sass/tag/tags.scss */
+.tagbox li.new input {
+  font-family: Arial, sans-serif;
+  border: none;
+  display: block;
+  height: 20px;
+  line-height: 20px;
+  font-size: 12px;
+  background: none; }
+
+/* line 88, ../sass/tag/tags.scss */
+.tagbox li.new input:focus {
+  outline: none; }
+
+/* line 91, ../sass/tag/tags.scss */
+.tagbox li .tag {
+  position: relative;
+  display: block;
+  background: #222;
+  color: #fff;
+  border-radius: 20px;
+  height: 20px;
+  line-height: 20px;
+  font-size-adjust: 100%;
+  font-size: 12px;
+  padding: 0 30px 0 12px;
+  vertical-align: middle; }
+
+/* line 104, ../sass/tag/tags.scss */
+.tagbox li .delete {
+  position: absolute;
+  font-family: Arial, sans-serif;
+  right: 7px;
+  top: 4px;
+  color: #fff;
+  z-index: 100;
+  cursor: pointer;
+  color: #222;
+  background: white url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAMAAACeL25MAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAAZQTFRF////QkJCfEGH6wAAABRJREFUeNpiYGRgACEgBhMgBBBgAABkAAl7vFkJAAAAAElFTkSuQmCC) no-repeat center center;
+  width: 12px;
+  text-indent: -6000px;
+  font-size: 11px;
+  line-height: 12px;
+  height: 12px;
+  text-align: center;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  border-radius: 20px; }
+
+/* line 124, ../sass/tag/tags.scss */
+.tagbox .selected .tag {
+  background: red; }
+
+/* line 3, ../sass/tag/tags_custom.scss */
+.tagbox {
+  -webkit-transition: 0.2s;
+  -o-transition: 0.2s;
+  transition: 0.2s;
+  display: inline-block; }
+  /* line 6, ../sass/tag/tags_custom.scss */
+  .tagbox:focus {
+    border-color: #659ec9 #70aedd #a8cfec;
+    -webkit-box-shadow: black 0px 0px 0px 0px;
+    -moz-box-shadow: black 0px 0px 0px 0px;
+    box-shadow: black 0px 0px 0px 0px; }
+  /* line 10, ../sass/tag/tags_custom.scss */
+  .tagbox li .tag {
+    background-color: #23adc9; }
+  /* line 15, ../sass/tag/tags_custom.scss */
+  .tagbox .selected .tag {
+    background-color: #f06260; }
+
+/* line 23, ../sass/tag/tags_custom.scss */
+.autocomplete ul {
+  background-color: #1e94ac; }
+  /* line 26, ../sass/tag/tags_custom.scss */
+  .autocomplete ul li {
+    background-color: #23adc9; }
+    /* line 28, ../sass/tag/tags_custom.scss */
+    .autocomplete ul li:hover {
+      background-color: #33bfdb; }
+    /* line 31, ../sass/tag/tags_custom.scss */
+    .autocomplete ul li.over, .autocomplete ul li.selected {
+      background-color: #33bfdb; }
+
+/* line 4, ../sass/menu.scss */
 body {
   line-height: 20px;
   z-index: 1; }
 
-/* line 8, ../sass/menu.scss */
+/* line 9, ../sass/menu.scss */
 p {
-  margin: 0 10px 10px; }
+  margin: 0.3em 0.6em; }
 
-/* line 10, ../sass/menu.scss */
+/* line 11, ../sass/menu.scss */
 a {
   color: #333333; }
 
-/* line 16, ../sass/menu.scss */
+/* line 17, ../sass/menu.scss */
 ul #menu {
   text-align: left; }
-/* line 19, ../sass/menu.scss */
+/* line 20, ../sass/menu.scss */
 ul #right {
   float: right; }
 
-/* line 25, ../sass/menu.scss */
+/* line 26, ../sass/menu.scss */
 div #singModal, div #loginModal {
   z-index: 2; }
-/* line 28, ../sass/menu.scss */
+/* line 29, ../sass/menu.scss */
 div #navi {
   margin: -30px 0px 0px 0px; }
 
-/* line 33, ../sass/menu.scss */
+/* line 34, ../sass/menu.scss */
 .container {
   min-height: 100%; }
 
-/* line 37, ../sass/menu.scss */
+/* line 38, ../sass/menu.scss */
 div.modal-content {
   border: 0px; }
-  /* line 39, ../sass/menu.scss */
+  /* line 40, ../sass/menu.scss */
   div.modal-content .modal-header {
     padding: 10px 20px;
     -webkit-border-radius: 5px 5px 0 0;
@@ -128,33 +301,33 @@ div.modal-content {
     -ms-border-radius: 5px 5px 0 0;
     -o-border-radius: 5px 5px 0 0;
     border-radius: 5px 5px 0 0; }
-  /* line 43, ../sass/menu.scss */
+  /* line 44, ../sass/menu.scss */
   div.modal-content .modal-body {
     padding: 20px 20px 0px 20px; }
-    /* line 45, ../sass/menu.scss */
+    /* line 46, ../sass/menu.scss */
     div.modal-content .modal-body .checkbox {
       margin: -15px 0 0 11px; }
-      /* line 47, ../sass/menu.scss */
+      /* line 48, ../sass/menu.scss */
       div.modal-content .modal-body .checkbox label {
         margin-right: 10px; }
-  /* line 52, ../sass/menu.scss */
+  /* line 53, ../sass/menu.scss */
   div.modal-content .modal-footer {
     padding: 0 20px 15px 20px; }
-    /* line 55, ../sass/menu.scss */
+    /* line 56, ../sass/menu.scss */
     div.modal-content .modal-footer a {
       text-align: right;
       font-size: 11px;
       margin: 5px 5px 0px 0px; }
-      /* line 59, ../sass/menu.scss */
+      /* line 60, ../sass/menu.scss */
       div.modal-content .modal-footer a:hover {
         text-decoration: none; }
-    /* line 63, ../sass/menu.scss */
+    /* line 64, ../sass/menu.scss */
     div.modal-content .modal-footer .submit {
       float: right; }
-      /* line 65, ../sass/menu.scss */
-      div.modal-content .modal-footer .submit .btn-b {
+      /* line 66, ../sass/menu.scss */
+      div.modal-content .modal-footer .submit .btn-black {
         padding: 0.6em 3em; }
 
-/* line 74, ../sass/menu.scss */
+/* line 75, ../sass/menu.scss */
 div.navbar ul.dropdown li {
   text-align: center; }

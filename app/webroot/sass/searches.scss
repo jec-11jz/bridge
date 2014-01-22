@@ -1,31 +1,38 @@
 @import "all.scss";
-@import "searches-effects.scss";
-@import "compass/reset";
 
 body{
-  @include back-x;
   h1{
     margin: 10px;
     background-color: white;
   }
 }
-.form-control{
-  width: 40%;
-  margin:0px 10px 0px 10px;
-  display: inline;
-  float: left;
-}
-input.btn-a.btn-search{
+
+
+.btn-a.search{
   padding: 6px 17px;
   margin: 1px;
 }
 
+#search{
+  margin: 0 auto;
+  text-align: center;
+  .input, .submit{
+    display: inline
+  }
+  .form-control{
+    width: 40%;
+    margin:0px 10px 0px 10px;
+  }
+  .search{
+  }
+}
+
 div#search-result{
   margin: 0 auto;
+
   .cont{
+    margin: 15px;
     position: relative;
-    background-color: $col-black2;
-    @include btn-fade;
     hr{
       margin: 10px 2px;
     }
