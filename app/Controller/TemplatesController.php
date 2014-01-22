@@ -146,7 +146,7 @@ class TemplatesController extends AppController {
 	public function api_get() {
 		
 		if(!isset($this->request->query['id'])){
-			$this->apiError($this->request->query['id']);
+			$this->apiError('Template is not selected');
 			return;
 		}
 

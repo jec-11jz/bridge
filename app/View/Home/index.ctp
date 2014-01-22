@@ -5,6 +5,7 @@
 	echo $this->Html->script('slicebox/jquery.slicebox');
 	
 	$this->extend('/Common/index');
+	$this->Html->script('//ajax.microsoft.com/ajax/jquery.templates/beta1/jquery.tmpl.min.js', array('inline' => false));
 ?>
 <style>
 	#toppage {
@@ -28,19 +29,27 @@
 		transition-duration: 0.2s;
 		border-radius: 5px;	
 	}
+	#top-image {
+		width: 80%;
+	}
 </style>
 
 <div id="toppage">
-	<div class="top-area">
+	<div id="top-button" class="top-area">
 		<h2>Welecome to Bridge</h2>
 		<button class="top-button new-product">new product</button>
 		<button class="top-button most-popular-product">most popular product</button>
 		<button class="top-button new-diary">new diary</button>
 		<button class="top-button most-popular-diary">most popular diary</button>
+	</div>
+	<div id="error"></div>
+	<div id="top-image" class="top-area">
+		<ul id="sb-slider" class="sb-slider"></ul>
+	</div>
 		
 		
 
-	<ul id="sb-slider" class="sb-slider">
+	<!-- <ul id="sb-slider" class="sb-slider">
 		<li>
 			<a href="http://www.flickr.com/photos/strupler/2969141180" target="_blank">
 				<img src="/img/slicebox/1.jpg" alt="image1"/>
@@ -66,22 +75,6 @@
 			</div>
 		</li>
 		<li>
-			<a href="http://www.flickr.com/photos/strupler/2968122059" target="_blank">
-				<img src="/img/slicebox/4.jpg" alt="image1"/>
-			</a>
-			<div class="sb-description">
-				<h3>Affectionate Decision Maker</h3>
-			</div>
-		</li>
-		<li>
-			<a href="http://www.flickr.com/photos/strupler/2969119944" target="_blank">
-				<img src="/img/slicebox/5.jpg" alt="image1"/>
-			</a>
-			<div class="sb-description">
-				<h3>Faithful Investor</h3>
-			</div>
-		</li>
-		<li>
 			<a href="http://www.flickr.com/photos/strupler/2968126177" target="_blank">	
 				<img src="/img/slicebox/6.jpg" alt="image2"/>
 			</a>
@@ -89,15 +82,7 @@
 				<h3>Groundbreaking Artist</h3>
 			</div>
 		</li>
-		<li>
-			<a href="http://www.flickr.com/photos/strupler/2968945158" target="_blank">
-				<img src="/img/slicebox/7.jpg" alt="image1"/>
-			</a>
-			<div class="sb-description">
-				<h3>Selfless Philantropist</h3>
-			</div>
-		</li>
-	</ul>
+	</ul> -->
 	
 	<div id="shadow" class="shadow"></div>
 	<div id="nav-arrows" class="nav-arrows">
@@ -107,41 +92,73 @@
 </div><!-- toppage -->
 <script type="text/javascript">
 	$(document).ready( function(){
+
+
 		//create slicebox
-		
-		//slicebox
-		var Page = (function() {
-			var $navArrows = $('#nav-arrows').hide(),
-				$shadow = $('#shadow').hide(),
-				slicebox = $('#sb-slider').slicebox({
-					onReady: function() {
-						$navArrows.show();
-						$shadow.show();
-					},
-					orientation: 'r',
-					cuboidsRandom: true,
-					disperseFactor: 30,
-					autoplay: true
-				}),
-				init = function() {
-					initEvents();
-				},
-				initEvents = function() {
-					// add navigation events
-					$navArrows.children(':first').on('click', function() {
-						slicebox.next();
-						return false;
-					});
-					$navArrows.children(':last').on('click', function() {
-						slicebox.previous();
-						return false;
-					});
-				};
-			return {
-				init: init
-			};
-		})();
-		Page.init();
+		$.ajax({
+			type: 'GET',
+			url: '/api/home/get_toppage_contents.json',
+			success: function(data){
+				contents = $('#toppage-contents').tmpl(data['response']['newProduct']);
+				$('#sb-slider').append(contents);
+				//slicebox
+				Page = (function() {
+					var $navArrows = $('#nav-arrows').hide(),
+						$shadow = $('#shadow').hide(),
+						slicebox = $('#sb-slider').slicebox({
+							onReady: function() {
+								$navArrows.show();
+								$shadow.show();
+							},
+							orientation: 'r',
+							cuboidsRandom: true,
+							disperseFactor: 30,
+							autoplay: true
+						}),
+						init = function() {
+							initEvents();
+						},
+						initEvents = function() {
+							// add navigation events
+							$navArrows.children(':first').on('click', function() {
+								slicebox.next();
+								return false;
+							});
+							$navArrows.children(':last').on('click', function() {
+								slicebox.previous();
+								return false;
+							});
+						};
+					return {
+						init: init
+					};
+				})();
+				Page.init();
+			},
+			error: function(xhr, xhrStatus){
+				error = $('#error-message').tmpl(xhr['responseJSON']['error']);
+				$('#error').append(error);
+				$('body,html').animate({
+			        scrollTop: 0
+			    }, 100);
+			    return false;
+			}
+		});
 	});
+</script>
+<script id="toppage-contents" type="text/x-jquery-tmpl">
+	<li class="new-product">
+		<a href="http://www.flickr.com/photos/strupler/2969141180" target="_blank">
+			<img src="${Product.image_url}" alt="image1"/>
+		</a>
+		<div class="sb-description">
+			<h3>${Product.name}</h3>
+		</div>
+	</li>
+</script>
+<script id="error-message" type="text/x-jquery-tmpl">
+	<div class="div-error">
+		<h3 class="error">*${message}</h3>	
+	</div>
 </script>
 
