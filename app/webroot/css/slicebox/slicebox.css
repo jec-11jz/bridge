@@ -1,3 +1,4 @@
+/* Slicebox Style */
 .sb-slider {
 	margin: 10px auto;
 	position: relative;
@@ -5,7 +6,10 @@
 	width: 100%;
 	list-style-type: none;
 	padding: 0;
+	background: #474847;
+	color: #FFF;
 }
+
 .sb-slider li {
 	margin: 0;
 	padding: 0;
@@ -23,6 +27,8 @@
 .sb-slider img {
 	max-width: 100%;
 	display: block;
+	width: 100%;
+	color: #fff;
 }
 
 .sb-description {
@@ -33,8 +39,8 @@
 	z-index: 1000;
 	position: absolute;
 	background: #CBBFAE;
-	background: rgba(190,176,155, 0.4);
-	border-left: 4px solid rgba(255,255,255,0.7);
+	background: rgba(190,176,155, 0.5);
+	/*border-left: 4px solid rgba(255,255,255,0.7);*/
 	-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
 	filter: alpha(opacity=0);	
 	opacity: 0;
@@ -71,14 +77,17 @@
 	-o-transform-style: preserve-3d;
 	-ms-transform-style: preserve-3d;
 	transform-style: preserve-3d;
-
+	
 	-webkit-backface-visibility : hidden;
 	-moz-backface-visibility : hidden;
 	-o-backface-visibility : hidden;
 	-ms-backface-visibility : hidden;
 	backface-visibility : hidden;
+	
 }
-
+.nav-arrows{
+	text-align:center;
+}
 .sb-side {
 	margin: 0;
 	display: block;

@@ -2,18 +2,18 @@
 
 class HomeController extends AppController {
 	public $components = array('RequestHandler');
-	public $uses = array('Product', 'Blog');
+	public $uses = array('Product', 'Blog', 'UsedBlogImage');
 	public function beforeFilter()
     {
     	//親クラス（AppController）読み込み
         parent::beforeFilter();
 		//permitted access before login
-        $this->Auth->allow('index');
+        $this->Auth->allow('index', 'api_get_toppage_contents');
     }
 	
 	public function index()
 	{
-		
+		// show index.ctp
 	}
 	
 	public function api_get_toppage_contents (){

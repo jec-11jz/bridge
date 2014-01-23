@@ -15,11 +15,10 @@ class Blog extends AppModel {
 	
 	public $validate = array(
         'title' => array(
-            'blank' => array(
-				'rule' => 'blank',
+            'notEmpty' => array(
+				'rule' => 'notEmpty',
         		'on' => 'create',
-        		'required' => true,
-        		'message' => 'title_name is empty!'
+        		'message' => 'title is empty!'
 			)
         )
 	);
