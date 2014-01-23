@@ -67,12 +67,7 @@ div.form.first-content-form {
   /* line 42, ../sass/all.scss */
   div.form.first-content-form form, div.form.first-content-form .contents {
     display: block;
-    background-color: #ccdfcc;
-    -webkit-border-radius: 2px;
-    -moz-border-radius: 2px;
-    -ms-border-radius: 2px;
-    -o-border-radius: 2px;
-    border-radius: 2px; }
+    background-color: #ccdfcc; }
     /* line 46, ../sass/all.scss */
     div.form.first-content-form form input, div.form.first-content-form form .tagbox, div.form.first-content-form .contents input, div.form.first-content-form .contents .tagbox {
       margin: 0 auto; }

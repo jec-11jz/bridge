@@ -1,5 +1,4 @@
 <?php
-	echo $this->Html->css('tag/tags');
 	
 	echo $this->Html->script('tag/tags');
 	

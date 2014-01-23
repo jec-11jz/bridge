@@ -67,12 +67,7 @@ div.form.first-content-form {
   /* line 42, ../sass/all.scss */
   div.form.first-content-form form, div.form.first-content-form .contents {
     display: block;
-    background-color: #ccdfcc;
-    -webkit-border-radius: 2px;
-    -moz-border-radius: 2px;
-    -ms-border-radius: 2px;
-    -o-border-radius: 2px;
-    border-radius: 2px; }
+    background-color: #ccdfcc; }
     /* line 46, ../sass/all.scss */
     div.form.first-content-form form input, div.form.first-content-form form .tagbox, div.form.first-content-form .contents input, div.form.first-content-form .contents .tagbox {
       margin: 0 auto; }
@@ -227,35 +222,43 @@ div.form.first-content-form {
 .tagbox .selected .tag {
   background: red; }
 
-/* line 3, ../sass/tag/tags_custom.scss */
+/* line 4, ../sass/tag/tags_custom.scss */
 .tagbox {
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  -ms-border-radius: 20px;
+  -o-border-radius: 20px;
+  border-radius: 20px;
   -webkit-transition: 0.2s;
   -o-transition: 0.2s;
   transition: 0.2s;
   display: inline-block; }
-  /* line 6, ../sass/tag/tags_custom.scss */
+  /* line 7, ../sass/tag/tags_custom.scss */
   .tagbox:focus {
     border-color: #659ec9 #70aedd #a8cfec;
     -webkit-box-shadow: black 0px 0px 0px 0px;
     -moz-box-shadow: black 0px 0px 0px 0px;
     box-shadow: black 0px 0px 0px 0px; }
   /* line 10, ../sass/tag/tags_custom.scss */
-  .tagbox li .tag {
-    background-color: #23adc9; }
-  /* line 15, ../sass/tag/tags_custom.scss */
+  .tagbox li {
+    margin: 0 2px 0 0; }
+    /* line 13, ../sass/tag/tags_custom.scss */
+    .tagbox li .tag {
+      background-color: #23adc9; }
+  /* line 18, ../sass/tag/tags_custom.scss */
   .tagbox .selected .tag {
     background-color: #f06260; }
 
-/* line 23, ../sass/tag/tags_custom.scss */
+/* line 26, ../sass/tag/tags_custom.scss */
 .autocomplete ul {
   background-color: #1e94ac; }
-  /* line 26, ../sass/tag/tags_custom.scss */
+  /* line 29, ../sass/tag/tags_custom.scss */
   .autocomplete ul li {
     background-color: #23adc9; }
-    /* line 28, ../sass/tag/tags_custom.scss */
+    /* line 31, ../sass/tag/tags_custom.scss */
     .autocomplete ul li:hover {
       background-color: #33bfdb; }
-    /* line 31, ../sass/tag/tags_custom.scss */
+    /* line 34, ../sass/tag/tags_custom.scss */
     .autocomplete ul li.over, .autocomplete ul li.selected {
       background-color: #33bfdb; }
 
@@ -332,68 +335,70 @@ div.modal-content {
 div.navbar ul.dropdown li {
   text-align: center; }
 
-/* line 5, ../sass/templates.scss */
-#template-index {
-  text-align: center; }
-  /* line 12, ../sass/templates.scss */
-  #template-index .cont {
-    display: block;
+/* line 12, ../sass/templates.scss */
+#template-index .cont {
+  display: block;
+  overflow: hidden;
+  float: left;
+  width: 33%;
+  padding: 1em 2em;
+  position: relative; }
+  /* line 19, ../sass/templates.scss */
+  #template-index .cont .delete {
+    position: absolute;
+    top: 0;
+    right: 0; }
+  /* line 24, ../sass/templates.scss */
+  #template-index .cont .title {
+    font-size: 2em; }
+  /* line 27, ../sass/templates.scss */
+  #template-index .cont ul {
     overflow: hidden;
-    float: left;
-    width: 33%;
-    padding: 1em 2em; }
-    /* line 18, ../sass/templates.scss */
-    #template-index .cont .title {
-      font-size: 2em; }
-    /* line 21, ../sass/templates.scss */
-    #template-index .cont ul {
-      overflow: hidden;
-      display: none; }
-    /* line 25, ../sass/templates.scss */
-    #template-index .cont span {
-      cursor: pointer; }
-    /* line 29, ../sass/templates.scss */
-    #template-index .cont li {
-      cursor: pointer;
-      list-style-type: none;
-      text-indent: 1em; }
+    display: none; }
+  /* line 31, ../sass/templates.scss */
+  #template-index .cont span {
+    cursor: pointer; }
   /* line 35, ../sass/templates.scss */
-  #template-index .fa-trash-o {
-    padding: 2px;
-    border: solid 1px #646464; }
+  #template-index .cont li {
+    cursor: pointer;
+    list-style-type: none;
+    text-indent: 1em; }
+/* line 41, ../sass/templates.scss */
+#template-index .fa-trash-o {
+  padding: 1em; }
 
-/* line 42, ../sass/templates.scss */
+/* line 47, ../sass/templates.scss */
 #template-edit .form-template {
   padding: 3em; }
-  /* line 45, ../sass/templates.scss */
+  /* line 50, ../sass/templates.scss */
   #template-edit .form-template .cont1 .title {
     width: 100%; }
-  /* line 49, ../sass/templates.scss */
+  /* line 54, ../sass/templates.scss */
   #template-edit .form-template .cont2 {
     margin: 3em 0 0 0; }
-    /* line 52, ../sass/templates.scss */
+    /* line 57, ../sass/templates.scss */
     #template-edit .form-template .cont2 .btn-blue.add {
       width: 20%; }
-    /* line 55, ../sass/templates.scss */
+    /* line 60, ../sass/templates.scss */
     #template-edit .form-template .cont2 .btn-blue.del {
       width: 10%; }
-  /* line 60, ../sass/templates.scss */
+  /* line 65, ../sass/templates.scss */
   #template-edit .form-template .cont3 {
     margin: 0 auto;
     padding: 0 0 2em  0; }
-    /* line 63, ../sass/templates.scss */
+    /* line 68, ../sass/templates.scss */
     #template-edit .form-template .cont3 .attr {
       float: left;
       margin: 1em 2.3em 1em 0; }
-      /* line 66, ../sass/templates.scss */
+      /* line 71, ../sass/templates.scss */
       #template-edit .form-template .cont3 .attr .form-control {
         width: 90%;
         border-right: none; }
-        /* line 69, ../sass/templates.scss */
+        /* line 74, ../sass/templates.scss */
         #template-edit .form-template .cont3 .attr .form-control.default {
           border: solid #ccc 1px;
           width: 108.5%; }
-      /* line 74, ../sass/templates.scss */
+      /* line 79, ../sass/templates.scss */
       #template-edit .form-template .cont3 .attr .btn-delete-attribute {
         font-size: 26px;
         position: absolute;
@@ -407,40 +412,40 @@ div.navbar ul.dropdown li {
         -o-transition: 0.2s;
         transition: 0.2s;
         display: inline-block; }
-        /* line 84, ../sass/templates.scss */
+        /* line 89, ../sass/templates.scss */
         #template-edit .form-template .cont3 .attr .btn-delete-attribute:hover {
           background-color: #c61513; }
-/* line 94, ../sass/templates.scss */
+/* line 99, ../sass/templates.scss */
 #template-edit .submit {
   text-align: right; }
-/* line 97, ../sass/templates.scss */
+/* line 102, ../sass/templates.scss */
 #template-edit .btn-register {
   margin: 1.875em 0; }
 
-/* line 103, ../sass/templates.scss */
+/* line 108, ../sass/templates.scss */
 #add-attributes {
   overflow: auto; }
 
-/* line 106, ../sass/templates.scss */
+/* line 111, ../sass/templates.scss */
 #input-attribute {
   overflow: auto; }
 
-/* line 111, ../sass/templates.scss */
+/* line 116, ../sass/templates.scss */
 .box-flex .button-full {
-  -webkit-box-flex: 3;
-  -moz-box-flex: 3;
-  -ms-box-flex: 3;
-  box-flex: 3;
+  -webkit-box-flex: 4;
+  -moz-box-flex: 4;
+  -ms-box-flex: 4;
+  box-flex: 4;
   height: 8em; }
-  /* line 114, ../sass/templates.scss */
+  /* line 119, ../sass/templates.scss */
   .box-flex .button-full .btn-black {
-    padding: 3.2em 9.9em;
+    padding: 3.2em 6.5em;
     border: none;
     width: 100%;
     height: 100%; }
-    /* line 119, ../sass/templates.scss */
+    /* line 124, ../sass/templates.scss */
     .box-flex .button-full .btn-black.left {
       border-right: solid #c1c1c1 1px; }
-    /* line 122, ../sass/templates.scss */
+    /* line 127, ../sass/templates.scss */
     .box-flex .button-full .btn-black.right {
       border-left: solid #c1c1c1 1px; }

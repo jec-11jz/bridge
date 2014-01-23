@@ -67,12 +67,7 @@ div.form.first-content-form {
   /* line 42, ../sass/all.scss */
   div.form.first-content-form form, div.form.first-content-form .contents {
     display: block;
-    background-color: #ccdfcc;
-    -webkit-border-radius: 2px;
-    -moz-border-radius: 2px;
-    -ms-border-radius: 2px;
-    -o-border-radius: 2px;
-    border-radius: 2px; }
+    background-color: #ccdfcc; }
     /* line 46, ../sass/all.scss */
     div.form.first-content-form form input, div.form.first-content-form form .tagbox, div.form.first-content-form .contents input, div.form.first-content-form .contents .tagbox {
       margin: 0 auto; }
@@ -227,35 +222,43 @@ div.form.first-content-form {
 .tagbox .selected .tag {
   background: red; }
 
-/* line 3, ../sass/tag/tags_custom.scss */
+/* line 4, ../sass/tag/tags_custom.scss */
 .tagbox {
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  -ms-border-radius: 20px;
+  -o-border-radius: 20px;
+  border-radius: 20px;
   -webkit-transition: 0.2s;
   -o-transition: 0.2s;
   transition: 0.2s;
   display: inline-block; }
-  /* line 6, ../sass/tag/tags_custom.scss */
+  /* line 7, ../sass/tag/tags_custom.scss */
   .tagbox:focus {
     border-color: #659ec9 #70aedd #a8cfec;
     -webkit-box-shadow: black 0px 0px 0px 0px;
     -moz-box-shadow: black 0px 0px 0px 0px;
     box-shadow: black 0px 0px 0px 0px; }
   /* line 10, ../sass/tag/tags_custom.scss */
-  .tagbox li .tag {
-    background-color: #23adc9; }
-  /* line 15, ../sass/tag/tags_custom.scss */
+  .tagbox li {
+    margin: 0 2px 0 0; }
+    /* line 13, ../sass/tag/tags_custom.scss */
+    .tagbox li .tag {
+      background-color: #23adc9; }
+  /* line 18, ../sass/tag/tags_custom.scss */
   .tagbox .selected .tag {
     background-color: #f06260; }
 
-/* line 23, ../sass/tag/tags_custom.scss */
+/* line 26, ../sass/tag/tags_custom.scss */
 .autocomplete ul {
   background-color: #1e94ac; }
-  /* line 26, ../sass/tag/tags_custom.scss */
+  /* line 29, ../sass/tag/tags_custom.scss */
   .autocomplete ul li {
     background-color: #23adc9; }
-    /* line 28, ../sass/tag/tags_custom.scss */
+    /* line 31, ../sass/tag/tags_custom.scss */
     .autocomplete ul li:hover {
       background-color: #33bfdb; }
-    /* line 31, ../sass/tag/tags_custom.scss */
+    /* line 34, ../sass/tag/tags_custom.scss */
     .autocomplete ul li.over, .autocomplete ul li.selected {
       background-color: #33bfdb; }
 
@@ -332,31 +335,55 @@ div.modal-content {
 div.navbar ul.dropdown li {
   text-align: center; }
 
-/* line 4, ../sass/products.scss */
-#products .cont1 {
-  margin: 1em; }
-/* line 7, ../sass/products.scss */
+/* line 5, ../sass/products.scss */
+#products .products-index .cont1 {
+  padding: 1em;
+  width: 33%;
+  display: inline-block;
+  position: relative; }
+  /* line 10, ../sass/products.scss */
+  #products .products-index .cont1 .delete {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 1em; }
+    /* line 15, ../sass/products.scss */
+    #products .products-index .cont1 .delete:hover {
+      text-decoration: none; }
+  /* line 19, ../sass/products.scss */
+  #products .products-index .cont1 .link {
+    display: block;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    position: absolute; }
+    /* line 21, ../sass/products.scss */
+    #products .products-index .cont1 .link:hover {
+      background-color: white;
+      opacity: 0.2; }
+/* line 29, ../sass/products.scss */
 #products .btn-green {
   position: absolute;
   height: 100%;
   width: 100%; }
 
-/* line 16, ../sass/products.scss */
+/* line 38, ../sass/products.scss */
 .box-flex .button-full {
-  -webkit-box-flex: 3;
-  -moz-box-flex: 3;
-  -ms-box-flex: 3;
-  box-flex: 3;
+  -webkit-box-flex: 4;
+  -moz-box-flex: 4;
+  -ms-box-flex: 4;
+  box-flex: 4;
   height: 8em; }
-  /* line 19, ../sass/products.scss */
+  /* line 41, ../sass/products.scss */
   .box-flex .button-full .btn-black {
-    padding: 3.2em 9.9em;
+    padding: 3.2em 6.5em;
     border: none;
     width: 100%;
     height: 100%; }
-    /* line 24, ../sass/products.scss */
+    /* line 46, ../sass/products.scss */
     .box-flex .button-full .btn-black.left {
       border-right: solid #c1c1c1 1px; }
-    /* line 27, ../sass/products.scss */
+    /* line 49, ../sass/products.scss */
     .box-flex .button-full .btn-black.right {
       border-left: solid #c1c1c1 1px; }

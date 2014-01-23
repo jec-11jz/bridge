@@ -1,5 +1,4 @@
 <?php
-		echo $this->Html->css('diary');
 		echo $this->Html->css('templates');
 		
 		$this->extend('/Common/index');
@@ -55,7 +54,14 @@ $(function(){
 		</div>
 		<div class="cont3">
 			<fieldset id="add-attributes">
-				<div id="input-attribute"></div>
+				<div id="input-attribute">
+					<div class="attr">
+						<input class="form-control default" id="disabledInput" type="text" placeholder="タイトル" disabled>
+					</div>
+					<div class="attr">
+						<input class="form-control default" id="disabledInput" type="text" placeholder="あらすじ" disabled>
+					</div>
+				</div>
 			</fieldset>
 		</div> <!-- row -->
   		<?php echo $this->Form->submit('登録', array('type' => 'submit', 'class' => 'btn-a btn-register')); ?>	

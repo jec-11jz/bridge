@@ -1,5 +1,4 @@
 <?php
-	echo $this->Html->css('tag/tags_custom');
 	echo $this->Html->css('diary');
 	
 	echo $this->Html->script('ckeditor/ckeditor');

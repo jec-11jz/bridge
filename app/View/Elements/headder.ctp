@@ -29,15 +29,15 @@ $this->Html->script('dropdown/modernizr.custom.79639', array('inline' => false))
 				<li><a href="/blogs/add"><i class="fa fa-pencil-square-o menu"></i>日記作成</a></li>
 				<li><a href="/products/add"><i class="fa fa-film menu"></i>作品登録</a></li>
 				<li><a href="/tags/index"><i class="fa fa-tags menu"></i>タグ編集</a></li>
-				<li><a href="/templates/add"><i class="fa fa-tags menu"></i>テンプレート作成</a></li>
+				<li><a href="/templates/add"><i class="fa fa-list-alt"></i>テンプレ作成</a></li>
 			</ul>
 		</div>
 
 		<div id="dd" class="wrapper-dropdown-5" tabindex="1"><p>View</p>
 			<ul class="dropdown">
 				<li><a href="/blogs/index"><i class="fa fa-file-text-o menu"></i>日記一覧</a></li>
-				<li><a href="/products/index"><i class="fa fa-tags menu"></i>作品一覧</a></li>
-				<li><a href="/templates/index"><i class="fa fa-tags menu"></i>テンプレート一覧</a></li>
+				<li><a href="/products/index"><i class="fa fa-film menu"></i>作品一覧</a></li>
+				<li><a href="/templates/index"><i class="fa fa-list-alt"></i>テンプレ一覧</a></li>
 				<li><a href="/home/gallery">ギャラリー</a></li>
 			</ul>
 		</div>
@@ -45,8 +45,6 @@ $this->Html->script('dropdown/modernizr.custom.79639', array('inline' => false))
 		<div id="dd" class="wrapper-dropdown-5" tabindex="1"><p>Search</p>			
 			<ul class="dropdown">
 				<li><a href="/searches/index"><i class="fa fa-search menu"></i>日記検索</a></li>
-				<li><a href="#"><i class="fa fa-search menu"></i>タグ検索</a></li>
-				<li><a href="#"><i class="fa fa-search menu"></i>作品検索</a></li>
 			</ul>
 		</div>
 		

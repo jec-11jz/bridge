@@ -67,12 +67,7 @@ div.form.first-content-form {
   /* line 42, ../sass/all.scss */
   div.form.first-content-form form, div.form.first-content-form .contents {
     display: block;
-    background-color: #ccdfcc;
-    -webkit-border-radius: 2px;
-    -moz-border-radius: 2px;
-    -ms-border-radius: 2px;
-    -o-border-radius: 2px;
-    border-radius: 2px; }
+    background-color: #ccdfcc; }
     /* line 46, ../sass/all.scss */
     div.form.first-content-form form input, div.form.first-content-form form .tagbox, div.form.first-content-form .contents input, div.form.first-content-form .contents .tagbox {
       margin: 0 auto; }
@@ -227,35 +222,43 @@ div.form.first-content-form {
 .tagbox .selected .tag {
   background: red; }
 
-/* line 3, ../sass/tag/tags_custom.scss */
+/* line 4, ../sass/tag/tags_custom.scss */
 .tagbox {
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  -ms-border-radius: 20px;
+  -o-border-radius: 20px;
+  border-radius: 20px;
   -webkit-transition: 0.2s;
   -o-transition: 0.2s;
   transition: 0.2s;
   display: inline-block; }
-  /* line 6, ../sass/tag/tags_custom.scss */
+  /* line 7, ../sass/tag/tags_custom.scss */
   .tagbox:focus {
     border-color: #659ec9 #70aedd #a8cfec;
     -webkit-box-shadow: black 0px 0px 0px 0px;
     -moz-box-shadow: black 0px 0px 0px 0px;
     box-shadow: black 0px 0px 0px 0px; }
   /* line 10, ../sass/tag/tags_custom.scss */
-  .tagbox li .tag {
-    background-color: #23adc9; }
-  /* line 15, ../sass/tag/tags_custom.scss */
+  .tagbox li {
+    margin: 0 2px 0 0; }
+    /* line 13, ../sass/tag/tags_custom.scss */
+    .tagbox li .tag {
+      background-color: #23adc9; }
+  /* line 18, ../sass/tag/tags_custom.scss */
   .tagbox .selected .tag {
     background-color: #f06260; }
 
-/* line 23, ../sass/tag/tags_custom.scss */
+/* line 26, ../sass/tag/tags_custom.scss */
 .autocomplete ul {
   background-color: #1e94ac; }
-  /* line 26, ../sass/tag/tags_custom.scss */
+  /* line 29, ../sass/tag/tags_custom.scss */
   .autocomplete ul li {
     background-color: #23adc9; }
-    /* line 28, ../sass/tag/tags_custom.scss */
+    /* line 31, ../sass/tag/tags_custom.scss */
     .autocomplete ul li:hover {
       background-color: #33bfdb; }
-    /* line 31, ../sass/tag/tags_custom.scss */
+    /* line 34, ../sass/tag/tags_custom.scss */
     .autocomplete ul li.over, .autocomplete ul li.selected {
       background-color: #33bfdb; }
 
@@ -406,20 +409,17 @@ form#BlogAddForm, form#BlogEditForm {
     /* line 70, ../sass/diary.scss */
     form#BlogAddForm .tagbox ul, form#BlogEditForm .tagbox ul {
       margin: 0.5em; }
-      /* line 72, ../sass/diary.scss */
-      form#BlogAddForm .tagbox ul li, form#BlogEditForm .tagbox ul li {
-        margin: 0 0.1em 0 0; }
-        /* line 74, ../sass/diary.scss */
-        form#BlogAddForm .tagbox ul li.new input, form#BlogEditForm .tagbox ul li.new input {
-          margin: 0; }
-  /* line 81, ../sass/diary.scss */
+      /* line 73, ../sass/diary.scss */
+      form#BlogAddForm .tagbox ul li.new input, form#BlogEditForm .tagbox ul li.new input {
+        margin: 0; }
+  /* line 80, ../sass/diary.scss */
   form#BlogAddForm #ckeditor label, form#BlogEditForm #ckeditor label {
     font-size: 90px; }
-  /* line 85, ../sass/diary.scss */
+  /* line 84, ../sass/diary.scss */
   form#BlogAddForm #cke_ckeditor, form#BlogEditForm #cke_ckeditor {
     margin: 0 auto; }
 
-/* line 91, ../sass/diary.scss */
+/* line 90, ../sass/diary.scss */
 div .container {
   margin: 0;
   padding: 0;
@@ -428,7 +428,7 @@ div .container {
   width: 100%;
   height: auto !important;
   height: 100%; }
-/* line 99, ../sass/diary.scss */
+/* line 98, ../sass/diary.scss */
 div .main {
   position: relative;
   float: left;
@@ -436,16 +436,16 @@ div .main {
   min-width: 600px;
   width: 100%;
   height: 100%; }
-/* line 107, ../sass/diary.scss */
+/* line 106, ../sass/diary.scss */
 div .line-up {
   margin: 0;
   padding: 0;
   margin-top: 50px; }
-/* line 111, ../sass/diary.scss */
+/* line 110, ../sass/diary.scss */
 div .form-group {
   margin: 10px 0 30px 40px; }
 
-/* line 115, ../sass/diary.scss */
+/* line 114, ../sass/diary.scss */
 .side-menu {
   position: absolute;
   float: left;
@@ -454,29 +454,29 @@ div .form-group {
   background-color: #509B49;
   background-color: #4c921f;
   color: #DDDDDD; }
-  /* line 124, ../sass/diary.scss */
+  /* line 123, ../sass/diary.scss */
   .side-menu .menu {
     margin-top: 20px; }
-    /* line 126, ../sass/diary.scss */
+    /* line 125, ../sass/diary.scss */
     .side-menu .menu .icon {
       margin: 0;
       padding: 0;
       width: 20px;
       height: 20px;
       text-align: center; }
-    /* line 133, ../sass/diary.scss */
+    /* line 132, ../sass/diary.scss */
     .side-menu .menu .name {
       margin-left: 10px; }
-  /* line 138, ../sass/diary.scss */
+  /* line 137, ../sass/diary.scss */
   .side-menu li {
     background-color: #60AB59;
     background-color: #60a633;
     list-style-type: none; }
-    /* line 142, ../sass/diary.scss */
+    /* line 141, ../sass/diary.scss */
     .side-menu li:hover {
       background-color: #474B4E;
       background-color: #7ec451; }
-    /* line 146, ../sass/diary.scss */
+    /* line 145, ../sass/diary.scss */
     .side-menu li:active {
       background-color: #80CB79;
       background-color: #74ba47;
@@ -485,10 +485,10 @@ div .form-group {
       border-top: solid 1px #111;
       border-bottom: solid 1px #111;
       */ }
-      /* line 154, ../sass/diary.scss */
+      /* line 153, ../sass/diary.scss */
       .side-menu li:active a {
         color: #fff; }
-    /* line 158, ../sass/diary.scss */
+    /* line 157, ../sass/diary.scss */
     .side-menu li a {
       margin: 0;
       padding: 0;
@@ -499,12 +499,12 @@ div .form-group {
       height: 100%;
       color: #DDDDDD;
       text-decoration: none; }
-  /* line 170, ../sass/diary.scss */
+  /* line 169, ../sass/diary.scss */
   .side-menu ul, .side-menu li {
     margin: 0;
     padding: 0; }
 
-/* line 177, ../sass/diary.scss */
+/* line 176, ../sass/diary.scss */
 .side-profile {
   margin: 0 auto;
   padding-top: 10px;
@@ -514,11 +514,11 @@ div .form-group {
   background-color: #60a633;
   text-align: center; }
 
-/* line 186, ../sass/diary.scss */
+/* line 185, ../sass/diary.scss */
 textarea.blog {
   width: 80%;
   height: 400px; }
-  /* line 189, ../sass/diary.scss */
+  /* line 188, ../sass/diary.scss */
   textarea.blog:hover {
     border: 3px solid #97F95A;
     opacity: 0.6;

@@ -42,7 +42,7 @@ div.form.first-content-form{
   form, .contents{
     display: block;
     background-color: $col-flat-green1;
-    @include border-radius(2px);
+    // @include border-radius(2px);
     input, .tagbox{
       margin: 0 auto;
     }

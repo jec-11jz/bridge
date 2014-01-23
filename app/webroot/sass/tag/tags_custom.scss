@@ -1,12 +1,15 @@
 @import "tags.scss";
+@import "compass";
 
 .tagbox{
-  
+  @include border-radius(20px);
   @include btn-fade;
   &:focus{
     @include input-focus;
   }
   li{
+    
+    margin: 0 2px 0 0;
     .tag {
       background-color: $col-flat-blue1;
     }
