@@ -3,9 +3,10 @@
 	
 	$this->Html->css('searches', null, array('inline' => false));
 	$this->Html->css('automatic/style', null, array('inline' => false));
+	echo $this->Html->css('tag/tags_custom');
 	
-	// $this->Html->script('liffect', array('inline' => false));
 	$this->Html->script('automatic/jquery.montage', array('inline' => false));
+	echo $this->Html->script('tag/tags');
 	echo $this->Html->script('masonry.pkgd');
 	echo $this->Html->script('imagesloaded');
 	$this->Html->script('//ajax.microsoft.com/ajax/jquery.templates/beta1/jquery.tmpl.min.js', array('inline' => false));
@@ -13,21 +14,21 @@
 
 <div id="search">
 	<hr>
-	 <?php
-		 echo $this->Form->create('Search', array('type' => 'post', 'action'=>'index'));
-		 echo $this->Form->input('Words',array('label' => false, 'name' => 'data[Search][condition]','class' => 'form-control','placeholder' => 'Search here...'));
-		 echo $this->Form->submit('検索',array('class' => 'btn-a search'));
-		 echo $this->Form->end();
-	 ?>
+	<form method="get" action="/searches/index">
+		<input name="keywords" id="keywords" class="form-control" placeholder='Search from here...'>
+		<input type="submit" value="Search" class="btn-a search" id="btn-search">
+		<div id="search-custom">
+			Not<input name="not-keywords" id="not-keywords" class="form-control tags" placeholder='Search here...'>
+			And<input name="and-keywords" id="and-keywords" class="form-control tags" placeholder='Search here...'>
+			Or<input name="or-keywords" id="or-keywords" class="form-control tags" placeholder='Search here...'>
+		</div>
+	</form>
 </div> <!-- END search -->
-
 <hr>
-	
-<div id="search-result">
-</div>
-
+<div id="search-result"></div>
 
 <script>
+$(function() {
 	$(window).on('scroll', function() {
 		var scrollHeight = $(document).height();
 		var scrollPosition = $(window).height() + $(window).scrollTop();
@@ -41,7 +42,7 @@
 	function loadBlogs() {
 		$.ajax({
 			type: 'GET',
-			url: 'http://bridge.com/api/blogs.json?count='+ count +'&page='+ page,
+			url: '/api/blogs.json?count='+ count +'&page='+ page,
 			success: function(data, dataType) {
 				blogs = $('#searchTemplate').tmpl(data['response']['blogs']);
 				$('#search-result').append(blogs);
@@ -53,19 +54,50 @@
 			}
 		});
 	}
-	$(function(){
-		var diary = $('#search-result');
-		diary.masonry({
-	    	itemSelector: '.cont',
-	     	isAnimated: true,
-			isFitWidth: true,
-			columnWidth: 1
+	
+	$("#btn-search").click(function() {
+		var keywords = $('#keywords').val();
+		var not = $('#not-keywords').val();
+		console.log(keywords);
+		$.ajax({
+			type: 'GET',
+			url: '/api/searches/search.json',
+			data: {'keywords': keywords, 'not': not},
+			success: function(data, dataType) {
+				console.log(data);
+			}
 		});
-		loadBlogs();
-		// setTimeout("loadBlogs();", 2000);
 	});
-</script>
 
+	var diary = $('#search-result');
+	diary.masonry({
+    	itemSelector: '.cont',
+     	isAnimated: true,
+		isFitWidth: true,
+		columnWidth: 1
+	});
+	loadBlogs();
+	// setTimeout("loadBlogs();", 2000);
+	
+	// get tags from DB
+	var tag = [];
+	$.ajax({
+		type: 'GET',
+		url: '/api/tags/get_most_used.json',
+		success: function(tags){
+			console.log('success');
+			//tagbox
+			$('.tags').tagbox({
+			    url: tags.response,
+    			lowercase: true
+  			});
+		},
+		error: function(tags){
+			console.log('error');
+		}
+	});
+});
+</script>
 <script id="searchTemplate" type="text/x-jquery-tmpl">
 <div class="cont hidden" style="float:left">
 	<div class="cont-pic">

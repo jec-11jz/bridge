@@ -20,7 +20,7 @@ class HomeController extends AppController {
 		$toppage_contents = array();
 		// new product
 		$toppage_contents['newProduct'] = $this->Product->find('all',array(
-				'order'=>array('Product.created'),
+				'order'=>array('Product.created DESC'),
 				'limit' => 5,
 		));
 		// most popular product
@@ -30,7 +30,7 @@ class HomeController extends AppController {
 		));
 		// new blog
 		$toppage_contents['newBlog'] = $this->Blog->find('all',array(
-				'order'=>array('Blog.created'),
+				'order'=>array('Blog.created DESC'),
 				'limit' => 5,
 		));
 		// most popular product
