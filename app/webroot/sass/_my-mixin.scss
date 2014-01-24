@@ -53,6 +53,9 @@
 @mixin back-all{
   background-image: url("../img/background/005.jpg");
 }
+@mixin back-bg{
+  background-image: url("../img/background/bg.jpg");
+}
 @mixin back-y{
   background-image: url("../img/background-grays.jpg");
   background-size: 20%;

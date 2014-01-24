@@ -67,12 +67,7 @@ div.form.first-content-form {
   /* line 42, ../sass/all.scss */
   div.form.first-content-form form, div.form.first-content-form .contents {
     display: block;
-    background-color: #ccdfcc;
-    -webkit-border-radius: 2px;
-    -moz-border-radius: 2px;
-    -ms-border-radius: 2px;
-    -o-border-radius: 2px;
-    border-radius: 2px; }
+    background-color: #ccdfcc; }
     /* line 46, ../sass/all.scss */
     div.form.first-content-form form input, div.form.first-content-form form .tagbox, div.form.first-content-form .contents input, div.form.first-content-form .contents .tagbox {
       margin: 0 auto; }
@@ -227,35 +222,46 @@ div.form.first-content-form {
 .tagbox .selected .tag {
   background: red; }
 
-/* line 3, ../sass/tag/tags_custom.scss */
+/* line 4, ../sass/tag/tags_custom.scss */
 .tagbox {
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  -ms-border-radius: 20px;
+  -o-border-radius: 20px;
+  border-radius: 20px;
   -webkit-transition: 0.2s;
   -o-transition: 0.2s;
   transition: 0.2s;
   display: inline-block; }
-  /* line 6, ../sass/tag/tags_custom.scss */
+  /* line 7, ../sass/tag/tags_custom.scss */
   .tagbox:focus {
     border-color: #659ec9 #70aedd #a8cfec;
     -webkit-box-shadow: black 0px 0px 0px 0px;
     -moz-box-shadow: black 0px 0px 0px 0px;
     box-shadow: black 0px 0px 0px 0px; }
   /* line 10, ../sass/tag/tags_custom.scss */
-  .tagbox li .tag {
-    background-color: #23adc9; }
-  /* line 15, ../sass/tag/tags_custom.scss */
+  .tagbox ul {
+    margin: 0.5em 1em; }
+  /* line 13, ../sass/tag/tags_custom.scss */
+  .tagbox li {
+    margin: 0 2px 0 0; }
+    /* line 16, ../sass/tag/tags_custom.scss */
+    .tagbox li .tag {
+      background-color: #23adc9; }
+  /* line 21, ../sass/tag/tags_custom.scss */
   .tagbox .selected .tag {
     background-color: #f06260; }
 
-/* line 23, ../sass/tag/tags_custom.scss */
+/* line 29, ../sass/tag/tags_custom.scss */
 .autocomplete ul {
   background-color: #1e94ac; }
-  /* line 26, ../sass/tag/tags_custom.scss */
+  /* line 32, ../sass/tag/tags_custom.scss */
   .autocomplete ul li {
     background-color: #23adc9; }
-    /* line 28, ../sass/tag/tags_custom.scss */
+    /* line 34, ../sass/tag/tags_custom.scss */
     .autocomplete ul li:hover {
       background-color: #33bfdb; }
-    /* line 31, ../sass/tag/tags_custom.scss */
+    /* line 37, ../sass/tag/tags_custom.scss */
     .autocomplete ul li.over, .autocomplete ul li.selected {
       background-color: #33bfdb; }
 
@@ -332,31 +338,110 @@ div.modal-content {
 div.navbar ul.dropdown li {
   text-align: center; }
 
-/* line 4, ../sass/products.scss */
-#products .cont1 {
-  margin: 1em; }
-/* line 7, ../sass/products.scss */
+/* line 5, ../sass/products.scss */
+#products .products-index .cont1 {
+  padding: 1em;
+  width: 33%;
+  display: inline-block;
+  position: relative; }
+  /* line 10, ../sass/products.scss */
+  #products .products-index .cont1 .delete {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 1em; }
+    /* line 15, ../sass/products.scss */
+    #products .products-index .cont1 .delete:hover {
+      text-decoration: none; }
+  /* line 19, ../sass/products.scss */
+  #products .products-index .cont1 .link {
+    display: block;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    position: absolute; }
+    /* line 21, ../sass/products.scss */
+    #products .products-index .cont1 .link:hover {
+      background-color: white;
+      opacity: 0.2; }
+/* line 29, ../sass/products.scss */
 #products .btn-green {
   position: absolute;
   height: 100%;
   width: 100%; }
 
-/* line 16, ../sass/products.scss */
+/* line 37, ../sass/products.scss */
+#formRegisterProduct form {
+  overflow: hidden; }
+/* line 40, ../sass/products.scss */
+#formRegisterProduct .error {
+  color: #f06260; }
+/* line 43, ../sass/products.scss */
+#formRegisterProduct .content {
+  padding: 1em; }
+/* line 47, ../sass/products.scss */
+#formRegisterProduct div.title .tagbox {
+  width: 95%; }
+/* line 51, ../sass/products.scss */
+#formRegisterProduct .product-info {
+  line-height: 1.7em;
+  display: block; }
+/* line 56, ../sass/products.scss */
+#formRegisterProduct input.right {
+  float: right; }
+/* line 60, ../sass/products.scss */
+#formRegisterProduct #product-data .add {
+  width: 20%; }
+/* line 63, ../sass/products.scss */
+#formRegisterProduct #product-data .del {
+  width: 10%; }
+/* line 68, ../sass/products.scss */
+#formRegisterProduct .attr {
+  float: left;
+  margin: 1em 2.3em 1em 0; }
+  /* line 72, ../sass/products.scss */
+  #formRegisterProduct .attr .form-control {
+    width: 90%;
+    border-right: none; }
+    /* line 75, ../sass/products.scss */
+    #formRegisterProduct .attr .form-control.default {
+      border: solid #ccc 1px;
+      width: 108.5%; }
+  /* line 80, ../sass/products.scss */
+  #formRegisterProduct .attr .btn-delete-attribute {
+    font-size: 26px;
+    position: absolute;
+    width: 34px;
+    height: 34px;
+    border: solid #cccccc 1px;
+    border-left: none;
+    background-color: #f06260;
+    color: white;
+    -webkit-transition: 0.2s;
+    -o-transition: 0.2s;
+    transition: 0.2s;
+    display: inline-block; }
+    /* line 90, ../sass/products.scss */
+    #formRegisterProduct .attr .btn-delete-attribute:hover {
+      background-color: #c61513; }
+
+/* line 99, ../sass/products.scss */
 .box-flex .button-full {
-  -webkit-box-flex: 3;
-  -moz-box-flex: 3;
-  -ms-box-flex: 3;
-  box-flex: 3;
+  -webkit-box-flex: 4;
+  -moz-box-flex: 4;
+  -ms-box-flex: 4;
+  box-flex: 4;
   height: 8em; }
-  /* line 19, ../sass/products.scss */
+  /* line 102, ../sass/products.scss */
   .box-flex .button-full .btn-black {
-    padding: 3.2em 9.9em;
+    padding: 3.2em 6.5em;
     border: none;
     width: 100%;
     height: 100%; }
-    /* line 24, ../sass/products.scss */
+    /* line 107, ../sass/products.scss */
     .box-flex .button-full .btn-black.left {
       border-right: solid #c1c1c1 1px; }
-    /* line 27, ../sass/products.scss */
+    /* line 110, ../sass/products.scss */
     .box-flex .button-full .btn-black.right {
       border-left: solid #c1c1c1 1px; }

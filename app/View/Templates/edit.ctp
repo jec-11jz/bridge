@@ -1,7 +1,6 @@
 <?php
 		$this->extend('/Common/index');
 
-		echo $this->Html->css('diary');
 		echo $this->Html->css('templates');
 		
 ?>

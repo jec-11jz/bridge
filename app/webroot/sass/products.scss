@@ -1,8 +1,30 @@
 @import "../sass/menu.scss";
 
 #products{
-  .cont1{
-    margin: 1em;
+  .products-index{
+    .cont1{
+      padding: 1em;
+      width:33%;
+      display: inline-block;
+      position: relative;
+      .delete{
+        position: absolute;
+        top: 0;
+        right: 0;
+        padding: 1em;
+        &:hover{
+          text-decoration: none;
+        }
+      }
+      .link{
+        @include link;
+        &:hover{
+          background-color: white;
+          opacity: 0.2;
+        }
+      }
+
+    }
   }
   .btn-green{
     position: absolute;
@@ -11,13 +33,74 @@
   }
 }
 
-  
+#formRegisterProduct{
+  form{
+    overflow: hidden;
+  }
+  .error{
+    color: $col-danger;
+  }
+  .content{
+    padding: 1em;
+  }
+  div.title{
+    .tagbox{
+      width: 95%;
+    }
+  }
+  .product-info{
+    line-height: 1.7em;
+    display: block;
+  }
+
+  input.right{
+    float: right;
+  }
+  #product-data{
+    .add{
+      width:20%;
+    }
+    .del{
+      width:10%;
+    }
+  }
+
+  .attr {
+    float:left;
+    margin: 1em 2.3em 1em 0;
+
+    .form-control{
+      width: 90%;
+      border-right: none;
+      &.default{
+        border: solid #ccc 1px;
+        width: 108.5%;
+      }
+    }
+    .btn-delete-attribute {
+      font-size: 26px;
+      position: absolute;
+      width: 34px;
+      height: 34px;
+      border:solid #cccccc 1px;
+      border-left: none;
+      background-color: $col-danger;
+      color: white;
+      @include btn-fade;
+      &:hover{
+        background-color: $col-danger-hover;
+      }
+    }
+  }
+}
+
+
 .box-flex{
   .button-full{
-    @include box-flex(3);
+    @include box-flex(4);
     height: 8em;
     .btn-black{
-      padding: 3.2em 9.9em;
+      padding: 3.2em 6.5em;
       border: none;
       width:100%;
       height:100%;
