@@ -8,10 +8,10 @@ class BlogsController extends AppController {
 	
 	public function beforeFilter()
     {
-    	//親クラス（AppController）読み込み
-        //parent::beforeFilter();
-		//permitted access before login
-        //$this->Auth->allow();
+    	// 親クラス（AppController）読み込み
+        parent::beforeFilter();
+		// permitted access before login
+        $this->Auth->allow('view', 'api_view');
     }
 	
 	public function index()
@@ -169,7 +169,6 @@ class BlogsController extends AppController {
 		if(isset($this->request->query['id'])) {
 			$id = $this->request->query['id'];
 		}
-
 		$blog = $this->Blog->findById($id);
 		if (!$blog) {
 			$this->apiError('not found', 0, 404);

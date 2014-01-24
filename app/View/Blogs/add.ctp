@@ -82,7 +82,7 @@ $(function() {
 			return;
 		}
 	});
-	// DBからタグを取得
+	// get tags from DB
 	var tag = [];
 	$.ajax({
 		type: 'GET',

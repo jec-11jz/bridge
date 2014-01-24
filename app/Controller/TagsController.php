@@ -2,13 +2,16 @@
 App::uses('AppController', 'Controller');
 
 class TagsController extends AppController {
-	public $uses = array('Blog', 'UsedBlogImage', 'User', 'Tag', 'BlogTag');
+	public $uses = array('Blog', 'UsedBlogImage', 'User', 'Tag', 'BlogsTag', 'ProductsTag');
 	public $components = array('RequestHandler');
 
 	
 	public function beforeFilter()
     {
-    	
+    	//親クラス（AppController）読み込み
+        parent::beforeFilter();
+		//permitted access before login
+        $this->Auth->allow('api_search', 'api_get_most_used');
     }
 	
 	public function index(){
@@ -79,6 +82,30 @@ class TagsController extends AppController {
 	public function api_get_most_used() {
 		$tags = $this->Tag->getMostUsedTags();
 		$this->apiSuccess($tags);
+	}
+	
+	public function api_search() {
+		$value = null;
+		$contents = array();
+		
+		if(isset($this->request->query['value'])){
+			$value = $this->request->query['value'];
+		}
+		
+		$tag = $this->Tag->findByName($value);
+		if (!is_array($tag)) {
+			$this->apiError('tag is not array');
+			return;
+		}
+		
+		$contents['products'] = $this->ProductsTag->findAllByTagId($tag['Tag']['id']);
+		$contents['blogs'] = $this->BlogsTag->findAllByTagId($tag['Tag']['id']);
+		$contents['keyword'] = $value;
+		if (!is_array($contents)) {
+			$this->apiError('contents is not array');
+			return;
+		}
+		$this->apiSuccess($contents);
 	}
 	
 	public function delete($id = null) {
