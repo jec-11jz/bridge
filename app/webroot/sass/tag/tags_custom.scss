@@ -7,6 +7,9 @@
   &:focus{
     @include input-focus;
   }
+  ul{
+    margin: 0.5em 1em;
+  }
   li{
     
     margin: 0 2px 0 0;

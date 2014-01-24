@@ -99,8 +99,8 @@
 					<img src="${UsedBlogImage[0].url}" class="diary-pic">
 				</a>
 			{{else}}
-				<div>[no images]</div>
 				<div class="text-index" style="width: 220px; height:200px">
+					[no images]<br/>
 					${Blog.content}
 				</div>
 			{{/if}}

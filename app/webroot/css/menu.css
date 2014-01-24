@@ -240,25 +240,28 @@ div.form.first-content-form {
     -moz-box-shadow: black 0px 0px 0px 0px;
     box-shadow: black 0px 0px 0px 0px; }
   /* line 10, ../sass/tag/tags_custom.scss */
+  .tagbox ul {
+    margin: 0.5em 1em; }
+  /* line 13, ../sass/tag/tags_custom.scss */
   .tagbox li {
     margin: 0 2px 0 0; }
-    /* line 13, ../sass/tag/tags_custom.scss */
+    /* line 16, ../sass/tag/tags_custom.scss */
     .tagbox li .tag {
       background-color: #23adc9; }
-  /* line 18, ../sass/tag/tags_custom.scss */
+  /* line 21, ../sass/tag/tags_custom.scss */
   .tagbox .selected .tag {
     background-color: #f06260; }
 
-/* line 26, ../sass/tag/tags_custom.scss */
+/* line 29, ../sass/tag/tags_custom.scss */
 .autocomplete ul {
   background-color: #1e94ac; }
-  /* line 29, ../sass/tag/tags_custom.scss */
+  /* line 32, ../sass/tag/tags_custom.scss */
   .autocomplete ul li {
     background-color: #23adc9; }
-    /* line 31, ../sass/tag/tags_custom.scss */
+    /* line 34, ../sass/tag/tags_custom.scss */
     .autocomplete ul li:hover {
       background-color: #33bfdb; }
-    /* line 34, ../sass/tag/tags_custom.scss */
+    /* line 37, ../sass/tag/tags_custom.scss */
     .autocomplete ul li.over, .autocomplete ul li.selected {
       background-color: #33bfdb; }
 

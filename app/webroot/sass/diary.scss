@@ -1,23 +1,8 @@
 @import "../sass/menu.scss";
 
-
-th {
-  color: #313131;
-  font-size: 14px;
-}
-td {
-  font-size: 11px;
-}
-
-table > tbody > tr > td > a {
-  font-size: 12px;
-}
-
 div#diary{
   margin:20px;
 }
-
-$bloginfo: 20px;
 
 a.link:hover img.diary-pic{
   opacity: 0.8;
@@ -50,12 +35,14 @@ div#diary-index{
         float:right;
         margin: 0.5em 1em;
     }
-
   }
 }
 
+.ui-widget-header{
+  // background:$col-flat-blue1;
+}
 form#BlogAddForm, form#BlogEditForm{
-  margin: 0 auto; 
+  margin: 0 auto;
   padding-bottom: 1em;
   height: 40%;
   text-align: center;
@@ -64,18 +51,46 @@ form#BlogAddForm, form#BlogEditForm{
     margin: 1em auto;
     // width: 2000px !important;
   }
-.tagbox{
-  margin: 0 auto 1em;
-  width: 95%;
-  ul{
-      margin: 0.5em;
-    li{
-      &.new input{
-        margin: 0;
+  .spoiler{
+    text-align: right;
+    width: 95%;
+    margin: 0 auto;
+    .right{
+      display: inline-block;
+      width: 35%;
+      padding: 0.5em;
+      margin-bottom: 1em;
+      background-color: #93B8CA;
+      color: white;
+      span, .list, #slider{
+        float: left;
+      }
+      .list{
+        @include appearance(initial);
+        padding-left: 0.4em;
+        border: none;
+      }
+      #slider{
+        display: inline-block;
+        width:220px;
+        margin: 3px 0 0 15px;
+
       }
     }
   }
-}
+  
+  
+  .tagbox{
+    margin: 0 auto 1em;
+    width: 95%;
+    ul{
+      li{
+        &.new input{
+          margin: 0;
+        }
+      }
+    }
+  }
   #ckeditor{
     label{
       font-size:90px;

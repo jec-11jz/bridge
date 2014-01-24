@@ -37,12 +37,11 @@
 		<div class="button-full"><a href="/templates/add" class="btn-black right">Create Templates</a></div>
 	</div>
 
-	<div class="products-index">
+	<div class="products-index contents">
 		<?php foreach($products as $product) : ?>
-			<div class="cont1 contents">
+			<div class="cont1">
 				<?php if(isset($product['Product']['id'])){ ?>
 					<a href="/products/edit/<?php echo $product['Product']['id']; ?>" class="link"></a>
-					<p>作品名</p>	
 					<a href="/products/edit/<?php echo $product['Product']['id']; ?>"><?php echo $product['Product']['name']; ?></a>
 					
 					<?php echo $this->Form->postLink("", array('action' => 'delete',$product['Product']['id']),array('confirm' => '削除しますか？', 'class'=>'fa fa-trash-o delete')); ?>

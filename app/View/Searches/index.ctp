@@ -20,8 +20,8 @@
 		 echo $this->Form->end();
 	 ?>
 </div> <!-- END search -->
-<hr>
 
+<hr>
 	
 <div id="search-result">
 </div>

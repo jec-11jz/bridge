@@ -268,7 +268,8 @@
 				// get real size of image
 				var i = new Image();
 				i.src = $current.find( 'img' ).attr( 'src' );
-				self.realWidth = i.width;
+				// self.realWidth = i.width;
+				self.realWidth = '37.500em';
 
 				// assuming all images with same size
 				self._setSize();
@@ -348,7 +349,8 @@
 
 			// max-width is the real size of the images
 			this.$el.css( {
-				'max-width' : this.realWidth
+				'max-width' : this.realWidth,
+				'max-height' : '1000px'
 			} );
 
 		},
@@ -448,9 +450,35 @@
 			this.$el.css( 'height', h );
 			this.$items.css( 'position', 'absolute' );
 			
+			// change image when push the top-button
+			var index = 0;
+			index = $('#top-image').find('.sb-current').index('li.image-list') + 1;
+			index = (index == $('li.image-list').length)? 0 : index;
+			this.current = index;
 			this.$items.eq( this.current ).fadeIn( this.options.fallbackFadeSpeed, function() {
-
+				
+				$('#top-image').find('.sb-current').removeClass('sb-current').hide();
 				$( this ).css( 'display', 'block' ).addClass( 'sb-current' );
+				
+				// add class to top-buttom
+				var currentID = $('#top-image').find('.sb-current').attr('id');
+				var currentCategory = $('#top-button').find('.current-category');
+				if(currentID == 'new-product-list'){
+					currentCategory.removeClass('current-category');
+					$('#top-button').find('#new-product').addClass('current-category');
+				} else if(currentID == 'new-blog-list'){
+					currentCategory.removeClass('current-category');
+					$('#top-button').find('#new-blog').addClass('current-category');
+				} else if(currentID == 'most-popular-product-list'){
+					currentCategory.removeClass('current-category');
+					$('#top-button').find('#most-popular-product').addClass('current-category');
+				} else if(currentID == 'most-popular-blog-list'){
+					currentCategory.removeClass('current-category');
+					$('#top-button').find('#most-popular-blog').addClass('current-category');					
+				} else {
+					currentCategory.removeClass('current-category');
+				}
+				
 				self.$el.css( 'height', 'auto' );
 				self.$items.css( 'position', 'relative' );
 				self.isAnimating = false;
@@ -548,7 +576,6 @@
 							$current.addClass( 'sb-current' );
 						} , 0 );
 						self.options.onAfterChange( self.current );
-
 					}
 
 				});
@@ -579,15 +606,16 @@
 		// public method: shows next image
 		next : function() {
 
-			this._stopSlideshow();
-			this._navigate( 'next' );
+			// this._stopSlideshow();
+			this._navigate( 'prev' );
 
 		},
 		// public method: shows previous image
 		previous : function() {
 
-			this._stopSlideshow();
-			this._navigate( 'prev' );
+			// this._stopSlideshow();
+			this._navigate( 'next' );
+			
 
 		},
 		// public method: goes to a specific image
