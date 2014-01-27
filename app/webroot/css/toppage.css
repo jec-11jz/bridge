@@ -1,17 +1,46 @@
-/* line 9, ../sass/toppage.scss */
+/* line 7, ../sass/toppage.scss */
+#toppage {
+  display: block;
+  clear: both; }
+
+/* line 11, ../sass/toppage.scss */
+.clearFix {
+  clear: both;
+  display: block; }
+
+/* line 15, ../sass/toppage.scss */
+.top-area {
+  text-align: center;
+  margin: 8.000em 0 3em 0; }
+
+/* line 19, ../sass/toppage.scss */
+.top-button {
+  display: inline-block;
+  border: 4px solid #d8d8d8;
+  color: #EEE;
+  text-decoration: none;
+  padding: 10px;
+  transition-duration: 0.2s;
+  border-radius: 5px; }
+
+/* line 28, ../sass/toppage.scss */
+.current-category {
+  border: medium solid #45F290; }
+
+/* line 32, ../sass/toppage.scss */
 a.logo {
   font-size: 30px;
   text-align: center;
   width: 100%;
   z-index: 10; }
-  /* line 14, ../sass/toppage.scss */
+  /* line 37, ../sass/toppage.scss */
   a.logo:hover {
     color: #a2eb7f;
     background-position: 0;
     opacity: 0.6;
     filter: alpha(opacity=60); }
 
-/* line 22, ../sass/toppage.scss */
+/* line 45, ../sass/toppage.scss */
 div .logo {
   width: 230px;
   height: 230px;
@@ -19,18 +48,18 @@ div .logo {
   margin: 15px 0px 10px 30px;
   float: left;
   z-index: 20; }
-  /* line 29, ../sass/toppage.scss */
+  /* line 52, ../sass/toppage.scss */
   div .logo:hover {
     border: 3px solid #97F95A;
     opacity: 0.6;
     filter: alpha(opacity=60); }
 
-/* line 39, ../sass/toppage.scss */
+/* line 62, ../sass/toppage.scss */
 div#slidr-img {
   left: 7%;
   width: 86%;
   margin-top: 20px;
   z-index: 900; }
-  /* line 44, ../sass/toppage.scss */
+  /* line 67, ../sass/toppage.scss */
   div#slidr-img img {
     width: 100%; }

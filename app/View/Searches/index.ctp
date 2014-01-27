@@ -15,7 +15,7 @@
 <div id="search">
 	<hr>
 	<form method="get" action="/searches/index">
-		<input name="keywords" id="keywords" class="form-control" placeholder='Search from here...'>
+		<input name="keywords" id="keywords" class="form-control" placeholder='Search  here...'>
 		<input type="submit" value="Search" class="btn-a search" id="btn-search">
 		<div id="search-custom">
 			Not<input name="not-keywords" id="not-keywords" class="form-control tags" placeholder='Search here...'>

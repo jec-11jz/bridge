@@ -37,6 +37,23 @@ div#diary-index{
     }
   }
 }
+#div-create-blogs{
+  
+  .contents{
+    .blog-form{
+      width: 95%;
+      margin: 0 auto;
+      #blog-tags{
+        margin: 1em;
+        background-color: $col-black1;
+        @include border-radius(15px);
+        input{
+          margin:1em;
+        }
+      }
+    }
+  }
+}
 
 .ui-widget-header{
   // background:$col-flat-blue1;
@@ -74,7 +91,6 @@ form#BlogAddForm, form#BlogEditForm{
         display: inline-block;
         width:220px;
         margin: 3px 0 0 15px;
-
       }
     }
   }

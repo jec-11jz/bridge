@@ -7,32 +7,6 @@
 	$this->extend('/Common/index');
 	$this->Html->script('//ajax.microsoft.com/ajax/jquery.templates/beta1/jquery.tmpl.min.js', array('inline' => false));
 ?>
-<style>
-	#toppage {
-		display: block;
-		clear: both;
-	}
-	.clearFix {
-		clear: both;
-		display: block;
-	}
-	.top-area {
-		text-align:center;
-		margin:8.000em 0 3em 0;
-	}
-	.top-button {
-		display:inline-block;
-		border:4px solid #d8d8d8;
-		color:#EEE;
-		text-decoration:none;
-		padding:10px;
-		transition-duration: 0.2s;
-		border-radius: 5px;	
-	}
-	.current-category {
-		border: medium solid #45F290;
-	}
-</style>
 
 <div id="toppage">
 	<div id="top-button" class="top-area">

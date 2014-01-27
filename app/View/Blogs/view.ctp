@@ -6,23 +6,6 @@
 	$this->Html->script('//ajax.microsoft.com/ajax/jquery.templates/beta1/jquery.tmpl.min.js', array('inline' => false));
 ?>
 
-<div id="<?php echo h($blog['Blog']['id']); ?>" class="blog-form">
-	<h2>タイトル</h2>
-	<h1><?php echo h($blog['Blog']['title']); ?></h1>
-	<hr>
-	<h2>タグ</h2>
-	<h4><div id="blog-tags"></div></h4>
-	<hr>
-	<h2>本文</h2>
-	<p><?php echo $blog['Blog']['content']; ?></p>
-	
-	<!-- 作成日 -->
-	<p><small>Created: <?php echo $blog['Blog']['created']; ?></small></p>
-	<p><?php echo $blog['User']['name']; ?></p>
-	</div>
-<hr />
-<a href="/blogs" style="display:block">投稿一覧へ戻る</a>
-</div>
 <script>
 $(function() {
 	// fn search from tag
@@ -75,10 +58,39 @@ $(function() {
 });
 </script>
 <script id="js-tag" type="text/x-jquery-tmpl">
-	<input type="button" class="tag" value="${name}">
+	<input type="button" class="tag btn-blue" value="${name}">
 </script>
 <script id="error-message" type="text/x-jquery-tmpl">
 	<div class="div-error">
 		<h3 class="error">*${message}</h3>	
 	</div>
 </script>
+
+
+<div id="div-create-blogs" class="form first-content-form">
+	<div class="form-headder">
+		<h1>View Blogs</h1>
+	</div>
+
+	<div class="contents">
+		<div id="<?php echo h($blog['Blog']['id']); ?>" class="blog-form">
+			<span>タイトル:</span>
+			<span><?php echo h($blog['Blog']['title']); ?></span>
+			<hr>
+			<span>タグ:</span>
+			<h4><div id="blog-tags"></div></h4>
+			<hr>
+			<h2>本文</h2>
+			<p><?php echo $blog['Blog']['content']; ?></p>
+			
+			<!-- 作成日 -->
+			<p><small>Created: <?php echo $blog['Blog']['created']; ?></small></p>
+			<span><?php echo $blog['User']['name']; ?></span>
+		</div>
+	</div>
+
+	<div class="form-footer">
+		<a href="/blogs" style="display:block">投稿一覧へ戻る</a>
+	</div>
+</div>
+

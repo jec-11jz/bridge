@@ -41,6 +41,7 @@
 				</div>
 			</div> <!-- spoiler -->
 		 	<textarea name="data[Blog][content]" id="ckeditor" class="input_form blog" cols="30" rows="6"></textarea>
+		 	<input type="submit" value="Save" class="btn-a">
 		</form>
 
 		<script type="text/javascript">  
@@ -49,7 +50,7 @@
 		
 	</div> <!-- cont -->
 	<div class="form-footer">
-		<input type="submit" value="Save" class="btn-a">
+		
 	</div> <!-- footer -->
 </div> <!-- form -->
 <!-- JS tag -->
