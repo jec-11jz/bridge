@@ -14,15 +14,13 @@
 
 <div id="search">
 	<hr>
-	<form method="get" action="/searches/index">
-		<input name="keywords" id="keywords" class="form-control" placeholder='Search  here...'>
-		<input type="submit" value="Search" class="btn-a search" id="btn-search">
-		<div id="search-custom">
-			Not<input name="not-keywords" id="not-keywords" class="form-control tags" placeholder='Search here...'>
-			And<input name="and-keywords" id="and-keywords" class="form-control tags" placeholder='Search here...'>
-			Or<input name="or-keywords" id="or-keywords" class="form-control tags" placeholder='Search here...'>
-		</div>
-	</form>
+	<input name="keywords" id="keywords" class="form-control" placeholder='Search  here...'>
+	<input type="submit" value="Search" class="btn-a search" id="btn-search">
+	<div id="search-custom">
+		Not<input name="not-keywords" id="not-keywords" class="form-control tags">
+		And<input name="and-keywords" id="and-keywords" class="form-control tags">
+		Or<input name="or-keywords" id="or-keywords" class="form-control tags">
+	</div>
 </div> <!-- END search -->
 <hr>
 <div id="search-result">
@@ -78,7 +76,7 @@ $(function() {
 				page++;
 			},
 			error: function(xhr, xhrStatus) {
-				console.log('load error');
+				console.log(xhr);
 			}
 		});
 	}
@@ -94,14 +92,8 @@ $(function() {
 				$('#and-keywords').val(), 
 				$('#or-keywords').val()
 			);
-			$('#search-result').imagesLoaded(function() {
-				$('.cont').removeClass('hidden');
-				$('#search-result').masonry('appended', products);
-				$('#search-result').masonry('appended', blogs);
-			});
 		}
 	});
-	loadBlogs(page, count, keywords, key_not, key_and, key_or);
 	var diary = $('#search-result');
 	diary.masonry({
     	itemSelector: '.cont',
@@ -109,24 +101,26 @@ $(function() {
 		isFitWidth: true,
 		columnWidth: 1
 	});
+	loadBlogs(page, count, keywords, key_not, key_and, key_or);
 	// setTimeout("loadBlogs();", 2000);
 
 	// search
 	$("#btn-search").click(function(){
 		console.log(keywords);
-		var diary = $('#search-result');
-		diary.masonry('unbindResize');
+		diary.masonry({
+	    	itemSelector: '.cont',
+	     	isAnimated: true,
+			isFitWidth: true,
+			columnWidth: 1
+		});
 		loadBlogs(
-			1, 
+			0, 
 			count, 
 			$('#keywords').val(), 
 			$('#not-keywords').val(), 
 			$('#and-keywords').val(), 
 			$('#or-keywords').val()
 		);
-		$('#search-result').imagesLoaded(function() {
-			$('#search-result').masonry();
-		});
 	});
 });
 </script>
