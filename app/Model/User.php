@@ -29,7 +29,6 @@ class User extends AppModel {
 		'name' => array(
 			'isUnique' => array(
 				'rule' => 'isUnique',
-				'required' => true,
 				'last' => true,
 				'message' => 'そのユーザーIDは既に使われています',
 			),
@@ -42,8 +41,8 @@ class User extends AppModel {
 				'rule' => array('maxLength', '15'),
 				'message' => '15文字以内で入力してください',
 			),
-			'blank' => array(
-				'rule' => 'blank',
+			'notEmpty' => array(
+				'rule' => 'notEmpty',
         		'on' => 'create',
         		'message' => 'ユーザIDを入力してください。'
 			)
@@ -57,8 +56,8 @@ class User extends AppModel {
 			)
 		),
 		'password' => array(
-			'blank' => array(
-		        'rule' => 'blank',
+			'notEmpty' => array(
+		        'rule' => 'notEmpty',
 		        'on' => 'create',
 				'message' => 'パスワードを入力してください。'
 			),
@@ -81,7 +80,6 @@ class User extends AppModel {
 		'email' => array(
 			'email' => array(
 				'rule' => array('email', true), 
-		        'required' => false,
 		        'last' => true,
 		        'message' => 'メールアドレスを正しく入力してください。'
 			),
@@ -89,8 +87,8 @@ class User extends AppModel {
 				'rule' => 'isUnique',
 				'message' => 'そのメールアドレスは既に使用されています'
 			),
-			'blank' => array(
-		        'rule' => 'blank',
+			'notEmpty' => array(
+		        'rule' => 'notEmpty',
 				'on' => 'create',
 				'message' => '15文字以内で入力してください'
 			)
