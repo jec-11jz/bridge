@@ -85,7 +85,7 @@ class SearchesController extends AppController {
 				'limit' => $count			
 			));
 		}
-		if(!isset($contents)){
+		if(empty($contents['blogs'])){
 			$this->apiError('contents are null');
 			return;
 		}
