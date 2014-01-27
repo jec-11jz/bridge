@@ -72,6 +72,7 @@ $(function() {
 	</div>
 
 	<div class="form-footer">
+		<a href="/blogs/edit/<?php echo h($blog['Blog']['id']); ?>" class="btn-a left">Edit</a>
 		<a href="/blogs" style="display:block">投稿一覧へ戻る</a>
 	</div>
 </div>

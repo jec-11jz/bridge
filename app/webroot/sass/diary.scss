@@ -4,6 +4,12 @@ div#diary{
   margin:20px;
 }
 
+.cont.edit{
+  textarea.blog{
+    height: 2000px;
+  }
+}
+
 a.link:hover img.diary-pic{
   opacity: 0.8;
 }
@@ -50,6 +56,11 @@ div#diary-index{
         input{
           margin:1em;
         }
+      }
+    }
+    .form-footer{
+      .left{
+        float: left;
       }
     }
   }

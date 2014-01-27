@@ -9,7 +9,7 @@
 ?>
 
 <div class='form first-content-form'>
-	<div class='cont'>
+	<div class='cont edit'>
 		<div class="form-headder">
 			<h1>Edit Blog</h1>
 		</div>
@@ -53,12 +53,14 @@
 			var editor = CKEDITOR.replace('ckeditor');  
 		</script>
 
-	</div>
-	<div class="form-footer">
 		<?php echo $this -> Form -> submit('Save', array('type' => 'submit', 'class' => 'btn-a')); ?>
 		<?php echo $this -> Form -> end(); ?>	
+
+	</div>
+
+	<div class="form-footer">
+		<h5>Created: <?php echo h($post['Blog']['created']); ?></small><h5>
 	</div> <!-- footer -->
-			
 </div> <!-- form -->
 <!-- JS tag -->
 <script>
