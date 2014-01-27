@@ -14,12 +14,17 @@
 
 <div id="search">
 	<hr>
-	<input name="keywords" id="keywords" class="form-control" placeholder='Search  here...'>
+	<input name="keywords" id="keywords" class="form-control" value="<?php echo h($keyword); ?>" placeholder='Search  here...'>
 	<input type="submit" value="Search" class="btn-a search" id="btn-search">
 	<div id="search-custom">
 		Not<input name="not-keywords" id="not-keywords" class="form-control tags">
 		And<input name="and-keywords" id="and-keywords" class="form-control tags">
 		Or<input name="or-keywords" id="or-keywords" class="form-control tags">
+		Scope	
+		<input type="checkbox" name="blog" value="Blog" id="check-blog">
+		<input type="checkbox" name="product" value="Product" id="check-product">
+		<input type="checkbox" name="tag" value="Tag" id="check-tag">
+		<input type="checkbox" name="contents" value="contetns" id="check-blog">
 	</div>
 </div> <!-- END search -->
 <hr>
@@ -47,7 +52,7 @@ $(function() {
 		}
 	});
 
-	page = 1;
+	var page = 1;
 	var count = 25;
 	var keywords = $('#keywords').val();
 	var key_not = $('#not-keywords').val();
@@ -60,7 +65,6 @@ $(function() {
 			data: {'count': count, 'page': page, 'keywords': keywords, 'key_not': key_not, 'key_and': key_and, 'key_or': key_or},
 			success: function(data, dataType) {
 				console.log(data);
-				$('.cont').remove();
 				// products
 				products = $('#js-search-products').tmpl(data['response']['products']);
 				$('#search-products-result').append(products);
@@ -73,10 +77,10 @@ $(function() {
 					$('#search-result').masonry('appended', products);
 					$('#search-result').masonry('appended', blogs);
 				});
-				page++;
 			},
 			error: function(xhr, xhrStatus) {
-				console.log(xhr);
+				error = $('#error-message').tmpl(xhr['responseJSON']['error']);
+				$('#error').append(error);
 			}
 		});
 	}
@@ -92,6 +96,7 @@ $(function() {
 				$('#and-keywords').val(), 
 				$('#or-keywords').val()
 			);
+			page++;
 		}
 	});
 	var diary = $('#search-result');
@@ -102,10 +107,13 @@ $(function() {
 		columnWidth: 1
 	});
 	loadBlogs(page, count, keywords, key_not, key_and, key_or);
+	page++;
 	// setTimeout("loadBlogs();", 2000);
 
 	// search
 	$("#btn-search").click(function(){
+		$('.cont').remove();
+		page = 1;
 		console.log(keywords);
 		diary.masonry({
 	    	itemSelector: '.cont',
@@ -114,13 +122,14 @@ $(function() {
 			columnWidth: 1
 		});
 		loadBlogs(
-			0, 
+			page,
 			count, 
 			$('#keywords').val(), 
 			$('#not-keywords').val(), 
 			$('#and-keywords').val(), 
 			$('#or-keywords').val()
 		);
+		page++;
 	});
 });
 </script>

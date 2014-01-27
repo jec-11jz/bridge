@@ -12,28 +12,11 @@ $(function() {
 	;(function($) {
 		$.fn.searchFromTag = function() {
 			$("#blog-tags").find('input.tag').click(function() {
-				tag_name = $(this).val();
-				console.log(tag_name);
-				$.ajax({
-					type: 'GET',
-					url: '/api/tags/search.json',
-					data: {'value': tag_name},
-					success: function(data){
-						console.log(data);
-						location.href = '/searches/index/?keywords=' + tag_name;
-					},
-					error: function(xhr, xhrStatus){
-						
-					}
-				});
+				var tag_name = $(this).val();
+				location.href = '/searches/index/?keywords=' + tag_name;
 			});
 		}
 	})(jQuery);
-	
-	// $.fn.hoge.defaults = {
-	    // fadeSpeed: 1000,
-	    // hideEle: '#view'
-	// };
 
 	// get tags from DB
 	var blog_id = $('div.blog-form').attr('id');
@@ -49,12 +32,11 @@ $(function() {
 		    	$('.tag').searchFromTag();
 			});
 		},
-		error: function(xhr, xhrStatus){
+		error: function(xhr, xhrStatus) {
 			error = $('#error-message').tmpl(xhr['responseJSON']['error']);
 			$('#error').append(error);
 		}
 	});
-	
 });
 </script>
 <script id="js-tag" type="text/x-jquery-tmpl">
