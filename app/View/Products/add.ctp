@@ -49,46 +49,54 @@
 	clear: both;
 }
 </style>
-<div id="formRegisterProduct">
-	<form method="post" action="/products/add">
+
+<div class="form first-content-form">
+	<div class="form-headder">
+		<h1>Create Blog</h1>
 		<div id="error"></div>
-		<div>
-			<label for="movieTitle"><h4>Title</h4></label>
-			<input type="text" name="name" class="input tags product-info .product-title" id="movieTitle"/>			
-		</div>
-		<div id="image" onclick="openKCFinder(this)"><div style='margin:5px'>Click here to choose an image</div></div>
-		<label for="movie-outline">あらすじ：</label>
-		<textarea name="outline" class="product-info" cols="40" rows="4" id="movie-outline" style="display: block" /></textarea>
-		<div class="row">
-			<select name="template_id" class="template-name" id="selected-template" style="display:block">
-				<option value=""　selected>--選択してください--</option>
-				<?php foreach($templates as $template) : ?>
-					<?php if(isset($template['Template']['id'])){ ?>
-						<?php if($template['Template']['id'] == $selected_template['Template']['id']) { ?>
-							<option value="<?php echo $template['Template']['id']; ?>" selected><?php echo $template['Template']['name']; ?></option>
-						<?php } else { ?>
-							<option value="<?php echo $template['Template']['id']; ?>"><?php echo $template['Template']['name']; ?></option>
-						<?php } ?>
-					<?php } ?>
-				<?php endforeach; ?>
-				<option value="other">create template</option>
-			</select>
-		</div>
+	</div>
+	<div id="formRegisterProduct">
+		<form method="post" action="/products/add">
 			
-		<!-- get attribute -->
-		<fieldset id="product-data">
-			<input type="button" value="add" id="attribute" class="btn-add-attribute">
-			<input type="button" id="btn-delete" class="button" value="all delete" />
-			<div id="input-attribute">
-				<div id="template-attributes"></div>
+			<div>
+				<label for="movieTitle"><h4>Title</h4></label>
+				<input type="text" name="name" class="input tags product-info .product-title" id="movieTitle"/>			
 			</div>
-		</fieldset>		
-		<input type="button" value="戻る" />
-		<input type="button" id="btn-register" value="登録" />
-	</form>
-	<label>最後の編集者 :</label><a style="display: block">iverson</a>
-	<a>この作品を編集する</a>
+			<div id="image" onclick="openKCFinder(this)"><div style='margin:5px'>Click here to choose an image</div></div>
+			<label for="movie-outline">あらすじ：</label>
+			<textarea name="outline" class="product-info" cols="40" rows="4" id="movie-outline" style="display: block" /></textarea>
+			<div class="row">
+				<select name="template_id" class="template-name" id="selected-template" style="display:block">
+					<option value=""　selected>--選択してください--</option>
+					<?php foreach($templates as $template) : ?>
+						<?php if(isset($template['Template']['id'])){ ?>
+							<?php if($template['Template']['id'] == $selected_template['Template']['id']) { ?>
+								<option value="<?php echo $template['Template']['id']; ?>" selected><?php echo $template['Template']['name']; ?></option>
+							<?php } else { ?>
+								<option value="<?php echo $template['Template']['id']; ?>"><?php echo $template['Template']['name']; ?></option>
+							<?php } ?>
+						<?php } ?>
+					<?php endforeach; ?>
+					<option value="other">create template</option>
+				</select>
+			</div>
+				
+			<!-- get attribute -->
+			<fieldset id="product-data">
+				<input type="button" value="add" id="attribute" class="btn-add-attribute">
+				<input type="button" id="btn-delete" class="button" value="all delete" />
+				<div id="input-attribute">
+					<div id="template-attributes"></div>
+				</div>
+			</fieldset>		
+			<input type="button" value="戻る" />
+			<input type="button" id="btn-register" value="登録" />
+		</form>
+		<label>最後の編集者 :</label><a style="display: block">iverson</a>
+		<a>この作品を編集する</a>
+	</div>
 </div>
+	
 <!-- KCfinder読み込み -->
 <script type="text/javascript">
 function openKCFinder(div) {
