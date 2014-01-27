@@ -155,7 +155,7 @@
 		{{else}}
 			<div class="text-index" style="width: 220px; height:200px">
 				[no images]<br/>
-				${Blog.content}
+				${Blog.content.replace(/<("[^"]*"|'[^']*'|[^'">])*>/g,'').substring(0,99) +""}
 			</div>
 		{{/if}}
 		<div class="sb-description">
@@ -172,7 +172,7 @@
 		{{else}}
 			<div class="text-index" style="width: 220px; height:200px">
 				[no images]<br/>
-				${Blog.content}
+				${Blog.content.replace(/<("[^"]*"|'[^']*'|[^'">])*>/g,'').substring(0,99) +""}
 			</div>
 		{{/if}}
 		<div class="sb-description">
