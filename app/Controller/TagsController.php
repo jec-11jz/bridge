@@ -84,30 +84,6 @@ class TagsController extends AppController {
 		$this->apiSuccess($tags);
 	}
 	
-	public function api_search() {
-		$value = null;
-		$contents = array();
-		
-		if(isset($this->request->query['value'])){
-			$value = $this->request->query['value'];
-		}
-		
-		$tag = $this->Tag->findByName($value);
-		if (!is_array($tag)) {
-			$this->apiError('tag is not array');
-			return;
-		}
-		
-		$contents['products'] = $this->ProductsTag->findAllByTagId($tag['Tag']['id']);
-		$contents['blogs'] = $this->BlogsTag->findAllByTagId($tag['Tag']['id']);
-		$contents['keyword'] = $value;
-		if (!is_array($contents)) {
-			$this->apiError('contents is not array');
-			return;
-		}
-		$this->apiSuccess($contents);
-	}
-	
 	public function delete($id = null) {
     	$this->autoRender = false;
 		$this->Session->setFlash(__('通過しました'),'default', array(), 'tag');
