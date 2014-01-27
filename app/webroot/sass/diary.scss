@@ -4,11 +4,6 @@ div#diary{
   margin:20px;
 }
 
-.cont.edit{
-  textarea.blog{
-    height: 2000px;
-  }
-}
 
 a.link:hover img.diary-pic{
   opacity: 0.8;
@@ -44,11 +39,13 @@ div#diary-index{
   }
 }
 #div-create-blogs{
-  
   .contents{
     .blog-form{
       width: 95%;
       margin: 0 auto;
+      .title{
+        background-color: $col-black2;
+      }
       #blog-tags{
         margin: 1em;
         background-color: $col-black1;
@@ -58,10 +55,10 @@ div#diary-index{
         }
       }
     }
-    .form-footer{
-      .left{
-        float: left;
-      }
+  }
+  .form-footer{
+    .left{
+      float: left;
     }
   }
 }
@@ -233,10 +230,3 @@ textarea.blog{
     filter: alpha(opacity=60);
   }
 }
-
-//hover
-
-
-
-
-  

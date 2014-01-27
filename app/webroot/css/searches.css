@@ -46,14 +46,6 @@ body {
 a:hover {
   color: #58be89; }
 
-/* line 24, ../sass/all.scss */
-.left {
-  float: left; }
-
-/* line 25, ../sass/all.scss */
-.right {
-  float: right; }
-
 /* line 28, ../sass/all.scss */
 div.form.first-content-form {
   position: relative;
