@@ -126,6 +126,7 @@ class BlogsController extends AppController {
 			$result = $this->Blog->saveAll($blogData);
 			if ($result) {
 				$this->Session->setFlash('記事を保存しました');
+				$this->redirect(array('controller' => 'blogs', 'action' => 'index'));
 			} else {
 				$this->Session->setFlash('記事を保存できません');
 			}

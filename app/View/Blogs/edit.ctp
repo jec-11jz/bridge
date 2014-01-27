@@ -1,64 +1,56 @@
 <?php
-	echo $this->Html->css('tag/tags_custom');
+	echo $this->Html->css('jquery-ui-1.10.4.custom');
 	echo $this->Html->css('diary');
 	
 	echo $this->Html->script('ckeditor/ckeditor');
+	echo $this->Html->script('jquery-ui-1.10.4.custom');
 	echo $this->Html->script('tag/tags');
 	
 	$this->extend('/Common/index');
 ?>
 
 <div class='form first-content-form'>
-	<div class='cont'>
+	<div class='cont edit'>
 		<div class="form-headder">
 			<h1>Edit Blog</h1>
 		</div>
 		<!-- ブログ投稿フォーム -->
-		<?php echo $this->Form->create('Blog'); ?>
-		
-		<?php 
-			echo $this->Form->input('title', array(
-				'label'=>false, 
-				'type'=>'text',
-				'class'=>'input_form form-control',
-				'value' => $post['Blog']['title'],
-				// バリデーションのエラーメッセージを指定
-				'error' => array(
-					'isUnique' => __('そのユーザーIDは既に使われています', true),
-					'custom' => __('半角英数字のみ使用できます', true),
-					'minLength' => __('15文字以内で入力してください', true)))); 
-					
-			// タグフォーム
-			echo $this->Form->input('Tag.namesCSV', array(
-				'label'=>false, 
-				'type'=>'text',
-				'id'=>'tags',
-				'name'=>'data[Tag][name]',
-				'value' => $post['Tag']['namesCSV'],
-				'class'=>'input_form')); 
-		 
-			echo $this->Form->input('Blog.content', array(
-				'label'=>false, 
-				'type'=>'textarea',
-				'id'=>'ckeditor',
-				'class'=>'input_form blog',
-				'value' => $post['Blog']['content'],
-				// バリデーションのエラーメッセージを指定
-				'error' => array(
-					'isUnique' => __('そのユーザーIDは既に使われています', true),
-					'custom' => __('半角英数字のみ使用できます', true),
-					'minLength' => __('15文字以内で入力してください', true)))); 
-		?>
+		<form id="BlogEditForm"  action="/blogs/edit/<?php echo h($post['Blog']['id']); ?>" method="post">
+			<input type="text" class="input_form form-control" value="<?php echo h($post['Blog']['title']); ?>">
+			<input type="text" id="tags" name="data[Tag][name]" value="<?php echo h($post['Tag']['namesCSV']); ?>" class="input_form">
+
+			<div class="spoiler">
+				<div class="right">
+					<span>ネタバレ：</span>
+				 	<select name="minbeds" id="minbeds" class="list">
+					    <option>1</option>
+					    <option>2</option>
+					    <option>3</option>
+					    <option>4</option>
+					    <option selected>5</option>
+					    <option>6</option>
+					    <option>7</option>
+					    <option>8</option>
+					    <option>9</option>
+					    <option>10</option>
+				 	</select>
+				</div>
+			</div> <!-- spoiler -->
+
+			<textarea id="ckeditor" class="input_form blog"><?php echo h($post['Blog']['content']); ?></textarea>
+			<input type="submit" value="Save" class="btn-a">
+ 		</form>
+
+
 		<script type="text/javascript">  
 			var editor = CKEDITOR.replace('ckeditor');  
 		</script>
 
 	</div>
+
 	<div class="form-footer">
-		<?php echo $this -> Form -> submit('Save', array('type' => 'submit', 'class' => 'btn-a')); ?>
-		<?php echo $this -> Form -> end(); ?>	
+		<h5>Created: <?php echo h($post['Blog']['created']); ?></small><h5>
 	</div> <!-- footer -->
-			
 </div> <!-- form -->
 <!-- JS tag -->
 <script>
@@ -106,5 +98,20 @@ $(function() {
 });
 </script>
 
-			
-
+<script>
+	$(function() {
+	    var select = $( "#minbeds" );
+	    var slider = $( "<div id='slider'></div>" ).insertAfter( select ).slider({
+	      min: 1,
+	      max: 10,
+	      range: "min",
+	      value: select[ 0 ].selectedIndex + 1,
+	      slide: function( event, ui ) {
+	        select[ 0 ].selectedIndex = ui.value - 1;
+	      }
+	    });
+	    $( "#minbeds" ).change(function() {
+	      slider.slider( "value", this.selectedIndex + 1 );
+	    });
+	});
+</script>

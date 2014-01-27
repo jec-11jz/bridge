@@ -46,7 +46,7 @@ body {
 a:hover {
   color: #58be89; }
 
-/* line 27, ../sass/all.scss */
+/* line 28, ../sass/all.scss */
 div.form.first-content-form {
   position: relative;
   width: 88%;
@@ -56,22 +56,22 @@ div.form.first-content-form {
   -ms-border-radius: 2px;
   -o-border-radius: 2px;
   border-radius: 2px; }
-  /* line 33, ../sass/all.scss */
+  /* line 34, ../sass/all.scss */
   div.form.first-content-form label, div.form.first-content-form h1 {
     color: white; }
-  /* line 36, ../sass/all.scss */
+  /* line 37, ../sass/all.scss */
   div.form.first-content-form .form-headder {
     padding: 1em 0;
     background-color: #58be89;
     text-align: center; }
-  /* line 42, ../sass/all.scss */
+  /* line 43, ../sass/all.scss */
   div.form.first-content-form form, div.form.first-content-form .contents {
     display: block;
     background-color: #ccdfcc; }
-    /* line 46, ../sass/all.scss */
+    /* line 47, ../sass/all.scss */
     div.form.first-content-form form input, div.form.first-content-form form .tagbox, div.form.first-content-form .contents input, div.form.first-content-form .contents .tagbox {
       margin: 0 auto; }
-  /* line 51, ../sass/all.scss */
+  /* line 52, ../sass/all.scss */
   div.form.first-content-form .form-footer {
     background-color: #58be89;
     left: 0;

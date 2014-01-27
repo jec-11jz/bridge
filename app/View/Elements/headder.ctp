@@ -42,10 +42,9 @@ $this->Html->script('dropdown/modernizr.custom.79639', array('inline' => false))
 			</ul>
 		</div>
 		
-		<div id="dd" class="wrapper-dropdown-5" tabindex="1"><p>Search</p>			
-			<ul class="dropdown">
-				<li><a href="/searches/index"><i class="fa fa-search menu"></i>日記検索</a></li>
-			</ul>
+		<div id="dd" class="wrapper-dropdown-5" tabindex="1">
+			<a href="/searches/index" class="link"></a>
+			<p>Search</p>			
 		</div>
 		
 		<div id="dd" class="wrapper-dropdown-5" tabindex="1"><p>Upload</p>
