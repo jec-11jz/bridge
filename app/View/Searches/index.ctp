@@ -25,67 +25,19 @@
 	</form>
 </div> <!-- END search -->
 <hr>
-<div id="search-result"></div>
+<div id="search-result">
+	<div id="search-blogs-result"></div>
+	<div id="search-products-result"></div>
+</div>
 
 <script>
 $(function() {
-	$(window).on('scroll', function() {
-		var scrollHeight = $(document).height();
-		var scrollPosition = $(window).height() + $(window).scrollTop();
-		if ((scrollHeight - scrollPosition) / scrollHeight === 0) {
-			loadBlogs();
-		}
-	});
-
-	var page = 1;
-	var count = 50;
-	function loadBlogs() {
-		$.ajax({
-			type: 'GET',
-			url: '/api/blogs.json?count='+ count +'&page='+ page,
-			success: function(data, dataType) {
-				blogs = $('#searchTemplate').tmpl(data['response']['blogs']);
-				$('#search-result').append(blogs);
-				$('#search-result').imagesLoaded(function() {
-					$('.cont').removeClass('hidden');
-					$('#search-result').masonry('appended', blogs);
-				});
-				page++;
-			}
-		});
-	}
-	
-	$("#btn-search").click(function() {
-		var keywords = $('#keywords').val();
-		var not = $('#not-keywords').val();
-		console.log(keywords);
-		$.ajax({
-			type: 'GET',
-			url: '/api/searches/search.json',
-			data: {'keywords': keywords, 'not': not},
-			success: function(data, dataType) {
-				console.log(data);
-			}
-		});
-	});
-
-	var diary = $('#search-result');
-	diary.masonry({
-    	itemSelector: '.cont',
-     	isAnimated: true,
-		isFitWidth: true,
-		columnWidth: 1
-	});
-	loadBlogs();
-	// setTimeout("loadBlogs();", 2000);
-	
 	// get tags from DB
 	var tag = [];
 	$.ajax({
 		type: 'GET',
 		url: '/api/tags/get_most_used.json',
 		success: function(tags){
-			console.log('success');
 			//tagbox
 			$('.tags').tagbox({
 			    url: tags.response,
@@ -93,30 +45,130 @@ $(function() {
   			});
 		},
 		error: function(tags){
-			console.log('error');
+			console.log('tags error');
 		}
+	});
+
+	page = 1;
+	var count = 25;
+	var keywords = $('#keywords').val();
+	var key_not = $('#not-keywords').val();
+	var key_and = $('#and-keywords').val();
+	var key_or = $('#or-keywords').val();
+	function loadBlogs(page, count, keywords, key_not, key_and, key_or) {
+		$.ajax({
+			type: 'GET',
+			url: '/api/searches/search.json',
+			data: {'count': count, 'page': page, 'keywords': keywords, 'key_not': key_not, 'key_and': key_and, 'key_or': key_or},
+			success: function(data, dataType) {
+				console.log(data);
+				$('.cont').remove();
+				// products
+				products = $('#js-search-products').tmpl(data['response']['products']);
+				$('#search-products-result').append(products);
+				// blogs
+				blogs = $('#js-search-blogs').tmpl(data['response']['blogs']);
+				$('#search-blogs-result').append(blogs);
+				// loadImage
+				$('#search-result').imagesLoaded(function() {
+					$('.cont').removeClass('hidden');
+					$('#search-result').masonry('appended', products);
+					$('#search-result').masonry('appended', blogs);
+				});
+				page++;
+			},
+			error: function(xhr, xhrStatus) {
+				console.log('load error');
+			}
+		});
+	}
+	$(window).on('scroll', function() {
+		var scrollHeight = $(document).height();
+		var scrollPosition = $(window).height() + $(window).scrollTop();
+		if ((scrollHeight - scrollPosition) / scrollHeight === 0) {
+			loadBlogs(
+				page, 
+				count, 
+				$('#keywords').val(), 
+				$('#not-keywords').val(), 
+				$('#and-keywords').val(), 
+				$('#or-keywords').val()
+			);
+			$('#search-result').imagesLoaded(function() {
+				$('.cont').removeClass('hidden');
+				$('#search-result').masonry('appended', products);
+				$('#search-result').masonry('appended', blogs);
+			});
+		}
+	});
+	loadBlogs(page, count, keywords, key_not, key_and, key_or);
+	var diary = $('#search-result');
+	diary.masonry({
+    	itemSelector: '.cont',
+     	isAnimated: true,
+		isFitWidth: true,
+		columnWidth: 1
+	});
+	// setTimeout("loadBlogs();", 2000);
+
+	// search
+	$("#btn-search").click(function(){
+		console.log(keywords);
+		var diary = $('#search-result');
+		diary.masonry('unbindResize');
+		loadBlogs(
+			1, 
+			count, 
+			$('#keywords').val(), 
+			$('#not-keywords').val(), 
+			$('#and-keywords').val(), 
+			$('#or-keywords').val()
+		);
+		$('#search-result').imagesLoaded(function() {
+			$('#search-result').masonry();
+		});
 	});
 });
 </script>
-<script id="searchTemplate" type="text/x-jquery-tmpl">
-<div class="cont hidden" style="float:left">
-	<div class="cont-pic">
-		<a href="/blogs/view/${Blog.id}" class="link"></a>
-		{{if UsedBlogImage.length != 0}}
-			<img  src="${UsedBlogImage[0].url}" data-original="${UsedBlogImage[0].url}" class="cover" width="220px" height="auto">
-		{{else}}
-			<div style="width: 220px;height:220px">${Blog.title}</div>
-			${Blog.content.replace(/<("[^"]*"|'[^']*'|[^'">])*>/g,'').substring(0,99) +""}
-		{{/if}}
-		<div class="cont-info">
-			<div class="cont-title">
-				<p>
-					${Blog.title.replace(/<("[^"]*"|'[^']*'|[^'">])*>/g,'').substring(0,27) +""}
-				</p>
-			</div>
-			<div class="cont-detail">
+<!-- product -->
+<script id="js-search-products" type="text/x-jquery-tmpl">
+	<div class="cont hidden" style="float:left">
+		<div class="cont-pic">
+			<a href="/products/view/${Product.id}" class="link"></a>
+			{{if Product.image_url != ""}}
+				<img src="${Product.image_url}" data-original="${Product.image_url}" class="cover" width="220px" height="auto">
+			{{else}}
+				<div style="width: 220px;height:220px">${Product.name.replace(/<("[^"]*"|'[^']*'|[^'">])*>/g,'').substring(0,27) +""}</div>
+				${Product.outline.replace(/<("[^"]*"|'[^']*'|[^'">])*>/g,'').substring(0,99) +""}
+			{{/if}}
+			<div class="cont-info">
+				<div class="cont-title">
+					<p>${Product.name.replace(/<("[^"]*"|'[^']*'|[^'">])*>/g,'').substring(0,27) +""}</p>
+				</div>
+				<div class="cont-detail"></div>
+				<div class="cont-author"></div>
 			</div>
 		</div>
 	</div>
-</div>
+</script>
+<!-- blog -->
+<script id="js-search-blogs" type="text/x-jquery-tmpl">
+	<div class="cont hidden" style="float:left">
+		<div class="cont-pic">
+			<a href="/blogs/view/${Blog.id}" class="link"></a>
+			{{if UsedBlogImage.length != 0}}
+				<img src="${UsedBlogImage[0].url}" data-original="${UsedBlogImage[0].url}" class="cover" width="220px" height="auto">
+			{{else}}
+				<div style="width: 220px;height:220px">${Blog.title}</div>
+				${Blog.content.replace(/<("[^"]*"|'[^']*'|[^'">])*>/g,'').substring(0,99) +""}
+			{{/if}}
+			<div class="cont-info">
+				<div class="cont-title">
+					<p>${Blog.title.replace(/<("[^"]*"|'[^']*'|[^'">])*>/g,'').substring(0,27) +""}</p>
+				</div>
+				<div class="cont-detail"></div>
+				<div class="cont-author"><p>Author: ${User.name}</p></div>
+			</div>
+		</div>
+	</div>
 </script>
