@@ -169,6 +169,13 @@ $(function(){
 					);
 					
 					echo $this->Form->input(
+						'email', 
+						array(
+							'placeholder' =>'メールアドレス'
+						)
+					); 
+					
+					echo $this->Form->input(
 						'password',
 						array(
 							'placeholder' =>'パスワード'
@@ -183,16 +190,11 @@ $(function(){
 						)
 					); 
 
-					echo $this->Form->input(
-						'email', 
-						array(
-							'placeholder' =>'メールアドレス'
-						)
-					); 
+
 				?>
 			</div><!-- /.modal-body -->
 			<div class="modal-footer">
-				<?php echo $this->Form->submit('Sign up', array('class' => 'btn-b')); ?>
+				<?php echo $this->Form->submit('Sign up', array('class' => 'btn-black')); ?>
 			</div>
 		</div><!-- /.modal-content -->
 		<?php echo $this->Form->end(); ?>

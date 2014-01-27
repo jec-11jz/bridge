@@ -5,98 +5,7 @@
 	$this->extend('/Common/index');
 	$this->Html->script('//ajax.microsoft.com/ajax/jquery.templates/beta1/jquery.tmpl.min.js', array('inline' => false));
 ?>
-<style type="text/css">
-/*css of image*/
-#image {
-    width: 18.750em;
-    height: 25.000em;
-    overflow: hidden;
-    background: #222;
-    color: #fff;
-    line-height:25.000em; /* heightと同じ値 */
-  	text-align:center;
-  	vertical-align:middle;
-  	float: left;
-  	margin-right: 5.000em;
-}
-#image img {
-    visibility: hidden;
-}
-.error {
-	color: red;
-}
-#product-data {
-	height: 12.000em;
-	margin-top: 3.000em;
-	overflow:scroll;
-}
-#input-attribute {
-	overflow:scroll;
-}
-.div-attr {
-	float:left
-}
-.product-title {
-	width: 80%;
-	height: 3.000em;
-	margin-bottom: 4.000em;
-}
-.attr-input {
-	margin-right: 10px;
-	width: 9.688em;
-}
-.template-name {
-	clear: both;
-}
-</style>
 
-<div class="form first-content-form">
-	<div class="form-headder">
-		<h1>Create Blog</h1>
-		<div id="error"></div>
-	</div>
-	<div id="formRegisterProduct">
-		<form method="post" action="/products/add">
-			
-			<div>
-				<label for="movieTitle"><h4>Title</h4></label>
-				<input type="text" name="name" class="input tags product-info .product-title" id="movieTitle"/>			
-			</div>
-			<div id="image" onclick="openKCFinder(this)"><div style='margin:5px'>Click here to choose an image</div></div>
-			<label for="movie-outline">あらすじ：</label>
-			<textarea name="outline" class="product-info" cols="40" rows="4" id="movie-outline" style="display: block" /></textarea>
-			<div class="row">
-				<select name="template_id" class="template-name" id="selected-template" style="display:block">
-					<option value=""　selected>--選択してください--</option>
-					<?php foreach($templates as $template) : ?>
-						<?php if(isset($template['Template']['id'])){ ?>
-							<?php if($template['Template']['id'] == $selected_template['Template']['id']) { ?>
-								<option value="<?php echo $template['Template']['id']; ?>" selected><?php echo $template['Template']['name']; ?></option>
-							<?php } else { ?>
-								<option value="<?php echo $template['Template']['id']; ?>"><?php echo $template['Template']['name']; ?></option>
-							<?php } ?>
-						<?php } ?>
-					<?php endforeach; ?>
-					<option value="other">create template</option>
-				</select>
-			</div>
-				
-			<!-- get attribute -->
-			<fieldset id="product-data">
-				<input type="button" value="add" id="attribute" class="btn-add-attribute">
-				<input type="button" id="btn-delete" class="button" value="all delete" />
-				<div id="input-attribute">
-					<div id="template-attributes"></div>
-				</div>
-			</fieldset>		
-			<input type="button" value="戻る" />
-			<input type="button" id="btn-register" value="登録" />
-		</form>
-		<label>最後の編集者 :</label><a style="display: block">iverson</a>
-		<a>この作品を編集する</a>
-	</div>
-</div>
-	
 <!-- KCfinder読み込み -->
 <script type="text/javascript">
 function openKCFinder(div) {
@@ -267,3 +176,99 @@ $(function(){
 		<h3 class="error">*${message}</h3>	
 	</div>
 </script>
+
+
+<style type="text/css">
+/*css of image*/
+#image {
+    width: 18.750em;
+    height: 25.000em;
+    overflow: hidden;
+    background: #222;
+    color: #fff;
+    line-height:25.000em; /* heightと同じ値 */
+  	text-align:center;
+  	vertical-align:middle;
+  	float: left;
+  	margin-right: 5.000em;
+}
+#image img {
+    visibility: hidden;
+}
+.error {
+	color: red;
+}
+#product-data {
+	height: 12.000em;
+	margin-top: 3.000em;
+	overflow:scroll;
+}
+#input-attribute {
+	overflow:scroll;
+}
+.div-attr {
+	float:left
+}
+.product-title {
+	width: 80%;
+	height: 3.000em;
+	margin-bottom: 4.000em;
+}
+.attr-input {
+	margin-right: 10px;
+	width: 9.688em;
+}
+.template-name {
+	clear: both;
+}
+</style>
+
+<div class="form first-content-form">
+	<div class="form-headder">
+		<h1>Create Product</h1>
+		<div id="error"></div>
+	</div>
+	<div id="formRegisterProduct">
+		<form method="post" action="/products/add" class="content">
+
+			<div class="title">
+				<label for="movieTitle"><h4>Title</h4></label>
+				<input type="text" name="name" class="input tags product-info .product-title" id="movieTitle"/>			
+			</div>
+
+			<div id="image" onclick="openKCFinder(this)"><div style='margin:5px'>Click here to choose an image</div></div>
+			<label for="movie-outline">あらすじ：</label>
+			<textarea name="outline" class="product-info" cols="40" rows="4" id="movie-outline" style="display: block" /></textarea>
+			<div class="row">
+				<select name="template_id" class="form-control template-name" id="selected-template" style="display:block">
+					<option value=""　selected>--選択してください--</option>
+					<?php foreach($templates as $template) : ?>
+						<?php if(isset($template['Template']['id'])){ ?>
+							<?php if($template['Template']['id'] == $selected_template['Template']['id']) { ?>
+								<option value="<?php echo $template['Template']['id']; ?>" selected><?php echo $template['Template']['name']; ?></option>
+							<?php } else { ?>
+								<option value="<?php echo $template['Template']['id']; ?>"><?php echo $template['Template']['name']; ?></option>
+							<?php } ?>
+						<?php } ?>
+					<?php endforeach; ?>
+					<option value="other">create template</option>
+				</select>
+			</div>
+				
+			<!-- get attribute -->
+			<fieldset id="product-data">
+				<input type="button" value="add" id="attribute" class="btn-green btn-add-attribute add">
+				<input type="button" id="btn-delete" class="btn-danger del" value="all delete" />
+				<div id="input-attribute">
+					<div id="template-attributes"></div>
+				</div>
+			</fieldset>		
+			<input type="button" value="戻る" />
+			<input type="button" id="btn-register" value="登録" />
+		</form>
+		<label>最後の編集者 :</label><a style="display: block">iverson</a>
+		<a>この作品を編集する</a>
+	</div>
+</div>
+	
+

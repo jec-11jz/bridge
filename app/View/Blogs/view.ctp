@@ -56,8 +56,8 @@ $(function() {
 
 	<div class="contents">
 		<div id="<?php echo h($blog['Blog']['id']); ?>" class="blog-form">
-			<span>タイトル:</span>
-			<span><?php echo h($blog['Blog']['title']); ?></span>
+			<span class="title">タイトル</span>
+			<h2><?php echo h($blog['Blog']['title']); ?></h2>
 			<hr>
 			<span>タグ:</span>
 			<h4><div id="blog-tags"></div></h4>
@@ -66,12 +66,13 @@ $(function() {
 			<p><?php echo $blog['Blog']['content']; ?></p>
 			
 			<!-- 作成日 -->
-			<p><small>Created: <?php echo $blog['Blog']['created']; ?></small></p>
+			<h5>Created: <?php echo $blog['Blog']['created']; ?></h5>
 			<span><?php echo $blog['User']['name']; ?></span>
 		</div>
 	</div>
 
 	<div class="form-footer">
+		<a href="/blogs/edit/<?php echo h($blog['Blog']['id']); ?>" class="btn-a left">Edit</a>
 		<a href="/blogs" style="display:block">投稿一覧へ戻る</a>
 	</div>
 </div>
