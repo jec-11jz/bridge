@@ -16,7 +16,7 @@ browser.initToolbar = function() {
     $('#toolbar a').click(function() {
         browser.hideDialog();
     });
-
+    // $('#toolbar').append('<input type="button" value="選択" id="btn-exe" class="btn-execute">\n'); 
     if (!_.kuki.isSet('displaySettings'))
         _.kuki.set('displaySettings', 'off');
 
@@ -25,7 +25,6 @@ browser.initToolbar = function() {
         $('#settings').css('display', 'block');
         browser.resize();
     }
-
     $('#toolbar a[href="kcact:settings"]').click(function () {
         if ($('#settings').css('display') == 'none') {
             $(this).addClass('selected');
@@ -45,7 +44,10 @@ browser.initToolbar = function() {
         browser.refresh();
         return false;
     });
-
+    
+	// $('#toolbar .btn-execute').click(function() {
+	    // $('div.file[href="kcact:pick"]').click();
+    // });
     if (window.opener || this.opener.TinyMCE || $('iframe', window.parent.document).get(0))
         $('#toolbar a[href="kcact:maximize"]').click(function() {
             browser.maximize(this);
