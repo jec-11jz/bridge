@@ -38,7 +38,10 @@
 			</div> <!-- spoiler -->
 
 			<textarea id="ckeditor" class="input_form blog"><?php echo h($post['Blog']['content']); ?></textarea>
-			<input type="submit" value="Save" class="btn-a">
+			<div class="div-submit">
+				<input type="submit" value="Save" class="btn-blue">
+			</div>
+			
  		</form>
 
 

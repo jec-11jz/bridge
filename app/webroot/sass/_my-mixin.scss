@@ -9,19 +9,6 @@
   display: inline-block;
   // border-radius: 2px;
 }
-
-@mixin btn-size-m{
-  font-size: 19px;
-  padding: 10px 24px;
-}
-@mixin btn-size-s{
-  font-size: 14px;
-  padding: 6px 20px;
-}
-@mixin btn-size-ss{
-  font-size:14px;
-  padding: 3px 12px;
-}
 @mixin btn-hover{
   background-color: $col-flat-green2;
   text-decoration: none;
@@ -43,6 +30,45 @@
   height: 100%;
   position: absolute;
 }
+
+@mixin gradient-top-lighten($color: #666,$lighten: 5%){
+  background-color: $color;
+  @include filter-gradient(lighten($color, $lighten),$color,vertical);
+  @include background-image(linear-gradient(lighten($color,$lighten) 0%,$color 100%));
+}
+
+@mixin border-box($shadow:0.15){
+  @include box-shadow(rgba(0,0,0,$shadow) 0 0 2px);
+}
+@mixin border-box-inset($shadow:0.15,$length:10px){
+  @include box-shadow(rgba(0,0,0,$shadow) 0 0 $length inset);
+}
+
+
+
+@mixin line-top($black:.1,$white:1){
+  border-top: 1px solid rgba(0,0,0,$black);
+  @include box-shadow(rgba(255,255,255,$white)0 1px 0 inset);
+}
+@mixin line-left($black:.1,$white:1){
+  border-left: 1px solid rgba(0,0,0,$black);
+  @include box-shadow(rgba(255,255,255,$white)-1px 0 0);
+}
+@mixin line-right($black:.1,$white:1){
+  border-right: 1px solid rgba(0,0,0,$black);
+  @include box-shadow(rgba(255,255,255,$white)-1px 0 0 inset);
+}
+@mixin line-bottom($black:.1,$white:1){
+  border-bottom: 1px solid rgba(0,0,0,$black);
+  @include box-shadow(rgba(255,255,255,$white)0 1px 0);
+}
+@mixin line-box{
+  border: 1px solid rgba(0,0,0,0.1);
+  @include box-shadow(rgba(255,255,255,1)-1px 1px 0 inset);
+}
+
+
+
 
 @mixin back-z{
   background: #cecece url("../img/background-2.png");

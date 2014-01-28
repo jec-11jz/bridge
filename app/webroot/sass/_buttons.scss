@@ -1,0 +1,104 @@
+    //　ーー宣言ーー
+@import "compass";
+@import "constants";
+
+@mixin btn-fade {
+  -webkit-transition: 0.2s;
+  -o-transition: 0.2s;
+  transition: 0.2s;
+  display: inline-block;
+  // border-radius: 2px;
+}
+
+@mixin btn-size-m{
+  font-size: 19px;
+  padding: 10px 24px;
+}
+@mixin btn-size-s{
+  font-size: 14px;
+  padding: 6px 20px;
+}
+@mixin btn-size-ss{
+  font-size:14px;
+  padding: 3px 12px;
+}
+@mixin btn-hover{
+  background-color: $col-flat-green2;
+  text-decoration: none;
+  color:#fff;
+}
+
+
+.btn-a{
+  background-color: #313131;
+  text-decoration: none;
+  color: #fff;
+  padding: 0.5em 1em;
+  border: none;
+  @include btn-fade;
+  &:hover{
+    @include btn-hover;
+  }
+}
+.btn-black{
+  background-color: #ECECEC;
+  text-decoration: none;
+  color: $col-black;
+  padding: 0.5em 1em;
+  border:solid 1px $col-black2;
+  @include btn-fade;
+  &:hover{
+    text-decoration: none;
+    background-color: $col-black4;
+    color: white;
+    border: solid 1px $col-black4;
+  }
+}
+.btn-green{
+  background: $col-flat-green2;
+  text-decoration: none;
+  color: white;
+  border: none;
+  padding: 0.5em 1em;
+  @include btn-fade;
+  &:hover{
+    text-decoration: none;
+    background-color: $col-flat-green3;
+  }
+}
+.btn-blue{
+  background: $col-flat-blue1;
+  text-decoration: none;
+  color: white;
+  border: none;
+  padding: 0.5em 1em;
+  @include btn-fade;
+  &:hover{
+    text-decoration: none;
+    background-color: $col-flat-blue2;
+  }
+}
+.btn-danger{
+  background: $col-danger;
+  text-decoration: none;
+  color: white;
+  border: none;
+  padding: 0.5em 1em;
+  @include btn-fade;
+  &:hover{
+    text-decoration: none;
+    background-color: $col-danger-hover;
+  }
+}
+
+.round{
+  height: 120px;
+  width: 120px;
+  line-height: 120px;
+  text-align: center;
+  padding: 0;
+  position: relative;
+  display: inline-block;
+  @include border-radius(260px);
+}
+

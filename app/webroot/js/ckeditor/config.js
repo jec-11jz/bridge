@@ -8,23 +8,26 @@ CKEDITOR.editorConfig = function( config ) {
 	// config.language = 'fr';
 	// config.uiColor = '#AADC6E';
 	
-	CKEDITOR.config.width = '95%'; //横幅
-	CKEDITOR.config.height = '20em'; //高さ
+	CKEDITOR.config.width = '100%'; //横幅
+	CKEDITOR.config.height = '30em'; //高さ
 	CKEDITOR.config.resize_enabled = true;
 	CKEDITOR.config.toolbar = [
-		['Source','-','Save','NewPage','Preview','-','Templates']
-		,['Cut','Copy','Paste','PasteText','PasteFromWord','-','Print','SpellChecker']
-		,['Undo','Redo','-','Find','Replace','-','SelectAll','RemoveFormat']
-		,['Form','Checkbox','Radio','TextField','Textarea','Select','Button','ImageButton','HiddenField']
+		['Source']
+		,['Save','Print','Preview','-','Templates']
+		,['Undo','Redo','-','Find','-','SelectAll','RemoveFormat']
+		,['Cut','Copy','Paste','PasteText','PasteFromWord','-','SpellChecker']
 		,'/'
-		,['NumberedList','BulletedList','-','Outdent','Indent','Blockquote']
+		,['Font','FontSize']
+		,['Subscript','Superscript']
 		,['JustifyLeft','JustifyCenter','JustifyRight','JustifyBlock']
-		,['Link','Unlink','Anchor']
+		,['Checkbox','Radio','Select']
 		,['Image','Table','HorizontalRule','Smiley','SpecialChar','PageBreak']
 		,'/'
-		,['Styles','Format','Font','FontSize']
-		,['Bold','Italic','Underline','Strike','-','Subscript','Superscript']
+		,['Bold','Italic','Underline','Strike']
+		,['Format']
 		,['TextColor','BGColor']
+		,['NumberedList','BulletedList','-','Outdent','Indent','Blockquote']
+		,['Link','Unlink','Anchor']
 		,['ShowBlocks']
 	];
 	

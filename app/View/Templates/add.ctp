@@ -64,7 +64,7 @@ $(function(){
 				</div>
 			</fieldset>
 		</div> <!-- row -->
-  		<?php echo $this->Form->submit('登録', array('type' => 'submit', 'class' => 'btn-a btn-register')); ?>	
+  		<?php echo $this->Form->submit('登録', array('type' => 'submit', 'class' => 'btn-blue btn-register')); ?>	
 		<?php echo $this->Form->end(); ?>	
 
 	</div><!-- field -->

@@ -53,12 +53,6 @@ $this->Html->script('dropdown/modernizr.custom.79639', array('inline' => false))
 				<li><a href="http://bridge/js/kcfinder/browse.php?type=images&dir=images">BlogsUp</a></li>
 			</ul>
 		</div>
-	
-		<div id="dd" class="wrapper-dropdown-5" tabindex="1"><p>About us</p>
-			<ul class="dropdown">
-
-			</ul>
-		</div>
 	</ul>
 	
 	<ul class="nav navbar-nav navbar-right">

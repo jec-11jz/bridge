@@ -33,23 +33,52 @@
   }
 }
 
+$tag-height: 4em;
 #formRegisterProduct{
+  .error{color: $col-danger;}
   form{
     overflow: hidden;
-  }
-  .error{
-    color: $col-danger;
-  }
-  .content{
-    padding: 1em;
-  }
-  div.title{
-    .tagbox{
-      width: 95%;
+    .div-title{
+      margin-bottom: 2em;
+      .tagbox{
+        width: 100%;
+        height: $tag-height;
+        ul{
+          margin: 0.2em 0.4em;
+          height: $tag-height;
+          li{
+            // height: $tag-height;
+            span.tag{
+              padding:1em 2em;
+              font-size: 30px;
+            }
+            input{
+              font-size: 30px;
+              height: $tag-height;
+            }
+            
+          }
+        }
+
+      }
+    }
+    #image{
+      margin: 0 5em 2em 0;
+      width: 18.750em;
+      height: 25.000em;
+      overflow: hidden;
+      background: #222;
+      color: #fff;
+      line-height:25.000em; /* heightと同じ値 */
+      text-align:center;
+      vertical-align:middle;
+      float: left;
     }
   }
+
   .product-info{
     line-height: 1.7em;
+    padding: 1em;
     display: block;
   }
 

@@ -48,31 +48,33 @@ $(function() {
 	</div>
 </script>
 
-
-<div id="div-create-blogs" class="form first-content-form">
-	<div class="form-headder">
-		<h1>View Blogs</h1>
+<div id="div-create-blogs" class="form second-content-form">
+	<div class="form-header">
+		<div class="header-left">
+			<span>View</span>
+		</div>
+		<div class="header-right">
+			<span class="blog-title"><?php echo h($blog['Blog']['title']); ?></span>
+		</div>
+		<div class="div-decoration"><span>Blogs</span></div>
 	</div>
 
-	<div class="contents">
+	<div class="form-body">
 		<div id="<?php echo h($blog['Blog']['id']); ?>" class="blog-form">
-			<span class="title">タイトル</span>
-			<h2><?php echo h($blog['Blog']['title']); ?></h2>
-			<hr>
-			<span>タグ:</span>
-			<h4><div id="blog-tags"></div></h4>
-			<hr>
-			<h2>本文</h2>
-			<p><?php echo $blog['Blog']['content']; ?></p>
+			<div id="blog-tags"></div>
+
+			<div class="text-body"><?php echo $blog['Blog']['content']; ?></div>
 			
+			<hr>
 			<!-- 作成日 -->
 			<h5>Created: <?php echo $blog['Blog']['created']; ?></h5>
 			<span><?php echo $blog['User']['name']; ?></span>
+			<hr>
+			<a href="/blogs/edit/<?php echo h($blog['Blog']['id']); ?>" class="btn-blue round right">Edit</a>
 		</div>
 	</div>
 
 	<div class="form-footer">
-		<a href="/blogs/edit/<?php echo h($blog['Blog']['id']); ?>" class="btn-a left">Edit</a>
 		<a href="/blogs" style="display:block">投稿一覧へ戻る</a>
 	</div>
 </div>

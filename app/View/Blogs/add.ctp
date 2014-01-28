@@ -3,56 +3,13 @@
 	echo $this->Html->css('jquery-ui-1.10.4.custom');
 	echo $this->Html->css('diary');
 
-	
 	echo $this->Html->script('ckeditor/ckeditor');
 	echo $this->Html->script('jquery-ui-1.10.4.custom');
 	echo $this->Html->script('tag/tags');
 
-	
 	$this->extend('/Common/index');
 ?>
 
-<div class="form first-content-form">
-	<div class='cont'>
-		<div class="form-headder">
-			<h1>Create Blog</h1>
-		</div>
-
-		<!-- ブログ投稿フォーム -->
-		<form id="BlogAddForm" method="post" action="/blogs/add">
-			<input type="text" name="data[Blog][title]" class="input_form form-control" placeholder="title...">
-			<input type="text" id="tags" class="input_form form-control" name="data[Tag][name]">
-			<div style="clear:both"></div>
-			<div class="spoiler">
-				<div class="right">
-					<span>ネタバレ：</span>
-				 	<select name="minbeds" id="minbeds" class="list">
-					    <option>1</option>
-					    <option>2</option>
-					    <option>3</option>
-					    <option>4</option>
-					    <option selected>5</option>
-					    <option>6</option>
-					    <option>7</option>
-					    <option>8</option>
-					    <option>9</option>
-					    <option>10</option>
-				 	</select>
-				</div>
-			</div> <!-- spoiler -->
-		 	<textarea name="data[Blog][content]" id="ckeditor" class="input_form blog" cols="30" rows="6"></textarea>
-		 	<input type="submit" value="Save" class="btn-a">
-		</form>
-
-		<script type="text/javascript">  
-			var editor = CKEDITOR.replace('ckeditor');  
-		</script>
-		
-	</div> <!-- cont -->
-	<div class="form-footer">
-		
-	</div> <!-- footer -->
-</div> <!-- form -->
 <!-- JS tag -->
 <script>
 $(function() {
@@ -115,3 +72,51 @@ $(function() {
 	    });
 	});
 </script>
+
+
+
+<div class="form first-content-form">
+	<div class='cont'>
+		<div class="form-headder">
+			<h1>Create Blog</h1>
+		</div>
+
+		<!-- ブログ投稿フォーム -->
+		<form id="BlogAddForm" method="post" action="/blogs/add">
+			<input type="text" name="data[Blog][title]" class="input_form form-control" placeholder="title...">
+			<input type="text" id="tags" class="input_form form-control" name="data[Tag][name]">
+			<div style="clear:both"></div>
+			<div class="spoiler">
+				<div class="right">
+					<span>ネタバレ：</span>
+				 	<select name="minbeds" id="minbeds" class="list">
+					    <option>1</option>
+					    <option>2</option>
+					    <option>3</option>
+					    <option>4</option>
+					    <option selected>5</option>
+					    <option>6</option>
+					    <option>7</option>
+					    <option>8</option>
+					    <option>9</option>
+					    <option>10</option>
+				 	</select>
+				</div>
+			</div> <!-- spoiler -->
+		 	<textarea name="data[Blog][content]" id="ckeditor" class="input_form blog" cols="30" rows="6"></textarea>
+		 	<div class="div-submit">
+		 		<input type="submit" value="Save" class="btn-blue">
+		 	</div>
+　 		</form>
+
+		<script type="text/javascript">  
+			var editor = CKEDITOR.replace('ckeditor');  
+		</script>
+		
+	</div> <!-- cont -->
+	
+	<div class="form-footer">
+		<a href="index" class="back"><i class="fa fa-reply"></i> 一覧へ戻る</a>
+	</div> <!-- footer -->
+</div> <!-- form -->
+

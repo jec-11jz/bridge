@@ -28,25 +28,127 @@ body, h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
   src: url("../../fonts/mplus/mplus-1p-thin.ttf"); }
 
 @font-face {}
-/* line 5, ../sass/all.scss */
+/* line 32, ../sass/_buttons.scss */
+.btn-a {
+  background-color: #313131;
+  text-decoration: none;
+  color: #fff;
+  padding: 0.5em 1em;
+  border: none;
+  -webkit-transition: 0.2s;
+  -o-transition: 0.2s;
+  transition: 0.2s;
+  display: inline-block; }
+  /* line 39, ../sass/_buttons.scss */
+  .btn-a:hover {
+    background-color: #58be89;
+    text-decoration: none;
+    color: #fff; }
+
+/* line 43, ../sass/_buttons.scss */
+.btn-black {
+  background-color: #ECECEC;
+  text-decoration: none;
+  color: #3f3f3f;
+  padding: 0.5em 1em;
+  border: solid 1px #c1c1c1;
+  -webkit-transition: 0.2s;
+  -o-transition: 0.2s;
+  transition: 0.2s;
+  display: inline-block; }
+  /* line 50, ../sass/_buttons.scss */
+  .btn-black:hover {
+    text-decoration: none;
+    background-color: #4a4a4a;
+    color: white;
+    border: solid 1px #4a4a4a; }
+
+/* line 57, ../sass/_buttons.scss */
+.btn-green {
+  background: #58be89;
+  text-decoration: none;
+  color: white;
+  border: none;
+  padding: 0.5em 1em;
+  -webkit-transition: 0.2s;
+  -o-transition: 0.2s;
+  transition: 0.2s;
+  display: inline-block; }
+  /* line 64, ../sass/_buttons.scss */
+  .btn-green:hover {
+    text-decoration: none;
+    background-color: #44b078; }
+
+/* line 69, ../sass/_buttons.scss */
+.btn-blue {
+  background: #23adc9;
+  text-decoration: none;
+  color: white;
+  border: none;
+  padding: 0.5em 1em;
+  -webkit-transition: 0.2s;
+  -o-transition: 0.2s;
+  transition: 0.2s;
+  display: inline-block; }
+  /* line 76, ../sass/_buttons.scss */
+  .btn-blue:hover {
+    text-decoration: none;
+    background-color: #1e94ac; }
+
+/* line 81, ../sass/_buttons.scss */
+.btn-danger {
+  background: #f06260;
+  text-decoration: none;
+  color: white;
+  border: none;
+  padding: 0.5em 1em;
+  -webkit-transition: 0.2s;
+  -o-transition: 0.2s;
+  transition: 0.2s;
+  display: inline-block; }
+  /* line 88, ../sass/_buttons.scss */
+  .btn-danger:hover {
+    text-decoration: none;
+    background-color: #c61513; }
+
+/* line 94, ../sass/_buttons.scss */
+.round {
+  height: 120px;
+  width: 120px;
+  line-height: 120px;
+  text-align: center;
+  padding: 0;
+  position: relative;
+  display: inline-block;
+  -webkit-border-radius: 260px;
+  -moz-border-radius: 260px;
+  -ms-border-radius: 260px;
+  -o-border-radius: 260px;
+  border-radius: 260px; }
+
+/* line 6, ../sass/all.scss */
 body {
   background-color: #E5E5DE;
   color: #3f3f3f; }
 
-/* line 10, ../sass/all.scss */
+/* line 11, ../sass/all.scss */
 #contents {
   margin-top: 40px; }
 
-/* line 14, ../sass/all.scss */
+/* line 15, ../sass/all.scss */
 .nav-brand > img {
   width: 78px;
   height: 39px; }
 
-/* line 20, ../sass/all.scss */
+/* line 21, ../sass/all.scss */
+div.page-title h1 {
+  color: #58be89; }
+
+/* line 25, ../sass/all.scss */
 a:hover {
   color: #58be89; }
 
-/* line 28, ../sass/all.scss */
+/* line 33, ../sass/all.scss */
 div.form.first-content-form {
   position: relative;
   width: 88%;
@@ -56,26 +158,90 @@ div.form.first-content-form {
   -ms-border-radius: 2px;
   -o-border-radius: 2px;
   border-radius: 2px; }
-  /* line 34, ../sass/all.scss */
+  /* line 39, ../sass/all.scss */
   div.form.first-content-form label, div.form.first-content-form h1 {
     color: white; }
-  /* line 37, ../sass/all.scss */
+  /* line 42, ../sass/all.scss */
   div.form.first-content-form .form-headder {
     padding: 1em 0;
     background-color: #58be89;
     text-align: center; }
-  /* line 43, ../sass/all.scss */
+  /* line 48, ../sass/all.scss */
   div.form.first-content-form form, div.form.first-content-form .contents {
     display: block;
-    background-color: #ccdfcc; }
-    /* line 47, ../sass/all.scss */
+    background-color: #ccdfcc;
+    padding: 1em 2em; }
+    /* line 52, ../sass/all.scss */
     div.form.first-content-form form input, div.form.first-content-form form .tagbox, div.form.first-content-form .contents input, div.form.first-content-form .contents .tagbox {
       margin: 0 auto; }
-  /* line 52, ../sass/all.scss */
+  /* line 57, ../sass/all.scss */
   div.form.first-content-form .form-footer {
     background-color: #58be89;
     left: 0;
     bottom: 0;
-    padding: 1em 0.5em;
+    padding: 0.5em;
     width: 100%;
-    text-align: right; }
+    text-align: left; }
+    /* line 64, ../sass/all.scss */
+    div.form.first-content-form .form-footer .back {
+      -webkit-transition: 0.2s;
+      -o-transition: 0.2s;
+      transition: 0.2s;
+      display: inline-block; }
+      /* line 66, ../sass/all.scss */
+      div.form.first-content-form .form-footer .back:hover {
+        color: white;
+        text-decoration: none; }
+
+/* line 76, ../sass/all.scss */
+div.form.second-content-form .form-header {
+  position: relative;
+  height: 200px;
+  overflow: hidden;
+  background-color: #6d9f58; }
+  /* line 82, ../sass/all.scss */
+  div.form.second-content-form .form-header .header-left {
+    margin: 25px 75px 25px 13%;
+    height: 150px;
+    width: 150px;
+    background-color: #ececec;
+    -webkit-border-radius: 300px;
+    -moz-border-radius: 300px;
+    -ms-border-radius: 300px;
+    -o-border-radius: 300px;
+    border-radius: 300px;
+    text-align: center;
+    display: inline-block;
+    line-height: 150px; }
+    /* line 91, ../sass/all.scss */
+    div.form.second-content-form .form-header .header-left span {
+      font-size: 18px; }
+  /* line 95, ../sass/all.scss */
+  div.form.second-content-form .form-header .header-right {
+    display: inline-block;
+    width: 60%; }
+    /* line 98, ../sass/all.scss */
+    div.form.second-content-form .form-header .header-right .blog-title {
+      color: #f6f6f6;
+      font-size: 2em;
+      text-shadow: 1px -1px 0 rgba(0, 0, 0, 0.5); }
+  /* line 104, ../sass/all.scss */
+  div.form.second-content-form .form-header .div-decoration {
+    position: absolute;
+    right: -220px;
+    width: 500px;
+    top: 60px;
+    height: 5.7em;
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    transform: rotate(45deg);
+    background-color: #58be89;
+    text-align: center;
+    line-height: 5.7em; }
+    /* line 115, ../sass/all.scss */
+    div.form.second-content-form .form-header .div-decoration span {
+      color: #f6f6f6;
+      margin-right: 75px;
+      font-size: 20px; }

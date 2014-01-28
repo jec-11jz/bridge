@@ -38,48 +38,86 @@ div#diary-index{
     }
   }
 }
+
+
 #div-create-blogs{
-  .contents{
+  .header-left{
+    span{
+      color: $green-dark;
+    }
+  }
+  .form-body{
     .blog-form{
-      width: 95%;
-      margin: 0 auto;
-      .title{
-        background-color: $col-black2;
-      }
       #blog-tags{
-        margin: 1em;
-        background-color: $col-black1;
-        @include border-radius(15px);
-        input{
-          margin:1em;
+        margin: 1em 2em;
+        padding: 1em;
+        background-color: #ECECE8;
+        @include border-radius(2px);
+        @include line-box;
+        .tag{
+          @include border-radius(25px);
+          margin-left: 1em;
         }
+      }
+      .text-body{
+        padding: 2em 3em;
+        // background-color: green;
       }
     }
   }
   .form-footer{
-    .left{
-      float: left;
-    }
   }
 }
+
+
+// #div-create-blogs{
+//   .contents{
+//     .blog-form{
+//       width: 100%;
+//       margin: 0 auto;
+//       .title{
+//         background-color: $col-black2;
+//       }
+//       #blog-tags{
+//         background-color: $col-black1;
+//         @include border-radius(5px);
+//         input{
+//           @include border-radius(30px);
+//           margin:0.7em;
+//         }
+//       }
+//       .text-body{
+//         a{
+//           color:blue;
+//         }
+//       }
+//       .right{
+//         // color: white;
+//         float: right;
+//       }
+//     }
+//   }
+//   .form-footer{
+//   }
+// }
 
 .ui-widget-header{
   // background:$col-flat-blue1;
 }
 form#BlogAddForm, form#BlogEditForm{
   margin: 0 auto;
-  padding-bottom: 1em;
   height: 40%;
   text-align: center;
-  input{
-    width: 95%;
+  .input_form{
+    width: 100%;
     margin: 1em auto;
     // width: 2000px !important;
   }
   .spoiler{
     text-align: right;
-    width: 95%;
+    width: 100%;
     margin: 0 auto;
+    @include border-radius(2px);
     .right{
       display: inline-block;
       width: 35%;
@@ -103,10 +141,17 @@ form#BlogAddForm, form#BlogEditForm{
     }
   }
   
-  
+  .div-submit{
+    display: block;
+    text-align: right;
+    input{
+      width:10em;
+      margin-top: 1em;
+    }
+  }
   .tagbox{
     margin: 0 auto 1em;
-    width: 95%;
+    width: 100%;
     ul{
       li{
         &.new input{

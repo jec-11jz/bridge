@@ -148,18 +148,6 @@ $(function(){
 <style type="text/css">
 /*css of image*/
 #image {
-    width: 18.750em;
-    height: 25.000em;
-    overflow: hidden;
-    background: #222;
-    color: #fff;
-    line-height:25.000em; /* heightと同じ値 */
-  	text-align:center;
-  	vertical-align:middle;
-  	float: left;
-  	margin-right: 5.000em;
-}
-#image img {
     visibility: hidden;
 }
 #product-data {
@@ -177,13 +165,14 @@ $(function(){
 	</div>
 
 	<div id="formRegisterProduct">
-		<form method="post" id="<?php echo h($product['Product']['id']); ?>" action="/products/edit/<?php echo h($product['Product']['id']); ?>" class="content">
-			<div id="error"></div>
+		<div id="error"></div>
 
-			<div class="title">
+		<form method="post" id="<?php echo h($product['Product']['id']); ?>" action="/products/edit/<?php echo h($product['Product']['id']); ?>" class="content">
+			<div class="div-title">
 				<label for="movieTitle"><h5>title:</h5></label>
 				<input type="text" name="name" value="<?php echo h($product_names); ?>" class="input product-info title tags" id="movieTitle"/>
 			</div>
+
 
 			<div id="image" onclick="openKCFinder(this)">
 				<?php if($product['Product']['image_url']) { ?>
@@ -192,9 +181,9 @@ $(function(){
 					<div style='margin:5px'>Click here to choose an image</div>
 				<?php } ?>
 			</div>
-			<!-- product outline -->
-			<textarea name="outline" class="product-info" id="movie-outline" rows="15" cols="70" /><?php echo h($product['Product']['outline']); ?></textarea>	
-			<!-- get attribute -->
+
+			<textarea name="outline" class="product-info" id="movie-outline" rows="12" cols="70" placeholder="あらすじ"><?php echo h($product['Product']['outline']); ?></textarea>	
+
 			<fieldset id="product-data">
 				<input type="button" value="add" id="attribute" class="btn-green btn-add-attribute add">
 				<input type="button" id="btn-delete" class="btn-danger del" value="all delete" />

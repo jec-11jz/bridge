@@ -1,5 +1,6 @@
 <?php
-	
+	echo $this->Html->css('products');
+
 	echo $this->Html->script('tag/tags');
 	
 	$this->extend('/Common/index');
@@ -192,9 +193,6 @@ $(function(){
   	float: left;
   	margin-right: 5.000em;
 }
-#image img {
-    visibility: hidden;
-}
 .error {
 	color: red;
 }
@@ -208,11 +206,6 @@ $(function(){
 }
 .div-attr {
 	float:left
-}
-.product-title {
-	width: 80%;
-	height: 3.000em;
-	margin-bottom: 4.000em;
 }
 .attr-input {
 	margin-right: 10px;
@@ -231,17 +224,18 @@ $(function(){
 	<div id="formRegisterProduct">
 		<form method="post" action="/products/add" class="content">
 
-			<div class="title">
-				<label for="movieTitle"><h4>Title</h4></label>
-				<input type="text" name="name" class="input tags product-info .product-title" id="movieTitle"/>			
+			<div class="div-title">
+				<h4>Title</h4>
+				<input type="text" name="name" class="input tags product-info" id="movieTitle"/>			
 			</div>
 
 			<div id="image" onclick="openKCFinder(this)"><div style='margin:5px'>Click here to choose an image</div></div>
-			<label for="movie-outline">あらすじ：</label>
-			<textarea name="outline" class="product-info" cols="40" rows="4" id="movie-outline" style="display: block" /></textarea>
+
+			<textarea name="outline" class="product-info" cols="70" rows="12" id="movie-outline" placeholder="あらすじ"></textarea>
+
 			<div class="row">
 				<select name="template_id" class="form-control template-name" id="selected-template" style="display:block">
-					<option value=""　selected>--選択してください--</option>
+					<option value=""　selected>-テンプレートを選択-</option>
 					<?php foreach($templates as $template) : ?>
 						<?php if(isset($template['Template']['id'])){ ?>
 							<?php if($template['Template']['id'] == $selected_template['Template']['id']) { ?>
@@ -251,7 +245,7 @@ $(function(){
 							<?php } ?>
 						<?php } ?>
 					<?php endforeach; ?>
-					<option value="other">create template</option>
+					<option value="other">-テンプレートを作成-</option>
 				</select>
 			</div>
 				
@@ -263,11 +257,14 @@ $(function(){
 					<div id="template-attributes"></div>
 				</div>
 			</fieldset>		
-			<input type="button" value="戻る" />
-			<input type="button" id="btn-register" value="登録" />
+			<div class="div-submit">
+				<input type="button" id="btn-register" value="登録" class="btn-blue" />
+			</div>
+			
 		</form>
-		<label>最後の編集者 :</label><a style="display: block">iverson</a>
-		<a>この作品を編集する</a>
+	</div>
+	<div class="form-footer">
+		<a href="index" class="back">一覧へ戻る</a>
 	</div>
 </div>
 	
