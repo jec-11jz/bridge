@@ -16,7 +16,7 @@
 		</div>
 		<!-- ブログ投稿フォーム -->
 		<form id="BlogEditForm"  action="/blogs/edit/<?php echo h($post['Blog']['id']); ?>" method="post">
-			<input type="text" class="input_form form-control" value="<?php echo h($post['Blog']['title']); ?>">
+			<input type="text" name="data[Blog][title]" class="input_form form-control" value="<?php echo h($post['Blog']['title']); ?>">
 			<input type="text" id="tags" name="data[Tag][name]" value="<?php echo h($post['Tag']['namesCSV']); ?>" class="input_form">
 
 			<div class="spoiler">
@@ -37,7 +37,7 @@
 				</div>
 			</div> <!-- spoiler -->
 
-			<textarea id="ckeditor" class="input_form blog"><?php echo h($post['Blog']['content']); ?></textarea>
+			<textarea id="ckeditor" name="data[Blog][content]" class="input_form blog"><?php echo h($post['Blog']['content']); ?></textarea>
 			<input type="submit" value="Save" class="btn-a">
  		</form>
 

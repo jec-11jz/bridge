@@ -221,6 +221,9 @@ $(function(){
 .template-name {
 	clear: both;
 }
+.select-temp {
+	width: 200px;
+}
 </style>
 
 <div class="form first-content-form">
@@ -239,7 +242,7 @@ $(function(){
 			<div id="image" onclick="openKCFinder(this)"><div style='margin:5px'>Click here to choose an image</div></div>
 			<label for="movie-outline">あらすじ：</label>
 			<textarea name="outline" class="product-info" cols="40" rows="4" id="movie-outline" style="display: block" /></textarea>
-			<div class="row">
+			<div class="select-temp">
 				<select name="template_id" class="form-control template-name" id="selected-template" style="display:block">
 					<option value=""　selected>--選択してください--</option>
 					<?php foreach($templates as $template) : ?>

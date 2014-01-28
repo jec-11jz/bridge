@@ -167,7 +167,9 @@ $(function(){
 	margin-top: 3.000em;
 	clear: both;
 }
-
+.form-button{
+	clear: both;
+}
 </style>
 
 
@@ -208,9 +210,10 @@ $(function(){
 					<?php endforeach; ?>
 				</div>
 			</fieldset>
-			
-			<input type="button" id="btn-register" class="btn-green right" value="登録" />
-			<input type="button" class="btn-green right" value="戻る" />
+			<div class="form-button">
+				<input type="button" id="btn-register" class="btn-green right" value="登録" />
+				<input type="button" class="btn-green right" value="戻る" />
+			</div>
 		</form>
 	</div>
 </div>
