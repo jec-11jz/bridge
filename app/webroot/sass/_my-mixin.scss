@@ -10,7 +10,7 @@
   // border-radius: 2px;
 }
 @mixin btn-hover{
-  background-color: $col-flat-green2;
+  background-color: $green;
   text-decoration: none;
   color:#fff;
 }
@@ -62,9 +62,9 @@
   border-bottom: 1px solid rgba(0,0,0,$black);
   @include box-shadow(rgba(255,255,255,$white)0 1px 0);
 }
-@mixin line-box{
-  border: 1px solid rgba(0,0,0,0.1);
-  @include box-shadow(rgba(255,255,255,1)-1px 1px 0 inset);
+@mixin line-box($black:.1,$white:1){
+  border: 1px solid rgba(0,0,0,$black);
+  @include box-shadow(rgba(255,255,255,$white)-1px 1px 0 inset);
 }
 
 

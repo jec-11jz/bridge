@@ -75,11 +75,20 @@ $(function() {
 
 
 
-<div class="form first-content-form">
-	<div class='cont'>
-		<div class="form-headder">
-			<h1>Create Blog</h1>
+<div id="div-add-blogs" class="form second-content-form">
+	<div class="form-header">
+		<div class="header-left">
+			<span>Create</span>
 		</div>
+		<div class="header-right">
+			<span class="blog-title"></span>
+		</div>
+		<div class="div-decoration">
+			<span>Blogs</span>
+		</div>
+	</div>
+	<div class='cont'>
+
 
 		<!-- ブログ投稿フォーム -->
 		<form id="BlogAddForm" method="post" action="/blogs/add">
@@ -87,7 +96,7 @@ $(function() {
 			<input type="text" id="tags" class="input_form form-control" name="data[Tag][name]">
 			<div style="clear:both"></div>
 			<div class="spoiler">
-				<div class="right">
+				<div class="spoiler-slider">
 					<span>ネタバレ：</span>
 				 	<select name="minbeds" id="minbeds" class="list">
 					    <option>1</option>

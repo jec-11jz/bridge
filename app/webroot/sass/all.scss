@@ -2,9 +2,11 @@
 @import "fonts.scss";
 @import "buttons.scss";
 
-
+hr{
+  @include line-bottom;
+  border-top: none;
+}
 body{
-  // @include back-bg;
   background-color: #E5E5DE;
   color:#3f3f3f;
 }
@@ -23,13 +25,40 @@ div.page-title{
   }
 }
 a:hover {
-  color: $col-flat-green2;
+  color: $green;
 
 }
 // .left{float:left;}
 // .right{float:right;}
 
 
+// ネタバレスライダー
+.spoiler{
+  width: 100%;
+  @include border-radius(2px);
+  .spoiler-slider{
+    display: inline-block;
+    // width: 35%;
+    padding: 0.5em;
+    background-color: #93B8CA;
+    color: white;
+    span, .list, #slider{
+      float: left;
+    }
+    .list{
+      @include appearance(initial);
+      padding-left: 0.4em;
+      border: none;
+    }
+    #slider{
+      display: inline-block;
+      width:220px;
+      margin: 3px 0 0 15px;
+    }
+  }
+}
+
+// フォーム形式のUI
 div.form.first-content-form{
   position: relative;
   width: 88%;
@@ -72,22 +101,29 @@ div.form.first-content-form{
 }
 
 
+
+// 全画面形式のUI
 div.form.second-content-form{
   .form-header{
     position: relative;
     height: 200px;
     overflow: hidden;
-    // @include gradient-top-lighten(#f8ebd7);
+    @include gradient-top-lighten($green);
     background-color: #6d9f58;
     .header-left{
       margin: 25px 75px 25px 13%;
       height: 150px;width: 150px;
       background-color: $col-black1;
-      // @include border-box-inset();
       @include border-radius(300px);
       text-align: center;
       display: inline-block;
       line-height: 150px;
+      position: relative;
+      a.header-link{
+        @include link;
+        @include border-radius(300px);
+        @include transition(0.3s);
+      }
       span{
         font-size: 18px;
       }
@@ -108,8 +144,6 @@ div.form.second-content-form{
       top:60px;
       height: 5.7em;
       @include rotate(45deg);
-      // @include box-shadow(0 0 2px $green);
-      background-color: $green;
       text-align: center;
       line-height: 5.7em;
       span{
@@ -120,10 +154,16 @@ div.form.second-content-form{
     }
   }
   .form-body{
-
   }
   .form-footer{
-
+    padding: 1em 2em;
+  }
+}
+a.header-link:hover .header-left{
+  background-color: $green;
+  border:1px solid $white;
+  span{
+    color: $white;
   }
 }
 

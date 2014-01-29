@@ -3,11 +3,8 @@
 @import "constants";
 
 @mixin btn-fade {
-  -webkit-transition: 0.2s;
-  -o-transition: 0.2s;
-  transition: 0.2s;
+  @include transition(0.2s);
   display: inline-block;
-  // border-radius: 2px;
 }
 
 @mixin btn-size-m{
@@ -33,7 +30,7 @@
   background-color: #313131;
   text-decoration: none;
   color: #fff;
-  padding: 0.5em 1em;
+  padding: 0.5em 2em;
   border: none;
   @include btn-fade;
   &:hover{
@@ -44,7 +41,7 @@
   background-color: #ECECEC;
   text-decoration: none;
   color: $col-black;
-  padding: 0.5em 1em;
+  padding: 0.5em 2em;
   border:solid 1px $col-black2;
   @include btn-fade;
   &:hover{
@@ -59,7 +56,7 @@
   text-decoration: none;
   color: white;
   border: none;
-  padding: 0.5em 1em;
+  padding: 0.5em 2em;
   @include btn-fade;
   &:hover{
     text-decoration: none;
@@ -71,11 +68,15 @@
   text-decoration: none;
   color: white;
   border: none;
-  padding: 0.5em 1em;
+  padding: 0.5em 2em;
   @include btn-fade;
   &:hover{
     text-decoration: none;
-    background-color: $col-flat-blue2;
+    background-color: lighten($col-flat-blue1,8%);
+  }
+  &:active{
+    @include transition(0);
+    background-color: darken($col-flat-blue1,8%);
   }
 }
 .btn-danger{
@@ -83,11 +84,24 @@
   text-decoration: none;
   color: white;
   border: none;
-  padding: 0.5em 1em;
+  padding: 0.5em 2em;
   @include btn-fade;
   &:hover{
     text-decoration: none;
     background-color: $col-danger-hover;
+  }
+}
+.btn-orange{
+  background: $orange;
+  text-decoration: none;
+  color: white;
+  border: none;
+  padding: 0.5em 2em;
+  @include btn-fade;
+  &:hover{
+    color: $white;
+    text-decoration: none;
+    background-color: lighten($orange, 10%);
   }
 }
 

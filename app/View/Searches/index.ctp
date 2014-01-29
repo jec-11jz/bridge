@@ -3,30 +3,74 @@
 	
 	$this->Html->css('searches', null, array('inline' => false));
 	$this->Html->css('automatic/style', null, array('inline' => false));
+	echo $this->Html->css('jquery-ui-1.10.4.custom');
 	echo $this->Html->css('tag/tags_custom');
 	
-	$this->Html->script('automatic/jquery.montage', array('inline' => false));
+	$this->Html->script('//ajax.microsoft.com/ajax/jquery.templates/beta1/jquery.tmpl.min.js', array('inline' => false));
+	echo $this->Html->script('jquery-ui-1.10.4.custom');
 	echo $this->Html->script('tag/tags');
 	echo $this->Html->script('masonry.pkgd');
 	echo $this->Html->script('imagesloaded');
-	$this->Html->script('//ajax.microsoft.com/ajax/jquery.templates/beta1/jquery.tmpl.min.js', array('inline' => false));
+	$this->Html->script('automatic/jquery.montage', array('inline' => false));
+	
 ?>
-
+<style>
+	div#slider {
+		width: 200px;
+		margin: 0 auto;
+	}
+	.form-checkbox {
+		display: inline-block;
+	}
+	.form-tag {
+		clear: both;
+		display: block;
+		margin-bottom: 30px;
+	}
+	.checkbox {
+		float: left;
+		margin: -5px 2px 0 0;
+	}
+</style>
 <div id="search">
-	<hr>
 	<input name="keywords" id="keywords" class="form-control" value="<?php echo h($keyword); ?>" placeholder='Search  here...'>
 	<input type="submit" value="Search" class="btn-a search" id="btn-search">
 	<div id="search-custom">
-		Not<input name="not-keywords" id="not-keywords" class="form-control tags">
-		And<input name="and-keywords" id="and-keywords" class="form-control tags">
-		Or<input name="or-keywords" id="or-keywords" class="form-control tags">
-		Scope	
-		<input type="checkbox" name="blog" value="Blog" id="check-blog">
-		<input type="checkbox" name="product" value="Product" id="check-product">
-		<input type="checkbox" name="tag" value="Tag" id="check-tag">
-		<input type="checkbox" name="contents" value="contetns" id="check-blog">
-	</div>
-</div> <!-- END search -->
+		<legend>Scope</legend>
+		<div class="form-tag">
+			Not<input name="not-keywords" id="not-keywords" class="form-control tags">
+			And<input name="and-keywords" id="and-keywords" class="form-control tags">
+			Or<input name="or-keywords" id="or-keywords" class="form-control tags">
+		</div>
+		<div class="form-checkbox">
+			<label for="check-blog" class="checkbox">BLOG</label>
+			<input type="checkbox" name="blog" value="Blog" id="check-blog" class="checkbox">
+			<label for="check-product" class="checkbox">PRODUCT</label>
+			<input type="checkbox" name="product" value="Product" id="check-product" class="checkbox">
+			<label for="check-tag" class="checkbox">TAG</label>
+			<input type="checkbox" name="tag" value="Tag" id="check-tag" class="checkbox">
+			<label for="check-content" class="checkbox">OUTLINE</label>
+			<input type="checkbox" name="content" value="contetns" id="check-content" class="checkbox">
+		</div>
+		<div class="spoiler">
+			<div class="right">
+				<span>ネタバレ：</span>
+			 	<select name="minbeds" id="minbeds" class="list">
+				    <option>1</option>
+				    <option>2</option>
+				    <option>3</option>
+				    <option>4</option>
+				    <option selected>5</option>
+				    <option>6</option>
+				    <option>7</option>
+				    <option>8</option>
+				    <option>9</option>
+				    <option>10</option>
+			 	</select>
+			</div>
+		</div><!-- spoiler -->
+	</div><!-- search-custom -->
+</div><!-- search -->
 <hr>
 <div id="search-result">
 	<div id="search-blogs-result"></div>
@@ -53,7 +97,7 @@ $(function() {
 	});
 
 	var page = 1;
-	var count = 25;
+	var count = 15;
 	var keywords = $('#keywords').val();
 	var key_not = $('#not-keywords').val();
 	var key_and = $('#and-keywords').val();
@@ -132,6 +176,24 @@ $(function() {
 		page++;
 	});
 });
+</script>
+<script>
+	// slider
+	$(function() {
+	    var select = $( "#minbeds" );
+	    var slider = $( "<div id='slider'></div>" ).insertAfter( select ).slider({
+	      min: 1,
+	      max: 10,
+	      range: "min",
+	      value: select[ 0 ].selectedIndex + 1,
+	      slide: function( event, ui ) {
+	        select[ 0 ].selectedIndex = ui.value - 1;
+	      }
+	    });
+	    $( "#minbeds" ).change(function() {
+	      slider.slider( "value", this.selectedIndex + 1 );
+	    });
+	});
 </script>
 <!-- product -->
 <script id="js-search-products" type="text/x-jquery-tmpl">

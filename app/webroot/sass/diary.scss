@@ -8,6 +8,8 @@ div#diary{
 a.link:hover img.diary-pic{
   opacity: 0.8;
 }
+
+// 日記一覧画面
 div#diary-index{
   margin: 0 auto;
   img {
@@ -40,13 +42,24 @@ div#diary-index{
 }
 
 
-#div-create-blogs{
-  .header-left{
-    span{
-      color: $green-dark;
+
+// add edit view 画面
+#div-view-blogs, #div-edit-blogs, #div-add-blogs{
+  .form-header{
+    .header-left{
+      span{
+        color: $green-dark;
+      }
+    }
+    .div-decoration{
+      background-color: $yellow;
+      span{
+        color: $black;
+      }
     }
   }
   .form-body{
+    padding: 1em 2em;
     .blog-form{
       #blog-tags{
         margin: 1em 2em;
@@ -70,6 +83,15 @@ div#diary-index{
 }
 
 
+
+.spoiler{
+  text-align: right;
+  .spoiler-slider{
+      margin: 0em 2em 1em 0em;
+      @include line-box(0.1,0.3);
+      @include border-radius(2px);
+  }
+}
 // #div-create-blogs{
 //   .contents{
 //     .blog-form{
@@ -113,33 +135,7 @@ form#BlogAddForm, form#BlogEditForm{
     margin: 1em auto;
     // width: 2000px !important;
   }
-  .spoiler{
-    text-align: right;
-    width: 100%;
-    margin: 0 auto;
-    @include border-radius(2px);
-    .right{
-      display: inline-block;
-      width: 35%;
-      padding: 0.5em;
-      margin-bottom: 1em;
-      background-color: #93B8CA;
-      color: white;
-      span, .list, #slider{
-        float: left;
-      }
-      .list{
-        @include appearance(initial);
-        padding-left: 0.4em;
-        border: none;
-      }
-      #slider{
-        display: inline-block;
-        width:220px;
-        margin: 3px 0 0 15px;
-      }
-    }
-  }
+
   
   .div-submit{
     display: block;

@@ -9,52 +9,7 @@
 	$this->extend('/Common/index');
 ?>
 
-<div class='form first-content-form'>
-	<div class='cont edit'>
-		<div class="form-headder">
-			<h1>Edit Blog</h1>
-		</div>
-		<!-- ブログ投稿フォーム -->
-		<form id="BlogEditForm"  action="/blogs/edit/<?php echo h($post['Blog']['id']); ?>" method="post">
-			<input type="text" class="input_form form-control" value="<?php echo h($post['Blog']['title']); ?>">
-			<input type="text" id="tags" name="data[Tag][name]" value="<?php echo h($post['Tag']['namesCSV']); ?>" class="input_form">
 
-			<div class="spoiler">
-				<div class="right">
-					<span>ネタバレ：</span>
-				 	<select name="minbeds" id="minbeds" class="list">
-					    <option>1</option>
-					    <option>2</option>
-					    <option>3</option>
-					    <option>4</option>
-					    <option selected>5</option>
-					    <option>6</option>
-					    <option>7</option>
-					    <option>8</option>
-					    <option>9</option>
-					    <option>10</option>
-				 	</select>
-				</div>
-			</div> <!-- spoiler -->
-
-			<textarea id="ckeditor" class="input_form blog"><?php echo h($post['Blog']['content']); ?></textarea>
-			<div class="div-submit">
-				<input type="submit" value="Save" class="btn-blue">
-			</div>
-			
- 		</form>
-
-
-		<script type="text/javascript">  
-			var editor = CKEDITOR.replace('ckeditor');  
-		</script>
-
-	</div>
-
-	<div class="form-footer">
-		<h5>Created: <?php echo h($post['Blog']['created']); ?></small><h5>
-	</div> <!-- footer -->
-</div> <!-- form -->
 <!-- JS tag -->
 <script>
 $(function() {
@@ -101,6 +56,7 @@ $(function() {
 });
 </script>
 
+<!-- スライダースクリプト -->
 <script>
 	$(function() {
 	    var select = $( "#minbeds" );
@@ -118,3 +74,58 @@ $(function() {
 	    });
 	});
 </script>
+
+
+<div id="div-edit-blogs" class='form second-content-form'>
+	<div class="form-header">
+		<div class="header-left">
+			<span>Edit</span>
+		</div>
+		<div class="header-right">
+			<span class="blog-title"</span>
+		</div>
+		<div class="div-decoration">
+			<span>Blogs</span>
+		</div>
+	</div>
+	<div class="form-body">
+				<!-- ブログ投稿フォーム -->
+		<form id="BlogEditForm"  action="/blogs/edit/<?php echo h($post['Blog']['id']); ?>" method="post">
+			<input type="text" class="input_form form-control" value="<?php echo h($post['Blog']['title']); ?>">
+			<input type="text" id="tags" name="data[Tag][name]" value="<?php echo h($post['Tag']['namesCSV']); ?>" class="input_form">
+
+			<div class="spoiler">
+				<div class="spoiler-slider">
+					<span>ネタバレ：</span>
+				 	<select name="minbeds" id="minbeds" class="list">
+					    <option>1</option>
+					    <option>2</option>
+					    <option>3</option>
+					    <option>4</option>
+					    <option selected>5</option>
+					    <option>6</option>
+					    <option>7</option>
+					    <option>8</option>
+					    <option>9</option>
+					    <option>10</option>
+				 	</select>
+				</div>
+			</div> <!-- spoiler -->
+
+			<textarea id="ckeditor" class="input_form blog"><?php echo h($post['Blog']['content']); ?></textarea>
+			<div class="div-submit">
+				<input type="submit" value="Save" class="btn-blue">
+			</div>
+			
+ 		</form>
+
+
+		<script type="text/javascript">  
+			var editor = CKEDITOR.replace('ckeditor');  
+		</script>
+	</div>
+
+	<div class="form-footer">
+		<h5>Created: <?php echo h($post['Blog']['created']); ?></small><h5>
+	</div> <!-- footer -->
+</div> <!-- form -->

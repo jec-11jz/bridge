@@ -13,7 +13,7 @@ class SearchesController extends AppController {
 	
 	public function index(){
 		// set default value
-		$count = 25;
+		$count = 15;
 		$page = 1;
 		$keywords = null;
 		$key_not = null;
@@ -28,7 +28,7 @@ class SearchesController extends AppController {
 		if(isset($this->request->query['keywords'])){
 			$keywords = $this->request->query['keywords'];
 		}
-		if(!is_null($keywords)) {
+		if(!is_null(array($keywords))) {
 			$contents['blogs'] = $this->Blog->find('all',array(
 				'conditions' => array('title like'=>'%'.$keywords.'%'),
 				'page' => $page,
@@ -82,7 +82,7 @@ class SearchesController extends AppController {
 			$keywords = $this->request->query['keywords'];
 		}
 
-		if(!is_null($keywords)) {
+		if(!is_null(array($keywords, $key_not, $key_or, $key_and))) {
 			$contents['blogs'] = $this->Blog->find('all',array(
 				'conditions' => array('title like'=>'%'.$keywords.'%'),
 				'page' => $page,
@@ -103,7 +103,7 @@ class SearchesController extends AppController {
 				'limit' => $count			
 			));
 		}
-		if(empty($contents['blogs'])){
+		if(is_null($contents)){
 			$this->apiError('contents are null');
 			return;
 		}

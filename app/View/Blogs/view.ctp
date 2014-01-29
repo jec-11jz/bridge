@@ -1,8 +1,10 @@
 <?php
 	$this->extend('/Common/index');
 	
+	echo $this->Html->css('jquery-ui-1.10.4.custom');
 	echo $this->Html->css('diary');
-	
+
+	echo $this->Html->script('jquery-ui-1.10.4.custom');
 	$this->Html->script('//ajax.microsoft.com/ajax/jquery.templates/beta1/jquery.tmpl.min.js', array('inline' => false));
 ?>
 
@@ -48,9 +50,30 @@ $(function() {
 	</div>
 </script>
 
-<div id="div-create-blogs" class="form second-content-form">
+
+<!-- スライダースクリプト -->
+<script>
+	$(function() {
+	    var select = $( "#minbeds" );
+	    var slider = $( "<div id='slider'></div>" ).insertAfter( select ).slider({
+	      min: 1,
+	      max: 10,
+	      range: "min",
+	      value: select[ 0 ].selectedIndex + 1,
+	      slide: function( event, ui ) {
+	        select[ 0 ].selectedIndex = ui.value - 1;
+	      }
+	    });
+	    $( "#minbeds" ).change(function() {
+	      slider.slider( "value", this.selectedIndex + 1 );
+	    });
+	});
+</script>
+
+<div id="div-view-blogs" class="form second-content-form">
 	<div class="form-header">
 		<div class="header-left">
+			<a href="/blogs" class="header-link"></a>
 			<span>View</span>
 		</div>
 		<div class="header-right">
@@ -61,21 +84,44 @@ $(function() {
 
 	<div class="form-body">
 		<div id="<?php echo h($blog['Blog']['id']); ?>" class="blog-form">
+
 			<div id="blog-tags"></div>
 
-			<div class="text-body"><?php echo $blog['Blog']['content']; ?></div>
+			<div class="spoiler">
+				<div class="spoiler-slider">
+					<span>ネタバレ：</span>
+				 	<select name="minbeds" id="minbeds" class="list">
+					    <option>1</option>
+					    <option>2</option>
+					    <option>3</option>
+					    <option>4</option>
+					    <option selected>5</option>
+					    <option>6</option>
+					    <option>7</option>
+					    <option>8</option>
+					    <option>9</option>
+					    <option>10</option>
+				 	</select>
+				</div>
+			</div> <!-- spoiler -->
+
+			<div class="text-body">
+				<hr>
+				<?php echo $blog['Blog']['content']; ?>
+			</div>
 			
-			<hr>
-			<!-- 作成日 -->
-			<h5>Created: <?php echo $blog['Blog']['created']; ?></h5>
-			<span><?php echo $blog['User']['name']; ?></span>
-			<hr>
-			<a href="/blogs/edit/<?php echo h($blog['Blog']['id']); ?>" class="btn-blue round right">Edit</a>
 		</div>
 	</div>
 
 	<div class="form-footer">
-		<a href="/blogs" style="display:block">投稿一覧へ戻る</a>
+				<hr>
+			<!-- 作成日 -->
+			<span><?php echo $blog['Blog']['created']; ?></span>
+			<span><?php echo $blog['User']['name']; ?></span>
+			<hr>
+			<a href="/blogs/edit/<?php echo h($blog['Blog']['id']); ?>" class="btn-orange">Edit</a>
+
+		<a class="index-back" href="/blogs" style="display:block"><i class="fa fa-reply"></i> 投稿一覧へ戻る</a>
 	</div>
 </div>
 

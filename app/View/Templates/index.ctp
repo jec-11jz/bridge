@@ -1,7 +1,6 @@
 <?php
 		$this->extend('/Common/index');
 
-
 		echo $this->Html->css('templates');
 		
 ?>
@@ -23,7 +22,6 @@
 	});
 
 </script>
-
 
 <div class="form first-content-form">
 	<div class="form-headder">

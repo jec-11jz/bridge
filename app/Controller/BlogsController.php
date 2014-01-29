@@ -108,7 +108,7 @@ class BlogsController extends AppController {
 	        throw new NotFoundException(__('this blog is not exist'));
 		}
 
-		if ($this->request->is('post')) {
+		if ($this->request->is(array('post', 'put'))) {
 			$tagNames = $this->Tag->parseTagCSV($this->request->data['Tag']['name']);
 			$this->Tag->saveFromNameArray($tagNames);
 			$tags = $this->Tag->find('list', array(
