@@ -787,8 +787,9 @@ div.modal-content {
   overflow: hidden; }
   /* line 156, ../sass/menu.scss */
   .wrapper-dropdown-5 .dropdown li {
-    text-align: center; }
-    /* line 158, ../sass/menu.scss */
+    text-align: center;
+    background-color: #f7f7f7; }
+    /* line 159, ../sass/menu.scss */
     .wrapper-dropdown-5 .dropdown li a {
       display: block;
       text-decoration: none;
@@ -798,33 +799,33 @@ div.modal-content {
       transition: all 0.3s ease-out;
       border-bottom: 1px solid #e6e8ea; }
 
-/* line 171, ../sass/menu.scss */
+/* line 172, ../sass/menu.scss */
 .wrapper-dropdown-5 .dropdown li:last-of-type a {
   border: none; }
 
-/* line 175, ../sass/menu.scss */
+/* line 176, ../sass/menu.scss */
 .wrapper-dropdown-5 .dropdown li i {
   margin-right: 5px;
   color: inherit;
   vertical-align: middle; }
 
-/* line 181, ../sass/menu.scss */
+/* line 182, ../sass/menu.scss */
 .wrapper-dropdown-5 .dropdown li:hover a {
   background-color: #68c39f;
   text-decoration: none;
   color: #fff; }
 
-/* line 185, ../sass/menu.scss */
+/* line 186, ../sass/menu.scss */
 .wrapper-dropdown-5.active:after {
   border-color: #82d1ff transparent; }
 
-/* line 189, ../sass/menu.scss */
+/* line 190, ../sass/menu.scss */
 .wrapper-dropdown-5.active .dropdown {
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
   max-height: 400px; }
 
 /* line 7, ../sass/templates.scss */
-#div-index-templates .form-header .header-right input, #div-edit-templates .form-header .header-right input {
+#div-index-templates .form-header .header-right input, #div-edit-templates .form-header .header-right input, #div-add-templates .form-header .header-right input {
   position: absolute;
   margin: 0;
   padding: 0.2em 0.8em;
@@ -844,85 +845,58 @@ div.modal-content {
   -o-border-radius: 2em;
   border-radius: 2em;
   color: #f6f6f6;
-  background-color: #61c09a; }
+  background-color: #61c09a;
+  text-shadow: none; }
   /* line 72, ../sass/_my-mixin.scss */
-  #div-index-templates .form-header .header-right input:-moz-placeholder, #div-edit-templates .form-header .header-right input:-moz-placeholder {
+  #div-index-templates .form-header .header-right input:-moz-placeholder, #div-edit-templates .form-header .header-right input:-moz-placeholder, #div-add-templates .form-header .header-right input:-moz-placeholder {
     color: #d8d8d8; }
   /* line 75, ../sass/_my-mixin.scss */
-  #div-index-templates .form-header .header-right input::-webkit-input-placeholder, #div-edit-templates .form-header .header-right input::-webkit-input-placeholder {
+  #div-index-templates .form-header .header-right input::-webkit-input-placeholder, #div-edit-templates .form-header .header-right input::-webkit-input-placeholder, #div-add-templates .form-header .header-right input::-webkit-input-placeholder {
     color: #d8d8d8; }
-/* line 24, ../sass/templates.scss */
-#div-index-templates .form-header .div-decoration, #div-edit-templates .form-header .div-decoration {
-  background-color: #2eb2ff; }
-
-/* line 44, ../sass/templates.scss */
-#template-index .cont {
-  display: block;
-  overflow: hidden;
-  float: left;
-  width: 33%;
-  padding: 1em 2em;
-  position: relative; }
-  /* line 51, ../sass/templates.scss */
-  #template-index .cont .delete {
-    position: absolute;
-    top: 0;
-    right: 0; }
-  /* line 56, ../sass/templates.scss */
-  #template-index .cont .title {
-    font-size: 2em; }
-  /* line 59, ../sass/templates.scss */
-  #template-index .cont ul {
-    overflow: hidden;
-    display: none; }
-  /* line 63, ../sass/templates.scss */
-  #template-index .cont span {
-    cursor: pointer; }
-  /* line 67, ../sass/templates.scss */
-  #template-index .cont li {
-    cursor: pointer;
-    list-style-type: none;
-    text-indent: 1em; }
-/* line 73, ../sass/templates.scss */
-#template-index .fa-trash-o {
-  padding: 1em; }
-
-/* line 79, ../sass/templates.scss */
-#template-edit .form-template {
-  padding: 3em; }
-  /* line 82, ../sass/templates.scss */
-  #template-edit .form-template .cont1 .title {
-    width: 100%; }
-  /* line 86, ../sass/templates.scss */
-  #template-edit .form-template .cont2 {
-    margin: 3em 0 0 0; }
-    /* line 89, ../sass/templates.scss */
-    #template-edit .form-template .cont2 .btn-blue.add {
-      width: 20%; }
-    /* line 92, ../sass/templates.scss */
-    #template-edit .form-template .cont2 .btn-blue.del {
-      width: 10%; }
-  /* line 97, ../sass/templates.scss */
-  #template-edit .form-template .cont3 {
+/* line 25, ../sass/templates.scss */
+#div-index-templates .form-header .div-decoration, #div-edit-templates .form-header .div-decoration, #div-add-templates .form-header .div-decoration {
+  background-color: #c1c1c1; }
+/* line 29, ../sass/templates.scss */
+#div-index-templates .form-body, #div-edit-templates .form-body, #div-add-templates .form-body {
+  margin: 2em 4em;
+  padding: 1em;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  -webkit-box-shadow: white -1px 1px 0 inset;
+  -moz-box-shadow: white -1px 1px 0 inset;
+  box-shadow: white -1px 1px 0 inset; }
+  /* line 33, ../sass/templates.scss */
+  #div-index-templates .form-body .div-button, #div-edit-templates .form-body .div-button, #div-add-templates .form-body .div-button {
+    margin-bottom: 1em; }
+    /* line 35, ../sass/templates.scss */
+    #div-index-templates .form-body .div-button .btn-add-attribute, #div-edit-templates .form-body .div-button .btn-add-attribute, #div-add-templates .form-body .div-button .btn-add-attribute {
+      width: 15em; }
+    /* line 36, ../sass/templates.scss */
+    #div-index-templates .form-body .div-button .del, #div-edit-templates .form-body .div-button .del, #div-add-templates .form-body .div-button .del {
+      margin-left: 2em; }
+  /* line 38, ../sass/templates.scss */
+  #div-index-templates .form-body #add-attributes, #div-edit-templates .form-body #add-attributes, #div-add-templates .form-body #add-attributes {
     margin: 0 auto;
-    padding: 0 0 2em  0; }
-    /* line 100, ../sass/templates.scss */
-    #template-edit .form-template .cont3 .attr {
+    padding: 0 0 2em  0;
+    overflow: scroll;
+    overflow: hiddern;
+    height: 17em; }
+    /* line 44, ../sass/templates.scss */
+    #div-index-templates .form-body #add-attributes .attr, #div-edit-templates .form-body #add-attributes .attr, #div-add-templates .form-body #add-attributes .attr {
       float: left;
       margin: 1em 2.3em 1em 0; }
-      /* line 103, ../sass/templates.scss */
-      #template-edit .form-template .cont3 .attr .form-control {
-        width: 90%;
+      /* line 47, ../sass/templates.scss */
+      #div-index-templates .form-body #add-attributes .attr .form-control, #div-edit-templates .form-body #add-attributes .attr .form-control, #div-add-templates .form-body #add-attributes .attr .form-control {
+        width: 190px;
         border-right: none;
         float: left; }
-        /* line 107, ../sass/templates.scss */
-        #template-edit .form-template .cont3 .attr .form-control.default {
+        /* line 51, ../sass/templates.scss */
+        #div-index-templates .form-body #add-attributes .attr .form-control.default, #div-edit-templates .form-body #add-attributes .attr .form-control.default, #div-add-templates .form-body #add-attributes .attr .form-control.default {
           border: solid #ccc 1px;
-          width: 108.5%; }
-      /* line 112, ../sass/templates.scss */
-      #template-edit .form-template .cont3 .attr .btn-delete-attribute {
+          width: 223px; }
+      /* line 56, ../sass/templates.scss */
+      #div-index-templates .form-body #add-attributes .attr .btn-delete-attribute, #div-edit-templates .form-body #add-attributes .attr .btn-delete-attribute, #div-add-templates .form-body #add-attributes .attr .btn-delete-attribute {
         font-size: 26px;
-        position: absolute;
+        float: left;
         width: 34px;
         height: 34px;
         border: solid #cccccc 1px;
@@ -932,40 +906,62 @@ div.modal-content {
         -webkit-transition: 0.2s;
         -o-transition: 0.2s;
         transition: 0.2s; }
-        /* line 122, ../sass/templates.scss */
-        #template-edit .form-template .cont3 .attr .btn-delete-attribute:hover {
+        /* line 67, ../sass/templates.scss */
+        #div-index-templates .form-body #add-attributes .attr .btn-delete-attribute:hover, #div-edit-templates .form-body #add-attributes .attr .btn-delete-attribute:hover, #div-add-templates .form-body #add-attributes .attr .btn-delete-attribute:hover {
           background-color: #c61513; }
-/* line 132, ../sass/templates.scss */
-#template-edit .submit {
+/* line 75, ../sass/templates.scss */
+#div-index-templates .form-footer .div-submit, #div-edit-templates .form-footer .div-submit, #div-add-templates .form-footer .div-submit {
+  margin: 0 4em;
   text-align: right; }
-/* line 135, ../sass/templates.scss */
-#template-edit .btn-register {
-  margin: 1.875em 0; }
 
-/* line 141, ../sass/templates.scss */
-#add-attributes {
-  overflow: auto; }
+/* line 86, ../sass/templates.scss */
+#template-index .cont {
+  display: block;
+  overflow: hidden;
+  float: left;
+  width: 33%;
+  padding: 1em 2em;
+  position: relative; }
+  /* line 93, ../sass/templates.scss */
+  #template-index .cont .delete {
+    position: absolute;
+    top: 0;
+    right: 0; }
+  /* line 98, ../sass/templates.scss */
+  #template-index .cont .title {
+    font-size: 2em; }
+  /* line 101, ../sass/templates.scss */
+  #template-index .cont ul {
+    overflow: hidden;
+    display: none; }
+  /* line 105, ../sass/templates.scss */
+  #template-index .cont span {
+    cursor: pointer; }
+  /* line 109, ../sass/templates.scss */
+  #template-index .cont li {
+    cursor: pointer;
+    list-style-type: none;
+    text-indent: 1em; }
+/* line 115, ../sass/templates.scss */
+#template-index .fa-trash-o {
+  padding: 1em; }
 
-/* line 144, ../sass/templates.scss */
-#input-attribute {
-  overflow: auto; }
-
-/* line 149, ../sass/templates.scss */
+/* line 123, ../sass/templates.scss */
 .box-flex .button-full {
   -webkit-box-flex: 4;
   -moz-box-flex: 4;
   -ms-box-flex: 4;
   box-flex: 4;
   height: 8em; }
-  /* line 152, ../sass/templates.scss */
+  /* line 126, ../sass/templates.scss */
   .box-flex .button-full .btn-black {
     padding: 3.2em 6.5em;
     border: none;
     width: 100%;
     height: 100%; }
-    /* line 157, ../sass/templates.scss */
+    /* line 131, ../sass/templates.scss */
     .box-flex .button-full .btn-black.left {
       border-right: solid #c1c1c1 1px; }
-    /* line 160, ../sass/templates.scss */
+    /* line 134, ../sass/templates.scss */
     .box-flex .button-full .btn-black.right {
       border-left: solid #c1c1c1 1px; }

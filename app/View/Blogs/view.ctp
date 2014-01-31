@@ -124,7 +124,6 @@ $(function() {
 			<span><?php echo $blog['User']['name']; ?></span>
 		</div>
 
-		<a class="index-back" href="/searches/index" style="display:block"><i class="fa fa-reply"></i> 一覧へ</a>
 	</div>
 </div>
 

@@ -134,8 +134,6 @@ $(function() {
 		<div class="div-submit submit-edit">
 			<input type="submit" value="Save" class="btn-blue">
 		</div>
-		
-		<a href="/searches/index" class="index-back"><i class="fa fa-reply"></i> 一覧へ</a>
 	</div> <!-- footer -->
 
 </form>

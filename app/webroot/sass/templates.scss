@@ -1,7 +1,7 @@
 @import "../sass/menu.scss";
 
-
-#div-index-templates, #div-edit-templates{
+//add edit
+#div-index-templates, #div-edit-templates,#div-add-templates{
   .form-header{
     .header-right{
       input{
@@ -19,28 +19,70 @@
         @include placeholder-color;
         color: $white;
         background-color: darken($green, 2%);
+        @include text-shadow(none);
       }
     }
     .div-decoration{
-      background-color: $blue;
+      background-color: $col-black2;
     }
   }
   .form-body{
-
+    margin: 2em 4em;
+    padding: 1em;
+    @include line-box;
+    .div-button{
+      margin-bottom: 1em;
+      .btn-add-attribute{width:15em;}
+      .del{margin-left: 2em;}
+    }
+    #add-attributes{
+      margin: 0 auto;
+      padding: 0 0 2em  0;
+      overflow: scroll;
+      overflow: hiddern;
+      height: 17em;
+      .attr {
+        float:left;
+        margin: 1em 2.3em 1em 0;
+        .form-control{
+          width: 190px;
+          border-right: none;
+          float:left;
+          &.default{
+            border: solid #ccc 1px;
+            width: 223px;
+          }
+        }
+        .btn-delete-attribute {
+          font-size: 26px;
+          // position: absolute;
+          float: left;
+          width: 34px;
+          height: 34px;
+          border:solid #cccccc 1px;
+          border-left: none;
+          background-color: $col-danger;
+          color: white;
+          @include btn-fade;
+          &:hover{
+            background-color: $col-danger-hover;
+          }
+        }
+      }
+    }
   }
   .form-footer{
-
+    .div-submit{
+      margin: 0 4em;
+      text-align: right;
+    }
   }
 }
 
 
+
+// index
 #template-index{
-  // text-align: center;
-  // .caption{
-  //   display: inline;
-  //   position: relative;
-  //   overflow: auto;
-  // }
   .cont{
     display: block;
     overflow: hidden;
@@ -75,75 +117,7 @@
   }
 }
 
-#template-edit{
-  .form-template {
-    padding: 3em;
-    .cont1{
-      .title{
-        width: 100%;
-      }
-    }
-    .cont2{
-      margin: 3em 0 0 0;
-      .btn-blue{
-        &.add{
-          width: 20%;
-        }
-        &.del{
-          width: 10%;
-        }
-      }
-    }
-    .cont3{
-      margin: 0 auto;
-      padding: 0 0 2em  0;
-      .attr {
-        float:left;
-        margin: 1em 2.3em 1em 0;
-        .form-control{
-          width: 90%;
-          border-right: none;
-          float:left;
-          &.default{
-            border: solid #ccc 1px;
-            width: 108.5%;
-          }
-        }
-        .btn-delete-attribute {
-          font-size: 26px;
-          position: absolute;
-          width: 34px;
-          height: 34px;
-          border:solid #cccccc 1px;
-          border-left: none;
-          background-color: $col-danger;
-          color: white;
-          @include btn-fade;
-          &:hover{
-            background-color: $col-danger-hover;
-          }
-        }
-      }
-    }
-  }
-  
-  
-  
-  .submit {
-    text-align: right;
-  }
-  .btn-register {
-    margin: 1.875em 0;
-  }
-  
-}
 
-#add-attributes {
-    overflow:auto;
-  }
-  #input-attribute {
-    overflow:auto;
-  }
 
 .box-flex{
   .button-full{

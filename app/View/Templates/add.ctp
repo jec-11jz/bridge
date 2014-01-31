@@ -35,37 +35,46 @@ $(function(){
 });
 </script>
 
-<div class="form first-content-form">
+<div id="div-add-templates" class="form second-content-form">
+<?php echo $this->Form->create('Template', array('type' => 'post', 'action' => 'add', 'class'=>'form-template')); ?>
 
-	<div class="form-headder">
-		<h1>Create Template</h1>
-		<p><?php echo $this->Session->flash('template'); ?></p>
+	<div class="form-header">
+		<div class="header-left">
+			<a href="/products/index" class="header-link">Create</a>
+		</div>
+		<div class="header-right">
+			<input type="text" name="data[Template][name]" id="template" class="form-control page-title" value="" placeholder="Title..." />
+		</div>
+		<div class="div-decoration">
+			<span>Templates</span>
+		</div>
+		
 	</div>
 
-	<div id="template-edit">
-		<?php echo $this->Form->create('Template', array('type' => 'post', 'action' => 'add', 'class'=>'form-template')); ?>
-		<div class="cont1">
-			<h4>Template Name</h4>
-			<input type="text" name="data[Template][name]" id="template" class="form-control title" value="" />
+	<div class="form-body">
+		
+		<div class="div-button">
+			<button type="button" id="attribute" class="btn-add-attribute btn-blue"><i class="fa fa-plus-circle"></i> add</button>
+			<button type="button" id="btn-delete" class="button btn-danger del"><i class="fa fa-trash-o"></i> delete all</button>
 		</div>
-		<div class="cont2">
-			<input type="button" value="add" id="attribute" class="btn-add-attribute btn-blue add">
-			<input type="button" id="btn-delete" class="button btn-danger del" value="all delete" />
-		</div>
-		<div class="cont3">
-			<fieldset id="add-attributes">
-				<div id="input-attribute">
-					<div class="attr">
-						<input class="form-control default" id="disabledInput" type="text" placeholder="タイトル" disabled>
-					</div>
-					<div class="attr">
-						<input class="form-control default" id="disabledInput" type="text" placeholder="あらすじ" disabled>
-					</div>
+		<fieldset id="add-attributes">
+			<div id="input-attribute">
+				<div class="attr">
+					<input class="form-control default" id="disabledInput" type="text" placeholder="タイトル" disabled>
 				</div>
-			</fieldset>
-		</div> <!-- row -->
-  		<?php echo $this->Form->submit('登録', array('type' => 'submit', 'class' => 'btn-blue btn-register')); ?>	
-		<?php echo $this->Form->end(); ?>	
+				<div class="attr">
+					<input class="form-control default" id="disabledInput" type="text" placeholder="あらすじ" disabled>
+				</div>
+			</div>
+		</fieldset>
+  			
 
 	</div><!-- field -->
+
+	<div class="form-footer">
+		<div class="div-submit">
+			<?php echo $this->Form->submit('登録', array('type' => 'submit', 'class' => 'btn-blue btn-register')); ?>
+		</div>
+	</div>
+<?php echo $this->Form->end(); ?>	
 </div> <!-- form -->

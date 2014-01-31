@@ -28,25 +28,29 @@ $this->Html->script('dropdown/modernizr.custom.79639', array('inline' => false))
 			<p><i class="fa fa-edit"></i> Create</p>
 		</div>
 
-		<div id="dd" class="wrapper-dropdown-5 menu-view" tabindex="1">
-			<a href="/home/mypage" class="link"></a>
-			<p><i class="fa fa-desktop"></i> View</p>
-		</div>
-		
 		<div id="dd" class="wrapper-dropdown-5 menu-search" tabindex="1">
 			<a href="/searches/index" class="link"></a>
 			<p><i class="fa fa-search"></i> Search</p>			
 		</div>
+
+		<div id="dd" class="wrapper-dropdown-5 menu-view" tabindex="1">
+			<a href="/home/mypage" class="link"></a>
+			<p><i class="fa fa-desktop"></i> My page</p>
+		</div>
+		
+
 	</ul>
 	
 	<ul class="nav navbar-nav navbar-right">
 	<?php if ($user == null) : ?>
-		<li>
-			<a href="#" data-target="#signModal" data-toggle="modal" class="menu-list">Sign up</a>
-		</li>
-		<li>
-			<a href="#" data-target="#loginModal" data-toggle="modal" class="menu-list list-login">Login</a>
-		</li>
+		<div id="dd" class="wrapper-dropdown-5" tabindex="1">
+			<a href="#" data-target="#signModal" data-toggle="modal" class="link"></a>
+			<p>Sign up</p>
+		</div>
+		<div id="dd" class="wrapper-dropdown-5" tabindex="1">
+			<a href="#" data-target="#loginModal" data-toggle="modal" class="link"></a>
+			<p>Login</p>
+		</div>
 	<?php else: ?>
 		<div id="dd" class="wrapper-dropdown-5 user" tabindex="1"><p><?php echo $user['name']; ?></p>
 			<ul class="dropdown">

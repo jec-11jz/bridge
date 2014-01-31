@@ -174,7 +174,6 @@ $(function(){
 	
 	<div class="form-footer">
 		<a href="/products/edit/<?php echo $product['Product']['id']; ?>" class="btn-blue">Edit</a>
-		<a href="/products/index" class="back">一覧へ戻る</a>
 	</div>
 
 </form>

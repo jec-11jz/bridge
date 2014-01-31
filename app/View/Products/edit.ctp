@@ -199,8 +199,10 @@ $(function(){
 	</div>
 
 	<div class="form-footer">
-		<input type="button" id="btn-register" class="btn-blue" value="登録" />
-		<a href="/products/index" class="back"><i class="fa fa-reply"></i> 投稿一覧へ戻る</a>
+		<div class="div-submit">
+			<input type="button" id="btn-register" class="btn-blue" value="登録" />
+		</div>
+		
 	</div>
 
 </form>

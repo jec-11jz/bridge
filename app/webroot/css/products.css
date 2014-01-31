@@ -787,8 +787,9 @@ div.modal-content {
   overflow: hidden; }
   /* line 156, ../sass/menu.scss */
   .wrapper-dropdown-5 .dropdown li {
-    text-align: center; }
-    /* line 158, ../sass/menu.scss */
+    text-align: center;
+    background-color: #f7f7f7; }
+    /* line 159, ../sass/menu.scss */
     .wrapper-dropdown-5 .dropdown li a {
       display: block;
       text-decoration: none;
@@ -798,27 +799,27 @@ div.modal-content {
       transition: all 0.3s ease-out;
       border-bottom: 1px solid #e6e8ea; }
 
-/* line 171, ../sass/menu.scss */
+/* line 172, ../sass/menu.scss */
 .wrapper-dropdown-5 .dropdown li:last-of-type a {
   border: none; }
 
-/* line 175, ../sass/menu.scss */
+/* line 176, ../sass/menu.scss */
 .wrapper-dropdown-5 .dropdown li i {
   margin-right: 5px;
   color: inherit;
   vertical-align: middle; }
 
-/* line 181, ../sass/menu.scss */
+/* line 182, ../sass/menu.scss */
 .wrapper-dropdown-5 .dropdown li:hover a {
   background-color: #68c39f;
   text-decoration: none;
   color: #fff; }
 
-/* line 185, ../sass/menu.scss */
+/* line 186, ../sass/menu.scss */
 .wrapper-dropdown-5.active:after {
   border-color: #82d1ff transparent; }
 
-/* line 189, ../sass/menu.scss */
+/* line 190, ../sass/menu.scss */
 .wrapper-dropdown-5.active .dropdown {
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
   max-height: 400px; }
@@ -970,38 +971,34 @@ div.modal-content {
           width: 600px; }
 /* line 119, ../sass/products.scss */
 #div-add-products .form-footer, #div-view-products .form-footer, #div-edit-products .form-footer {
-  border-top: 1px solid rgba(0, 0, 0, 0.1);
-  -webkit-box-shadow: white 0 1px 0 inset;
-  -moz-box-shadow: white 0 1px 0 inset;
-  box-shadow: white 0 1px 0 inset;
   text-align: center;
   margin: 0 4em; }
-  /* line 123, ../sass/products.scss */
-  #div-add-products .form-footer .btn-blue, #div-view-products .form-footer .btn-blue, #div-edit-products .form-footer .btn-blue {
-    margin-top: 2em;
-    float: right; }
-  /* line 127, ../sass/products.scss */
+  /* line 122, ../sass/products.scss */
+  #div-add-products .form-footer .div-submit, #div-view-products .form-footer .div-submit, #div-edit-products .form-footer .div-submit {
+    text-align: right;
+    margin-top: 2em; }
+  /* line 126, ../sass/products.scss */
   #div-add-products .form-footer a, #div-view-products .form-footer a, #div-edit-products .form-footer a {
     clear: both;
     display: block;
     margin-top: 2em; }
 
-/* line 138, ../sass/products.scss */
+/* line 137, ../sass/products.scss */
 #products .products-index .cont1 {
   padding: 1em;
   width: 33%;
   display: inline-block;
   position: relative; }
-  /* line 143, ../sass/products.scss */
+  /* line 142, ../sass/products.scss */
   #products .products-index .cont1 .delete {
     position: absolute;
     top: 0;
     right: 0;
     padding: 1em; }
-    /* line 148, ../sass/products.scss */
+    /* line 147, ../sass/products.scss */
     #products .products-index .cont1 .delete:hover {
       text-decoration: none; }
-  /* line 152, ../sass/products.scss */
+  /* line 151, ../sass/products.scss */
   #products .products-index .cont1 .link {
     display: block;
     top: 0;
@@ -1009,20 +1006,20 @@ div.modal-content {
     width: 100%;
     height: 100%;
     position: absolute; }
-    /* line 154, ../sass/products.scss */
+    /* line 153, ../sass/products.scss */
     #products .products-index .cont1 .link:hover {
       background-color: white;
       opacity: 0.2; }
-/* line 162, ../sass/products.scss */
+/* line 161, ../sass/products.scss */
 #products .btn-green {
   position: absolute;
   height: 100%;
   width: 100%; }
 
-/* line 171, ../sass/products.scss */
+/* line 170, ../sass/products.scss */
 #formRegisterProduct form {
   overflow: hidden; }
-  /* line 173, ../sass/products.scss */
+  /* line 172, ../sass/products.scss */
   #formRegisterProduct form #image {
     margin: 0 5em 2em 0;
     width: 18.750em;
@@ -1035,50 +1032,50 @@ div.modal-content {
     text-align: center;
     vertical-align: middle;
     float: left; }
-/* line 187, ../sass/products.scss */
+/* line 186, ../sass/products.scss */
 #formRegisterProduct .product-info {
   line-height: 1.7em;
   padding: 1em;
   display: block; }
-/* line 193, ../sass/products.scss */
+/* line 192, ../sass/products.scss */
 #formRegisterProduct input.right {
   float: right; }
-/* line 197, ../sass/products.scss */
+/* line 196, ../sass/products.scss */
 #formRegisterProduct #product-data .add {
   width: 20%; }
-/* line 200, ../sass/products.scss */
+/* line 199, ../sass/products.scss */
 #formRegisterProduct #product-data .del {
   width: 10%; }
-/* line 205, ../sass/products.scss */
+/* line 204, ../sass/products.scss */
 #formRegisterProduct .attr {
   float: left;
   margin: 1em 2.3em 1em 0; }
-  /* line 209, ../sass/products.scss */
+  /* line 208, ../sass/products.scss */
   #formRegisterProduct .attr .form-control {
     width: 90%;
     border-right: none;
     float: left; }
-    /* line 213, ../sass/products.scss */
+    /* line 212, ../sass/products.scss */
     #formRegisterProduct .attr .form-control.default {
       border: solid #ccc 1px;
       width: 108.5%; }
 
-/* line 223, ../sass/products.scss */
+/* line 222, ../sass/products.scss */
 .box-flex .button-full {
   -webkit-box-flex: 4;
   -moz-box-flex: 4;
   -ms-box-flex: 4;
   box-flex: 4;
   height: 8em; }
-  /* line 226, ../sass/products.scss */
+  /* line 225, ../sass/products.scss */
   .box-flex .button-full .btn-black {
     padding: 3.2em 6.5em;
     border: none;
     width: 100%;
     height: 100%; }
-    /* line 231, ../sass/products.scss */
+    /* line 230, ../sass/products.scss */
     .box-flex .button-full .btn-black.left {
       border-right: solid #c1c1c1 1px; }
-    /* line 234, ../sass/products.scss */
+    /* line 233, ../sass/products.scss */
     .box-flex .button-full .btn-black.right {
       border-left: solid #c1c1c1 1px; }

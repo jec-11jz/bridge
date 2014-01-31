@@ -117,12 +117,11 @@
  
   }
   .form-footer{
-    @include line-top;
     text-align: center;
     margin: 0 4em;
-    .btn-blue{
+    .div-submit{
+      text-align: right;
       margin-top:2em;
-      float: right;
     }
     a{
       clear: both;

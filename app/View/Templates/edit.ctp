@@ -35,6 +35,7 @@ $(function(){
 
 
 <div id="div-edit-templates" class="form second-content-form">
+<?php echo $this->Form->create('Template', array('type' => 'post', 'class'=>'form-template')); ?>
 
 	<div class="form-header">
 		<div class="header-left">
@@ -49,9 +50,9 @@ $(function(){
 		
 	</div>
 
-	<div id="template-edit">
-		<?php echo $this->Form->create('Template', array('type' => 'post', 'class'=>'form-template')); ?>
-		<div class="cont2">
+	<div class="form-body">
+
+		<div class="div-button">
 			<button type="button" id="attribute" class="btn-add-attribute btn-blue add"><i class="fa fa-plus-circle"></i> add</button>
 			<button type="button" id="btn-delete" class="button btn-danger del"><i class="fa fa-trash-o"></i> delete all</button>
 		</div>
@@ -75,12 +76,13 @@ $(function(){
 		</div> 
 		
 
-	</div>
+	</div> <!-- form-body -->
 
 	<div class="form-footer">
-	  	<?php echo $this->Form->submit('登録', array('type' => 'submit', 'class' => 'btn-blue btn-register')); ?>	
-		<?php echo $this->Form->end(); ?>	
-		<a href="/products/index" class="back">一覧へ戻る</a>
+		<div class="div-submit">
+		  	<?php echo $this->Form->submit('登録', array('type' => 'submit', 'class' => 'btn-blue btn-register')); ?>	
+		</div>
 	</div>
 
+<?php echo $this->Form->end(); ?>	
 </div> <!-- form -->
