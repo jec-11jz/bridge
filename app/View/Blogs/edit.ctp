@@ -22,7 +22,7 @@
 			<div class="spoiler">
 				<div class="right">
 					<span>ネタバレ：</span>
-				 	<select name="minbeds" id="minbeds" class="list">
+				 	<select name="data[Blog][spoiler]" id="minbeds" class="list">
 					    <option>1</option>
 					    <option>2</option>
 					    <option>3</option>

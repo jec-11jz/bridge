@@ -1,6 +1,6 @@
 <?php
 class SearchesController extends AppController {
-	public $uses = array('Blog', 'User', 'Product');
+	public $uses = array('Blog', 'User', 'Product', 'Search', 'Tag');
 	public $components = array('RequestHandler');
 	
 	public function beforeFilter()
@@ -16,9 +16,9 @@ class SearchesController extends AppController {
 		$count = 15;
 		$page = 1;
 		$keywords = null;
-		$key_not = null;
-		$key_or = null;
-		$key_and = null;
+		$not_keywords = null;
+		$not_key_tags = null;
+		$key_tags = null;
 		$contents = array();
 		
 		// deny access by post
@@ -55,12 +55,12 @@ class SearchesController extends AppController {
 	
 	public function api_search() {
 		// set default value
-		$count = 25;
+		$count = 15;
 		$page = 1;
 		$keywords = null;
-		$key_not = null;
-		$key_or = null;
-		$key_and = null;
+		$not_keywords = null;
+		$key_tags = null;
+		$not_key_tags = null;
 		$contents = array();
 		
 		// deny access by post
@@ -69,44 +69,65 @@ class SearchesController extends AppController {
 			return;
 		}
 		
+		// get param form view
 		if(isset($this->request->query['count'])) {
 			$count = $this->request->query['count'];
 		}
-		
-		if (isset($this->request->query['page'])) {
+		if(isset($this->request->query['page'])) {
 			$page = $this->request->query['page'];
 		}
-
-		// get param form view
 		if(!empty($this->request->query['keywords'])){
 			$keywords = $this->request->query['keywords'];
 		}
+		if(!empty($this->request->query['not_keywords'])){
+			$not_keywords = $this->request->query['not_keywords'];
+		}
+		if(!empty($this->request->query['key_tags'])){
+			$key_tags = $this->request->query['key_tags'];
+			$key_tags = $this->Tag->parseTagCSV($key_tags);
+		}
+		if(!empty($this->request->query['not_key_tags'])){
+			$not_key_tags = $this->request->query['not_key_tags'];
+			$not_key_tags = $this->Tag->parseTagCSV($not_key_tags);
+		}
+		
+		// insert search result to contents
+		$contents['blogs'] = $this->Blog->find('all',array(
+			'page' => $page,
+			'limit' => $count
+		));
+		$contents['products'] = $this->Product->find('all',array(
+			'page' => $page,
+			'limit' => $count			
+		));
 
-		if(!is_null(array($keywords, $key_not, $key_or, $key_and))) {
+		$nullCheck = $this->Search->nullCheckOfKeywords(array($keywords, $not_keywords, $key_tags, $not_key_tags));
+		if($nullCheck) {
+			// search blogs
 			$contents['blogs'] = $this->Blog->find('all',array(
-				'conditions' => array('title like'=>'%'.$keywords.'%'),
+				'conditions' => array(
+					'OR' => array(
+						'simplified_content like'=>'%'.$keywords.'%',
+						'title like'=>'%'.$keywords.'%'
+					),
+				),
 				'page' => $page,
-				'limit' => $count
+				'limit' => $count	
 			));
+			$contents['sql'] = $this->Blog->getDataSource()->getLog();
+			
 			$contents['products'] = $this->Product->find('all',array(
 				'conditions' => array('name like'=>'%'.$keywords.'%'),
 				'page' => $page,
 				'limit' => $count	
 			));
-		} else {
-			$contents['blogs'] = $this->Blog->find('all',array(
-				'page' => $page,
-				'limit' => $count
-			));
-			$contents['products'] = $this->Product->find('all',array(
-				'page' => $page,
-				'limit' => $count			
-			));
 		}
+		
 		if(is_null($contents)){
 			$this->apiError('contents are null');
 			return;
 		}
+		
 		$this->apiSuccess($contents);
 	}
 	

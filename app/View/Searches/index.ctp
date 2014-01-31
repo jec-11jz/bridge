@@ -35,13 +35,13 @@
 <div id="search">
 	<hr>
 	<input name="keywords" id="keywords" class="form-control" value="<?php echo h($keyword); ?>" placeholder='Search  here...'>
+	<input name="not-keywords" id="not-keywords" class="form-control" placeholder="絞り込み">
 	<input type="submit" value="Search" class="btn-a search" id="btn-search">
 	<div id="search-custom">
 		<legend>Scope</legend>
 		<div class="form-tag">
-			Not<input name="not-keywords" id="not-keywords" class="form-control tags">
-			And<input name="and-keywords" id="and-keywords" class="form-control tags">
-			Or<input name="or-keywords" id="or-keywords" class="form-control tags">
+			Tag Search<input name="key-tags" id="key-tags" class="form-control tags">
+			Not<input name="not-key-tags" id="not-key-tags" class="form-control tags">
 		</div>
 		<div class="form-checkbox">
 			<label for="check-blog" class="checkbox">BLOG</label>
@@ -52,6 +52,10 @@
 			<input type="checkbox" name="tag" value="Tag" id="check-tag" class="checkbox">
 			<label for="check-content" class="checkbox">OUTLINE</label>
 			<input type="checkbox" name="content" value="contetns" id="check-content" class="checkbox">
+			<label for="check-mine" class="checkbox">MINE</label>
+			<input type="checkbox" name="mine" value="mine" id="check-mine" class="checkbox">
+			<label for="check-favorite" class="checkbox">FAVORITE</label>
+			<input type="checkbox" name="favorite" value="favorite" id="check-favorite" class="checkbox">
 		</div>
 		<div class="spoiler">
 			<div class="right">
@@ -96,20 +100,35 @@ $(function() {
 			console.log('tags error');
 		}
 	});
-
-	var page = 1;
-	var count = 15;
-	var keywords = $('#keywords').val();
-	var key_not = $('#not-keywords').val();
-	var key_and = $('#and-keywords').val();
-	var key_or = $('#or-keywords').val();
-	function loadBlogs(page, count, keywords, key_not, key_and, key_or) {
+	
+	// set arrayLoad
+	var arrayLoad = {};
+	arrayLoad = {
+		page : 1, 
+		count : 15, 
+		keywords : $('#keywords').val(), 
+		not_keywords : $('#not-keywords').val(),
+		key_tags : $('#key-tags').val(),
+		not_key_tags : $('#not-key-tags').val()
+	};
+	
+	function loadImage(arrayKeywords) {
+		console.log('load...');
+		console.log(arrayKeywords);
 		$.ajax({
 			type: 'GET',
 			url: '/api/searches/search.json',
-			data: {'count': count, 'page': page, 'keywords': keywords, 'key_not': key_not, 'key_and': key_and, 'key_or': key_or},
+			data: {
+				'count': arrayKeywords['count'],
+				'page': arrayKeywords['page'],
+				'keywords': arrayKeywords['keywords'],
+				'not_keywords': arrayKeywords['not_keywords'],
+				'key_tags': arrayKeywords['key_tags'],
+				'not_key_tags': arrayKeywords['not_key_tags']
+			},
 			success: function(data, dataType) {
-				console.log(data);
+				console.log('data...');
+				console.log(data['response']);
 				// products
 				products = $('#js-search-products').tmpl(data['response']['products']);
 				$('#search-products-result').append(products);
@@ -133,15 +152,14 @@ $(function() {
 		var scrollHeight = $(document).height();
 		var scrollPosition = $(window).height() + $(window).scrollTop();
 		if ((scrollHeight - scrollPosition) / scrollHeight === 0) {
-			loadBlogs(
-				page, 
-				count, 
-				$('#keywords').val(), 
-				$('#not-keywords').val(), 
-				$('#and-keywords').val(), 
-				$('#or-keywords').val()
-			);
-			page++;
+			// substitution value
+			arrayLoad['keywords'] = $('#keywords').val();
+			arrayLoad['not_keywords'] = $('#not-keywords').val();
+			arrayLoad['key_tags'] = $('#key-tags').val();
+			arrayLoad['not_key_tags'] = $('#not-key-tags').val();
+			// execute　loadImage
+			loadImage(arrayLoad);
+			arrayLoad['page']++;
 		}
 	});
 	var diary = $('#search-result');
@@ -151,30 +169,30 @@ $(function() {
 		isFitWidth: true,
 		columnWidth: 1
 	});
-	loadBlogs(page, count, keywords, key_not, key_and, key_or);
-	page++;
-	// setTimeout("loadBlogs();", 2000);
+	loadImage(arrayLoad);
+	arrayLoad['page']++;
+	// setTimeout("loadImage();", 2000);
 
 	// search
 	$("#btn-search").click(function(){
+		console.log('click...');
+		console.log($('#keywords').val());
 		$('.cont').remove();
-		page = 1;
-		console.log(keywords);
+		arrayLoad['page'] = 1;
 		diary.masonry({
 	    	itemSelector: '.cont',
 	     	isAnimated: true,
 			isFitWidth: true,
 			columnWidth: 1
 		});
-		loadBlogs(
-			page,
-			count, 
-			$('#keywords').val(), 
-			$('#not-keywords').val(), 
-			$('#and-keywords').val(), 
-			$('#or-keywords').val()
-		);
-		page++;
+		// substitution value
+		arrayLoad['keywords'] = $('#keywords').val();
+		arrayLoad['not_keywords'] = $('#not-keywords').val();
+		arrayLoad['key_tags'] = $('#key-tags').val();
+		arrayLoad['not_key_tags'] = $('#not-key-tags').val();
+		// execute　loadImage
+		loadImage(arrayLoad);
+		arrayLoad['page']++;
 	});
 });
 </script>

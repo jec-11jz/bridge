@@ -87,14 +87,18 @@ $(function() {
 				cntTags++;
 			}
 		});
+		console.log('send...');
+		console.log(sendData);
 		// ajax
 		$.ajax({
 			type: "POST",
 			url: "/api/products/edit.json",
 			data: sendData,
 			success: function(data){
-			   　location.href = "/products/index";
-			},
+				console.log('get...');
+				console.log(data);
+			   // 　location.href = "/products/index";
+			 },
 			error: function(xhr, xhrStatus) {
 				$('.div-error').remove();
 				error = $('#error-message').tmpl(xhr['responseJSON']['error']);
@@ -110,7 +114,7 @@ $(function() {
 </script>
 <script>
 $(function(){
-	// attribute's form add
+	// add attribute's form
 	$(document).on('click', '.btn-add-attribute', function(){
 		var attrCnt = 1;
 		while($('#attribute' + attrCnt).size() > 0){
@@ -118,7 +122,7 @@ $(function(){
 		}
 		$("#input-attribute").append('<div id="attribute' + attrCnt + '" class="attr">\n');
 		$('#attribute' + attrCnt).append('<input type="text" id="attribute' + attrCnt +'" class="form-control post-attribute attribute attr-input" name="data[Attribute][name][]">\n');
-				$('#attribute' + attrCnt).append('<input type="button" value="×" id="attribute' + attrCnt +'" class="btn-delete-attribute attribute">');
+		$('#attribute' + attrCnt).append('<input type="button" value="×" id="attribute' + attrCnt +'" class="btn-delete-attribute attribute">');
 		$('#attribute' + attrCnt).append('<input type="text" id="attribute' + attrCnt +'" class="post-tag tags attr-input">\n');
 
 		$('.tags').tagbox({
@@ -178,7 +182,7 @@ $(function(){
 		<h1>Product Edit</h1>
 	</div>
 
-	<div id="formRegisterProduct">
+	<div id="formRegisterProduct" name="<?php echo h($product['Product']['id']); ?>">
 		<form method="post" id="<?php echo h($product['Product']['id']); ?>" action="/products/edit/<?php echo h($product['Product']['id']); ?>" class="content">
 			<div id="error"></div>
 
@@ -202,7 +206,7 @@ $(function(){
 				<input type="button" id="btn-delete" class="btn-danger del" value="all delete" />
 				<div id="input-attribute">
 					<?php foreach($product['Attribute'] as $attribute) : ?>
-						<div id="${id}" class="attr template-attributes">
+						<div id="<?php echo h($attribute['id']); ?>" class="attr template-attributes">
 							<input id="<?php echo h($attribute['id']); ?>" class="form-control post-attribute" value="<?php echo h($attribute['name']); ?>">
 							<input type="button" value="×" id="<?php echo h($attribute['id']); ?>" class="btn-delete-attribute attribute">
 							<input type="text" class="post-tag attr-input tags" value="<?php echo h($attribute['Tag']['tagNamesCSV']); ?>" name="value" id="<?php echo h($attribute['id']); ?>">

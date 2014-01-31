@@ -53,8 +53,10 @@ class BlogsController extends AppController {
 			),
 			'fields' => array('Tag.id')
 		));
-
+	
+		
 		$blogData = array('Blog' => $this->request->data['Blog']);
+		$blogData['Blog']['simplified_content'] = html_entity_decode(strip_tags($this->request->data['Blog']['content']));
 		$blogData['Blog']['user_id'] = $this->Auth->user('id');
 		$blogData['Tag'] = $tags;
 		$this->Blog->create();
@@ -69,34 +71,6 @@ class BlogsController extends AppController {
 		}
 	}
 
-	public function api_add() {
-		if (!$this->request->is('post')) {
-			$this->apiError('http method is not "POST"');
-		}
-
-		$this->Tag->saveFromNameArray($this->request->data['Tag']);
-		$tags = $this->Tag->find('list', array(
-			'conditions' => array(
-				'Tag.name' => $this->request->data['Tag']
-			),
-			'fields' => array('Tag.id')
-		));
-		$blogData = array('Blog' => $this->request->data['Blog']);
-		$blogData['Blog']['user_id'] = $this->Auth->user('id');
-		$blogData['Tag'] = $tags;
-		$this->Blog->create();
-		$result = $this->Blog->saveAll($blogData);
-		if ($result) {
-			$this->apiSuccess(array('message' => 'save success'));
-			return;
-		}
-
-		if ($this->Blog->validationErrors) {
-			$this->apiValidationError('Blog', $this->Blog->validationErrors);
-		} else {
-			$this->apiError('add error');
-		}
-	}
     
     public function edit($id = null) {
         if (!$id) {
@@ -107,6 +81,8 @@ class BlogsController extends AppController {
 	    if (!$post) {
 	        throw new NotFoundException(__('this blog is not exist'));
 		}
+		
+		$this->UsedBlogImage->deleteAll(array('UsedBlogImage.Blog_id'=>$id));
 
 		if ($this->request->is(array('post', 'put'))) {
 			$tagNames = $this->Tag->parseTagCSV($this->request->data['Tag']['name']);
@@ -120,6 +96,7 @@ class BlogsController extends AppController {
 	
 			$blogData = array('Blog' => $this->request->data['Blog']);
 			$blogData['Blog']['id'] = $id;
+			$blogData['Blog']['simplified_content'] = $value = html_entity_decode(strip_tags($this->request->data['Blog']['content']));
 			$blogData['Blog']['user_id'] = $this->Auth->user('id');
 			$blogData['Tag'] = $tags;
 			$this->Blog->create();
