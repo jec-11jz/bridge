@@ -1,10 +1,10 @@
 <?php
-	echo $this->Html->css('products');
-	
-	echo $this->Html->script('ckeditor/ckeditor');
-	echo $this->Html->script('tag/tags');
-	
 	$this->extend('/Common/index');
+
+	$this->Html->css('products', null, array('inline' => false));
+	
+	$this->Html->script('ckeditor/ckeditor', array('inline' => false));
+	$this->Html->script('tag/tags', array('inline' => false));
 ?>
 
 <script>
@@ -23,8 +23,6 @@
 	})
 </script>
 
-
-
 <div id="products" class="form first-content-form">
 	<div class="form-headder">
 		<h1>All Production</h1>
@@ -41,8 +39,8 @@
 		<?php foreach($products as $product) : ?>
 			<div class="cont1">
 				<?php if(isset($product['Product']['id'])){ ?>
-					<a href="/products/edit/<?php echo $product['Product']['id']; ?>" class="link"></a>
-					<a href="/products/edit/<?php echo $product['Product']['id']; ?>"><?php echo $product['Product']['name']; ?></a>
+					<a href="/products/view/<?php echo $product['Product']['id']; ?>" class="link"></a>
+					<a href="/products/view/<?php echo $product['Product']['id']; ?>"><?php echo $product['Product']['name']; ?></a>
 					
 					<?php echo $this->Form->postLink("", array('action' => 'delete',$product['Product']['id']),array('confirm' => '削除しますか？', 'class'=>'fa fa-trash-o delete')); ?>
 				<?php } ?>

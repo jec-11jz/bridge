@@ -2,15 +2,15 @@
 
 	$this->extend('/Common/index');
 
-	echo $this->Html->css('diary');
-	echo $this->Html->css('component');
+	$this->Html->css('diary', null, array('inline' => false));
+	$this->Html->css('component', null, array('inline' => false));
 
-	echo $this->Html->script('masonry.pkgd');
-	echo $this->Html->script('imagesloaded');
+	$this->Html->script('masonry.pkgd', array('inline' => false));
+	$this->Html->script('imagesloaded', array('inline' => false));
 	$this->Html->script('//ajax.microsoft.com/ajax/jquery.templates/beta1/jquery.tmpl.min.js', array('inline' => false));
 ?>
 <div id="diary-index">
-</div> <!-- #diary-index -->
+</div>
 
 
 <script>
@@ -60,7 +60,7 @@
 	});
 
 	var page = 1;
-	var count = 50;
+	var count = 25;
 	function loadBlogs() {
 		$.ajax({
 			type: 'GET',

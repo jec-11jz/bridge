@@ -10,11 +10,13 @@
 .navbar {
   background-color: $col-navbar;
   border: 0px solid #fff;
-  min-height: 40px;
-  height: 40px;
-  font-size: 19px;
-  @include box-shadow;
+  min-height: 55px;
+  height: 55px;
+  font-size: 24px;
+  @include box-shadow(0 0 3px rgba(63,63,63,0.5));
 }
+
+a{color: #333333;}
 
 .nav-brand {
   margin: 0 15px;
@@ -69,67 +71,6 @@ ul#dropdownmenu{
 
 
 
-.btn-a{
-  background-color: #313131;
-  text-decoration: none;
-  color: #fff;
-  padding: 0.5em 1em;
-  border: none;
-  @include btn-fade;
-  &:hover{
-    @include btn-hover;
-  }
-}
-.btn-black{
-  background-color: #ECECEC;
-  text-decoration: none;
-  color: $col-black;
-  padding: 0.5em 1em;
-  border:solid 1px $col-black2;
-  @include btn-fade;
-  &:hover{
-    text-decoration: none;
-    background-color: $col-black4;
-    color: white;
-    border: solid 1px $col-black4;
-  }
-}
-.btn-green{
-  background: $col-flat-green2;
-  text-decoration: none;
-  color: white;
-  border: none;
-  padding: 0.5em 1em;
-  @include btn-fade;
-  &:hover{
-    text-decoration: none;
-    background-color: $col-flat-green3;
-  }
-}
-.btn-blue{
-  background: $col-flat-blue1;
-  text-decoration: none;
-  color: white;
-  border: none;
-  padding: 0.5em 1em;
-  @include btn-fade;
-  &:hover{
-    text-decoration: none;
-    background-color: $col-flat-blue2;
-  }
-}
-.btn-danger{
-  background: $col-danger;
-  text-decoration: none;
-  color: white;
-  border: none;
-  padding: 0.5em 1em;
-  @include btn-fade;
-  &:hover{
-    text-decoration: none;
-    background-color: $col-danger-hover;
-  }
-}
 
 .box-flex{
   @include display-box;
@@ -143,6 +84,8 @@ ul#dropdownmenu{
     }
   }
 }
+
+
 
 .input_form{
   // width: 100%;
@@ -186,7 +129,6 @@ input:-webkit-autofill:focus{
 
 .modal-content{
   z-index:1001;
-  // background-color: $col-green5;
   h4{
     font-size: 25px;
     text-align: center;

@@ -1,8 +1,9 @@
 <?php
-	
-	echo $this->Html->script('tag/tags');
-	
 	$this->extend('/Common/index');
+
+	$this->Html->css('products', null, array('inline' => false));
+
+	$this->Html->script('tag/tags', array('inline' => false));
 	$this->Html->script('//ajax.microsoft.com/ajax/jquery.templates/beta1/jquery.tmpl.min.js', array('inline' => false));
 ?>
 
@@ -91,7 +92,7 @@ $(function() {
 		sendData['data'] = {};
 		// Product
 		sendData['data']['Product'] = {};
-		$('#formRegisterProduct').find('.product-info').each(function(){
+		$('#div-add-products').find('.product-info').each(function(){
 			if($(this).val() != ""){
 				sendData['data']['Product'][$(this).attr('name')] = $(this).val();
 			} else {
@@ -106,7 +107,7 @@ $(function() {
 		// AttributeTags
 		var cntTags = 0;
 		sendData['data']['AttributeTag'] = {};
-		$('#formRegisterProduct').find('.div-attr').each(function(){
+		$('#div-add-products').find('.attr').each(function(){
 			if($(this).find('.post-attribute').val() != ""){
 				sendData['data']['AttributeTag'][cntTags] = {};
 				sendData['data']['AttributeTag'][cntTags]['attribute'] = $(this).find('.post-attribute').val();
@@ -144,10 +145,11 @@ $(function(){
 		while($('#attribute' + attrCnt).size() > 0){
 			attrCnt++;
 		}
-		$("#input-attribute").append('<div id="attribute' + attrCnt + '" class="div-attr">\n');
-		$('#attribute' + attrCnt).append('<input type="text" id="attribute' + attrCnt +'" class="post-attribute attribute attr-input" name="data[Attribute][name][]">\n');
-		$('#attribute' + attrCnt).append('<input type="text" id="attribute' + attrCnt +'" class="post-tag tags attr-input">\n');
+		$("#tags-attribute").append('<div id="attribute' + attrCnt + '" class="attr tags-set">\n');
+		$('#attribute' + attrCnt).append('<input type="text" id="attribute' + attrCnt +'" class="form-control post-attribute attribute  tag-title" name="data[Attribute][name][]">\n');
 		$('#attribute' + attrCnt).append('<input type="button" value="×" id="attribute' + attrCnt +'" class="btn-delete-attribute attribute">\n');
+		$('#attribute' + attrCnt).append('<input type="text" id="attribute' + attrCnt +'" class="post-tag tags attr-input">\n');
+
 		$('.tags').tagbox({
 			url: tag,
     		lowercase: true
@@ -160,15 +162,15 @@ $(function(){
 	});
 	// delete all attribute's form
 	$('#btn-delete').click(function() {
-		$('.div-attr').remove();
+		$('.attr').remove();
 	});
 });
 </script>
 <script id="selectedAttributes" type="text/x-jquery-tmpl">
-	<div id="${id}" class="div-attr template-attributes">
-		<input id="${id}" class="post-attribute" value="${name}">
-		<input type="text" class="post-tag attr-input tags" name="value" id="${id}">
+	<div id="${id}" class="attr template-attributes tags-set">
+		<input id="${id}" class="form-control post-attribute tag-title" value="${name}">
 		<input type="button" value="×" id="${id}" class="btn-delete-attribute attribute">
+		<input type="text" class="post-tag attr-input tags" name="value" id="${id}">
 	</div>
 </script>
 <script id="error-message" type="text/x-jquery-tmpl">
@@ -178,100 +180,68 @@ $(function(){
 </script>
 
 
-<style type="text/css">
-/*css of image*/
-#image {
-    width: 18.750em;
-    height: 25.000em;
-    overflow: hidden;
-    background: #222;
-    color: #fff;
-    line-height:25.000em; /* heightと同じ値 */
-  	text-align:center;
-  	vertical-align:middle;
-  	float: left;
-  	margin-right: 5.000em;
-}
-#image img {
-    visibility: hidden;
-}
-.error {
-	color: red;
-}
-#product-data {
-	height: 12.000em;
-	margin-top: 3.000em;
-	overflow:scroll;
-}
-#input-attribute {
-	overflow:scroll;
-}
-.div-attr {
-	float:left
-}
-.product-title {
-	width: 80%;
-	height: 3.000em;
-	margin-bottom: 4.000em;
-}
-.attr-input {
-	margin-right: 10px;
-	width: 9.688em;
-}
-.template-name {
-	clear: both;
-}
-.select-temp {
-	width: 200px;
-}
-</style>
+<div id="div-add-products" class="form second-content-form">
+<form method="post" action="/products/add">
 
-<div class="form first-content-form">
-	<div class="form-headder">
-		<h1>Create Product</h1>
-		<div id="error"></div>
+	<div class="form-header">
+		<div class="header-left">
+			<a href="/products/index" class="header-link">Create</a>
+		</div>
+		<div class="header-right">
+			<input type="text" name="name" class="input form-control product-info page-title" id="movieTitle" placeholder="Title..."/>	
+		</div>
+		<div class="div-decoration">
+			<span>Products</span>
+		</div>
 	</div>
-	<div id="formRegisterProduct">
-		<form method="post" action="/products/add" class="content">
 
-			<div class="title">
-				<label for="movieTitle"><h4>Title</h4></label>
-				<input type="text" name="name" class="input tags product-info .product-title" id="movieTitle"/>			
-			</div>
+	<div id="error"></div>
+	<div class="form-body">
+		<div id="image" onclick="openKCFinder(this)"><div style='margin:5px'>Click here to choose an image</div></div>
 
-			<div id="image" onclick="openKCFinder(this)"><div style='margin:5px'>Click here to choose an image</div></div>
-			<label for="movie-outline">あらすじ：</label>
-			<textarea name="outline" class="product-info" cols="40" rows="4" id="movie-outline" style="display: block" /></textarea>
-			<div class="select-temp">
-				<select name="template_id" class="form-control template-name" id="selected-template" style="display:block">
-					<option value=""　selected>--選択してください--</option>
-					<?php foreach($templates as $template) : ?>
-						<?php if(isset($template['Template']['id'])){ ?>
-							<?php if($template['Template']['id'] == $selected_template['Template']['id']) { ?>
-								<option value="<?php echo $template['Template']['id']; ?>" selected><?php echo $template['Template']['name']; ?></option>
-							<?php } else { ?>
-								<option value="<?php echo $template['Template']['id']; ?>"><?php echo $template['Template']['name']; ?></option>
-							<?php } ?>
+		<textarea name="outline" class="product-info" cols="70" rows="12" id="movie-outline" placeholder="あらすじ"></textarea>
+		
+
+		<div class="row">
+			<select name="template_id" class="form-control template-name" id="selected-template" style="display:block">
+				<option value=""　selected>-テンプレートを選択-</option>
+				<?php foreach($templates as $template) : ?>
+					<?php if(isset($template['Template']['id'])){ ?>
+						<?php if($template['Template']['id'] == $selected_template['Template']['id']) { ?>
+							<option value="<?php echo $template['Template']['id']; ?>" selected><?php echo $template['Template']['name']; ?></option>
+						<?php } else { ?>
+							<option value="<?php echo $template['Template']['id']; ?>"><?php echo $template['Template']['name']; ?></option>
 						<?php } ?>
-					<?php endforeach; ?>
-					<option value="other">create template</option>
-				</select>
+					<?php } ?>
+				<?php endforeach; ?>
+				<option value="other">-テンプレートを作成-</option>
+			</select>
+		</div>
+			
+		<!-- get attribute -->
+		<fieldset id="product-data">
+			<div class="div-button">
+				<button type="button" id="attribute" class="btn-add-attribute btn-blue add"><i class="fa fa-plus-circle"></i> add</button>
+				<button type="button" id="btn-delete" class="button btn-danger del"><i class="fa fa-trash-o"></i> delete all</button>			
 			</div>
-				
-			<!-- get attribute -->
-			<fieldset id="product-data">
-				<input type="button" value="add" id="attribute" class="btn-green btn-add-attribute add">
-				<input type="button" id="btn-delete" class="btn-danger del" value="all delete" />
-				<div id="input-attribute">
-					<div id="template-attributes"></div>
-				</div>
-			</fieldset>		
-			<input type="button" value="戻る" />
-			<input type="button" id="btn-register" value="登録" />
-		</form>
-		<label>最後の編集者 :</label><a style="display: block">iverson</a>
-		<a>この作品を編集する</a>
+
+			<div id="tags-attribute">
+				<div id="template-attributes"></div>
+			</div>
+		</fieldset>		
+		
 	</div>
+
+		
+		
+	<div class="form-footer">
+		<div class="div-submit">
+			<input type="button" id="btn-register" value="登録" class="btn-blue" />
+		</div>
+		<a href="/products/index" class="back"><i class="fa fa-reply"></i> 投稿一覧へ戻る</a>
+	</div>
+
+</form>
 </div>
 	
 

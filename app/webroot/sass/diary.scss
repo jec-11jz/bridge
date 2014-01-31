@@ -8,6 +8,13 @@ div#diary{
 a.link:hover img.diary-pic{
   opacity: 0.8;
 }
+
+a.header-link:hover div.header-left{
+  background-color: $green;
+  border:1px solid $white;
+}
+
+// 日記一覧画面
 div#diary-index{
   margin: 0 auto;
   img {
@@ -38,92 +45,107 @@ div#diary-index{
     }
   }
 }
-#div-create-blogs{
-  .contents{
-    .blog-form{
-      width: 95%;
-      margin: 0 auto;
-      .title{
-        background-color: $col-black2;
+
+
+
+// add edit view 画面
+#div-view-blogs, #div-edit-blogs, #div-add-blogs{
+  .form-header{
+    .header-left{
+      span{
+        color: $green-dark;
       }
-      #blog-tags{
-        margin: 1em;
-        background-color: $col-black1;
-        @include border-radius(15px);
-        input{
-          margin:1em;
-        }
+    }
+    .header-right{
+      input{
+        position: absolute;
+        margin: 0;
+        padding: 0.2em 0.8em;
+        height: 2em;
+        width: 100%;
+        float: left;
+        top:80px;left:0;
+        border:none;
+        font-size: 1.6em;
+        @include box-shadow(0 0 1px $black);
+        @include border-radius(2em);
+        @include placeholder-color;
+        color: $white;
+        background-color: darken($green, 2%);
+      }
+    }
+    .div-decoration{
+      background-color: $yellow;
+      span{
+        color: $black;
       }
     }
   }
+  .form-body{
+    padding: 0em 2em;
+    #blog-tags{
+      margin: 2em 2em;
+      padding: 1em 1em 0em 1em;
+      background-color: #ECECE8;
+      @include border-radius(2px);
+      @include line-box;
+      .tag{
+        @include border-radius(25px);
+        margin-left: 0.7em; margin-bottom: 1em;
+      }
+    }
+    #blog-tags{
+      .tagbox{
+        margin: 1em 2em;
+        background-color: #ECECE8;
+        @include border-radius(2px);
+        @include line-box;
+      }
+    }
+    .tagbox{
+      margin: 2em 2em;
+    }
+    .spoiler{
+      display: inline-block;
+      float: right;
+      text-align: right;
+      &.spoiler-add{
+        width:100%;
+        display: block;
+        float: none;
+      }
+      .spoiler-slider{
+          margin: 1em 2em 0 0;
+      }
+    }
+    .text-body{
+      padding: 2em 3em;
+    }
+    .form-editor{
+      margin: 2em 2em 0 2em;
+      display: block;
+    }
+  }
   .form-footer{
-    .left{
-      float: left;
+    text-align: center;
+    padding: 0 4em;
+    .div-created{
+      text-align: left;
+    }
+    .div-submit{
+      display: block;
+      text-align: right;
+      &.submit-edit{
+        margin-top:1em;
+      }
+    }
+    .index-back{
+      text-decoration: none;
+      clear:both;
     }
   }
 }
 
-.ui-widget-header{
-  // background:$col-flat-blue1;
-}
-form#BlogAddForm, form#BlogEditForm{
-  margin: 0 auto;
-  padding-bottom: 1em;
-  height: 40%;
-  text-align: center;
-  input{
-    width: 95%;
-    margin: 1em auto;
-    // width: 2000px !important;
-  }
-  .spoiler{
-    text-align: right;
-    width: 95%;
-    margin: 0 auto;
-    .right{
-      display: inline-block;
-      width: 35%;
-      padding: 0.5em;
-      margin-bottom: 1em;
-      background-color: #93B8CA;
-      color: white;
-      span, .list, #slider{
-        float: left;
-      }
-      .list{
-        @include appearance(initial);
-        padding-left: 0.4em;
-        border: none;
-      }
-      #slider{
-        display: inline-block;
-        width:220px;
-        margin: 3px 0 0 15px;
-      }
-    }
-  }
-  
-  
-  .tagbox{
-    margin: 0 auto 1em;
-    width: 95%;
-    ul{
-      li{
-        &.new input{
-          margin: 0;
-        }
-      }
-    }
-  }
-  #ckeditor{
-    label{
-      font-size:90px;
-    }
-  }
-  #cke_ckeditor{
-    margin: 0 auto;
-  }
-}
 
 div{
   .container {

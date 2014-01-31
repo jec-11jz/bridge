@@ -33,7 +33,6 @@
 	}
 </style>
 <div id="search">
-	<hr>
 	<input name="keywords" id="keywords" class="form-control" value="<?php echo h($keyword); ?>" placeholder='Search  here...'>
 	<input type="submit" value="Search" class="btn-a search" id="btn-search">
 	<div id="search-custom">

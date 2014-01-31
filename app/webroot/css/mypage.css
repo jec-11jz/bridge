@@ -449,79 +449,249 @@ div.form.second-content-form .form-footer .btn-blue {
         box-shadow: 0 0 2px #d61714;
         background-color: #f27977; }
 
-/* line 4, ../sass/searches.scss */
-body h1 {
-  margin: 10px;
-  background-color: white; }
+/* autocomplete style */
+/* line 4, ../sass/tag/tags.scss */
+.autocomplete {
+  position: absolute;
+  padding-top: 5px;
+  z-index: 1000; }
 
-/* line 11, ../sass/searches.scss */
-.btn-a.search {
-  padding: 6px 17px;
-  margin: 1px; }
+/* line 9, ../sass/tag/tags.scss */
+.autocomplete * {
+  padding: 0;
+  margin: 0; }
 
-/* line 16, ../sass/searches.scss */
-#search {
-  margin: 0 auto;
-  text-align: center; }
-  /* line 19, ../sass/searches.scss */
-  #search .input, #search .submit {
-    display: inline; }
-  /* line 22, ../sass/searches.scss */
-  #search .form-control {
-    width: 40%;
-    margin: 0px 10px 0px 10px; }
+/* line 13, ../sass/tag/tags.scss */
+.autocomplete ul:before {
+  position: absolute;
+  top: -5px;
+  left: 10px;
+  content: "";
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-bottom: 5px solid #222; }
 
-/* line 30, ../sass/searches.scss */
-div#search-result {
-  margin: 0 auto; }
-  /* line 33, ../sass/searches.scss */
-  div#search-result .cont {
-    margin: 15px;
-    position: relative; }
-    /* line 36, ../sass/searches.scss */
-    div#search-result .cont hr {
-      margin: 10px 2px; }
-    /* line 39, ../sass/searches.scss */
-    div#search-result .cont a.link {
-      display: block;
-      top: 0;
-      left: 0;
+/* line 22, ../sass/tag/tags.scss */
+.autocomplete ul {
+  position: relative;
+  padding: 4px;
+  background: #222;
+  color: #fff;
+  min-width: 150px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.1) 0px 3px 5px;
+  -moz-box-shadow: rgba(0, 0, 0, 0.1) 0px 3px 5px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 3px 5px; }
+
+/* line 35, ../sass/tag/tags.scss */
+.autocomplete li {
+  list-style: none;
+  text-align: left;
+  padding: 4px 50px 4px 10px;
+  cursor: pointer;
+  margin-bottom: 1px;
+  background: #333; }
+
+/* line 43, ../sass/tag/tags.scss */
+.autocomplete li:last-child {
+  border-bottom: none;
+  margin-bottom: 0; }
+
+/* line 48, ../sass/tag/tags.scss */
+.autocomplete li.selected,
+.autocomplete li.over {
+  background: red;
+  color: #fff; }
+
+/* tagbox styles */
+/* line 55, ../sass/tag/tags.scss */
+.tagbox {
+  position: relative;
+  overflow: hidden;
+  background: #f9f9f9;
+  border: 1px solid #ddd; }
+
+/* line 61, ../sass/tag/tags.scss */
+.tagbox * {
+  margin: 0;
+  padding: 0; }
+
+/* line 65, ../sass/tag/tags.scss */
+.tagbox.focus {
+  outline: 0;
+  border-color: #659ec9 #70aedd #a8cfec;
+  -webkit-box-shadow: black 0px 0px 0px 0px;
+  -moz-box-shadow: black 0px 0px 0px 0px;
+  box-shadow: black 0px 0px 0px 0px; }
+
+/* line 69, ../sass/tag/tags.scss */
+.tagbox ul {
+  overflow: hidden; }
+
+/* line 72, ../sass/tag/tags.scss */
+.tagbox li {
+  position: relative;
+  list-style: none;
+  float: left;
+  cursor: pointer;
+  margin: 0px; }
+
+/* line 79, ../sass/tag/tags.scss */
+.tagbox li.new input {
+  font-family: Arial, sans-serif;
+  border: none;
+  display: block;
+  height: 20px;
+  line-height: 20px;
+  font-size: 12px;
+  background: none; }
+
+/* line 88, ../sass/tag/tags.scss */
+.tagbox li.new input:focus {
+  outline: none; }
+
+/* line 91, ../sass/tag/tags.scss */
+.tagbox li .tag {
+  position: relative;
+  display: block;
+  background: #222;
+  color: #fff;
+  border-radius: 20px;
+  height: 20px;
+  line-height: 20px;
+  font-size-adjust: 100%;
+  font-size: 12px;
+  padding: 0 30px 0 12px;
+  vertical-align: middle; }
+
+/* line 104, ../sass/tag/tags.scss */
+.tagbox li .delete {
+  position: absolute;
+  font-family: Arial, sans-serif;
+  right: 7px;
+  top: 4px;
+  color: #fff;
+  z-index: 100;
+  cursor: pointer;
+  color: #222;
+  background: white url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAMAAACeL25MAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAAZQTFRF////QkJCfEGH6wAAABRJREFUeNpiYGRgACEgBhMgBBBgAABkAAl7vFkJAAAAAElFTkSuQmCC) no-repeat center center;
+  width: 12px;
+  text-indent: -6000px;
+  font-size: 11px;
+  line-height: 12px;
+  height: 12px;
+  text-align: center;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  border-radius: 20px; }
+
+/* line 124, ../sass/tag/tags.scss */
+.tagbox .selected .tag {
+  background: red; }
+
+/* line 4, ../sass/tag/tags_custom.scss */
+.tagbox {
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  -ms-border-radius: 20px;
+  -o-border-radius: 20px;
+  border-radius: 20px;
+  -webkit-transition: 0.2s;
+  -o-transition: 0.2s;
+  transition: 0.2s; }
+  /* line 7, ../sass/tag/tags_custom.scss */
+  .tagbox:focus {
+    border-color: #659ec9 #70aedd #a8cfec;
+    -webkit-box-shadow: black 0px 0px 0px 0px;
+    -moz-box-shadow: black 0px 0px 0px 0px;
+    box-shadow: black 0px 0px 0px 0px; }
+  /* line 10, ../sass/tag/tags_custom.scss */
+  .tagbox ul {
+    margin: 0.5em 1em 0.2em 1em; }
+  /* line 13, ../sass/tag/tags_custom.scss */
+  .tagbox li {
+    margin: 0 0.3em 0.3em 0; }
+    /* line 16, ../sass/tag/tags_custom.scss */
+    .tagbox li .tag {
+      background-color: #23adc9; }
+  /* line 21, ../sass/tag/tags_custom.scss */
+  .tagbox .selected .tag {
+    background-color: #f06260; }
+
+/* line 29, ../sass/tag/tags_custom.scss */
+.autocomplete ul {
+  background-color: #1e94ac; }
+  /* line 32, ../sass/tag/tags_custom.scss */
+  .autocomplete ul li {
+    background-color: #23adc9; }
+    /* line 34, ../sass/tag/tags_custom.scss */
+    .autocomplete ul li:hover {
+      background-color: #33bfdb; }
+    /* line 37, ../sass/tag/tags_custom.scss */
+    .autocomplete ul li.over, .autocomplete ul li.selected {
+      background-color: #33bfdb; }
+
+/* line 7, ../sass/mypage.scss */
+div.second-content-form .form-header .header-right .user-name {
+  margin-left: 55px; }
+/* line 11, ../sass/mypage.scss */
+div.second-content-form .form-header .div-decoration {
+  background-color: #2eb2ff; }
+/* line 15, ../sass/mypage.scss */
+div.second-content-form .form-body {
+  background-color: #68c39f; }
+  /* line 17, ../sass/mypage.scss */
+  div.second-content-form .form-body .div-create {
+    display: block;
+    text-align: center; }
+    /* line 20, ../sass/mypage.scss */
+    div.second-content-form .form-body .div-create .create-button {
+      display: inline-block;
+      text-decoration: none;
+      height: 150px;
+      width: 150px;
+      -webkit-border-radius: 150px;
+      -moz-border-radius: 150px;
+      -ms-border-radius: 150px;
+      -o-border-radius: 150px;
+      border-radius: 150px;
+      text-align: center;
+      line-height: 150px;
+      color: #f6f6f6; }
+      /* line 28, ../sass/mypage.scss */
+      div.second-content-form .form-body .div-create .create-button.blog {
+        background-color: #e4e46f;
+        color: #3f3f3f; }
+      /* line 32, ../sass/mypage.scss */
+      div.second-content-form .form-body .div-create .create-button.template {
+        background-color: #c1c1c1; }
+      /* line 33, ../sass/mypage.scss */
+      div.second-content-form .form-body .div-create .create-button.product {
+        background-color: #2eb2ff; }
+
+/* line 40, ../sass/mypage.scss */
+.box-flex {
+  margin-top: 1em; }
+  /* line 42, ../sass/mypage.scss */
+  .box-flex .button-full {
+    -webkit-box-flex: 3;
+    -moz-box-flex: 3;
+    -ms-box-flex: 3;
+    box-flex: 3;
+    height: 8em; }
+    /* line 45, ../sass/mypage.scss */
+    .box-flex .button-full .btn-black {
+      padding: 3.2em 6.5em;
+      border: none;
       width: 100%;
       height: 100%;
-      position: absolute;
-      z-index: 600; }
-    /* line 43, ../sass/searches.scss */
-    div#search-result .cont .cont-info {
-      position: absolute;
-      bottom: 0;
-      width: 100%;
-      background: rgba(108, 122, 137, 0.5);
-      color: white;
-      -webkit-transform: translate(0, 0);
-      -moz-transform: translate(0, 0);
-      -ms-transform: translate(0, 0);
-      -o-transform: translate(0, 0);
-      transform: translate(0, 0);
-      -webkit-transition: all 0.3s ease-in-out;
-      -moz-transition: all 0.3s ease-in-out;
-      -o-transition: all 0.3s ease-in-out;
-      transition: all 0.3s ease-in-out; }
-      /* line 51, ../sass/searches.scss */
-      div#search-result .cont .cont-info p {
-        font-size: 13px; }
-
-/* line 58, ../sass/searches.scss */
-.cont:hover img {
-  opacity: 0.8; }
-/* line 61, ../sass/searches.scss */
-.cont:hover .cont-info {
-  -webkit-transform: translate(0, 100px);
-  -moz-transform: translate(0, 100px);
-  -ms-transform: translate(0, 100px);
-  -o-transform: translate(0, 100px);
-  transform: translate(0, 100px);
-  -webkit-transition: all 0.3s ease-in-out;
-  -moz-transition: all 0.3s ease-in-out;
-  -o-transition: all 0.3s ease-in-out;
-  transition: all 0.3s ease-in-out;
-  background-color: #000; }
+      border: 1px solid #68c39f; }
+      /* line 51, ../sass/mypage.scss */
+      .box-flex .button-full .btn-black.blog {
+        background-color: #e4e46f; }
+      /* line 54, ../sass/mypage.scss */
+      .box-flex .button-full .btn-black.product {
+        background-color: #2eb2ff;
+        color: #f6f6f6; }

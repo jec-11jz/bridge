@@ -1,5 +1,9 @@
+// 色の宣言
+
 $col-flat-green1:#CCDFCC;$col-flat-green2:#58BE89;$col-flat-green3:#44b078;
 $col-flat:#7dcca3;
+$col-flat-red:#FF9776;
+$col-flat-range1:#fa9915;$col-flat-orange2:#f18d05;
 $col-flat-blue11:#33bfdb;$col-flat-blue1:#23adc9;$col-flat-blue2:#1e94ac;$col-flat-blue3:#197b8f;
 $col-danger:#F06260;$col-danger-hover:#c61513;
 $col-green:#4ab134;
@@ -10,6 +14,18 @@ $col-black:#3f3f3f;
 $col-black5: #313131;$col-black4: #4a4a4a;$col-black3:#646464;$col-black2:#c1c1c1;$col-black1:#ececec;
 $col-selection: #bef098;
 $col-navbar: #f7f7f7;
+
+$green-dark:#296847;
+$green:#68C39F;
+$green-light:#BDD3C8;
+
+$yellow:#E4E46F;
+$orange:#FFBE00;
+$white:#f6f6f6;
+$black:#3f3f3f;
+$blue:lighten(#00A1FF,9%);
+$red:#F06260;
+
 
     //　ーー宣言ーー
 @import "compass";

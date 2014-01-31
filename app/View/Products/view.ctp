@@ -8,29 +8,6 @@
 ?>
 
 
-<!-- KCfinder読み込み -->
-<script type="text/javascript">
-function openKCFinder(div) {
-    window.KCFinder = {
-        callBack: function(url) {
-            window.KCFinder = null;
-            div.innerHTML = '<div style="margin:5px">Loading...</div>';
-            var img = new Image();
-            img.src = url;
-            img.onload = function() {
-                div.innerHTML = '<img id="img" src="' + url + '" />';
-                var img = document.getElementById('img');
-                img.style.width = '100%';
-                img.style.visibility = "visible";
-            }
-        }
-    };
-    window.open('/js/kcfinder/browse.php?type=images&dir=images/public',
-        'kcfinder_image', 'status=0, toolbar=0, location=0, menubar=0, ' +
-        'directories=0, resizable=1, scrollbars=0, width=800, height=600'
-    );
-}
-</script>
 <script>
 $(function() {
 	// DBからタグを取得
@@ -64,12 +41,10 @@ $(function() {
 		sendData['data'] = {};
 		// Product
 		sendData['data']['Product'] = {};
-		sendData['data']['Product']['id'] = $('#div-edit-products').find('form').attr('id');
-		$('#div-edit-products').find('.product-info').each(function(){
+		sendData['data']['Product']['id'] = $('#div-view-products').find('form').attr('id');
+		$('#div-view-products').find('.product-info').each(function(){
 			if($(this).val() != ""){
-				console.log($(this).val());
 				sendData['data']['Product'][$(this).attr('name')] = $(this).val();
-
 			} else {
 				console.log('aaaaaa');
 				return;
@@ -81,7 +56,7 @@ $(function() {
 		// AttributeTags
 		var cntTags = 0;
 		sendData['data']['AttributeTag'] = {};
-		$('#div-edit-products').find('.attr').each(function(){
+		$('#div-view-products').find('.attr').each(function(){
 			if($(this).find('.post-attribute').val() != ""){
 				sendData['data']['AttributeTag'][cntTags] = {};
 				sendData['data']['AttributeTag'][cntTags]['attribute'] = $(this).find('.post-attribute').val();
@@ -95,7 +70,7 @@ $(function() {
 			url: "/api/products/edit.json",
 			data: sendData,
 			success: function(data){
-		   　location.href = "/products/index";
+			   　location.href = "/products/index";
 			},
 			error: function(xhr, xhrStatus) {
 				$('.div-error').remove();
@@ -118,9 +93,9 @@ $(function(){
 		while($('#attribute' + attrCnt).size() > 0){
 			attrCnt++;
 		}
-		$("#tags-attribute").append('<div id="attribute' + attrCnt + '" class="attr tags-set">\n');
-		$('#attribute' + attrCnt).append('<input type="text" id="attribute' + attrCnt +'" class="form-control tag-title post-attribute attribute attr-input" name="data[Attribute][name][]">\n');
-		$('#attribute' + attrCnt).append('<input type="button" value="×" id="attribute' + attrCnt +'" class="btn-delete-attribute attribute">');
+		$("#tags-attribute").append('<div id="attribute' + attrCnt + '" class="attr">\n');
+		$('#attribute' + attrCnt).append('<input type="text" id="attribute' + attrCnt +'" class="form-control post-attribute attribute attr-input" name="data[Attribute][name][]">\n');
+				$('#attribute' + attrCnt).append('<input type="button" value="×" id="attribute' + attrCnt +'" class="btn-delete-attribute attribute">');
 		$('#attribute' + attrCnt).append('<input type="text" id="attribute' + attrCnt +'" class="post-tag tags attr-input">\n');
 
 		$('.tags').tagbox({
@@ -147,15 +122,22 @@ $(function(){
 
 
 
-<div id="div-edit-products" class="form second-content-form">
+<style type="text/css">
+.form-button{
+	clear: both;
+}
+</style>
+
+
+<div id="div-view-products" class="form second-content-form">
 <form method="post" id="<?php echo h($product['Product']['id']); ?>" action="/products/edit/<?php echo h($product['Product']['id']); ?>">
 
 	<div class="form-header">
 		<div class="header-left">
-			<a href="/products/index" class="header-link">Edit</a>
+			<a href="/products/index" class="header-link">View</a>
 		</div>
 		<div class="header-right">
-			<input type="text" name="name" value="<?php echo h($product_names); ?>" class="form-control product-info page-title" id="movieTitle"/>
+			<span class="page-title"><?php echo h($product['Product']['name']); ?></span>
 		</div>
 		<div class="div-decoration">
 			<span>Products</span>
@@ -165,42 +147,34 @@ $(function(){
 
 	<div class="form-body">
 		<div id="error"></div>
-		
-		<div id="image" onclick="openKCFinder(this)">
+		<div id="image">
 			<?php if($product['Product']['image_url']) { ?>
 				<img id="img" src="<?php echo h($product['Product']['image_url']); ?>" width="100%" style="margin: auto; visibility: visible;">
 			<?php } else { ?>
-				<div style='margin:5px'>Click here to choose an image</div>
+				<div style='margin:5px'>No image</div>
 			<?php } ?>
 		</div>
 
-		<textarea name="outline" class="product-info body-outline edit" id="movie-outline" rows="12" cols="70" placeholder="あらすじ"><?php echo h($product['Product']['outline']); ?></textarea>	
+		<div class="body-outline">
+			<span><?php echo h($product['Product']['outline']); ?></span>
+		</div> 
 
-		<fieldset id="product-data">
+		<div id="tags-attribute">
+			<?php foreach($product['Attribute'] as $attribute) : ?>
+				<div id="blog-tags" class="tags-set">
+					<span class="tag-title"><?php echo h($attribute['name']); ?></span>
+					<span class="tag btn-blue"><?php echo h($attribute['Tag']['tagNamesCSV']); ?></span>	
+				</div>
 
-			<div class="div-button">
-				<button type="button" id="attribute" class="btn-add-attribute btn-blue add"><i class="fa fa-plus-circle"></i> add</button>
-				<button type="button" id="btn-delete" class="button btn-danger del"><i class="fa fa-trash-o"></i> delete all</button>	
-			</div>
-
-			<div id="tags-attribute">
-				<?php foreach($product['Attribute'] as $attribute) : ?>
-					<div id="${id}" class="attr template-attributes tags-set">
-						<input id="<?php echo h($attribute['id']); ?>" class="form-control tag-title post-attribute" value="<?php echo h($attribute['name']); ?>">
-						<input type="button" value="×" id="<?php echo h($attribute['id']); ?>" class="btn-delete-attribute attribute">
-						<input type="text" class="post-tag attr-input tags" value="<?php echo h($attribute['Tag']['tagNamesCSV']); ?>" name="value" id="<?php echo h($attribute['id']); ?>">
-					</div>
-				<?php endforeach; ?>
-			</div>
-
-		</fieldset>
-
-
-	</div>
-
+			<?php endforeach; ?>
+		</div>
+	</div> <!-- form-body -->
+		
+		
+	
 	<div class="form-footer">
-		<input type="button" id="btn-register" class="btn-blue" value="登録" />
-		<a href="/products/index" class="back"><i class="fa fa-reply"></i> 投稿一覧へ戻る</a>
+		<a href="/products/edit/<?php echo $product['Product']['id']; ?>" class="btn-blue">Edit</a>
+		<a href="/products/index" class="back">一覧へ戻る</a>
 	</div>
 
 </form>

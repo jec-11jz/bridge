@@ -19,6 +19,9 @@ class HomeController extends AppController {
 	public function mypage(){
 		// show mypage.ctp
 	}
+	public function create(){
+		// show create.ctp
+	}
 	
 	public function api_get_toppage_contents (){
 		$toppage_contents = array();

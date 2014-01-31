@@ -1,30 +1,70 @@
 @import "../sass/my-mixin.scss";
 @import "fonts.scss";
+@import "buttons.scss";
 
+hr{
+  @include line-bottom;
+  border-top: none;
+}
+
+.link{
+  @include link;
+}
 
 body{
-  // @include back-bg;
   background-color: #E5E5DE;
   color:#3f3f3f;
 }
+
 #contents {
-  margin-top: 40px;
+  margin-top: 55px;
 }
 
 .nav-brand > img {
-  width: 78px;
-  height: 39px;
+  margin: 2px 0;
+  width: 100px;
+  height:51px;
 }
 
-
+div.page-title{
+  h1{
+    color:$green;
+  }
+}
 a:hover {
-  color: $col-flat-green2;
-
+  color: $green;
+  @include btn-fade;
 }
 // .left{float:left;}
 // .right{float:right;}
 
 
+// ネタバレスライダー
+.spoiler{
+  @include border-radius(2px);
+  .spoiler-slider{
+    display: inline-block;
+    // width: 35%;
+    padding: 0.5em;
+    background-color: #93B8CA;
+    color: white;
+    span, .list, #slider{
+      float: left;
+    }
+    .list{
+      @include appearance(initial);
+      padding-left: 0.4em;
+      border: none;
+    }
+    #slider{
+      display: inline-block;
+      width:220px;
+      margin: 3px 0 0 15px;
+    }
+  }
+}
+
+// フォーム形式のUI
 div.form.first-content-form{
   position: relative;
   width: 88%;
@@ -43,7 +83,7 @@ div.form.first-content-form{
   form, .contents{
     display: block;
     background-color: $col-flat-green1;
-    // @include border-radius(2px);
+    padding: 1em 2em; 
     input, .tagbox{
       margin: 0 auto;
     }
@@ -53,11 +93,157 @@ div.form.first-content-form{
     background-color: $col-flat-green2;
     left:0;
     bottom:0;
-    padding: 1em 0.5em;
+    padding:0.5em;
     width: 100%;
-    text-align: right;
+    text-align: left;
+    .back{
+      @include btn-fade;
+      &:hover{
+        color: white;
+        text-decoration: none;
+      }
+    }
   }
 }
+
+
+
+// 全画面形式のUI
+div.form.second-content-form{
+  .form-header{
+    position: relative;
+    height: 200px;
+    overflow: hidden;
+    @include gradient-top-lighten($green);
+    background-color: #6d9f58;
+    .header-left{
+      margin: 25px 75px 25px 13%;
+      height: 150px;width: 150px;
+      background-color: $col-black1;
+      @include border-radius(300px);
+      text-align: center;
+      display: inline-block;
+      line-height: 150px;
+      position: relative;
+      float:left;
+      a.header-link{
+        text-decoration: none;
+        font-size:17px;
+        @include link;
+        @include border-radius(300px);
+        @include transition(0.3s);
+        &:hover{
+          background-color: $green;
+          @include box-shadow(0 0 3px white) ;
+          @include btn-fade;
+          color: $white;
+        }
+      }
+    }
+    .header-right{
+      display: inline-block;
+      position: relative;
+      height: 100%;
+      line-height: 200px;
+      width: 55%;
+      float: left;
+      .page-title{
+        color: $white;
+        font-size:2em;
+        @include text-shadow(1px -1px 0 rgba(0,0,0,0.5));
+      }
+    }
+    .div-decoration{
+      position: absolute;
+      right: -220px;
+      width: 500px;
+      top:60px;
+      height: 5.7em;
+      @include rotate(45deg);
+      text-align: center;
+      line-height: 5.7em;
+      span{
+        color: $white;
+        margin-right: 75px;
+        font-size:  20px;
+      }
+    }
+  }
+  .form-body{
+  }
+  .form-footer{
+    .div-created{
+      span{
+        float: left;
+      }
+    }
+    .btn-blue{
+      width: 20em;
+      padding: 1em 9em;
+      &:hover{
+        color:$white;
+      }
+    }
+  }
+}
+
+.blog-tools{
+  margin-left: 2em;
+  display: inline-block;
+  // float: left;
+  .fa{
+    text-align: center;
+    margin: 0 0.1em;
+    font-size: 2.2em;
+    color:darken($white,5%);
+    height: 2em;width: 2em;
+    line-height: 2em;
+    @include border-radius(2em);
+    &:hover{
+      text-decoration: none;
+      color: $black;
+    }
+    &.fa-pencil-square-o{
+      background-color:$orange;
+      color:darken($orange, 20%);
+      line-height: 2.1em;
+      &:hover{
+        color:darken($orange, 20%);
+        @include box-shadow(0 0 2px darken($orange, 20%));
+        background-color: lighten($orange, 10%);
+      }
+    }
+    &.fa-desktop{
+      background-color:$blue;
+      color:darken($blue, 20%);
+      line-height: 2.1em;
+      &:hover{
+        color:darken($blue, 20%);
+        @include box-shadow(0 0 2px darken($blue, 20%));
+        background-color: lighten($blue, 10%);
+      }
+    }
+    &.fa-star{
+      background-color:darken($yellow,10%);
+      color:darken($yellow, 30%);
+      &:hover{
+        color:darken($yellow, 20%);
+        @include box-shadow(0 0 2px darken($yellow, 15%));
+        background-color: lighten($yellow, 5%);
+      }
+    }
+    &.fa-trash-o{
+      background-color:$col-danger;
+      color:darken($col-danger, 30%);
+      &:hover{
+        color:darken($col-danger, 20%);
+        @include box-shadow(0 0 2px darken($col-danger, 20%));
+        background-color: lighten($col-danger, 5%);
+      }
+    }
+  }
+}
+
 
 
 

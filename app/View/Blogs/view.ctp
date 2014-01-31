@@ -1,8 +1,10 @@
 <?php
 	$this->extend('/Common/index');
 	
-	echo $this->Html->css('diary');
-	
+	$this->Html->css('jquery-ui-1.10.4.custom', null, array('inline' => false));
+	$this->Html->css('diary', null, array('inline' => false));
+
+	$this->Html->script('jquery-ui-1.10.4.custom', array('inline' => false));
 	$this->Html->script('//ajax.microsoft.com/ajax/jquery.templates/beta1/jquery.tmpl.min.js', array('inline' => false));
 ?>
 
@@ -49,31 +51,80 @@ $(function() {
 </script>
 
 
-<div id="div-create-blogs" class="form first-content-form">
-	<div class="form-headder">
-		<h1>View Blogs</h1>
+<!-- スライダースクリプト -->
+<script>
+	$(function() {
+	    var select = $( "#minbeds" );
+	    var slider = $( "<div id='slider'></div>" ).insertAfter( select ).slider({
+	      min: 1,
+	      max: 10,
+	      range: "min",
+	      value: select[ 0 ].selectedIndex + 1,
+	      slide: function( event, ui ) {
+	        select[ 0 ].selectedIndex = ui.value - 1;
+	      }
+	    });
+	    $( "#minbeds" ).change(function() {
+	      slider.slider( "value", this.selectedIndex + 1 );
+	    });
+	});
+</script>
+
+<div id="div-view-blogs" class="form second-content-form">
+	<div class="form-header">
+		<div class="header-left">
+			<a href="/searches/index" class="header-link">View</a>
+		</div>
+		<div class="header-right">
+			<span class="page-title"><?php echo h($blog['Blog']['title']); ?></span>
+		</div>
+		<div class="div-decoration"><span>Blogs</span></div>
 	</div>
 
-	<div class="contents">
+	<div class="form-body">
 		<div id="<?php echo h($blog['Blog']['id']); ?>" class="blog-form">
-			<span class="title">タイトル</span>
-			<h2><?php echo h($blog['Blog']['title']); ?></h2>
+
+			<div id="blog-tags"></div>
+			<div class="blog-tools">
+				<a href="/blogs/edit/<?php echo h($blog['Blog']['id']); ?>" class="fa fa-pencil-square-o"></a>
+				<a href="/blogs/view/<?php echo h($blog['Blog']['id']); ?>" class="fa fa-desktop">
+				<a href="#" class="fa fa-star">
+				<a href="/blogs/delete/<?php echo h($blog['Blog']['id']); ?>" class="fa fa-trash-o"></a>
+			</div>
+			<div class="spoiler">
+				<div class="spoiler-slider">
+					<span>ネタバレ：</span>
+				 	<select name="minbeds" id="minbeds" class="list">
+					    <option>1</option>
+					    <option>2</option>
+					    <option>3</option>
+					    <option>4</option>
+					    <option selected>5</option>
+					    <option>6</option>
+					    <option>7</option>
+					    <option>8</option>
+					    <option>9</option>
+					    <option>10</option>
+				 	</select>
+				</div>
+			</div> <!-- spoiler -->
 			<hr>
-			<span>タグ:</span>
-			<h4><div id="blog-tags"></div></h4>
-			<hr>
-			<h2>本文</h2>
-			<p><?php echo $blog['Blog']['content']; ?></p>
+			<div class="text-body">
+				
+				<?php echo $blog['Blog']['content']; ?>
+			</div>
 			
-			<!-- 作成日 -->
-			<h5>Created: <?php echo $blog['Blog']['created']; ?></h5>
-			<span><?php echo $blog['User']['name']; ?></span>
 		</div>
 	</div>
 
 	<div class="form-footer">
-		<a href="/blogs/edit/<?php echo h($blog['Blog']['id']); ?>" class="btn-a left">Edit</a>
-		<a href="/blogs" style="display:block">投稿一覧へ戻る</a>
+		<hr>
+		<div class="div-created">
+			<span><?php echo $blog['Blog']['created']; ?></span>
+			<span><?php echo $blog['User']['name']; ?></span>
+		</div>
+
+		<a class="index-back" href="/searches/index" style="display:block"><i class="fa fa-reply"></i> 一覧へ</a>
 	</div>
 </div>
 
