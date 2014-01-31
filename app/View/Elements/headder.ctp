@@ -23,34 +23,19 @@ $this->Html->script('dropdown/modernizr.custom.79639', array('inline' => false))
 	?>
 	</div>
 	<ul class="nav navbar-nav">
-		<div id="dd" class="wrapper-dropdown-5" tabindex="1"><p>Create</p>
-			<ul class="dropdown">
-				<li><a href="/blogs/add"><i class="fa fa-pencil-square-o menu"></i>日記作成</a></li>
-				<li><a href="/products/add"><i class="fa fa-film menu"></i>作品登録</a></li>
-				<li><a href="/tags/index"><i class="fa fa-tags menu"></i>タグ編集</a></li>
-				<li><a href="/templates/add"><i class="fa fa-list-alt"></i>テンプレ作成</a></li>
-			</ul>
+		<div id="dd" class="wrapper-dropdown-5 menu-create" tabindex="1">
+			<a href="/home/create" class="link"></a>
+			<p><i class="fa fa-edit"></i> Create</p>
 		</div>
 
-		<div id="dd" class="wrapper-dropdown-5" tabindex="1"><p>View</p>
-			<ul class="dropdown">
-				<li><a href="/blogs/index"><i class="fa fa-file-text-o menu"></i>日記一覧</a></li>
-				<li><a href="/products/index"><i class="fa fa-film menu"></i>作品一覧</a></li>
-				<li><a href="/templates/index"><i class="fa fa-list-alt"></i>テンプレ一覧</a></li>
-				<li><a href="/home/gallery">ギャラリー</a></li>
-			</ul>
+		<div id="dd" class="wrapper-dropdown-5 menu-view" tabindex="1">
+			<a href="/home/mypage" class="link"></a>
+			<p><i class="fa fa-desktop"></i> View</p>
 		</div>
 		
-		<div id="dd" class="wrapper-dropdown-5" tabindex="1">
+		<div id="dd" class="wrapper-dropdown-5 menu-search" tabindex="1">
 			<a href="/searches/index" class="link"></a>
-			<p>Search</p>			
-		</div>
-		
-		<div id="dd" class="wrapper-dropdown-5" tabindex="1"><p>Upload</p>
-			<ul class="dropdown">
-				<li><a href="/images/index">Upload</a></li>
-				<li><a href="http://bridge/js/kcfinder/browse.php?type=images&dir=images">BlogsUp</a></li>
-			</ul>
+			<p><i class="fa fa-search"></i> Search</p>			
 		</div>
 	</ul>
 	
@@ -63,7 +48,7 @@ $this->Html->script('dropdown/modernizr.custom.79639', array('inline' => false))
 			<a href="#" data-target="#loginModal" data-toggle="modal" class="menu-list list-login">Login</a>
 		</li>
 	<?php else: ?>
-		<div id="dd" class="wrapper-dropdown-5" tabindex="1"><p><?php echo $user['name']; ?></p>
+		<div id="dd" class="wrapper-dropdown-5 user" tabindex="1"><p><?php echo $user['name']; ?></p>
 			<ul class="dropdown">
 				<li><a href="/home/mypage"><i class="fa fa-user menu"></i>ユーザ編集</a></li> 
 					<li><a href="#"><i class="fa fa-star-o menu"></i>お気に入り</a></li> 

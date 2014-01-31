@@ -1,10 +1,10 @@
 <?php
 	$this->extend('/Common/index');
 	
-	echo $this->Html->css('jquery-ui-1.10.4.custom');
-	echo $this->Html->css('diary');
+	$this->Html->css('jquery-ui-1.10.4.custom', null, array('inline' => false));
+	$this->Html->css('diary', null, array('inline' => false));
 
-	echo $this->Html->script('jquery-ui-1.10.4.custom');
+	$this->Html->script('jquery-ui-1.10.4.custom', array('inline' => false));
 	$this->Html->script('//ajax.microsoft.com/ajax/jquery.templates/beta1/jquery.tmpl.min.js', array('inline' => false));
 ?>
 
@@ -73,11 +73,10 @@ $(function() {
 <div id="div-view-blogs" class="form second-content-form">
 	<div class="form-header">
 		<div class="header-left">
-			<a href="/blogs" class="header-link"></a>
-			<span>View</span>
+			<a href="/searches/index" class="header-link">View</a>
 		</div>
 		<div class="header-right">
-			<span class="blog-title"><?php echo h($blog['Blog']['title']); ?></span>
+			<span class="page-title"><?php echo h($blog['Blog']['title']); ?></span>
 		</div>
 		<div class="div-decoration"><span>Blogs</span></div>
 	</div>
@@ -86,7 +85,12 @@ $(function() {
 		<div id="<?php echo h($blog['Blog']['id']); ?>" class="blog-form">
 
 			<div id="blog-tags"></div>
-
+			<div class="blog-tools">
+				<a href="/blogs/edit/<?php echo h($blog['Blog']['id']); ?>" class="fa fa-pencil-square-o"></a>
+				<a href="/blogs/view/<?php echo h($blog['Blog']['id']); ?>" class="fa fa-desktop">
+				<a href="#" class="fa fa-star">
+				<a href="/blogs/delete/<?php echo h($blog['Blog']['id']); ?>" class="fa fa-trash-o"></a>
+			</div>
 			<div class="spoiler">
 				<div class="spoiler-slider">
 					<span>ネタバレ：</span>
@@ -104,9 +108,9 @@ $(function() {
 				 	</select>
 				</div>
 			</div> <!-- spoiler -->
-
+			<hr>
 			<div class="text-body">
-				<hr>
+				
 				<?php echo $blog['Blog']['content']; ?>
 			</div>
 			
@@ -114,14 +118,13 @@ $(function() {
 	</div>
 
 	<div class="form-footer">
-				<hr>
-			<!-- 作成日 -->
+		<hr>
+		<div class="div-created">
 			<span><?php echo $blog['Blog']['created']; ?></span>
 			<span><?php echo $blog['User']['name']; ?></span>
-			<hr>
-			<a href="/blogs/edit/<?php echo h($blog['Blog']['id']); ?>" class="btn-orange">Edit</a>
+		</div>
 
-		<a class="index-back" href="/blogs" style="display:block"><i class="fa fa-reply"></i> 投稿一覧へ戻る</a>
+		<a class="index-back" href="/searches/index" style="display:block"><i class="fa fa-reply"></i> 一覧へ</a>
 	</div>
 </div>
 

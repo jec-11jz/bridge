@@ -1,7 +1,7 @@
 <?php
 		$this->extend('/Common/index');
 
-		echo $this->Html->css('templates');
+		$this->Html->css('templates', null, array('inline' => false));
 		
 ?>
 
@@ -23,10 +23,20 @@
 
 </script>
 
-<div class="form first-content-form">
-	<div class="form-headder">
-		<h1>My Templates</h1>
+<div id="div-index-templates" class="form second-content-form">
+	<div class="form-header">
+		<div class="header-left">
+			<a href="/products/index" class="header-link">View</a>
+		</div>
+		<div class="header-right">
+			<span class="page-title">My Templates</span>
+		</div>
+		<div class="div-decoration">
+			<span>Templates</span>
+		</div>
+		
 	</div>
+
 	<div class="box-flex">
 		<div class="button-full"><a href="/templates/index" class="btn-black left">View Templates</a></div>
 		<div class="button-full"><a href="/products/index" class="btn-black left">View Products</a></div>
@@ -56,6 +66,10 @@
 			<!-- </div> -->
 		<?php endforeach; ?>
 	</div>
+</div> <!-- form -->
+
+
+
 <!-- 
 	<div id="nav-case" style="overflow: hidden;">
 		<?php foreach($templates as $template) : ?>
@@ -78,5 +92,5 @@
 	</div>  -->
 		
 
-</div> <!-- form -->
+
 

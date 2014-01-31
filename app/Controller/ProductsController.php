@@ -27,6 +27,7 @@ class ProductsController extends AppController {
 			$this->set('templates', $templates);
 		}
 	}
+
 	
 	public function api_add() {
 		
@@ -144,6 +145,22 @@ class ProductsController extends AppController {
 	}
 
 	public function edit($product_id = null) {
+		if(!$product_id){
+			throw new NotFoundException(__('product_id is not found'));
+		}
+		//必要な情報の取得
+		$product = $this->Product->findById($product_id);
+		$product_names = str_replace(',' , ', ' ,$product['Product']['name']);
+		
+		foreach($product['Attribute'] as &$product_attr) {
+			$product_attr['Tag']['tagNamesCSV'] = $this->Tag->tagNamesToCSV($product_attr['Tag']);
+		}
+		unset($product_attr);
+		
+		$this->set('product', $product);
+		$this->set('product_names', $product_names);
+	}
+	public function view($product_id = null) {
 		if(!$product_id){
 			throw new NotFoundException(__('product_id is not found'));
 		}

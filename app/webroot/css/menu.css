@@ -121,7 +121,7 @@ body, h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
   /* line 89, ../sass/_buttons.scss */
   .btn-danger:hover {
     text-decoration: none;
-    background-color: #c61513; }
+    background-color: #f4908f; }
 
 /* line 94, ../sass/_buttons.scss */
 .btn-orange {
@@ -164,59 +164,73 @@ hr {
   box-shadow: white 0 1px 0;
   border-top: none; }
 
-/* line 9, ../sass/all.scss */
+/* line 10, ../sass/all.scss */
+.link {
+  display: block;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  position: absolute; }
+
+/* line 14, ../sass/all.scss */
 body {
   background-color: #E5E5DE;
   color: #3f3f3f; }
 
-/* line 13, ../sass/all.scss */
+/* line 19, ../sass/all.scss */
 #contents {
-  margin-top: 40px; }
-
-/* line 17, ../sass/all.scss */
-.nav-brand > img {
-  width: 78px;
-  height: 39px; }
+  margin-top: 55px; }
 
 /* line 23, ../sass/all.scss */
+.nav-brand > img {
+  margin: 2px 0;
+  width: 100px;
+  height: 51px; }
+
+/* line 30, ../sass/all.scss */
 div.page-title h1 {
   color: #68c39f; }
 
-/* line 27, ../sass/all.scss */
+/* line 34, ../sass/all.scss */
 a:hover {
-  color: #68c39f; }
+  color: #68c39f;
+  -webkit-transition: 0.2s;
+  -moz-transition: 0.2s;
+  -o-transition: 0.2s;
+  transition: 0.2s;
+  display: inline-block; }
 
-/* line 36, ../sass/all.scss */
+/* line 43, ../sass/all.scss */
 .spoiler {
-  width: 100%;
   -webkit-border-radius: 2px;
   -moz-border-radius: 2px;
   -ms-border-radius: 2px;
   -o-border-radius: 2px;
   border-radius: 2px; }
-  /* line 39, ../sass/all.scss */
+  /* line 45, ../sass/all.scss */
   .spoiler .spoiler-slider {
     display: inline-block;
     padding: 0.5em;
     background-color: #93B8CA;
     color: white; }
-    /* line 45, ../sass/all.scss */
+    /* line 51, ../sass/all.scss */
     .spoiler .spoiler-slider span, .spoiler .spoiler-slider .list, .spoiler .spoiler-slider #slider {
       float: left; }
-    /* line 48, ../sass/all.scss */
+    /* line 54, ../sass/all.scss */
     .spoiler .spoiler-slider .list {
       -webkit-appearance: initial;
       -moz-appearance: initial;
       appearance: initial;
       padding-left: 0.4em;
       border: none; }
-    /* line 53, ../sass/all.scss */
+    /* line 59, ../sass/all.scss */
     .spoiler .spoiler-slider #slider {
       display: inline-block;
       width: 220px;
       margin: 3px 0 0 15px; }
 
-/* line 62, ../sass/all.scss */
+/* line 68, ../sass/all.scss */
 div.form.first-content-form {
   position: relative;
   width: 88%;
@@ -226,23 +240,23 @@ div.form.first-content-form {
   -ms-border-radius: 2px;
   -o-border-radius: 2px;
   border-radius: 2px; }
-  /* line 68, ../sass/all.scss */
+  /* line 74, ../sass/all.scss */
   div.form.first-content-form label, div.form.first-content-form h1 {
     color: white; }
-  /* line 71, ../sass/all.scss */
+  /* line 77, ../sass/all.scss */
   div.form.first-content-form .form-headder {
     padding: 1em 0;
     background-color: #58be89;
     text-align: center; }
-  /* line 77, ../sass/all.scss */
+  /* line 83, ../sass/all.scss */
   div.form.first-content-form form, div.form.first-content-form .contents {
     display: block;
     background-color: #ccdfcc;
     padding: 1em 2em; }
-    /* line 81, ../sass/all.scss */
+    /* line 87, ../sass/all.scss */
     div.form.first-content-form form input, div.form.first-content-form form .tagbox, div.form.first-content-form .contents input, div.form.first-content-form .contents .tagbox {
       margin: 0 auto; }
-  /* line 86, ../sass/all.scss */
+  /* line 92, ../sass/all.scss */
   div.form.first-content-form .form-footer {
     background-color: #58be89;
     left: 0;
@@ -250,19 +264,19 @@ div.form.first-content-form {
     padding: 0.5em;
     width: 100%;
     text-align: left; }
-    /* line 93, ../sass/all.scss */
+    /* line 99, ../sass/all.scss */
     div.form.first-content-form .form-footer .back {
       -webkit-transition: 0.2s;
       -moz-transition: 0.2s;
       -o-transition: 0.2s;
       transition: 0.2s;
       display: inline-block; }
-      /* line 95, ../sass/all.scss */
+      /* line 101, ../sass/all.scss */
       div.form.first-content-form .form-footer .back:hover {
         color: white;
         text-decoration: none; }
 
-/* line 107, ../sass/all.scss */
+/* line 113, ../sass/all.scss */
 div.form.second-content-form .form-header {
   position: relative;
   height: 200px;
@@ -276,7 +290,7 @@ div.form.second-content-form .form-header {
   background-image: -o-linear-gradient(#7acaab 0%, #68c39f 100%);
   background-image: linear-gradient(#7acaab 0%, #68c39f 100%);
   background-color: #6d9f58; }
-  /* line 113, ../sass/all.scss */
+  /* line 119, ../sass/all.scss */
   div.form.second-content-form .form-header .header-left {
     margin: 25px 75px 25px 13%;
     height: 150px;
@@ -290,9 +304,12 @@ div.form.second-content-form .form-header {
     text-align: center;
     display: inline-block;
     line-height: 150px;
-    position: relative; }
-    /* line 122, ../sass/all.scss */
+    position: relative;
+    float: left; }
+    /* line 129, ../sass/all.scss */
     div.form.second-content-form .form-header .header-left a.header-link {
+      text-decoration: none;
+      font-size: 17px;
       display: block;
       top: 0;
       left: 0;
@@ -308,19 +325,32 @@ div.form.second-content-form .form-header {
       -moz-transition: 0.3s;
       -o-transition: 0.3s;
       transition: 0.3s; }
-    /* line 127, ../sass/all.scss */
-    div.form.second-content-form .form-header .header-left span {
-      font-size: 18px; }
-  /* line 131, ../sass/all.scss */
+      /* line 135, ../sass/all.scss */
+      div.form.second-content-form .form-header .header-left a.header-link:hover {
+        background-color: #68c39f;
+        -webkit-box-shadow: 0 0 3px white;
+        -moz-box-shadow: 0 0 3px white;
+        box-shadow: 0 0 3px white;
+        -webkit-transition: 0.2s;
+        -moz-transition: 0.2s;
+        -o-transition: 0.2s;
+        transition: 0.2s;
+        display: inline-block;
+        color: #f6f6f6; }
+  /* line 143, ../sass/all.scss */
   div.form.second-content-form .form-header .header-right {
     display: inline-block;
-    width: 60%; }
-    /* line 134, ../sass/all.scss */
-    div.form.second-content-form .form-header .header-right .blog-title {
+    position: relative;
+    height: 100%;
+    line-height: 200px;
+    width: 55%;
+    float: left; }
+    /* line 150, ../sass/all.scss */
+    div.form.second-content-form .form-header .header-right .page-title {
       color: #f6f6f6;
       font-size: 2em;
       text-shadow: 1px -1px 0 rgba(0, 0, 0, 0.5); }
-  /* line 140, ../sass/all.scss */
+  /* line 156, ../sass/all.scss */
   div.form.second-content-form .form-header .div-decoration {
     position: absolute;
     right: -220px;
@@ -334,22 +364,90 @@ div.form.second-content-form .form-header {
     transform: rotate(45deg);
     text-align: center;
     line-height: 5.7em; }
-    /* line 149, ../sass/all.scss */
+    /* line 165, ../sass/all.scss */
     div.form.second-content-form .form-header .div-decoration span {
       color: #f6f6f6;
       margin-right: 75px;
       font-size: 20px; }
-/* line 158, ../sass/all.scss */
-div.form.second-content-form .form-footer {
-  padding: 1em 2em; }
-
-/* line 162, ../sass/all.scss */
-a.header-link:hover .header-left {
-  background-color: #68c39f;
-  border: 1px solid #f6f6f6; }
-  /* line 165, ../sass/all.scss */
-  a.header-link:hover .header-left span {
+/* line 176, ../sass/all.scss */
+div.form.second-content-form .form-footer .div-created span {
+  float: left; }
+/* line 180, ../sass/all.scss */
+div.form.second-content-form .form-footer .btn-blue {
+  width: 20em;
+  padding: 1em 9em; }
+  /* line 183, ../sass/all.scss */
+  div.form.second-content-form .form-footer .btn-blue:hover {
     color: #f6f6f6; }
+
+/* line 190, ../sass/all.scss */
+.blog-tools {
+  margin-left: 2em;
+  display: inline-block; }
+  /* line 194, ../sass/all.scss */
+  .blog-tools .fa {
+    text-align: center;
+    margin: 0 0.1em;
+    font-size: 2.2em;
+    color: #e9e9e9;
+    height: 2em;
+    width: 2em;
+    line-height: 2em;
+    -webkit-border-radius: 2em;
+    -moz-border-radius: 2em;
+    -ms-border-radius: 2em;
+    -o-border-radius: 2em;
+    border-radius: 2em; }
+    /* line 202, ../sass/all.scss */
+    .blog-tools .fa:hover {
+      text-decoration: none;
+      color: #3f3f3f; }
+    /* line 206, ../sass/all.scss */
+    .blog-tools .fa.fa-pencil-square-o {
+      background-color: #ffbe00;
+      color: #997200;
+      line-height: 2.1em; }
+      /* line 210, ../sass/all.scss */
+      .blog-tools .fa.fa-pencil-square-o:hover {
+        color: #997200;
+        -webkit-box-shadow: 0 0 2px #997200;
+        -moz-box-shadow: 0 0 2px #997200;
+        box-shadow: 0 0 2px #997200;
+        background-color: #ffcb33; }
+    /* line 216, ../sass/all.scss */
+    .blog-tools .fa.fa-desktop {
+      background-color: #2eb2ff;
+      color: #007ec7;
+      line-height: 2.1em; }
+      /* line 220, ../sass/all.scss */
+      .blog-tools .fa.fa-desktop:hover {
+        color: #007ec7;
+        -webkit-box-shadow: 0 0 2px #007ec7;
+        -moz-box-shadow: 0 0 2px #007ec7;
+        box-shadow: 0 0 2px #007ec7;
+        background-color: #61c5ff; }
+    /* line 226, ../sass/all.scss */
+    .blog-tools .fa.fa-star {
+      background-color: #dcdc44;
+      color: #9d9d1d; }
+      /* line 229, ../sass/all.scss */
+      .blog-tools .fa.fa-star:hover {
+        color: #c8c825;
+        -webkit-box-shadow: 0 0 2px #d8d82f;
+        -moz-box-shadow: 0 0 2px #d8d82f;
+        box-shadow: 0 0 2px #d8d82f;
+        background-color: #e8e884; }
+    /* line 235, ../sass/all.scss */
+    .blog-tools .fa.fa-trash-o {
+      background-color: #f06260;
+      color: #a71210; }
+      /* line 238, ../sass/all.scss */
+      .blog-tools .fa.fa-trash-o:hover {
+        color: #d61714;
+        -webkit-box-shadow: 0 0 2px #d61714;
+        -moz-box-shadow: 0 0 2px #d61714;
+        box-shadow: 0 0 2px #d61714;
+        background-color: #f27977; }
 
 /* autocomplete style */
 /* line 4, ../sass/tag/tags.scss */
@@ -502,8 +600,7 @@ a.header-link:hover .header-left {
   border-radius: 20px;
   -webkit-transition: 0.2s;
   -o-transition: 0.2s;
-  transition: 0.2s;
-  display: inline-block; }
+  transition: 0.2s; }
   /* line 7, ../sass/tag/tags_custom.scss */
   .tagbox:focus {
     border-color: #659ec9 #70aedd #a8cfec;
@@ -512,10 +609,10 @@ a.header-link:hover .header-left {
     box-shadow: black 0px 0px 0px 0px; }
   /* line 10, ../sass/tag/tags_custom.scss */
   .tagbox ul {
-    margin: 0.5em 1em; }
+    margin: 0.5em 1em 0.2em 1em; }
   /* line 13, ../sass/tag/tags_custom.scss */
   .tagbox li {
-    margin: 0 2px 0 0; }
+    margin: 0 0.3em 0.3em 0; }
     /* line 16, ../sass/tag/tags_custom.scss */
     .tagbox li .tag {
       background-color: #23adc9; }
@@ -541,45 +638,28 @@ body {
   line-height: 20px;
   z-index: 1; }
 
-/* line 9, ../sass/menu.scss */
-p {
-  margin: 0.3em 0.6em; }
-
-/* line 11, ../sass/menu.scss */
-a {
-  color: #333333; }
-
-/* line 14, ../sass/menu.scss */
-.link {
-  display: block;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  position: absolute; }
-
-/* line 19, ../sass/menu.scss */
+/* line 10, ../sass/menu.scss */
 ul #menu {
   text-align: left; }
-/* line 22, ../sass/menu.scss */
+/* line 13, ../sass/menu.scss */
 ul #right {
   float: right; }
 
-/* line 28, ../sass/menu.scss */
+/* line 19, ../sass/menu.scss */
 div #singModal, div #loginModal {
   z-index: 2; }
-/* line 31, ../sass/menu.scss */
+/* line 22, ../sass/menu.scss */
 div #navi {
   margin: -30px 0px 0px 0px; }
 
-/* line 36, ../sass/menu.scss */
+/* line 27, ../sass/menu.scss */
 .container {
   min-height: 100%; }
 
-/* line 40, ../sass/menu.scss */
+/* line 31, ../sass/menu.scss */
 div.modal-content {
   border: 0px; }
-  /* line 42, ../sass/menu.scss */
+  /* line 33, ../sass/menu.scss */
   div.modal-content .modal-header {
     padding: 10px 20px;
     -webkit-border-radius: 5px 5px 0 0;
@@ -587,38 +667,34 @@ div.modal-content {
     -ms-border-radius: 5px 5px 0 0;
     -o-border-radius: 5px 5px 0 0;
     border-radius: 5px 5px 0 0; }
-  /* line 46, ../sass/menu.scss */
+  /* line 37, ../sass/menu.scss */
   div.modal-content .modal-body {
     padding: 20px 20px 0px 20px; }
-    /* line 48, ../sass/menu.scss */
+    /* line 39, ../sass/menu.scss */
     div.modal-content .modal-body .checkbox {
       margin: -15px 0 0 11px; }
-      /* line 50, ../sass/menu.scss */
+      /* line 41, ../sass/menu.scss */
       div.modal-content .modal-body .checkbox label {
         margin-right: 10px; }
-  /* line 55, ../sass/menu.scss */
+  /* line 46, ../sass/menu.scss */
   div.modal-content .modal-footer {
     padding: 0 20px 15px 20px; }
-    /* line 58, ../sass/menu.scss */
+    /* line 49, ../sass/menu.scss */
     div.modal-content .modal-footer a {
       text-align: right;
       font-size: 11px;
       margin: 5px 5px 0px 0px; }
-      /* line 62, ../sass/menu.scss */
+      /* line 53, ../sass/menu.scss */
       div.modal-content .modal-footer a:hover {
         text-decoration: none; }
-    /* line 66, ../sass/menu.scss */
+    /* line 57, ../sass/menu.scss */
     div.modal-content .modal-footer .submit {
       float: right; }
-      /* line 68, ../sass/menu.scss */
+      /* line 59, ../sass/menu.scss */
       div.modal-content .modal-footer .submit .btn-black {
         padding: 0.6em 3em; }
 
-/* line 77, ../sass/menu.scss */
-div.navbar ul.dropdown li {
-  text-align: center; }
-
-/* line 88, ../sass/menu.scss */
+/* line 69, ../sass/menu.scss */
 *,
 *:after,
 *:before {
@@ -628,44 +704,50 @@ div.navbar ul.dropdown li {
   padding: 0;
   margin: 0; }
 
-/* line 96, ../sass/menu.scss */
+/* line 77, ../sass/menu.scss */
 .wrapper-dropdown-5 {
   /* Size & position */
   display: inline-block;
   position: relative;
-  width: 120px;
+  width: 130px;
+  height: 55px;
+  line-height: 55px;
   margin: 0 0 0 -4px;
-  padding: 10px 15px;
   /* Styles */
-  background: #f7f7f7;
   cursor: pointer;
   outline: none;
   -webkit-transition: 0.2s;
   -o-transition: 0.2s;
-  transition: 0.2s;
-  display: inline-block; }
-  /* line 109, ../sass/menu.scss */
-  .wrapper-dropdown-5:hover {
-    background-color: #68c39f;
-    text-decoration: none;
-    color: #fff; }
-  /* line 112, ../sass/menu.scss */
+  transition: 0.2s; }
+  /* line 90, ../sass/menu.scss */
   .wrapper-dropdown-5:focus {
-    background-color: #68c39f;
-    text-decoration: none;
-    color: #fff;
     box-shadow: none;
     border-bottom: none;
     color: white; }
-    /* line 117, ../sass/menu.scss */
+    /* line 94, ../sass/menu.scss */
     .wrapper-dropdown-5:focus:after {
       border-color: #82d1ff transparent; }
-  /* line 122, ../sass/menu.scss */
+  /* line 98, ../sass/menu.scss */
+  .wrapper-dropdown-5.user {
+    width: 200px; }
+    /* line 100, ../sass/menu.scss */
+    .wrapper-dropdown-5.user:hover {
+      color: #ffbe00; }
+  /* line 104, ../sass/menu.scss */
+  .wrapper-dropdown-5.menu-create:hover {
+    color: #c8c825; }
+  /* line 107, ../sass/menu.scss */
+  .wrapper-dropdown-5.menu-view:hover {
+    color: #2eb2ff; }
+  /* line 110, ../sass/menu.scss */
+  .wrapper-dropdown-5.menu-search:hover {
+    color: #f06260; }
+  /* line 113, ../sass/menu.scss */
   .wrapper-dropdown-5 p {
     text-align: center;
     margin: 0; }
 
-/* line 128, ../sass/menu.scss */
+/* line 119, ../sass/menu.scss */
 .wrapper-dropdown-5:focus .dropdown {
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
   max-height: 400px;
@@ -674,7 +756,7 @@ div.navbar ul.dropdown li {
   -o-transition: all 0.5s ease-in-out;
   transition: all 0.5s ease-in-out; }
 
-/* line 134, ../sass/menu.scss */
+/* line 125, ../sass/menu.scss */
 .wrapper-dropdown-5:after {
   /* Little arrow */
   width: 0;
@@ -687,7 +769,7 @@ div.navbar ul.dropdown li {
   border-style: solid;
   border-color: #4cbeff transparent; }
 
-/* line 147, ../sass/menu.scss */
+/* line 138, ../sass/menu.scss */
 .wrapper-dropdown-5 .dropdown {
   /* Size & position */
   position: absolute;
@@ -703,37 +785,40 @@ div.navbar ul.dropdown li {
   /* Hiding */
   max-height: 0;
   overflow: hidden; }
-  /* line 167, ../sass/menu.scss */
-  .wrapper-dropdown-5 .dropdown li a {
-    display: block;
-    text-decoration: none;
-    font-size: 14px;
-    color: #333;
-    padding: 10px 0;
-    transition: all 0.3s ease-out;
-    border-bottom: 1px solid #e6e8ea; }
+  /* line 156, ../sass/menu.scss */
+  .wrapper-dropdown-5 .dropdown li {
+    text-align: center; }
+    /* line 158, ../sass/menu.scss */
+    .wrapper-dropdown-5 .dropdown li a {
+      display: block;
+      text-decoration: none;
+      font-size: 18px;
+      color: #333;
+      padding: 10px 0;
+      transition: all 0.3s ease-out;
+      border-bottom: 1px solid #e6e8ea; }
 
-/* line 180, ../sass/menu.scss */
+/* line 171, ../sass/menu.scss */
 .wrapper-dropdown-5 .dropdown li:last-of-type a {
   border: none; }
 
-/* line 184, ../sass/menu.scss */
+/* line 175, ../sass/menu.scss */
 .wrapper-dropdown-5 .dropdown li i {
   margin-right: 5px;
   color: inherit;
   vertical-align: middle; }
 
-/* line 190, ../sass/menu.scss */
+/* line 181, ../sass/menu.scss */
 .wrapper-dropdown-5 .dropdown li:hover a {
   background-color: #68c39f;
   text-decoration: none;
   color: #fff; }
 
-/* line 194, ../sass/menu.scss */
+/* line 185, ../sass/menu.scss */
 .wrapper-dropdown-5.active:after {
   border-color: #82d1ff transparent; }
 
-/* line 198, ../sass/menu.scss */
+/* line 189, ../sass/menu.scss */
 .wrapper-dropdown-5.active .dropdown {
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
   max-height: 400px; }

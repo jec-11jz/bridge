@@ -6,17 +6,24 @@ hr{
   @include line-bottom;
   border-top: none;
 }
+
+.link{
+  @include link;
+}
+
 body{
   background-color: #E5E5DE;
   color:#3f3f3f;
 }
+
 #contents {
-  margin-top: 40px;
+  margin-top: 55px;
 }
 
 .nav-brand > img {
-  width: 78px;
-  height: 39px;
+  margin: 2px 0;
+  width: 100px;
+  height:51px;
 }
 
 div.page-title{
@@ -26,7 +33,7 @@ div.page-title{
 }
 a:hover {
   color: $green;
-
+  @include btn-fade;
 }
 // .left{float:left;}
 // .right{float:right;}
@@ -34,7 +41,6 @@ a:hover {
 
 // ネタバレスライダー
 .spoiler{
-  width: 100%;
   @include border-radius(2px);
   .spoiler-slider{
     display: inline-block;
@@ -119,19 +125,29 @@ div.form.second-content-form{
       display: inline-block;
       line-height: 150px;
       position: relative;
+      float:left;
       a.header-link{
+        text-decoration: none;
+        font-size:17px;
         @include link;
         @include border-radius(300px);
         @include transition(0.3s);
-      }
-      span{
-        font-size: 18px;
+        &:hover{
+          background-color: $green;
+          @include box-shadow(0 0 3px white) ;
+          @include btn-fade;
+          color: $white;
+        }
       }
     }
     .header-right{
       display: inline-block;
-      width: 60%;
-      .blog-title{
+      position: relative;
+      height: 100%;
+      line-height: 200px;
+      width: 55%;
+      float: left;
+      .page-title{
         color: $white;
         font-size:2em;
         @include text-shadow(1px -1px 0 rgba(0,0,0,0.5));
@@ -156,16 +172,78 @@ div.form.second-content-form{
   .form-body{
   }
   .form-footer{
-    padding: 1em 2em;
+    .div-created{
+      span{
+        float: left;
+      }
+    }
+    .btn-blue{
+      width: 20em;
+      padding: 1em 9em;
+      &:hover{
+        color:$white;
+      }
+    }
   }
 }
-a.header-link:hover .header-left{
-  background-color: $green;
-  border:1px solid $white;
-  span{
-    color: $white;
+
+.blog-tools{
+  margin-left: 2em;
+  display: inline-block;
+  // float: left;
+  .fa{
+    text-align: center;
+    margin: 0 0.1em;
+    font-size: 2.2em;
+    color:darken($white,5%);
+    height: 2em;width: 2em;
+    line-height: 2em;
+    @include border-radius(2em);
+    &:hover{
+      text-decoration: none;
+      color: $black;
+    }
+    &.fa-pencil-square-o{
+      background-color:$orange;
+      color:darken($orange, 20%);
+      line-height: 2.1em;
+      &:hover{
+        color:darken($orange, 20%);
+        @include box-shadow(0 0 2px darken($orange, 20%));
+        background-color: lighten($orange, 10%);
+      }
+    }
+    &.fa-desktop{
+      background-color:$blue;
+      color:darken($blue, 20%);
+      line-height: 2.1em;
+      &:hover{
+        color:darken($blue, 20%);
+        @include box-shadow(0 0 2px darken($blue, 20%));
+        background-color: lighten($blue, 10%);
+      }
+    }
+    &.fa-star{
+      background-color:darken($yellow,10%);
+      color:darken($yellow, 30%);
+      &:hover{
+        color:darken($yellow, 20%);
+        @include box-shadow(0 0 2px darken($yellow, 15%));
+        background-color: lighten($yellow, 5%);
+      }
+    }
+    &.fa-trash-o{
+      background-color:$col-danger;
+      color:darken($col-danger, 30%);
+      &:hover{
+        color:darken($col-danger, 20%);
+        @include box-shadow(0 0 2px darken($col-danger, 20%));
+        background-color: lighten($col-danger, 5%);
+      }
+    }
   }
 }
+
 
 
 

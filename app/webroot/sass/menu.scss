@@ -6,15 +6,6 @@ body{
   z-index:1;
 }
 
-p{margin:0.3em 0.6em;}
-
-a{
-  color: #333333;
-}
-.link{
-  @include link;
-}
-
 ul{
   #menu{
     text-align: left;
@@ -72,16 +63,6 @@ div.modal-content{
   }
 }
 
-div.navbar{
-  ul.dropdown{
-    li{
-      text-align: center;
-    }
-  }
-}
-
-
-
 
 *,
 *:after,
@@ -97,20 +78,16 @@ div.navbar{
     /* Size & position */
     display: inline-block;
     position: relative;
-    width: 120px;
+    width: 130px;
+    height: 55px;
+    line-height: 55px;
     margin: 0 0 0 -4px;
-    padding: 10px 15px;
-
     /* Styles */
-    background: #f7f7f7;
     cursor: pointer;
     outline: none;
     @include btn-fade;
-    &:hover{
-      @include btn-hover;
-    }
+
     &:focus{
-      @include btn-hover;
       box-shadow: none;
       border-bottom: none;
       color: white;
@@ -118,7 +95,21 @@ div.navbar{
         border-color: #82d1ff transparent;
       }
     }
-    
+    &.user{
+      width:200px;
+      &:hover{
+        color: $orange;
+      }
+    }
+    &.menu-create:hover{
+      color: darken($yellow, 20%);
+    }
+    &.menu-view:hover{
+      color: $blue;
+    }
+    &.menu-search:hover{
+      color: $red;
+    }
     p {
       text-align:center;
       margin:0;
@@ -163,11 +154,11 @@ div.navbar{
     overflow: hidden;
     
     li{
-      // padding: 0 10px ;
+      text-align: center;
       a{
         display: block;
         text-decoration: none;
-        font-size:14px;
+        font-size:18px;
         color: #333;
         padding: 10px 0;
         transition: all 0.3s ease-out;

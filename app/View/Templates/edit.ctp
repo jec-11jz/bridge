@@ -34,17 +34,23 @@ $(function(){
 
 
 
-<div class="form first-content-form">
-	<div class="form-headder">
-		<h1>Edit Template</h1>
-		<p><?php echo $this->Session->flash('template'); ?></p>
+<div id="div-edit-templates" class="form second-content-form">
+
+	<div class="form-header">
+		<div class="header-left">
+			<a href="/products/index" class="header-link">View</a>
+		</div>
+		<div class="header-right">
+			<input type="text" name="data[Template][name]" id="template" class="form-control page-title" value="<?php echo h($template['Template']['name']); ?>" />
+		</div>
+		<div class="div-decoration">
+			<span>Templates</span>
+		</div>
+		
 	</div>
+
 	<div id="template-edit">
 		<?php echo $this->Form->create('Template', array('type' => 'post', 'class'=>'form-template')); ?>
-		<div class="cont1">
-			<h4>Template Name</h4>
-			<input type="text" name="data[Template][name]" id="template" class="form-control title" value="<?php echo h($template['Template']['name']); ?>" />
-		</div>
 		<div class="cont2">
 			<button type="button" id="attribute" class="btn-add-attribute btn-blue add"><i class="fa fa-plus-circle"></i> add</button>
 			<button type="button" id="btn-delete" class="button btn-danger del"><i class="fa fa-trash-o"></i> delete all</button>
@@ -68,7 +74,13 @@ $(function(){
 			</fieldset>
 		</div> 
 		
+
+	</div>
+
+	<div class="form-footer">
 	  	<?php echo $this->Form->submit('登録', array('type' => 'submit', 'class' => 'btn-blue btn-register')); ?>	
 		<?php echo $this->Form->end(); ?>	
+		<a href="/products/index" class="back">一覧へ戻る</a>
 	</div>
+
 </div> <!-- form -->

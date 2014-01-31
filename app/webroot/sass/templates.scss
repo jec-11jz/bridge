@@ -1,6 +1,38 @@
 @import "../sass/menu.scss";
 
 
+#div-index-templates, #div-edit-templates{
+  .form-header{
+    .header-right{
+      input{
+        position: absolute;
+        margin: 0;
+        padding: 0.2em 0.8em;
+        height: 2em;
+        width: 100%;
+        float: left;
+        top:80px;left:0;
+        border:none;
+        font-size: 1.6em;
+        @include box-shadow(0 0 1px $black);
+        @include border-radius(2em);
+        @include placeholder-color;
+        color: $white;
+        background-color: darken($green, 2%);
+      }
+    }
+    .div-decoration{
+      background-color: $blue;
+    }
+  }
+  .form-body{
+
+  }
+  .form-footer{
+
+  }
+}
+
 
 #template-index{
   // text-align: center;
@@ -71,6 +103,7 @@
         .form-control{
           width: 90%;
           border-right: none;
+          float:left;
           &.default{
             border: solid #ccc 1px;
             width: 108.5%;

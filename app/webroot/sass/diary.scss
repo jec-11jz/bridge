@@ -9,6 +9,11 @@ a.link:hover img.diary-pic{
   opacity: 0.8;
 }
 
+a.header-link:hover div.header-left{
+  background-color: $green;
+  border:1px solid $white;
+}
+
 // 日記一覧画面
 div#diary-index{
   margin: 0 auto;
@@ -51,6 +56,24 @@ div#diary-index{
         color: $green-dark;
       }
     }
+    .header-right{
+      input{
+        position: absolute;
+        margin: 0;
+        padding: 0.2em 0.8em;
+        height: 2em;
+        width: 100%;
+        float: left;
+        top:80px;left:0;
+        border:none;
+        font-size: 1.6em;
+        @include box-shadow(0 0 1px $black);
+        @include border-radius(2em);
+        @include placeholder-color;
+        color: $white;
+        background-color: darken($green, 2%);
+      }
+    }
     .div-decoration{
       background-color: $yellow;
       span{
@@ -59,112 +82,70 @@ div#diary-index{
     }
   }
   .form-body{
-    padding: 1em 2em;
-    .blog-form{
-      #blog-tags{
+    padding: 0em 2em;
+    #blog-tags{
+      margin: 2em 2em;
+      padding: 1em 1em 0em 1em;
+      background-color: #ECECE8;
+      @include border-radius(2px);
+      @include line-box;
+      .tag{
+        @include border-radius(25px);
+        margin-left: 0.7em; margin-bottom: 1em;
+      }
+    }
+    #blog-tags{
+      .tagbox{
         margin: 1em 2em;
-        padding: 1em;
         background-color: #ECECE8;
         @include border-radius(2px);
         @include line-box;
-        .tag{
-          @include border-radius(25px);
-          margin-left: 1em;
-        }
       }
-      .text-body{
-        padding: 2em 3em;
-        // background-color: green;
+    }
+    .tagbox{
+      margin: 2em 2em;
+    }
+    .spoiler{
+      display: inline-block;
+      float: right;
+      text-align: right;
+      &.spoiler-add{
+        width:100%;
+        display: block;
+        float: none;
       }
+      .spoiler-slider{
+          margin: 1em 2em 0 0;
+      }
+    }
+    .text-body{
+      padding: 2em 3em;
+    }
+    .form-editor{
+      margin: 2em 2em 0 2em;
+      display: block;
     }
   }
   .form-footer{
-  }
-}
-
-
-
-.spoiler{
-  text-align: right;
-  .spoiler-slider{
-      margin: 0em 2em 1em 0em;
-      @include line-box(0.1,0.3);
-      @include border-radius(2px);
-  }
-}
-// #div-create-blogs{
-//   .contents{
-//     .blog-form{
-//       width: 100%;
-//       margin: 0 auto;
-//       .title{
-//         background-color: $col-black2;
-//       }
-//       #blog-tags{
-//         background-color: $col-black1;
-//         @include border-radius(5px);
-//         input{
-//           @include border-radius(30px);
-//           margin:0.7em;
-//         }
-//       }
-//       .text-body{
-//         a{
-//           color:blue;
-//         }
-//       }
-//       .right{
-//         // color: white;
-//         float: right;
-//       }
-//     }
-//   }
-//   .form-footer{
-//   }
-// }
-
-.ui-widget-header{
-  // background:$col-flat-blue1;
-}
-form#BlogAddForm, form#BlogEditForm{
-  margin: 0 auto;
-  height: 40%;
-  text-align: center;
-  .input_form{
-    width: 100%;
-    margin: 1em auto;
-    // width: 2000px !important;
-  }
-
-  
-  .div-submit{
-    display: block;
-    text-align: right;
-    input{
-      width:10em;
-      margin-top: 1em;
+    text-align: center;
+    padding: 0 4em;
+    .div-created{
+      text-align: left;
     }
-  }
-  .tagbox{
-    margin: 0 auto 1em;
-    width: 100%;
-    ul{
-      li{
-        &.new input{
-          margin: 0;
-        }
+    .div-submit{
+      display: block;
+      text-align: right;
+      &.submit-edit{
+        margin-top:1em;
       }
     }
-  }
-  #ckeditor{
-    label{
-      font-size:90px;
+    .index-back{
+      text-decoration: none;
+      clear:both;
     }
   }
-  #cke_ckeditor{
-    margin: 0 auto;
-  }
 }
+
 
 div{
   .container {

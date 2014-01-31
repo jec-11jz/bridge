@@ -1,11 +1,10 @@
 <?php
-	
-	echo $this->Html->css('jquery-ui-1.10.4.custom');
-	echo $this->Html->css('diary');
+	$this->Html->css('jquery-ui-1.10.4.custom', null, array('inline' => false));
+	$this->Html->css('diary', null, array('inline' => false));
 
-	echo $this->Html->script('ckeditor/ckeditor');
-	echo $this->Html->script('jquery-ui-1.10.4.custom');
-	echo $this->Html->script('tag/tags');
+	$this->Html->script('ckeditor/ckeditor', array('inline' => false));
+	$this->Html->script('jquery-ui-1.10.4.custom', array('inline' => false));
+	$this->Html->script('tag/tags', array('inline' => false));
 
 	$this->extend('/Common/index');
 ?>
@@ -76,56 +75,60 @@ $(function() {
 
 
 <div id="div-add-blogs" class="form second-content-form">
+<form id="BlogAddForm" method="post" action="/blogs/add">
+
 	<div class="form-header">
 		<div class="header-left">
-			<span>Create</span>
+			<a href="/searches/index" class="header-link">Create</a>
 		</div>
 		<div class="header-right">
-			<span class="blog-title"></span>
+			<input type="text" name="data[Blog][title]" class="input_form form-control form-title" placeholder="Title...">
 		</div>
 		<div class="div-decoration">
 			<span>Blogs</span>
 		</div>
 	</div>
-	<div class='cont'>
 
-
+	<div class="form-body">
 		<!-- ブログ投稿フォーム -->
-		<form id="BlogAddForm" method="post" action="/blogs/add">
-			<input type="text" name="data[Blog][title]" class="input_form form-control" placeholder="title...">
-			<input type="text" id="tags" class="input_form form-control" name="data[Tag][name]">
-			<div style="clear:both"></div>
-			<div class="spoiler">
-				<div class="spoiler-slider">
-					<span>ネタバレ：</span>
-				 	<select name="minbeds" id="minbeds" class="list">
-					    <option>1</option>
-					    <option>2</option>
-					    <option>3</option>
-					    <option>4</option>
-					    <option selected>5</option>
-					    <option>6</option>
-					    <option>7</option>
-					    <option>8</option>
-					    <option>9</option>
-					    <option>10</option>
-				 	</select>
-				</div>
-			</div> <!-- spoiler -->
-		 	<textarea name="data[Blog][content]" id="ckeditor" class="input_form blog" cols="30" rows="6"></textarea>
-		 	<div class="div-submit">
-		 		<input type="submit" value="Save" class="btn-blue">
-		 	</div>
-　 		</form>
+		<input type="text" id="tags" class="input_form form-control" name="data[Tag][name]" placeholder="Tags...">
+		<div style="clear:both"></div>
+		<div class="spoiler spoiler-add">
+			<div class="spoiler-slider">
+				<span>ネタバレ：</span>
+			 	<select name="minbeds" id="minbeds" class="list">
+				    <option>1</option>
+				    <option>2</option>
+				    <option>3</option>
+				    <option>4</option>
+				    <option selected>5</option>
+				    <option>6</option>
+				    <option>7</option>
+				    <option>8</option>
+				    <option>9</option>
+				    <option>10</option>
+			 	</select>
+			</div>
+		</div> <!-- spoiler -->
 
-		<script type="text/javascript">  
-			var editor = CKEDITOR.replace('ckeditor');  
-		</script>
+
+		<div class="form-editor">
+		 	<textarea name="data[Blog][content]" id="ckeditor" class="input_form blog" cols="30" rows="6"></textarea>
+		</div>
+	 	
+		<script type="text/javascript">var editor = CKEDITOR.replace('ckeditor');</script>
+
+	</div>
+
 		
-	</div> <!-- cont -->
 	
 	<div class="form-footer">
-		<a href="index" class="back"><i class="fa fa-reply"></i> 一覧へ戻る</a>
+	 	<div class="div-submit submit-edit">
+	 		<input type="submit" value="Save" class="btn-blue">
+	 	</div>
+		<a href="/searches/index" class="index-back"><i class="fa fa-reply"></i> 一覧へ</a>
 	</div> <!-- footer -->
+
+</form>
 </div> <!-- form -->
 

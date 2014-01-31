@@ -88,7 +88,7 @@
   @include btn-fade;
   &:hover{
     text-decoration: none;
-    background-color: $col-danger-hover;
+    background-color: lighten($col-danger,10%);
   }
 }
 .btn-orange{
