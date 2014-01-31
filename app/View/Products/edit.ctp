@@ -67,11 +67,9 @@ $(function() {
 		sendData['data']['Product']['id'] = $('#div-edit-products').find('form').attr('id');
 		$('#div-edit-products').find('.product-info').each(function(){
 			if($(this).val() != ""){
-				console.log($(this).val());
 				sendData['data']['Product'][$(this).attr('name')] = $(this).val();
 
 			} else {
-				console.log('aaaaaa');
 				return;
 			}
 		});
@@ -89,13 +87,15 @@ $(function() {
 				cntTags++;
 			}
 		});
+		console.log('send...');
+		console.log(sendData);
 		// ajax
 		$.ajax({
 			type: "POST",
 			url: "/api/products/edit.json",
 			data: sendData,
 			success: function(data){
-		   　location.href = "/products/index";
+		   　	location.href = "/products/index";
 			},
 			error: function(xhr, xhrStatus) {
 				$('.div-error').remove();
@@ -112,7 +112,7 @@ $(function() {
 </script>
 <script>
 $(function(){
-	// attribute's form add
+	// add attribute's form
 	$(document).on('click', '.btn-add-attribute', function(){
 		var attrCnt = 1;
 		while($('#attribute' + attrCnt).size() > 0){
@@ -145,67 +145,56 @@ $(function(){
 	</div>
 </script>
 
-
-
 <div id="div-edit-products" class="form second-content-form">
-<form method="post" id="<?php echo h($product['Product']['id']); ?>" action="/products/edit/<?php echo h($product['Product']['id']); ?>">
-
-	<div class="form-header">
-		<div class="header-left">
-			<a href="/products/index" class="header-link">Edit</a>
-		</div>
-		<div class="header-right">
-			<input type="text" name="name" value="<?php echo h($product_names); ?>" class="form-control product-info page-title" id="movieTitle"/>
-		</div>
-		<div class="div-decoration">
-			<span>Products</span>
-		</div>
-		
-	</div>
-
-	<div class="form-body">
-		<div id="error"></div>
-		
-		<div id="image" onclick="openKCFinder(this)">
-			<?php if($product['Product']['image_url']) { ?>
-				<img id="img" src="<?php echo h($product['Product']['image_url']); ?>" width="100%" style="margin: auto; visibility: visible;">
-			<?php } else { ?>
-				<div style='margin:5px'>Click here to choose an image</div>
-			<?php } ?>
-		</div>
-
-		<textarea name="outline" class="product-info body-outline edit" id="movie-outline" rows="12" cols="70" placeholder="あらすじ"><?php echo h($product['Product']['outline']); ?></textarea>	
-
-		<fieldset id="product-data">
-
-			<div class="div-button">
-				<button type="button" id="attribute" class="btn-add-attribute btn-blue add"><i class="fa fa-plus-circle"></i> add</button>
-				<button type="button" id="btn-delete" class="button btn-danger del"><i class="fa fa-trash-o"></i> delete all</button>	
+	<form method="post" id="<?php echo h($product['Product']['id']); ?>" action="/products/edit/<?php echo h($product['Product']['id']); ?>">
+		<div class="form-header">
+			<div class="header-left">
+				<a href="/products/index" class="header-link">Edit</a>
 			</div>
-
-			<div id="tags-attribute">
-				<?php foreach($product['Attribute'] as $attribute) : ?>
-					<div id="${id}" class="attr template-attributes tags-set">
-						<input id="<?php echo h($attribute['id']); ?>" class="form-control tag-title post-attribute" value="<?php echo h($attribute['name']); ?>">
-						<input type="button" value="×" id="<?php echo h($attribute['id']); ?>" class="btn-delete-attribute attribute">
-						<input type="text" class="post-tag attr-input tags" value="<?php echo h($attribute['Tag']['tagNamesCSV']); ?>" name="value" id="<?php echo h($attribute['id']); ?>">
-					</div>
-				<?php endforeach; ?>
+			<div class="header-right">
+				<input type="text" name="name" value="<?php echo h($product_names); ?>" class="form-control product-info page-title" id="movieTitle"/>
 			</div>
-
-		</fieldset>
-
-
-	</div>
-
-	<div class="form-footer">
-		<div class="div-submit">
-			<input type="button" id="btn-register" class="btn-blue" value="登録" />
+			<div class="div-decoration">
+				<span>Products</span>
+			</div>
 		</div>
-		
-	</div>
-
-</form>
+	
+		<div class="form-body">
+			<div id="error"></div>
+			
+			<div id="image" onclick="openKCFinder(this)">
+				<?php if($product['Product']['image_url']) { ?>
+					<img id="img" src="<?php echo h($product['Product']['image_url']); ?>" width="100%" style="margin: auto; visibility: visible;">
+				<?php } else { ?>
+					<div style='margin:5px'>Click here to choose an image</div>
+				<?php } ?>
+			</div>
+	
+			<textarea name="outline" class="product-info body-outline edit" id="movie-outline" rows="12" cols="70" placeholder="あらすじ"><?php echo h($product['Product']['outline']); ?></textarea>	
+	
+			<fieldset id="product-data">
+				<div class="div-button">
+					<button type="button" id="attribute" class="btn-add-attribute btn-blue add"><i class="fa fa-plus-circle"></i> add</button>
+					<button type="button" id="btn-delete" class="button btn-danger del"><i class="fa fa-trash-o"></i> delete all</button>	
+				</div>
+				<div id="tags-attribute">
+					<?php foreach($product['Attribute'] as $attribute) : ?>
+						<div id="${id}" class="attr template-attributes tags-set">
+							<input id="<?php echo h($attribute['id']); ?>" class="form-control tag-title post-attribute" value="<?php echo h($attribute['name']); ?>">
+							<input type="button" value="×" id="<?php echo h($attribute['id']); ?>" class="btn-delete-attribute attribute">
+							<input type="text" class="post-tag attr-input tags" value="<?php echo h($attribute['Tag']['tagNamesCSV']); ?>" name="value" id="<?php echo h($attribute['id']); ?>">
+						</div>
+					<?php endforeach; ?>
+				</div>
+			</fieldset>
+		</div>
+	
+		<div class="form-footer">
+			<div class="div-submit">
+				<input type="button" id="btn-register" class="btn-blue" value="登録" />
+			</div>
+		</div>
+	</form>
 </div>
 
 <!-- </div> -->

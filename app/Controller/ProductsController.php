@@ -95,7 +95,7 @@ class ProductsController extends AppController {
 			return;
 		}
 		
-		//add product
+		// add product
 		if(!isset($this->request->data['Product']['name'])) {
 			$this->apiError('Product name field is required');
 			return;
@@ -123,9 +123,12 @@ class ProductsController extends AppController {
 		
 		foreach($this->request->data['AttributeTag'] as $tags) {
 			if(!($tags['tag'] === "")){
+				$attr = $this->Attribute->findByName($tags['attribute']);
 				// add attribute
-				$this->Attribute->set('name', $tags['attribute']);
-				$attr_result = $this->Attribute->save();
+				if(empty($attr)){
+					$this->Attribute->set('name', $tags['attribute']);
+					$this->Attribute->save();
+				}
 				// add Tags
 				$this->Tag->saveFromNamesCSV(
 					$tags['tag']

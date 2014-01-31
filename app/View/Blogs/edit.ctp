@@ -9,34 +9,10 @@
 	$this->extend('/Common/index');
 ?>
 
-
 <!-- JS tag -->
 <script>
 $(function() {
-	$('#TagAddForm').ajaxForm({
-		success: function(data) {
-			if (!data.errors) {
-				// success
-				location.reload();
-				return;
-			}
-			
-			// error
-			$.each(data.errors, function(key, error){
-				console.log('key:'+ key);
-				console.log('error: '+ error);
-				var errorBlock = $('#TagAddForm input[name="data[Tag]['+ key +']"]');
-				errorBlock.closest('.form-group').addClass('has-error');
-				errorBlock.after('<span class="help-block">'+ error +'</span>');
-			});
-		},
-		error: function(data) {
-			console.log(data);
-			alert('connection error');
-			return;
-		}
-	});
-	// DBからタグを取得
+	// get tags form DB
 	var tag = [];
 	$.ajax({
 		type: 'GET',
@@ -50,6 +26,20 @@ $(function() {
   			});
 		},
 		error: function(tags){
+			console.log('error');
+		}
+	});
+	
+	// get blog
+	var blog_id = $('form').attr('id');
+	$.ajax({
+		type: 'GET',
+		url: '/api/blogs/get_spoiler.json',
+		data: {'blog_id': blog_id},
+		success: function(spoiler){
+			console.log(spoiler);
+		},
+		error: function(xhr, xhrStatus){
 			console.log('error');
 		}
 	});
@@ -92,7 +82,6 @@ $(function() {
 	</div>
 	<div class="form-body">
 
-		<!-- ブログ投稿フォーム -->
 		<input type="text" id="tags" name="data[Tag][name]" value="<?php echo h($post['Tag']['namesCSV']); ?>" class="input_form">
 		<div class="blog-tools">
 			<a href="#" class="fa fa-pencil-square-o"></a>
@@ -104,17 +93,17 @@ $(function() {
 		<div class="spoiler">
 			<div class="spoiler-slider">
 				<span>ネタバレ：</span>
-			 	<select name="minbeds" id="minbeds" class="list">
-				    <option>1</option>
-				    <option>2</option>
-				    <option>3</option>
-				    <option>4</option>
-				    <option selected>5</option>
-				    <option>6</option>
-				    <option>7</option>
-				    <option>8</option>
-				    <option>9</option>
-				    <option>10</option>
+			 	<select id="minbeds" class="list" name="data[Blog][spoiler]">
+				    <option value="1">1</option>
+				    <option value="2">2</option>
+				    <option value="3">3</option>
+				    <option value="4">4</option>
+				    <option value="5" selected>5</option>
+				    <option value="6">6</option>
+				    <option value="7">7</option>
+				    <option value="8">8</option>
+				    <option value="9">9</option>
+				    <option value="10">10</option>
 			 	</select>
 			</div>
 		</div> <!-- spoiler -->

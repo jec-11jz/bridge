@@ -12,28 +12,6 @@
 <!-- JS tag -->
 <script>
 $(function() {
-	$('#TagAddForm').ajaxForm({
-		success: function(data) {
-			if (!data.errors) {
-				// success
-				location.reload();
-				return;
-			}
-			// error
-			$.each(data.errors, function(key, error){
-				console.log('key:'+ key);
-				console.log('error: '+ error);
-				var errorBlock = $('#TagAddForm input[name="data[Tag]['+ key +']"]');
-				errorBlock.closest('.form-group').addClass('has-error');
-				errorBlock.after('<span class="help-block">'+ error +'</span>');
-			});
-		},
-		error: function(data) {
-			console.log(data);
-			alert('connection error');
-			return;
-		}
-	});
 	// get tags from DB
 	var tag = [];
 	$.ajax({
@@ -96,18 +74,18 @@ $(function() {
 		<div class="spoiler spoiler-add">
 			<div class="spoiler-slider">
 				<span>ネタバレ：</span>
-			 	<select name="minbeds" id="minbeds" class="list">
-				    <option>1</option>
-				    <option>2</option>
-				    <option>3</option>
-				    <option>4</option>
-				    <option selected>5</option>
-				    <option>6</option>
-				    <option>7</option>
-				    <option>8</option>
-				    <option>9</option>
-				    <option>10</option>
-			 	</select>
+				 	<select id="minbeds" class="list" name="data[Blog][spoiler]">
+					    <option value="1">1</option>
+					    <option value="2">2</option>
+					    <option value="3">3</option>
+					    <option value="4">4</option>
+					    <option value="5" selected>5</option>
+					    <option value="6">6</option>
+					    <option value="7">7</option>
+					    <option value="8">8</option>
+					    <option value="9">9</option>
+					    <option value="10">10</option>
+				 	</select>
 			</div>
 		</div> <!-- spoiler -->
 
