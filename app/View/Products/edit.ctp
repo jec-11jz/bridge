@@ -179,7 +179,7 @@ $(function(){
 				</div>
 				<div id="tags-attribute">
 					<?php foreach($product['Attribute'] as $attribute) : ?>
-						<div id="${id}" class="attr template-attributes tags-set">
+						<div id="<?php echo h($attribute['id']); ?>" class="attr template-attributes tags-set">
 							<input id="<?php echo h($attribute['id']); ?>" class="form-control tag-title post-attribute" value="<?php echo h($attribute['name']); ?>">
 							<input type="button" value="×" id="<?php echo h($attribute['id']); ?>" class="btn-delete-attribute attribute">
 							<input type="text" class="post-tag attr-input tags" value="<?php echo h($attribute['Tag']['tagNamesCSV']); ?>" name="value" id="<?php echo h($attribute['id']); ?>">

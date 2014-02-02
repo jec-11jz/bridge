@@ -1,6 +1,6 @@
 <?php
 class SearchesController extends AppController {
-	public $uses = array('Blog', 'User', 'Product', 'Search', 'Tag');
+	public $uses = array('Blog', 'User', 'Product', 'Search', 'Tag', 'BlogsTag', 'ProductsTag', 'AttributesTag');
 	public $components = array('RequestHandler');
 	
 	public function beforeFilter()
@@ -12,55 +12,87 @@ class SearchesController extends AppController {
     }
 	
 	public function index(){
-		// set default value
-		$count = 15;
-		$page = 1;
-		$keywords = null;
-		$not_keywords = null;
-		$not_key_tags = null;
-		$key_tags = null;
-		$contents = array();
-		
 		// deny access by post
 		if($this->request->is('post')){
 			return;
 		}
-		if(isset($this->request->query['keywords'])){
+		
+		// set default value
+		$count = 10;
+		$page = 1;
+		$keywords = null;
+		$key_tags = null;
+		$contents = array();
+
+		if(!empty($this->request->query['keywords'])){
 			$keywords = $this->request->query['keywords'];
 		}
-		if(!is_null(array($keywords))) {
-			$contents['blogs'] = $this->Blog->find('all',array(
-				'conditions' => array('title like'=>'%'.$keywords.'%'),
-				'page' => $page,
-				'limit' => $count
-			));
-			$contents['products'] = $this->Product->find('all',array(
-				'conditions' => array('name like'=>'%'.$keywords.'%'),
-				'page' => $page,
-				'limit' => $count	
-			));
-		} else {
-			$contents['blogs'] = $this->Blog->find('all',array(
-				'page' => $page,
-				'limit' => $count
-			));
-			$contents['products'] = $this->Product->find('all',array(
-				'page' => $page,
-				'limit' => $count			
-			));
+		if(!empty($this->request->query['key_tags'])){
+			$key_tags['keywords'] = $this->request->query['key_tags'];
+			$key_tags['blog'] = $this->BlogsTag->getBlogIdFromCsvTags($key_tags['keywords']);
+			$key_tags['product'] = $this->ProductsTag->getProductIdFromCsvTags($key_tags['keywords']);
+			$attr_tags = $this->AttributesTag->getProductIdFromCsvTags($key_tags['keywords']);
+			$key_tags['product'] = array_merge($key_tags['product'], $attr_tags);
 		}
+		// insert search result to contents
+		$contents['blogs'] = $this->Blog->find('all',array(
+			'conditions' => array(
+				'Blog.status' => 0
+			),
+			'page' => $page,
+			'limit' => $count
+		));
+		$contents['products'] = $this->Product->find('all',array(
+			'page' => $page,
+			'limit' => $count			
+		));
+		$nullCheck = $this->Search->nullCheckOfKeywords(
+			array($keywords, $key_tags['keywords'])
+		);
+		if($nullCheck) {
+			// set options
+			$blog_options['page'] = $product_options['page'] = $page;
+			$blog_options['limit'] = $product_options['limit'] = $count;
+			$blog_options['conditions'] = array(
+				'Blog.status' => 0,
+				'OR' => array(
+					'simplified_content like'=>'%'.$keywords.'%',
+					'title like'=>'%'.$keywords.'%'
+				)
+			);
+			$product_options['conditions'] = array(
+				'OR' => array(
+					'outline like'=>'%'.$keywords.'%',
+					'name like'=>'%'.$keywords.'%'
+				)
+			);
+			if(!is_null($key_tags['keywords'])){
+				$blog_options['conditions']['Blog.id'] = $key_tags['blog'];
+				$product_options['conditions']['Product.id'] = $key_tags['product'];
+			}
+			// search blogs
+			$contents['blogs'] = $this->Blog->find('all', $blog_options);
+			$contents['sql']['blogs'] = $this->Blog->getDataSource()->getLog();
+			
+			// search products
+			$contents['products'] = $this->Product->find('all',$product_options);
+			$contents['sql']['products'] = $this->Product->getDataSource()->getLog();
+		}
+		$contents['tags'] = $this->Search->mergeBlogTagsAndProductTags($contents);
+		
 		$this->set('data', $contents);
 		$this->set('keyword', $keywords);
+		$this->set('key_tags', $key_tags);
 	}
 	
 	public function api_search() {
 		// set default value
-		$count = 15;
+		$count = 10;
 		$page = 1;
 		$keywords = null;
 		$not_keywords = null;
-		$key_tags = null;
-		$not_key_tags = null;
+		$key_tags['keywords'] = null;
+		$not_key_tags['keywords'] = null;
 		$contents = array();
 		
 		// deny access by post
@@ -83,16 +115,25 @@ class SearchesController extends AppController {
 			$not_keywords = $this->request->query['not_keywords'];
 		}
 		if(!empty($this->request->query['key_tags'])){
-			$key_tags = $this->request->query['key_tags'];
-			$key_tags = $this->Tag->parseTagCSV($key_tags);
+			$key_tags['keywords'] = $this->request->query['key_tags'];
+			$key_tags['blog'] = $this->BlogsTag->getBlogIdFromCsvTags($key_tags['keywords']);
+			$key_tags['product'] = $this->ProductsTag->getProductIdFromCsvTags($key_tags['keywords']);
+			$attr_tags = $this->AttributesTag->getProductIdFromCsvTags($key_tags['keywords']);
+			$key_tags['product'] = array_merge($key_tags['product'], $attr_tags);
 		}
 		if(!empty($this->request->query['not_key_tags'])){
-			$not_key_tags = $this->request->query['not_key_tags'];
-			$not_key_tags = $this->Tag->parseTagCSV($not_key_tags);
+			$not_key_tags['keywords'] = $this->request->query['not_key_tags'];
+			$not_key_tags['blog'] = $this->BlogsTag->getBlogIdFromCsvTags($not_key_tags['keywords']);
+			$not_key_tags['product'] = $this->ProductsTag->getProductIdFromCsvTags($not_key_tags['keywords']);
+			$not_attr_tags = $this->AttributesTag->getProductIdFromCsvTags($not_key_tags['keywords']);
+			$not_key_tags['product'] = array_merge($not_key_tags['product'], $not_attr_tags);
 		}
 		
 		// insert search result to contents
 		$contents['blogs'] = $this->Blog->find('all',array(
+			'conditions' => array(
+				'Blog.status' => 0
+			),
 			'page' => $page,
 			'limit' => $count
 		));
@@ -100,29 +141,53 @@ class SearchesController extends AppController {
 			'page' => $page,
 			'limit' => $count			
 		));
-
-		$nullCheck = $this->Search->nullCheckOfKeywords(array($keywords, $not_keywords, $key_tags, $not_key_tags));
+		$nullCheck = $this->Search->nullCheckOfKeywords(
+			array($keywords, $not_keywords, $key_tags['keywords'], $not_key_tags['keywords'])
+		);
 		if($nullCheck) {
+			// set options
+			$blog_options['page'] = $product_options['page'] = $page;
+			$blog_options['limit'] = $product_options['limit'] = $count;
+			$blog_options['conditions'] = array(
+				'Blog.status' => 0,
+				'OR' => array(
+					'simplified_content like'=>'%'.$keywords.'%',
+					'title like'=>'%'.$keywords.'%'
+				)
+			);
+			$product_options['conditions'] = array(
+				'OR' => array(
+					'outline like'=>'%'.$keywords.'%',
+					'name like'=>'%'.$keywords.'%'
+				)
+			);
+			if(!is_null($key_tags['keywords'])){
+				$blog_options['conditions']['Blog.id'] = $key_tags['blog'];
+				$product_options['conditions']['Product.id'] = $key_tags['product'];
+			}
+			if (!is_null($not_keywords)) {
+				$blog_options['conditions']['NOT'] = array(
+					'simplified_content like'=>'%'.$not_keywords.'%',
+					'title like'=>'%'.$not_keywords.'%'
+				);
+				$product_options['conditions']['NOT'] = array(
+					'outline like'=>'%'.$not_keywords.'%',
+					'name like'=>'%'.$not_keywords.'%'
+				);
+			}
+			if(!is_null($not_key_tags['keywords'])){
+				$blog_options['conditions']['NOT']['OR']['Blog.id'] = $not_key_tags['blog'];
+				$product_options['conditions']['NOT']['OR']['Product.id'] = $not_key_tags['product'];
+			}
 			// search blogs
-			$contents['blogs'] = $this->Blog->find('all',array(
-				'conditions' => array(
-					'OR' => array(
-						'simplified_content like'=>'%'.$keywords.'%',
-						'title like'=>'%'.$keywords.'%'
-					),
-				),
-				'page' => $page,
-				'limit' => $count	
-			));
-			$contents['sql'] = $this->Blog->getDataSource()->getLog();
+			$contents['blogs'] = $this->Blog->find('all', $blog_options);
+			$contents['sql']['blogs'] = $this->Blog->getDataSource()->getLog();
 			
-			$contents['products'] = $this->Product->find('all',array(
-				'conditions' => array('name like'=>'%'.$keywords.'%'),
-				'page' => $page,
-				'limit' => $count	
-			));
+			// search products
+			$contents['products'] = $this->Product->find('all',$product_options);
+			$contents['sql']['products'] = $this->Product->getDataSource()->getLog();
 		}
-		
+		$contents['tags'] = $this->Search->mergeBlogTagsAndProductTags($contents);
 		if(is_null($contents)){
 			$this->apiError('contents are null');
 			return;
@@ -131,27 +196,6 @@ class SearchesController extends AppController {
 		$this->apiSuccess($contents);
 	}
 	
-	public function test(){
-		//リクエストがPOSTの場合
-		if($this->request->is('post')){
-			 //Formの値を取得
-			 $condition = $this->request->data['Search']['condition'];
-			 if(isset($condition)){
-			 	
-				//POSTされたデータを曖昧検索
-				$data = $this->Blog->find('all',array(
-			 		'conditions' => array('title like'=>'%'.$condition.'%')));
-			 } else {
-			 	$data = $this->Blog->find('all');
-			 }
-		} else {
-			 //POST以外の場合
-			 $data = $this->Blog->find('all');
-			 
-		}
-		//データの連想配列をセット
-		$this->set('blogs',$data);
-	}
 }
 
 ?>

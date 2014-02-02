@@ -15,6 +15,18 @@ class ProductsTag extends AppModel {
         )
     );
 	
+	public function getProductIdFromCsvTags($csvTags = '') {
+		$Tag = ClassRegistry::init('Tag');
+		$arrayTagIds = $Tag->getTagId($csvTags);
+		$arrayProductsTags = $this->findAllByTagId($arrayTagIds);
+		$productIds = array();
+		foreach ($arrayProductsTags as $productsTag) {
+			array_push($productIds, $productsTag['ProductsTag']['product_id']);
+		}
+		
+		return $productIds;
+	}
+	
 	public function addProductTags($tag_name, $product_id){
 		$Tag = ClassRegistry::init('Tag');
     	if(isset($tag_name)){

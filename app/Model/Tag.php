@@ -56,6 +56,17 @@ class Tag extends AppModel {
 		return $tags;
 	}
 	
+	public function getTagId($csvTags = ''){
+		$arrayTagNames = $this->parseTagCSV($csvTags);
+		$arrayTags = $this->findAllByName($arrayTagNames);
+		$tagIds = array();
+		foreach ($arrayTags as $tag) {
+			array_push($tagIds, $tag['Tag']['id']);
+		}
+		
+		return $tagIds;
+	}
+	
 	public function saveFromNamesCSV($tagNames = '') {
 		$tags = $this->parseTagCSV($tagNames);
 		$this->saveFromNameArray($tags);

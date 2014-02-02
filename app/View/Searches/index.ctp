@@ -40,18 +40,17 @@
 	<div id="search-custom">
 		<legend>Scope</legend>
 		<div class="form-tag">
-			Tag Search<input name="key-tags" id="key-tags" class="form-control tags">
+			Tag Search<input name="key-tags" id="key-tags" class="form-control tags" value="<?php echo h($key_tags['keywords']); ?>">
 			Not<input name="not-key-tags" id="not-key-tags" class="form-control tags">
 		</div>
+		<legend>関連タグ</legend>
+		<div id="related-tags"></div>
+		<hr size="6">
 		<div class="form-checkbox">
 			<label for="check-blog" class="checkbox">BLOG</label>
-			<input type="checkbox" name="blog" value="Blog" id="check-blog" class="checkbox">
+			<input type="checkbox" name="blog" value="Blog" id="check-blog" class="checkbox" checked="checked">
 			<label for="check-product" class="checkbox">PRODUCT</label>
-			<input type="checkbox" name="product" value="Product" id="check-product" class="checkbox">
-			<label for="check-tag" class="checkbox">TAG</label>
-			<input type="checkbox" name="tag" value="Tag" id="check-tag" class="checkbox">
-			<label for="check-content" class="checkbox">OUTLINE</label>
-			<input type="checkbox" name="content" value="contetns" id="check-content" class="checkbox">
+			<input type="checkbox" name="product" value="Product" id="check-product" class="checkbox" checked="checked">
 			<label for="check-mine" class="checkbox">MINE</label>
 			<input type="checkbox" name="mine" value="mine" id="check-mine" class="checkbox">
 			<label for="check-favorite" class="checkbox">FAVORITE</label>
@@ -61,16 +60,16 @@
 			<div class="right">
 				<span>ネタバレ：</span>
 			 	<select name="minbeds" id="minbeds" class="list">
-				    <option>1</option>
-				    <option>2</option>
-				    <option>3</option>
-				    <option>4</option>
-				    <option selected>5</option>
-				    <option>6</option>
-				    <option>7</option>
-				    <option>8</option>
-				    <option>9</option>
-				    <option>10</option>
+				    <option value="1">1</option>
+				    <option value="2">2</option>
+				    <option value="3">3</option>
+				    <option value="4">4</option>
+				    <option value="5" selected>5</option>
+				    <option value="6">6</option>
+				    <option value="7">7</option>
+				    <option value="8">8</option>
+				    <option value="9">9</option>
+				    <option value="10">10</option>
 			 	</select>
 			</div>
 		</div><!-- spoiler -->
@@ -105,11 +104,11 @@ $(function() {
 	var arrayLoad = {};
 	arrayLoad = {
 		page : 1, 
-		count : 15, 
+		count : 9, 
 		keywords : $('#keywords').val(), 
 		not_keywords : $('#not-keywords').val(),
 		key_tags : $('#key-tags').val(),
-		not_key_tags : $('#not-key-tags').val()
+		not_key_tags : $('#not-key-tags').val(),
 	};
 	
 	function loadImage(arrayKeywords) {
@@ -124,7 +123,7 @@ $(function() {
 				'keywords': arrayKeywords['keywords'],
 				'not_keywords': arrayKeywords['not_keywords'],
 				'key_tags': arrayKeywords['key_tags'],
-				'not_key_tags': arrayKeywords['not_key_tags']
+				'not_key_tags': arrayKeywords['not_key_tags'],
 			},
 			success: function(data, dataType) {
 				console.log('data...');
@@ -135,11 +134,18 @@ $(function() {
 				// blogs
 				blogs = $('#js-search-blogs').tmpl(data['response']['blogs']);
 				$('#search-blogs-result').append(blogs);
+				// related tags
+				tags = $('#js-related-tags').tmpl(data['response']['tags']);
+				$('#related-tags').append(tags);
+				$(function() {
+			    	$('.related-tag').searchFromTag();
+				});
 				// loadImage
 				$('#search-result').imagesLoaded(function() {
 					$('.cont').removeClass('hidden');
 					$('#search-result').masonry('appended', products);
 					$('#search-result').masonry('appended', blogs);
+					appendHide();
 				});
 			},
 			error: function(xhr, xhrStatus) {
@@ -148,6 +154,19 @@ $(function() {
 			}
 		});
 	}
+
+	var diary = $('#search-result');
+	diary.masonry({
+    	itemSelector: '.cont',
+     	isAnimated: true,
+		isFitWidth: true,
+		columnWidth: 1
+	});
+	loadImage(arrayLoad);
+	arrayLoad['page']++;
+	// setTimeout("loadImage();", 2000);
+	
+	// scroll
 	$(window).on('scroll', function() {
 		var scrollHeight = $(document).height();
 		var scrollPosition = $(window).height() + $(window).scrollTop();
@@ -162,21 +181,9 @@ $(function() {
 			arrayLoad['page']++;
 		}
 	});
-	var diary = $('#search-result');
-	diary.masonry({
-    	itemSelector: '.cont',
-     	isAnimated: true,
-		isFitWidth: true,
-		columnWidth: 1
-	});
-	loadImage(arrayLoad);
-	arrayLoad['page']++;
-	// setTimeout("loadImage();", 2000);
 
 	// search
 	$("#btn-search").click(function(){
-		console.log('click...');
-		console.log($('#keywords').val());
 		$('.cont').remove();
 		arrayLoad['page'] = 1;
 		diary.masonry({
@@ -194,29 +201,72 @@ $(function() {
 		loadImage(arrayLoad);
 		arrayLoad['page']++;
 	});
-});
-</script>
-<script>
-	// slider
-	$(function() {
-	    var select = $( "#minbeds" );
-	    var slider = $( "<div id='slider'></div>" ).insertAfter( select ).slider({
-	      min: 1,
-	      max: 10,
-	      range: "min",
-	      value: select[ 0 ].selectedIndex + 1,
-	      slide: function( event, ui ) {
-	        select[ 0 ].selectedIndex = ui.value - 1;
-	      }
-	    });
-	    $( "#minbeds" ).change(function() {
-	      slider.slider( "value", this.selectedIndex + 1 );
-	    });
+	
+	// change checkbox
+	function appendHide(){
+		// blog
+		if($('#check-blog').prop('checked')){
+			for(var hideCnt = 10; hideCnt > $('#minbeds').val(); hideCnt--){
+				$('#search-result').find('.spoiler' + hideCnt).hide();
+			}
+			for(var appendCnt = 1; appendCnt <= $('#minbeds').val(); appendCnt++){
+				$('#search-result').find('.spoiler' + appendCnt).show();
+			}
+		} else {
+			$('#search-result').find('.blog').hide();
+		}
+		// product
+		if($('#check-product').prop('checked')){
+			$('#search-result').find('.product').show();
+		} else {
+			$('#search-result').find('.product').hide();
+		}
+		// masonry
+		diary.masonry({
+	    	itemSelector: '.cont',
+	     	isAnimated: true,
+			isFitWidth: true,
+			columnWidth: 1
+		});
+	}
+	$('#check-blog').change(function(){
+		appendHide();
 	});
+	$('#check-product').change(function(){
+		appendHide();
+	});
+	// click related tags
+	// fn search from tag
+	;(function($) {
+		$.fn.searchFromTag = function() {
+			$("#related-tags").find('.related-tag').click(function() {
+				var tag_name = $(this).val();
+				location.href = '/searches/index/?key_tags=' + tag_name;
+			});
+		}
+	})(jQuery);
+	// execute spoiler's slider
+	var select = $( "#minbeds" );
+    var slider = $( "<div id='slider'></div>" ).insertAfter( select ).slider({
+      min: 1,
+      max: 10,
+      range: "min",
+      value: select[ 0 ].selectedIndex + 1,
+      slide: function( event, ui ) {
+        select[ 0 ].selectedIndex = ui.value - 1;
+        $("#minbeds").trigger("change");
+      }
+    });
+    $( "#minbeds" ).change(function() {
+    	slider.slider( "value", this.selectedIndex + 1 );
+    	appendHide();
+    });
+});
 </script>
 <!-- product -->
 <script id="js-search-products" type="text/x-jquery-tmpl">
-	<div class="cont hidden" style="float:left">
+	<div class="cont hidden product" style="float:left">
+		<i style="color: blue" class="fa fa-film">作品</i>
 		<div class="cont-pic">
 			<a href="/products/view/${Product.id}" class="link"></a>
 			{{if Product.image_url != ""}}
@@ -226,7 +276,7 @@ $(function() {
 				<div style="width: 220px;height:220px">${Product.outline.replace(/<("[^"]*"|'[^']*'|[^'">])*>/g,'').substring(0,99) +""}</div>
 			{{/if}}
 			<div class="cont-info">
-				<div class="cont-title">
+				<div class="cont-title product-name">
 					<p>${Product.name.replace(/<("[^"]*"|'[^']*'|[^'">])*>/g,'').substring(0,27) +""}</p>
 				</div>
 				<div class="cont-detail"></div>
@@ -238,7 +288,8 @@ $(function() {
 
 <!-- blog -->
 <script id="js-search-blogs" type="text/x-jquery-tmpl">
-	<div class="cont hidden" style="float:left">
+	<div class="cont hidden blog spoiler${Blog.spoiler}" style="float:left">
+		<i style="color: orange" class="fa fa-film">ブログ</i>
 		<div class="cont-pic">
 			<a href="/blogs/view/${Blog.id}" class="link"></a>
 			{{if UsedBlogImage.length != 0}}
@@ -248,7 +299,7 @@ $(function() {
 				<div style="width: 220px;height:220px">${Blog.content.replace(/<("[^"]*"|'[^']*'|[^'">])*>/g,'').substring(0,99) +""}</div>
 			{{/if}}
 			<div class="cont-info">
-				<div class="cont-title">
+				<div class="cont-title blog-title">
 					<p>${Blog.title.replace(/<("[^"]*"|'[^']*'|[^'">])*>/g,'').substring(0,27) +""}</p>
 				</div>
 				<div class="cont-detail"></div>
@@ -256,6 +307,11 @@ $(function() {
 			</div>
 		</div>
 	</div>
+</script>
+
+<!-- tags -->
+<script id="js-related-tags" type="text/x-jquery-tmpl">
+	<input type="button" class="related-tag" value="${Tag.name}">
 </script>
 
 

@@ -11,7 +11,7 @@ class BlogsController extends AppController {
     	// 親クラス（AppController）読み込み
         parent::beforeFilter();
 		// permitted access before login
-        $this->Auth->allow('view', 'api_view');
+        $this->Auth->allow('view', 'api_view', 'api_get_blog_info');
     }
 	
 	public function index()
@@ -81,8 +81,6 @@ class BlogsController extends AppController {
 	    if (!$post) {
 	        throw new NotFoundException(__('this blog is not exist'));
 		}
-		
-		$this->UsedBlogImage->deleteAll(array('UsedBlogImage.Blog_id'=>$id));
 
 		if ($this->request->is(array('post', 'put'))) {
 			$tagNames = $this->Tag->parseTagCSV($this->request->data['Tag']['name']);
@@ -93,7 +91,6 @@ class BlogsController extends AppController {
 				),
 				'fields' => array('Tag.id')
 			));
-	
 			$blogData = array('Blog' => $this->request->data['Blog']);
 			$blogData['Blog']['id'] = $id;
 			$blogData['Blog']['simplified_content'] = $value = html_entity_decode(strip_tags($this->request->data['Blog']['content']));
@@ -114,14 +111,18 @@ class BlogsController extends AppController {
 		$this->set('post', $post);
     }
 
-	public function api_get_spoiler(){
+	public function api_get_blog_info(){
 		$blog_id = null;
+		$count = 10;
 		if(!is_null($this->request->query['blog_id'])){
 			$blog_id = $this->request->query['blog_id'];
 		}
 		
 		$spoiler = $this->Blog->findById($blog_id);
-		$this->apiSuccess($spoiler['Blog']['spoiler']);
+		for($i = 0; $i < $count; $i++){
+			$spoiler['Blog']['count'][] = $i;
+		}
+		$this->apiSuccess($spoiler['Blog']);
 	}
 
 	public function isAuthorized($user) {
