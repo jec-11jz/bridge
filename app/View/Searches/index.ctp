@@ -126,6 +126,7 @@ $(function() {
 				'not_key_tags': arrayKeywords['not_key_tags'],
 			},
 			success: function(data, dataType) {
+				$("#related-tags").find(".related-tag").remove();
 				console.log('data...');
 				console.log(data['response']);
 				// products
@@ -147,10 +148,12 @@ $(function() {
 					$('#search-result').masonry('appended', blogs);
 					appendHide();
 				});
+				$("#btn-search").removeAttr("disabled");
 			},
 			error: function(xhr, xhrStatus) {
 				error = $('#error-message').tmpl(xhr['responseJSON']['error']);
 				$('#error').append(error);
+				$("#btn-search").removeAttr("disabled");
 			}
 		});
 	}
@@ -184,6 +187,7 @@ $(function() {
 
 	// search
 	$("#btn-search").click(function(){
+		$(this).attr("disabled", "disabled");
 		$('.cont').remove();
 		arrayLoad['page'] = 1;
 		diary.masonry({
