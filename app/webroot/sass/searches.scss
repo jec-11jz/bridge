@@ -20,10 +20,21 @@ body{
     display: inline
   }
   .form-control{
+    // display: 
     width: 40%;
     margin:0px 10px 0px 10px;
   }
-  .search{
+  #search-custom{
+    .form-tag {
+      clear: both;
+      display: block;
+      margin-bottom: 30px;
+      text-align: center;
+      .tagbox{
+        width: 50%;
+        margin: 0 auto;
+      }
+    }
   }
 }
 
@@ -33,6 +44,7 @@ div#search-result{
   .cont{
     margin: 15px;
     position: relative;
+    overflow: hidden;
     hr{
       margin: 10px 2px;
     }
@@ -40,6 +52,21 @@ div#search-result{
       @include link;
       z-index:600;
     }
+    .div-noimage-outline{
+      background-color: $col-black1;
+    }
+    .div-decoration-blogs,{background-color: $yellow;}
+    .div-decoration-products{background-color: $col-black2;}
+    .div-decoration-blogs,.div-decoration-products{
+      text-align: center;
+      position: absolute;
+      @include opacity(0.8);
+      right: -71px;
+      top: 17px;
+      width: 200px;
+      @include rotate(45deg);
+    }
+
     .cont-info{
       position: absolute;
       bottom:0;
