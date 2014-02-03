@@ -5,9 +5,6 @@
 
 <div class="form second-content-form">
 	<div class="form-header">
-		<div class="header-left">
-			<a href="/home/mypage" class="header-link">Create</a>
-		</div>
 		<div class="header-right">
 			<span class="page-title user-name"><?php echo $user['name']; ?></span>
 		</div>

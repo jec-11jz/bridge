@@ -877,22 +877,22 @@ div.modal-content {
   #div-index-templates .form-body #add-attributes, #div-edit-templates .form-body #add-attributes, #div-add-templates .form-body #add-attributes {
     margin: 0 auto;
     padding: 0 0 2em  0;
-    overflow: scroll;
+    overflow: auto;
     height: 19em; }
-    /* line 44, ../sass/templates.scss */
+    /* line 43, ../sass/templates.scss */
     #div-index-templates .form-body #add-attributes .attr, #div-edit-templates .form-body #add-attributes .attr, #div-add-templates .form-body #add-attributes .attr {
       float: left;
       margin: 1em 2.3em 1em 0; }
-      /* line 47, ../sass/templates.scss */
+      /* line 46, ../sass/templates.scss */
       #div-index-templates .form-body #add-attributes .attr .form-control, #div-edit-templates .form-body #add-attributes .attr .form-control, #div-add-templates .form-body #add-attributes .attr .form-control {
         width: 190px;
         border-right: none;
         float: left; }
-        /* line 51, ../sass/templates.scss */
+        /* line 50, ../sass/templates.scss */
         #div-index-templates .form-body #add-attributes .attr .form-control.default, #div-edit-templates .form-body #add-attributes .attr .form-control.default, #div-add-templates .form-body #add-attributes .attr .form-control.default {
           border: solid #ccc 1px;
           width: 223px; }
-      /* line 56, ../sass/templates.scss */
+      /* line 55, ../sass/templates.scss */
       #div-index-templates .form-body #add-attributes .attr .btn-delete-attribute, #div-edit-templates .form-body #add-attributes .attr .btn-delete-attribute, #div-add-templates .form-body #add-attributes .attr .btn-delete-attribute {
         font-size: 26px;
         float: left;
@@ -905,15 +905,15 @@ div.modal-content {
         -webkit-transition: 0.2s;
         -o-transition: 0.2s;
         transition: 0.2s; }
-        /* line 67, ../sass/templates.scss */
+        /* line 66, ../sass/templates.scss */
         #div-index-templates .form-body #add-attributes .attr .btn-delete-attribute:hover, #div-edit-templates .form-body #add-attributes .attr .btn-delete-attribute:hover, #div-add-templates .form-body #add-attributes .attr .btn-delete-attribute:hover {
           background-color: #c61513; }
-/* line 75, ../sass/templates.scss */
+/* line 74, ../sass/templates.scss */
 #div-index-templates .form-footer .div-submit, #div-edit-templates .form-footer .div-submit, #div-add-templates .form-footer .div-submit {
   margin: 0 4em;
   text-align: right; }
 
-/* line 86, ../sass/templates.scss */
+/* line 85, ../sass/templates.scss */
 #template-index .cont {
   display: block;
   overflow: hidden;
@@ -921,46 +921,46 @@ div.modal-content {
   width: 33%;
   padding: 1em 2em;
   position: relative; }
-  /* line 93, ../sass/templates.scss */
+  /* line 92, ../sass/templates.scss */
   #template-index .cont .delete {
     position: absolute;
     top: 0;
     right: 0; }
-  /* line 98, ../sass/templates.scss */
+  /* line 97, ../sass/templates.scss */
   #template-index .cont .title {
     font-size: 2em; }
-  /* line 101, ../sass/templates.scss */
+  /* line 100, ../sass/templates.scss */
   #template-index .cont ul {
     overflow: hidden;
     display: none; }
-  /* line 105, ../sass/templates.scss */
+  /* line 104, ../sass/templates.scss */
   #template-index .cont span {
     cursor: pointer; }
-  /* line 109, ../sass/templates.scss */
+  /* line 108, ../sass/templates.scss */
   #template-index .cont li {
     cursor: pointer;
     list-style-type: none;
     text-indent: 1em; }
-/* line 115, ../sass/templates.scss */
+/* line 114, ../sass/templates.scss */
 #template-index .fa-trash-o {
   padding: 1em; }
 
-/* line 123, ../sass/templates.scss */
+/* line 122, ../sass/templates.scss */
 .box-flex .button-full {
   -webkit-box-flex: 4;
   -moz-box-flex: 4;
   -ms-box-flex: 4;
   box-flex: 4;
   height: 8em; }
-  /* line 126, ../sass/templates.scss */
+  /* line 125, ../sass/templates.scss */
   .box-flex .button-full .btn-black {
     padding: 3.2em 6.5em;
     border: none;
     width: 100%;
     height: 100%; }
-    /* line 131, ../sass/templates.scss */
+    /* line 130, ../sass/templates.scss */
     .box-flex .button-full .btn-black.left {
       border-right: solid #c1c1c1 1px; }
-    /* line 134, ../sass/templates.scss */
+    /* line 133, ../sass/templates.scss */
     .box-flex .button-full .btn-black.right {
       border-left: solid #c1c1c1 1px; }

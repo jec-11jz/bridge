@@ -191,6 +191,7 @@ $(function(){
 	
 		<div class="form-footer">
 			<div class="div-submit">
+				<a href="#" name="/products/delete/<?php echo h($product['Product']['id']); ?>" class="btn-danger">Delete</a>
 				<input type="button" id="btn-register" class="btn-blue" value="登録" />
 			</div>
 		</div>

@@ -24,6 +24,21 @@ body{
     width: 40%;
     margin:0px 10px 0px 10px;
   }
+  #related-tags{
+      margin: 2em 2em;
+      padding: 1em 1em 0em 1em;
+      background-color: #ECECE8;
+      @include border-radius(2px);
+      @include line-box;
+      .tag{
+        @include border-radius(25px);
+        padding: 0.5em 1em;
+        border:none;
+        color: $white;
+        margin-left: 0.7em; margin-bottom: 1em;
+        background-color: $col-flat-blue1;
+      }
+  }
   #search-custom{
     .form-tag {
       clear: both;

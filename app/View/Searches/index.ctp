@@ -281,7 +281,7 @@ $(function() {
 			{{if Product.image_url != ""}}
 				<img src="${Product.image_url}" data-original="${Product.image_url}" class="cover" width="220px" height="auto">
 			{{else}}
-				<div class="div-noimage-outline" style="width: 220px;height:220px">${Product.outline.replace(/<("[^"]*"|'[^']*'|[^'">])*>/g,'').substring(0,99) +""}</div>
+				<div class="div-noimage-outline" style="width: 220px;height:220px">${Product.outline.replace(/<("[^"]*"|'[^']*'|[^'">])*>/g,'').substring(0,99) +"..."}</div>
 			{{/if}}
 			<div class="cont-info">
 				<div class="cont-title product-name">
@@ -305,7 +305,7 @@ $(function() {
 			{{if UsedBlogImage.length != 0}}
 				<img src="${UsedBlogImage[0].url}" data-original="${UsedBlogImage[0].url}" class="cover" width="220px" height="auto">
 			{{else}}
-				<div class="div-noimage-outline" style="width: 220px;height:220px">${Blog.content.replace(/<("[^"]*"|'[^']*'|[^'">])*>/g,'').substring(0,99) +""}</div>
+				<div class="div-noimage-outline" style="width: 220px;height:220px">${Blog.content.replace(/<("[^"]*"|'[^']*'|[^'">])*>/g,'').substring(0,99) +"..."}</div>
 			{{/if}}
 			<div class="cont-info">
 				<div class="cont-title blog-title">
@@ -319,7 +319,7 @@ $(function() {
 
 <!-- tags -->
 <script id="js-related-tags" type="text/x-jquery-tmpl">
-	<input type="button" class="related-tag" value="${Tag.name}">
+	<input type="button" class="related-tag tag" value="${Tag.name}">
 </script>
 
 

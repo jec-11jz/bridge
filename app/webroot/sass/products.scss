@@ -42,12 +42,17 @@
     .body-outline{
       position: absolute;
       display: inline-block;
+      overflow: auto;
       top: 0;
       width: 60%;
+      height: 25em;
       margin-left: 2em;
       padding: 1em 2em;
       @include line-box;
       background-color: #ECECE8;
+      span{
+
+      }
       &.edit{
         background-color: $white;
       }
@@ -80,7 +85,7 @@
       height: 30em;
       margin-top: 2em;
       padding: 1em;
-      overflow:scroll;
+      overflow:auto;
       @include line-box;
 
       .div-button{
