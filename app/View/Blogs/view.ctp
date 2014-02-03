@@ -27,12 +27,17 @@ $(function() {
 		url: '/api/blogs/view.json',
 		data: {'id': blog_id},
 		success: function(data){
+			console.log(data['response']);
+			// append tags
 			tags = $('#js-tag').tmpl(data['response']['Tag']);
 			$('#blog-tags').append(tags);
 			// search product from tag
 			$(function() {
 		    	$('.tag').searchFromTag();
 			});
+			// append link
+			tools = $('#js-tools').tmpl(data['response']);
+			$('#tool-links').append(tools);
 		},
 		error: function(xhr, xhrStatus) {
 			error = $('#error-message').tmpl(xhr['responseJSON']['error']);
@@ -102,7 +107,15 @@ $(function() {
 		{{/if}}
 	{{/each}}
 </script>
-
+<script id="js-tools" type="text/x-jquery-tmpl">
+	{{if auth != null}}
+		<a href="/blogs/edit/${Blog.id}" class="fa fa-pencil-square-o"></a>
+		<a name="/blogs/delete/${Blog.id}" class="fa fa-trash-o" id="confirm-delete"></a>
+	{{/if}}
+		<a href="#" class="fa fa-star">
+		<a href="/blogs/view/${Blog.id}" class="fa fa-desktop">
+</script>
+<!-- html -->
 <div id="div-view-blogs" class="form second-content-form" name="<?php echo h($blog['Blog']['id']); ?>">
 	<div class="form-header">
 		<div class="header-left">
@@ -118,12 +131,7 @@ $(function() {
 		<div id="<?php echo h($blog['Blog']['id']); ?>" class="blog-form">
 
 			<div id="blog-tags"></div>
-			<div class="blog-tools">
-				<a href="/blogs/edit/<?php echo h($blog['Blog']['id']); ?>" class="fa fa-pencil-square-o"></a>
-				<a href="/blogs/view/<?php echo h($blog['Blog']['id']); ?>" class="fa fa-desktop">
-				<a href="#" class="fa fa-star">
-				<a name="/blogs/delete/<?php echo h($blog['Blog']['id']); ?>" class="fa fa-trash-o" id="confirm-delete"></a>
-			</div>
+			<div id="tool-links" class="blog-tools"></div>
 			<div class="spoiler">
 				<div class="spoiler-slider">
 					<span>ネタバレ：</span>
