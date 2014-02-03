@@ -86,6 +86,11 @@ class SearchesController extends AppController {
 	}
 	
 	public function api_search() {
+		// deny access by post
+		if($this->request->is('post')){
+			$this->apiError('request is post');
+			return;
+		}
 		// set default value
 		$count = 10;
 		$page = 1;
@@ -94,11 +99,10 @@ class SearchesController extends AppController {
 		$key_tags['keywords'] = null;
 		$not_key_tags['keywords'] = null;
 		$contents = array();
+		$countents['lastpage'] = null;
 		
-		// deny access by post
-		if($this->request->is('post')){
-			$this->apiError('request is post');
-			return;
+		if(!is_null($countents['lastpage'])){
+			return $this->apiSuccess('最後のページです');
 		}
 		
 		// get param form view
@@ -187,7 +191,13 @@ class SearchesController extends AppController {
 			$contents['products'] = $this->Product->find('all',$product_options);
 			$contents['sql']['products'] = $this->Product->getDataSource()->getLog();
 		}
+		// get related tags
 		$contents['tags'] = $this->Search->mergeBlogTagsAndProductTags($contents);
+		// check last page
+		$last_page = ceil((count($contents['blogs']) + count($contents['products'])) / $count);
+		if($page == $last_page){
+			$contents['lastpage'] = 'this page is last';
+		}
 		if(is_null($contents)){
 			$this->apiError('contents are null');
 			return;
