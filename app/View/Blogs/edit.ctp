@@ -13,6 +13,13 @@
 <!-- JS tag -->
 <script>
 $(function() {
+	// confirm dialog
+	$("#confirm-delete").click(function(){
+		if(window.confirm('本当にいいんですね？')){
+			location.href = $(this).attr('name');
+		}
+	});
+	
 	// get tags form DB
 	var tag = [];
 	$.ajax({
@@ -25,8 +32,8 @@ $(function() {
     			lowercase : true
   			});
 		},
-		error: function(tags){
-			console.log('error');
+		error: function(xhr, xhrStatus){
+			console.log('tags are not found');
 		}
 	});
 	
@@ -46,7 +53,6 @@ $(function() {
 					$(this).attr("selected",true)
 				}
 			})
-			
 			// slider
 			var select = $( "#minbeds" );
 		    var slider = $( "<div id='slider'></div>" ).insertAfter( select ).slider({
@@ -96,10 +102,7 @@ $(function() {
 
 		<input type="text" id="tags" name="data[Tag][name]" value="<?php echo h($post['Tag']['namesCSV']); ?>" class="input_form">
 		<div class="blog-tools">
-			<a href="#" class="fa fa-pencil-square-o"></a>
-			<a href="#" class="fa fa-desktop">
-			<a href="#" class="fa fa-star">
-			<a href="#" class="fa fa-trash-o"></a>
+			<a href="/blogs/delete/"<?php echo h($post['Blog']['id']); ?> class="fa fa-trash-o" id="confirm-delete"></a>
 		</div>
 
 		<div class="spoiler">

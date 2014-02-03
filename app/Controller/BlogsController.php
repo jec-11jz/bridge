@@ -170,7 +170,14 @@ class BlogsController extends AppController {
 			$this->apiError('not found', 0, 404);
 			return;
 		}
-
+		$fav = $this->BlogsFavorite->findByUserIdAndBlogId($this->Auth->user('id'), $blog_id);
+		if(empty($fav)){
+			$blog['favorite'] = null;
+		} else {
+			$blog['favorite'] = $fav;
+		}
+	
+		
 		$this->apiSuccess($blog);
 	}
 	
@@ -188,11 +195,7 @@ class BlogsController extends AppController {
 			return $this->apiError('ログインしてください');
 		}
 		$user_id = $this->Auth->user('id');
-		$this->BlogsFavorite->set(array(
-			'blog_id' => $blog_id,
-			'user_id' => $user_id
-		));
-		$this->BlogsFavorite->save();
+		$this->BlogsFavorite->saveUsersBlogs($blog_id, $user_id);
 		
 		return $this->apiSuccess('お気に入りに追加しました');
 		

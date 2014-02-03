@@ -102,8 +102,6 @@ $(function() {
 		},
 		error: function(xhr, xhrStatus) {
 			console.log(xhr);
-			error = $('#error-message').tmpl(xhr['responseJSON']['error']);
-			$('#message').append(error);
 		}
 	});
 	
@@ -149,7 +147,11 @@ $(function() {
 		<a href="/blogs/edit/${Blog.id}" class="fa fa-pencil-square-o"></a>
 		<a name="/blogs/delete/${Blog.id}" class="fa fa-trash-o" id="confirm-delete"></a>
 	{{else}}
-		<a id="btn-favorite" class="fa fa-star">
+		{{if favorite != null}}
+			<a class="fa fa-star" disabled="disabled">
+		{{else}}
+			<a id="btn-favorite" class="fa fa-star">
+		{{/if}}
 	{{/if}}
 		<a href="/blogs/view/${Blog.id}" class="fa fa-desktop">
 </script>
@@ -198,7 +200,6 @@ $(function() {
 			<div class="text-body">
 				<?php echo $blog['Blog']['content']; ?>
 			</div>
-			
 		</div>
 	</div>
 
