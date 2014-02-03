@@ -190,6 +190,7 @@ $(function() {
 
 	// search
 	$("#btn-search").click(function(){
+		lastpage = false;
 		$(this).attr("disabled", "disabled");
 		$('.cont').remove();
 		arrayLoad['page'] = 1;
