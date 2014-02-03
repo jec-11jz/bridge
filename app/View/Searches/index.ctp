@@ -101,6 +101,7 @@ $(function() {
 	});
 	
 	// set arrayLoad
+	var lastpage = false;
 	var arrayLoad = {};
 	arrayLoad = {
 		page : 1, 
@@ -127,6 +128,9 @@ $(function() {
 			},
 			success: function(data, dataType) {
 				$("#related-tags").find(".related-tag").remove();
+				if(data['response']['lastpage'] != null){
+					lastpage = true;
+				}
 				console.log('data...');
 				console.log(data['response']);
 				// products
@@ -174,14 +178,16 @@ $(function() {
 		var scrollHeight = $(document).height();
 		var scrollPosition = $(window).height() + $(window).scrollTop();
 		if ((scrollHeight - scrollPosition) / scrollHeight === 0) {
-			// substitution value
-			arrayLoad['keywords'] = $('#keywords').val();
-			arrayLoad['not_keywords'] = $('#not-keywords').val();
-			arrayLoad['key_tags'] = $('#key-tags').val();
-			arrayLoad['not_key_tags'] = $('#not-key-tags').val();
-			// execute　loadImage
-			loadImage(arrayLoad);
-			arrayLoad['page']++;
+			if(lastpage == false){
+				// substitution value
+				arrayLoad['keywords'] = $('#keywords').val();
+				arrayLoad['not_keywords'] = $('#not-keywords').val();
+				arrayLoad['key_tags'] = $('#key-tags').val();
+				arrayLoad['not_key_tags'] = $('#not-key-tags').val();
+				// execute　loadImage
+				loadImage(arrayLoad);
+				arrayLoad['page']++;
+			}
 		}
 	});
 
