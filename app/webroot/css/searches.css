@@ -470,18 +470,29 @@ body h1 {
   #search .form-control {
     width: 40%;
     margin: 0px 10px 0px 10px; }
+  /* line 28, ../sass/searches.scss */
+  #search #search-custom .form-tag {
+    clear: both;
+    display: block;
+    margin-bottom: 30px;
+    text-align: center; }
+    /* line 33, ../sass/searches.scss */
+    #search #search-custom .form-tag .tagbox {
+      width: 50%;
+      margin: 0 auto; }
 
-/* line 30, ../sass/searches.scss */
+/* line 41, ../sass/searches.scss */
 div#search-result {
   margin: 0 auto; }
-  /* line 33, ../sass/searches.scss */
+  /* line 44, ../sass/searches.scss */
   div#search-result .cont {
     margin: 15px;
-    position: relative; }
-    /* line 36, ../sass/searches.scss */
+    position: relative;
+    overflow: hidden; }
+    /* line 48, ../sass/searches.scss */
     div#search-result .cont hr {
       margin: 10px 2px; }
-    /* line 39, ../sass/searches.scss */
+    /* line 51, ../sass/searches.scss */
     div#search-result .cont a.link {
       display: block;
       top: 0;
@@ -490,7 +501,30 @@ div#search-result {
       height: 100%;
       position: absolute;
       z-index: 600; }
-    /* line 43, ../sass/searches.scss */
+    /* line 55, ../sass/searches.scss */
+    div#search-result .cont .div-noimage-outline {
+      background-color: #ececec; }
+    /* line 58, ../sass/searches.scss */
+    div#search-result .cont .div-decoration-blogs {
+      background-color: #e4e46f; }
+    /* line 59, ../sass/searches.scss */
+    div#search-result .cont .div-decoration-products {
+      background-color: #c1c1c1; }
+    /* line 60, ../sass/searches.scss */
+    div#search-result .cont .div-decoration-blogs, div#search-result .cont .div-decoration-products {
+      text-align: center;
+      position: absolute;
+      filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=80);
+      opacity: 0.8;
+      right: -71px;
+      top: 17px;
+      width: 200px;
+      -webkit-transform: rotate(45deg);
+      -moz-transform: rotate(45deg);
+      -ms-transform: rotate(45deg);
+      -o-transform: rotate(45deg);
+      transform: rotate(45deg); }
+    /* line 70, ../sass/searches.scss */
     div#search-result .cont .cont-info {
       position: absolute;
       bottom: 0;
@@ -506,14 +540,14 @@ div#search-result {
       -moz-transition: all 0.3s ease-in-out;
       -o-transition: all 0.3s ease-in-out;
       transition: all 0.3s ease-in-out; }
-      /* line 51, ../sass/searches.scss */
+      /* line 78, ../sass/searches.scss */
       div#search-result .cont .cont-info p {
         font-size: 13px; }
 
-/* line 58, ../sass/searches.scss */
+/* line 85, ../sass/searches.scss */
 .cont:hover img {
   opacity: 0.8; }
-/* line 61, ../sass/searches.scss */
+/* line 88, ../sass/searches.scss */
 .cont:hover .cont-info {
   -webkit-transform: translate(0, 100px);
   -moz-transform: translate(0, 100px);
