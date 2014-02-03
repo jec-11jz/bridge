@@ -22,16 +22,13 @@
 	.form-checkbox {
 		display: inline-block;
 	}
-	.form-tag {
-		clear: both;
-		display: block;
-		margin-bottom: 30px;
-	}
 	.checkbox {
 		float: left;
 		margin: -5px 2px 0 0;
 	}
 </style>
+
+
 <div id="search">
 	<hr>
 	<input name="keywords" id="keywords" class="form-control" value="<?php echo h($keyword); ?>" placeholder='Search  here...'>
@@ -270,14 +267,15 @@ $(function() {
 <!-- product -->
 <script id="js-search-products" type="text/x-jquery-tmpl">
 	<div class="cont hidden product" style="float:left">
-		<i style="color: blue" class="fa fa-film">作品</i>
+		<div class="div-decoration-products">
+			<span>Products</span>
+		</div>
 		<div class="cont-pic">
 			<a href="/products/view/${Product.id}" class="link"></a>
 			{{if Product.image_url != ""}}
 				<img src="${Product.image_url}" data-original="${Product.image_url}" class="cover" width="220px" height="auto">
 			{{else}}
-				<div style="width: 220px;height:220px">${Product.name.replace(/<("[^"]*"|'[^']*'|[^'">])*>/g,'').substring(0,27) +""}</div>
-				<div style="width: 220px;height:220px">${Product.outline.replace(/<("[^"]*"|'[^']*'|[^'">])*>/g,'').substring(0,99) +""}</div>
+				<div class="div-noimage-outline" style="width: 220px;height:220px">${Product.outline.replace(/<("[^"]*"|'[^']*'|[^'">])*>/g,'').substring(0,99) +""}</div>
 			{{/if}}
 			<div class="cont-info">
 				<div class="cont-title product-name">
@@ -293,21 +291,21 @@ $(function() {
 <!-- blog -->
 <script id="js-search-blogs" type="text/x-jquery-tmpl">
 	<div class="cont hidden blog spoiler${Blog.spoiler}" style="float:left">
-		<i style="color: orange" class="fa fa-film">ブログ</i>
+		<div class="div-decoration-blogs">
+			<span>Blogs</span>
+		</div>
 		<div class="cont-pic">
 			<a href="/blogs/view/${Blog.id}" class="link"></a>
 			{{if UsedBlogImage.length != 0}}
 				<img src="${UsedBlogImage[0].url}" data-original="${UsedBlogImage[0].url}" class="cover" width="220px" height="auto">
 			{{else}}
-				<div style="width: 220px;height:220px">${Blog.title}</div>
-				<div style="width: 220px;height:220px">${Blog.content.replace(/<("[^"]*"|'[^']*'|[^'">])*>/g,'').substring(0,99) +""}</div>
+				<div class="div-noimage-outline" style="width: 220px;height:220px">${Blog.content.replace(/<("[^"]*"|'[^']*'|[^'">])*>/g,'').substring(0,99) +""}</div>
 			{{/if}}
 			<div class="cont-info">
 				<div class="cont-title blog-title">
 					<p>${Blog.title.replace(/<("[^"]*"|'[^']*'|[^'">])*>/g,'').substring(0,27) +""}</p>
 				</div>
 				<div class="cont-detail"></div>
-				<div class="cont-author"><p>Author: ${User.name}</p></div>
 			</div>
 		</div>
 	</div>
