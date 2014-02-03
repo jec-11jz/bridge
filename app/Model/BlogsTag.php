@@ -27,6 +27,18 @@ class BlogsTag extends AppModel {
 		return true;
     }
 	
+	public function getBlogIdFromCsvTags($csvTags = '') {
+		$Tag = ClassRegistry::init('Tag');
+		$arrayTagIds = $Tag->getTagId($csvTags);
+		$arrayBlogsTags = $this->findAllByTagId($arrayTagIds);
+		$blogIds = array();
+		foreach ($arrayBlogsTags as $blogsTag) {
+			array_push($blogIds, $blogsTag['BlogsTag']['blog_id']);
+		}
+		
+		return $blogIds;
+	}
+	
 	public function getTagNamesFromArray($blogTags) {
 		$Tag = ClassRegistry::init('Tag');
 		$tagNames = array();

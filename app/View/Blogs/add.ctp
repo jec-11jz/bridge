@@ -74,20 +74,28 @@ $(function() {
 		<div class="spoiler spoiler-add">
 			<div class="spoiler-slider">
 				<span>ネタバレ：</span>
-				 	<select id="minbeds" class="list" name="data[Blog][spoiler]">
-					    <option value="1">1</option>
-					    <option value="2">2</option>
-					    <option value="3">3</option>
-					    <option value="4">4</option>
-					    <option value="5" selected>5</option>
-					    <option value="6">6</option>
-					    <option value="7">7</option>
-					    <option value="8">8</option>
-					    <option value="9">9</option>
-					    <option value="10">10</option>
-				 	</select>
+			 	<select id="minbeds" class="list" name="data[Blog][spoiler]">
+				    <option value="1">1</option>
+				    <option value="2">2</option>
+				    <option value="3">3</option>
+				    <option value="4">4</option>
+				    <option value="5" selected>5</option>
+				    <option value="6">6</option>
+				    <option value="7">7</option>
+				    <option value="8">8</option>
+				    <option value="9">9</option>
+				    <option value="10">10</option>
+			 	</select>
 			</div>
 		</div> <!-- spoiler -->
+		<div id='visibility'>
+			<span>公開設定：</span>
+		 	<select id="select-visibility" class="list" name="data[Blog][status]">
+			    <option value="0" selected="selected">全員に公開</option>
+			    <option value="1">友人に公開</option>
+			    <option value="2">非公開</option>
+		 	</select>
+		</div> <!-- visibility -->
 
 
 		<div class="form-editor">

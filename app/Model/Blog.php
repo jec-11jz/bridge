@@ -1,6 +1,6 @@
 <?php
 App::uses('AppModel', 'Model');
-App::uses('BlogTag', 'Model');
+App::uses('BlogsTag', 'Model');
 App::uses('Tag', 'Model');
 
 class Blog extends AppModel {

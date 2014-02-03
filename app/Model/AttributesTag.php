@@ -28,5 +28,17 @@ class AttributesTag extends AppModel {
     	}
 		return true;
     }
+	
+	public function getProductIdFromCsvTags($csvTags = '') {
+		$Tag = ClassRegistry::init('Tag');
+		$arrayTagIds = $Tag->getTagId($csvTags);
+		$arrayProductsTags = $this->findAllByTagId($arrayTagIds);
+		$productIds = array();
+		foreach ($arrayProductsTags as $productsTag) {
+			array_push($productIds, $productsTag['AttributesTag']['product_id']);
+		}
+		
+		return $productIds;
+	}
 }
 ?>

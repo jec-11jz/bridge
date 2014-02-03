@@ -17,6 +17,7 @@ class UsedBlogImage extends AppModel {
 	}
 
 	public function saveFromHtml($user_id, $blog_id, $content) {
+		$this->deleteAll(array('Blog_id'=>$blog_id));
 		if(!empty($content)){
 			// img tag 抜き出し
 			$imgSources = $this->getImageFromHtml($content);
