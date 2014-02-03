@@ -79,6 +79,11 @@ class SearchesController extends AppController {
 			$contents['sql']['products'] = $this->Product->getDataSource()->getLog();
 		}
 		$contents['tags'] = $this->Search->mergeBlogTagsAndProductTags($contents);
+		// check last page
+		$last_page = ceil((count($contents['blogs']) + count($contents['products'])) / $count);
+		if($page == $last_page){
+			$contents['lastpage'] = 'this page is last';
+		}
 		
 		$this->set('data', $contents);
 		$this->set('keyword', $keywords);
@@ -99,11 +104,6 @@ class SearchesController extends AppController {
 		$key_tags['keywords'] = null;
 		$not_key_tags['keywords'] = null;
 		$contents = array();
-		$countents['lastpage'] = null;
-		
-		if(!is_null($countents['lastpage'])){
-			return $this->apiSuccess('最後のページです');
-		}
 		
 		// get param form view
 		if(isset($this->request->query['count'])) {

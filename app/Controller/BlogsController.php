@@ -154,11 +154,16 @@ class BlogsController extends AppController {
 	}
 
 	public function api_view() {
-		$id = null;
+		$blog_id = null;
 		if(isset($this->request->query['id'])) {
-			$id = $this->request->query['id'];
+			$blog_id = $this->request->query['id'];
 		}
-		$blog = $this->Blog->findById($id);
+		$blog = $this->Blog->findById($blog_id);
+		if($blog['Blog']['user_id'] == $this->Auth->user('id')){
+			$blog['auth'] = $this->Auth->user('id');
+		} else {
+			$blog['auth'] = null;
+		}
 		if (!$blog) {
 			$this->apiError('not found', 0, 404);
 			return;

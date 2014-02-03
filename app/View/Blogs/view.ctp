@@ -27,12 +27,17 @@ $(function() {
 		url: '/api/blogs/view.json',
 		data: {'id': blog_id},
 		success: function(data){
+			console.log(data['response']);
+			// append tags
 			tags = $('#js-tag').tmpl(data['response']['Tag']);
 			$('#blog-tags').append(tags);
 			// search product from tag
 			$(function() {
 		    	$('.tag').searchFromTag();
 			});
+			// append link
+			tools = $('#js-tools').tmpl(data['response']);
+			$('#tool-links').append(tools);
 		},
 		error: function(xhr, xhrStatus) {
 			error = $('#error-message').tmpl(xhr['responseJSON']['error']);
@@ -57,27 +62,16 @@ $(function() {
 			// append spoiler slider
 			var select_spoiler = $('#js-spoiler').tmpl(spoiler['response']);
 			$('#minbeds').append(select_spoiler);
+			// slider width
+			var sliderWidth = (spoiler['response']['spoiler'] - 1) * 10 + (spoiler['response']['spoiler'] - 1);
+			$('#slider').find('div.ui-slider-range').css('width', sliderWidth + '%')
+			$('#slider').find('a.ui-slider-handle').css('left', sliderWidth  + '%')
 			// append visibility
 			$('#select-visibility option').each(function(){
 				if($(this).val() == spoiler['response']['status']){
 					$(this).attr("selected",true)
 				}
 			})
-			
-			// slider
-			var select = $( "#minbeds" );
-		    var slider = $( "<div id='slider'></div>" ).insertAfter( select ).slider({
-		      min: 1,
-		      max: 10,
-		      range: "min",
-		      value: select[ 0 ].selectedIndex + 1,
-		      slide: function( event, ui ) {
-		        select[ 0 ].selectedIndex = ui.value - 1;
-		      }
-		    });
-		    $( "#minbeds" ).change(function() {
-		      slider.slider( "value", this.selectedIndex + 1 );
-		    });
 		},
 		error: function(xhr, xhrStatus){
 			console.log('error');
@@ -94,15 +88,23 @@ $(function() {
 	</div>
 </script>
 <script id="js-spoiler" type="text/x-jquery-tmpl">
-	{{each count}}
-		{{if spoiler == this + 1}}
-			<option value=${this + 1} selected>${this + 1} </option>
-		{{else}}
-			<option value=${this + 1}>${this + 1}</option>
-		{{/if}}
-	{{/each}}
+	<option value=${spoiler} selected>${spoiler}</option>
 </script>
-
+<script id="js-tools" type="text/x-jquery-tmpl">
+	{{if auth != null}}
+		<a href="/blogs/edit/${Blog.id}" class="fa fa-pencil-square-o"></a>
+		<a name="/blogs/delete/${Blog.id}" class="fa fa-trash-o" id="confirm-delete"></a>
+	{{/if}}
+		<a href="#" class="fa fa-star">
+		<a href="/blogs/view/${Blog.id}" class="fa fa-desktop">
+</script>
+<style>
+	.list {
+		width: 22px;
+		height: 20px;
+	}
+</style>
+<!-- html -->
 <div id="div-view-blogs" class="form second-content-form" name="<?php echo h($blog['Blog']['id']); ?>">
 	<div class="form-header">
 		<div class="header-left">
@@ -118,21 +120,20 @@ $(function() {
 		<div id="<?php echo h($blog['Blog']['id']); ?>" class="blog-form">
 
 			<div id="blog-tags"></div>
-			<div class="blog-tools">
-				<a href="/blogs/edit/<?php echo h($blog['Blog']['id']); ?>" class="fa fa-pencil-square-o"></a>
-				<a href="/blogs/view/<?php echo h($blog['Blog']['id']); ?>" class="fa fa-desktop">
-				<a href="#" class="fa fa-star">
-				<a name="/blogs/delete/<?php echo h($blog['Blog']['id']); ?>" class="fa fa-trash-o" id="confirm-delete"></a>
-			</div>
+			<div id="tool-links" class="blog-tools"></div>
 			<div class="spoiler">
 				<div class="spoiler-slider">
 					<span>ネタバレ：</span>
 				 	<select name="minbeds" id="minbeds" class="list" disabled="disabled"></select>
+				 	<div id="slider" class="ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all" aria-disabled="false">
+						<div class="ui-slider-range ui-widget-header ui-corner-all ui-slider-range-min"></div>
+						<a class="ui-slider-handle ui-state-default ui-corner-all"></a>
+					</div>
 				</div>
 			</div> <!-- spoiler -->
 			<div id='visibility'>
 				<span>公開設定：</span>
-			 	<select id="select-visibility" class="list" disabled="disabled">
+			 	<select id="select-visibility" disabled="disabled">
 				    <option value="0">全員に公開</option>
 				    <option value="1">友人に公開</option>
 				    <option value="2">非公開</option>
