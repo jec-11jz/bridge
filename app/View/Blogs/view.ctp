@@ -7,9 +7,39 @@
 	$this->Html->script('jquery-ui-1.10.4.custom', array('inline' => false));
 	$this->Html->script('//ajax.microsoft.com/ajax/jquery.templates/beta1/jquery.tmpl.min.js', array('inline' => false));
 ?>
-
 <script>
 $(function() {
+	// message setting
+	(function($) {
+	    $.fn.flash_message = function(options) {
+	        //デフォルト値
+	        options = $.extend({
+	            text: 'Done',
+	            time: 750,
+	            how: 'before',
+	            class_name: ''
+	        }, options);
+	
+	        return $(this).each(function() {
+	            //指定したセレクタを探して取得
+	            if ($(this).parent().find('.flash_message').get(0)) return;
+	
+	            var message = $('<span />', {
+	                'class': 'flash_message ' + options.class_name,
+	                text: options.text
+	            //フェードイン表示
+	            }).hide().fadeIn('fast');
+	
+	            $(this)[options.how](message);
+	            //delayさせてからフェードアウト
+	            message.delay(options.time).fadeOut('normal', function() {
+	                $(this).remove();
+	            });
+	
+	        });
+	    };
+	})(jQuery);
+
 	// fn search from tag
 	;(function($) {
 		$.fn.searchFromTag = function() {
@@ -19,7 +49,37 @@ $(function() {
 			});
 		}
 	})(jQuery);
-
+	
+	function linkClick() {
+		// confirm dialog
+		$("#confirm-delete").click(function(){
+			if(window.confirm('本当にいいんですね？')){
+				location.href = $(this).attr('name');
+			}
+		});
+		// add favorite
+		$("#btn-favorite").click(function(){
+			var blog_id = $('#div-view-blogs').attr('name');
+			$.ajax({
+				type: 'GET',
+				url: '/api/blogs/add_favorites.json',
+				data: {'blog_id': blog_id},
+				success: function(data){
+				    $('#fav-message').flash_message({
+				        text: data['response'],
+				        how: 'append'
+				    });
+				},
+				error: function(xhr, xhrStatus){
+					console.log(xhr);
+				    $('#fav-message').flash_message({
+				        text: xhr['responseJSON']['error']['message'],
+				        how: 'append'
+				    });
+				}
+			})
+		});
+	}
 	// get tags from DB
 	var blog_id = $('div.blog-form').attr('id');
 	$.ajax({
@@ -31,24 +91,19 @@ $(function() {
 			// append tags
 			tags = $('#js-tag').tmpl(data['response']['Tag']);
 			$('#blog-tags').append(tags);
-			// search product from tag
+			// search from tag
 			$(function() {
 		    	$('.tag').searchFromTag();
 			});
-			// append link
+			// append tools
 			tools = $('#js-tools').tmpl(data['response']);
 			$('#tool-links').append(tools);
+			linkClick();
 		},
 		error: function(xhr, xhrStatus) {
+			console.log(xhr);
 			error = $('#error-message').tmpl(xhr['responseJSON']['error']);
-			$('#error').append(error);
-		}
-	});
-	
-	// confirm dialog
-	$("#confirm-delete").click(function(){
-		if(window.confirm('本当にいいんですね？')){
-			location.href = $(this).attr('name');
+			$('#message').append(error);
 		}
 	});
 	
@@ -79,23 +134,23 @@ $(function() {
 	});
 });
 </script>
+<!-- tag -->
 <script id="js-tag" type="text/x-jquery-tmpl">
 	<input type="button" class="tag btn-blue" value="${name}">
 </script>
-<script id="error-message" type="text/x-jquery-tmpl">
-	<div class="div-error">
-		<h3 class="error">*${message}</h3>	
-	</div>
-</script>
+<!-- spoiler -->
 <script id="js-spoiler" type="text/x-jquery-tmpl">
 	<option value=${spoiler} selected>${spoiler}</option>
 </script>
+<!-- tools -->
 <script id="js-tools" type="text/x-jquery-tmpl">
-	{{if auth != null}}
+	<div id="fav-message"></div>
+	{{if auth == 'author'}}
 		<a href="/blogs/edit/${Blog.id}" class="fa fa-pencil-square-o"></a>
 		<a name="/blogs/delete/${Blog.id}" class="fa fa-trash-o" id="confirm-delete"></a>
+	{{else}}
+		<a id="btn-favorite" class="fa fa-star">
 	{{/if}}
-		<a href="#" class="fa fa-star">
 		<a href="/blogs/view/${Blog.id}" class="fa fa-desktop">
 </script>
 <style>

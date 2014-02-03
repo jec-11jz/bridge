@@ -150,7 +150,6 @@ class UsersController extends AppController {
         $this->redirect($this->Auth->logout());
     }
 
-
     private function __send_add_email($user_id) {
         $this->EmailAuth->create();
         $emailAuth = $this->EmailAuth->findByUserId($user_id);

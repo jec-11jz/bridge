@@ -2,7 +2,7 @@
 App::uses('AppController', 'Controller');
 
 class BlogsController extends AppController {
-    public $uses = array('Blog', 'UsedBlogImage', 'User', 'Tag', 'BlogTag');
+    public $uses = array('Blog', 'UsedBlogImage', 'User', 'Tag', 'BlogsTag', 'BlogsFavorite');
 	public $components = array('RequestHandler');
 	
 	
@@ -11,7 +11,7 @@ class BlogsController extends AppController {
     	// 親クラス（AppController）読み込み
         parent::beforeFilter();
 		// permitted access before login
-        $this->Auth->allow('view', 'api_view', 'api_get_blog_info');
+        $this->Auth->allow('view', 'api_view', 'api_get_blog_info', 'api_add_favorites');
     }
 	
 	public function index()
@@ -159,10 +159,12 @@ class BlogsController extends AppController {
 			$blog_id = $this->request->query['id'];
 		}
 		$blog = $this->Blog->findById($blog_id);
-		if($blog['Blog']['user_id'] == $this->Auth->user('id')){
-			$blog['auth'] = $this->Auth->user('id');
-		} else {
+		if(is_null($this->Auth->user('id'))){
 			$blog['auth'] = null;
+		} else if($blog['Blog']['user_id'] == $this->Auth->user('id')){
+			$blog['auth'] = 'author';
+		} else {
+			$blog['auth'] = 'another';
 		}
 		if (!$blog) {
 			$this->apiError('not found', 0, 404);
@@ -170,6 +172,30 @@ class BlogsController extends AppController {
 		}
 
 		$this->apiSuccess($blog);
+	}
+	
+	public function api_add_favorites() {
+		$blog_id = null;
+		$user_id = null;
+		if(!empty($this->request->query['blog_id'])){
+			$blog_id = $this->request->query['blog_id'];
+		}
+		
+		if(is_null($blog_id)){
+			return $this->apiError('ブログが存在しません');
+		}
+		if(is_null($this->Auth->user('id'))){
+			return $this->apiError('ログインしてください');
+		}
+		$user_id = $this->Auth->user('id');
+		$this->BlogsFavorite->set(array(
+			'blog_id' => $blog_id,
+			'user_id' => $user_id
+		));
+		$this->BlogsFavorite->save();
+		
+		return $this->apiSuccess('お気に入りに追加しました');
+		
 	}
 
     public function delete($id = null) {
@@ -182,7 +208,7 @@ class BlogsController extends AppController {
         if($this->Blog->delete($id)) {
             // 削除成功した場合はメッセージを出し、indexへリダイレクト
             $this->Session->setFlash('記事'. $id . 'を削除しました');
-            $this->redirect(array('controller' => 'searches', 'action' => 'index'));
+            $this->redirect(array('controller' => 'blogs', 'action' => 'index'));
         }
 	}
 }
