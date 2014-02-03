@@ -28,9 +28,22 @@ div.second-content-form{
         &.blog{
           background-color: $yellow;
           color: $black;
+          &:hover{
+            background-color: lighten($yellow,10%);
+          }
         }
-        &.template{background-color: $col-black2};
-        &.product{background-color: $blue};
+        &.template{
+          background-color: $col-black2;
+          &:hover{
+            background-color: lighten($col-black2, 10%);
+          }
+        }
+        &.product{
+          background-color: $blue;
+          &:hover{
+            background-color:lighten($blue, 10%);
+          }
+        }
       }
     }
   }

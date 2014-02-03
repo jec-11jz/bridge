@@ -878,8 +878,7 @@ div.modal-content {
     margin: 0 auto;
     padding: 0 0 2em  0;
     overflow: scroll;
-    overflow: hiddern;
-    height: 17em; }
+    height: 19em; }
     /* line 44, ../sass/templates.scss */
     #div-index-templates .form-body #add-attributes .attr, #div-edit-templates .form-body #add-attributes .attr, #div-add-templates .form-body #add-attributes .attr {
       float: left;
