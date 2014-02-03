@@ -65,7 +65,7 @@ class BlogsController extends AppController {
 			//メッセージを出力
 			$this->Session->setFlash('記事を保存しました');
 			// index.phpへリダイレクト
-			$this->redirect(array('controller' => 'blogs', 'action' => 'index'));
+			$this->redirect(array('controller' => 'searches', 'action' => 'index'));
 		} else {
 			$this->Session->setFlash('記事を保存できません');
 		}
@@ -100,7 +100,7 @@ class BlogsController extends AppController {
 			$result = $this->Blog->saveAll($blogData);
 			if ($result) {
 				$this->Session->setFlash('記事を保存しました');
-				$this->redirect(array('controller' => 'blogs', 'action' => 'index'));
+				$this->redirect(array('controller' => 'searches', 'action' => 'index'));
 			} else {
 				$this->Session->setFlash('記事を保存できません');
 			}
@@ -177,7 +177,7 @@ class BlogsController extends AppController {
         if($this->Blog->delete($id)) {
             // 削除成功した場合はメッセージを出し、indexへリダイレクト
             $this->Session->setFlash('記事'. $id . 'を削除しました');
-            $this->redirect(array('action' => 'index'));
+            $this->redirect(array('controller' => 'searches', 'action' => 'index'));
         }
 	}
 }
