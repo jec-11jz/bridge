@@ -37,8 +37,8 @@
 	<div id="search-custom">
 		<legend>Scope</legend>
 		<div class="form-tag">
-			Tag Search<input name="key-tags" id="key-tags" class="form-control tags" value="<?php echo h($key_tags['keywords']); ?>">
-			Not<input name="not-key-tags" id="not-key-tags" class="form-control tags">
+			Tag Search<input type="hidden" name="key-tags" id="key-tags" class="form-control tags" value="<?php echo h($key_tags['keywords']); ?>">
+			Not<input type="hidden" name="not-key-tags" id="not-key-tags" class="form-control tags">
 		</div>
 		<legend>関連タグ</legend>
 		<div id="related-tags"></div>
@@ -128,8 +128,6 @@ $(function() {
 				if(data['response']['lastpage'] != null){
 					lastpage = true;
 				}
-				console.log('data...');
-				console.log(data['response']);
 				// products
 				products = $('#js-search-products').tmpl(data['response']['products']);
 				$('#search-products-result').append(products);

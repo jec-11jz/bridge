@@ -6,132 +6,133 @@
 	$this->Html->script('tag/tags', array('inline' => false));
 	$this->Html->script('//ajax.microsoft.com/ajax/jquery.templates/beta1/jquery.tmpl.min.js', array('inline' => false));
 ?>
-
-
-<script>
-$(function() {
-	// DBからタグを取得
-	tag = null;
-	$.ajax({
-		type: 'GET',
-		url: '/api/tags/get_most_used.json',
-		success: function(tags){
-			tag = tags.response;
-			//tagbox
-			$('.tags').tagbox({
-			    url: tags.response,
-    			lowercase: true
-  			});
-		},
-		error: function(xhr, xhrStatus){
-			$('.div-error').remove();
-			error = $('#error-message').tmpl(xhr['responseJSON']['error']);
-			$('#error').append(error);
-			$('body,html').animate({
-		        scrollTop: 0
-		    }, 100);
-		    return false;
-		}
-	});
-	
-	//POSTデータをコントローラに渡す
-	$("#btn-register").click(function() {
-		var url = $("div#image").find("img");
-		var sendData = {};
-		sendData['data'] = {};
-		// Product
-		sendData['data']['Product'] = {};
-		sendData['data']['Product']['id'] = $('#div-view-products').find('form').attr('id');
-		$('#div-view-products').find('.product-info').each(function(){
-			if($(this).val() != ""){
-				sendData['data']['Product'][$(this).attr('name')] = $(this).val();
-			} else {
-				console.log('aaaaaa');
-				return;
-			}
-		});
-		if(url.attr('src') != null){
-			sendData['data']['Product']['image_url'] = url.attr('src');
-		}
-		// AttributeTags
-		var cntTags = 0;
-		sendData['data']['AttributeTag'] = {};
-		$('#div-view-products').find('.attr').each(function(){
-			if($(this).find('.post-attribute').val() != ""){
-				sendData['data']['AttributeTag'][cntTags] = {};
-				sendData['data']['AttributeTag'][cntTags]['attribute'] = $(this).find('.post-attribute').val();
-				sendData['data']['AttributeTag'][cntTags]['tag'] = $(this).find('.post-tag').val();
-				cntTags++;
-			}
-		});
-		// ajax
-		$.ajax({
-			type: "POST",
-			url: "/api/products/edit.json",
-			data: sendData,
-			success: function(data){
-			   　location.href = "/products/index";
-			},
-			error: function(xhr, xhrStatus) {
-				$('.div-error').remove();
-				error = $('#error-message').tmpl(xhr['responseJSON']['error']);
-				$('#error').append(error);
-				$('body,html').animate({
-			        scrollTop: 0
-			    }, 100);
-			    return false;
-			}
-		});
-	});
-});
-</script>
 <script>
 $(function(){
-	// attribute's form add
-	$(document).on('click', '.btn-add-attribute', function(){
-		var attrCnt = 1;
-		while($('#attribute' + attrCnt).size() > 0){
-			attrCnt++;
+	// message setting
+	(function($) {
+	    $.fn.flash_message = function(options) {
+	        //デフォルト値
+	        options = $.extend({
+	            text: 'Done',
+	            time: 750,
+	            how: 'before',
+	            class_name: ''
+	        }, options);
+	
+	        return $(this).each(function() {
+	            //指定したセレクタを探して取得
+	            if ($(this).parent().find('.flash_message').get(0)) return;
+	
+	            var message = $('<span />', {
+	                'class': 'flash_message ' + options.class_name,
+	                text: options.text
+	            //フェードイン表示
+	            }).hide().fadeIn('fast');
+	
+	            $(this)[options.how](message);
+	            //delayさせてからフェードアウト
+	            message.delay(options.time).fadeOut('normal', function() {
+	                $(this).remove();
+	            });
+	
+	        });
+	    };
+	})(jQuery);
+	// fn search from tag
+	;(function($) {
+		$.fn.searchFromTag = function() {
+			$("#tags-attribute").find('input.tag').click(function() {
+				var tag_name = $(this).val();
+				location.href = '/searches/index/?key_tags=' + tag_name;
+			});
 		}
-		$("#tags-attribute").append('<div id="attribute' + attrCnt + '" class="attr">\n');
-		$('#attribute' + attrCnt).append('<input type="text" id="attribute' + attrCnt +'" class="form-control post-attribute attribute attr-input" name="data[Attribute][name][]">\n');
-				$('#attribute' + attrCnt).append('<input type="button" value="×" id="attribute' + attrCnt +'" class="btn-delete-attribute attribute">');
-		$('#attribute' + attrCnt).append('<input type="text" id="attribute' + attrCnt +'" class="post-tag tags attr-input">\n');
-
-		$('.tags').tagbox({
-			url: tag,
-    		lowercase: true
-  		});
+	})(jQuery);
+	
+	// get tags from DB
+	var product_id = $('#div-view-products').attr('name');
+	$.ajax({
+		type: 'GET',
+		url: '/api/products/view.json',
+		data: {'product_id': product_id},
+		success: function(data){
+			console.log(data['response']);
+			// append tags
+			tags = $('#js-tag').tmpl(data['response']['Attribute']);
+			$('#tags-attribute').append(tags);
+			// search from tag
+			$(function() {
+		    	$('.tag').searchFromTag();
+			});
+		},
+		error: function(xhr, xhrStatus) {
+			console.log(xhr);
+		}
 	});
-	// attribute's form delete
-	$(document).on('click', '.btn-delete-attribute', function(){
-		attrID = $(this).attr('id');
-		$("div#" + attrID).remove();
-	});
-	// delete all attribute's form
-	$('#btn-delete').click(function() {
-		$('.attr').remove();
+	// add favorite
+	$("#tool-links").find('.btn-favorite').click(function(){
+		var product_id = $('#div-view-products').attr('name');
+		var status = $(this).attr('name');
+		$.ajax({
+			type: 'POST',
+			url: '/api/products/add_favorites.json',
+			data: {
+				'product_id': product_id,
+				'status': status
+			},
+			success: function(data){
+				console.log('aaaaaa');
+				console.log(data['response']);
+				$('#fav-message').flash_message({
+			        text: data['response'],
+			        how: 'append'
+		    	});
+			    $("#tool-links").find('a').removeClass('btn-favorite');
+			},
+			error: function(xhr, xhrStatus){
+				console.log('ssssss');
+				console.log(xhr['responseJSON']['error']['message']);
+			    $('#fav-message').flash_message({
+			        text: xhr['responseJSON']['error']['message'],
+			        how: 'append'
+			    });
+			}
+		})
 	});
 });
 </script>
-<script id="error-message" type="text/x-jquery-tmpl">
-	<div class="div-error">
-		<h3 class="error">*${message}</h3>	
+<script id="js-tag" type="text/x-jquery-tmpl">
+	<div id="product-tags" class="tags-set">
+		<span class="attributes">${name}</span>
+		{{each Tag}}
+			<input type="button" class="tag btn-blue" value="${this.name}">
+		{{/each}}
 	</div>
 </script>
-
-
-
 <style type="text/css">
 .form-button{
 	clear: both;
 }
+div.body-outline {
+	overflow: scroll;
+	max-height: 25em;
+}
+#tags-attribute {
+	clear: both;
+	display:block;
+}
+#product-tags {
+	margin-top: 10px;
+}
+input.tag{
+	margin: 5px 0px 0px 2px;
+}
+.attributes {
+	clear: both;
+	display:block;
+}
 </style>
 
-
-<div id="div-view-products" class="form second-content-form">
-<form method="post" id="<?php echo h($product['Product']['id']); ?>" action="/products/edit/<?php echo h($product['Product']['id']); ?>">
-
+<div id="div-view-products" class="form second-content-form" name="<?php echo h($product['Product']['id']); ?>">
 	<div class="form-header">
 		<div class="header-left">
 			<a href="/products/index" class="header-link">View</a>
@@ -142,11 +143,9 @@ $(function(){
 		<div class="div-decoration">
 			<span>Products</span>
 		</div>
-		
 	</div>
 
 	<div class="form-body">
-		<div id="error"></div>
 		<div id="image">
 			<?php if($product['Product']['image_url']) { ?>
 				<img id="img" src="<?php echo h($product['Product']['image_url']); ?>" width="100%" style="margin: auto; visibility: visible;">
@@ -159,21 +158,16 @@ $(function(){
 			<span><?php echo h($product['Product']['outline']); ?></span>
 		</div> 
 
-		<div id="tags-attribute">
-			<?php foreach($product['Attribute'] as $attribute) : ?>
-				<div id="blog-tags" class="tags-set">
-					<span class="tag-title"><?php echo h($attribute['name']); ?></span>
-					<span class="tag btn-blue"><?php echo h($attribute['Tag']['tagNamesCSV']); ?></span>	
-				</div>
-
-			<?php endforeach; ?>
-		</div>
+		<div id="tags-attribute"></div>
 	</div> <!-- form-body -->
 		
-		
-	
 	<div class="form-footer">
 		<a href="/products/edit/<?php echo $product['Product']['id']; ?>" class="btn-blue">Edit</a>
+	</div>
+	<div id="tool-links">
+		<div id="fav-message"></div>
+		<a name="2" class="fa fa-star btn-favorite">Watched</a>
+		<a name="1" class="fa fa-star btn-favorite">Want to see</a>
 	</div>
 
 </form>

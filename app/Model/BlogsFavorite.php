@@ -9,14 +9,18 @@ class BlogsFavorite extends AppModel {
 	
 	public function saveUsersBlogs ($blog_id = null, $user_id = null){
 		$user_fav = $this->findByUserIdAndBlogId($user_id, $blog_id);
+		$message = null;
 		if(empty($user_fav)){
 			$this->set(array(
 				'blog_id' => $blog_id,
 				'user_id' => $user_id
 			));
 			$this->save();
+			$message = 'お気に入りに追加しました。';
+		} else {
+			$message = 'すでにお気に入りに追加済みです。';
 		}
-		return;
+		return $message;
 	}
 }
 ?>

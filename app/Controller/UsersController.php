@@ -116,7 +116,7 @@ class UsersController extends AppController {
         $this->User->id = $this->Auth->user('id');
 		$data = $this->User->findById($this->Auth->user('id'));
 		
-		//ログイン中のユーザのIDからのユーザ情報を検索
+		// ログイン中のユーザのIDからのユーザ情報を検索
         if ($data) {
 	        if ($this->request->is('post') || $this->request->is('put')) {
 	        	$saved_data = $this->User->save($this->data, TRUE, array('nickname', 'email'));
@@ -141,9 +141,20 @@ class UsersController extends AppController {
         }
 		
 		$this->set('error', $this->User->validationErrors);
-		
-
     }
+
+	public function api_edit() {
+		$user_id = null;
+		if(empty($this->request->query['user_id'])){
+			$user_id = $this->Auth->user('id');
+		}
+		$data = $this->User->findById($this->Auth->user('id'));
+		if(empty($data)){
+			$this->apiError('this user is not found!');
+		}
+		
+	}
+	
 	//ログアウト処理
 	public function logout($id = null)
     {

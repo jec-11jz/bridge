@@ -21,7 +21,7 @@ $(function() {
 	});
 	
 	// get tags form DB
-	var tag = [];
+	var product_id = $();
 	$.ajax({
 		type: 'GET',
 		url: '/api/tags/get_most_used.json',
