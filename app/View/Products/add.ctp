@@ -178,8 +178,6 @@ $(function(){
 		<h3 class="error">*${message}</h3>	
 	</div>
 </script>
-
-
 <div id="div-add-products" class="form second-content-form">
 <form method="post" action="/products/add">
 

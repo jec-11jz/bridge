@@ -76,6 +76,7 @@ class ProductsController extends AppController {
 		foreach($this->request->data['AttributeTag'] as $tags) {
 			if(!($tags['tag'] === "")){
 				// add attribute
+				$this->Attribute->create();
 				$this->Attribute->set('name', $tags['attribute']);
 				$attr_result = $this->Attribute->save();
 				// add Tags
@@ -130,17 +131,16 @@ class ProductsController extends AppController {
 		);
 		
 		foreach($this->request->data['AttributeTag'] as $tags) {
-			if(!($tags['tag'] === "")){
-				$attr = $this->Attribute->findByName($tags['attribute']);
+			if(!empty($tags['tag'])){
+				$attr = $this->Attribute->findByName($tags['attribute']);	
 				// add attribute
 				if(empty($attr)){
+					$this->Attribute->create();
 					$this->Attribute->set('name', $tags['attribute']);
 					$this->Attribute->save();
 				}
 				// add Tags
-				$this->Tag->saveFromNamesCSV(
-					$tags['tag']
-				);
+				$this->Tag->saveFromNamesCSV($tags['tag']);
 				// add AttirbuteTags
 				$tag_attribute = $this->Attribute->findByName($tags['attribute']);
 				$this->AttributesTag->addAttributeTags(
@@ -151,7 +151,7 @@ class ProductsController extends AppController {
 			}
 		}
 		// success
-        $this->apiSuccess(array('message' => 'save success'));		
+        return $this->apiSuccess('save success');		
 		
 	}
 

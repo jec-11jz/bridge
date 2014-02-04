@@ -11,6 +11,7 @@ class ProductsFavorite extends AppModel {
 		$user_fav = $this->findByUserIdAndProductIdAndStatus($user_id, $product_id, $status);
 		$message = null;
 		if(empty($user_fav)){
+			$this->create();
 			$this->set(array(
 				'product_id' => $product_id,
 				'user_id' => $user_id,

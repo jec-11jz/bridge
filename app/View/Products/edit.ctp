@@ -68,7 +68,6 @@ $(function() {
 		$('#div-edit-products').find('.product-info').each(function(){
 			if($(this).val() != ""){
 				sendData['data']['Product'][$(this).attr('name')] = $(this).val();
-
 			} else {
 				return;
 			}
@@ -95,9 +94,12 @@ $(function() {
 			url: "/api/products/edit.json",
 			data: sendData,
 			success: function(data){
-		   　	location.href = "/products/index";
-			},
+				console.log('get...');
+				console.log(data);
+		   // 　	location.href = "/products/index";
+		  	},
 			error: function(xhr, xhrStatus) {
+				console.log('error...');
 				$('.div-error').remove();
 				error = $('#error-message').tmpl(xhr['responseJSON']['error']);
 				$('#error').append(error);

@@ -11,6 +11,7 @@ class BlogsFavorite extends AppModel {
 		$user_fav = $this->findByUserIdAndBlogId($user_id, $blog_id);
 		$message = null;
 		if(empty($user_fav)){
+			$this->create();
 			$this->set(array(
 				'blog_id' => $blog_id,
 				'user_id' => $user_id
