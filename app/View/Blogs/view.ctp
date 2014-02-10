@@ -147,11 +147,12 @@ $(function() {
 	<div id="fav-message"></div>
 	{{if auth == 'author'}}
 		<a href="/blogs/edit/${Blog.id}" class="fa fa-pencil-square-o"></a>
+		<a id="btn-favorite" class="fa fa-star">
 		<a name="/blogs/delete/${Blog.id}" class="fa fa-trash-o" id="confirm-delete"></a>
 	{{else}}
 		<a id="btn-favorite" class="fa fa-star">
 	{{/if}}
-		<a href="/blogs/view/${Blog.id}" class="fa fa-desktop">
+		<!-- <a href="/blogs/view/${Blog.id}" class="fa fa-desktop"> -->
 </script>
 <style>
 	.list {
