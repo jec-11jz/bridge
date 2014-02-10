@@ -96,8 +96,8 @@ $(function() {
 			success: function(data){
 				console.log('get...');
 				console.log(data);
-		   // 　	location.href = "/products/index";
-		  	},
+		   　	location.href = "/products/index";
+			},
 			error: function(xhr, xhrStatus) {
 				console.log('error...');
 				$('.div-error').remove();
