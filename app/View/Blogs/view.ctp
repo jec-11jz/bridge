@@ -58,18 +58,17 @@ $(function() {
 			}
 		});
 		// add favorite
-		$("#tool-links").find('.btn-favorite').click(function(){
+		$("#btn-favorite").click(function(){
 			var blog_id = $('#div-view-blogs').attr('name');
 			$.ajax({
-				type: 'POST',
+				type: 'GET',
 				url: '/api/blogs/add_favorites.json',
 				data: {'blog_id': blog_id},
 				success: function(data){
-					$('#fav-message').flash_message({
+				    $('#fav-message').flash_message({
 				        text: data['response'],
 				        how: 'append'
-			    	});
-				    $("#tool-links").find('a').removeClass('btn-favorite');
+				    });
 				},
 				error: function(xhr, xhrStatus){
 					console.log(xhr);
@@ -88,6 +87,7 @@ $(function() {
 		url: '/api/blogs/view.json',
 		data: {'id': blog_id},
 		success: function(data){
+			console.log(data['response']);
 			// append tags
 			tags = $('#js-tag').tmpl(data['response']['Tag']);
 			$('#blog-tags').append(tags);
@@ -102,6 +102,8 @@ $(function() {
 		},
 		error: function(xhr, xhrStatus) {
 			console.log(xhr);
+			error = $('#error-message').tmpl(xhr['responseJSON']['error']);
+			$('#message').append(error);
 		}
 	});
 	
@@ -145,15 +147,12 @@ $(function() {
 	<div id="fav-message"></div>
 	{{if auth == 'author'}}
 		<a href="/blogs/edit/${Blog.id}" class="fa fa-pencil-square-o"></a>
+		<a id="btn-favorite" class="fa fa-star">
 		<a name="/blogs/delete/${Blog.id}" class="fa fa-trash-o" id="confirm-delete"></a>
 	{{else}}
-		{{if favorite != null}}
-			<a class="fa fa-star" disabled="disabled"></a>
-		{{else}}
-			<a class="fa fa-star btn-favorite"></a>
-		{{/if}}
+		<a id="btn-favorite" class="fa fa-star">
 	{{/if}}
-		<a href="/blogs/view/${Blog.id}" class="fa fa-desktop"></a>
+		<!-- <a href="/blogs/view/${Blog.id}" class="fa fa-desktop"> -->
 </script>
 <style>
 	.list {
@@ -200,6 +199,7 @@ $(function() {
 			<div class="text-body">
 				<?php echo $blog['Blog']['content']; ?>
 			</div>
+			
 		</div>
 	</div>
 

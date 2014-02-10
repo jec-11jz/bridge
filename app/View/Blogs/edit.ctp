@@ -13,15 +13,8 @@
 <!-- JS tag -->
 <script>
 $(function() {
-	// confirm dialog
-	$("#confirm-delete").click(function(){
-		if(window.confirm('本当にいいんですね？')){
-			location.href = $(this).attr('name');
-		}
-	});
-	
 	// get tags form DB
-	var product_id = $();
+	var tag = [];
 	$.ajax({
 		type: 'GET',
 		url: '/api/tags/get_most_used.json',
@@ -32,8 +25,8 @@ $(function() {
     			lowercase : true
   			});
 		},
-		error: function(xhr, xhrStatus){
-			console.log('tags are not found');
+		error: function(tags){
+			console.log('error');
 		}
 	});
 	
@@ -53,6 +46,7 @@ $(function() {
 					$(this).attr("selected",true)
 				}
 			})
+			
 			// slider
 			var select = $( "#minbeds" );
 		    var slider = $( "<div id='slider'></div>" ).insertAfter( select ).slider({
@@ -83,6 +77,18 @@ $(function() {
 		{{/if}}
 	{{/each}}
 </script>
+<!-- tools -->
+<script id="js-tools" type="text/x-jquery-tmpl">
+	<div id="fav-message"></div>
+	{{if auth == 'author'}}
+		<a href="/blogs/edit/${Blog.id}" class="fa fa-pencil-square-o"></a>
+		<a id="btn-favorite" class="fa fa-star">
+		<a name="/blogs/delete/${Blog.id}" class="fa fa-trash-o" id="confirm-delete"></a>
+	{{else}}
+		<a id="btn-favorite" class="fa fa-star">
+	{{/if}}
+		<!-- <a href="/blogs/view/${Blog.id}" class="fa fa-desktop"> -->
+</script>
 <!-- html -->
 <div id="div-edit-blogs" class='form second-content-form' name="<?php echo h($post['Blog']['id']); ?>">
 <form id="BlogEditForm"  action="/blogs/edit/<?php echo h($post['Blog']['id']); ?>" method="post">
@@ -101,8 +107,11 @@ $(function() {
 	<div class="form-body">
 
 		<input type="text" id="tags" name="data[Tag][name]" value="<?php echo h($post['Tag']['namesCSV']); ?>" class="input_form">
-		<div class="blog-tools">
-			<a href="/blogs/delete/"<?php echo h($post['Blog']['id']); ?> class="fa fa-trash-o" id="confirm-delete"></a>
+		<div id="tool-links" class="blog-tools">
+			<a href="#" class="fa fa-pencil-square-o"></a>
+			<a href="#" class="fa fa-desktop">
+			<a href="#" class="fa fa-star">
+			<a href="#" class="fa fa-trash-o"></a>
 		</div>
 
 		<div class="spoiler">
