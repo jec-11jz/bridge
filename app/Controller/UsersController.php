@@ -9,7 +9,6 @@ App::uses('CakeEmail', 'Network/Email');
  * @property User $User
  */
 class UsersController extends AppController {
-	public $layout = 'menu';
 	//モデルの指定
 	public $uses = array('User', 'EmailAuth');
 	public $components = array('RequestHandler');
@@ -20,7 +19,7 @@ class UsersController extends AppController {
     	//親クラス（AppController）読み込み
         parent::beforeFilter();
 		//permitted access before login
-        $this->Auth->allow('add', 'api_add', 'login', 'api_login', 'index', 'test');
+        $this->Auth->allow('add', 'api_add', 'login', 'api_login', 'index');
 		$this->set('loginInformation', $this->Auth->User());
 	    
     }
@@ -116,7 +115,7 @@ class UsersController extends AppController {
         $this->User->id = $this->Auth->user('id');
 		$data = $this->User->findById($this->Auth->user('id'));
 		
-		//ログイン中のユーザのIDからのユーザ情報を検索
+		// ログイン中のユーザのIDからのユーザ情報を検索
         if ($data) {
 	        if ($this->request->is('post') || $this->request->is('put')) {
 	        	$saved_data = $this->User->save($this->data, TRUE, array('nickname', 'email'));
@@ -141,9 +140,43 @@ class UsersController extends AppController {
         }
 		
 		$this->set('error', $this->User->validationErrors);
-		
-
     }
+
+	public function api_edit() {
+		$user_id = $this->Auth->user('id');
+		if(empty($this->request->query['user_id'])){
+			$user_id = $this->Auth->user('id');
+		}
+		$this->User->id = $user_id;
+		$data = $this->User->findById($this->Auth->user('id'));
+		if(empty($data)){
+			return $this->apiError('this user is not found!');
+		}
+		
+		if ($this->request->is(array('post'))) {
+			$result = $this->User->save($this->request->data);
+
+			if ($result) {
+				//セッション情報の更新
+				$this->Session->write('Auth.User.nickname', $result['User']['nickname']);
+				$this->Session->write('Auth.User.profile', $result['User']['profile']);
+				$this->Session->write('Auth.User.email', $result['User']['email']);
+				$this->Session->write('Auth.User.users_image', $result['User']['users_image']);
+				
+			}
+		} else {
+			return $this->apiError('this method is not post');
+		}
+
+		return $this->apiSuccess('編集しました');
+		
+	}
+	
+	public function api_get_info(){
+		$user_info = $this->Auth->user();
+		$this->apiSuccess($user_info);
+	}
+	
 	//ログアウト処理
 	public function logout($id = null)
     {

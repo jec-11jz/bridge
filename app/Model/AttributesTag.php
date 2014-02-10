@@ -7,26 +7,29 @@ class AttributesTag extends AppModel {
 	public $belongsTo = array('Product', 'Tag', 'Attribute');
 
 	// TODO: 多分修正必要
-	public function addAttributeTags($tag_name, $attribute_id, $product_id){
+	public function addAttributeTags($tag_names = null, $attribute_id = null, $product_id = null){
 		$Tag = ClassRegistry::init('Tag');
-    	if(isset($tag_name)){
+		$message = null;
+    	if(!empty($tag_names)){
 			//送らてきたタグのカンマで区切られた文字列を分解す
-			$tags = explode(",", $tag_name);
+			$tags = $Tag->parseTagCSV($tag_names);
 			foreach ($tags as $tag) {
-				$tag = trim($tag);
 				$result = $Tag->findByName($tag);
-				if($result) {
+				if(!empty($result)) {
 					// 新規レコード生成
 		            $this->create();
 					$this->set(array(
 						'tag_id'=>$result['Tag']['id'], 
 						'attribute_id'=>$attribute_id,
-						'product_id'=>$product_id));
+						'product_id'=>$product_id
+					));
 		            $this->save();
+					$message = 'success add attributes_tags';
 				}
 			}
     	}
-		return true;
+		$message = 'fail add attributes_tags';
+		return $message;
     }
 	
 	public function getProductIdFromCsvTags($csvTags = '') {

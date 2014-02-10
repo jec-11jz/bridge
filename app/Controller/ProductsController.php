@@ -3,9 +3,17 @@ App::uses('AppController', 'Controller');
 
 class ProductsController extends AppController {
 	
-	public $uses = array('Template', 'Attribute', 'User', 'Product', 'Tag', 'AttributesTag', 'ProductsTag', 'AttributesTemplate');
+	public $uses = array('Template', 'Attribute', 'User', 'Product', 'ProductsFavorite', 'Tag', 'AttributesTag', 'ProductsTag', 'AttributesTemplate');
 	public $components = array('RequestHandler');
-
+	
+	public function beforeFilter()
+    {
+    	// 親クラス（AppController）読み込み
+        parent::beforeFilter();
+		// permitted access before login
+        $this->Auth->allow('view', 'api_view', 'api_add_favorites');
+    }
+	
 	public function index(){
 		//send templates to view
 		$products = $this->Product->find('all');
@@ -68,6 +76,7 @@ class ProductsController extends AppController {
 		foreach($this->request->data['AttributeTag'] as $tags) {
 			if(!($tags['tag'] === "")){
 				// add attribute
+				$this->Attribute->create();
 				$this->Attribute->set('name', $tags['attribute']);
 				$attr_result = $this->Attribute->save();
 				// add Tags
@@ -122,17 +131,16 @@ class ProductsController extends AppController {
 		);
 		
 		foreach($this->request->data['AttributeTag'] as $tags) {
-			if(!($tags['tag'] === "")){
-				$attr = $this->Attribute->findByName($tags['attribute']);
+			if(!empty($tags['tag'])){
+				$attr = $this->Attribute->findByName($tags['attribute']);	
 				// add attribute
 				if(empty($attr)){
+					$this->Attribute->create();
 					$this->Attribute->set('name', $tags['attribute']);
 					$this->Attribute->save();
 				}
 				// add Tags
-				$this->Tag->saveFromNamesCSV(
-					$tags['tag']
-				);
+				$this->Tag->saveFromNamesCSV($tags['tag']);
 				// add AttirbuteTags
 				$tag_attribute = $this->Attribute->findByName($tags['attribute']);
 				$this->AttributesTag->addAttributeTags(
@@ -143,7 +151,7 @@ class ProductsController extends AppController {
 			}
 		}
 		// success
-        $this->apiSuccess(array('message' => 'save success'));		
+        return $this->apiSuccess('save success');		
 		
 	}
 
@@ -163,21 +171,53 @@ class ProductsController extends AppController {
 		$this->set('product', $product);
 		$this->set('product_names', $product_names);
 	}
+	
 	public function view($product_id = null) {
 		if(!$product_id){
 			throw new NotFoundException(__('product_id is not found'));
 		}
 		//必要な情報の取得
 		$product = $this->Product->findById($product_id);
-		$product_names = str_replace(',' , ', ' ,$product['Product']['name']);
-		
-		foreach($product['Attribute'] as &$product_attr) {
-			$product_attr['Tag']['tagNamesCSV'] = $this->Tag->tagNamesToCSV($product_attr['Tag']);
-		}
-		unset($product_attr);
 		
 		$this->set('product', $product);
-		$this->set('product_names', $product_names);
+	}
+	
+	public function api_view() {
+		$product_id = null;
+		$products = array();
+		if(!empty($this->request->query['product_id'])){
+			$product_id = $this->request->query['product_id'];
+		}
+		$products = $this->Product->findById($product_id);
+		
+		if(empty($products)){
+			return $this->apiError('作品が存在しません。');
+		}
+		unset($product_attr);
+		return $this->apiSuccess($products);
+	}
+	
+	public function api_add_favorites() {
+		$product_id = null;
+		$user_id = null;
+		$status = null;
+		$message = null;
+		if(!empty($this->request->data['product_id'])){
+			$product_id = $this->request->data['product_id'];
+		}
+		
+		if(!empty($this->request->data['status'])){
+			$status = $this->request->data['status'];
+		}
+		if(is_null($product_id)){
+			return $this->apiError('作品が存在しません');
+		}
+		if(is_null($this->Auth->user('id'))){
+			return $this->apiError('ログインしてください');
+		}
+		$user_id = $this->Auth->user('id');
+		$message = $this->ProductsFavorite->saveUsersProducts($product_id, $user_id, $status);
+		return $this->apiSuccess($message);
 	}
 
 	public function delete($product_id = null) {

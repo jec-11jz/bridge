@@ -170,15 +170,22 @@ class BlogsController extends AppController {
 			$this->apiError('not found', 0, 404);
 			return;
 		}
-
+		$fav = $this->BlogsFavorite->findByUserIdAndBlogId($this->Auth->user('id'), $blog_id);
+		if(empty($fav)){
+			$blog['favorite'] = null;
+		} else {
+			$blog['favorite'] = $fav;
+		}
+	
+		
 		$this->apiSuccess($blog);
 	}
 	
 	public function api_add_favorites() {
 		$blog_id = null;
 		$user_id = null;
-		if(!empty($this->request->query['blog_id'])){
-			$blog_id = $this->request->query['blog_id'];
+		if(!empty($this->request->data['blog_id'])){
+			$blog_id = $this->request->data['blog_id'];
 		}
 		
 		if(is_null($blog_id)){
@@ -188,14 +195,9 @@ class BlogsController extends AppController {
 			return $this->apiError('ログインしてください');
 		}
 		$user_id = $this->Auth->user('id');
-		$this->BlogsFavorite->set(array(
-			'blog_id' => $blog_id,
-			'user_id' => $user_id
-		));
-		$this->BlogsFavorite->save();
+		$message = $this->BlogsFavorite->saveUsersBlogs($blog_id, $user_id);
 		
-		return $this->apiSuccess('お気に入りに追加しました');
-		
+		return $this->apiSuccess($message);
 	}
 
     public function delete($id = null) {
