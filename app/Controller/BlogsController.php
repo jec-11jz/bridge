@@ -11,7 +11,7 @@ class BlogsController extends AppController {
     	// 親クラス（AppController）読み込み
         parent::beforeFilter();
 		// permitted access before login
-        $this->Auth->allow('view', 'api_view', 'api_get_blog_info', 'api_add_favorites');
+        $this->Auth->allow('view', 'api_view', 'api_get_blog_info', 'api_add_favorites', 'api_get_user_blogs');
     }
 	
 	public function index()
@@ -110,6 +110,21 @@ class BlogsController extends AppController {
 		$post['Tag']['namesCSV'] = $this->Tag->tagNamesToCSV($post['Tag']);
 		$this->set('post', $post);
     }
+
+	public function api_get_user_blogs(){
+		$user_id = null;
+		$blog_info = null;
+		if(!empty($this->request->query['user_id'])){
+			$user_id = $this->request->query['user_id'];
+		}
+
+		$blog_info['No'] = $this->Blog->findAllByUserId($user_id, 
+			array(), 
+			array('Blog.created'=>'desc')
+		);
+		
+		return $this->apiSuccess($blog_info);
+	}
 
 	public function api_get_blog_info(){
 		$blog_id = null;

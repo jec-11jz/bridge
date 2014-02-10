@@ -77,7 +77,7 @@ $(function() {
 				        how: 'append'
 				    });
 				}
-			})
+			});
 		});
 	}
 	// get tags from DB
@@ -158,6 +158,7 @@ $(function() {
 	.list {
 		width: 22px;
 		height: 20px;
+		background: #ffffff;
 	}
 </style>
 <!-- html -->
@@ -207,7 +208,7 @@ $(function() {
 		<hr>
 		<div class="div-created">
 			<span><?php echo h($blog['Blog']['created']); ?></span>
-			<span><?php echo h($blog['User']['name']); ?></span>
+			<span><a href="/users/view/<?php echo h($blog['User']['id']); ?>"><?php echo h($blog['User']['name']); ?></a></span>
 		</div>
 
 	</div>

@@ -32,6 +32,37 @@ function openKCFinder(div) {
 </script>
 <script>
 $(function() {
+	// message setting
+	(function($) {
+	    $.fn.flash_message = function(options) {
+	        //デフォルト値
+	        options = $.extend({
+	            text: 'Done',
+	            time: 750,
+	            how: 'before',
+	            class_name: ''
+	        }, options);
+	
+	        return $(this).each(function() {
+	            //指定したセレクタを探して取得
+	            if ($(this).parent().find('.flash_message').get(0)) return;
+	
+	            var message = $('<span />', {
+	                'class': 'flash_message ' + options.class_name,
+	                text: options.text
+	            //フェードイン表示
+	            }).hide().fadeIn('fast');
+	
+	            $(this)[options.how](message);
+	            //delayさせてからフェードアウト
+	            message.delay(options.time).fadeOut('normal', function() {
+	                $(this).remove();
+	            });
+	
+	        });
+	    };
+	})(jQuery);
+	
 	// DBからタグを取得
 	tag = null;
 	$.ajax({
