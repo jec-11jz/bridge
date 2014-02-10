@@ -3,34 +3,18 @@
 	
 	$this->Html->css('searches', null, array('inline' => false));
 	$this->Html->css('automatic/style', null, array('inline' => false));
-	echo $this->Html->css('jquery-ui-1.10.4.custom');
-	echo $this->Html->css('tag/tags_custom');
+	$this->Html->css('jquery-ui-1.10.4.custom', null, array('inline' => false));
 	
 	$this->Html->script('//ajax.microsoft.com/ajax/jquery.templates/beta1/jquery.tmpl.min.js', array('inline' => false));
-	echo $this->Html->script('jquery-ui-1.10.4.custom');
-	echo $this->Html->script('tag/tags');
-	echo $this->Html->script('masonry.pkgd');
-	echo $this->Html->script('imagesloaded');
+	$this->Html->script('jquery-ui-1.10.4.custom', array('inline' => false));
+	$this->Html->script('tag/tags', array('inline' => false));
+	$this->Html->script('masonry.pkgd', array('inline' => false));
+	$this->Html->script('imagesloaded', array('inline' => false));
 	$this->Html->script('automatic/jquery.montage', array('inline' => false));
 	
 ?>
-<style>
-	div#slider {
-		width: 200px;
-		margin: 0 auto;
-	}
-	.form-checkbox {
-		display: inline-block;
-	}
-	.checkbox {
-		float: left;
-		margin: -5px 2px 0 0;
-	}
-</style>
-
 
 <div id="search">
-	<hr>
 	<input name="keywords" id="keywords" class="form-control" value="<?php echo h($keyword); ?>" placeholder='Search  here...'>
 	<input name="not-keywords" id="not-keywords" class="form-control" placeholder="絞り込み">
 	<input type="submit" value="Search" class="btn-a search" id="btn-search">
@@ -40,17 +24,14 @@
 			Tag Search<input name="key-tags" id="key-tags" class="form-control tags" value="<?php echo h($key_tags['keywords']); ?>">
 			Not<input name="not-key-tags" id="not-key-tags" class="form-control tags">
 		</div>
-		<legend>関連タグ</legend>
-		<div id="related-tags"></div>
-		<hr size="6">
 		<div class="form-checkbox">
-			<label for="check-blog" class="checkbox">BLOG</label>
+			<label for="check-blog" class="checkbox">BLOG:</label>
 			<input type="checkbox" name="blog" value="Blog" id="check-blog" class="checkbox" checked="checked">
-			<label for="check-product" class="checkbox">PRODUCT</label>
+			<label for="check-product" class="checkbox">PRODUCT:</label>
 			<input type="checkbox" name="product" value="Product" id="check-product" class="checkbox" checked="checked">
-			<label for="check-mine" class="checkbox">MINE</label>
+			<label for="check-mine" class="checkbox">MINE:</label>
 			<input type="checkbox" name="mine" value="mine" id="check-mine" class="checkbox">
-			<label for="check-favorite" class="checkbox">FAVORITE</label>
+			<label for="check-favorite" class="checkbox">FAVORITE:</label>
 			<input type="checkbox" name="favorite" value="favorite" id="check-favorite" class="checkbox">
 		</div>
 		<div class="spoiler">
@@ -70,6 +51,8 @@
 			 	</select>
 			</div>
 		</div><!-- spoiler -->
+		<div id="related-tags"></div>
+
 	</div><!-- search-custom -->
 </div><!-- search -->
 <hr>
@@ -282,7 +265,7 @@ $(function() {
 			{{if Product.image_url != ""}}
 				<img src="${Product.image_url}" data-original="${Product.image_url}" class="cover" width="220px" height="auto">
 			{{else}}
-				<div class="div-noimage-outline" style="width: 220px;height:220px">${Product.outline.replace(/<("[^"]*"|'[^']*'|[^'">])*>/g,'').substring(0,99) +""}</div>
+				<div class="div-noimage-outline" style="width: 220px;height:220px">${Product.outline.replace(/<("[^"]*"|'[^']*'|[^'">])*>/g,'').substring(0,99) +"..."}</div>
 			{{/if}}
 			<div class="cont-info">
 				<div class="cont-title product-name">
@@ -306,7 +289,7 @@ $(function() {
 			{{if UsedBlogImage.length != 0}}
 				<img src="${UsedBlogImage[0].url}" data-original="${UsedBlogImage[0].url}" class="cover" width="220px" height="auto">
 			{{else}}
-				<div class="div-noimage-outline" style="width: 220px;height:220px">${Blog.content.replace(/<("[^"]*"|'[^']*'|[^'">])*>/g,'').substring(0,99) +""}</div>
+				<div class="div-noimage-outline" style="width: 220px;height:220px">${Blog.content.replace(/<("[^"]*"|'[^']*'|[^'">])*>/g,'').substring(0,99) +"..."}</div>
 			{{/if}}
 			<div class="cont-info">
 				<div class="cont-title blog-title">
@@ -320,7 +303,7 @@ $(function() {
 
 <!-- tags -->
 <script id="js-related-tags" type="text/x-jquery-tmpl">
-	<input type="button" class="related-tag" value="${Tag.name}">
+	<input type="button" class="related-tag tag" value="${Tag.name}">
 </script>
 
 

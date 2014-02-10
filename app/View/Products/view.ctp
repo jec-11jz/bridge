@@ -156,7 +156,7 @@ $(function(){
 		</div>
 
 		<div class="body-outline">
-			<span><?php echo h($product['Product']['outline']); ?></span>
+			<p><?php echo h($product['Product']['outline']); ?></p>
 		</div> 
 
 		<div id="tags-attribute">

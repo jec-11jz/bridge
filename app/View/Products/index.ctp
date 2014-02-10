@@ -28,12 +28,6 @@
 		<h1>All Production</h1>
 	</div>
 
-	<div class="box-flex">
-		<div class="button-full"><a href="/templates/index" class="btn-black left">View Templates</a></div>
-		<div class="button-full"><a href="/products/index" class="btn-black left">View Products</a></div>
-		<div class="button-full"><a href="/products/add" class="btn-black">Create Products</a></div>
-		<div class="button-full"><a href="/templates/add" class="btn-black right">Create Templates</a></div>
-	</div>
 
 	<div class="products-index contents">
 		<?php foreach($products as $product) : ?>

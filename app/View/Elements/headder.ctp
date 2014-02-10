@@ -24,8 +24,12 @@ $this->Html->script('dropdown/modernizr.custom.79639', array('inline' => false))
 	</div>
 	<ul class="nav navbar-nav">
 		<div id="dd" class="wrapper-dropdown-5 menu-create" tabindex="1">
-			<a href="/home/create" class="link"></a>
-			<p><i class="fa fa-edit"></i> Create</p>
+			<a href="/blogs/add" class="link"></a>
+			<p><i class="fa fa-edit"></i> Blog</p>
+		</div>
+		<div id="dd" class="wrapper-dropdown-5 menu-create" tabindex="1">
+			<a href="/products/add" class="link"></a>
+			<p><i class="fa fa-edit"></i> Product</p>
 		</div>
 
 		<div id="dd" class="wrapper-dropdown-5 menu-search" tabindex="1">
@@ -33,10 +37,6 @@ $this->Html->script('dropdown/modernizr.custom.79639', array('inline' => false))
 			<p><i class="fa fa-search"></i> Search</p>			
 		</div>
 
-		<div id="dd" class="wrapper-dropdown-5 menu-view" tabindex="1">
-			<a href="/home/mypage" class="link"></a>
-			<p><i class="fa fa-desktop"></i> My page</p>
-		</div>
 		
 
 	</ul>
