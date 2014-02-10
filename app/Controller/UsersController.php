@@ -76,9 +76,9 @@ class UsersController extends AppController {
 
 		$result = $this->__add();
 		if ($result) {
-			$this->Session->setFlash(__('登録完了です。 (｡･_･｡)ﾉ'),'default', array(), 'auth');
+			$this->Session->setFlash(__('登録完了です'),'default', array(), 'auth');
 		} else {
-			$this->Session->setFlash(__('登録に失敗しました（￣□￣；）！！'), 'default', array(), 'auth');
+			$this->Session->setFlash(__('登録に失敗しました'), 'default', array(), 'auth');
 		}
 		return $this->redirect($this->Auth->redirectUrl());
 	}
