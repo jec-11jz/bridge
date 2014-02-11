@@ -2,7 +2,7 @@
 App::uses('AppController', 'Controller');
 
 class BlogsController extends AppController {
-    public $uses = array('Blog', 'UsedBlogImage', 'User', 'Tag', 'BlogsTag', 'BlogsFavorite');
+    public $uses = array('Blog', 'UsedBlogImage', 'User', 'Tag', 'BlogsTag', 'BlogsFavorite', 'Comment');
 	public $components = array('RequestHandler');
 	
 	
@@ -11,7 +11,7 @@ class BlogsController extends AppController {
     	// 親クラス（AppController）読み込み
         parent::beforeFilter();
 		// permitted access before login
-        $this->Auth->allow('view', 'api_view', 'api_get_blog_info', 'api_add_favorites');
+        $this->Auth->allow('view', 'api_view', 'api_get_blog_info', 'api_add_favorites', 'api_get_user_blogs', 'api_comment');
     }
 	
 	public function index()
@@ -111,6 +111,21 @@ class BlogsController extends AppController {
 		$this->set('post', $post);
     }
 
+	public function api_get_user_blogs(){
+		$user_id = null;
+		$blog_info = null;
+		if(!empty($this->request->query['user_id'])){
+			$user_id = $this->request->query['user_id'];
+		}
+
+		$blog_info['No'] = $this->Blog->findAllByUserId($user_id, 
+			array(), 
+			array('Blog.created'=>'desc')
+		);
+		
+		return $this->apiSuccess($blog_info);
+	}
+
 	public function api_get_blog_info(){
 		$blog_id = null;
 		$count = 10;
@@ -198,6 +213,21 @@ class BlogsController extends AppController {
 		$message = $this->BlogsFavorite->saveUsersBlogs($blog_id, $user_id);
 		
 		return $this->apiSuccess($message);
+	}
+	
+	public function api_comment() {
+		$comment = array();
+		$message = null;
+		if(!empty($this->request->data)){
+			$comment = $this->request->data;
+		}
+		if(!($this->Auth->user('id'))){
+			$comment['author_id'] = $this->Auth->user('id');
+		}
+		$message = $this->Comment->saveComment($comment);
+		return $this->apiSuccess($message);
+		
+		
 	}
 
     public function delete($id = null) {

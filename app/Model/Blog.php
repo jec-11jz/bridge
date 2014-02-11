@@ -10,7 +10,7 @@ class Blog extends AppModel {
 			'fileds' => array('id', 'name', 'nickname', 'profile', 'created', 'modified')
 		)
 	);
- 	public $hasMany = array('UsedBlogImage');
+ 	public $hasMany = array('UsedBlogImage', 'Comment');
 	public $hasAndBelongsToMany = array('Tag');
 	
 	public $validate = array(

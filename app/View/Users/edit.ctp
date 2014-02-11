@@ -54,18 +54,21 @@ $(function() {
 			users_image: $("#img").attr('src'),
 			profile: $("#user-profile").val()
 		};
-		console.log(postData);
 		$.ajax({
 			type: "POST",
 			url: '/api/users/edit.json',
 			data: postData,
 			success: function(data){
-				console.log('sSSSSSSSSS');
-				console.log(data);
+				$('#message').flash_message({
+			        text: data['response'],
+			        how: 'append'
+		    	});
 			},
 			error: function(xhr, xhrStatus){
-				console.log('eeeeeeeeeee');
-				console.log(xhr);
+				$('#message').flash_message({
+			        text: xhr['responseJSON']['error'],
+			        how: 'append'
+		    	});
 			}
 		});
 	});
@@ -95,6 +98,7 @@ $(function() {
 </style>
 
 <div class="user-edit">
+	<div id="message"></div>
 	<form method="post" id="form-user-edit" action="/api/users/edit.json">
 		<div id="edit-form"></div>
 		<div>

@@ -10,7 +10,7 @@ App::uses('CakeEmail', 'Network/Email');
  */
 class UsersController extends AppController {
 	//モデルの指定
-	public $uses = array('User', 'EmailAuth');
+	public $uses = array('User', 'EmailAuth', 'UsersFriend');
 	public $components = array('RequestHandler');
 
 	//AppControllerをオーバーライド
@@ -19,7 +19,7 @@ class UsersController extends AppController {
     	//親クラス（AppController）読み込み
         parent::beforeFilter();
 		//permitted access before login
-        $this->Auth->allow('add', 'api_add', 'login', 'api_login', 'index');
+        $this->Auth->allow('add', 'api_add', 'login', 'api_login', 'index', 'view', 'api_add_favorites');
 		$this->set('loginInformation', $this->Auth->User());
 	    
     }
@@ -182,6 +182,49 @@ class UsersController extends AppController {
     {
         $this->redirect($this->Auth->logout());
     }
+	
+	public function view($user_id = null){
+		$user_info = null;
+		if(!empty($this->request->query['user_id'])){
+			$user_id = $this->request->query['user_id'];
+		}
+		$data = $this->User->findById($user_id);
+		$fav = $this->UsersFriend->findByOwnerIdAndFriendId($this->Auth->user('id'), $user_id);
+		if(empty($fav)){
+			$data['favorite'] = null;
+		} else {
+			$data['favorite'] = $fav;
+		}
+		if($user_id == $this->Auth->user('id')){
+			$data['auth'] = 'author';
+		} else {
+			$data['auth'] = 'others';
+		}
+		if(!empty($data)){
+			$this->set('user_info', $data);
+		}
+		return;
+	}
+	
+	public function api_add_favorites() {
+		$owner_id = null;
+		$friend_id = null;
+		if(!empty($this->request->data['user_id'])){
+			$friend_id = $this->request->data['user_id'];
+		}
+		if($this->Auth->user('id')){
+			$owner_id = $this->Auth->user('id');
+		}
+		if(is_null($friend_id)){
+			return $this->apiError('ブログが存在しません');
+		}
+		if(is_null($this->Auth->user('id'))){
+			return $this->apiError('ログインしてください');
+		}
+		$message = $this->UsersFriend->saveFriends($owner_id, $friend_id);
+		
+		return $this->apiSuccess($message);
+	}
 
     private function __send_add_email($user_id) {
         $this->EmailAuth->create();

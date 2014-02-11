@@ -61,7 +61,7 @@ $(function() {
 		$("#btn-favorite").click(function(){
 			var blog_id = $('#div-view-blogs').attr('name');
 			$.ajax({
-				type: 'GET',
+				type: 'POST',
 				url: '/api/blogs/add_favorites.json',
 				data: {'blog_id': blog_id},
 				success: function(data){
@@ -77,7 +77,7 @@ $(function() {
 				        how: 'append'
 				    });
 				}
-			})
+			});
 		});
 	}
 	// get tags from DB
@@ -99,6 +99,9 @@ $(function() {
 			tools = $('#js-tools').tmpl(data['response']);
 			$('#tool-links').append(tools);
 			linkClick();
+			// append comments
+			comments = $('#js-comments').tmpl(data['response']['Comment']);
+			$('#comments').append(comments);
 		},
 		error: function(xhr, xhrStatus) {
 			console.log(xhr);
@@ -132,6 +135,36 @@ $(function() {
 			console.log('error');
 		}
 	});
+	
+	// add comment
+	$('#btn-comment').click(function(){
+		var arrayComment = {};
+		arrayComment['data'] = {
+			blog_id: $('#div-view-blogs').attr('name'),
+			title: $('#coment-title').val(),
+			author: $('#coment-author').val(),
+			url: $('#coment-url').val(),
+			comment: $('#comment-content').val()
+		};
+		console.log(arrayComment);
+		$.ajax({
+			type: 'POST',
+			url: '/api/blogs/comment.json',
+			data: arrayComment,
+			success: function(data){
+			    $('#comment-message').flash_message({
+			        text: data['response'],
+			        how: 'append'
+			    });
+			},
+			error: function(xhr, xhrStatus){
+				$('#comment-message').flash_message({
+			        text: data['response'],
+			        how: 'append'
+			    });
+			}
+		});
+	});
 });
 </script>
 <!-- tag -->
@@ -142,22 +175,30 @@ $(function() {
 <script id="js-spoiler" type="text/x-jquery-tmpl">
 	<option value=${spoiler} selected>${spoiler}</option>
 </script>
+<!-- comment -->
+<script id="js-comments" type="text/x-jquery-tmpl">
+	<hr size="3" />
+	<p>${created}</p>
+	<p>${author}</p>
+	<p>${title}</p>
+	<p>${comment}</p>
+</script>
 <!-- tools -->
 <script id="js-tools" type="text/x-jquery-tmpl">
 	<div id="fav-message"></div>
 	{{if auth == 'author'}}
 		<a href="/blogs/edit/${Blog.id}" class="fa fa-pencil-square-o"></a>
-		<a id="btn-favorite" class="fa fa-star">
 		<a name="/blogs/delete/${Blog.id}" class="fa fa-trash-o" id="confirm-delete"></a>
 	{{else}}
 		<a id="btn-favorite" class="fa fa-star">
 	{{/if}}
-		<!-- <a href="/blogs/view/${Blog.id}" class="fa fa-desktop"> -->
+		<a href="/blogs/view/${Blog.id}" class="fa fa-desktop">
 </script>
 <style>
 	.list {
 		width: 22px;
 		height: 20px;
+		background: #ffffff;
 	}
 </style>
 <!-- html -->
@@ -207,9 +248,19 @@ $(function() {
 		<hr>
 		<div class="div-created">
 			<span><?php echo h($blog['Blog']['created']); ?></span>
-			<span><?php echo h($blog['User']['name']); ?></span>
+			<span><a href="/users/view/<?php echo h($blog['User']['id']); ?>"><?php echo h($blog['User']['name']); ?></a></span>
 		</div>
-
+		<div id="comment-area">
+			<legend>コメント</legend>
+			<div id="comments" style="border: solid 2px;"></div>
+			<div id="comment-form">
+				<div id="comment-message"></div>
+				<input type="text" id="coment-title" placeholder="title" />
+				<input type="text" id="coment-author" placeholder="name" />
+				<input type="text" id="coment-url" placeholder="url" />
+				<textarea id="comment-content" cols="40" rows="4" placeholder="comment"></textarea>
+				<button id="btn-comment">コメントする</button>
+			</div>
+		</div>
 	</div>
 </div>
-
