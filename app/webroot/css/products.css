@@ -748,11 +748,20 @@ div.modal-content {
   .wrapper-dropdown-5.menu-search:hover {
     color: #f06260; }
   /* line 113, ../sass/menu.scss */
+  .wrapper-dropdown-5.menu-sign, .wrapper-dropdown-5.menu-login {
+    width: 120px; }
+  /* line 116, ../sass/menu.scss */
+  .wrapper-dropdown-5.menu-sign:hover {
+    color: #68c39f; }
+  /* line 119, ../sass/menu.scss */
+  .wrapper-dropdown-5.menu-login:hover {
+    color: #68c39f; }
+  /* line 122, ../sass/menu.scss */
   .wrapper-dropdown-5 p {
     text-align: center;
     margin: 0; }
 
-/* line 119, ../sass/menu.scss */
+/* line 128, ../sass/menu.scss */
 .wrapper-dropdown-5:focus .dropdown {
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
   max-height: 400px;
@@ -761,7 +770,7 @@ div.modal-content {
   -o-transition: all 0.5s ease-in-out;
   transition: all 0.5s ease-in-out; }
 
-/* line 125, ../sass/menu.scss */
+/* line 134, ../sass/menu.scss */
 .wrapper-dropdown-5:after {
   /* Little arrow */
   width: 0;
@@ -774,7 +783,7 @@ div.modal-content {
   border-style: solid;
   border-color: #4cbeff transparent; }
 
-/* line 138, ../sass/menu.scss */
+/* line 147, ../sass/menu.scss */
 .wrapper-dropdown-5 .dropdown {
   /* Size & position */
   position: absolute;
@@ -790,11 +799,11 @@ div.modal-content {
   /* Hiding */
   max-height: 0;
   overflow: hidden; }
-  /* line 156, ../sass/menu.scss */
+  /* line 165, ../sass/menu.scss */
   .wrapper-dropdown-5 .dropdown li {
     text-align: center;
     background-color: #f7f7f7; }
-    /* line 159, ../sass/menu.scss */
+    /* line 168, ../sass/menu.scss */
     .wrapper-dropdown-5 .dropdown li a {
       display: block;
       text-decoration: none;
@@ -804,27 +813,27 @@ div.modal-content {
       transition: all 0.3s ease-out;
       border-bottom: 1px solid #e6e8ea; }
 
-/* line 172, ../sass/menu.scss */
+/* line 181, ../sass/menu.scss */
 .wrapper-dropdown-5 .dropdown li:last-of-type a {
   border: none; }
 
-/* line 176, ../sass/menu.scss */
+/* line 185, ../sass/menu.scss */
 .wrapper-dropdown-5 .dropdown li i {
   margin-right: 5px;
   color: inherit;
   vertical-align: middle; }
 
-/* line 182, ../sass/menu.scss */
+/* line 191, ../sass/menu.scss */
 .wrapper-dropdown-5 .dropdown li:hover a {
   background-color: #68c39f;
   text-decoration: none;
   color: #fff; }
 
-/* line 186, ../sass/menu.scss */
+/* line 195, ../sass/menu.scss */
 .wrapper-dropdown-5.active:after {
   border-color: #82d1ff transparent; }
 
-/* line 190, ../sass/menu.scss */
+/* line 199, ../sass/menu.scss */
 .wrapper-dropdown-5.active .dropdown {
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
   max-height: 400px; }

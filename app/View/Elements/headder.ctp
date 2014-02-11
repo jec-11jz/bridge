@@ -43,11 +43,11 @@ $this->Html->script('dropdown/modernizr.custom.79639', array('inline' => false))
 	
 	<ul class="nav navbar-nav navbar-right">
 	<?php if ($user == null) : ?>
-		<div id="dd" class="wrapper-dropdown-5" tabindex="1">
+		<div id="dd" class="wrapper-dropdown-5 menu-sign" tabindex="1">
 			<a href="#" data-target="#signModal" data-toggle="modal" class="link"></a>
 			<p>Sign up</p>
 		</div>
-		<div id="dd" class="wrapper-dropdown-5" tabindex="1">
+		<div id="dd" class="wrapper-dropdown-5 menu-login" tabindex="1">
 			<a href="#" data-target="#loginModal" data-toggle="modal" class="link"></a>
 			<p>Login</p>
 		</div>

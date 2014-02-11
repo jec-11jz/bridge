@@ -110,6 +110,15 @@ div.modal-content{
     &.menu-search:hover{
       color: $red;
     }
+    &.menu-sign, &.menu-login{
+      width: 120px;
+    }
+    &.menu-sign:hover{
+      color: $green;
+    }
+    &.menu-login:hover{
+      color: $green;
+    }
     p {
       text-align:center;
       margin:0;
