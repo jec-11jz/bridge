@@ -7,7 +7,9 @@ class Comment extends AppModel {
 	
 	public function saveComment($comment = array()){
 		$message = null;
-		if(!empty($comment['comment'])){
+		if(empty($comment['author'])){
+			$message = '名前を入力してください。';
+		} else if(!empty($comment['comment'])){
 			$this->create();
 			$this->set(array(
 				'blog_id' => $comment['blog_id'],

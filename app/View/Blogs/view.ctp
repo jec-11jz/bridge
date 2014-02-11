@@ -61,7 +61,7 @@ $(function() {
 		$("#btn-favorite").click(function(){
 			var blog_id = $('#div-view-blogs').attr('name');
 			$.ajax({
-				type: 'GET',
+				type: 'POST',
 				url: '/api/blogs/add_favorites.json',
 				data: {'blog_id': blog_id},
 				success: function(data){
@@ -177,6 +177,7 @@ $(function() {
 </script>
 <!-- comment -->
 <script id="js-comments" type="text/x-jquery-tmpl">
+	<hr size="3" />
 	<p>${created}</p>
 	<p>${author}</p>
 	<p>${title}</p>
