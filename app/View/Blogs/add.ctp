@@ -103,7 +103,6 @@ $(function() {
 		</div>
 	 	
 		<script type="text/javascript">var editor = CKEDITOR.replace('ckeditor');</script>
-
 	</div>
 
 		

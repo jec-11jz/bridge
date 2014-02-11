@@ -193,7 +193,6 @@ $(function(){
 	
 		<div class="form-footer">
 			<div class="div-submit">
-				<?php echo $this->Form->postLink("", array('action' => 'delete',$products['Product']['id']),array('confirm' => '削除しますか？', 'class'=>'fa fa-trash-o delete')); ?>
 				<a href="/products/delete/<?php echo h($product['Product']['id']); ?>" name="" class="btn-danger">Delete</a>
 				<input type="button" id="btn-register" class="btn-blue" value="登録" />
 			</div>
