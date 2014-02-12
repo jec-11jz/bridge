@@ -165,6 +165,11 @@ class BlogsController extends AppController {
         if (!$blog) {
             throw new NotFoundException(__('Invalid post'));
         }
+		if(!is_null($this->Auth->user('id'))){
+			$blog['login_user'] = $this->Auth->user();
+		} else {
+			$blog['login_user'] = null;
+		}
         $this->set('blog', $blog);
 	}
 
