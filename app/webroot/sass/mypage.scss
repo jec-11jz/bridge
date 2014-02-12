@@ -49,6 +49,21 @@ div.second-content-form{
   }
 }
 
+div.third-content-form{
+  .form-header{
+    .header-back{
+      position: absolute;
+      z-index: 50;
+      @include filter(blur(1px) brightness(80%));
+    }
+    .header-user{
+      position: relative;
+      color: $white;
+      z-index: 100;
+    }
+  }
+}
+
 
 .box-flex{
   .button-full{

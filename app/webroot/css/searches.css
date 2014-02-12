@@ -1136,21 +1136,21 @@ div#search-result {
       position: absolute;
       filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=80);
       opacity: 0.8;
-      right: -71px;
-      top: 17px;
+      right: -81px;
+      top: 9px;
       width: 200px;
       -webkit-transform: rotate(45deg);
       -moz-transform: rotate(45deg);
       -ms-transform: rotate(45deg);
       -o-transform: rotate(45deg);
-      transform: rotate(45deg); }
-    /* line 101, ../sass/searches.scss */
+      transform: rotate(45deg);
+      z-index: 650; }
+    /* line 102, ../sass/searches.scss */
     div#search-result .cont .cont-info {
       position: absolute;
       bottom: 0;
       width: 100%;
       background: rgba(108, 122, 137, 0.5);
-      color: white;
       -webkit-transform: translate(0, 0);
       -moz-transform: translate(0, 0);
       -ms-transform: translate(0, 0);
@@ -1162,12 +1162,15 @@ div#search-result {
       transition: all 0.3s ease-in-out; }
       /* line 109, ../sass/searches.scss */
       div#search-result .cont .cont-info p {
-        font-size: 13px; }
+        font-size: 14px;
+        color: #f6f6f6;
+        margin: 0;
+        padding: 0.3em 0.6em; }
 
-/* line 116, ../sass/searches.scss */
+/* line 119, ../sass/searches.scss */
 .cont:hover img {
   opacity: 0.8; }
-/* line 119, ../sass/searches.scss */
+/* line 122, ../sass/searches.scss */
 .cont:hover .cont-info {
   -webkit-transform: translate(0, 100px);
   -moz-transform: translate(0, 100px);
