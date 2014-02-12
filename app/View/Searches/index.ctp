@@ -256,7 +256,7 @@ $(function() {
 <script id="js-search-products" type="text/x-jquery-tmpl">
 	<div class="cont hidden product" style="float:left">
 		<div class="div-decoration-products">
-			<span>Products</span>
+			<span><i class="fa fa-film"></i></span>
 		</div>
 		<div class="cont-pic">
 			<a href="/products/view/${Product.id}" class="link"></a>
@@ -280,7 +280,7 @@ $(function() {
 <script id="js-search-blogs" type="text/x-jquery-tmpl">
 	<div class="cont hidden blog spoiler${Blog.spoiler}" style="float:left">
 		<div class="div-decoration-blogs">
-			<span>Blogs</span>
+			<span><i class="fa fa-book"></i></span>
 		</div>
 		<div class="cont-pic">
 			<a href="/blogs/view/${Blog.id}" class="link"></a>

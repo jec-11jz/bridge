@@ -18,22 +18,19 @@ $(function() {
 })
 </script>
 
-<div class="form second-content-form">
+<div class="form third-content-form">
 	<div class="form-header">
-		<div class="header-left">
-			<a href="/home/mypage" class="header-link">My page</a>
+		<div class="header-back">
+			<img src="<?php echo h($user['users_image']); ?>" alt="">
 		</div>
-		<div class="header-right">
-			<span class="page-title user-name"><?php echo $user['name']; ?></span>
+		<div clasS="header-user">
+			<h2><?php echo h($user['name']); ?></h2>
 		</div>
-		<div class="div-decoration">
-			<span>Setting</span>
-		</div>
+		
 	</div>
 
 	<div class="box-flex">
 		<div class="button-full"><a href="/blogs/index" class="btn-black blog">My Blogs</a></div>
-		<div class="button-full"><a href="/products/index" class="btn-black product">My Products</a></div>
 		<div class="button-full"><a href="/templates/index" class="btn-black template">My Templates</a></div>
 	</div>
 
@@ -44,6 +41,7 @@ $(function() {
 	</div>
 	
 	<div class="form-body">
+	
 	</div>
 
 	<div class="form-footer">

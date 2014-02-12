@@ -92,10 +92,11 @@ div#search-result{
       text-align: center;
       position: absolute;
       @include opacity(0.8);
-      right: -71px;
-      top: 17px;
+      right: -81px;
+      top: 9px;
       width: 200px;
       @include rotate(45deg);
+      z-index: 650;
     }
 
     .cont-info{
@@ -103,11 +104,13 @@ div#search-result{
       bottom:0;
       width: 100%;
       background: rgba(108, 122, 137, 0.5);
-      color:white;
       @include transform(translate(0,0));
       @include single-transition(all, 0.3s, ease-in-out);
       p{
-        font-size: 13px;
+        font-size: 14px;
+        color:$white;
+        margin: 0;
+        padding: 0.3em 0.6em
       }
     }
   }

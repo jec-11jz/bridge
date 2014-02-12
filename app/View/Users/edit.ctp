@@ -98,13 +98,25 @@ $(function() {
 		background: black;
 	}
 </style>
+<div class="form third-content-form">
+	<div class="form-header">
+		<!-- <img href="<?php echo $user[‘users_image’]; ?>"> -->
+		<p><?php echo h($user[‘users_image’]); ?></p>
+	</div>
+	
+	<div class="form-body">
+	</div>
+
+	<div class="form-footer">
+	</div>
+</div> <!-- form -->
 
 <div class="user-edit">
 	<div id="message"></div>
 	<form method="post" id="form-user-edit" action="/api/users/edit.json">
 		<div id="edit-form"></div>
 		<div>
-			<input type="button" id="btn-edit" value="submit" />
+			<input type="button" id="btn-edit" class="btn-blue"value="submit" />
 		</div>
 	</form>
 </div> <!-- END signup -->
