@@ -41,7 +41,7 @@ $(function(){
 	// fn search from tag
 	;(function($) {
 		$.fn.searchFromTag = function() {
-			$("#tags-attribute").find('input.tag').click(function() {
+			$("#tags-attribute-view").find('input.tag').click(function() {
 				var tag_name = $(this).val();
 				location.href = '/searches/index/?key_tags=' + tag_name;
 			});
@@ -58,7 +58,7 @@ $(function(){
 			console.log(data['response']);
 			// append tags
 			tags = $('#js-tag').tmpl(data['response']['Attribute']);
-			$('#tags-attribute').append(tags);
+			$('#tags-attribute-view').append(tags);
 			// search from tag
 			$(function() {
 		    	$('.tag').searchFromTag();
@@ -102,35 +102,14 @@ $(function(){
 </script>
 <script id="js-tag" type="text/x-jquery-tmpl">
 	<div id="product-tags" class="tags-set">
-		<span class="attributes">${name}</span>
+		<span class="attributes tag-title">${name}</span>
 		{{each Tag}}
 			<input type="button" class="tag btn-blue" value="${this.name}">
 		{{/each}}
 	</div>
 </script>
-<style type="text/css">
-.form-button{
-	clear: both;
-}
-div.body-outline {
-	overflow: scroll;
-	max-height: 25em;
-}
-#tags-attribute {
-	clear: both;
-	display:block;
-}
-#product-tags {
-	margin-top: 10px;
-}
-input.tag{
-	margin: 5px 0px 0px 2px;
-}
-.attributes {
-	clear: both;
-	display:block;
-}
-</style>
+
+
 
 <div id="div-view-products" class="form second-content-form" name="<?php echo h($product['Product']['id']); ?>">
 	<div class="form-header">
@@ -146,6 +125,11 @@ input.tag{
 	</div>
 
 	<div class="form-body">
+		<div id="tool-links">
+			<div id="fav-message"></div>
+			<a name="2" class="fa fa-star btn-favorite btn-green btn-watched">Watched</a>
+			<a name="1" class="fa fa-star btn-favorite btn-green btn-want">Want to see</a>
+		</div>
 		<div id="image">
 			<?php if($product['Product']['image_url']) { ?>
 				<img id="img" src="<?php echo h($product['Product']['image_url']); ?>" width="100%" style="margin: auto; visibility: visible;">
@@ -158,16 +142,13 @@ input.tag{
 			<p><?php echo h($product['Product']['outline']); ?></p>
 		</div> 
 
-		<div id="tags-attribute"></div>
+		<div id="tags-attribute-view"></div>
 	</div> <!-- form-body -->
 		
 	<div class="form-footer">
-		<a href="/products/edit/<?php echo $product['Product']['id']; ?>" class="btn-blue">Edit</a>
-	</div>
-	<div id="tool-links">
-		<div id="fav-message"></div>
-		<a name="2" class="fa fa-star btn-favorite">Watched</a>
-		<a name="1" class="fa fa-star btn-favorite">Want to see</a>
+		<div class="div-submit">
+			<a href="/products/edit/<?php echo $product['Product']['id']; ?>" class="btn-blue">Edit</a>
+		</div>
 	</div>
 
 </form>

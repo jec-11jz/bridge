@@ -9,7 +9,7 @@
 		echo $this->Html->meta('icon');
 		echo $this->fetch('meta');
 		
-		echo $this->Html->css('bootstrap-glyphicons');
+		// echo $this->Html->css('bootstrap-glyphicons');
 		echo $this->Html->css('bootstrap');
 		echo $this->Html->css('bootstrap-bridge-theme.css');
 		echo $this->Html->css('awesome/font-awesome.css');

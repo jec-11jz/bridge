@@ -22,13 +22,21 @@
 
       }
     }
-    .div-decoration{
-      background-color: $blue;
-    }
+    .div-decoration{background-color: $blue;}
   }
   .form-body{
     margin: 2em 4em;
     position: relative;
+    #tool-links{
+      .btn-watched, .btn-want{
+        width: 70px;height: 70px;
+        line-height: 70px;
+        @include border-radius(70px);
+      }
+      .btn-want{
+      }
+
+    }
     #image{
       display: inline-block;
       width: 18.75em;
@@ -61,25 +69,34 @@
       margin-left: 2em;
     }
 
-    #blog-tags{
+    #tags-attribute-view{
       position: relative;
-      padding:1em 0;
       margin: 2em 0;
       background-color: #ECECE8;
       @include border-radius(2px);
       @include line-box;
-      .tag-title{
-        padding: 1.1em 1em;
-        height: 100%;
-        font-size: 1.1em;
-        @include line-right;
-        background-color: $white;
+      .tags-set{
+        // border-bottom: 1px solid $black;
+        @include line-bottom;
+        margin:1px;
+        .tag-title{
+          padding: 1.1em 1em;
+          height: 100%;
+          width: 10em;
+          font-size: 1.1em;
+          text-justify: distribute-all-lines;
+          @include line-bottom;
+          @include line-right;
+          display: inline-block;
+          background-color: $white;
+        }
+        .tag{
+          padding: 0.5em 0.6em;
+          margin-left: 0.5em;
+          @include border-radius(25px);
+        }
       }
-      .tag{
-        padding: 0.2em 0.4em;
-        margin-left: 0.5em;
-        @include border-radius(25px);
-      }
+
     }
     #product-data{
       height: 30em;
@@ -89,6 +106,9 @@
       @include line-box;
 
       .div-button{
+        i{
+          color: $white;
+        }
         .btn-add-attribute{
           width: 15em;
         }
@@ -125,13 +145,9 @@
     text-align: center;
     margin: 0 4em;
     .div-submit{
+      clear: both;
       text-align: right;
       margin-top:2em;
-    }
-    a{
-      clear: both;
-      display: block;
-      margin-top: 2em;
     }
   }
 }
@@ -171,57 +187,6 @@
 }
 
 $tag-height: 4em;
-#formRegisterProduct{
-  form{
-    overflow: hidden;
-    #image{
-      margin: 0 5em 2em 0;
-      width: 18.750em;
-      height: 25.000em;
-      overflow: hidden;
-      background: #222;
-      color: #fff;
-      line-height:25.000em; /* heightと同じ値 */
-      text-align:center;
-      vertical-align:middle;
-      float: left;
-    }
-  }
-
-  .product-info{
-    line-height: 1.7em;
-    padding: 1em;
-    display: block;
-  }
-
-  input.right{
-    float: right;
-  }
-  #product-data{
-    .add{
-      width:20%;
-    }
-    .del{
-      width:10%;
-    }
-  }
-
-  .attr {
-    float:left;
-    margin: 1em 2.3em 1em 0;
-
-    .form-control{
-      width: 90%;
-      border-right: none;
-      float: left;
-      &.default{
-        border: solid #ccc 1px;
-        width: 108.5%;
-      }
-    }
-  }
-}
-
 
 .box-flex{
   .button-full{

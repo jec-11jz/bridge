@@ -177,7 +177,7 @@ $(function(){
 			attrCnt++;
 		}
 		$("#tags-attribute").append('<div id="attribute' + attrCnt + '" class="attr tags-set">\n');
-		$('#attribute' + attrCnt).append('<input type="text" id="attribute' + attrCnt +'" class="form-control post-attribute attribute  tag-title" name="data[Attribute][name][]">\n');
+		$('#attribute' + attrCnt).append('<input type="text" id="attribute' + attrCnt +'" class="form-control post-attribute attribute  tag-title" name="data[Attribute][name][]">');
 		$('#attribute' + attrCnt).append('<input type="button" value="×" id="attribute' + attrCnt +'" class="btn-delete-attribute attribute">\n');
 		$('#attribute' + attrCnt).append('<input type="text" id="attribute' + attrCnt +'" class="post-tag tags attr-input">\n');
 

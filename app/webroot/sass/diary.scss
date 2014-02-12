@@ -118,8 +118,16 @@ div#diary-index{
           margin: 1em 2em 0 0;
       }
     }
+    #visibility{
+      margin: 2em 2em;
+    }
     .text-body{
       padding: 2em 3em;
+      img{
+        max-width: 100%;
+        height: auto !important;
+        border:none;
+      }
     }
     .form-editor{
       margin: 2em 2em 0 2em;
@@ -128,20 +136,56 @@ div#diary-index{
   }
   .form-footer{
     text-align: center;
-    padding: 0 4em;
+    padding: 0 2em;
     .div-created{
+      position: relative;
+      margin-left:2em;
       text-align: left;
+      .created-date{
+        display: inline-block;
+        margin-top:5px;
+      }
+      .created-author{
+        position: absolute;
+        @include border-radius(2px);
+        right: 2em;
+        display: inline-block;
+        a{
+          font-size: 1.2em;
+          padding: 0.3em 0.6em;
+        }
+      }
     }
     .div-submit{
       display: block;
       text-align: right;
       &.submit-edit{
-        margin-top:1em;
+        margin-top:2em;
       }
     }
     .index-back{
       text-decoration: none;
       clear:both;
+    }
+    #comment-area{
+      #comment-form{
+        text-align: center;
+        input,textarea,button{
+          display: block;
+        }
+        .comment-index{
+          padding:0.2em 0.4em;
+          margin: 0 auto 0.8em;
+          border:1px solid lighten($black,50%);
+          width:20em;
+          @include border-radius(2px);
+          display: block;
+        }
+        button{
+          padding: 1em 2em;
+          margin:0 auto;
+        }
+      }
     }
   }
 }
@@ -167,9 +211,6 @@ div{
   .line-up {
     @include mp-clear;
     margin-top: 50px;
-  }
-  .form-group{
-    margin: 10px 0 30px 40px;
   }
 }
 .side-menu {

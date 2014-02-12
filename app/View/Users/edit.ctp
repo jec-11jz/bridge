@@ -94,6 +94,8 @@ $(function() {
 	#image {
 		width: 220px;
 		height: 220px;
+		color: white;
+		background: black;
 	}
 </style>
 

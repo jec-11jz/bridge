@@ -28,7 +28,6 @@
 		<h1>All Production</h1>
 	</div>
 
-
 	<div class="products-index contents">
 		<?php foreach($products as $product) : ?>
 			<div class="cont1">

@@ -129,7 +129,6 @@ $(function() {
 		 	</select>
 		</div> <!-- visibility -->
 
-
 		<div class="form-editor">
 			<textarea id="ckeditor" name="data[Blog][content]" class="input_form blog"><?php echo h($post['Blog']['content']); ?></textarea>
 		</div>

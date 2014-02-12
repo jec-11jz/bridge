@@ -121,7 +121,7 @@ div.form.second-content-form{
     background-color: #6d9f58;
     .header-left{
       margin: 25px 75px 25px 13%;
-      height: 150px;width: 150px;
+      height: 152px;width: 152px;
       background-color: $col-black1;
       @include border-radius(300px);
       text-align: center;
@@ -131,13 +131,14 @@ div.form.second-content-form{
       float:left;
       a.header-link{
         text-decoration: none;
-        font-size:17px;
+        font-size:22px;
         @include link;
+        border:1px solid $green;
         @include border-radius(300px);
-        @include transition(0.3s);
         &:hover{
           background-color: $green;
-          @include box-shadow(0 0 3px white) ;
+          // @include box-shadow(0 0 3px white) ;
+          border:solid 1px $white;
           @include btn-fade;
           color: $white;
         }
@@ -168,7 +169,7 @@ div.form.second-content-form{
       span{
         color: $white;
         margin-right: 75px;
-        font-size:  20px;
+        font-size:  23px;
       }
     }
   }
@@ -176,9 +177,6 @@ div.form.second-content-form{
   }
   .form-footer{
     .div-created{
-      span{
-        float: left;
-      }
     }
     .btn-blue{
       width: 20em;
@@ -207,41 +205,57 @@ div.form.second-content-form{
       color: $black;
     }
     &.fa-pencil-square-o{
-      background-color:$orange;
-      color:darken($orange, 20%);
+      color:$orange;
+      border:1px solid $orange;
       line-height: 2.1em;
       &:hover{
-        color:darken($orange, 20%);
-        @include box-shadow(0 0 2px darken($orange, 20%));
-        background-color: lighten($orange, 10%);
+        color:darken($orange, 10%);
+        background-color: $orange;
       }
+      &:active{
+        color:darken($orange, 20%);
+        background: darken($orange, 10%);
+        border-color: darken($orange, 10%);
+      }
+      &::before{margin-left:6px;}
     }
     &.fa-desktop{
-      background-color:$blue;
-      color:darken($blue, 20%);
+      border:solid 1px $blue;
+      color:$blue;
       line-height: 2.1em;
       &:hover{
-        color:darken($blue, 20%);
-        @include box-shadow(0 0 2px darken($blue, 20%));
-        background-color: lighten($blue, 10%);
+        color:darken($blue, 15%);
+        background-color: $blue;
+      }
+      &:active{
+        color: darken($blue,25%);
+        background-color: darken($blue, 15%);
+        border:solid 1px darken($blue, 15%);
       }
     }
     &.fa-star{
-      background-color:darken($yellow,10%);
-      color:darken($yellow, 30%);
+      border:solid 1px darken($yellow,10%);
+      color:darken($yellow, 10%);
       &:hover{
         color:darken($yellow, 20%);
-        @include box-shadow(0 0 2px darken($yellow, 15%));
-        background-color: lighten($yellow, 5%);
+        background-color: darken($yellow,10%);
+      }
+      &.checked{
+        background-color: darken($yellow,10%);
+        color: darken($yellow, 20%);
       }
     }
     &.fa-trash-o{
-      background-color:$col-danger;
-      color:darken($col-danger, 30%);
+      border:solid 1px $col-danger;
+      color:$col-danger;
       &:hover{
         color:darken($col-danger, 20%);
-        @include box-shadow(0 0 2px darken($col-danger, 20%));
-        background-color: lighten($col-danger, 5%);
+        background-color: $col-danger;
+      }
+      &:active{
+        color: darken($col-danger, 30%);
+        background-color: darken($col-danger, 10%);
+        border:solid 1px darken($col-danger, 10%);
       }
     }
   }
