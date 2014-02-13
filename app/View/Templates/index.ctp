@@ -28,7 +28,7 @@
 		<h1>My template</h1>
 	</div>
 
-
+	<a href="/templates/add" class="btn-blue">Create</a>
 	<!-- テンプレート一覧 -->
 	<div id="template-index" class="contents">
 		<?php foreach($templates as $template) : ?>

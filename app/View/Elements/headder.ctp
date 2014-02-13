@@ -31,7 +31,10 @@ $this->Html->script('dropdown/modernizr.custom.79639', array('inline' => false))
 			<a href="/products/add" class="link"></a>
 			<p><i class="fa fa-edit"></i> Product</p>
 		</div>
-
+		<div id="dd" class="wrapper-dropdown-5 menu-create" tabindex="1">
+			<a href="/templates/add" class="link"></a>
+			<p><i class="fa fa-edit"></i> Template</p>			
+		</div>
 		<div id="dd" class="wrapper-dropdown-5 menu-search" tabindex="1">
 			<a href="/searches/index" class="link"></a>
 			<p><i class="fa fa-search"></i> Search</p>			
@@ -52,12 +55,11 @@ $this->Html->script('dropdown/modernizr.custom.79639', array('inline' => false))
 			<p>Login</p>
 		</div>
 	<?php else: ?>
-		<div id="dd" class="wrapper-dropdown-5 user" tabindex="1"><p><?php echo $user['name']; ?></p>
+		<div id="dd" class="wrapper-dropdown-5 menu-user" tabindex="1"><p><?php echo $user['name']; ?> <i class="fa fa-caret-down"></i></p>
 			<ul class="dropdown">
 				<li><a href="/home/mypage"><i class="fa fa-user menu"></i>ユーザ編集</a></li> 
-					<li><a href="#"><i class="fa fa-star-o menu"></i>お気に入り</a></li> 
-					<li><a href="/users/edit"><i class="fa fa-cog menu"></i> 設　定　</a></li>
-					<li><a href="/users/logout"><i class="fa fa-sign-out menu"></i>ログアウト</a></li>
+				<li><a href="/users/edit"><i class="fa fa-cog menu"></i> 設　定　</a></li>
+				<li><a href="/users/logout"><i class="fa fa-sign-out menu"></i>ログアウト</a></li>
 			</ul>
 		</div>
 	<?php endif; ?>

@@ -17,8 +17,8 @@
         @include border-radius(2em);
         @include placeholder-color;
         @include text-shadow(none);
-        color: $white;
-        background-color: darken($green, 2%);
+        // color: $white;
+        background-color: $white;
 
       }
     }

@@ -70,8 +70,8 @@ div#diary-index{
         @include box-shadow(0 0 1px $black);
         @include border-radius(2em);
         @include placeholder-color;
-        color: $white;
-        background-color: darken($green, 2%);
+        // color: $white;
+        background-color: $white;
       }
     }
     .div-decoration{
@@ -177,11 +177,12 @@ div#diary-index{
           padding:0.2em 0.4em;
           margin: 0 auto 0.8em;
           border:1px solid lighten($black,50%);
-          width:20em;
+          width:30em;
           @include border-radius(2px);
           display: block;
         }
         button{
+          width: 30em;
           padding: 1em 2em;
           margin:0 auto;
         }

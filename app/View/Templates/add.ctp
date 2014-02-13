@@ -40,7 +40,7 @@ $(function(){
 
 	<div class="form-header">
 		<div class="header-left">
-			<a href="/products/index" class="header-link">Create</a>
+			<a href="/templates/index" class="header-link">Create</a>
 		</div>
 		<div class="header-right">
 			<input type="text" name="data[Template][name]" id="template" class="form-control page-title" value="" placeholder="Title..." />

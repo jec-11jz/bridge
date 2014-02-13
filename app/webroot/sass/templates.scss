@@ -17,13 +17,13 @@
         @include box-shadow(0 0 1px $black);
         @include border-radius(2em);
         @include placeholder-color;
-        color: $white;
-        background-color: darken($green, 2%);
+        color: $black;
+        background-color: $white;
         @include text-shadow(none);
       }
     }
     .div-decoration{
-      background-color: $col-black2;
+      background-color: $dark-blue;
     }
   }
   .form-body{
@@ -32,6 +32,7 @@
     @include line-box;
     .div-button{
       margin-bottom: 1em;
+      i{color:$white;}
       .btn-add-attribute{width:15em;}
       .del{margin-left: 2em;}
     }

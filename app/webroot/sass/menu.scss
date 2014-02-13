@@ -102,22 +102,25 @@ div.modal-content{
       }
     }
     &.menu-create:hover{
-      color: darken($yellow, 20%);
+      p,i{color: darken($yellow, 20%);@include btn-fade;}
     }
     &.menu-view:hover{
-      color: $blue;
+      p,i{color: $blue;@include btn-fade;}
     }
     &.menu-search:hover{
-      color: $red;
+      p,i{color: $red;@include btn-fade;}
     }
     &.menu-sign, &.menu-login{
       width: 120px;
     }
     &.menu-sign:hover{
-      color: $green;
+      p,i{color: $green;@include btn-fade;}
     }
     &.menu-login:hover{
-      color: $green;
+      p,i{color: $green;@include btn-fade;}
+    }
+    &.menu-user:hover{
+      p{color: $green;@include btn-fade;}
     }
     p {
       text-align:center;

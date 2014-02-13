@@ -92,6 +92,37 @@
     }
 }
 
+@mixin links-color($color){
+  border:solid 2px $color;
+  border-radius: 30px;
+  @include btn-fade;
+  &:hover{
+    background-color: $color;
+    color:$white;
+    .div-left{
+      i{
+        color: $white;
+      }
+    }
+    .div-right{
+      span{
+        color: $white;
+      }
+    }
+  }
+  .div-left{
+    i{
+      color: $color;
+    }
+  }
+  .div-right{
+    span{
+      color: $color;
+    }
+  }
+}
+
+
 @mixin back-z{
   background: #cecece url("../img/background-2.png");
 }

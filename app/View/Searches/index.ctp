@@ -15,11 +15,14 @@
 ?>
 
 <div id="search">
-	<input name="keywords" id="keywords" class="form-control" value="<?php echo h($keyword); ?>" placeholder='Search  here...'>
-	<input name="not-keywords" id="not-keywords" class="form-control" placeholder="絞り込み">
-	<input type="submit" value="Search" class="btn-a search" id="btn-search">
+	<div class="div-search">
+		<input name="keywords" id="keywords" class="form-control main-search" value="<?php echo h($keyword); ?>" placeholder='Search  here...'>
+		<input type="submit" value="Search" class="btn-green button-search" id="btn-search">
+		<!-- <input name="not-keywords" id="not-keywords" class="form-control" placeholder="not検索"> -->
+	</div>
+	
+
 	<div id="search-custom">
-		<legend>Scope</legend>
 		<div class="form-tag">
 			Tag Search<input type="hidden" name="key-tags" id="key-tags" class="form-control tags" value="<?php echo h($key_tags['keywords']); ?>">
 			Not<input type="hidden" name="not-key-tags" id="not-key-tags" class="form-control tags">
@@ -256,7 +259,7 @@ $(function() {
 <script id="js-search-products" type="text/x-jquery-tmpl">
 	<div class="cont hidden product" style="float:left">
 		<div class="div-decoration-products">
-			<span><i class="fa fa-film"></i></span>
+			<span>Product</span>
 		</div>
 		<div class="cont-pic">
 			<a href="/products/view/${Product.id}" class="link"></a>
@@ -280,7 +283,7 @@ $(function() {
 <script id="js-search-blogs" type="text/x-jquery-tmpl">
 	<div class="cont hidden blog spoiler${Blog.spoiler}" style="float:left">
 		<div class="div-decoration-blogs">
-			<span><i class="fa fa-book"></i></span>
+			<span>Blog</span>
 		</div>
 		<div class="cont-pic">
 			<a href="/blogs/view/${Blog.id}" class="link"></a>

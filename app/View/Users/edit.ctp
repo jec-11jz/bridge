@@ -84,9 +84,12 @@ $(function() {
 			<div style='margin:5px'>Click here to choose an image</div>
 		{{/if}}
 		</div>
-		<input type="text" name="data[User][nickname]" id="user-nickname" placeholder="Nickname" value="${nickname}">
-		<input type="text" name="data[User][email]" id="user-email" placeholder="email" value="${email}">
-		<textarea name="data[User][profile]" id="user-profile" cols="40">${profile}</textarea>
+		<span>Nickname</span>
+		<input type="text" name="data[User][nickname]" class="user-info" id="user-nickname" placeholder="Nickname" value="${nickname}">
+		<span>Email</span>
+		<input type="text" name="data[User][email]" class="user-info" id="user-email" placeholder="email" value="${email}">
+		<span>Profile</span>
+		<textarea name="data[User][profile]" class="user-info" id="user-profile" cols="40">${profile}</textarea>
 	</div>
 </script>
 
@@ -98,25 +101,80 @@ $(function() {
 		background: black;
 	}
 </style>
+
 <div class="form third-content-form">
 	<div class="form-header">
-		<!-- <img href="<?php echo $user[‘users_image’]; ?>"> -->
-		<p><?php echo h($user[‘users_image’]); ?></p>
+		<div class="header-back">
+			<img src="<?php echo h($user['users_image']); ?>" alt="">
+		</div>
+		<div clasS="header-user">
+			<span><?php echo h($user['name']); ?></span>
+		</div>
+		
 	</div>
-	
+
 	<div class="form-body">
+		<div class="user-links">
+			<div class="links-div div-fav">
+				<a class="div-link" href=""></a>
+				<div class="div-left">
+					<i class="fa fa-star-o"></i>
+				</div>
+				<div class="div-right">
+					<span>My Favs</span>
+				</div>
+			</div>
+			<div class="links-div div-watched">
+				<a class="div-link" href=""></a>
+				<div class="div-left">
+					<i class="fa fa-star-o"></i>
+				</div>
+				<div class="div-right">
+					<span>Watched</span>
+				</div>
+			</div>
+			<div class="links-div div-want">
+				<a class="div-link" href=""></a>
+				<div class="div-left">
+					<i class="fa fa-star-o"></i>
+				</div>
+				<div class="div-right">
+					<span>Want to watch</span>
+				</div>
+			</div>
+			<div class="links-div div-image">
+				<a class="div-link" href=""></a>
+				<div class="div-left">
+					<i class="fa fa-picture-o"></i>
+				</div>
+				<div class="div-right">
+					<span>Image upload</span>
+				</div>
+			</div>
+			<div class="links-div div-edit">
+				<a class="div-link" href="/users/edit"></a>
+				<div class="div-left">
+					<i class="fa fa-cog"></i>
+				</div>
+				<div class="div-right">
+					<span>edit account</span>
+				</div>
+				
+			</div>
+		</div>
+
+		<div class="user-edit">
+			<div id="message"></div>
+			<form method="post" id="form-user-edit" action="/api/users/edit.json">
+				<div id="edit-form"></div>
+				<div>
+					<input type="button" id="btn-edit" class="btn-blue"value="submit" />
+				</div>
+			</form>
+		</div> 
 	</div>
 
 	<div class="form-footer">
 	</div>
 </div> <!-- form -->
 
-<div class="user-edit">
-	<div id="message"></div>
-	<form method="post" id="form-user-edit" action="/api/users/edit.json">
-		<div id="edit-form"></div>
-		<div>
-			<input type="button" id="btn-edit" class="btn-blue"value="submit" />
-		</div>
-	</form>
-</div> <!-- END signup -->
