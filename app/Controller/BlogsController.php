@@ -165,7 +165,7 @@ class BlogsController extends AppController {
         if (!$blog) {
             throw new NotFoundException(__('Invalid post'));
         }
-		if(!is_null($this->Auth->user('id'))){
+		if(!is_null($this->Auth)){
 			$blog['login_user'] = $this->Auth->user();
 		} else {
 			$blog['login_user'] = null;
@@ -179,7 +179,7 @@ class BlogsController extends AppController {
 			$blog_id = $this->request->query['id'];
 		}
 		$blog = $this->Blog->findById($blog_id);
-		if(is_null($this->Auth->user('id'))){
+		if(is_null($this->Auth)){
 			$blog['auth'] = null;
 		} else if($blog['Blog']['user_id'] == $this->Auth->user('id')){
 			$blog['auth'] = 'author';
@@ -211,7 +211,7 @@ class BlogsController extends AppController {
 		if(is_null($blog_id)){
 			return $this->apiError('ブログが存在しません');
 		}
-		if(is_null($this->Auth->user('id'))){
+		if(is_null($this->Auth)){
 			return $this->apiError('ログインしてください');
 		}
 		$user_id = $this->Auth->user('id');
@@ -226,7 +226,7 @@ class BlogsController extends AppController {
 		if(!empty($this->request->data)){
 			$comment = $this->request->data;
 		}
-		if(!is_null($this->Auth->user('id'))){
+		if(!is_null($this->Auth)){
 			$comment['author_id'] = $this->Auth->user('id');
 		}
 		$message = $this->Comment->saveComment($comment);

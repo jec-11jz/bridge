@@ -151,14 +151,12 @@ $(function() {
 			url: '/api/blogs/comment.json',
 			data: arrayComment,
 			success: function(data){
-				console.log('bbbbbbbbbbbb');
 			    $('#comment-message').flash_message({
 			        text: data['response'],
 			        how: 'append'
 			    });
 			},
 			error: function(xhr, xhrStatus){
-				console.log('aaaaaaaaaaaaaaa');
 				$('#comment-message').flash_message({
 			        text: xhr['responseJSON'],
 			        how: 'append'

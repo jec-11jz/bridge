@@ -213,7 +213,7 @@ class ProductsController extends AppController {
 		if(is_null($product_id)){
 			return $this->apiError('作品が存在しません');
 		}
-		if(is_null($this->Auth->user('id'))){
+		if(is_null($this->Auth)){
 			return $this->apiError('ログインしてください');
 		}
 		$user_id = $this->Auth->user('id');
