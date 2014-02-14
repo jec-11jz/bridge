@@ -17,7 +17,7 @@
         @include border-radius(2em);
         @include placeholder-color;
         @include text-shadow(none);
-        // color: $white;
+        color: $black;
         background-color: $white;
 
       }
@@ -76,20 +76,20 @@
       @include border-radius(2px);
       @include line-box;
       .tags-set{
-        // border-bottom: 1px solid $black;
-        @include line-bottom;
+        @include box-shadow(0 1px 0 rgba(0,0,0,0.1));
         margin:1px;
+        &:last-child{border:none;@include box-shadow(0 0 0 0);}
         .tag-title{
           padding: 1.1em 1em;
           height: 100%;
           width: 10em;
           font-size: 1.1em;
-          text-justify: distribute-all-lines;
-          @include line-bottom;
-          @include line-right;
+          border-bottom: 1px solid rgba(0,0,0,0.1);border-right: 1px solid rgba(0,0,0,0.1);
           display: inline-block;
           background-color: $white;
+          
         }
+        .attributes:last-child{border:none;}
         .tag{
           padding: 0.5em 0.6em;
           margin-left: 0.5em;

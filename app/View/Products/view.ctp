@@ -114,7 +114,7 @@ $(function(){
 <div id="div-view-products" class="form second-content-form" name="<?php echo h($product['Product']['id']); ?>">
 	<div class="form-header">
 		<div class="header-left">
-			<a href="/products/index" class="header-link">View</a>
+			<a href="/searches/index" class="header-link">View</a>
 		</div>
 		<div class="header-right">
 			<span class="page-title"><?php echo h($product['Product']['name']); ?></span>
