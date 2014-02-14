@@ -156,6 +156,7 @@ $(function() {
 	
 	// scroll
 	$(window).on('scroll', function() {
+		console.log('scroll');
 		var scrollHeight = $(document).height();
 		var scrollPosition = $(window).height() + $(window).scrollTop();
 		if ((scrollHeight - scrollPosition) / scrollHeight === 0) {
