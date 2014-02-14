@@ -38,7 +38,7 @@ $(function() {
 	        //デフォルト値
 	        options = $.extend({
 	            text: 'Done',
-	            time: 750,
+	            time: 1750,
 	            how: 'before',
 	            class_name: ''
 	        }, options);
@@ -77,19 +77,22 @@ $(function() {
   			});
 		},
 		error: function(xhr, xhrStatus){
-				$('.div-error').remove();
-				error = $('#error-message').tmpl(xhr['responseJSON']['error']);
-				$('#error').append(error);
-				$('body,html').animate({
-			        scrollTop: 0
-			    }, 100);
-			    return false;
+			$('#error-message').flash_message({
+		        text: xhr['responseJSON']['error']['message'],
+		        how: 'append'
+		    });
+			$('body,html').animate({
+		        scrollTop: 0
+		    }, 100);
 		}
 	});
 	
 	//テンプレートが選択されたらattributeを取得する
 	$("#selected-template").change(function() {
 		$('.div-error').remove();
+		if($("#selected-template").val() == 'other'){
+			location.href="/templates/add";
+		}
 		// delete all attribute
 		$('.template-attributes').remove();
 		var temp_id = $(this).val();
@@ -106,12 +109,13 @@ $(function() {
   				});
 			},
 			error: function(xhr, xhrStatus){
-				error = $('#error-message').tmpl(xhr['responseJSON']['error']);
-				$('#error').append(error);
+				$('#error-message').flash_message({
+			        text: xhr['responseJSON']['error']['message'],
+			        how: 'append'
+			    });
 				$('body,html').animate({
 			        scrollTop: 0
 			    }, 100);
-			    return false;
 			}
 		});
 	});// End change()
@@ -127,7 +131,6 @@ $(function() {
 			if($(this).val() != ""){
 				sendData['data']['Product'][$(this).attr('name')] = $(this).val();
 			} else {
-				console.log('aaaaaa');
 				return;
 				
 			}
@@ -155,13 +158,13 @@ $(function() {
 			   location.href = "/products/index";
 			},
 			error: function(xhr, xhrStatus) {
-				$('.div-error').remove();
-				error = $('#error-message').tmpl(xhr['responseJSON']['error']);
-				$('#error').append(error);
+			    $('#error-message').flash_message({
+			        text: xhr['responseJSON']['error']['message'],
+			        how: 'append'
+			    });
 				$('body,html').animate({
 			        scrollTop: 0
 			    }, 100);
-			    console.log('send...' + sendData);
 			    return false;
 			}
 		});
@@ -204,11 +207,6 @@ $(function(){
 		<input type="text" class="post-tag attr-input tags" name="value" id="${id}">
 	</div>
 </script>
-<script id="error-message" type="text/x-jquery-tmpl">
-	<div class="div-error">
-		<h3 class="error">*${message}</h3>	
-	</div>
-</script>
 <div id="div-add-products" class="form second-content-form">
 <form method="post" action="/products/add">
 
@@ -224,13 +222,12 @@ $(function(){
 		</div>
 	</div>
 
-	<div id="error"></div>
+	<div id="error-message"></div>
 	<div class="form-body">
 		<div id="image" onclick="openKCFinder(this)"><div style='margin:5px'>Click here to choose an image</div></div>
 
 		<textarea name="outline" class="product-info" cols="70" rows="12" id="movie-outline" placeholder="あらすじ"></textarea>
 		
-
 		<div class="row">
 			<select name="template_id" class="form-control template-name" id="selected-template" style="display:block">
 				<option value=""　selected>-テンプレートを選択-</option>
@@ -261,8 +258,6 @@ $(function(){
 		
 	</div>
 
-		
-		
 	<div class="form-footer">
 		<div class="div-submit">
 			<input type="button" id="btn-register" value="登録" class="btn-blue" />
