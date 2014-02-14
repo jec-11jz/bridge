@@ -1068,7 +1068,7 @@ div#diary-index {
       text-align: left; }
     /* line 185, ../sass/diary.scss */
     #div-view-blogs .form-footer #comment-area #comment-form #comments .user-comments hr.comment-division, #div-edit-blogs .form-footer #comment-area #comment-form #comments .user-comments hr.comment-division, #div-add-blogs .form-footer #comment-area #comment-form #comments .user-comments hr.comment-division {
-      margin: 0.5em 0; }
+      margin: 1em 0; }
     /* line 188, ../sass/diary.scss */
     #div-view-blogs .form-footer #comment-area #comment-form #comments .user-comments .comment-info-left, #div-edit-blogs .form-footer #comment-area #comment-form #comments .user-comments .comment-info-left, #div-add-blogs .form-footer #comment-area #comment-form #comments .user-comments .comment-info-left {
       display: inline-block;
@@ -1083,7 +1083,7 @@ div#diary-index {
       #div-view-blogs .form-footer #comment-area #comment-form #comments .user-comments .comment-info-right .span-author, #div-edit-blogs .form-footer #comment-area #comment-form #comments .user-comments .comment-info-right .span-author, #div-add-blogs .form-footer #comment-area #comment-form #comments .user-comments .comment-info-right .span-author {
         background-color: #68c39f;
         color: #f6f6f6;
-        padding: 0.1em 0.2em;
+        padding: 0.3em 0.6em;
         -webkit-border-radius: 1px;
         -moz-border-radius: 1px;
         -ms-border-radius: 1px;
@@ -1105,16 +1105,25 @@ div#diary-index {
       -ms-border-radius: 2px;
       -o-border-radius: 2px;
       border-radius: 2px; }
-    /* line 218, ../sass/diary.scss */
+      /* line 217, ../sass/diary.scss */
+      #div-view-blogs .form-footer #comment-area #comment-form .new-comment .comment-index.user-author, #div-edit-blogs .form-footer #comment-area #comment-form .new-comment .comment-index.user-author, #div-add-blogs .form-footer #comment-area #comment-form .new-comment .comment-index.user-author {
+        background-color: #68c39f;
+        color: #f6f6f6;
+        margin-top: 0.8em;
+        border: none; }
+      /* line 224, ../sass/diary.scss */
+      #div-view-blogs .form-footer #comment-area #comment-form .new-comment .comment-index.input-url, #div-view-blogs .form-footer #comment-area #comment-form .new-comment .comment-index.input-author, #div-edit-blogs .form-footer #comment-area #comment-form .new-comment .comment-index.input-url, #div-edit-blogs .form-footer #comment-area #comment-form .new-comment .comment-index.input-author, #div-add-blogs .form-footer #comment-area #comment-form .new-comment .comment-index.input-url, #div-add-blogs .form-footer #comment-area #comment-form .new-comment .comment-index.input-author {
+        display: none; }
+    /* line 228, ../sass/diary.scss */
     #div-view-blogs .form-footer #comment-area #comment-form .new-comment #comment-author, #div-view-blogs .form-footer #comment-area #comment-form .new-comment #comment-url, #div-edit-blogs .form-footer #comment-area #comment-form .new-comment #comment-author, #div-edit-blogs .form-footer #comment-area #comment-form .new-comment #comment-url, #div-add-blogs .form-footer #comment-area #comment-form .new-comment #comment-author, #div-add-blogs .form-footer #comment-area #comment-form .new-comment #comment-url {
-      width: 10em; }
-    /* line 221, ../sass/diary.scss */
+      width: 100%; }
+    /* line 231, ../sass/diary.scss */
     #div-view-blogs .form-footer #comment-area #comment-form .new-comment button, #div-edit-blogs .form-footer #comment-area #comment-form .new-comment button, #div-add-blogs .form-footer #comment-area #comment-form .new-comment button {
-      width: 30em;
+      width: 100%;
       padding: 1em 2em;
-      margin: 0 auto; }
+      margin: 1em auto; }
 
-/* line 234, ../sass/diary.scss */
+/* line 244, ../sass/diary.scss */
 div .container {
   margin: 0;
   padding: 0;
@@ -1123,7 +1132,7 @@ div .container {
   width: 100%;
   height: auto !important;
   height: 100%; }
-/* line 242, ../sass/diary.scss */
+/* line 252, ../sass/diary.scss */
 div .main {
   position: relative;
   float: left;
@@ -1131,13 +1140,13 @@ div .main {
   min-width: 600px;
   width: 100%;
   height: 100%; }
-/* line 250, ../sass/diary.scss */
+/* line 260, ../sass/diary.scss */
 div .line-up {
   margin: 0;
   padding: 0;
   margin-top: 50px; }
 
-/* line 255, ../sass/diary.scss */
+/* line 265, ../sass/diary.scss */
 .side-menu {
   position: absolute;
   float: left;
@@ -1146,29 +1155,29 @@ div .line-up {
   background-color: #509B49;
   background-color: #4c921f;
   color: #DDDDDD; }
-  /* line 264, ../sass/diary.scss */
+  /* line 274, ../sass/diary.scss */
   .side-menu .menu {
     margin-top: 20px; }
-    /* line 266, ../sass/diary.scss */
+    /* line 276, ../sass/diary.scss */
     .side-menu .menu .icon {
       margin: 0;
       padding: 0;
       width: 20px;
       height: 20px;
       text-align: center; }
-    /* line 273, ../sass/diary.scss */
+    /* line 283, ../sass/diary.scss */
     .side-menu .menu .name {
       margin-left: 10px; }
-  /* line 278, ../sass/diary.scss */
+  /* line 288, ../sass/diary.scss */
   .side-menu li {
     background-color: #60AB59;
     background-color: #60a633;
     list-style-type: none; }
-    /* line 282, ../sass/diary.scss */
+    /* line 292, ../sass/diary.scss */
     .side-menu li:hover {
       background-color: #474B4E;
       background-color: #7ec451; }
-    /* line 286, ../sass/diary.scss */
+    /* line 296, ../sass/diary.scss */
     .side-menu li:active {
       background-color: #80CB79;
       background-color: #74ba47;
@@ -1177,10 +1186,10 @@ div .line-up {
       border-top: solid 1px #111;
       border-bottom: solid 1px #111;
       */ }
-      /* line 294, ../sass/diary.scss */
+      /* line 304, ../sass/diary.scss */
       .side-menu li:active a {
         color: #fff; }
-    /* line 298, ../sass/diary.scss */
+    /* line 308, ../sass/diary.scss */
     .side-menu li a {
       margin: 0;
       padding: 0;
@@ -1191,12 +1200,12 @@ div .line-up {
       height: 100%;
       color: #DDDDDD;
       text-decoration: none; }
-  /* line 310, ../sass/diary.scss */
+  /* line 320, ../sass/diary.scss */
   .side-menu ul, .side-menu li {
     margin: 0;
     padding: 0; }
 
-/* line 317, ../sass/diary.scss */
+/* line 327, ../sass/diary.scss */
 .side-profile {
   margin: 0 auto;
   padding-top: 10px;
@@ -1206,11 +1215,11 @@ div .line-up {
   background-color: #60a633;
   text-align: center; }
 
-/* line 326, ../sass/diary.scss */
+/* line 336, ../sass/diary.scss */
 textarea.blog {
   width: 80%;
   height: 400px; }
-  /* line 329, ../sass/diary.scss */
+  /* line 339, ../sass/diary.scss */
   textarea.blog:hover {
     border: 3px solid #97F95A;
     opacity: 0.6;
