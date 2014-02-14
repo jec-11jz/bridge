@@ -142,6 +142,15 @@ $(function() {
 					<span>Want to watch</span>
 				</div>
 			</div>
+			<div class="links-div div-temp">
+				<a class="div-link" href="/templates/index"></a>
+				<div class="div-left">
+					<i class="fa fa-cog"></i>
+				</div>
+				<div class="div-right">
+					<span>Template</span>
+				</div>
+			</div>
 			<div class="links-div div-image">
 				<a class="div-link" href=""></a>
 				<div class="div-left">

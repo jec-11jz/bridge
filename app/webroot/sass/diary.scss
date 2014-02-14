@@ -169,9 +169,39 @@ div#diary-index{
     }
     #comment-area{
       #comment-form{
-        text-align: center;
+        // text-align: center;
         input,textarea,button{
           display: block;
+        }
+        #comments{
+          .user-comments{
+            margin: 0 auto 1em;
+            padding: 1em;
+            width: 30em;
+            border: 1px solid rgba(0,0,0,0.1);
+            .comment-sub{
+              text-align: left;
+            }
+            hr.comment-division{
+              margin: 0.5em 0;
+            }
+            .comment-info-left{
+              display: inline-block;
+              width: 49%;
+              text-align: left;
+            }
+            .comment-info-right{
+              display: inline-block;
+              width: 50%;
+              text-align: right;
+              .span-author{
+                background-color: $green;
+                color: $white;
+                padding: 0.1em 0.2em;
+                @include border-radius(1px);
+              }
+            }
+          }
         }
         .new-comment{
           width: 30em;

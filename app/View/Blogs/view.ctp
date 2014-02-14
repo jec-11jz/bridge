@@ -178,10 +178,21 @@ $(function() {
 </script>
 <!-- comment -->
 <script id="js-comments" type="text/x-jquery-tmpl">
-	<hr size="3" />
-	<p>${created}</p>
-	<p>${author}</p>
-	<p>${comment}</p>
+	<div class="user-comments">
+		<div class="comment-sub">
+			<p>${comment}</p>
+		</div>
+		<hr class="comment-division">
+		<div class="comment-info-left">
+			<span>${created}</span>
+		</div>
+		<div class="comment-info-right">
+			<span class="span-author">${author}</span>
+		</div>
+		
+	</div>
+	
+	
 </script>
 <!-- tools -->
 <script id="js-tools" type="text/x-jquery-tmpl">
@@ -196,6 +207,18 @@ $(function() {
 			<a id="btn-favorite" class="fa fa-star">
 		{{/if}}
 	{{/if}}
+</script>
+
+<script>
+$('#comment-list').click(function(){
+    var ele = document.getElementById('#comments');  
+    console('aaa');
+    if (ele.style.display == 'none') {  
+        ele.style.display = 'block';  
+    } else {  
+        ele.style.display = 'none';  
+    }  
+});
 </script>
 <style>
 	.list {
@@ -259,11 +282,12 @@ $(function() {
 		</div>
 		<hr>
 		<div id="comment-area" >
-			<legend>コメント <i class="fa fa-chevron-down"></i></legend>
+			<legend id="comment-list">コメント <i class="fa fa-chevron-down"></i></legend>
 			<div id="comment-form">
 				<div id="comments"></div>
 				<div id="comment-message"></div>
 
+				<h2>new comment</h2>
 				<div class="new-comment">
 					<textarea class="comment-index" id="comment-content" cols="40" rows="4" placeholder="comment"></textarea>
 					<?php if(is_null($blog['login_user'])){ ?>
