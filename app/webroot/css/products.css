@@ -882,6 +882,7 @@ div.modal-content {
   -o-border-radius: 2em;
   border-radius: 2em;
   text-shadow: none;
+  color: #3f3f3f;
   background-color: #f6f6f6; }
   /* line 72, ../sass/_my-mixin.scss */
   #div-add-products .form-header .header-right input:-moz-placeholder, #div-view-products .form-header .header-right input:-moz-placeholder, #div-edit-products .form-header .header-right input:-moz-placeholder {
@@ -953,28 +954,29 @@ div.modal-content {
     box-shadow: white -1px 1px 0 inset; }
     /* line 78, ../sass/products.scss */
     #div-add-products .form-body #tags-attribute-view .tags-set, #div-view-products .form-body #tags-attribute-view .tags-set, #div-edit-products .form-body #tags-attribute-view .tags-set {
-      border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-      -webkit-box-shadow: white 0 1px 0;
-      -moz-box-shadow: white 0 1px 0;
-      box-shadow: white 0 1px 0;
+      -webkit-box-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
+      -moz-box-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
+      box-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
       margin: 1px; }
+      /* line 81, ../sass/products.scss */
+      #div-add-products .form-body #tags-attribute-view .tags-set:last-child, #div-view-products .form-body #tags-attribute-view .tags-set:last-child, #div-edit-products .form-body #tags-attribute-view .tags-set:last-child {
+        border: none;
+        -webkit-box-shadow: 0 0 0 0;
+        -moz-box-shadow: 0 0 0 0;
+        box-shadow: 0 0 0 0; }
       /* line 82, ../sass/products.scss */
       #div-add-products .form-body #tags-attribute-view .tags-set .tag-title, #div-view-products .form-body #tags-attribute-view .tags-set .tag-title, #div-edit-products .form-body #tags-attribute-view .tags-set .tag-title {
         padding: 1.1em 1em;
         height: 100%;
         width: 10em;
         font-size: 1.1em;
-        text-justify: distribute-all-lines;
         border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-        -webkit-box-shadow: white 0 1px 0;
-        -moz-box-shadow: white 0 1px 0;
-        box-shadow: white 0 1px 0;
         border-right: 1px solid rgba(0, 0, 0, 0.1);
-        -webkit-box-shadow: white -1px 0 0 inset;
-        -moz-box-shadow: white -1px 0 0 inset;
-        box-shadow: white -1px 0 0 inset;
         display: inline-block;
         background-color: #f6f6f6; }
+      /* line 92, ../sass/products.scss */
+      #div-add-products .form-body #tags-attribute-view .tags-set .attributes:last-child, #div-view-products .form-body #tags-attribute-view .tags-set .attributes:last-child, #div-edit-products .form-body #tags-attribute-view .tags-set .attributes:last-child {
+        border: none; }
       /* line 93, ../sass/products.scss */
       #div-add-products .form-body #tags-attribute-view .tags-set .tag, #div-view-products .form-body #tags-attribute-view .tags-set .tag, #div-edit-products .form-body #tags-attribute-view .tags-set .tag {
         padding: 0.5em 0.6em;

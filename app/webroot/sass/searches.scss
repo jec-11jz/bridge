@@ -19,17 +19,13 @@ body{
   }
   .div-search{
     position: relative;
-    width: 464px;
+    width: 463px;
     margin: 6em auto 2em auto;
     text-align: left;
     .form-control{
       width: 390px;
-      &.main-search{
-
-      }
     }
     .button-search{
-      @include border-radius(2px);
       padding: 7px 17px;
       position: absolute;
       right: 0px;top: 0;

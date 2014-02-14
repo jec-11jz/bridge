@@ -259,19 +259,24 @@ $(function() {
 		</div>
 		<hr>
 		<div id="comment-area" >
-			<legend>コメント</legend>
+			<legend>コメント <i class="fa fa-chevron-down"></i></legend>
 			<div id="comment-form">
 				<div id="comments"></div>
 				<div id="comment-message"></div>
-				<?php if(is_null($blog['login_user'])){ ?>
-					<input type="text" class="comment-index" id="comment-author" placeholder="your name" />
-					<input type="text" class="comment-index" id="comment-url" placeholder="url" />
-				<?php } else { ?>
-					<input type="text" class="comment-index" id="comment-author" value="<?php echo h($blog['login_user']['name']) ?>" placeholder="your name" />
-					<input type="text" class="comment-index" id="comment-url" value="/users/view/<?php echo h($blog['login_user']['id']) ?>" placeholder="url" />
-				<?php } ?>
-				<textarea class="comment-index" id="comment-content" cols="40" rows="4" placeholder="comment"></textarea>
-				<button id="btn-comment" class="btn-blue">コメントする</button>
+
+				<div class="new-comment">
+					<textarea class="comment-index" id="comment-content" cols="40" rows="4" placeholder="comment"></textarea>
+					<?php if(is_null($blog['login_user'])){ ?>
+						<input type="text" class="comment-index" id="comment-author" placeholder="your name" />
+						<input type="text" class="comment-index" id="comment-url" placeholder="url" />
+					<?php } else { ?>
+						<input type="text" class="comment-index" id="comment-author" value="<?php echo h($blog['login_user']['name']) ?>" placeholder="your name" />
+						<input type="text" class="comment-index" id="comment-url" value="/users/view/<?php echo h($blog['login_user']['id']) ?>" placeholder="url" />
+					<?php } ?>
+					
+					<button id="btn-comment" class="btn-blue">コメントする</button>
+				</div>
+				
 			</div>
 		</div>
 	</div>
