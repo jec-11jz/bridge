@@ -166,6 +166,14 @@ $(function() {
 			}
 		});
 	});
+	
+	$('#comment-list').click(function(){
+		if($("#comments").hasClass('hidden')){
+			$("#comments").removeClass('hidden');
+		} else {
+			$("#comments").addClass('hidden');
+		}
+	})
 });
 </script>
 <!-- tag -->
@@ -189,10 +197,7 @@ $(function() {
 		<div class="comment-info-right">
 			<span class="span-author">${author}</span>
 		</div>
-		
 	</div>
-	
-	
 </script>
 <!-- tools -->
 <script id="js-tools" type="text/x-jquery-tmpl">
@@ -282,9 +287,9 @@ $('#comment-list').click(function(){
 		</div>
 		<hr>
 		<div id="comment-area" >
-			<legend id="comment-list">コメント <i class="fa fa-chevron-down"></i></legend>
+			<legend id="comment-list">コメント<i class="fa fa-chevron-down"></i></legend>
 			<div id="comment-form">
-				<div id="comments"></div>
+				<div id="comments" class="hidden"></div>
 				<div id="comment-message"></div>
 
 				<h2>new comment</h2>

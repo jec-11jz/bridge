@@ -21,7 +21,6 @@
 		<a href="#">Previous</a>
 		<a href="#">Next</a>
 	</div>
-	<div id="error"></div>
 	<div id="top-image">
 		<ul id="sb-slider" class="sb-slider"></ul>
 	</div>
@@ -81,12 +80,7 @@
 				Page.init();
 			},
 			error: function(xhr, xhrStatus){
-				error = $('#error-message').tmpl(xhr['responseJSON']['error']);
-				$('#error').append(error);
-				$('body,html').animate({
-			        scrollTop: 0
-			    }, 100);
-			    return false;
+				console.log('error');
 			}
 		});
 	});

@@ -209,7 +209,7 @@
 		sequentialFactor : 150,
 		// animation speed
 		// this is the speed that takes "1" cuboid to rotate
-		speed : 600,
+		speed : 800,
 		// transition easing
 		easing : 'ease',
 		// if true the slicebox will start the animation automatically
