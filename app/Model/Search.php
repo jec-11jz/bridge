@@ -1,12 +1,16 @@
 <?php
 App::uses('AppModel', 'Model');
 App::uses('Tag', 'Model');
+App::uses('Blog', 'Model');
+App::uses('Product', 'Model');
 
 class Search extends AppModel {
 	
 	public function __construct() {
 		parent::__construct();
 		$this->Tag = ClassRegistry::init('Tag');
+		$this->Product = ClassRegistry::init('Product');
+		$this->Blog = ClassRegistry::init('Blog');
 	}
 	
 	public function nullCheckOfKeywords($keywords = array()) {
@@ -54,5 +58,27 @@ class Search extends AppModel {
 		}
 		
 		return $tag_ids;
+	}
+	
+	public function countResultContents($blog_options = null, $product_options = null) {
+		$contents = array();
+		$count = null;
+		
+		if(is_array($blog_options)) {
+			unset($blog_options['limit']);
+			unset($blog_options['page']);
+			
+			$contents['blogs'] = $this->Blog->find('all', $blog_options);
+		}
+		if(is_array($product_options)){
+			unset($product_options['limit']);
+			unset($product_options['page']);
+			
+			$contents['products'] = $this->Product->find('all', $product_options);
+		}
+		
+		$count = count($contents['blogs']) + count($contents['products']);
+		
+		return $count;
 	}
 }

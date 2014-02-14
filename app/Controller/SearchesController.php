@@ -103,6 +103,8 @@ class SearchesController extends AppController {
 		$not_keywords = null;
 		$key_tags['keywords'] = null;
 		$not_key_tags['keywords'] = null;
+		$all_contents = null;
+		$last_page = null;
 		$contents = array();
 		
 		// get param form view
@@ -132,26 +134,19 @@ class SearchesController extends AppController {
 			$not_attr_tags = $this->AttributesTag->getProductIdFromCsvTags($not_key_tags['keywords']);
 			$not_key_tags['product'] = array_merge($not_key_tags['product'], $not_attr_tags);
 		}
-		
+		// set options
+		$blog_options['page'] = $product_options['page'] = $page;
+		$blog_options['limit'] = $product_options['limit'] = $count;
+		$blog_options['conditions'] = array('Blog.status' => 0);
 		// insert search result to contents
-		$contents['blogs'] = $this->Blog->find('all',array(
-			'conditions' => array(
-				'Blog.status' => 0
-			),
-			'page' => $page,
-			'limit' => $count
-		));
-		$contents['products'] = $this->Product->find('all',array(
-			'page' => $page,
-			'limit' => $count			
-		));
+		$contents['blogs'] = $this->Blog->find('all',$blog_options);
+		$contents['products'] = $this->Product->find('all',$product_options);
+		
 		$nullCheck = $this->Search->nullCheckOfKeywords(
 			array($keywords, $not_keywords, $key_tags['keywords'], $not_key_tags['keywords'])
 		);
 		if($nullCheck) {
 			// set options
-			$blog_options['page'] = $product_options['page'] = $page;
-			$blog_options['limit'] = $product_options['limit'] = $count;
 			$blog_options['conditions'] = array(
 				'Blog.status' => 0,
 				'OR' => array(
@@ -194,14 +189,19 @@ class SearchesController extends AppController {
 		// get related tags
 		$contents['tags'] = $this->Search->mergeBlogTagsAndProductTags($contents);
 		// check last page
-		$last_page = ceil((count($contents['blogs']) + count($contents['products'])) / $count);
-		if($page == $last_page){
+		$all_contents = $this->Search->countResultContents($blog_options, $product_options);
+		$last_page = ceil($all_contents / $count);
+		if(intval($page) == $last_page){
 			$contents['lastpage'] = 'this page is last';
+		} else {
+			$contents['lastpage'] = null;
 		}
 		if(is_null($contents)){
 			$this->apiError('contents are null');
 			return;
 		}
+		$test = array(intval($page), $last_page, $all_contents);
+		$contents['test'] = $test;
 		
 		$this->apiSuccess($contents);
 	}

@@ -110,6 +110,8 @@ $(function() {
 				'not_key_tags': arrayKeywords['not_key_tags'],
 			},
 			success: function(data, dataType) {
+				console.log('get...');
+				console.log(data);
 				$("#related-tags").find(".related-tag").remove();
 				if(data['response']['lastpage'] != null){
 					lastpage = true;
@@ -156,11 +158,12 @@ $(function() {
 	
 	// scroll
 	$(window).on('scroll', function() {
-		console.log('scroll');
 		var scrollHeight = $(document).height();
 		var scrollPosition = $(window).height() + $(window).scrollTop();
 		if ((scrollHeight - scrollPosition) / scrollHeight === 0) {
 			if(lastpage == false){
+				console.log('aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa');
+				console.log(lastpage);
 				// substitution value
 				arrayLoad['keywords'] = $('#keywords').val();
 				arrayLoad['not_keywords'] = $('#not-keywords').val();

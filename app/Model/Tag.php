@@ -75,6 +75,9 @@ class Tag extends AppModel {
 
 	public function saveFromNameArray($tags = array()) {
 		foreach ($tags as $tag) {
+			if(empty($tag)){
+				continue;
+			}
 			$tag_info = $this->findByName($tag);
 			if(empty($tag_info)){
 				$this->create();
