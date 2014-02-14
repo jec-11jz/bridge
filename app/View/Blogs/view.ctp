@@ -166,12 +166,14 @@ $(function() {
 			}
 		});
 	});
-	
+	$("#comments").hide(0);
 	$('#comment-list').click(function(){
-		if($("#comments").hasClass('hidden')){
-			$("#comments").removeClass('hidden');
+		if($("#comment-icon").hasClass('fa-chevron-down')){
+			$("#comments").show('fade',700);
+			$("#comment-icon").removeClass('fa-chevron-down').addClass('fa-chevron-up');
 		} else {
-			$("#comments").addClass('hidden');
+			$("#comments").hide('fade',700);
+			$("#comment-icon").removeClass('fa-chevron-up').addClass('fa-chevron-down');
 		}
 	})
 });
@@ -287,9 +289,9 @@ $('#comment-list').click(function(){
 		</div>
 		<hr>
 		<div id="comment-area" >
-			<legend id="comment-list">コメント<i class="fa fa-chevron-down"></i></legend>
+			<legend id="comment-list">コメント<i id="comment-icon" class="fa fa-chevron-down"></i></legend>
 			<div id="comment-form">
-				<div id="comments" class="hidden"></div>
+				<div id="comments"></div>
 				<div id="comment-message"></div>
 
 				<h2>new comment</h2>
