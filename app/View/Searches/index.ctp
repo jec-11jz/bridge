@@ -18,7 +18,7 @@
 	<div class="div-search">
 		<input name="keywords" id="keywords" class="form-control main-search" value="<?php echo h($keyword); ?>" placeholder='Search  here...'>
 		<input type="submit" value="Search" class="btn-green button-search" id="btn-search">
-		<!-- <input name="not-keywords" id="not-keywords" class="form-control" placeholder="not検索"> -->
+		<input type="hidden" name="not-keywords" id="not-keywords" class="form-control" placeholder="not検索">
 	</div>
 	
 
