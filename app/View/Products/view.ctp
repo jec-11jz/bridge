@@ -14,7 +14,7 @@ $(function(){
 	        //デフォルト値
 	        options = $.extend({
 	            text: 'Done',
-	            time: 750,
+	            time: 550,
 	            how: 'before',
 	            class_name: ''
 	        }, options);
@@ -80,8 +80,6 @@ $(function(){
 				'status': status
 			},
 			success: function(data){
-				console.log('aaaaaa');
-				console.log(data['response']);
 				$('#fav-message').flash_message({
 			        text: data['response'],
 			        how: 'append'
@@ -89,10 +87,8 @@ $(function(){
 			    $("#tool-links").find('a').removeClass('btn-favorite');
 			},
 			error: function(xhr, xhrStatus){
-				console.log('ssssss');
-				console.log(xhr['responseJSON']['error']['message']);
 			    $('#fav-message').flash_message({
-			        text: xhr['responseJSON']['error']['message'],
+			        text: xhr['responseJSON'],
 			        how: 'append'
 			    });
 			}

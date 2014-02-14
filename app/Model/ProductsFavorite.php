@@ -18,9 +18,9 @@ class ProductsFavorite extends AppModel {
 				'status' => $status
 			));
 			$this->save();
-			$message = 'お気に入りに追加しました。';
+			$message = '+1';
 		} else {
-			$message = 'すでにお気に入りに追加済みです。';
+			$message = 'すでに追加済みです。';
 		}
 		return $message;
 	}

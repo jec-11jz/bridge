@@ -218,7 +218,7 @@ class ProductsController extends AppController {
 		}
 		$user_id = $this->Auth->user('id');
 		$message = $this->ProductsFavorite->saveUsersProducts($product_id, $user_id, $status);
-		return $this->apiSuccess($message);
+		$this->apiSuccess($message);
 	}
 
 	public function delete($product_id = null) {
