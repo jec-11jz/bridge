@@ -341,6 +341,11 @@ class uploader {
             is_array($this->config['filenameChangeChars'])
         )
             $filename = strtr($filename, $this->config['filenameChangeChars']);
+		// custom
+		if (!preg_match("|^[0-9a-zA-Z_./?-]+$|", $filename)) {
+			$filename = substr((md5(date("YmdD His"))), 0, 20);
+		}
+		// end custom
         return $filename;
     }
 
