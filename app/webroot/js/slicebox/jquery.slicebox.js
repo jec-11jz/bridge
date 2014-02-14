@@ -209,7 +209,7 @@
 		sequentialFactor : 450,
 		// animation speed
 		// this is the speed that takes "1" cuboid to rotate
-		speed : 1800,
+		speed : 800,
 		// transition easing
 		easing : 'ease',
 		// if true the slicebox will start the animation automatically
@@ -442,15 +442,21 @@
 
 		},
 		_fade : function( dir ) {
+			
 			// custom
 			$('#top-image').fadeOut(10);
+			// end custom
+			
 			var self = this,
 				$visible = this.$items.eq( this.prev ),
 				h = $visible.find( 'img' ).height();
 
 			this.$el.css( 'height', h );
 			this.$items.css( 'position', 'absolute' );
+			
+			// custom
 			$('#top-image').fadeIn(1000);
+			// end custom
 			
 			// change image when push the top-button
 			var index = 0;
@@ -459,6 +465,7 @@
 			this.current = index;
 			this.$items.eq( this.current ).fadeIn( this.options.fallbackFadeSpeed, function() {
 				
+				// custom
 				$('#top-image').find('.sb-current').removeClass('sb-current').hide();
 				$( this ).css( 'display', 'block' ).addClass( 'sb-current' );
 				
@@ -480,6 +487,7 @@
 				} else {
 					currentCategory.removeClass('current-category');
 				}
+				// end custom
 				
 				self.$el.css( 'height', 'auto' );
 				self.$items.css( 'position', 'relative' );

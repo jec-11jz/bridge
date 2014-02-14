@@ -27,6 +27,7 @@
 </div><!-- toppage -->
 <script type="text/javascript">
 	$(document).ready( function(){
+		$("#top-image").find(".image-list").unbind("mouseenter").unbind("mouseleave");
 		// create slicebox
 		$.ajax({
 			type: 'GET',
@@ -95,31 +96,28 @@
 	});
 </script>
 <script id="sb-new-product" type="text/x-jquery-tmpl">
+	<a href="/products/view/${Product.id}" class="top-link"></a>
 	<li id="new-product-list" class="image-list">
-		<a href="" target="_blank">
-			<img src="${Product.image_url}" alt="image1"/>
-		</a>
+		<img src="${Product.image_url}" alt="image1"/>
 		<div class="sb-description">
 			<h3>${Product.name}</h3>
 		</div>
 	</li>
 </script>
 <script id="sb-most-popular-product" type="text/x-jquery-tmpl">
+	<a href="/products/view/${Product.id}" class="top-link"></a>
 	<li id="most-popular-product-list" class="image-list">
-		<a href="" target="_blank">
-			<img src="${Product.image_url}" alt="image1"/>
-		</a>
+		<img src="${Product.image_url}" alt="image1"/>
 		<div class="sb-description">
 			<h3>${Product.name}</h3>
 		</div>
 	</li>
 </script>
 <script id="sb-new-blog" type="text/x-jquery-tmpl">
+	<a href="/blogs/view/${Blog.id}" class="top-link"></a>
 	<li id="new-blog-list" class="image-list">
 		{{if UsedBlogImage.length != 0}}
-			<a style="background-color: white;width:100%;height100%;">
-				<img src="${UsedBlogImage[0].url}" class="diary-pic">
-			</a>
+			<img src="${UsedBlogImage[0].url}" class="diary-pic">
 		{{else}}
 			<div class="text-index" style="width: 220px; height:200px">
 				[no images]<br/>
@@ -132,11 +130,10 @@
 	</li>
 </script>
 <script id="sb-most-popular-blog" type="text/x-jquery-tmpl">
+	<a href="/blogs/view/${Blog.id}" class="top-link"></a>
 	<li id="most-popular-blog-list" class="image-list">
 		{{if UsedBlogImage.length != 0}}
-			<a style="background-color: white;width:100%;height100%;">
-				<img src="${UsedBlogImage[0].url}" class="diary-pic">
-			</a>
+			<img src="${UsedBlogImage[0].url}" class="diary-pic">
 		{{else}}
 			<div class="text-index" style="width: 220px; height:200px">
 				[no images]<br/>
@@ -147,10 +144,5 @@
 			<h3>${Blog.title}</h3>
 		</div>
 	</li>
-</script>
-<script id="error-message" type="text/x-jquery-tmpl">
-	<div class="div-error">
-		<h3 class="error">*${message}</h3>	
-	</div>
 </script>
 
