@@ -27,7 +27,6 @@
 </div><!-- toppage -->
 <script type="text/javascript">
 	$(document).ready( function(){
-		$("#top-image").find(".image-list").unbind("mouseenter").unbind("mouseleave");
 		// create slicebox
 		$.ajax({
 			type: 'GET',
