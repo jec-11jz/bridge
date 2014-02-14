@@ -33,6 +33,37 @@ function openKCFinder(div) {
 </script>
 <script>
 $(function() {
+	// message setting
+	(function($) {
+	    $.fn.flash_message = function(options) {
+	        //デフォルト値
+	        options = $.extend({
+	            text: 'Done',
+	            time: 1750,
+	            how: 'before',
+	            class_name: ''
+	        }, options);
+	
+	        return $(this).each(function() {
+	            //指定したセレクタを探して取得
+	            if ($(this).parent().find('.flash_message').get(0)) return;
+	
+	            var message = $('<span />', {
+	                'class': 'flash_message ' + options.class_name,
+	                text: options.text
+	            //フェードイン表示
+	            }).hide().fadeIn('fast');
+	
+	            $(this)[options.how](message);
+	            //delayさせてからフェードアウト
+	            message.delay(options.time).fadeOut('normal', function() {
+	                $(this).remove();
+	            });
+	
+	        });
+	    };
+	})(jQuery);
+	
 	// DBからタグを取得
 	tag = null;
 	$.ajax({
@@ -56,6 +87,38 @@ $(function() {
 		    return false;
 		}
 	});
+	
+	//テンプレートが選択されたらattributeを取得する
+	$("#selected-template").change(function() {
+		if($("#selected-template").val() == 'other'){
+			window.open("/templates/add");
+		}
+		// delete all attribute
+		$('.template-attributes').remove();
+		var temp_id = $(this).val();
+		$.ajax({
+			type: 'GET',
+			url: '/api/templates/get.json',
+			data: {'id': temp_id},
+			success: function(data){
+				selected_template = $('#selectedAttributes').tmpl(data['response']['Attribute']);
+				$('#template-attributes').append(selected_template);
+				$('.tags').tagbox({
+					url: tag,
+    				lowercase: true
+  				});
+			},
+			error: function(xhr, xhrStatus){
+				$('#error-message').flash_message({
+			        text: xhr['responseJSON']['error']['message'],
+			        how: 'append'
+			    });
+				$('body,html').animate({
+			        scrollTop: 0
+			    }, 100);
+			}
+		});
+	});// End change()
 	
 	//POSTデータをコントローラに渡す
 	$("#btn-register").click(function() {
@@ -86,23 +149,19 @@ $(function() {
 				cntTags++;
 			}
 		});
-		console.log('send...');
-		console.log(sendData);
 		// ajax
 		$.ajax({
 			type: "POST",
 			url: "/api/products/edit.json",
 			data: sendData,
 			success: function(data){
-				console.log('get...');
-				console.log(data);
 		   　	location.href = "/products/index";
 			},
 			error: function(xhr, xhrStatus) {
-				console.log('error...');
-				$('.div-error').remove();
-				error = $('#error-message').tmpl(xhr['responseJSON']['error']);
-				$('#error').append(error);
+			    $('#error-message').flash_message({
+			        text: xhr['responseJSON']['error']['message'],
+			        how: 'append'
+			    });
 				$('body,html').animate({
 			        scrollTop: 0
 			    }, 100);
@@ -123,7 +182,7 @@ $(function(){
 		$("#tags-attribute").append('<div id="attribute' + attrCnt + '" class="attr tags-set">\n');
 		$('#attribute' + attrCnt).append('<input type="text" id="attribute' + attrCnt +'" class="form-control tag-title post-attribute attribute attr-input" name="data[Attribute][name][]">\n');
 		$('#attribute' + attrCnt).append('<input type="button" value="×" id="attribute' + attrCnt +'" class="btn-delete-attribute attribute">');
-		$('#attribute' + attrCnt).append('<input type="text" id="attribute' + attrCnt +'" class="post-tag tags attr-input">\n');
+		$('#attribute' + attrCnt).append('<input type="hidden" id="attribute' + attrCnt +'" class="post-tag tags attr-input">\n');
 
 		$('.tags').tagbox({
 			url: tag,
@@ -141,9 +200,11 @@ $(function(){
 	});
 });
 </script>
-<script id="error-message" type="text/x-jquery-tmpl">
-	<div class="div-error">
-		<h3 class="error">*${message}</h3>	
+<script id="selectedAttributes" type="text/x-jquery-tmpl">
+	<div id="${id}" class="attr template-attributes tags-set">
+		<input id="${id}" class="form-control post-attribute tag-title" value="${name}">
+		<input type="button" value="×" id="${id}" class="btn-delete-attribute attribute">
+		<input type="hidden" class="post-tag attr-input tags" name="value" id="${id}">
 	</div>
 </script>
 
@@ -154,16 +215,15 @@ $(function(){
 				<a href="/products/index" class="header-link">Edit</a>
 			</div>
 			<div class="header-right">
-				<input type="text" name="name" value="<?php echo h($product_names); ?>" class="form-control product-info page-title" id="movieTitle"/>
+				<input type="text" name="name" value="<?php echo h($product['Product']['name']); ?>" class="form-control product-info page-title" id="movieTitle"/>
 			</div>
 			<div class="div-decoration">
 				<span>Products</span>
 			</div>
 		</div>
-	
+		
+		<div id="error-message"></div>
 		<div class="form-body">
-			<div id="error"></div>
-			
 			<div id="image" onclick="openKCFinder(this)">
 				<?php if($product['Product']['image_url']) { ?>
 					<img id="img" src="<?php echo h($product['Product']['image_url']); ?>" width="100%" style="margin: auto; visibility: visible;">
@@ -173,7 +233,23 @@ $(function(){
 			</div>
 	
 			<textarea name="outline" class="product-info body-outline edit" id="movie-outline" rows="12" cols="70" placeholder="あらすじ"><?php echo h($product['Product']['outline']); ?></textarea>	
-	
+			
+			<div class="row">
+				<select name="template_id" class="form-control template-name" id="selected-template" style="display:block">
+					<option value=""　selected>-テンプレートを選択-</option>
+					<?php foreach($product['Templates'] as $template) : ?>
+						<?php if(isset($template['Template']['id'])){ ?>
+							<?php if($template['Template']['id'] == $selected_template['Template']['id']) { ?>
+								<option value="<?php echo $template['Template']['id']; ?>" selected><?php echo $template['Template']['name']; ?></option>
+							<?php } else { ?>
+								<option value="<?php echo $template['Template']['id']; ?>"><?php echo $template['Template']['name']; ?></option>
+							<?php } ?>
+						<?php } ?>
+					<?php endforeach; ?>
+					<option value="other">-テンプレートを作成-</option>
+				</select>
+			</div>
+			
 			<fieldset id="product-data">
 				<div class="div-button">
 					<button type="button" id="attribute" class="btn-add-attribute btn-blue add"><i class="fa fa-plus-circle"></i> add</button>
@@ -181,12 +257,13 @@ $(function(){
 				</div>
 				<div id="tags-attribute">
 					<?php foreach($product['Attribute'] as $attribute) : ?>
-						<div id="<?php echo h($attribute['id']); ?>" class="attr template-attributes tags-set">
+						<div id="<?php echo h($attribute['id']); ?>" class="attr tags-set">
 							<input id="<?php echo h($attribute['id']); ?>" class="form-control tag-title post-attribute" value="<?php echo h($attribute['name']); ?>">
 							<input type="button" value="×" id="<?php echo h($attribute['id']); ?>" class="btn-delete-attribute attribute">
-							<input type="text" class="post-tag attr-input tags" value="<?php echo h($attribute['Tag']['tagNamesCSV']); ?>" name="value" id="<?php echo h($attribute['id']); ?>">
+							<input type="hidden" class="post-tag attr-input tags" value="<?php echo h($attribute['Tag']['tagNamesCSV']); ?>" name="value" id="<?php echo h($attribute['id']); ?>">
 						</div>
 					<?php endforeach; ?>
+					<div id="template-attributes"></div>
 				</div>
 			</fieldset>
 		</div>

@@ -226,13 +226,12 @@ class BlogsController extends AppController {
 		if(!empty($this->request->data)){
 			$comment = $this->request->data;
 		}
-		if(!($this->Auth->user('id'))){
+		if(!is_null($this->Auth->user('id'))){
 			$comment['author_id'] = $this->Auth->user('id');
 		}
 		$message = $this->Comment->saveComment($comment);
-		return $this->apiSuccess($message);
 		
-		
+		$this->apiSuccess($message);
 	}
 
     public function delete($id = null) {

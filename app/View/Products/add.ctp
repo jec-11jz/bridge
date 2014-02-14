@@ -182,7 +182,7 @@ $(function(){
 		$("#tags-attribute").append('<div id="attribute' + attrCnt + '" class="attr tags-set">\n');
 		$('#attribute' + attrCnt).append('<input type="text" id="attribute' + attrCnt +'" class="form-control post-attribute attribute  tag-title" name="data[Attribute][name][]">');
 		$('#attribute' + attrCnt).append('<input type="button" value="×" id="attribute' + attrCnt +'" class="btn-delete-attribute attribute">\n');
-		$('#attribute' + attrCnt).append('<input type="text" id="attribute' + attrCnt +'" class="post-tag tags attr-input">\n');
+		$('#attribute' + attrCnt).append('<input type="hidden" id="attribute' + attrCnt +'" class="post-tag tags attr-input">\n');
 
 		$('.tags').tagbox({
 			url: tag,
@@ -204,9 +204,10 @@ $(function(){
 	<div id="${id}" class="attr template-attributes tags-set">
 		<input id="${id}" class="form-control post-attribute tag-title" value="${name}">
 		<input type="button" value="×" id="${id}" class="btn-delete-attribute attribute">
-		<input type="text" class="post-tag attr-input tags" name="value" id="${id}">
+		<input type="hidden" class="post-tag attr-input tags" name="value" id="${id}">
 	</div>
 </script>
+
 <div id="div-add-products" class="form second-content-form">
 <form method="post" action="/products/add">
 

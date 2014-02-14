@@ -141,7 +141,6 @@ $(function() {
 		var arrayComment = {};
 		arrayComment['data'] = {
 			blog_id: $('#div-view-blogs').attr('name'),
-			title: $('#comment-title').val(),
 			author: $('#comment-author').val(),
 			url: $('#comment-url').val(),
 			comment: $('#comment-content').val()
@@ -152,14 +151,16 @@ $(function() {
 			url: '/api/blogs/comment.json',
 			data: arrayComment,
 			success: function(data){
+				console.log('bbbbbbbbbbbb');
 			    $('#comment-message').flash_message({
 			        text: data['response'],
 			        how: 'append'
 			    });
 			},
 			error: function(xhr, xhrStatus){
+				console.log('aaaaaaaaaaaaaaa');
 				$('#comment-message').flash_message({
-			        text: data['response'],
+			        text: xhr['responseJSON'],
 			        how: 'append'
 			    });
 			}

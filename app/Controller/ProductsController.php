@@ -23,7 +23,6 @@ class ProductsController extends AppController {
 	}
 	
 	public function add() {
-		// var_dump($this->request->data);
 		if($this->request->is('get')){
 			// send templates to view
 			$templates = $this->Template->findAllByUserId($this->Auth->user('id'));
@@ -156,6 +155,7 @@ class ProductsController extends AppController {
 	}
 
 	public function edit($product_id = null) {
+
 		if(!$product_id){
 			throw new NotFoundException(__('product_id is not found'));
 		}
@@ -163,13 +163,14 @@ class ProductsController extends AppController {
 		$product = $this->Product->findById($product_id);
 		$product_names = str_replace(',' , ', ' ,$product['Product']['name']);
 		
+		// send templates to view
+		$product['Templates'] = $this->Template->findAllByUserId($this->Auth->user('id'));
+		
 		foreach($product['Attribute'] as &$product_attr) {
 			$product_attr['Tag']['tagNamesCSV'] = $this->Tag->tagNamesToCSV($product_attr['Tag']);
 		}
 		unset($product_attr);
-		
 		$this->set('product', $product);
-		$this->set('product_names', $product_names);
 	}
 	
 	public function view($product_id = null) {
