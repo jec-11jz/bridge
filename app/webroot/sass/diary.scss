@@ -219,10 +219,6 @@ div#diary-index{
               color: $white;
               margin-top: 0.8em;
               border:none;
-
-            }
-            &.input-url, &.input-author{
-              display: none;
             }
           }
           #comment-author,#comment-url{

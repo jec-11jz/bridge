@@ -177,11 +177,6 @@ $(function() {
 		}
 	})
 
-	$('#comment-author').click(function(){
-		$("#comment-author").hide('fade',0);
-		$("#comment-url").show('fade',0);
-		$("input.input-author").show('fade',0);
-	})
 });
 </script>
 <!-- tag -->
@@ -298,7 +293,6 @@ $(function() {
 						<input type="text" class="comment-index" id="comment-url" placeholder="url" />
 					<?php } else { ?>
 						
-						<label class="comment-index user-author" id="comment-author" value="<?php echo h($blog['login_user']['name']) ?>"><?php echo h($blog['login_user']['name']) ?></label>
 						<input type="text" class="comment-index input-author" id="comment-author" value="<?php echo h($blog['login_user']['name']) ?>" placeholder="your name" />
 						<input type="text" class="comment-index input-url" id="comment-url" value="/users/view/<?php echo h($blog['login_user']['id']) ?>" placeholder="url" />
 					<?php } ?>
