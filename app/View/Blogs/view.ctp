@@ -176,6 +176,12 @@ $(function() {
 			$("#comment-icon").removeClass('fa-chevron-up').addClass('fa-chevron-down');
 		}
 	})
+
+	$('#comment-author').click(function(){
+		$("#comment-author").hide('fade',0);
+		$("#comment-url").show('fade',0);
+		$("input.input-author").show('fade',0);
+	})
 });
 </script>
 <!-- tag -->
@@ -216,17 +222,7 @@ $(function() {
 	{{/if}}
 </script>
 
-<script>
-$('#comment-list').click(function(){
-    var ele = document.getElementById('#comments');  
-    console('aaa');
-    if (ele.style.display == 'none') {  
-        ele.style.display = 'block';  
-    } else {  
-        ele.style.display = 'none';  
-    }  
-});
-</script>
+
 <style>
 	.list {
 		width: 22px;
@@ -301,8 +297,10 @@ $('#comment-list').click(function(){
 						<input type="text" class="comment-index" id="comment-author" placeholder="your name" />
 						<input type="text" class="comment-index" id="comment-url" placeholder="url" />
 					<?php } else { ?>
-						<input type="text" class="comment-index" id="comment-author" value="<?php echo h($blog['login_user']['name']) ?>" placeholder="your name" />
-						<input type="text" class="comment-index" id="comment-url" value="/users/view/<?php echo h($blog['login_user']['id']) ?>" placeholder="url" />
+						
+						<label class="comment-index user-author" id="comment-author" value="<?php echo h($blog['login_user']['name']) ?>"><?php echo h($blog['login_user']['name']) ?></label>
+						<input type="text" class="comment-index input-author" id="comment-author" value="<?php echo h($blog['login_user']['name']) ?>" placeholder="your name" />
+						<input type="text" class="comment-index input-url" id="comment-url" value="/users/view/<?php echo h($blog['login_user']['id']) ?>" placeholder="url" />
 					<?php } ?>
 					
 					<button id="btn-comment" class="btn-blue">コメントする</button>
