@@ -354,6 +354,12 @@ class uploader {
             is_array($this->config['dirnameChangeChars'])
         )
             $dirname = strtr($dirname, $this->config['dirnameChangeChars']);
+			
+		// custom
+		if (!preg_match("|^[0-9a-zA-Z_./?-]+$|", $dirname)) {
+			$dirname = substr((md5(date("YmdD His"))), 0, 20);
+		}
+		// end custom
         return $dirname;
     }
 
