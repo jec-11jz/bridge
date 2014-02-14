@@ -57,7 +57,7 @@
 							orientation: 'r',
 							cuboidsRandom: true,
 							disperseFactor: 30,
-							autoplay: true
+							autoplay: true,
 						}),
 						init = function() {
 							initEvents();

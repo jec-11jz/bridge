@@ -206,19 +206,19 @@
 		colorHiddenSides : '#222',
 		// the animation will start from left to right. The left most cuboid will be the first one to rotate
 		// this is the interval between each rotation in ms
-		sequentialFactor : 150,
+		sequentialFactor : 450,
 		// animation speed
 		// this is the speed that takes "1" cuboid to rotate
-		speed : 800,
+		speed : 1800,
 		// transition easing
 		easing : 'ease',
 		// if true the slicebox will start the animation automatically
 		autoplay : false,
 		// time (ms) between each rotation, if autoplay is true
-		interval: 3000,
+		interval: 5000,
 		// the fallback will just fade out / fade in the items
 		// this is the time fr the fade effect
-		fallbackFadeSpeed : 300,
+		fallbackFadeSpeed : 30,
 		// callbacks
 		onBeforeChange : function( position ) { return false; },
 		onAfterChange : function( position ) { return false; },
@@ -442,13 +442,15 @@
 
 		},
 		_fade : function( dir ) {
-
+			// custom
+			$('#top-image').fadeOut(10);
 			var self = this,
 				$visible = this.$items.eq( this.prev ),
 				h = $visible.find( 'img' ).height();
 
 			this.$el.css( 'height', h );
 			this.$items.css( 'position', 'absolute' );
+			$('#top-image').fadeIn(1000);
 			
 			// change image when push the top-button
 			var index = 0;
@@ -485,7 +487,6 @@
 
 			} );
 			self.$items.eq( self.prev ).removeClass( 'sb-current' ).fadeOut( this.options.fallbackFadeSpeed );
-
 		},
 		_layout : function( dir ) {
 
