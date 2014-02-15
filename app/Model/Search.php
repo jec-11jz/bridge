@@ -76,8 +76,11 @@ class Search extends AppModel {
 			
 			$contents['products'] = $this->Product->find('all', $product_options);
 		}
-		
-		$count = count($contents['blogs']) + count($contents['products']);
+		if(count($contents['blogs']) < count($contents['products'])){
+			$count = count($contents['products']);
+		} else {
+			$count = count($contents['blogs']);
+		}
 		
 		return $count;
 	}

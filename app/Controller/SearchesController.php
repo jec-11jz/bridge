@@ -103,7 +103,7 @@ class SearchesController extends AppController {
 		$not_keywords = null;
 		$key_tags['keywords'] = null;
 		$not_key_tags['keywords'] = null;
-		$all_contents = null;
+		$page_counts = null;
 		$last_page = null;
 		$contents = array();
 		
@@ -189,8 +189,8 @@ class SearchesController extends AppController {
 		// get related tags
 		$contents['tags'] = $this->Search->mergeBlogTagsAndProductTags($contents);
 		// check last page
-		$all_contents = $this->Search->countResultContents($blog_options, $product_options);
-		$last_page = ceil($all_contents / $count);
+		$page_counts = $this->Search->countResultContents($blog_options, $product_options);
+		$last_page = ceil($page_counts / $count);
 		if(intval($page) == $last_page){
 			$contents['lastpage'] = 'this page is last';
 		} else {
@@ -200,7 +200,7 @@ class SearchesController extends AppController {
 			$this->apiError('contents are null');
 			return;
 		}
-		$test = array(intval($page), $last_page, $all_contents);
+		$test = array(intval($page), $last_page, $page_counts);
 		$contents['test'] = $test;
 		
 		$this->apiSuccess($contents);
