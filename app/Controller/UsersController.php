@@ -141,6 +141,9 @@ class UsersController extends AppController {
 		
 		$this->set('error', $this->User->validationErrors);
     }
+	public function mypage() {
+		
+	}
 
 	public function api_edit() {
 		$user_id = $this->Auth->user('id');

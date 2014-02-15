@@ -2,7 +2,7 @@
 App::uses('AppModel', 'Model');
 
 class Template extends AppModel {
-
+	  
 	public $belongsTo = array('User');
 
 	public $hasAndBelongsToMany = array('Attribute');

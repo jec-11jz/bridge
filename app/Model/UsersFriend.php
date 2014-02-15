@@ -3,7 +3,16 @@ App::uses('AppModel', 'Model');
 
 class UsersFriend extends AppModel {
 	
-	public $belognsTo = array('User');
+	public $belongsTo = array(
+        'User' => array(
+            'className'    => 'User',
+            'foreignKey'   => 'owner_id'
+        ),
+        'User' => array(
+            'className'    => 'User',
+            'foreignKey'   => 'friend_id'
+        )
+    );
 	
 	public function saveFriends ($owner_id = null, $friend_id = null){
 		$user_fav = $this->findByOwnerIdAndFriendId($owner_id, $friend_id);

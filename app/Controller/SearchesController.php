@@ -200,8 +200,6 @@ class SearchesController extends AppController {
 			$this->apiError('contents are null');
 			return;
 		}
-		$test = array(intval($page), $last_page, $page_counts);
-		$contents['test'] = $test;
 		
 		$this->apiSuccess($contents);
 	}
