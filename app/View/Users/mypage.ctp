@@ -29,19 +29,6 @@ function openKCFinder(div) {
 }
 </script>
 <script type="text/javascript">
-function getURL(div) {
-	window.KCFinder = {
-        callBack: function(url) {
-        	$("#btn-edit-cover").trigger("click", url);
-        }
-    }
-    window.open('/js/kcfinder/browse.php?type=images&dir=images/public',
-        'kcfinder_image', 'status=0, toolbar=0, location=0, menubar=0, ' +
-        'directories=0, resizable=1, scrollbars=0, width=800, height=600'
-    );
-}
-</script>
-<script type="text/javascript">
 $(function() {
 	// message setting
 	(function($) {
@@ -101,7 +88,6 @@ $(function() {
 	    );
 	});
 	function changeCover(data){
-		var src = {}
 		var src = {
 			data: data
 		};
