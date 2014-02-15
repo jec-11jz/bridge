@@ -162,8 +162,6 @@ $(function() {
 		var scrollPosition = $(window).height() + $(window).scrollTop();
 		if ((scrollHeight - scrollPosition) / scrollHeight === 0) {
 			if(lastpage == false){
-				console.log('aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa');
-				console.log(lastpage);
 				// substitution value
 				arrayLoad['keywords'] = $('#keywords').val();
 				arrayLoad['not_keywords'] = $('#not-keywords').val();
@@ -282,7 +280,6 @@ $(function() {
 		</div>
 	</div>
 </script>
-
 <!-- blog -->
 <script id="js-search-blogs" type="text/x-jquery-tmpl">
 	<div class="cont hidden blog spoiler${Blog.spoiler}" style="float:left">
@@ -305,8 +302,7 @@ $(function() {
 		</div>
 	</div>
 </script>
-
-<!-- tags -->
+<!-- related tags -->
 <script id="js-related-tags" type="text/x-jquery-tmpl">
 	<input type="button" class="related-tag tag" value="${Tag.name}">
 </script>
