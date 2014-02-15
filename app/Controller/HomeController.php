@@ -15,10 +15,6 @@ class HomeController extends AppController {
 	{
 		// show index.ctp
 	}
-	
-	public function mypage(){
-		// show mypage.ctp
-	}
 	public function create(){
 		// show create.ctp
 	}

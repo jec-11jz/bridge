@@ -20,7 +20,7 @@ class UsersController extends AppController {
         parent::beforeFilter();
 		//permitted access before login
         $this->Auth->allow('add', 'api_add', 'login', 'api_login', 'index', 'view', 'api_add_favorites');
-		$this->set('loginInformation', $this->Auth->User());
+		$this->set('loginInformation', $this->User->findById($this->Auth->User('id')));
 	    
     }
 
@@ -142,7 +142,22 @@ class UsersController extends AppController {
 		$this->set('error', $this->User->validationErrors);
     }
 	public function mypage() {
-		
+		// show mypage.ctp
+	}
+	
+	public function api_change_cover(){
+		if($this->request->is('get')){
+			return $this->apiError('不正アクセスです。');
+		}
+		$user_id = $this->Auth->user('id');
+		$user = $this->User->findById($this->Auth->user('id'));
+		if(empty($user)){
+			return $this->apiError('ユーザが存在しません。');
+		}
+		$this->User->id = $user_id;
+		$this->User->set(array('cover_image'=>$this->request->data));
+		$result = $this->User->save($this->request->data);
+		return $this->apiSuccess('編集しました');
 	}
 
 	public function api_edit() {
