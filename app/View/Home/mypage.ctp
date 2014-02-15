@@ -24,7 +24,7 @@ $(function() {
 			<img src="<?php echo h($user['users_image']); ?>" alt="">
 		</div>
 		<div clasS="header-user">
-			<span><?php echo h($user['name']); ?></span>
+			<span class=""><?php echo h($user['name']); ?></span>
 		</div>
 		
 	</div>
@@ -61,7 +61,7 @@ $(function() {
 			<div class="links-div div-temp">
 				<a class="div-link" href="/templates/index"></a>
 				<div class="div-left">
-					<i class="fa fa-cog"></i>
+					<i class="fa fa-th-list"></i>
 				</div>
 				<div class="div-right">
 					<span>Template</span>

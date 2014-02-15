@@ -1,22 +1,10 @@
 @import "../sass/menu.scss";
 @import "tag/tags_custom.scss";
 
-body{
-  h1{
-    margin: 10px;
-    background-color: white;
-  }
-}
-
-
-
 
 #search{
   margin: 65px auto;
   text-align: center;
-  .input, .submit{
-    // display: inline-block;
-  }
   .div-search{
     position: relative;
     width: 463px;
@@ -31,6 +19,7 @@ body{
       right: 0px;top: 0;
     }
   }
+  
   #search-custom{
     #related-tags{
       margin: 2em 2em;

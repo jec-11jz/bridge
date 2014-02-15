@@ -76,7 +76,6 @@ $(function() {
 </script>
 <script id="js-user-edit" type="text/x-jquery-tmpl">
 	<div id="${id}" class="field">
-		<p>${name}</p>
 		<div id="image" onclick="openKCFinder(this)">
 		{{if users_image != ""}}
 			<img id="img" name="data[User][users_image]" src="${users_image}" width="100%" style="margin: auto; visibility: visible;">
@@ -93,26 +92,19 @@ $(function() {
 	</div>
 </script>
 
-<style>
-	#image {
-		width: 220px;
-		height: 220px;
-		color: white;
-		background: black;
-	}
-</style>
+
 
 <div class="form third-content-form">
 	<div class="form-header">
-		<div class="header-back">
-			<img src="<?php echo h($user['users_image']); ?>" alt="">
+		<div class="header-back"　style="background: url(<?php echo h($user['users_image']); ?>);">
+			<!-- <img src="<?php echo h($user['users_image']); ?>" alt=""> -->
 		</div>
 		<div clasS="header-user">
 			<span><?php echo h($user['name']); ?></span>
 		</div>
 		
 	</div>
-
+<!--  -->
 	<div class="form-body">
 		<div class="user-links">
 			<div class="links-div div-fav">
@@ -145,7 +137,7 @@ $(function() {
 			<div class="links-div div-temp">
 				<a class="div-link" href="/templates/index"></a>
 				<div class="div-left">
-					<i class="fa fa-cog"></i>
+					<i class="fa fa-th-list"></i>
 				</div>
 				<div class="div-right">
 					<span>Template</span>
@@ -177,7 +169,7 @@ $(function() {
 			<form method="post" id="form-user-edit" action="/api/users/edit.json">
 				<div id="edit-form"></div>
 				<div>
-					<input type="button" id="btn-edit" class="btn-blue"value="submit" />
+					<input type="button" id="btn-edit" class="btn-blue btn-submit"value="submit" />
 				</div>
 			</form>
 		</div> 

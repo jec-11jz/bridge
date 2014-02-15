@@ -14,56 +14,6 @@
 	
 ?>
 
-<div id="search">
-	<div class="div-search">
-		<input name="keywords" id="keywords" class="form-control main-search" value="<?php echo h($keyword); ?>" placeholder='Search  here...'>
-		<input type="submit" value="Search" class="btn-green button-search" id="btn-search">
-		<input type="hidden" name="not-keywords" id="not-keywords" class="form-control" placeholder="not検索">
-	</div>
-	
-
-	<div id="search-custom">
-		<div class="form-tag">
-			Tag Search<input type="hidden" name="key-tags" id="key-tags" class="form-control tags" value="<?php echo h($key_tags['keywords']); ?>">
-			Not<input type="hidden" name="not-key-tags" id="not-key-tags" class="form-control tags">
-		</div>
-		<div class="form-checkbox">
-			<label for="check-blog" class="checkbox">BLOG:</label>
-			<input type="checkbox" name="blog" value="Blog" id="check-blog" class="checkbox" checked="checked">
-			<label for="check-product" class="checkbox">PRODUCT:</label>
-			<input type="checkbox" name="product" value="Product" id="check-product" class="checkbox" checked="checked">
-			<label for="check-mine" class="checkbox">MINE:</label>
-			<input type="checkbox" name="mine" value="mine" id="check-mine" class="checkbox">
-			<label for="check-favorite" class="checkbox">FAVORITE:</label>
-			<input type="checkbox" name="favorite" value="favorite" id="check-favorite" class="checkbox">
-		</div>
-		<div class="spoiler">
-			<div class="right">
-				<span>ネタバレ：</span>
-			 	<select name="minbeds" id="minbeds" class="list">
-				    <option value="1">1</option>
-				    <option value="2">2</option>
-				    <option value="3">3</option>
-				    <option value="4">4</option>
-				    <option value="5" selected>5</option>
-				    <option value="6">6</option>
-				    <option value="7">7</option>
-				    <option value="8">8</option>
-				    <option value="9">9</option>
-				    <option value="10">10</option>
-			 	</select>
-			</div>
-		</div><!-- spoiler -->
-		<div id="related-tags"></div>
-
-	</div><!-- search-custom -->
-</div><!-- search -->
-<hr>
-<div id="search-result">
-	<div id="search-blogs-result"></div>
-	<div id="search-products-result"></div>
-</div>
-
 <script>
 $(function() {
 	// get tags from DB
@@ -306,5 +256,61 @@ $(function() {
 <script id="js-related-tags" type="text/x-jquery-tmpl">
 	<input type="button" class="related-tag tag" value="${Tag.name}">
 </script>
+
+
+
+<div id="search">
+	<div class="div-search">
+		<input name="keywords" id="keywords" class="form-control main-search" value="<?php echo h($keyword); ?>" placeholder='Search  here...'>
+		<input type="submit" value="Search" class="btn-green button-search" id="btn-search">
+		<input type="hidden" name="not-keywords" id="not-keywords" class="form-control" placeholder="not検索">
+	</div>
+
+	<div id="search-custom">
+		<div class="form-tag">
+			Tag Search<input type="hidden" name="key-tags" id="key-tags" class="form-control tags" value="<?php echo h($key_tags['keywords']); ?>">
+			Not<input type="hidden" name="not-key-tags" id="not-key-tags" class="form-control tags">
+		</div>
+		<div class="form-checkbox">
+			<label for="check-blog" class="checkbox">BLOG:</label>
+			<input type="checkbox" name="blog" value="Blog" id="check-blog" class="checkbox" checked="checked">
+			<label for="check-product" class="checkbox">PRODUCT:</label>
+			<input type="checkbox" name="product" value="Product" id="check-product" class="checkbox" checked="checked">
+			<label for="check-mine" class="checkbox">MINE:</label>
+			<input type="checkbox" name="mine" value="mine" id="check-mine" class="checkbox">
+			<label for="check-favorite" class="checkbox">FAVORITE:</label>
+			<input type="checkbox" name="favorite" value="favorite" id="check-favorite" class="checkbox">
+		</div>
+		<div class="spoiler">
+			<div class="right">
+				<span>ネタバレ：</span>
+			 	<select name="minbeds" id="minbeds" class="list">
+				    <option value="1">1</option>
+				    <option value="2">2</option>
+				    <option value="3">3</option>
+				    <option value="4">4</option>
+				    <option value="5" selected>5</option>
+				    <option value="6">6</option>
+				    <option value="7">7</option>
+				    <option value="8">8</option>
+				    <option value="9">9</option>
+				    <option value="10">10</option>
+			 	</select>
+			</div>
+		</div><!-- spoiler -->
+		<div id="related-tags"></div>
+	</div><!-- search-custom -->
+</div><!-- search -->
+
+
+<hr>
+
+
+<div id="search-result">
+	<div id="search-blogs-result"></div>
+	<div id="search-products-result"></div>
+</div>
+
+
 
 

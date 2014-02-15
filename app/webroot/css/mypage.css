@@ -1096,31 +1096,33 @@ div.second-content-form .form-body {
 div.third-content-form .form-header .header-back {
   position: absolute;
   z-index: 50;
+  width: 100%;
   height: 80%;
   overflow: hidden; }
-  /* line 59, ../sass/mypage.scss */
+  /* line 61, ../sass/mypage.scss */
   div.third-content-form .form-header .header-back img {
-    width: 100%;
     -webkit-filter: blur(1px) brightness(50%);
     -moz-filter: blur(1px) brightness(50%);
     filter: blur(1px) brightness(50%); }
-/* line 64, ../sass/mypage.scss */
+/* line 66, ../sass/mypage.scss */
 div.third-content-form .form-header .header-user {
   text-align: center;
+  display: block;
   position: relative;
   color: #f6f6f6;
   height: 70%;
   z-index: 100; }
-  /* line 70, ../sass/mypage.scss */
+  /* line 73, ../sass/mypage.scss */
   div.third-content-form .form-header .header-user span {
     color: #f6f6f6;
-    margin-top: 100px;
-    font-size: 3em; }
-/* line 78, ../sass/mypage.scss */
+    display: block;
+    padding: 1em 0 2em;
+    font-size: 4em; }
+/* line 82, ../sass/mypage.scss */
 div.third-content-form .form-body .user-links {
   position: relative;
   z-index: 100; }
-  /* line 81, ../sass/mypage.scss */
+  /* line 85, ../sass/mypage.scss */
   div.third-content-form .form-body .user-links .links-div {
     border: solid 2px #68c39f;
     border-radius: 30px;
@@ -1149,7 +1151,7 @@ div.third-content-form .form-body .user-links {
     /* line 119, ../sass/_my-mixin.scss */
     div.third-content-form .form-body .user-links .links-div .div-right span {
       color: #68c39f; }
-    /* line 86, ../sass/mypage.scss */
+    /* line 90, ../sass/mypage.scss */
     div.third-content-form .form-body .user-links .links-div .div-link {
       display: block;
       top: 0;
@@ -1157,16 +1159,16 @@ div.third-content-form .form-body .user-links {
       width: 100%;
       height: 100%;
       position: absolute; }
-    /* line 92, ../sass/mypage.scss */
+    /* line 96, ../sass/mypage.scss */
     div.third-content-form .form-body .user-links .links-div .div-left {
       display: inline-block; }
-      /* line 94, ../sass/mypage.scss */
+      /* line 98, ../sass/mypage.scss */
       div.third-content-form .form-body .user-links .links-div .div-left i {
         font-size: 10em; }
-    /* line 96, ../sass/mypage.scss */
+    /* line 100, ../sass/mypage.scss */
     div.third-content-form .form-body .user-links .links-div .div-right {
       display: inline-block; }
-  /* line 98, ../sass/mypage.scss */
+  /* line 102, ../sass/mypage.scss */
   div.third-content-form .form-body .user-links .div-edit {
     border: solid 2px #9b59b6;
     border-radius: 30px;
@@ -1189,11 +1191,11 @@ div.third-content-form .form-body .user-links {
     /* line 119, ../sass/_my-mixin.scss */
     div.third-content-form .form-body .user-links .div-edit .div-right span {
       color: #9b59b6; }
-    /* line 98, ../sass/mypage.scss */
+    /* line 102, ../sass/mypage.scss */
     div.third-content-form .form-body .user-links .div-edit:hover {
       background-color: #9b59b6;
       color: #f6f6f6; }
-  /* line 99, ../sass/mypage.scss */
+  /* line 103, ../sass/mypage.scss */
   div.third-content-form .form-body .user-links .div-fav {
     border: solid 2px #e4e46f;
     border-radius: 30px;
@@ -1216,7 +1218,7 @@ div.third-content-form .form-body .user-links {
     /* line 119, ../sass/_my-mixin.scss */
     div.third-content-form .form-body .user-links .div-fav .div-right span {
       color: #e4e46f; }
-  /* line 100, ../sass/mypage.scss */
+  /* line 104, ../sass/mypage.scss */
   div.third-content-form .form-body .user-links .div-watched {
     border: solid 2px #ffbe00;
     border-radius: 30px;
@@ -1239,7 +1241,7 @@ div.third-content-form .form-body .user-links {
     /* line 119, ../sass/_my-mixin.scss */
     div.third-content-form .form-body .user-links .div-watched .div-right span {
       color: #ffbe00; }
-  /* line 101, ../sass/mypage.scss */
+  /* line 105, ../sass/mypage.scss */
   div.third-content-form .form-body .user-links .div-want {
     border: solid 2px #587ca0;
     border-radius: 30px;
@@ -1262,7 +1264,7 @@ div.third-content-form .form-body .user-links {
     /* line 119, ../sass/_my-mixin.scss */
     div.third-content-form .form-body .user-links .div-want .div-right span {
       color: #587ca0; }
-  /* line 102, ../sass/mypage.scss */
+  /* line 106, ../sass/mypage.scss */
   div.third-content-form .form-body .user-links .div-image {
     border: solid 2px #2eb2ff;
     border-radius: 30px;
@@ -1285,53 +1287,60 @@ div.third-content-form .form-body .user-links {
     /* line 119, ../sass/_my-mixin.scss */
     div.third-content-form .form-body .user-links .div-image .div-right span {
       color: #2eb2ff; }
-/* line 104, ../sass/mypage.scss */
+/* line 108, ../sass/mypage.scss */
 div.third-content-form .form-body .user-edit {
-  text-align: center; }
-  /* line 106, ../sass/mypage.scss */
+  margin: 0 auto;
+  width: 30em; }
+  /* line 111, ../sass/mypage.scss */
   div.third-content-form .form-body .user-edit input, div.third-content-form .form-body .user-edit textarea, div.third-content-form .form-body .user-edit button {
     display: block; }
-  /* line 109, ../sass/mypage.scss */
+  /* line 114, ../sass/mypage.scss */
   div.third-content-form .form-body .user-edit form {
     margin: 0 auto; }
-    /* line 111, ../sass/mypage.scss */
+    /* line 115, ../sass/mypage.scss */
+    div.third-content-form .form-body .user-edit form #image {
+      width: 100%;
+      height: auto;
+      color: white;
+      background: black; }
+    /* line 122, ../sass/mypage.scss */
     div.third-content-form .form-body .user-edit form .user-info {
       padding: 0.2em 0.4em;
-      margin: 0 auto 0.8em;
+      margin: 0 0 0.8em;
       border: 1px solid #bfbfbf;
-      width: 20em;
+      width: 100%;
       -webkit-border-radius: 2px;
       -moz-border-radius: 2px;
       -ms-border-radius: 2px;
       -o-border-radius: 2px;
       border-radius: 2px;
       display: block; }
-    /* line 119, ../sass/mypage.scss */
-    div.third-content-form .form-body .user-edit form button {
-      padding: 1em 2em;
-      margin: 0 auto; }
+    /* line 130, ../sass/mypage.scss */
+    div.third-content-form .form-body .user-edit form .btn-submit {
+      width: 100%;
+      padding: 1em 2em; }
 
-/* line 127, ../sass/mypage.scss */
+/* line 138, ../sass/mypage.scss */
 a.div-link:hover .links-div {
   background-color: #68c39f; }
 
-/* line 133, ../sass/mypage.scss */
+/* line 144, ../sass/mypage.scss */
 .box-flex .button-full {
   -webkit-box-flex: 3;
   -moz-box-flex: 3;
   -ms-box-flex: 3;
   box-flex: 3;
   height: 8em; }
-  /* line 136, ../sass/mypage.scss */
+  /* line 147, ../sass/mypage.scss */
   .box-flex .button-full .btn-black {
     padding: 3.2em 12.5em;
     border: none;
     width: 100%;
     height: 100%; }
-    /* line 141, ../sass/mypage.scss */
+    /* line 152, ../sass/mypage.scss */
     .box-flex .button-full .btn-black.blog {
       background-color: #e4e46f; }
-    /* line 144, ../sass/mypage.scss */
+    /* line 155, ../sass/mypage.scss */
     .box-flex .button-full .btn-black.product {
       background-color: #2eb2ff;
       color: #f6f6f6; }
