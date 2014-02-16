@@ -109,7 +109,15 @@ $(function() {
 			$('#message').append(error);
 		}
 	});
-	
+	// add view count
+	var id = { data: $('#div-view-blogs').attr('name')};
+	$.ajax({
+		type: 'POST',
+		url: '/api/blogs/add_count.json',
+		data: id,
+		success: function() {},
+		error: function() {}
+	});
 	// get blog
 	var blog_id = $('#div-view-blogs').attr('name');
 	$.ajax({
@@ -117,6 +125,7 @@ $(function() {
 		url: '/api/blogs/get_blog_info.json',
 		data: {'blog_id': blog_id},
 		success: function(spoiler){
+			console.log(spoiler);
 			// append spoiler slider
 			var select_spoiler = $('#js-spoiler').tmpl(spoiler['response']);
 			$('#minbeds').append(select_spoiler);
@@ -174,7 +183,7 @@ $(function() {
 			$("#comment-icon").removeClass('fa-chevron-up').addClass('fa-chevron-down');
 		}
 	})
-
+	
 });
 </script>
 <!-- tag -->

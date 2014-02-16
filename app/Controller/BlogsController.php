@@ -11,7 +11,7 @@ class BlogsController extends AppController {
     	// 親クラス（AppController）読み込み
         parent::beforeFilter();
 		// permitted access before login
-        $this->Auth->allow('view', 'api_view', 'api_get_blog_info', 'api_add_favorites', 'api_get_user_blogs', 'api_comment');
+        $this->Auth->allow('view', 'api_view', 'api_get_blog_info', 'api_add_favorites', 'api_get_user_blogs', 'api_comment', 'api_add_count');
     }
 	
 	public function index()
@@ -124,6 +124,17 @@ class BlogsController extends AppController {
 		);
 		
 		return $this->apiSuccess($blog_info);
+	}
+	
+	public function api_add_count() {
+		$blog = $this->Blog->findById($this->request->data);
+		if($this->Auth->user('id') == $blog['Blog']['user_id']){
+			return;
+		}
+		$this->Blog->id = $this->request->data;
+		$this->Blog->set(array('access_count'=>$blog['Blog']['access_count'] + 1));
+		$this->Blog->save();
+		return;
 	}
 
 	public function api_get_blog_info(){

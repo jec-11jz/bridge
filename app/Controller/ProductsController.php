@@ -11,7 +11,7 @@ class ProductsController extends AppController {
     	// 親クラス（AppController）読み込み
         parent::beforeFilter();
 		// permitted access before login
-        $this->Auth->allow('view', 'api_view', 'api_add_favorites');
+        $this->Auth->allow('view', 'api_view', 'api_add_favorites', 'api_add_count');
     }
 	
 	public function index(){
@@ -198,6 +198,13 @@ class ProductsController extends AppController {
 		return $this->apiSuccess($products);
 	}
 	
+	public function api_add_count() {
+		$product = $this->Product->findById($this->request->data);
+		$this->Product->id = $this->request->data;
+		$this->Product->set(array('access_count'=>$product['Product']['access_count'] + 1));
+		$this->Product->save();
+		return;
+	}
 	public function api_add_favorites() {
 		$product_id = null;
 		$user_id = null;

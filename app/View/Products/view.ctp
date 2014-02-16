@@ -48,6 +48,16 @@ $(function(){
 		}
 	})(jQuery);
 	
+	// add view count
+	var id = { data: $('#div-view-products').attr('name')};
+	$.ajax({
+		type: 'POST',
+		url: '/api/products/add_count.json',
+		data: id,
+		success: function() {},
+		error: function() {}
+	});
+	
 	// get tags from DB
 	var product_id = $('#div-view-products').attr('name');
 	$.ajax({
