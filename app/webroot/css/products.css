@@ -632,11 +632,12 @@ div.form.second-content-form .form-footer .btn-blue {
   background-color: #1e94ac; }
   /* line 32, ../sass/tag/tags_custom.scss */
   .autocomplete ul li {
+    color: #f6f6f6;
     background-color: #23adc9; }
-    /* line 34, ../sass/tag/tags_custom.scss */
+    /* line 35, ../sass/tag/tags_custom.scss */
     .autocomplete ul li:hover {
       background-color: #33bfdb; }
-    /* line 37, ../sass/tag/tags_custom.scss */
+    /* line 38, ../sass/tag/tags_custom.scss */
     .autocomplete ul li.over, .autocomplete ul li.selected {
       background-color: #33bfdb; }
 
