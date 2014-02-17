@@ -159,6 +159,9 @@ $(function() {
 	<div class="form-header">
 		<div class="header-back" id="cover" style="background: url('<?php echo h($loginInformation['User']['cover_image']); ?>') no-repeat center ;" alt=""></div>
 		<div class="header-user">
+			<div class="div-user-image">
+				<img id="user-img" class="user-image" src="<?php echo h($loginInformation['User']['users_image']) ;?>" >
+			</div>
 			<span><?php echo h($loginInformation['User']['name']); ?></span>
 		</div>
 		<div class="header-buttons">

@@ -111,83 +111,48 @@ $(function() {
 
 <div class="form third-content-form">
 	<div class="form-header">
-		<div class="header-back"　style="background: url(<?php echo h($user['users_image']); ?>);">
-			<!-- <img src="<?php echo h($user['users_image']); ?>" alt=""> -->
+		<div class="header-back" id="cover" style="background: url('<?php echo h($loginInformation['User']['cover_image']); ?>') no-repeat center ;" alt=""></div>
 		</div>
 		<div clasS="header-user">
 			<span><?php echo h($user['name']); ?></span>
+		</div>
+		<div class="header-buttons">
+			<div class="user-links">
+				<div class="links-div div-fav">
+					<a class="div-link" href=""></a>
+					<div class="div-left">
+						<i class="fa fa-star-o"></i>
+					</div>
+					<div class="div-right">
+						<span>frend request</span>
+					</div>
+				</div>
+<!-- 				<div class="links-div div-watched">
+					<a class="div-link" href=""></a>
+					<div class="div-left">
+						<i class="fa fa-star-o"></i>
+					</div>
+					<div class="div-right">
+						<span>Watched</span>
+					</div>
+				</div>
+				<div class="links-div div-want">
+					<a class="div-link" href=""></a>
+					<div class="div-left">
+						<i class="fa fa-star-o"></i>
+					</div>
+					<div class="div-right">
+						<span>Want to watch</span>
+					</div>
+				</div> -->
+			</div>
 		</div>
 		
 	</div>
 <!--  -->
 	<div class="form-body">
-		<div class="user-links">
-			<div class="links-div div-fav">
-				<a class="div-link" href=""></a>
-				<div class="div-left">
-					<i class="fa fa-star-o"></i>
-				</div>
-				<div class="div-right">
-					<span>My Favs</span>
-				</div>
-			</div>
-			<div class="links-div div-watched">
-				<a class="div-link" href=""></a>
-				<div class="div-left">
-					<i class="fa fa-star-o"></i>
-				</div>
-				<div class="div-right">
-					<span>Watched</span>
-				</div>
-			</div>
-			<div class="links-div div-want">
-				<a class="div-link" href=""></a>
-				<div class="div-left">
-					<i class="fa fa-star-o"></i>
-				</div>
-				<div class="div-right">
-					<span>Want to watch</span>
-				</div>
-			</div>
-			<div class="links-div div-temp">
-				<a class="div-link" href="/templates/index"></a>
-				<div class="div-left">
-					<i class="fa fa-th-list"></i>
-				</div>
-				<div class="div-right">
-					<span>Template</span>
-				</div>
-			</div>
-			<div class="links-div div-image">
-				<a class="div-link" href=""></a>
-				<div class="div-left">
-					<i class="fa fa-picture-o"></i>
-				</div>
-				<div class="div-right">
-					<span>Image upload</span>
-				</div>
-			</div>
-			<div class="links-div div-edit">
-				<a class="div-link" href="/users/edit"></a>
-				<div class="div-left">
-					<i class="fa fa-cog"></i>
-				</div>
-				<div class="div-right">
-					<span>edit account</span>
-				</div>
-				
-			</div>
-		</div>
+		
 
-		<div class="user-edit">
-			<div id="message"></div>
-			<form method="post" id="form-user-edit" action="/api/users/edit.json">
-				<div id="edit-form"></div>
-				<div>
-					<input type="button" id="btn-edit" class="btn-blue btn-submit"value="submit" />
-				</div>
-			</form>
-		</div> 
 	</div>
 
 	<div class="form-footer">

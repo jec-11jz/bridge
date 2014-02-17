@@ -1123,16 +1123,38 @@ div.third-content-form .form-header {
     color: #f6f6f6;
     z-index: 100; }
     /* line 76, ../sass/mypage.scss */
+    div.third-content-form .form-header .header-user .div-user-image {
+      height: 150px;
+      width: 150px;
+      display: inline-block;
+      position: absolute;
+      background-color: #3f3f3f;
+      position: relative;
+      -webkit-border-radius: 20px;
+      -moz-border-radius: 20px;
+      -ms-border-radius: 20px;
+      -o-border-radius: 20px;
+      border-radius: 20px;
+      border: 5px solid #a3b1b2;
+      overflow: hidden;
+      top: 52px; }
+      /* line 88, ../sass/mypage.scss */
+      div.third-content-form .form-header .header-user .div-user-image .user-image {
+        max-height: 150px;
+        max-width: 150px; }
+    /* line 94, ../sass/mypage.scss */
     div.third-content-form .form-header .header-user span {
+      top: 1em;
+      margin: 0 auto;
       color: #f6f6f6;
-      display: block;
-      padding: 1.5em 0 1.7em;
+      display: inline-block;
+      padding: 1.5em 4em 1.7em 1em;
       font-size: 4em; }
-  /* line 84, ../sass/mypage.scss */
+  /* line 106, ../sass/mypage.scss */
   div.third-content-form .form-header .header-buttons .user-links {
     position: relative;
     z-index: 100; }
-    /* line 87, ../sass/mypage.scss */
+    /* line 109, ../sass/mypage.scss */
     div.third-content-form .form-header .header-buttons .user-links .links-div {
       border: solid 2px #68c39f;
       border-radius: 30px;
@@ -1146,14 +1168,14 @@ div.third-content-form .form-header {
       display: inline-block;
       border-radius: 30px; }
       /* line 99, ../sass/_my-mixin.scss */
-      div.third-content-form .form-header .header-buttons .user-links .links-div:hover {
+      div.third-content-form .form-header .header-buttons .user-links .links-div:hover, div.third-content-form .form-header .header-buttons .user-links .links-div.div-checked {
         background-color: #68c39f;
         color: #f6f6f6; }
         /* line 103, ../sass/_my-mixin.scss */
-        div.third-content-form .form-header .header-buttons .user-links .links-div:hover .div-left i {
+        div.third-content-form .form-header .header-buttons .user-links .links-div:hover .div-left i, div.third-content-form .form-header .header-buttons .user-links .links-div.div-checked .div-left i {
           color: #f6f6f6; }
         /* line 108, ../sass/_my-mixin.scss */
-        div.third-content-form .form-header .header-buttons .user-links .links-div:hover .div-right span {
+        div.third-content-form .form-header .header-buttons .user-links .links-div:hover .div-right span, div.third-content-form .form-header .header-buttons .user-links .links-div.div-checked .div-right span {
           color: #f6f6f6; }
       /* line 114, ../sass/_my-mixin.scss */
       div.third-content-form .form-header .header-buttons .user-links .links-div .div-left i {
@@ -1161,7 +1183,7 @@ div.third-content-form .form-header {
       /* line 119, ../sass/_my-mixin.scss */
       div.third-content-form .form-header .header-buttons .user-links .links-div .div-right span {
         color: #68c39f; }
-      /* line 92, ../sass/mypage.scss */
+      /* line 114, ../sass/mypage.scss */
       div.third-content-form .form-header .header-buttons .user-links .links-div .div-link {
         display: block;
         top: 0;
@@ -1169,16 +1191,16 @@ div.third-content-form .form-header {
         width: 100%;
         height: 100%;
         position: absolute; }
-      /* line 98, ../sass/mypage.scss */
+      /* line 120, ../sass/mypage.scss */
       div.third-content-form .form-header .header-buttons .user-links .links-div .div-left {
         display: inline-block; }
-        /* line 100, ../sass/mypage.scss */
+        /* line 122, ../sass/mypage.scss */
         div.third-content-form .form-header .header-buttons .user-links .links-div .div-left i {
           font-size: 10em; }
-      /* line 102, ../sass/mypage.scss */
+      /* line 124, ../sass/mypage.scss */
       div.third-content-form .form-header .header-buttons .user-links .links-div .div-right {
         display: inline-block; }
-    /* line 104, ../sass/mypage.scss */
+    /* line 126, ../sass/mypage.scss */
     div.third-content-form .form-header .header-buttons .user-links .div-edit {
       border: solid 2px #9b59b6;
       border-radius: 30px;
@@ -1186,14 +1208,14 @@ div.third-content-form .form-header {
       -o-transition: 0.2s;
       transition: 0.2s; }
       /* line 99, ../sass/_my-mixin.scss */
-      div.third-content-form .form-header .header-buttons .user-links .div-edit:hover {
+      div.third-content-form .form-header .header-buttons .user-links .div-edit:hover, div.third-content-form .form-header .header-buttons .user-links .div-edit.div-checked {
         background-color: #9b59b6;
         color: #f6f6f6; }
         /* line 103, ../sass/_my-mixin.scss */
-        div.third-content-form .form-header .header-buttons .user-links .div-edit:hover .div-left i {
+        div.third-content-form .form-header .header-buttons .user-links .div-edit:hover .div-left i, div.third-content-form .form-header .header-buttons .user-links .div-edit.div-checked .div-left i {
           color: #f6f6f6; }
         /* line 108, ../sass/_my-mixin.scss */
-        div.third-content-form .form-header .header-buttons .user-links .div-edit:hover .div-right span {
+        div.third-content-form .form-header .header-buttons .user-links .div-edit:hover .div-right span, div.third-content-form .form-header .header-buttons .user-links .div-edit.div-checked .div-right span {
           color: #f6f6f6; }
       /* line 114, ../sass/_my-mixin.scss */
       div.third-content-form .form-header .header-buttons .user-links .div-edit .div-left i {
@@ -1201,11 +1223,11 @@ div.third-content-form .form-header {
       /* line 119, ../sass/_my-mixin.scss */
       div.third-content-form .form-header .header-buttons .user-links .div-edit .div-right span {
         color: #9b59b6; }
-      /* line 104, ../sass/mypage.scss */
+      /* line 126, ../sass/mypage.scss */
       div.third-content-form .form-header .header-buttons .user-links .div-edit:hover {
         background-color: #9b59b6;
         color: #f6f6f6; }
-    /* line 105, ../sass/mypage.scss */
+    /* line 127, ../sass/mypage.scss */
     div.third-content-form .form-header .header-buttons .user-links .div-fav {
       border: solid 2px #e4e46f;
       border-radius: 30px;
@@ -1213,14 +1235,14 @@ div.third-content-form .form-header {
       -o-transition: 0.2s;
       transition: 0.2s; }
       /* line 99, ../sass/_my-mixin.scss */
-      div.third-content-form .form-header .header-buttons .user-links .div-fav:hover {
+      div.third-content-form .form-header .header-buttons .user-links .div-fav:hover, div.third-content-form .form-header .header-buttons .user-links .div-fav.div-checked {
         background-color: #e4e46f;
         color: #f6f6f6; }
         /* line 103, ../sass/_my-mixin.scss */
-        div.third-content-form .form-header .header-buttons .user-links .div-fav:hover .div-left i {
+        div.third-content-form .form-header .header-buttons .user-links .div-fav:hover .div-left i, div.third-content-form .form-header .header-buttons .user-links .div-fav.div-checked .div-left i {
           color: #f6f6f6; }
         /* line 108, ../sass/_my-mixin.scss */
-        div.third-content-form .form-header .header-buttons .user-links .div-fav:hover .div-right span {
+        div.third-content-form .form-header .header-buttons .user-links .div-fav:hover .div-right span, div.third-content-form .form-header .header-buttons .user-links .div-fav.div-checked .div-right span {
           color: #f6f6f6; }
       /* line 114, ../sass/_my-mixin.scss */
       div.third-content-form .form-header .header-buttons .user-links .div-fav .div-left i {
@@ -1228,7 +1250,7 @@ div.third-content-form .form-header {
       /* line 119, ../sass/_my-mixin.scss */
       div.third-content-form .form-header .header-buttons .user-links .div-fav .div-right span {
         color: #e4e46f; }
-    /* line 106, ../sass/mypage.scss */
+    /* line 128, ../sass/mypage.scss */
     div.third-content-form .form-header .header-buttons .user-links .div-watched {
       border: solid 2px #ffbe00;
       border-radius: 30px;
@@ -1236,14 +1258,14 @@ div.third-content-form .form-header {
       -o-transition: 0.2s;
       transition: 0.2s; }
       /* line 99, ../sass/_my-mixin.scss */
-      div.third-content-form .form-header .header-buttons .user-links .div-watched:hover {
+      div.third-content-form .form-header .header-buttons .user-links .div-watched:hover, div.third-content-form .form-header .header-buttons .user-links .div-watched.div-checked {
         background-color: #ffbe00;
         color: #f6f6f6; }
         /* line 103, ../sass/_my-mixin.scss */
-        div.third-content-form .form-header .header-buttons .user-links .div-watched:hover .div-left i {
+        div.third-content-form .form-header .header-buttons .user-links .div-watched:hover .div-left i, div.third-content-form .form-header .header-buttons .user-links .div-watched.div-checked .div-left i {
           color: #f6f6f6; }
         /* line 108, ../sass/_my-mixin.scss */
-        div.third-content-form .form-header .header-buttons .user-links .div-watched:hover .div-right span {
+        div.third-content-form .form-header .header-buttons .user-links .div-watched:hover .div-right span, div.third-content-form .form-header .header-buttons .user-links .div-watched.div-checked .div-right span {
           color: #f6f6f6; }
       /* line 114, ../sass/_my-mixin.scss */
       div.third-content-form .form-header .header-buttons .user-links .div-watched .div-left i {
@@ -1251,7 +1273,7 @@ div.third-content-form .form-header {
       /* line 119, ../sass/_my-mixin.scss */
       div.third-content-form .form-header .header-buttons .user-links .div-watched .div-right span {
         color: #ffbe00; }
-    /* line 107, ../sass/mypage.scss */
+    /* line 129, ../sass/mypage.scss */
     div.third-content-form .form-header .header-buttons .user-links .div-want {
       border: solid 2px #587ca0;
       border-radius: 30px;
@@ -1259,14 +1281,14 @@ div.third-content-form .form-header {
       -o-transition: 0.2s;
       transition: 0.2s; }
       /* line 99, ../sass/_my-mixin.scss */
-      div.third-content-form .form-header .header-buttons .user-links .div-want:hover {
+      div.third-content-form .form-header .header-buttons .user-links .div-want:hover, div.third-content-form .form-header .header-buttons .user-links .div-want.div-checked {
         background-color: #587ca0;
         color: #f6f6f6; }
         /* line 103, ../sass/_my-mixin.scss */
-        div.third-content-form .form-header .header-buttons .user-links .div-want:hover .div-left i {
+        div.third-content-form .form-header .header-buttons .user-links .div-want:hover .div-left i, div.third-content-form .form-header .header-buttons .user-links .div-want.div-checked .div-left i {
           color: #f6f6f6; }
         /* line 108, ../sass/_my-mixin.scss */
-        div.third-content-form .form-header .header-buttons .user-links .div-want:hover .div-right span {
+        div.third-content-form .form-header .header-buttons .user-links .div-want:hover .div-right span, div.third-content-form .form-header .header-buttons .user-links .div-want.div-checked .div-right span {
           color: #f6f6f6; }
       /* line 114, ../sass/_my-mixin.scss */
       div.third-content-form .form-header .header-buttons .user-links .div-want .div-left i {
@@ -1274,7 +1296,7 @@ div.third-content-form .form-header {
       /* line 119, ../sass/_my-mixin.scss */
       div.third-content-form .form-header .header-buttons .user-links .div-want .div-right span {
         color: #587ca0; }
-    /* line 108, ../sass/mypage.scss */
+    /* line 130, ../sass/mypage.scss */
     div.third-content-form .form-header .header-buttons .user-links .div-image {
       border: solid 2px #2eb2ff;
       border-radius: 30px;
@@ -1282,14 +1304,14 @@ div.third-content-form .form-header {
       -o-transition: 0.2s;
       transition: 0.2s; }
       /* line 99, ../sass/_my-mixin.scss */
-      div.third-content-form .form-header .header-buttons .user-links .div-image:hover {
+      div.third-content-form .form-header .header-buttons .user-links .div-image:hover, div.third-content-form .form-header .header-buttons .user-links .div-image.div-checked {
         background-color: #2eb2ff;
         color: #f6f6f6; }
         /* line 103, ../sass/_my-mixin.scss */
-        div.third-content-form .form-header .header-buttons .user-links .div-image:hover .div-left i {
+        div.third-content-form .form-header .header-buttons .user-links .div-image:hover .div-left i, div.third-content-form .form-header .header-buttons .user-links .div-image.div-checked .div-left i {
           color: #f6f6f6; }
         /* line 108, ../sass/_my-mixin.scss */
-        div.third-content-form .form-header .header-buttons .user-links .div-image:hover .div-right span {
+        div.third-content-form .form-header .header-buttons .user-links .div-image:hover .div-right span, div.third-content-form .form-header .header-buttons .user-links .div-image.div-checked .div-right span {
           color: #f6f6f6; }
       /* line 114, ../sass/_my-mixin.scss */
       div.third-content-form .form-header .header-buttons .user-links .div-image .div-left i {
@@ -1297,45 +1319,54 @@ div.third-content-form .form-header {
       /* line 119, ../sass/_my-mixin.scss */
       div.third-content-form .form-header .header-buttons .user-links .div-image .div-right span {
         color: #2eb2ff; }
-/* line 112, ../sass/mypage.scss */
+/* line 134, ../sass/mypage.scss */
 div.third-content-form .div-empty {
   position: relative;
   display: block; }
-  /* line 116, ../sass/mypage.scss */
+  /* line 138, ../sass/mypage.scss */
   div.third-content-form .div-empty .empty-empty {
     display: block;
     height: 100%;
     width: 100%; }
-    /* line 120, ../sass/mypage.scss */
+    /* line 142, ../sass/mypage.scss */
     div.third-content-form .div-empty .empty-empty p {
       height: 100%;
       display: block;
       z-index: 1000; }
-/* line 127, ../sass/mypage.scss */
+/* line 149, ../sass/mypage.scss */
 div.third-content-form .form-body {
-  position: relative; }
-  /* line 129, ../sass/mypage.scss */
+  position: relative;
+  padding-top: 60em; }
+  /* line 152, ../sass/mypage.scss */
   div.third-content-form .form-body .user-edit {
     margin: 1em auto 0;
     width: 30em; }
-    /* line 132, ../sass/mypage.scss */
+    /* line 155, ../sass/mypage.scss */
     div.third-content-form .form-body .user-edit input, div.third-content-form .form-body .user-edit textarea, div.third-content-form .form-body .user-edit button {
       display: block; }
-    /* line 135, ../sass/mypage.scss */
+    /* line 158, ../sass/mypage.scss */
     div.third-content-form .form-body .user-edit form {
       margin: 0 auto; }
-      /* line 136, ../sass/mypage.scss */
+      /* line 159, ../sass/mypage.scss */
       div.third-content-form .form-body .user-edit form #image {
-        width: 100%;
-        height: auto;
+        width: 150px;
+        height: 150px;
         color: #f6f6f6;
-        background: black;
-        margin-bottom: 1em; }
-        /* line 142, ../sass/mypage.scss */
+        background: #3f3f3f;
+        margin-bottom: 1em;
+        text-align: center;
+        border: 5px solid #a3b1b2;
+        -webkit-border-radius: 10px;
+        -moz-border-radius: 10px;
+        -ms-border-radius: 10px;
+        -o-border-radius: 10px;
+        border-radius: 10px;
+        overflow: hidden; }
+        /* line 171, ../sass/mypage.scss */
         div.third-content-form .form-body .user-edit form #image img {
-          padding: 1em;
-          width: 100%; }
-      /* line 148, ../sass/mypage.scss */
+          max-height: 150px;
+          max-width: 150px; }
+      /* line 177, ../sass/mypage.scss */
       div.third-content-form .form-body .user-edit form .user-info {
         padding: 0.2em 0.4em;
         margin: 0 0 0.8em;
@@ -1347,11 +1378,11 @@ div.third-content-form .form-body {
         -o-border-radius: 2px;
         border-radius: 2px;
         display: block; }
-      /* line 156, ../sass/mypage.scss */
+      /* line 185, ../sass/mypage.scss */
       div.third-content-form .form-body .user-edit form .btn-submit {
         width: 100%;
         padding: 1em 2em; }
 
-/* line 164, ../sass/mypage.scss */
+/* line 193, ../sass/mypage.scss */
 a.div-link:hover .links-div {
   background-color: #68c39f; }

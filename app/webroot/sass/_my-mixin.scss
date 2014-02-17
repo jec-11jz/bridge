@@ -96,7 +96,7 @@
   border:solid 2px $color;
   border-radius: 30px;
   @include btn-fade;
-  &:hover{
+  &:hover,&.div-checked{
     background-color: $color;
     color:$white;
     .div-left{
