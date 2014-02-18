@@ -954,54 +954,36 @@ div.modal-content {
   margin: 0 4em;
   text-align: right; }
 
-/* line 86, ../sass/templates.scss */
-#template-index .cont {
-  display: block;
-  overflow: hidden;
-  float: left;
-  width: 33%;
-  padding: 1em 2em;
-  position: relative; }
-  /* line 93, ../sass/templates.scss */
-  #template-index .cont .delete {
-    position: absolute;
-    top: 0;
-    right: 0; }
-  /* line 98, ../sass/templates.scss */
-  #template-index .cont .title {
-    font-size: 2em; }
-  /* line 101, ../sass/templates.scss */
-  #template-index .cont ul {
-    overflow: hidden;
-    display: none; }
-  /* line 105, ../sass/templates.scss */
-  #template-index .cont span {
-    cursor: pointer; }
-  /* line 109, ../sass/templates.scss */
-  #template-index .cont li {
-    cursor: pointer;
-    list-style-type: none;
-    text-indent: 1em; }
-/* line 115, ../sass/templates.scss */
-#template-index .fa-trash-o {
-  padding: 1em; }
-
-/* line 123, ../sass/templates.scss */
-.box-flex .button-full {
-  -webkit-box-flex: 4;
-  -moz-box-flex: 4;
-  -ms-box-flex: 4;
-  box-flex: 4;
-  height: 8em; }
-  /* line 126, ../sass/templates.scss */
-  .box-flex .button-full .btn-black {
-    padding: 3.2em 6.5em;
-    border: none;
-    width: 100%;
-    height: 100%; }
-    /* line 131, ../sass/templates.scss */
-    .box-flex .button-full .btn-black.left {
-      border-right: solid #c1c1c1 1px; }
-    /* line 134, ../sass/templates.scss */
-    .box-flex .button-full .btn-black.right {
-      border-left: solid #c1c1c1 1px; }
+/* line 84, ../sass/templates.scss */
+.third-content-form .form-body {
+  padding: 3em; }
+  /* line 86, ../sass/templates.scss */
+  .third-content-form .form-body .body-template {
+    display: table; }
+    /* line 88, ../sass/templates.scss */
+    .third-content-form .form-body .body-template .template-contents {
+      display: table-cell;
+      overflow: hidden;
+      width: 30em;
+      padding: 1em 2em;
+      position: relative; }
+      /* line 94, ../sass/templates.scss */
+      .third-content-form .form-body .body-template .template-contents .delete {
+        position: absolute;
+        top: 0;
+        right: 0; }
+      /* line 99, ../sass/templates.scss */
+      .third-content-form .form-body .body-template .template-contents .contents-title {
+        font-size: 2em; }
+      /* line 102, ../sass/templates.scss */
+      .third-content-form .form-body .body-template .template-contents .contents-list {
+        overflow: hidden;
+        display: none; }
+        /* line 105, ../sass/templates.scss */
+        .third-content-form .form-body .body-template .template-contents .contents-list .contents-item {
+          cursor: pointer;
+          list-style-type: none;
+          text-indent: 1em; }
+      /* line 111, ../sass/templates.scss */
+      .third-content-form .form-body .body-template .template-contents span {
+        cursor: pointer; }

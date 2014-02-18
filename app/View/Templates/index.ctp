@@ -12,14 +12,10 @@
             $(this).next().slideToggle();
         });
     });
-
     $(function () {
-	  // 親メニュー処理
 	  $('span').click(function() {
-	    // メニュー表示/非表示
 	    $(this).next('ul').slideToggle('fast');
 	  });
-
 	});
 
 </script>
@@ -97,36 +93,27 @@
 
 
 	<div class="form-body">
-		<div id="">
-			
-		</div>
-		<div id="div-index-templates" class="form first-content-form">
+		<a href="/templates/add" class="btn-blue">create</a>
+		<div class="body-template">
+		<?php foreach($templates as $template) : ?>
+			<div class="template-contents">
+				<span><?php echo $this->Form->postLink("", array('action' => 'delete', $template['Template']['id']), array('confirm' => '削除しますか？', 'class'=>'fa fa-trash-o delete')); ?></span>
+				<a href="/templates/edit/<?php echo $template['Template']['id']; ?>" class="edit"><i class="fa fa-pencil-square-o"></i></a>
 
-			<a href="/templates/add" class="btn-blue">Create</a>
-			<!-- テンプレート一覧 -->
-			<div id="template-index" class="contents">
-				<?php foreach($templates as $template) : ?>
-					<!-- <div class="caption"> -->
-					<div class="cont contents">
-						<span><?php echo $this->Form->postLink("", array('action' => 'delete', $template['Template']['id']), array('confirm' => '削除しますか？', 'class'=>'fa fa-trash-o delete')); ?></span>
-						
-						<span class="title"><?php echo $template['Template']['name']; ?></span>
-						<ul>
-						  <?php foreach($template['Attribute'] as $attribute) : ?>
-							<li>
-							<?php if(isset($attribute['name'])){ ?>
-								<?php echo $attribute['name']; ?>
-							<?php } ?>
-							</li>
-						  <?php endforeach; ?>
-						</ul>
-						<a href="/templates/edit/<?php echo $template['Template']['id']; ?>" class="edit"><i class="fa fa-pencil-square-o"></i></a>
-					</div> <!-- cont -->
-					<!-- </div> -->
+				<span class="contents-title"><?php echo $template['Template']['name']; ?></span>
+				<ul class="contents-list">
+				<?php foreach($template['Attribute'] as $attribute) : ?>
+					<li class="contents-item">
+					<?php if(isset($attribute['name'])){ ?>
+						<?php echo $attribute['name']; ?>
+					<?php } ?>
+					</li>
 				<?php endforeach; ?>
-			</div>
-		</div> <!-- form -->
-	</div>
+				</ul>
+			</div> <!-- cont -->
+		<?php endforeach; ?>
+		</div>
+	</div> <!-- form-body -->
 
 	<div class="form-footer"></div>
 </div> <!-- form -->

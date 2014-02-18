@@ -53,160 +53,173 @@ html, body{
   height: 100%;
 }
 div.third-content-form{
-  .form-header{
+.form-header{
+  position: absolute;
+  width: 100%;
+  height: 772px;
+  background-color: #6d8182;
+  .header-back{
     position: absolute;
+    @include filter( brightness(50%));
+    background-size:cover !important;
+    z-index: 50;
     width: 100%;
     height: 772px;
-    background-color: #6d8182;
-    .header-back{
+  }
+  .header-user{
+    text-align: center;
+    display: block;
+    position: relative;
+    color: $white;
+    z-index: 100;
+    .header-request{
       position: absolute;
-      @include filter( brightness(50%));
-      background-size:cover !important;
-      z-index: 50;
-      width: 100%;
-      height: 772px;
-    }
-    .header-user{
+      top: 0px;
+      left: -87px;
+      z-index: 100;
       text-align: center;
-      display: block;
-      position: relative;
-      color: $white;
-      z-index: 100;
-      .header-request{
-        position: absolute;
-        top: 0px;
-        left: -87px;
-        z-index: 100;
-        text-align: center;
-        span{
-          color: $white;
-          @include btn-fade;}
-        i{
-          @include btn-fade;
-          display: block;
-          font-size: 5em;
-          color: $white;}
-        &:hover{
-          i{color: $green;}
-          span{color: $green;}}
-        &.request-checked{
-          i{color:$green;}span{color:$green;}
-        }
-      }
-      .user-potision{
-        position:absolute;
-        top: 40px;
-        left:25%;
-        .div-user-image{
-          height: 150px;
-          width: 150px;
-          display: table-cell;
-          background-color: $black;
-          @include border-radius(20px);
-          border:5px solid $grey;
-          overflow: hidden;
-          vertical-align:middle;
-          .user-image{
-            max-height: 150px;
-            max-width: 150px;
-          }
-        }
-        .div-user-name{
-          position: absolute;
-          text-align: left;
-          top:30px;
-          left:105%;
-          .user-nickname{
-            display: inline-block;
-            color: $white;
-            font-size: 3em;
-            line-height: 1em;
-            width: 10em;
-            @include text-shadow(4px 3px 0 rgba(0,0,0,0.5));
-          }
-          .user-name{
-            margin-left: 0.4em;
-            color: darken($white, 20%);
-            font-size: 1.4em;
-            line-height: 1.5em;
-          }
-        }
-
+      span{
+        color: $white;
+        @include btn-fade;}
+      i{
+        @include btn-fade;
+        display: block;
+        font-size: 5em;
+        color: $white;}
+      &:hover{
+        i{color: $green;}
+        span{color: $green;}}
+      &.request-checked{
+        i{color:$green;}span{color:$green;}
       }
     }
-
-    .header-buttons{
-      margin-top: 15em;
-      position: relative;
-      z-index: 100;
-      .links-div{
-        @include links-color($green);
-        position: relative;
-        margin: 1em;
-        width: 30%;
-        .div-link{
-          @include link;
+    .user-potision{
+      position:absolute;
+      top: 40px;
+      left:25%;
+      .div-user-image{
+        height: 150px;
+        width: 150px;
+        display: table-cell;
+        background-color: $black;
+        @include border-radius(20px);
+        border:5px solid $grey;
+        overflow: hidden;
+        vertical-align:middle;
+        .user-image{
+          max-height: 150px;
+          max-width: 150px;
         }
-        padding: 1em;
-        display: inline-block;
-        border-radius: 30px;
-        .div-left{
-          display: inline-block;
-          i{ font-size: 10em; }
-        }
-        .div-right{display: inline-block;}
       }
-      .div-edit{@include links-color($purple);&:hover{background-color:$purple;color:$white;}}
-      .div-fav{@include links-color($yellow);}
-      .div-products{@include links-color($orange);}
-      .div-blogs{@include links-color($dark-blue);}
-      .div-image{@include links-color($blue);}
+      .div-user-name{
+        position: absolute;
+        text-align: left;
+        top:30px;
+        left:105%;
+        .user-nickname{
+          display: inline-block;
+          color: $white;
+          font-size: 3em;
+          line-height: 1em;
+          width: 10em;
+          @include text-shadow(4px 3px 0 rgba(0,0,0,0.5));
+        }
+        .user-name{
+          margin-left: 0.4em;
+          color: darken($white, 20%);
+          font-size: 1.4em;
+          line-height: 1.5em;
+        }
+      }
+
     }
   }
-  .form-body{
+
+  .header-buttons{
+    margin-top: 15em;
     position: relative;
-    padding-top: 60em;
-    .user-edit{
-      margin:1em auto 0;
-      width: 30em;
-      input,textarea,button{
+    z-index: 100;
+    .links-div{
+      @include links-color($green);
+      position: relative;
+      margin: 1em;
+      width: 30%;
+      .div-link{
+        @include link;
+      }
+      padding: 1em;
+      display: inline-block;
+      border-radius: 30px;
+      .div-left{
+        display: inline-block;
+        i{ font-size: 10em; }
+      }
+      .div-right{display: inline-block;}
+    }
+    .div-edit{@include links-color($purple);&:hover{background-color:$purple;color:$white;}}
+    .div-fav{@include links-color($yellow);}
+    .div-products{@include links-color($orange);}
+    .div-blogs{@include links-color($dark-blue);}
+    .div-image{@include links-color($blue);}
+  }
+}
+.form-body{
+  position: relative;
+  padding-top: 60em;
+  #image {
+    width: 150px;
+    height: 150px;
+    color: $white;
+    background: $black;
+    margin-bottom: 1em;
+    text-align: center;
+    border:5px solid $grey;
+    @include border-radius(10px);
+    overflow: hidden;
+    display: table-cell;
+    vertical-align: middle;
+    img{
+      max-height: 150px;
+      max-width: 150px;
+    }
+  }
+  #form-user-edit{
+    padding: 2em;
+    .user-edit-left{
+      display: inline-block;
+      padding: 3em;
+      width: 50%;
+
+      margin: 0 auto;
+      .user-info{
+        padding:0.2em 0.4em;
+        margin: 0 0 0.8em;
+        border:1px solid lighten($black,50%);
+        width:100%;
+        @include border-radius(2px);
         display: block;
       }
-      form{
-        #image {
-          width: 150px;
-          height: 150px;
-          color: $white;
-          background: $black;
-          margin-bottom: 1em;
-          text-align: center;
-          border:5px solid $grey;
-          @include border-radius(10px);
-          overflow: hidden;
-          display: table-cell;
-          vertical-align: middle;
-
-          img{
-            max-height: 150px;
-            max-width: 150px;
-          }
-        }
-        margin: 0 auto;
-        .user-info{
-          padding:0.2em 0.4em;
-          margin: 0 0 0.8em;
-          border:1px solid lighten($black,50%);
-          width:100%;
-          @include border-radius(2px);
-          display: block;
-        }
-        .btn-submit{
-          width: 100%;
-          padding: 1em 2em;
-        }
-      }
     }
-  }
+    .user-edit-right{
+      width: 49.5%;
+      padding: 3em;
+      display: inline-block;
+      margin: 0 auto;
+      .user-info{
+        padding:0.2em 0.4em;
+        margin: 0 0 0.8em;
+        border:1px solid lighten($black,50%);
+        width:100%;
+        @include border-radius(2px);
+        display: block;
+      }
+    } 
+    .btn-submit{
+      width: 100%;
+      padding: 1em 2em;
+    }
+  }  // form-user-edit
+} // body
 }
 a.div-link:hover .links-div{
   background-color: $green;

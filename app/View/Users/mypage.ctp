@@ -76,37 +76,7 @@ $(function() {
 		}
 	});
 	
-	// change cover image
-	$('#btn-edit-cover').click(function(event, data){
-		window.KCFinder = {
-	        callBack: function(url) {
-	        	changeCover(url);
-	        }
-	    }
-	    window.open('/js/kcfinder/browse.php?type=images&dir=images/public',
-	        'kcfinder_image', 'status=0, toolbar=0, location=0, menubar=0, ' +
-	        'directories=0, resizable=1, scrollbars=0, width=800, height=600'
-	    );
-	});
-	function changeCover(data){
-		var src = {
-			data: data
-		};
-		$.ajax({
-			type: "POST",
-			url: '/api/users/change_cover.json',
-			data: src,
-			success: function(data){
-				location.reload();
-			},
-			error: function(xhr, xhrStatus){
-				$('#message').flash_message({
-			        text: xhr['responseJSON']['error'],
-			        how: 'append'
-		    	});
-			}
-		});
-	}
+
 	// post user's info
 	$('#btn-edit').click(function(){
 		var postData = {};
@@ -174,7 +144,7 @@ $(function() {
 			<div class="links-div div-fav">
 				<a class="div-link" href=""></a>
 				<div class="div-left">
-					<i class="fa fa-check-circle-o"></i>
+					<i class="fa fa-star-o"></i>
 				</div>
 				<div class="div-right">
 					<span>Fav blogs</span>
@@ -213,7 +183,7 @@ $(function() {
 			</div>
 		
 			<div class="links-div div-image">
-				<a class="div-link" href=""></a>
+				<a class="div-link" onclick="openKCFinder(this)"></a>
 				<div class="div-left">
 					<i class="fa fa-picture-o"></i>
 				</div>

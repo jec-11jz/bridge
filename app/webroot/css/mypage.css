@@ -1372,38 +1372,37 @@ div.third-content-form .form-body {
   position: relative;
   padding-top: 60em; }
   /* line 169, ../sass/mypage.scss */
-  div.third-content-form .form-body .user-edit {
-    margin: 1em auto 0;
-    width: 30em; }
-    /* line 172, ../sass/mypage.scss */
-    div.third-content-form .form-body .user-edit input, div.third-content-form .form-body .user-edit textarea, div.third-content-form .form-body .user-edit button {
-      display: block; }
-    /* line 175, ../sass/mypage.scss */
-    div.third-content-form .form-body .user-edit form {
+  div.third-content-form .form-body #image {
+    width: 150px;
+    height: 150px;
+    color: #f6f6f6;
+    background: #3f3f3f;
+    margin-bottom: 1em;
+    text-align: center;
+    border: 5px solid #a3b1b2;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+    border-radius: 10px;
+    overflow: hidden;
+    display: table-cell;
+    vertical-align: middle; }
+    /* line 181, ../sass/mypage.scss */
+    div.third-content-form .form-body #image img {
+      max-height: 150px;
+      max-width: 150px; }
+  /* line 186, ../sass/mypage.scss */
+  div.third-content-form .form-body #form-user-edit {
+    padding: 2em; }
+    /* line 188, ../sass/mypage.scss */
+    div.third-content-form .form-body #form-user-edit .user-edit-left {
+      display: inline-block;
+      padding: 3em;
+      width: 50%;
       margin: 0 auto; }
-      /* line 176, ../sass/mypage.scss */
-      div.third-content-form .form-body .user-edit form #image {
-        width: 150px;
-        height: 150px;
-        color: #f6f6f6;
-        background: #3f3f3f;
-        margin-bottom: 1em;
-        text-align: center;
-        border: 5px solid #a3b1b2;
-        -webkit-border-radius: 10px;
-        -moz-border-radius: 10px;
-        -ms-border-radius: 10px;
-        -o-border-radius: 10px;
-        border-radius: 10px;
-        overflow: hidden;
-        display: table-cell;
-        vertical-align: middle; }
-        /* line 189, ../sass/mypage.scss */
-        div.third-content-form .form-body .user-edit form #image img {
-          max-height: 150px;
-          max-width: 150px; }
-      /* line 195, ../sass/mypage.scss */
-      div.third-content-form .form-body .user-edit form .user-info {
+      /* line 194, ../sass/mypage.scss */
+      div.third-content-form .form-body #form-user-edit .user-edit-left .user-info {
         padding: 0.2em 0.4em;
         margin: 0 0 0.8em;
         border: 1px solid #bfbfbf;
@@ -1414,11 +1413,29 @@ div.third-content-form .form-body {
         -o-border-radius: 2px;
         border-radius: 2px;
         display: block; }
-      /* line 203, ../sass/mypage.scss */
-      div.third-content-form .form-body .user-edit form .btn-submit {
+    /* line 203, ../sass/mypage.scss */
+    div.third-content-form .form-body #form-user-edit .user-edit-right {
+      width: 49.5%;
+      padding: 3em;
+      display: inline-block;
+      margin: 0 auto; }
+      /* line 208, ../sass/mypage.scss */
+      div.third-content-form .form-body #form-user-edit .user-edit-right .user-info {
+        padding: 0.2em 0.4em;
+        margin: 0 0 0.8em;
+        border: 1px solid #bfbfbf;
         width: 100%;
-        padding: 1em 2em; }
+        -webkit-border-radius: 2px;
+        -moz-border-radius: 2px;
+        -ms-border-radius: 2px;
+        -o-border-radius: 2px;
+        border-radius: 2px;
+        display: block; }
+    /* line 217, ../sass/mypage.scss */
+    div.third-content-form .form-body #form-user-edit .btn-submit {
+      width: 100%;
+      padding: 1em 2em; }
 
-/* line 211, ../sass/mypage.scss */
+/* line 224, ../sass/mypage.scss */
 a.div-link:hover .links-div {
   background-color: #68c39f; }

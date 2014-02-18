@@ -1,9 +1,11 @@
 <?php
+	$this->extend('/Common/index');
+	
 	$this->Html->css('mypage', null, array('inline' => false));
 	
 	$this->Html->script('//ajax.microsoft.com/ajax/jquery.templates/beta1/jquery.tmpl.min.js', array('inline' => false));
 	
-	$this->extend('/Common/index');
+	
 ?>
 <!-- KCfinder読み込み -->
 <script type="text/javascript">
