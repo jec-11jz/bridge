@@ -97,75 +97,84 @@ $(function() {
 <div class="form third-content-form">
 	<div class="form-header">
 		<div class="header-back" id="cover" style="background: url('<?php echo h($loginInformation['User']['cover_image']); ?>') no-repeat center ;" alt=""></div>
-		<div clasS="header-user">
-			<span><?php echo h($user['name']); ?></span>
+		<div class="header-user">
+			<div class="user-potision">
+				<div class="div-user-image">
+					<a href="/users/mypage" class="link"></a>
+					<img id="user-img" class="user-image" src="<?php echo h($loginInformation['User']['users_image']) ;?>" >
+				</div>	
+				<div class="div-user-name">
+					<span class="user-nickname"><?php echo h($loginInformation['User']['nickname']); ?></span>
+					<span class="user-name">ID: <?php echo h($loginInformation['User']['name']); ?></span>
+				</div>
+			</div>
+
 		</div>
 		<div class="header-buttons">
-			<div class="user-links">
-				<div class="links-div div-fav">
-					<a class="div-link" href=""></a>
-					<div class="div-left">
-						<i class="fa fa-star-o"></i>
-					</div>
-					<div class="div-right">
-						<span>My Favs</span>
-					</div>
+			<div class="links-div div-fav">
+				<a class="div-link" href=""></a>
+				<div class="div-left">
+					<i class="fa fa-star-o"></i>
 				</div>
-				<div class="links-div div-watched">
-					<a class="div-link" href=""></a>
-					<div class="div-left">
-						<i class="fa fa-star-o"></i>
-					</div>
-					<div class="div-right">
-						<span>Watched</span>
-					</div>
+				<div class="div-right">
+					<span>Fav blogs</span>
 				</div>
-				<div class="links-div div-want">
-					<a class="div-link" href=""></a>
-					<div class="div-left">
-						<i class="fa fa-star-o"></i>
-					</div>
-					<div class="div-right">
-						<span>Want to watch</span>
-					</div>
+			</div>
+		
+			<div class="links-div div-products">
+				<a class="div-link" href=""></a>
+				<div class="div-left">
+					<i class="fa fa-star-o"></i>
 				</div>
-				<div class="links-div div-temp">
-					<a class="div-link" href="/templates/index"></a>
-					<div class="div-left">
-						<i class="fa fa-th-list"></i>
-					</div>
-					<div class="div-right">
-						<span>Template</span>
-					</div>
+				<div class="div-right">
+					<span>Fav products</span>
 				</div>
-				<div class="links-div div-image">
-					<a class="div-link" href=""></a>
-					<div class="div-left">
-						<i class="fa fa-picture-o"></i>
-					</div>
-					<div class="div-right">
-						<span>Image upload</span>
-					</div>
+			</div>
+		
+			
+			<div class="links-div div-blogs">
+				<a class="div-link" href="/blogs/index"></a>
+				<div class="div-left">
+					<i class="fa fa-book"></i>
 				</div>
-				<div class="links-div div-edit div-checked">
-					<a class="div-link" href="/users/edit"></a>
-					<div class="div-left">
-						<i class="fa fa-cog"></i>
-					</div>
-					<div class="div-right">
-						<span>edit account</span>
-					</div>
-					
+				<div class="div-right">
+					<span>My blogs</span>
+				</div>
+			</div>
+		
+			<div class="links-div div-temp">
+				<a class="div-link" href="/templates/index"></a>
+				<div class="div-left">
+					<i class="fa fa-th-list"></i>
+				</div>
+				<div class="div-right">
+					<span>Template</span>
+				</div>
+			</div>
+		
+			<div class="links-div div-image">
+				<a class="div-link" href="" onclick="openKCFinder(this)"></a>
+				<div class="div-left">
+					<i class="fa fa-picture-o"></i>
+				</div>
+				<div class="div-right">
+					<span>Image upload</span>
+				</div>
+			</div>
+
+			<div class="links-div div-edit div-checked">
+				<a class="div-link" href=""></a>
+				<div class="div-left">
+					<i class="fa fa-cog"></i>
+				</div>
+				<div class="div-right">
+					<span>My Edit</span>
 				</div>
 			</div>
 		</div>
-		
-		
 	</div>
 <!--  -->
 	<div class="form-body">
-
-
 		<div class="user-edit">
 			<div id="message"></div>
 			<form method="post" id="form-user-edit" action="/api/users/edit.json">

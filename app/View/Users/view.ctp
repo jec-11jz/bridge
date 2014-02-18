@@ -95,64 +95,75 @@ $(function() {
 		heigth: 220px;
 	}
 </style>
-<div id="user-info" name="<?php echo h($user_info['User']['id']) ;?>">
-	<p><?php echo h($user_info['User']['name']) ;?></p>
-	<img id="user-img" src="<?php echo h($user_info['User']['users_image']) ;?>" >
-	<p><?php echo h($user_info['User']['profile']) ;?></p>
-	<div id="message"></div>
-	<?php if(is_null($user_info['favorite']) && $user_info['auth'] == 'others'){ ?>
-		<a class="fa fa-star btn-favorite"></a>
-	<?php } else { ?>
-		<a class="fa fa-star" disabled="disabled"></a>
-	<?php } ?>
-	<legend>ブログ一覧</legend>
-	<div id="user-blogs"></div>
-</div>
 
 <div class="form third-content-form">
 	<div class="form-header">
-		<div class="header-back" id="cover" style="background: url('<?php echo h($loginInformation['User']['cover_image']); ?>') no-repeat center ;" alt=""></div>
-		</div>
+		<div class="header-back" id="cover" style="background: url('<?php echo h($user_info['User']['cover_image']); ?>') no-repeat center ;" alt=""></div>
 		<div clasS="header-user">
-			<span><?php echo h($user['name']); ?></span>
+			<div class="user-potision">
+				<!-- 友だち申請ボタン　classに"request-checked"追加で色変更 -->
+				<div class="header-request">
+					<a href="" class="link"></a>
+					<i class="fa fa-check-circle-o"></i>
+					<span>Friend req</span>
+				</div>
+				<div class="div-user-image">
+					<img id="user-img" class="user-image" src="<?php echo h($user_info['User']['users_image']) ;?>" >
+				</div>	
+				<div class="div-user-name">
+					<span class="user-nickname"><?php echo h($user_info['User']['nickname']); ?></span>
+					<span class="user-name">ID: <?php echo h($user_info['User']['name']); ?></span>
+				</div>
+			</div>
 		</div>
+
 		<div class="header-buttons">
-			<div class="user-links">
-				<div class="links-div div-fav">
-					<a class="div-link" href=""></a>
-					<div class="div-left">
-						<i class="fa fa-star-o"></i>
-					</div>
-					<div class="div-right">
-						<span>frend request</span>
-					</div>
+			<div class="links-div div-fav">
+				<a class="div-link" href=""></a>
+				<div class="div-left">
+					<i class="fa fa-star-o"></i>
 				</div>
-<!-- 				<div class="links-div div-watched">
-					<a class="div-link" href=""></a>
-					<div class="div-left">
-						<i class="fa fa-star-o"></i>
-					</div>
-					<div class="div-right">
-						<span>Watched</span>
-					</div>
+				<div class="div-right">
+					<span>owner fav blogs</span>
 				</div>
-				<div class="links-div div-want">
-					<a class="div-link" href=""></a>
-					<div class="div-left">
-						<i class="fa fa-star-o"></i>
-					</div>
-					<div class="div-right">
-						<span>Want to watch</span>
-					</div>
-				</div> -->
+			</div>
+		
+			<div class="links-div div-products">
+				<a class="div-link" href=""></a>
+				<div class="div-left">
+					<i class="fa fa-star-o"></i>
+				</div>
+				<div class="div-right">
+					<span>owner fav products</span>
+				</div>
+			</div>
+		
+			
+			<div class="links-div div-blogs">
+				<a class="div-link" href="/blogs/index"></a>
+				<div class="div-left">
+					<i class="fa fa-book"></i>
+				</div>
+				<div class="div-right">
+					<span>owner blogs</span>
+				</div>
 			</div>
 		</div>
 		
 	</div>
 <!--  -->
 	<div class="form-body">
-		
-
+		<div id="user-info" name="<?php echo h($user_info['User']['id']) ;?>">
+			<p><?php echo h($user_info['User']['profile']) ;?></p>
+			<div id="message"></div>
+			<?php if(is_null($user_info['favorite']) && $user_info['auth'] == 'others'){ ?>
+				<a class="fa fa-star btn-favorite"></a>
+			<?php } else { ?>
+				<a class="fa fa-star" disabled="disabled"></a>
+			<?php } ?>
+			<legend>ブログ一覧</legend>
+			<div id="user-blogs"></div>
+		</div>
 	</div>
 
 	<div class="form-footer">

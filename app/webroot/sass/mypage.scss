@@ -56,7 +56,7 @@ div.third-content-form{
   .form-header{
     position: absolute;
     width: 100%;
-    height: 100%;
+    height: 772px;
     background-color: #6d8182;
     .header-back{
       position: absolute;
@@ -64,8 +64,7 @@ div.third-content-form{
       background-size:cover !important;
       z-index: 50;
       width: 100%;
-      height: 100%;
-      min-height: 100%;
+      height: 772px;
     }
     .header-user{
       text-align: center;
@@ -73,11 +72,31 @@ div.third-content-form{
       position: relative;
       color: $white;
       z-index: 100;
-      @include text-shadow(2px -2px 0 rgba(0,0,0,0.5));
+      .header-request{
+        position: absolute;
+        top: 0px;
+        left: -87px;
+        z-index: 100;
+        text-align: center;
+        span{
+          color: $white;
+          @include btn-fade;}
+        i{
+          @include btn-fade;
+          display: block;
+          font-size: 5em;
+          color: $white;}
+        &:hover{
+          i{color: $green;}
+          span{color: $green;}}
+        &.request-checked{
+          i{color:$green;}span{color:$green;}
+        }
+      }
       .user-potision{
         position:absolute;
-        top: 52px;
-        left:30%;
+        top: 40px;
+        left:25%;
         .div-user-image{
           height: 150px;
           width: 150px;
@@ -92,19 +111,29 @@ div.third-content-form{
             max-width: 150px;
           }
         }
-        .user-name{
+        .div-user-name{
           position: absolute;
-          top:65px;left:189px;
-          // margin: 0 auto;
-          color: $white;
-          // display: inline-block;
-          // padding: 1.5em 4em 1.7em 1em;
-          font-size: 4em;
-
+          text-align: left;
+          top:30px;
+          left:105%;
+          .user-nickname{
+            display: inline-block;
+            color: $white;
+            font-size: 3em;
+            line-height: 1em;
+            width: 10em;
+            @include text-shadow(4px 3px 0 rgba(0,0,0,0.5));
+          }
+          .user-name{
+            margin-left: 0.4em;
+            color: darken($white, 20%);
+            font-size: 1.4em;
+            line-height: 1.5em;
+          }
         }
+
       }
     }
-
 
     .header-buttons{
       margin-top: 15em;
@@ -129,25 +158,9 @@ div.third-content-form{
       }
       .div-edit{@include links-color($purple);&:hover{background-color:$purple;color:$white;}}
       .div-fav{@include links-color($yellow);}
-      .div-watched{@include links-color($orange);}
-      .div-want{@include links-color(lighten($dark-blue, 20%));}
+      .div-products{@include links-color($orange);}
+      .div-blogs{@include links-color($dark-blue);}
       .div-image{@include links-color($blue);}
-    }
-  }
-
-  .div-empty{
-    position: relative;
-    display: block;
-    // height: 100%;
-    .empty-empty{
-      display: block;
-      height: 100%;
-      width: 100%;
-      p{
-        height: 100%;
-        display: block;
-        z-index: 1000;
-      }
     }
   }
   .form-body{

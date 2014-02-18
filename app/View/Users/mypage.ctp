@@ -161,46 +161,51 @@ $(function() {
 		<div class="header-user">
 			<div class="user-potision">
 				<div class="div-user-image">
+					<a href="/users/mypage" class="link"></a>
 					<img id="user-img" class="user-image" src="<?php echo h($loginInformation['User']['users_image']) ;?>" >
-				</div>	
-				<span class="user-name"><?php echo h($loginInformation['User']['name']); ?></span>
+				</div>
+				<div class="div-user-name">
+					<span class="user-nickname"><?php echo h($loginInformation['User']['nickname']); ?></span>
+					<span class="user-name">ID: <?php echo h($loginInformation['User']['name']); ?></span>
+				</div>
 			</div>
 		</div>
 		<div class="header-buttons">
 			<div class="links-div div-fav">
 				<a class="div-link" href=""></a>
 				<div class="div-left">
-					<i class="fa fa-star-o"></i>
+					<i class="fa fa-check-circle-o"></i>
 				</div>
 				<div class="div-right">
-					<span>My Favs</span>
+					<span>Fav blogs</span>
 				</div>
 			</div>
 		
-			<div class="links-div div-watched">
+			<div class="links-div div-products">
 				<a class="div-link" href=""></a>
 				<div class="div-left">
 					<i class="fa fa-star-o"></i>
 				</div>
 				<div class="div-right">
-					<span>Watched</span>
+					<span>Fav products</span>
 				</div>
 			</div>
 		
-			<div class="links-div div-want">
-				<a class="div-link" href=""></a>
+			
+			<div class="links-div div-blogs">
+				<a class="div-link" href="/blogs/index"></a>
 				<div class="div-left">
-					<i class="fa fa-star-o"></i>
+					<i class="fa fa-book"></i>
 				</div>
 				<div class="div-right">
-					<span>Want to watch</span>
+					<span>My blogs</span>
 				</div>
 			</div>
 		
 			<div class="links-div div-temp">
 				<a class="div-link" href="/templates/index"></a>
 				<div class="div-left">
-					<i class="fa fa-cog"></i>
+					<i class="fa fa-th-list"></i>
 				</div>
 				<div class="div-right">
 					<span>Template</span>
@@ -216,36 +221,22 @@ $(function() {
 					<span>Image upload</span>
 				</div>
 			</div>
-		
+
 			<div class="links-div div-edit">
 				<a class="div-link" href="/users/edit"></a>
 				<div class="div-left">
 					<i class="fa fa-cog"></i>
 				</div>
 				<div class="div-right">
-					<span>edit account</span>
+					<span>My Edit</span>
 				</div>
 			</div>
 		</div>
 	</div><!-- form-header -->
 
-	<div class="div-empty">
-		<div class="empty-empty">
-			<p>aaaaaaaa</p>
-		</div>
-	</div>
 
 	<div class="form-body">
-		<div class="user-edit">
-			<div id="message"></div>
-			<div id="btn-edit-cover" class="btn-blue">カバー写真を変更する</div>
-			<form method="post" id="form-user-edit" action="/api/users/edit.json" >
-				<div id="edit-form"></div>
-				<div>
-					<input type="button" id="btn-edit" class="btn-blue btn-submit"value="submit" />
-				</div>
-			</form>
-		</div> 
+
 	</div>
 
 	<div class="form-footer"></div>
