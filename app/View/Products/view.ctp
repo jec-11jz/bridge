@@ -132,9 +132,9 @@ $(function(){
 
 	<div class="form-body">
 		<div id="tool-links">
-			<div id="fav-message"></div>
-			<a name="2" class="fa fa-star btn-favorite btn-green btn-watched">Watched</a>
-			<a name="1" class="fa fa-star btn-favorite btn-green btn-want">Want</a>
+			<a name="2" class="btn-green btn-favorite btn-watched"><i class="fa fa-star"></i>Watched</a>
+			<a name="1" class="btn-green btn-favorite btn-want"><i class="fa fa-star">Want</i></a>
+			<div id="fav-message" class="div-message"></div>
 		</div>
 		<div id="image">
 			<?php if($product['Product']['image_url']) { ?>

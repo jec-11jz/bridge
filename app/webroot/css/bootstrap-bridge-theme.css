@@ -159,40 +159,57 @@ input:-webkit-autofill, input:-webkit-autofill:focus {
     -moz-box-shadow: black 0px 0px 0px 0px;
     box-shadow: black 0px 0px 0px 0px; }
 
-/* line 124, ../sass/bootstrap-bridge-theme.scss */
+/* line 123, ../sass/bootstrap-bridge-theme.scss */
+.div-message {
+  display: inline-block;
+  background-color: #f06260;
+  color: #f6f6f6;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  -ms-border-radius: 3px;
+  -o-border-radius: 3px;
+  border-radius: 3px;
+  margin-left: 2em; }
+  /* line 131, ../sass/bootstrap-bridge-theme.scss */
+  .div-message span {
+    color: #f6f6f6;
+    font-size: 1.5em;
+    padding: 1em; }
+
+/* line 141, ../sass/bootstrap-bridge-theme.scss */
 .has-error .form-control {
   -webkit-box-shadow: black 0px 0px 0px 0px;
   -moz-box-shadow: black 0px 0px 0px 0px;
   box-shadow: black 0px 0px 0px 0px; }
-  /* line 126, ../sass/bootstrap-bridge-theme.scss */
+  /* line 143, ../sass/bootstrap-bridge-theme.scss */
   .has-error .form-control:focus {
     -webkit-box-shadow: black 0px 0px 0px 0px;
     -moz-box-shadow: black 0px 0px 0px 0px;
     box-shadow: black 0px 0px 0px 0px; }
 
-/* line 132, ../sass/bootstrap-bridge-theme.scss */
+/* line 149, ../sass/bootstrap-bridge-theme.scss */
 .modal-content {
   z-index: 1001;
   background: #ECECEC; }
-  /* line 134, ../sass/bootstrap-bridge-theme.scss */
+  /* line 151, ../sass/bootstrap-bridge-theme.scss */
   .modal-content h4 {
     font-size: 25px;
     text-align: center; }
 
-/* line 141, ../sass/bootstrap-bridge-theme.scss */
+/* line 158, ../sass/bootstrap-bridge-theme.scss */
 div .modal-header {
   border: none;
   background-color: rgba(167, 167, 167, 0.18); }
-/* line 145, ../sass/bootstrap-bridge-theme.scss */
+/* line 162, ../sass/bootstrap-bridge-theme.scss */
 div .modal-footer {
   margin: 0;
   padding: 0;
   border: none; }
-  /* line 148, ../sass/bootstrap-bridge-theme.scss */
+  /* line 165, ../sass/bootstrap-bridge-theme.scss */
   div .modal-footer .submit a:hover {
     text-decoration: none; }
 
-/* line 153, ../sass/bootstrap-bridge-theme.scss */
+/* line 170, ../sass/bootstrap-bridge-theme.scss */
 .modal-dialog {
   width: 380px;
   margin-top: 40px; }

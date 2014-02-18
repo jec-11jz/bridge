@@ -120,6 +120,23 @@ input:-webkit-autofill:focus{
 }
 
 
+.div-message{
+  display: inline-block;
+  background-color:$col-danger;
+  color: $white;
+  @include border-radius(3px);
+  margin-left: 2em;
+  // height: 2em;
+  // line-height: 10em;
+  span{
+    color: $white;
+    // margin-left: 2em;
+    font-size:1.5em;
+    padding: 1em;
+  }
+  
+}
+
 .has-error{
   .form-control{
     @include box-shadow(black 0px 0px 0px 0px);

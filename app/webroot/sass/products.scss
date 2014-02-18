@@ -19,7 +19,6 @@
         @include text-shadow(none);
         color: $black;
         background-color: $white;
-
       }
     }
     .div-decoration{background-color: $blue;}
@@ -28,14 +27,29 @@
     margin: 2em 4em;
     position: relative;
     #tool-links{
+      display: block;
+      text-align: left;
+      color: $white;
+      margin-bottom: 2em;
       .btn-watched, .btn-want{
-        width: 70px;height: 70px;
-        line-height: 70px;
-        @include border-radius(70px);
+        color: $white;
+        width: 7em;
+        @include border-radius(2px);
+        background-color: darken($yellow, 10%);
+        padding: 0.4em 0.4em;
+        text-align: center;
+        font-size: 1.2em;
+        i{
+          color: $white;
+          display: inline;
+        }
       }
       .btn-want{
+        background-color: $orange;
       }
-
+      &:hover{
+        color: $white;
+      }
     }
     #image{
       display: inline-block;
@@ -54,6 +68,7 @@
       top: 0;
       width: 60%;
       height: 25em;
+      margin-top:4.3em;
       margin-left: 2em;
       padding: 1em 2em;
       @include line-box;

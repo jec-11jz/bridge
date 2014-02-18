@@ -159,76 +159,74 @@ $(function() {
 	<div class="form-header">
 		<div class="header-back" id="cover" style="background: url('<?php echo h($loginInformation['User']['cover_image']); ?>') no-repeat center ;" alt=""></div>
 		<div class="header-user">
-			<div class="div-user-image">
-				<img id="user-img" class="user-image" src="<?php echo h($loginInformation['User']['users_image']) ;?>" >
+			<div class="user-potision">
+				<div class="div-user-image">
+					<img id="user-img" class="user-image" src="<?php echo h($loginInformation['User']['users_image']) ;?>" >
+				</div>	
+				<span class="user-name"><?php echo h($loginInformation['User']['name']); ?></span>
 			</div>
-			<span><?php echo h($loginInformation['User']['name']); ?></span>
 		</div>
 		<div class="header-buttons">
-			<div class="user-links">
-				
-				<div class="links-div div-fav">
-					<a class="div-link" href=""></a>
-					<div class="div-left">
-						<i class="fa fa-star-o"></i>
-					</div>
-					<div class="div-right">
-						<span>My Favs</span>
-					</div>
+			<div class="links-div div-fav">
+				<a class="div-link" href=""></a>
+				<div class="div-left">
+					<i class="fa fa-star-o"></i>
 				</div>
-			
-				<div class="links-div div-watched">
-					<a class="div-link" href=""></a>
-					<div class="div-left">
-						<i class="fa fa-star-o"></i>
-					</div>
-					<div class="div-right">
-						<span>Watched</span>
-					</div>
+				<div class="div-right">
+					<span>My Favs</span>
 				</div>
-			
-				<div class="links-div div-want">
-					<a class="div-link" href=""></a>
-					<div class="div-left">
-						<i class="fa fa-star-o"></i>
-					</div>
-					<div class="div-right">
-						<span>Want to watch</span>
-					</div>
+			</div>
+		
+			<div class="links-div div-watched">
+				<a class="div-link" href=""></a>
+				<div class="div-left">
+					<i class="fa fa-star-o"></i>
 				</div>
-			
-				<div class="links-div div-temp">
-					<a class="div-link" href="/templates/index"></a>
-					<div class="div-left">
-						<i class="fa fa-cog"></i>
-					</div>
-					<div class="div-right">
-						<span>Template</span>
-					</div>
+				<div class="div-right">
+					<span>Watched</span>
 				</div>
-			
-				<div class="links-div div-image">
-					<a class="div-link" href=""></a>
-					<div class="div-left">
-						<i class="fa fa-picture-o"></i>
-					</div>
-					<div class="div-right">
-						<span>Image upload</span>
-					</div>
+			</div>
+		
+			<div class="links-div div-want">
+				<a class="div-link" href=""></a>
+				<div class="div-left">
+					<i class="fa fa-star-o"></i>
 				</div>
-			
-				<div class="links-div div-edit">
-					<a class="div-link" href="/users/edit"></a>
-					<div class="div-left">
-						<i class="fa fa-cog"></i>
-					</div>
-					<div class="div-right">
-						<span>edit account</span>
-					</div>
+				<div class="div-right">
+					<span>Want to watch</span>
 				</div>
-			
-			</div><!-- user-links -->
-		</div><!-- form-body -->
+			</div>
+		
+			<div class="links-div div-temp">
+				<a class="div-link" href="/templates/index"></a>
+				<div class="div-left">
+					<i class="fa fa-cog"></i>
+				</div>
+				<div class="div-right">
+					<span>Template</span>
+				</div>
+			</div>
+		
+			<div class="links-div div-image">
+				<a class="div-link" href=""></a>
+				<div class="div-left">
+					<i class="fa fa-picture-o"></i>
+				</div>
+				<div class="div-right">
+					<span>Image upload</span>
+				</div>
+			</div>
+		
+			<div class="links-div div-edit">
+				<a class="div-link" href="/users/edit"></a>
+				<div class="div-left">
+					<i class="fa fa-cog"></i>
+				</div>
+				<div class="div-right">
+					<span>edit account</span>
+				</div>
+			</div>
+		</div>
 	</div><!-- form-header -->
 
 	<div class="div-empty">

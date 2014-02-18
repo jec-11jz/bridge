@@ -20,7 +20,7 @@ class ProductsFavorite extends AppModel {
 			$this->save();
 			$message = '+1';
 		} else {
-			$message = 'すでに追加済みです。';
+			$message = 'すでに追加済みです';
 		}
 		return $message;
 	}

@@ -73,64 +73,68 @@ div.third-content-form{
       position: relative;
       color: $white;
       z-index: 100;
-      .div-user-image{
-        height: 150px;
-        width: 150px;
-        display: inline-block;
-        position: absolute;
-        background-color: $black;
-        position:relative;
-        @include border-radius(20px);
-        border:5px solid $grey;
-        overflow: hidden;
+      @include text-shadow(2px -2px 0 rgba(0,0,0,0.5));
+      .user-potision{
+        position:absolute;
         top: 52px;
-        // box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
-        .user-image{
-          max-height: 150px;
-          max-width: 150px;
+        left:30%;
+        .div-user-image{
+          height: 150px;
+          width: 150px;
+          display: table-cell;
+          background-color: $black;
+          @include border-radius(20px);
+          border:5px solid $grey;
+          overflow: hidden;
+          vertical-align:middle;
+          .user-image{
+            max-height: 150px;
+            max-width: 150px;
+          }
+        }
+        .user-name{
+          position: absolute;
+          top:65px;left:189px;
+          // margin: 0 auto;
+          color: $white;
+          // display: inline-block;
+          // padding: 1.5em 4em 1.7em 1em;
+          font-size: 4em;
+
         }
       }
-
-      span{
-        // position: absolute;
-        top:1em;
-        margin: 0 auto;
-        color: $white;
-        display: inline-block;
-        padding: 1.5em 4em 1.7em 1em;
-        font-size: 4em;
-      }
-
     }
+
+
     .header-buttons{
-      .user-links{
+      margin-top: 15em;
+      position: relative;
+      z-index: 100;
+      .links-div{
+        @include links-color($green);
         position: relative;
-        z-index: 100;
-        .links-div{
-          @include links-color($green);
-          position: relative;
-          margin: 1em;
-          width: 30%;
-          .div-link{
-            @include link;
-          }
-          padding: 1em;
-          display: inline-block;
-          border-radius: 30px;
-          .div-left{
-            display: inline-block;
-            i{ font-size: 10em; }
-          }
-          .div-right{display: inline-block;}
+        margin: 1em;
+        width: 30%;
+        .div-link{
+          @include link;
         }
-        .div-edit{@include links-color($purple);&:hover{background-color:$purple;color:$white;}}
-        .div-fav{@include links-color($yellow);}
-        .div-watched{@include links-color($orange);}
-        .div-want{@include links-color(lighten($dark-blue, 20%));}
-        .div-image{@include links-color($blue);}
+        padding: 1em;
+        display: inline-block;
+        border-radius: 30px;
+        .div-left{
+          display: inline-block;
+          i{ font-size: 10em; }
+        }
+        .div-right{display: inline-block;}
       }
+      .div-edit{@include links-color($purple);&:hover{background-color:$purple;color:$white;}}
+      .div-fav{@include links-color($yellow);}
+      .div-watched{@include links-color($orange);}
+      .div-want{@include links-color(lighten($dark-blue, 20%));}
+      .div-image{@include links-color($blue);}
     }
   }
+
   .div-empty{
     position: relative;
     display: block;
@@ -166,8 +170,9 @@ div.third-content-form{
           border:5px solid $grey;
           @include border-radius(10px);
           overflow: hidden;
+          display: table-cell;
+          vertical-align: middle;
 
-          // margin: auto;
           img{
             max-height: 150px;
             max-width: 150px;
