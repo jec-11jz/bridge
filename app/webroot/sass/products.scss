@@ -68,11 +68,13 @@
       top: 0;
       width: 60%;
       height: 25em;
-      margin-top:4.3em;
       margin-left: 2em;
       padding: 1em 2em;
       @include line-box;
       background-color: #ECECE8;
+      &.outline-view{
+        margin-top:4.3em;
+      }
       span{
 
       }
@@ -167,57 +169,4 @@
   }
 }
 
-
-#products{
-  .products-index{
-    .cont1{
-      padding: 1em;
-      width:33%;
-      display: inline-block;
-      position: relative;
-      .delete{
-        position: absolute;
-        top: 0;
-        right: 0;
-        padding: 1em;
-        &:hover{
-          text-decoration: none;
-        }
-      }
-      .link{
-        @include link;
-        &:hover{
-          background-color: white;
-          opacity: 0.2;
-        }
-      }
-
-    }
-  }
-  .btn-green{
-    position: absolute;
-    height: 100%;
-    width: 100%;
-  }
-}
-
 $tag-height: 4em;
-
-.box-flex{
-  .button-full{
-    @include box-flex(4);
-    height: 8em;
-    .btn-black{
-      padding: 3.2em 6.5em;
-      border: none;
-      width:100%;
-      height:100%;
-      &.left{
-        border-right: solid $col-black2 1px;
-      }
-      &.right{
-        border-left: solid $col-black2 1px;
-      }
-    }
-  }
-}

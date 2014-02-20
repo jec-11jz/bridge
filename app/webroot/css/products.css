@@ -342,15 +342,17 @@ div.form.second-content-form .form-header {
     display: inline-block;
     position: relative;
     height: 100%;
-    line-height: 200px;
     width: 55%;
     float: left; }
-    /* line 154, ../sass/all.scss */
+    /* line 153, ../sass/all.scss */
     div.form.second-content-form .form-header .header-right .page-title {
+      display: inline-block;
       color: #f6f6f6;
       font-size: 2em;
+      line-height: 1em;
+      margin-top: 3em;
       text-shadow: 1px -1px 0 rgba(0, 0, 0, 0.5); }
-  /* line 160, ../sass/all.scss */
+  /* line 162, ../sass/all.scss */
   div.form.second-content-form .form-header .div-decoration {
     position: absolute;
     right: -220px;
@@ -364,24 +366,24 @@ div.form.second-content-form .form-header {
     transform: rotate(45deg);
     text-align: center;
     line-height: 5.7em; }
-    /* line 169, ../sass/all.scss */
+    /* line 171, ../sass/all.scss */
     div.form.second-content-form .form-header .div-decoration span {
       color: #f6f6f6;
       margin-right: 75px;
       font-size: 23px; }
-/* line 181, ../sass/all.scss */
+/* line 183, ../sass/all.scss */
 div.form.second-content-form .form-footer .btn-blue {
   width: 20em;
   padding: 1em 9em; }
-  /* line 184, ../sass/all.scss */
+  /* line 186, ../sass/all.scss */
   div.form.second-content-form .form-footer .btn-blue:hover {
     color: #f6f6f6; }
 
-/* line 191, ../sass/all.scss */
+/* line 193, ../sass/all.scss */
 .blog-tools {
   margin-left: 2em;
   display: inline-block; }
-  /* line 195, ../sass/all.scss */
+  /* line 197, ../sass/all.scss */
   .blog-tools .fa {
     text-align: center;
     margin: 0 0.1em;
@@ -395,62 +397,62 @@ div.form.second-content-form .form-footer .btn-blue {
     -ms-border-radius: 2em;
     -o-border-radius: 2em;
     border-radius: 2em; }
-    /* line 203, ../sass/all.scss */
+    /* line 205, ../sass/all.scss */
     .blog-tools .fa:hover {
       text-decoration: none;
       color: #3f3f3f; }
-    /* line 207, ../sass/all.scss */
+    /* line 209, ../sass/all.scss */
     .blog-tools .fa.fa-pencil-square-o {
       color: #ffbe00;
       border: 1px solid #ffbe00;
       line-height: 2.1em; }
-      /* line 211, ../sass/all.scss */
+      /* line 213, ../sass/all.scss */
       .blog-tools .fa.fa-pencil-square-o:hover {
         color: #cc9800;
         background-color: #ffbe00; }
-      /* line 215, ../sass/all.scss */
+      /* line 217, ../sass/all.scss */
       .blog-tools .fa.fa-pencil-square-o:active {
         color: #997200;
         background: #cc9800;
         border-color: #cc9800; }
-      /* line 220, ../sass/all.scss */
+      /* line 222, ../sass/all.scss */
       .blog-tools .fa.fa-pencil-square-o::before {
         margin-left: 6px; }
-    /* line 222, ../sass/all.scss */
+    /* line 224, ../sass/all.scss */
     .blog-tools .fa.fa-desktop {
       border: solid 1px #2eb2ff;
       color: #2eb2ff;
       line-height: 2.1em; }
-      /* line 226, ../sass/all.scss */
+      /* line 228, ../sass/all.scss */
       .blog-tools .fa.fa-desktop:hover {
         color: #008ee0;
         background-color: #2eb2ff; }
-      /* line 230, ../sass/all.scss */
+      /* line 232, ../sass/all.scss */
       .blog-tools .fa.fa-desktop:active {
         color: #006dad;
         background-color: #008ee0;
         border: solid 1px #008ee0; }
-    /* line 236, ../sass/all.scss */
+    /* line 238, ../sass/all.scss */
     .blog-tools .fa.fa-star {
       border: solid 1px #dcdc44;
       color: #dcdc44; }
-      /* line 239, ../sass/all.scss */
+      /* line 241, ../sass/all.scss */
       .blog-tools .fa.fa-star:hover {
         color: #c8c825;
         background-color: #dcdc44; }
-      /* line 243, ../sass/all.scss */
+      /* line 245, ../sass/all.scss */
       .blog-tools .fa.fa-star.checked {
         background-color: #dcdc44;
         color: #c8c825; }
-    /* line 248, ../sass/all.scss */
+    /* line 250, ../sass/all.scss */
     .blog-tools .fa.fa-trash-o {
       border: solid 1px #f06260;
       color: #f06260; }
-      /* line 251, ../sass/all.scss */
+      /* line 253, ../sass/all.scss */
       .blog-tools .fa.fa-trash-o:hover {
         color: #d61714;
         background-color: #f06260; }
-      /* line 255, ../sass/all.scss */
+      /* line 257, ../sass/all.scss */
       .blog-tools .fa.fa-trash-o:active {
         color: #a71210;
         background-color: #ec3431;
@@ -945,7 +947,6 @@ div.modal-content {
     top: 0;
     width: 60%;
     height: 25em;
-    margin-top: 4.3em;
     margin-left: 2em;
     padding: 1em 2em;
     border: 1px solid rgba(0, 0, 0, 0.1);
@@ -953,13 +954,16 @@ div.modal-content {
     -moz-box-shadow: white -1px 1px 0 inset;
     box-shadow: white -1px 1px 0 inset;
     background-color: #ECECE8; }
-    /* line 79, ../sass/products.scss */
+    /* line 75, ../sass/products.scss */
+    #div-add-products .form-body .body-outline.outline-view, #div-view-products .form-body .body-outline.outline-view, #div-edit-products .form-body .body-outline.outline-view {
+      margin-top: 4.3em; }
+    /* line 81, ../sass/products.scss */
     #div-add-products .form-body .body-outline.edit, #div-view-products .form-body .body-outline.edit, #div-edit-products .form-body .body-outline.edit {
       background-color: #f6f6f6; }
-  /* line 83, ../sass/products.scss */
+  /* line 85, ../sass/products.scss */
   #div-add-products .form-body .product-info, #div-view-products .form-body .product-info, #div-edit-products .form-body .product-info {
     margin-left: 2em; }
-  /* line 87, ../sass/products.scss */
+  /* line 89, ../sass/products.scss */
   #div-add-products .form-body #tags-attribute-view, #div-view-products .form-body #tags-attribute-view, #div-edit-products .form-body #tags-attribute-view {
     position: relative;
     margin: 2em 0;
@@ -973,19 +977,19 @@ div.modal-content {
     -webkit-box-shadow: white -1px 1px 0 inset;
     -moz-box-shadow: white -1px 1px 0 inset;
     box-shadow: white -1px 1px 0 inset; }
-    /* line 93, ../sass/products.scss */
+    /* line 95, ../sass/products.scss */
     #div-add-products .form-body #tags-attribute-view .tags-set, #div-view-products .form-body #tags-attribute-view .tags-set, #div-edit-products .form-body #tags-attribute-view .tags-set {
       -webkit-box-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
       -moz-box-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
       box-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
       margin: 1px; }
-      /* line 96, ../sass/products.scss */
+      /* line 98, ../sass/products.scss */
       #div-add-products .form-body #tags-attribute-view .tags-set:last-child, #div-view-products .form-body #tags-attribute-view .tags-set:last-child, #div-edit-products .form-body #tags-attribute-view .tags-set:last-child {
         border: none;
         -webkit-box-shadow: 0 0 0 0;
         -moz-box-shadow: 0 0 0 0;
         box-shadow: 0 0 0 0; }
-      /* line 97, ../sass/products.scss */
+      /* line 99, ../sass/products.scss */
       #div-add-products .form-body #tags-attribute-view .tags-set .tag-title, #div-view-products .form-body #tags-attribute-view .tags-set .tag-title, #div-edit-products .form-body #tags-attribute-view .tags-set .tag-title {
         padding: 1.1em 1em;
         height: 100%;
@@ -995,10 +999,10 @@ div.modal-content {
         border-right: 1px solid rgba(0, 0, 0, 0.1);
         display: inline-block;
         background-color: #f6f6f6; }
-      /* line 107, ../sass/products.scss */
+      /* line 109, ../sass/products.scss */
       #div-add-products .form-body #tags-attribute-view .tags-set .attributes:last-child, #div-view-products .form-body #tags-attribute-view .tags-set .attributes:last-child, #div-edit-products .form-body #tags-attribute-view .tags-set .attributes:last-child {
         border: none; }
-      /* line 108, ../sass/products.scss */
+      /* line 110, ../sass/products.scss */
       #div-add-products .form-body #tags-attribute-view .tags-set .tag, #div-view-products .form-body #tags-attribute-view .tags-set .tag, #div-edit-products .form-body #tags-attribute-view .tags-set .tag {
         padding: 0.5em 0.6em;
         margin-left: 0.5em;
@@ -1007,7 +1011,7 @@ div.modal-content {
         -ms-border-radius: 25px;
         -o-border-radius: 25px;
         border-radius: 25px; }
-  /* line 116, ../sass/products.scss */
+  /* line 118, ../sass/products.scss */
   #div-add-products .form-body #product-data, #div-view-products .form-body #product-data, #div-edit-products .form-body #product-data {
     height: 30em;
     margin-top: 2em;
@@ -1017,27 +1021,27 @@ div.modal-content {
     -webkit-box-shadow: white -1px 1px 0 inset;
     -moz-box-shadow: white -1px 1px 0 inset;
     box-shadow: white -1px 1px 0 inset; }
-    /* line 124, ../sass/products.scss */
+    /* line 126, ../sass/products.scss */
     #div-add-products .form-body #product-data .div-button i, #div-view-products .form-body #product-data .div-button i, #div-edit-products .form-body #product-data .div-button i {
       color: #f6f6f6; }
-    /* line 127, ../sass/products.scss */
+    /* line 129, ../sass/products.scss */
     #div-add-products .form-body #product-data .div-button .btn-add-attribute, #div-view-products .form-body #product-data .div-button .btn-add-attribute, #div-edit-products .form-body #product-data .div-button .btn-add-attribute {
       width: 15em; }
-    /* line 131, ../sass/products.scss */
+    /* line 133, ../sass/products.scss */
     #div-add-products .form-body #product-data #tags-attribute, #div-view-products .form-body #product-data #tags-attribute, #div-edit-products .form-body #product-data #tags-attribute {
       margin-top: 2em; }
-      /* line 133, ../sass/products.scss */
+      /* line 135, ../sass/products.scss */
       #div-add-products .form-body #product-data #tags-attribute .tags-set, #div-view-products .form-body #product-data #tags-attribute .tags-set, #div-edit-products .form-body #product-data #tags-attribute .tags-set {
         position: relative;
         margin-bottom: 2em; }
-        /* line 136, ../sass/products.scss */
+        /* line 138, ../sass/products.scss */
         #div-add-products .form-body #product-data #tags-attribute .tags-set .tag-title, #div-view-products .form-body #product-data #tags-attribute .tags-set .tag-title, #div-edit-products .form-body #product-data #tags-attribute .tags-set .tag-title {
           width: 38em;
           margin-left: 1em;
           margin-bottom: 0.5em;
           display: inline-block;
           position: static; }
-        /* line 144, ../sass/products.scss */
+        /* line 146, ../sass/products.scss */
         #div-add-products .form-body #product-data #tags-attribute .tags-set .btn-delete-attribute, #div-view-products .form-body #product-data #tags-attribute .tags-set .btn-delete-attribute, #div-edit-products .form-body #product-data #tags-attribute .tags-set .btn-delete-attribute {
           font-size: 26px;
           position: absolute;
@@ -1053,68 +1057,15 @@ div.modal-content {
           /* line 90, ../sass/_my-mixin.scss */
           #div-add-products .form-body #product-data #tags-attribute .tags-set .btn-delete-attribute:hover, #div-view-products .form-body #product-data #tags-attribute .tags-set .btn-delete-attribute:hover, #div-edit-products .form-body #product-data #tags-attribute .tags-set .btn-delete-attribute:hover {
             background-color: #c61513; }
-        /* line 148, ../sass/products.scss */
+        /* line 150, ../sass/products.scss */
         #div-add-products .form-body #product-data #tags-attribute .tags-set .tagbox, #div-view-products .form-body #product-data #tags-attribute .tags-set .tagbox, #div-edit-products .form-body #product-data #tags-attribute .tags-set .tagbox {
           width: 600px; }
-/* line 159, ../sass/products.scss */
+/* line 161, ../sass/products.scss */
 #div-add-products .form-footer, #div-view-products .form-footer, #div-edit-products .form-footer {
   text-align: center;
   margin: 0 4em; }
-  /* line 162, ../sass/products.scss */
+  /* line 164, ../sass/products.scss */
   #div-add-products .form-footer .div-submit, #div-view-products .form-footer .div-submit, #div-edit-products .form-footer .div-submit {
     clear: both;
     text-align: right;
     margin-top: 2em; }
-
-/* line 173, ../sass/products.scss */
-#products .products-index .cont1 {
-  padding: 1em;
-  width: 33%;
-  display: inline-block;
-  position: relative; }
-  /* line 178, ../sass/products.scss */
-  #products .products-index .cont1 .delete {
-    position: absolute;
-    top: 0;
-    right: 0;
-    padding: 1em; }
-    /* line 183, ../sass/products.scss */
-    #products .products-index .cont1 .delete:hover {
-      text-decoration: none; }
-  /* line 187, ../sass/products.scss */
-  #products .products-index .cont1 .link {
-    display: block;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    position: absolute; }
-    /* line 189, ../sass/products.scss */
-    #products .products-index .cont1 .link:hover {
-      background-color: white;
-      opacity: 0.2; }
-/* line 197, ../sass/products.scss */
-#products .btn-green {
-  position: absolute;
-  height: 100%;
-  width: 100%; }
-
-/* line 207, ../sass/products.scss */
-.box-flex .button-full {
-  -webkit-box-flex: 4;
-  -moz-box-flex: 4;
-  -ms-box-flex: 4;
-  box-flex: 4;
-  height: 8em; }
-  /* line 210, ../sass/products.scss */
-  .box-flex .button-full .btn-black {
-    padding: 3.2em 6.5em;
-    border: none;
-    width: 100%;
-    height: 100%; }
-    /* line 215, ../sass/products.scss */
-    .box-flex .button-full .btn-black.left {
-      border-right: solid #c1c1c1 1px; }
-    /* line 218, ../sass/products.scss */
-    .box-flex .button-full .btn-black.right {
-      border-left: solid #c1c1c1 1px; }

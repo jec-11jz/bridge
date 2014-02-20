@@ -38,7 +38,7 @@ $(function() {
 	var arrayLoad = {};
 	arrayLoad = {
 		page : 1, 
-		count : 9, 
+		count : 20, 
 		keywords : $('#keywords').val(), 
 		not_keywords : $('#not-keywords').val(),
 		key_tags : $('#key-tags').val(),
@@ -217,16 +217,22 @@ $(function() {
 			<a href="/products/view/${Product.id}" class="link"></a>
 			{{if Product.image_url != ""}}
 				<img src="${Product.image_url}" data-original="${Product.image_url}" class="cover" width="220px" height="auto">
-			{{else}}
-				<div class="div-noimage-outline" style="width: 220px;height:220px">${Product.outline.replace(/<("[^"]*"|'[^']*'|[^'">])*>/g,'').substring(0,99) +"..."}</div>
-			{{/if}}
-			<div class="cont-info">
-				<div class="cont-title product-name">
-					<p>${Product.name.replace(/<("[^"]*"|'[^']*'|[^'">])*>/g,'').substring(0,27) +""}</p>
+				<div class="cont-info">
+					<div class="cont-title product-name">
+						<p>${Product.name.replace(/<("[^"]*"|'[^']*'|[^'">])*>/g,'').substring(0,27) +""}</p>
+					</div>
 				</div>
-				<div class="cont-detail"></div>
-				<div class="cont-author"></div>
+			{{else}}
+			<div class="div-noimage" style="width: 220px;height:220px">
+			<i class="fa fa-camera-retro"></i>
+			<p>No image</p>
+				<div class="div-noimage-outline">${Product.outline.replace(/<("[^"]*"|'[^']*'|[^'">])*>/g,'').substring(0,150) +"..."}</div>
 			</div>
+			<div class="cont-info">
+				<p>${Product.name.replace(/<("[^"]*"|'[^']*'|[^'">])*>/g,'').substring(0,27) +""}</p>
+			</div>
+			{{/if}}
+
 		</div>
 	</div>
 </script>
@@ -240,15 +246,25 @@ $(function() {
 			<a href="/blogs/view/${Blog.id}" class="link"></a>
 			{{if UsedBlogImage.length != 0}}
 				<img src="${UsedBlogImage[0].url}" data-original="${UsedBlogImage[0].url}" class="cover" width="220px" height="auto">
+				<div class="cont-info">
+					<div class="cont-title blog-title">
+						<p>${Blog.title.replace(/<("[^"]*"|'[^']*'|[^'">])*>/g,'').substring(0,27) +""}</p>
+					</div>
+				</div>
 			{{else}}
-				<div class="div-noimage-outline" style="width: 220px;height:220px">${Blog.content.replace(/<("[^"]*"|'[^']*'|[^'">])*>/g,'').substring(0,99) +"..."}</div>
-			{{/if}}
-			<div class="cont-info">
-				<div class="cont-title blog-title">
+				<div class="div-noimage" style="width: 220px;height:220px">
+					<i class="fa fa-camera-retro"></i>
+					<p>No image</p>
+
+					<div class="div-noimage-outline">
+						${Blog.content.replace(/<("[^"]*"|'[^']*'|[^'">])*>/g,'').substring(0,150) +"..."}
+					</div>
+				</div>
+				<div class="cont-info">
 					<p>${Blog.title.replace(/<("[^"]*"|'[^']*'|[^'">])*>/g,'').substring(0,27) +""}</p>
 				</div>
-				<div class="cont-detail"></div>
-			</div>
+			{{/if}}
+
 		</div>
 	</div>
 </script>
@@ -276,10 +292,6 @@ $(function() {
 			<input type="checkbox" name="blog" value="Blog" id="check-blog" class="checkbox" checked="checked">
 			<label for="check-product" class="checkbox">PRODUCT:</label>
 			<input type="checkbox" name="product" value="Product" id="check-product" class="checkbox" checked="checked">
-			<label for="check-mine" class="checkbox">MINE:</label>
-			<input type="checkbox" name="mine" value="mine" id="check-mine" class="checkbox">
-			<label for="check-favorite" class="checkbox">FAVORITE:</label>
-			<input type="checkbox" name="favorite" value="favorite" id="check-favorite" class="checkbox">
 		</div>
 		<div class="spoiler">
 			<div class="right">

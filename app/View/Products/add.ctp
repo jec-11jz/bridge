@@ -213,7 +213,7 @@ $(function(){
 
 	<div class="form-header">
 		<div class="header-left">
-			<a href="/products/index" class="header-link">Create</a>
+			<a href="/searches/index" class="header-link">Create</a>
 		</div>
 		<div class="header-right">
 			<input type="text" name="name" class="input_form form-control product-info page-title" id="movieTitle" placeholder="Title..."/>	

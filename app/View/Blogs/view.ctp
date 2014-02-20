@@ -211,7 +211,7 @@ $(function() {
 </script>
 <!-- tools -->
 <script id="js-tools" type="text/x-jquery-tmpl">
-	<div id="fav-message"></div>
+	
 	<a href="/blogs/edit/${Blog.id}" class="fa fa-pencil-square-o"></a>
 	
 	{{if favorite != null}}
@@ -220,16 +220,9 @@ $(function() {
 		<a id="btn-favorite" class="fa fa-star">
 	{{/if}}
 	<a name="/blogs/delete/${Blog.id}" class="fa fa-trash-o" id="confirm-delete"></a>
+	<div id="fav-message" class="div-message"></div>
 </script>
 
-
-<style>
-	.list {
-		width: 22px;
-		height: 20px;
-		background: #ffffff;
-	}
-</style>
 <!-- html -->
 <div id="div-view-blogs" class="form second-content-form" name="<?php echo h($blog['Blog']['id']); ?>">
 	<div class="form-header">

@@ -342,15 +342,17 @@ div.form.second-content-form .form-header {
     display: inline-block;
     position: relative;
     height: 100%;
-    line-height: 200px;
     width: 55%;
     float: left; }
-    /* line 154, ../sass/all.scss */
+    /* line 153, ../sass/all.scss */
     div.form.second-content-form .form-header .header-right .page-title {
+      display: inline-block;
       color: #f6f6f6;
       font-size: 2em;
+      line-height: 1em;
+      margin-top: 3em;
       text-shadow: 1px -1px 0 rgba(0, 0, 0, 0.5); }
-  /* line 160, ../sass/all.scss */
+  /* line 162, ../sass/all.scss */
   div.form.second-content-form .form-header .div-decoration {
     position: absolute;
     right: -220px;
@@ -364,24 +366,24 @@ div.form.second-content-form .form-header {
     transform: rotate(45deg);
     text-align: center;
     line-height: 5.7em; }
-    /* line 169, ../sass/all.scss */
+    /* line 171, ../sass/all.scss */
     div.form.second-content-form .form-header .div-decoration span {
       color: #f6f6f6;
       margin-right: 75px;
       font-size: 23px; }
-/* line 181, ../sass/all.scss */
+/* line 183, ../sass/all.scss */
 div.form.second-content-form .form-footer .btn-blue {
   width: 20em;
   padding: 1em 9em; }
-  /* line 184, ../sass/all.scss */
+  /* line 186, ../sass/all.scss */
   div.form.second-content-form .form-footer .btn-blue:hover {
     color: #f6f6f6; }
 
-/* line 191, ../sass/all.scss */
+/* line 193, ../sass/all.scss */
 .blog-tools {
   margin-left: 2em;
   display: inline-block; }
-  /* line 195, ../sass/all.scss */
+  /* line 197, ../sass/all.scss */
   .blog-tools .fa {
     text-align: center;
     margin: 0 0.1em;
@@ -395,62 +397,62 @@ div.form.second-content-form .form-footer .btn-blue {
     -ms-border-radius: 2em;
     -o-border-radius: 2em;
     border-radius: 2em; }
-    /* line 203, ../sass/all.scss */
+    /* line 205, ../sass/all.scss */
     .blog-tools .fa:hover {
       text-decoration: none;
       color: #3f3f3f; }
-    /* line 207, ../sass/all.scss */
+    /* line 209, ../sass/all.scss */
     .blog-tools .fa.fa-pencil-square-o {
       color: #ffbe00;
       border: 1px solid #ffbe00;
       line-height: 2.1em; }
-      /* line 211, ../sass/all.scss */
+      /* line 213, ../sass/all.scss */
       .blog-tools .fa.fa-pencil-square-o:hover {
         color: #cc9800;
         background-color: #ffbe00; }
-      /* line 215, ../sass/all.scss */
+      /* line 217, ../sass/all.scss */
       .blog-tools .fa.fa-pencil-square-o:active {
         color: #997200;
         background: #cc9800;
         border-color: #cc9800; }
-      /* line 220, ../sass/all.scss */
+      /* line 222, ../sass/all.scss */
       .blog-tools .fa.fa-pencil-square-o::before {
         margin-left: 6px; }
-    /* line 222, ../sass/all.scss */
+    /* line 224, ../sass/all.scss */
     .blog-tools .fa.fa-desktop {
       border: solid 1px #2eb2ff;
       color: #2eb2ff;
       line-height: 2.1em; }
-      /* line 226, ../sass/all.scss */
+      /* line 228, ../sass/all.scss */
       .blog-tools .fa.fa-desktop:hover {
         color: #008ee0;
         background-color: #2eb2ff; }
-      /* line 230, ../sass/all.scss */
+      /* line 232, ../sass/all.scss */
       .blog-tools .fa.fa-desktop:active {
         color: #006dad;
         background-color: #008ee0;
         border: solid 1px #008ee0; }
-    /* line 236, ../sass/all.scss */
+    /* line 238, ../sass/all.scss */
     .blog-tools .fa.fa-star {
       border: solid 1px #dcdc44;
       color: #dcdc44; }
-      /* line 239, ../sass/all.scss */
+      /* line 241, ../sass/all.scss */
       .blog-tools .fa.fa-star:hover {
         color: #c8c825;
         background-color: #dcdc44; }
-      /* line 243, ../sass/all.scss */
+      /* line 245, ../sass/all.scss */
       .blog-tools .fa.fa-star.checked {
         background-color: #dcdc44;
         color: #c8c825; }
-    /* line 248, ../sass/all.scss */
+    /* line 250, ../sass/all.scss */
     .blog-tools .fa.fa-trash-o {
       border: solid 1px #f06260;
       color: #f06260; }
-      /* line 251, ../sass/all.scss */
+      /* line 253, ../sass/all.scss */
       .blog-tools .fa.fa-trash-o:hover {
         color: #d61714;
         background-color: #f06260; }
-      /* line 255, ../sass/all.scss */
+      /* line 257, ../sass/all.scss */
       .blog-tools .fa.fa-trash-o:active {
         color: #a71210;
         background-color: #ec3431;
@@ -1124,7 +1126,7 @@ div.third-content-form .form-header {
     /* line 75, ../sass/mypage.scss */
     div.third-content-form .form-header .header-user .header-request {
       position: absolute;
-      top: 0px;
+      top: 23px;
       left: -87px;
       z-index: 100;
       text-align: center; }
@@ -1247,7 +1249,9 @@ div.third-content-form .form-header {
           font-size: 10em; }
       /* line 157, ../sass/mypage.scss */
       div.third-content-form .form-header .header-buttons .links-div .div-right {
-        display: inline-block; }
+        display: inline-block;
+        padding: 1em;
+        font-size: 1.5em; }
     /* line 159, ../sass/mypage.scss */
     div.third-content-form .form-header .header-buttons .div-edit {
       border: solid 2px #9b59b6;
@@ -1367,11 +1371,43 @@ div.third-content-form .form-header {
       /* line 119, ../sass/_my-mixin.scss */
       div.third-content-form .form-header .header-buttons .div-image .div-right span {
         color: #2eb2ff; }
-/* line 166, ../sass/mypage.scss */
+  /* line 166, ../sass/mypage.scss */
+  div.third-content-form .form-header #btn-edit-cover {
+    z-index: 100;
+    position: absolute;
+    bottom: 1em;
+    right: 1em;
+    background: none;
+    border: 1px solid #f6f6f6;
+    color: #f6f6f6;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    -ms-border-radius: 2px;
+    -o-border-radius: 2px;
+    border-radius: 2px;
+    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=70);
+    opacity: 0.7; }
+    /* line 175, ../sass/mypage.scss */
+    div.third-content-form .form-header #btn-edit-cover:hover {
+      background-color: #f6f6f6;
+      color: #3f3f3f; }
+/* line 181, ../sass/mypage.scss */
 div.third-content-form .form-body {
   position: relative;
   padding-top: 60em; }
-  /* line 169, ../sass/mypage.scss */
+  /* line 184, ../sass/mypage.scss */
+  div.third-content-form .form-body #user-info {
+    width: 60%;
+    margin: 0 auto; }
+    /* line 187, ../sass/mypage.scss */
+    div.third-content-form .form-body #user-info .user-profile {
+      border: 1px solid rgba(0, 0, 0, 0.1);
+      -webkit-box-shadow: white -1px 1px 0 inset;
+      -moz-box-shadow: white -1px 1px 0 inset;
+      box-shadow: white -1px 1px 0 inset;
+      position: relative;
+      padding: 1em 2em; }
+  /* line 193, ../sass/mypage.scss */
   div.third-content-form .form-body #image {
     width: 150px;
     height: 150px;
@@ -1388,54 +1424,33 @@ div.third-content-form .form-body {
     overflow: hidden;
     display: table-cell;
     vertical-align: middle; }
-    /* line 181, ../sass/mypage.scss */
+    /* line 205, ../sass/mypage.scss */
     div.third-content-form .form-body #image img {
       max-height: 150px;
       max-width: 150px; }
-  /* line 186, ../sass/mypage.scss */
+  /* line 210, ../sass/mypage.scss */
   div.third-content-form .form-body #form-user-edit {
-    padding: 2em; }
-    /* line 188, ../sass/mypage.scss */
-    div.third-content-form .form-body #form-user-edit .user-edit-left {
-      display: inline-block;
-      padding: 3em;
-      width: 50%;
-      margin: 0 auto; }
-      /* line 194, ../sass/mypage.scss */
-      div.third-content-form .form-body #form-user-edit .user-edit-left .user-info {
-        padding: 0.2em 0.4em;
-        margin: 0 0 0.8em;
-        border: 1px solid #bfbfbf;
-        width: 100%;
-        -webkit-border-radius: 2px;
-        -moz-border-radius: 2px;
-        -ms-border-radius: 2px;
-        -o-border-radius: 2px;
-        border-radius: 2px;
-        display: block; }
-    /* line 203, ../sass/mypage.scss */
-    div.third-content-form .form-body #form-user-edit .user-edit-right {
-      width: 49.5%;
-      padding: 3em;
-      display: inline-block;
-      margin: 0 auto; }
-      /* line 208, ../sass/mypage.scss */
-      div.third-content-form .form-body #form-user-edit .user-edit-right .user-info {
-        padding: 0.2em 0.4em;
-        margin: 0 0 0.8em;
-        border: 1px solid #bfbfbf;
-        width: 100%;
-        -webkit-border-radius: 2px;
-        -moz-border-radius: 2px;
-        -ms-border-radius: 2px;
-        -o-border-radius: 2px;
-        border-radius: 2px;
-        display: block; }
+    padding: 2em;
+    padding: 3em;
+    width: 50%;
+    margin: 0 auto; }
     /* line 217, ../sass/mypage.scss */
+    div.third-content-form .form-body #form-user-edit #edit-form .user-info {
+      padding: 0.2em 0.4em;
+      margin: 0 0 0.8em;
+      border: 1px solid #bfbfbf;
+      width: 100%;
+      -webkit-border-radius: 2px;
+      -moz-border-radius: 2px;
+      -ms-border-radius: 2px;
+      -o-border-radius: 2px;
+      border-radius: 2px;
+      display: block; }
+    /* line 226, ../sass/mypage.scss */
     div.third-content-form .form-body #form-user-edit .btn-submit {
       width: 100%;
       padding: 1em 2em; }
 
-/* line 224, ../sass/mypage.scss */
+/* line 233, ../sass/mypage.scss */
 a.div-link:hover .links-div {
   background-color: #68c39f; }

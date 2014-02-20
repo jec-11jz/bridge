@@ -2,51 +2,20 @@
 
 	$this->extend('/Common/index');
 
+	$this->Html->css('mypage', null, array('inline' => false));
+	$this->Html->css('searches', null, array('inline' => false));
 	$this->Html->css('diary', null, array('inline' => false));
-	$this->Html->css('component', null, array('inline' => false));
 
 	$this->Html->script('masonry.pkgd', array('inline' => false));
 	$this->Html->script('imagesloaded', array('inline' => false));
 	$this->Html->script('//ajax.microsoft.com/ajax/jquery.templates/beta1/jquery.tmpl.min.js', array('inline' => false));
 ?>
-<div id="diary-index">
-</div>
-
 
 <script>
-
 
 	$("window").load(function() {
   		$("#body").removeClass("preload");
 	});
-
-	function addMenuEvent() {
-		$(".item-button").mouseenter(function() {
-			var share_btn = $(this);
-			setTimeout(function() {
-				container_item = share_btn.parents(".container-item:first");
-				share_btn.parents(".container-item:first").find(".slide-menu:first").addClass("visible");
-			}, 400);
-		});
-		$(".item-button").mouseleave(function() {
-			setTimeout(function() {
-				$(".slide-menu").removeClass("visible")
-			}, 400);
-		});
-		$(".slide-menu").hover(function() {
-			share_btn.parents(".container-item:first").find(".slide-menu:first").addClass("visible");
-		});
-		$(".slide-menu").mouseleave(function() {
-			setTimeout(function() {
-				$(".slide-menu").removeClass("visible")
-			}, 400);
-		});
-		$(".container-item").hover(function() {
-			setTimeout(function() {
-			$(".container-item").css("z-index","500")
-			}, 400);
-		});
-	}
 	
 	//画像読み込み後にレイアウト
 	// var $diary = $('#diary-index');
@@ -91,40 +60,104 @@
 </script>
 
 <script id="blogTemplate" type="text/x-jquery-tmpl">
-	<div class="container-item hidden">
-		<div class="item">
+	<div class="cont container-item hidden">
+		<div class="div-decoration-blogs">
+			<span>Blog</span>
+		</div>
+		<div class="cont-pic">
 			<a href="/blogs/view/${Blog.id}" class="link"></a>
 			{{if UsedBlogImage.length != 0}}
-				<a style="background-color: white;width:100%;height100%;">
 					<img src="${UsedBlogImage[0].url}" class="diary-pic">
 				</a>
 			{{else}}
-				<div class="text-index" style="width: 220px; height:200px">
-					[no images]<br/>
-					${Blog.content}
+				<div class="div-noimage" style="width: 220px; height:200px">
+					<i class="fa fa-camera-retro"></i>
+					<p>No image</p>
+
+					<div class="div-noimage-outline">
+						${Blog.content}
+					</div>
+					
 				</div>
 			{{/if}}
-			<!-- 作品アイコン -->
-			<div class="product-tag"><i class="fa fa-film"></i></div>
-			<a class="item-button"><i class="fa fa-chevron-left"></i></a>
-			<div class="item-content">
-				<div class="item-top-content">
-					<div class="item-top-content-inner">
-						<span>
-							<h5>${Blog.title}</h5>
-						</span>
-					</div><!-- item-top content-inner -->
-				</div><!-- item-top-content -->
-			</div> <!-- item-content -->
 		</div> <!-- item -->
 
-		<div class="slide-menu">
-			<ul> <!-- サイドメニュー -->
-				<li><a href="/blogs/edit/${Blog.id}" class="fa fa-pencil-square-o"></a></li>
-				<li><a href="/blogs/view/${Blog.id}" class="popout-menu-item"><i class="fa fa-eye"></i></li>
-				<li><a href="#" class="popout-menu-item"><i class="fa fa-star"></i></a></li>
-				<li><a href="/blogs/delete/${Blog.id}" class="fa fa-trash-o"></a></li>
-			</ul>
-		</div>
 	</div> <!-- container-item -->
 </script>
+
+<div class="form third-content-form">
+	<div class="form-header">
+		<div class="header-back" id="cover" style="background: url('<?php echo h($loginInformation['User']['cover_image']); ?>') no-repeat center ;" alt=""></div>
+		<div class="header-user">
+			<span><?php echo h($loginInformation['User']['name']); ?></span>
+		</div>
+		<div class="header-buttons">
+			<div class="links-div div-fav">
+				<a class="div-link" href=""></a>
+				<div class="div-left">
+					<i class="fa fa-star-o"></i>
+				</div>
+				<div class="div-right">
+					<span>Fav blogs</span>
+				</div>
+			</div>
+		
+			<div class="links-div div-products">
+				<a class="div-link" href=""></a>
+				<div class="div-left">
+					<i class="fa fa-star-o"></i>
+				</div>
+				<div class="div-right">
+					<span>Fav products</span>
+				</div>
+			</div>
+		
+			
+			<div class="links-div div-blogs div-checked">
+				<a class="div-link" href="/blogs/index"></a>
+				<div class="div-left">
+					<i class="fa fa-book"></i>
+				</div>
+				<div class="div-right">
+					<span>My blogs</span>
+				</div>
+			</div>
+		
+			<div class="links-div div-temp">
+				<a class="div-link" href="/templates/index"></a>
+				<div class="div-left">
+					<i class="fa fa-th-list"></i>
+				</div>
+				<div class="div-right">
+					<span>Template</span>
+				</div>
+			</div>
+		
+			<div class="links-div div-image">
+				<a class="div-link" href=""></a>
+				<div class="div-left">
+					<i class="fa fa-picture-o"></i>
+				</div>
+				<div class="div-right">
+					<span>Image upload</span>
+				</div>
+			</div>
+
+			<div class="links-div div-edit">
+				<a class="div-link" href=""></a>
+				<div class="div-left">
+					<i class="fa fa-cog"></i>
+				</div>
+				<div class="div-right">
+					<span>My Edit</span>
+				</div>
+			</div>
+		</div>
+	</div><!-- form-header -->
+
+	<div class="form-body">
+		<div id="diary-index"></div>
+	</div>
+</div>
+
+

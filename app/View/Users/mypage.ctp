@@ -181,7 +181,7 @@ $(function() {
 					<span>Template</span>
 				</div>
 			</div>
-		
+			
 			<div class="links-div div-image">
 				<a class="div-link" onclick="openKCFinder(this)"></a>
 				<div class="div-left">
@@ -204,8 +204,22 @@ $(function() {
 		</div>
 	</div><!-- form-header -->
 
-
 	<div class="form-body">
+		<div id="user-info" name="<?php echo h($loginInformation['User']['id']) ;?>">
+			<div class="user-profile">
+				<div class="div-profile">
+					<p>Profile</p>
+					<p><?php echo h($loginInformation['User']['profile']) ;?></p>
+				</div>
+				<div class="div-created">
+					<p>Created</p>
+					<p><?php echo h($loginInformation['User']['created']) ;?></p>
+				</div>
+			</div>
+			
+			<div id="message"></div>
+			<div id="user-blogs"></div>
+		</div>
 
 	</div>
 

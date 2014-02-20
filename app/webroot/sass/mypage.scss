@@ -74,7 +74,7 @@ div.third-content-form{
     z-index: 100;
     .header-request{
       position: absolute;
-      top: 0px;
+      top: 23px;
       left: -87px;
       z-index: 100;
       text-align: center;
@@ -154,7 +154,7 @@ div.third-content-form{
         display: inline-block;
         i{ font-size: 10em; }
       }
-      .div-right{display: inline-block;}
+      .div-right{display: inline-block;padding: 1em;font-size: 1.5em;}
     }
     .div-edit{@include links-color($purple);&:hover{background-color:$purple;color:$white;}}
     .div-fav{@include links-color($yellow);}
@@ -162,10 +162,34 @@ div.third-content-form{
     .div-blogs{@include links-color($dark-blue);}
     .div-image{@include links-color($blue);}
   }
+
+  #btn-edit-cover{
+    z-index: 100;
+    position: absolute;
+    bottom:1em;right: 1em;
+    background: none;
+    border: 1px solid $white;
+    color: $white;
+    @include border-radius(2px);
+    @include opacity(0.7);
+    &:hover{
+      background-color: $white;
+      color: $black;
+    }
+  }
 }
 .form-body{
   position: relative;
   padding-top: 60em;
+  #user-info{
+    width: 60%;
+    margin: 0 auto;
+    .user-profile{
+      @include line-box;
+      position: relative;
+      padding: 1em 2em;
+    }
+  }
   #image {
     width: 150px;
     height: 150px;
@@ -185,12 +209,11 @@ div.third-content-form{
   }
   #form-user-edit{
     padding: 2em;
-    .user-edit-left{
-      display: inline-block;
-      padding: 3em;
-      width: 50%;
+    padding: 3em;
+    width: 50%;
+    margin: 0 auto;
+    #edit-form{
 
-      margin: 0 auto;
       .user-info{
         padding:0.2em 0.4em;
         margin: 0 0 0.8em;
@@ -200,20 +223,6 @@ div.third-content-form{
         display: block;
       }
     }
-    .user-edit-right{
-      width: 49.5%;
-      padding: 3em;
-      display: inline-block;
-      margin: 0 auto;
-      .user-info{
-        padding:0.2em 0.4em;
-        margin: 0 0 0.8em;
-        border:1px solid lighten($black,50%);
-        width:100%;
-        @include border-radius(2px);
-        display: block;
-      }
-    } 
     .btn-submit{
       width: 100%;
       padding: 1em 2em;

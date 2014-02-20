@@ -1,6 +1,6 @@
 <?php
 	$this->extend('/Common/index');
-	
+
 	$this->Html->css('mypage', null, array('inline' => false));
 	
 	$this->Html->script('//ajax.microsoft.com/ajax/jquery.templates/beta1/jquery.tmpl.min.js', array('inline' => false));
@@ -45,7 +45,37 @@ $(function() {
 			
 		}
 	});
-	
+	// change cover image
+	$('#btn-edit-cover').click(function(event, data){
+		window.KCFinder = {
+	        callBack: function(url) {
+	        	changeCover(url);
+	        }
+	    }
+	    window.open('/js/kcfinder/browse.php?type=images&dir=images/public',
+	        'kcfinder_image', 'status=0, toolbar=0, location=0, menubar=0, ' +
+	        'directories=0, resizable=1, scrollbars=0, width=800, height=600'
+	    );
+	});
+	function changeCover(data){
+		var src = {
+			data: data
+		};
+		$.ajax({
+			type: "POST",
+			url: '/api/users/change_cover.json',
+			data: src,
+			success: function(data){
+				location.reload();
+			},
+			error: function(xhr, xhrStatus){
+				$('#message').flash_message({
+			        text: xhr['responseJSON']['error'],
+			        how: 'append'
+		    	});
+			}
+		});
+	}
 	// post user's info
 	$('#btn-edit').click(function(){
 		var postData = {};
@@ -90,7 +120,7 @@ $(function() {
 		<span>Email</span>
 		<input type="text" name="data[User][email]" class="user-info" id="user-email" placeholder="email" value="${email}">
 		<span>Profile</span>
-		<textarea name="data[User][profile]" class="user-info" id="user-profile" cols="40">${profile}</textarea>
+		<textarea name="data[User][profile]" class="user-info" id="user-profile" cols="40" rows="5">${profile}</textarea>
 	</div>
 </script>
 
@@ -173,18 +203,21 @@ $(function() {
 					<span>My Edit</span>
 				</div>
 			</div>
+
 		</div>
+		<div id="btn-edit-cover" class="btn-blue">カバー写真を変更する</div>
 	</div>
-<!--  -->
+
 	<div class="form-body">
 		<div class="user-edit">
 			<div id="message"></div>
+			
 			<form method="post" id="form-user-edit" action="/api/users/edit.json">
-				<div id="edit-form"></div>
-				<div>
-					<input type="button" id="btn-edit" class="btn-blue btn-submit"value="submit" />
+				<div id="edit-form">
 				</div>
+				<input type="button" id="btn-edit" class="btn-blue btn-submit" value="submit" />
 			</form>
+
 		</div> 
 	</div>
 
