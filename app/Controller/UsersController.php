@@ -10,7 +10,7 @@ App::uses('CakeEmail', 'Network/Email');
  */
 class UsersController extends AppController {
 	//モデルの指定
-	public $uses = array('User', 'EmailAuth', 'UsersFriend');
+	public $uses = array('User', 'EmailAuth', 'UsersFriend', 'Blog', 'Product');
 	public $components = array('RequestHandler');
 
 	//AppControllerをオーバーライド
@@ -101,6 +101,7 @@ class UsersController extends AppController {
 	private function __add() {
 		$this->request->data['User']['name'] = strtolower($this->request->data['User']['name']);
 		$this->User->create();
+		$this->request->data['User']['nickname'] = $this->request->data['User']['name'];
 		$result = $this->User->save($this->request->data);
 		if ($result) {
 			$this->Auth->login();
@@ -191,7 +192,20 @@ class UsersController extends AppController {
 	}
 	
 	public function api_get_info(){
-		$user_info = $this->Auth->user();
+		$user_info = $this->User->findById($this->Auth->user('id'));
+		$user_info['BlogsFavorite'] = $this->Blog->getFavList($user_info['BlogsFavorite']);
+		$user_info['ProductsFavorite'] = $this->Product->getFavList($user_info['ProductsFavorite']);
+		
+		foreach($user_info['ProductsFavorite'] as &$productFavs){
+			foreach($productFavs['ProductsFavorite'] as $fav){
+				if($fav['user_id'] == $this->Auth->user('id')){
+					$productFavs['Product']['user_id'] = $fav['user_id'];
+					$productFavs['Product']['status'] = $fav['status'];
+				}
+				unset($productFavs['ProductsFavorite']);
+			}
+		}
+		unset($productFavs);
 		$this->apiSuccess($user_info);
 	}
 	

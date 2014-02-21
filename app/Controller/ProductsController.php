@@ -199,6 +199,7 @@ class ProductsController extends AppController {
 	}
 	
 	public function api_add_count() {
+		$this->autoRender = false;
 		$product = $this->Product->findById($this->request->data);
 		$this->Product->id = $this->request->data;
 		$this->Product->set(array('access_count'=>$product['Product']['access_count'] + 1));
@@ -235,7 +236,7 @@ class ProductsController extends AppController {
             // 削除ボタン以外でこのページに来た場合はエラー
             // throw new MethodNotAllowedException();
         }
-        if($this->Product->delete($product_id)) {
+        if($this->Product->delete($product_id, $cascade = true)) {
             // 削除成功した場合はメッセージを出し、indexへリダイレクト
             $this->Session->setFlash('作品'. $product_id . 'を削除しました');
             $this->redirect(array('action' => 'index'));

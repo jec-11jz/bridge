@@ -10,7 +10,26 @@ class Blog extends AppModel {
 			'fileds' => array('id', 'name', 'nickname', 'profile', 'created', 'modified')
 		)
 	);
- 	public $hasMany = array('UsedBlogImage', 'Comment');
+ 	public $hasMany = array(
+ 		'UsedBlogImage' => array(
+            'className'     => 'UsedBlogImage',
+            'foreignKey'    => 'blog_id',
+            'order'         => 'UsedBlogImage.created DESC',
+            'dependent'     => true
+        ), 
+ 		'Comment' => array(
+            'className'     => 'Comment',
+            'foreignKey'    => 'blog_id',
+            'order'         => 'Comment.created DESC',
+            'dependent'     => true
+        ), 
+ 		'BlogsFavorite' => array(
+            'className'     => 'BlogsFavorite',
+            'foreignKey'    => 'blog_id',
+            'order'         => 'BlogsFavorite.created DESC',
+            'dependent'     => true
+        ), 
+	);
 	public $hasAndBelongsToMany = array('Tag');
 	
 	public $validate = array(
@@ -34,6 +53,16 @@ class Blog extends AppModel {
        		$this->data['Blog']['id'], 
        		$this->data['Blog']['content']
 		);
+	}
+	
+	public function getFavList($blogFavorites = array()) {
+		$arrayBlogs = array();
+		foreach($blogFavorites as $fav){
+			$result = $this->findById($fav['blog_id']);
+			array_push($arrayBlogs, $result);
+		}
+		
+		return $arrayBlogs;
 	}
 	
 	public function isOwnedBy($post, $user) {

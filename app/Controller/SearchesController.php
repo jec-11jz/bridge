@@ -40,11 +40,13 @@ class SearchesController extends AppController {
 				'Blog.status' => 0
 			),
 			'page' => $page,
-			'limit' => $count
+			'limit' => $count,
+			'order' => array('Blog.created DESC')
 		));
 		$contents['products'] = $this->Product->find('all',array(
 			'page' => $page,
-			'limit' => $count			
+			'limit' => $count,
+			'order' => array('Product.created')
 		));
 		$nullCheck = $this->Search->nullCheckOfKeywords(
 			array($keywords, $key_tags['keywords'])
@@ -53,6 +55,8 @@ class SearchesController extends AppController {
 			// set options
 			$blog_options['page'] = $product_options['page'] = $page;
 			$blog_options['limit'] = $product_options['limit'] = $count;
+			$blog_options['order'] = array('Blog.created DESC');
+			$product_options['order'] = array('Product.created DESC');
 			$blog_options['conditions'] = array(
 				'Blog.status' => 0,
 				'OR' => array(
@@ -137,6 +141,8 @@ class SearchesController extends AppController {
 		// set options
 		$blog_options['page'] = $product_options['page'] = $page;
 		$blog_options['limit'] = $product_options['limit'] = $count;
+		$blog_options['order'] = array('Blog.created DESC');
+		$product_options['order'] = array('Product.created DESC');
 		$blog_options['conditions'] = array('Blog.status' => 0);
 		// insert search result to contents
 		$contents['blogs'] = $this->Blog->find('all',$blog_options);
