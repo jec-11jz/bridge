@@ -23,9 +23,9 @@
 
 <div class="form third-content-form">
 	<div class="form-header">
-		<div class="header-back" id="cover" style="background: url('<?php echo h($loginInformation['User']['cover_image']); ?>') no-repeat center ;" alt=""></div>
+		<div class="header-back" id="cover" style="background: url('<?php echo h($user_info['User']['cover_image']); ?>') no-repeat center ;" alt=""></div>
 		<div class="header-user">
-			<span><?php echo h($loginInformation['User']['name']); ?></span>
+			<span><?php echo h($user_info['User']['name']); ?></span>
 		</div>
 		<div class="header-buttons">
 			<div class="links-div div-fav">

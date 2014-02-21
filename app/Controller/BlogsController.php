@@ -17,6 +17,8 @@ class BlogsController extends AppController {
 	public function index()
 	{
 		// show view
+		$user_info = $this->User->findById($this->Auth->user('id'));
+		$this->set('user_info', $user_info);
 	}
 
 	public function api_index() {

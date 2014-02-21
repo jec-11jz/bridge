@@ -38,11 +38,12 @@ $(function() {
 	var arrayLoad = {};
 	arrayLoad = {
 		page : 1, 
-		count : 20, 
+		count : 10, 
 		keywords : $('#keywords').val(), 
 		not_keywords : $('#not-keywords').val(),
 		key_tags : $('#key-tags').val(),
 		not_key_tags : $('#not-key-tags').val(),
+		sort: $("#select-sort").val(),
 	};
 	
 	function loadImage(arrayKeywords) {
@@ -58,6 +59,7 @@ $(function() {
 				'not_keywords': arrayKeywords['not_keywords'],
 				'key_tags': arrayKeywords['key_tags'],
 				'not_key_tags': arrayKeywords['not_key_tags'],
+				'sort': arrayKeywords['sort']
 			},
 			success: function(data, dataType) {
 				console.log('get...');
@@ -94,6 +96,12 @@ $(function() {
 			}
 		});
 	}
+	
+	// change sort
+	$('#select-sort').change(function(){
+		arrayLoad['sort'] = $('#select-sort').val();
+		$("#btn-search").trigger("click")
+	});
 
 	var diary = $('#search-result');
 	diary.masonry({
@@ -311,6 +319,15 @@ $(function() {
 			</div>
 		</div><!-- spoiler -->
 		<div id="related-tags"></div>
+		<div class="sort">
+			<span>並び替え：</span>
+		 	<select id="select-sort" class="sort-list">
+			    <option value="created DESC" selected="selected">新着順</option>
+			    <option value="created ASC">古い順</option>
+			    <option value="access_count DESC">人気順</option>
+			    <option value="access_count ASC">人気がない順</option>
+		 	</select>
+		</div><!-- sort -->
 	</div><!-- search-custom -->
 </div><!-- search -->
 
