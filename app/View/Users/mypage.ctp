@@ -156,7 +156,7 @@ $(function() {
 					<span class="user-name">ID: <?php echo h($loginInformation['User']['name']); ?></span>
 				</div>
 			</div>
-		</div>
+		</div><!-- header-user -->
 		<div class="header-buttons">
 			<div class="links-div div-fav">
 				<a class="div-link" href=""></a>
@@ -198,7 +198,7 @@ $(function() {
 					<span>Template</span>
 				</div>
 			</div>
-		
+			
 			<div class="links-div div-image">
 				<a class="div-link" onclick="openKCFinder(this)"></a>
 				<div class="div-left">
@@ -218,9 +218,9 @@ $(function() {
 					<span>My Edit</span>
 				</div>
 			</div>
-		</div>
+			
+		</div><!-- header-buttons -->
 	</div><!-- form-header -->
-
 
 	<div class="form-body">
 		<div id="fav-list">
@@ -233,7 +233,22 @@ $(function() {
 			</div>
 			
 		</div>
-	</div>
+		<div id="user-info" name="<?php echo h($loginInformation['User']['id']) ;?>">
+			<div class="user-profile">
+				<div class="div-profile">
+					<p>Profile</p>
+					<p><?php echo h($loginInformation['User']['profile']) ;?></p>
+				</div>
+				<div class="div-created">
+					<p>Created</p>
+					<p><?php echo h($loginInformation['User']['created']) ;?></p>
+				</div>
+			</div>
+			
+			<div id="message"></div>
+			<div id="user-blogs"></div>
+		</div>
+	</div><!-- form-body -->
 
 	<div class="form-footer"></div>
 </div> <!-- form -->

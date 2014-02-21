@@ -144,7 +144,7 @@ $(function(){
 			<?php } ?>
 		</div>
 
-		<div class="body-outline">
+		<div class="body-outline outline-view">
 			<p><?php echo h($product['Product']['outline']); ?></p>
 		</div> 
 

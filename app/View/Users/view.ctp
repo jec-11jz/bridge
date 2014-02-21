@@ -154,7 +154,17 @@ $(function() {
 <!--  -->
 	<div class="form-body">
 		<div id="user-info" name="<?php echo h($user_info['User']['id']) ;?>">
-			<p><?php echo h($user_info['User']['profile']) ;?></p>
+			<div class="user-profile">
+				<div class="div-profile">
+					<p class="info-profile">Profile</p>
+					<p><?php echo h($user_info['User']['profile']) ;?></p>
+				</div>
+				<div class="div-pr">
+					<p><?php echo h($user_info['User']['created']) ;?></p>
+				</div>
+				
+			</div>
+			
 			<div id="message"></div>
 			<?php if(is_null($user_info['favorite']) && $user_info['auth'] == 'others'){ ?>
 				<a class="fa fa-star btn-favorite"></a>

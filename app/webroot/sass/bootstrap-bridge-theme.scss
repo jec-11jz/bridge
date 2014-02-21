@@ -122,15 +122,11 @@ input:-webkit-autofill:focus{
 
 .div-message{
   display: inline-block;
-  background-color:$col-danger;
-  color: $white;
   @include border-radius(3px);
   margin-left: 2em;
-  // height: 2em;
-  // line-height: 10em;
   span{
-    color: $white;
-    // margin-left: 2em;
+    color: $col-danger;
+    display: inline-block;
     font-size:1.5em;
     padding: 1em;
   }
@@ -169,7 +165,7 @@ div{
 }
 .modal-dialog{
   width: 380px;
-  margin-top: 40px;
+  margin-top: 80px;
 }
 
 

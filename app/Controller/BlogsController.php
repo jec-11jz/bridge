@@ -283,7 +283,7 @@ class BlogsController extends AppController {
         if($this->Blog->delete($id, $cascade = true)) {
    	        // 削除成功した場合はメッセージを出し、indexへリダイレクト
             $this->Session->setFlash('記事'. $id . 'を削除しました');
-            $this->redirect(array('controller' => 'blogs', 'action' => 'index'));
+            $this->redirect(array('controller' => 'searches', 'action' => 'index'));
         }
 	}
 }

@@ -63,7 +63,7 @@
   }
 }
 
-div#search-result{
+div#search-result,#diary-index{
   margin: 0 auto;
   .cont{
     margin: 15px;
@@ -74,19 +74,33 @@ div#search-result{
     }
     a.link{
       @include link;
-      z-index:600;
     }
-    .div-noimage-outline{
-      padding: 1em;
-      background-color: $col-black1;
-      @include box-shadow(0 0 4px #c0c0c0 inset);
+    .div-noimage{
+      border:1px solid rgba(darken($grey,10%),0.6);
+      padding: 1em 1em;
+      i,p{
+        font-size: 10em;
+        @include opacity(0.1);
+        position: absolute;
+        top: 18%;left: 18%;
+      }
+      p{
+        font-size: 1.5em;
+        top: 76%;left: 30%;
+      }
+      .div-noimage-outline{
+
+        font-size: 0.8em;
+        height: 100%;
+      }
     }
+
     .div-decoration-blogs,{background-color: $yellow;}
     .div-decoration-products{background-color: $col-black2;}
     .div-decoration-blogs,.div-decoration-products{
       text-align: center;
       position: absolute;
-      @include opacity(0.8);
+      @include opacity(0.96);
       right: -73px;
       top: 15px;
       width: 200px;
