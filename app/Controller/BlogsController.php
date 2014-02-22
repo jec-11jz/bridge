@@ -17,6 +17,8 @@ class BlogsController extends AppController {
 	public function index()
 	{
 		// show view
+		$user_info = $this->User->findById($this->Auth->user('id'));
+		$this->set('user_info', $user_info);
 	}
 
 	public function api_index() {
@@ -127,6 +129,7 @@ class BlogsController extends AppController {
 	}
 	
 	public function api_add_count() {
+		$this->autoRender = false;
 		$blog = $this->Blog->findById($this->request->data);
 		if($this->Auth->user('id') == $blog['Blog']['user_id']){
 			return;
@@ -231,6 +234,33 @@ class BlogsController extends AppController {
 		return $this->apiSuccess($message);
 	}
 	
+	public function api_delete_favorite(){
+		$blog_id = null;
+		$user_id = null;
+		
+		if(!empty($this->request->data['blog_id'])){
+			$blog_id = $this->request->data['blog_id'];
+		}
+		if(is_null($blog_id)){
+			return $this->apiError('ブログが存在しません');
+		}
+		if(is_null($this->Auth)){
+			return $this->apiError('ログインしてください');
+		}
+		
+		$user_id = $this->Auth->user('id');
+		$fav = $this->BlogsFavorite->findByUserIdAndBlogId($user_id, $blog_id);
+		$result = $this->BlogsFavorite->Delete($fav['BlogsFavorite']['id']);
+		
+		if($result) {
+			$message = '解除しました';
+		} else {
+			$message = '削除エラー';
+		}
+		
+		return $this->apiSuccess($message);
+	}
+	
 	public function api_comment() {
 		$comment = array();
 		$message = null;
@@ -252,8 +282,8 @@ class BlogsController extends AppController {
             // 削除ボタン以外でこのページに来た場合はエラー
             //throw new MethodNotAllowedException();
         }
-        if($this->Blog->delete($id)) {
-            // 削除成功した場合はメッセージを出し、indexへリダイレクト
+        if($this->Blog->delete($id, $cascade = true)) {
+   	        // 削除成功した場合はメッセージを出し、indexへリダイレクト
             $this->Session->setFlash('記事'. $id . 'を削除しました');
             $this->redirect(array('controller' => 'searches', 'action' => 'index'));
         }

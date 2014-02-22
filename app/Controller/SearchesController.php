@@ -40,11 +40,13 @@ class SearchesController extends AppController {
 				'Blog.status' => 0
 			),
 			'page' => $page,
-			'limit' => $count
+			'limit' => $count,
+			'order' => array('Blog.created DESC')
 		));
 		$contents['products'] = $this->Product->find('all',array(
 			'page' => $page,
-			'limit' => $count			
+			'limit' => $count,
+			'order' => array('Product.created DESC')
 		));
 		$nullCheck = $this->Search->nullCheckOfKeywords(
 			array($keywords, $key_tags['keywords'])
@@ -53,6 +55,8 @@ class SearchesController extends AppController {
 			// set options
 			$blog_options['page'] = $product_options['page'] = $page;
 			$blog_options['limit'] = $product_options['limit'] = $count;
+			$blog_options['order'] = array('Blog.created DESC');
+			$product_options['order'] = array('Product.created DESC');
 			$blog_options['conditions'] = array(
 				'Blog.status' => 0,
 				'OR' => array(
@@ -105,6 +109,7 @@ class SearchesController extends AppController {
 		$not_key_tags['keywords'] = null;
 		$page_counts = null;
 		$last_page = null;
+		$sort = null;
 		$contents = array();
 		
 		// get param form view
@@ -113,6 +118,9 @@ class SearchesController extends AppController {
 		}
 		if(isset($this->request->query['page'])) {
 			$page = $this->request->query['page'];
+		}
+		if(isset($this->request->query['sort'])) {
+			$sort = $this->request->query['sort'];
 		}
 		if(!empty($this->request->query['keywords'])){
 			$keywords = $this->request->query['keywords'];
@@ -137,10 +145,15 @@ class SearchesController extends AppController {
 		// set options
 		$blog_options['page'] = $product_options['page'] = $page;
 		$blog_options['limit'] = $product_options['limit'] = $count;
+		$blog_options['order'] = 'Blog.' . $sort;
+		$product_options['order'] = 'Product.' . $sort;
+		// $blog_options['order'] = array('Blog.created DESC');
+		// $product_options['order'] = array('Product.created DESC');
 		$blog_options['conditions'] = array('Blog.status' => 0);
 		// insert search result to contents
 		$contents['blogs'] = $this->Blog->find('all',$blog_options);
 		$contents['products'] = $this->Product->find('all',$product_options);
+		$contents['sql']['products'] = $this->Product->getDataSource()->getLog();
 		
 		$nullCheck = $this->Search->nullCheckOfKeywords(
 			array($keywords, $not_keywords, $key_tags['keywords'], $not_key_tags['keywords'])

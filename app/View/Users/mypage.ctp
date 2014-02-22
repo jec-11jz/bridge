@@ -3,7 +3,6 @@
 	$this->Html->css('mypage', null, array('inline' => false));
 	
 	$this->Html->script('//ajax.microsoft.com/ajax/jquery.templates/beta1/jquery.tmpl.min.js', array('inline' => false));
-	
 
 ?>
 <!-- KCfinder読み込み -->
@@ -57,7 +56,6 @@ $(function() {
 	            message.delay(options.time).fadeOut('normal', function() {
 	                $(this).remove();
 	            });
-	
 	        });
 	    };
 	})(jQuery);
@@ -68,15 +66,21 @@ $(function() {
 		url: '/api/users/get_info.json',
 		success: function(data){
 			console.log(data['response']);
-			var user_info = $('#js-user-edit').tmpl(data['response']);
+			// user
+			var user_info = $('#js-user-edit').tmpl(data['response']['User']);
 			$('#edit-form').append(user_info);
+			// blogs favorite
+			var fav = $('#js-blogs-favorite').tmpl(data['response']['BlogsFavorite']);
+			$('#blog-fav-list').append(fav);
+			// products favorite
+			var fav = $('#js-products-favorite').tmpl(data['response']['ProductsFavorite']);
+			$('#fav-list').append(fav);
 		},
 		error: function(xhr, xhrStatus){
 			
 		}
 	});
 	
-
 	// post user's info
 	$('#btn-edit').click(function(){
 		var postData = {};
@@ -124,6 +128,19 @@ $(function() {
 		<textarea name="data[User][profile]" class="user-info" id="user-profile" cols="40">${profile}</textarea>
 	</div>
 </script>
+<script id="js-blogs-favorite" type="text/x-jquery-tmpl">
+	<li>${Blog.title}</li>
+	<li>${Blog.created}</li>
+</script>
+<script id="js-products-favorite" type="text/x-jquery-tmpl">
+	<li>${Product.name}</li>
+	<li>${Product.created}</li>
+	{{if Product.status == 1}}
+		<li>観た！</li>
+	{{else}}
+		<li>観たい！</li>
+	{{/if}}
+</script>
 
 <div class="form third-content-form">
 	<div class="form-header">
@@ -139,7 +156,7 @@ $(function() {
 					<span class="user-name">ID: <?php echo h($loginInformation['User']['name']); ?></span>
 				</div>
 			</div>
-		</div>
+		</div><!-- header-user -->
 		<div class="header-buttons">
 			<div class="links-div div-fav">
 				<a class="div-link" href=""></a>
@@ -150,7 +167,7 @@ $(function() {
 					<span>Fav blogs</span>
 				</div>
 			</div>
-		
+			
 			<div class="links-div div-products">
 				<a class="div-link" href=""></a>
 				<div class="div-left">
@@ -201,10 +218,21 @@ $(function() {
 					<span>My Edit</span>
 				</div>
 			</div>
-		</div>
+			
+		</div><!-- header-buttons -->
 	</div><!-- form-header -->
 
 	<div class="form-body">
+		<div id="fav-list">
+			<div id="blog-fav-list">
+				<legend>Blog fav</legend>
+				<ul id="blog-fav-list"></ul>
+			</div>
+			<div id="product-fav-list">
+				<legend>Product fav</legend>
+			</div>
+			
+		</div>
 		<div id="user-info" name="<?php echo h($loginInformation['User']['id']) ;?>">
 			<div class="user-profile">
 				<div class="div-profile">
@@ -220,8 +248,7 @@ $(function() {
 			<div id="message"></div>
 			<div id="user-blogs"></div>
 		</div>
-
-	</div>
+	</div><!-- form-body -->
 
 	<div class="form-footer"></div>
 </div> <!-- form -->

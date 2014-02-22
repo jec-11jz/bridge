@@ -13,6 +13,8 @@ class TemplatesController extends AppController {
 	public function index(){
 		$templates = null;
 		$templates = $this->Template->findAllByUserId($this->Auth->user('id'));
+		$user_info = $this->User->findById($this->Auth->user('id'));
+		$this->set('user_info', $user_info);
 		$this->set('templates', $templates);
 	}
 

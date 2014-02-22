@@ -79,6 +79,29 @@ $(function() {
 				}
 			});
 		});
+		// delete favorite
+		$("a.checked").click(function(){
+			var blog_id = $('#div-view-blogs').attr('name');
+			$.ajax({
+				type: 'POST',
+				url: '/api/blogs/delete_favorite.json',
+				data: {'blog_id': blog_id},
+				success: function(data) {
+				    $('#fav-message').flash_message({
+				        text: data['response'],
+				        how: 'append'
+				    });
+				    location.reload();
+				},
+				error: function(xhr, xhrStatus){
+					console.log(xhr);
+				    $('#fav-message').flash_message({
+				        text: xhr['responseJSON']['error']['message'],
+				        how: 'append'
+				    });
+				}
+			});
+		});
 	}
 	// get tags from DB
 	var blog_id = $('div.blog-form').attr('id');
@@ -215,9 +238,9 @@ $(function() {
 	<a href="/blogs/edit/${Blog.id}" class="fa fa-pencil-square-o"></a>
 	
 	{{if favorite != null}}
-		<a class="fa fa-star checked">
+		<a class="fa fa-star checked"></a>
 	{{else}}
-		<a id="btn-favorite" class="fa fa-star">
+		<a id="btn-favorite" class="fa fa-star"></a>
 	{{/if}}
 	<a name="/blogs/delete/${Blog.id}" class="fa fa-trash-o" id="confirm-delete"></a>
 	<div id="fav-message" class="div-message"></div>

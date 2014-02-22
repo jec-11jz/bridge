@@ -22,7 +22,7 @@ class User extends AppModel {
  */
  	public $name = 'User';
 	
-	public $hasMany = array('Blog');
+	public $hasMany = array('Blog','BlogsFavorite','ProductsFavorite');
 
 	public $validate = array(
 		'id' => array(),

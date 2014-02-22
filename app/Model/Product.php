@@ -5,7 +5,26 @@ App::uses('Tag', 'Model');
 
 class Product extends AppModel {
 	
-	public $hasMany = array('ProductsTag', 'AttributesTag');
+	public $hasMany = array(
+		'ProductsTag'=> array(
+            'className'     => 'ProductsTag',
+            'foreignKey'    => 'product_id',
+            'order'         => 'ProductsTag.created DESC',
+            'dependent'     => true
+        ), 
+        'AttributesTag'=> array(
+            'className'     => 'AttributesTag',
+            'foreignKey'    => 'product_id',
+            'order'         => 'AttributesTag.created DESC',
+            'dependent'     => true
+        ),
+         'ProductsFavorite'=> array(
+            'className'     => 'ProductsFavorite',
+            'foreignKey'    => 'product_id',
+            'order'         => 'ProductsFavorite.created DESC',
+            'dependent'     => true
+        )
+	);
 
 	public $hasAndBelongsToMany = array(
 		'Attribute' => array(
@@ -56,5 +75,15 @@ class Product extends AppModel {
 		}
 		unset($attribute);
 		return $attributes;
+	}
+
+	public function getFavList($productFavorites = array()) {
+		$arrayProducts = array();
+		foreach($productFavorites as $fav){
+			$result = $this->findById($fav['product_id']);
+			array_push($arrayProducts, $result);
+		}
+		
+		return $arrayProducts;
 	}
 }
