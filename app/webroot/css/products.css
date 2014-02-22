@@ -171,7 +171,8 @@ hr {
   left: 0;
   width: 100%;
   height: 100%;
-  position: absolute; }
+  position: absolute;
+  z-index: 600; }
 
 /* line 14, ../sass/all.scss */
 body {
@@ -321,6 +322,7 @@ div.form.second-content-form .form-header {
       width: 100%;
       height: 100%;
       position: absolute;
+      z-index: 600;
       border: 1px solid #68c39f;
       -webkit-border-radius: 300px;
       -moz-border-radius: 300px;
@@ -887,10 +889,10 @@ div.modal-content {
   text-shadow: none;
   color: #3f3f3f;
   background-color: #f6f6f6; }
-  /* line 72, ../sass/_my-mixin.scss */
+  /* line 73, ../sass/_my-mixin.scss */
   #div-add-products .form-header .header-right input:-moz-placeholder, #div-view-products .form-header .header-right input:-moz-placeholder, #div-edit-products .form-header .header-right input:-moz-placeholder {
     color: #d8d8d8; }
-  /* line 75, ../sass/_my-mixin.scss */
+  /* line 76, ../sass/_my-mixin.scss */
   #div-add-products .form-header .header-right input::-webkit-input-placeholder, #div-view-products .form-header .header-right input::-webkit-input-placeholder, #div-edit-products .form-header .header-right input::-webkit-input-placeholder {
     color: #d8d8d8; }
 /* line 24, ../sass/products.scss */
@@ -1054,7 +1056,7 @@ div.modal-content {
           -webkit-transition: 0.2s;
           -o-transition: 0.2s;
           transition: 0.2s; }
-          /* line 90, ../sass/_my-mixin.scss */
+          /* line 91, ../sass/_my-mixin.scss */
           #div-add-products .form-body #product-data #tags-attribute .tags-set .btn-delete-attribute:hover, #div-view-products .form-body #product-data #tags-attribute .tags-set .btn-delete-attribute:hover, #div-edit-products .form-body #product-data #tags-attribute .tags-set .btn-delete-attribute:hover {
             background-color: #c61513; }
         /* line 150, ../sass/products.scss */

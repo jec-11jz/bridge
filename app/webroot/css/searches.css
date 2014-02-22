@@ -171,7 +171,8 @@ hr {
   left: 0;
   width: 100%;
   height: 100%;
-  position: absolute; }
+  position: absolute;
+  z-index: 600; }
 
 /* line 14, ../sass/all.scss */
 body {
@@ -321,6 +322,7 @@ div.form.second-content-form .form-header {
       width: 100%;
       height: 100%;
       position: absolute;
+      z-index: 600;
       border: 1px solid #68c39f;
       -webkit-border-radius: 300px;
       -moz-border-radius: 300px;
@@ -1124,27 +1126,28 @@ div.modal-content {
 div#search-result, #diary-index {
   margin: 0 auto; }
   /* line 68, ../sass/searches.scss */
-  div#search-result .cont, #diary-index .cont {
+  div#search-result .cont, div#search-result .container-item, #diary-index .cont, #diary-index .container-item {
     margin: 15px;
     position: relative;
     overflow: hidden; }
     /* line 72, ../sass/searches.scss */
-    div#search-result .cont hr, #diary-index .cont hr {
+    div#search-result .cont hr, div#search-result .container-item hr, #diary-index .cont hr, #diary-index .container-item hr {
       margin: 10px 2px; }
     /* line 75, ../sass/searches.scss */
-    div#search-result .cont a.link, #diary-index .cont a.link {
+    div#search-result .cont a.link, div#search-result .container-item a.link, #diary-index .cont a.link, #diary-index .container-item a.link {
       display: block;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      position: absolute; }
+      position: absolute;
+      z-index: 600; }
     /* line 78, ../sass/searches.scss */
-    div#search-result .cont .div-noimage, #diary-index .cont .div-noimage {
+    div#search-result .cont .div-noimage, div#search-result .container-item .div-noimage, #diary-index .cont .div-noimage, #diary-index .container-item .div-noimage {
       border: 1px solid rgba(135, 153, 155, 0.6);
       padding: 1em 1em; }
       /* line 81, ../sass/searches.scss */
-      div#search-result .cont .div-noimage i, div#search-result .cont .div-noimage p, #diary-index .cont .div-noimage i, #diary-index .cont .div-noimage p {
+      div#search-result .cont .div-noimage i, div#search-result .cont .div-noimage p, div#search-result .container-item .div-noimage i, div#search-result .container-item .div-noimage p, #diary-index .cont .div-noimage i, #diary-index .cont .div-noimage p, #diary-index .container-item .div-noimage i, #diary-index .container-item .div-noimage p {
         font-size: 10em;
         filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=10);
         opacity: 0.1;
@@ -1152,22 +1155,22 @@ div#search-result, #diary-index {
         top: 18%;
         left: 18%; }
       /* line 87, ../sass/searches.scss */
-      div#search-result .cont .div-noimage p, #diary-index .cont .div-noimage p {
+      div#search-result .cont .div-noimage p, div#search-result .container-item .div-noimage p, #diary-index .cont .div-noimage p, #diary-index .container-item .div-noimage p {
         font-size: 1.5em;
         top: 76%;
         left: 30%; }
       /* line 91, ../sass/searches.scss */
-      div#search-result .cont .div-noimage .div-noimage-outline, #diary-index .cont .div-noimage .div-noimage-outline {
+      div#search-result .cont .div-noimage .div-noimage-outline, div#search-result .container-item .div-noimage .div-noimage-outline, #diary-index .cont .div-noimage .div-noimage-outline, #diary-index .container-item .div-noimage .div-noimage-outline {
         font-size: 0.8em;
         height: 100%; }
     /* line 98, ../sass/searches.scss */
-    div#search-result .cont .div-decoration-blogs, #diary-index .cont .div-decoration-blogs {
+    div#search-result .cont .div-decoration-blogs, div#search-result .container-item .div-decoration-blogs, #diary-index .cont .div-decoration-blogs, #diary-index .container-item .div-decoration-blogs {
       background-color: #e4e46f; }
     /* line 99, ../sass/searches.scss */
-    div#search-result .cont .div-decoration-products, #diary-index .cont .div-decoration-products {
+    div#search-result .cont .div-decoration-products, div#search-result .container-item .div-decoration-products, #diary-index .cont .div-decoration-products, #diary-index .container-item .div-decoration-products {
       background-color: #c1c1c1; }
     /* line 100, ../sass/searches.scss */
-    div#search-result .cont .div-decoration-blogs, div#search-result .cont .div-decoration-products, #diary-index .cont .div-decoration-blogs, #diary-index .cont .div-decoration-products {
+    div#search-result .cont .div-decoration-blogs, div#search-result .cont .div-decoration-products, div#search-result .container-item .div-decoration-blogs, div#search-result .container-item .div-decoration-products, #diary-index .cont .div-decoration-blogs, #diary-index .cont .div-decoration-products, #diary-index .container-item .div-decoration-blogs, #diary-index .container-item .div-decoration-products {
       text-align: center;
       position: absolute;
       filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=96);
@@ -1182,7 +1185,7 @@ div#search-result, #diary-index {
       transform: rotate(45deg);
       z-index: 650; }
     /* line 111, ../sass/searches.scss */
-    div#search-result .cont .cont-info, #diary-index .cont .cont-info {
+    div#search-result .cont .cont-info, div#search-result .container-item .cont-info, #diary-index .cont .cont-info, #diary-index .container-item .cont-info {
       position: absolute;
       bottom: 0;
       width: 100%;
@@ -1197,7 +1200,7 @@ div#search-result, #diary-index {
       -o-transition: all 0.3s ease-in-out;
       transition: all 0.3s ease-in-out; }
       /* line 118, ../sass/searches.scss */
-      div#search-result .cont .cont-info p, #diary-index .cont .cont-info p {
+      div#search-result .cont .cont-info p, div#search-result .container-item .cont-info p, #diary-index .cont .cont-info p, #diary-index .container-item .cont-info p {
         font-size: 14px;
         color: #f6f6f6;
         margin: 0;
