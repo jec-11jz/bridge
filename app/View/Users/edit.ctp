@@ -38,7 +38,7 @@ $(function() {
 		url: '/api/users/get_info.json',
 		success: function(data){
 			console.log(data['response']);
-			var user_info = $('#js-user-edit').tmpl(data['response']);
+			var user_info = $('#js-user-edit').tmpl(data['response']['User']);
 			$('#edit-form').append(user_info);
 		},
 		error: function(xhr, xhrStatus){
