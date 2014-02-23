@@ -4,7 +4,7 @@
 
 	$this->Html->css('mypage', null, array('inline' => false));
 	$this->Html->css('searches', null, array('inline' => false));
-	$this->Html->css('diary', null, array('inline' => false));
+	// $this->Html->css('diary', null, array('inline' => false));
 
 	$this->Html->script('masonry.pkgd', array('inline' => false));
 	$this->Html->script('imagesloaded', array('inline' => false));
@@ -13,9 +13,18 @@
 
 <script>
 
+
 	$("window").load(function() {
   		$("#body").removeClass("preload");
 	});
+
+	function addMenuEvent() {
+		$(".container-item").hover(function() {
+			setTimeout(function() {
+			$(".container-item").css("z-index","500")
+			}, 400);
+		});
+	}
 	
 	//画像読み込み後にレイアウト
 	// var $diary = $('#diary-index');
@@ -66,19 +75,20 @@
 		<div class="cont-pic">
 			<a href="/blogs/view/${Blog.id}" class="link"></a>
 			{{if UsedBlogImage.length != 0}}
-					<img src="${UsedBlogImage[0].url}" class="diary-pic">
-				</a>
+				<img src="${UsedBlogImage[0].url}" data-original="${UsedBlogImage[0].url}" class="cover" width="220px" height="auto">
 			{{else}}
-				<div class="div-noimage" style="width: 220px; height:200px">
-					<i class="fa fa-camera-retro"></i>
-					<p>No image</p>
+			<div class="div-noimage" style="width: 220px; height:220px">
+				<i class="fa fa-camera-retro"></i>
+				<p>No image</p>
 
-					<div class="div-noimage-outline">
-						${Blog.content}
-					</div>
-					
+				<div class="div-noimage-outline">
+					${Blog.content.replace(/<("[^"]*"|'[^']*'|[^'">])*>/g,'').substring(0,150) +"..."}
 				</div>
+			</div>
 			{{/if}}
+			<div class="cont-info">
+				<p>${Blog.title.replace(/<("[^"]*"|'[^']*'|[^'">])*>/g,'').substring(0,27) +""}</p>
+			</div>
 		</div> <!-- item -->
 
 	</div> <!-- container-item -->
@@ -111,7 +121,6 @@
 				</div>
 			</div>
 		
-			
 			<div class="links-div div-blogs div-checked">
 				<a class="div-link" href="/blogs/index"></a>
 				<div class="div-left">

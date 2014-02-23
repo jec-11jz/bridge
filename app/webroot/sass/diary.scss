@@ -4,45 +4,10 @@ div#diary{
   margin:20px;
 }
 
-a.link:hover img.diary-pic{
-  opacity: 0.8;
-}
 
 a.header-link:hover div.header-left{
   background-color: $green;
   border:1px solid $white;
-}
-
-// 日記一覧画面
-div#diary-index{
-  margin: 0 auto;
-  img {
-    width: 220px;
-    height: auto;
-  }
-  .container-item{
-    background-color:white;
-  }
-  a.link{
-    @include link;
-    z-index: 550;
-  }
-  .cont{
-    background-color: #BEBEBE;
-    display: inline;
-    overflow: hidden;
-    margin: 10px;
-    margin-top: 0px;
-    
-    a.btn-a.btn-size-ss{
-      @include btn-size-ss;
-      margin: 0.5em 1em;
-    }
-    a.right{
-        float:right;
-        margin: 0.5em 1em;
-    }
-  }
 }
 
 

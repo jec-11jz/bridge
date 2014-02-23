@@ -171,7 +171,8 @@ hr {
   left: 0;
   width: 100%;
   height: 100%;
-  position: absolute; }
+  position: absolute;
+  z-index: 600; }
 
 /* line 14, ../sass/all.scss */
 body {
@@ -321,6 +322,7 @@ div.form.second-content-form .form-header {
       width: 100%;
       height: 100%;
       position: absolute;
+      z-index: 600;
       border: 1px solid #68c39f;
       -webkit-border-radius: 300px;
       -moz-border-radius: 300px;
@@ -868,55 +870,15 @@ div.modal-content {
 div#diary {
   margin: 20px; }
 
-/* line 7, ../sass/diary.scss */
-a.link:hover img.diary-pic {
-  opacity: 0.8; }
-
-/* line 11, ../sass/diary.scss */
+/* line 8, ../sass/diary.scss */
 a.header-link:hover div.header-left {
   background-color: #68c39f;
   border: 1px solid #f6f6f6; }
 
-/* line 17, ../sass/diary.scss */
-div#diary-index {
-  margin: 0 auto; }
-  /* line 19, ../sass/diary.scss */
-  div#diary-index img {
-    width: 220px;
-    height: auto; }
-  /* line 23, ../sass/diary.scss */
-  div#diary-index .container-item {
-    background-color: white; }
-  /* line 26, ../sass/diary.scss */
-  div#diary-index a.link {
-    display: block;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    z-index: 550; }
-  /* line 30, ../sass/diary.scss */
-  div#diary-index .cont {
-    background-color: #BEBEBE;
-    display: inline;
-    overflow: hidden;
-    margin: 10px;
-    margin-top: 0px; }
-    /* line 37, ../sass/diary.scss */
-    div#diary-index .cont a.btn-a.btn-size-ss {
-      font-size: 14px;
-      padding: 3px 12px;
-      margin: 0.5em 1em; }
-    /* line 41, ../sass/diary.scss */
-    div#diary-index .cont a.right {
-      float: right;
-      margin: 0.5em 1em; }
-
-/* line 54, ../sass/diary.scss */
+/* line 19, ../sass/diary.scss */
 #div-view-blogs .form-header .header-left span, #div-edit-blogs .form-header .header-left span, #div-add-blogs .form-header .header-left span {
   color: #296847; }
-/* line 59, ../sass/diary.scss */
+/* line 24, ../sass/diary.scss */
 #div-view-blogs .form-header .header-right input, #div-edit-blogs .form-header .header-right input, #div-add-blogs .form-header .header-right input {
   position: absolute;
   margin: 0;
@@ -937,22 +899,22 @@ div#diary-index {
   -o-border-radius: 2em;
   border-radius: 2em;
   background-color: #f6f6f6; }
-  /* line 72, ../sass/_my-mixin.scss */
+  /* line 73, ../sass/_my-mixin.scss */
   #div-view-blogs .form-header .header-right input:-moz-placeholder, #div-edit-blogs .form-header .header-right input:-moz-placeholder, #div-add-blogs .form-header .header-right input:-moz-placeholder {
     color: #d8d8d8; }
-  /* line 75, ../sass/_my-mixin.scss */
+  /* line 76, ../sass/_my-mixin.scss */
   #div-view-blogs .form-header .header-right input::-webkit-input-placeholder, #div-edit-blogs .form-header .header-right input::-webkit-input-placeholder, #div-add-blogs .form-header .header-right input::-webkit-input-placeholder {
     color: #d8d8d8; }
-/* line 76, ../sass/diary.scss */
+/* line 41, ../sass/diary.scss */
 #div-view-blogs .form-header .div-decoration, #div-edit-blogs .form-header .div-decoration, #div-add-blogs .form-header .div-decoration {
   background-color: #e4e46f; }
-  /* line 78, ../sass/diary.scss */
+  /* line 43, ../sass/diary.scss */
   #div-view-blogs .form-header .div-decoration span, #div-edit-blogs .form-header .div-decoration span, #div-add-blogs .form-header .div-decoration span {
     color: #3f3f3f; }
-/* line 83, ../sass/diary.scss */
+/* line 48, ../sass/diary.scss */
 #div-view-blogs .form-body, #div-edit-blogs .form-body, #div-add-blogs .form-body {
   padding: 0em 2em; }
-  /* line 85, ../sass/diary.scss */
+  /* line 50, ../sass/diary.scss */
   #div-view-blogs .form-body #blog-tags, #div-edit-blogs .form-body #blog-tags, #div-add-blogs .form-body #blog-tags {
     margin: 2em 2em;
     padding: 1em 1em 0em 1em;
@@ -966,7 +928,7 @@ div#diary-index {
     -webkit-box-shadow: white -1px 1px 0 inset;
     -moz-box-shadow: white -1px 1px 0 inset;
     box-shadow: white -1px 1px 0 inset; }
-    /* line 91, ../sass/diary.scss */
+    /* line 56, ../sass/diary.scss */
     #div-view-blogs .form-body #blog-tags .tag, #div-edit-blogs .form-body #blog-tags .tag, #div-add-blogs .form-body #blog-tags .tag {
       -webkit-border-radius: 25px;
       -moz-border-radius: 25px;
@@ -975,7 +937,7 @@ div#diary-index {
       border-radius: 25px;
       margin-left: 0.7em;
       margin-bottom: 1em; }
-  /* line 97, ../sass/diary.scss */
+  /* line 62, ../sass/diary.scss */
   #div-view-blogs .form-body #blog-tags .tagbox, #div-edit-blogs .form-body #blog-tags .tagbox, #div-add-blogs .form-body #blog-tags .tagbox {
     margin: 1em 2em;
     background-color: #ECECE8;
@@ -988,51 +950,51 @@ div#diary-index {
     -webkit-box-shadow: white -1px 1px 0 inset;
     -moz-box-shadow: white -1px 1px 0 inset;
     box-shadow: white -1px 1px 0 inset; }
-  /* line 104, ../sass/diary.scss */
+  /* line 69, ../sass/diary.scss */
   #div-view-blogs .form-body .tagbox, #div-edit-blogs .form-body .tagbox, #div-add-blogs .form-body .tagbox {
     margin: 2em 2em; }
-  /* line 107, ../sass/diary.scss */
+  /* line 72, ../sass/diary.scss */
   #div-view-blogs .form-body .spoiler, #div-edit-blogs .form-body .spoiler, #div-add-blogs .form-body .spoiler {
     display: inline-block;
     float: right;
     text-align: right; }
-    /* line 111, ../sass/diary.scss */
+    /* line 76, ../sass/diary.scss */
     #div-view-blogs .form-body .spoiler.spoiler-add, #div-edit-blogs .form-body .spoiler.spoiler-add, #div-add-blogs .form-body .spoiler.spoiler-add {
       width: 100%;
       display: block;
       float: none; }
-    /* line 116, ../sass/diary.scss */
+    /* line 81, ../sass/diary.scss */
     #div-view-blogs .form-body .spoiler .spoiler-slider, #div-edit-blogs .form-body .spoiler .spoiler-slider, #div-add-blogs .form-body .spoiler .spoiler-slider {
       margin: 1em 2em 0 0; }
-  /* line 120, ../sass/diary.scss */
+  /* line 85, ../sass/diary.scss */
   #div-view-blogs .form-body #visibility, #div-edit-blogs .form-body #visibility, #div-add-blogs .form-body #visibility {
     margin: 2em 2em; }
-  /* line 123, ../sass/diary.scss */
+  /* line 88, ../sass/diary.scss */
   #div-view-blogs .form-body .text-body, #div-edit-blogs .form-body .text-body, #div-add-blogs .form-body .text-body {
     padding: 2em 3em; }
-    /* line 125, ../sass/diary.scss */
+    /* line 90, ../sass/diary.scss */
     #div-view-blogs .form-body .text-body img, #div-edit-blogs .form-body .text-body img, #div-add-blogs .form-body .text-body img {
       max-width: 100%;
       height: auto !important;
       border: none; }
-  /* line 131, ../sass/diary.scss */
+  /* line 96, ../sass/diary.scss */
   #div-view-blogs .form-body .form-editor, #div-edit-blogs .form-body .form-editor, #div-add-blogs .form-body .form-editor {
     margin: 2em 2em 0 2em;
     display: block; }
-/* line 136, ../sass/diary.scss */
+/* line 101, ../sass/diary.scss */
 #div-view-blogs .form-footer, #div-edit-blogs .form-footer, #div-add-blogs .form-footer {
   text-align: center;
   padding: 0 2em; }
-  /* line 139, ../sass/diary.scss */
+  /* line 104, ../sass/diary.scss */
   #div-view-blogs .form-footer .div-created, #div-edit-blogs .form-footer .div-created, #div-add-blogs .form-footer .div-created {
     position: relative;
     margin-left: 2em;
     text-align: left; }
-    /* line 143, ../sass/diary.scss */
+    /* line 108, ../sass/diary.scss */
     #div-view-blogs .form-footer .div-created .created-date, #div-edit-blogs .form-footer .div-created .created-date, #div-add-blogs .form-footer .div-created .created-date {
       display: inline-block;
       margin-top: 5px; }
-    /* line 147, ../sass/diary.scss */
+    /* line 112, ../sass/diary.scss */
     #div-view-blogs .form-footer .div-created .created-author, #div-edit-blogs .form-footer .div-created .created-author, #div-add-blogs .form-footer .div-created .created-author {
       position: absolute;
       -webkit-border-radius: 2px;
@@ -1042,47 +1004,47 @@ div#diary-index {
       border-radius: 2px;
       right: 2em;
       display: inline-block; }
-      /* line 152, ../sass/diary.scss */
+      /* line 117, ../sass/diary.scss */
       #div-view-blogs .form-footer .div-created .created-author a, #div-edit-blogs .form-footer .div-created .created-author a, #div-add-blogs .form-footer .div-created .created-author a {
         font-size: 1.2em;
         padding: 0.3em 0.6em; }
-  /* line 158, ../sass/diary.scss */
+  /* line 123, ../sass/diary.scss */
   #div-view-blogs .form-footer .div-submit, #div-edit-blogs .form-footer .div-submit, #div-add-blogs .form-footer .div-submit {
     display: block;
     text-align: right; }
-    /* line 161, ../sass/diary.scss */
+    /* line 126, ../sass/diary.scss */
     #div-view-blogs .form-footer .div-submit.submit-edit, #div-edit-blogs .form-footer .div-submit.submit-edit, #div-add-blogs .form-footer .div-submit.submit-edit {
       margin-top: 2em; }
-  /* line 165, ../sass/diary.scss */
+  /* line 130, ../sass/diary.scss */
   #div-view-blogs .form-footer .index-back, #div-edit-blogs .form-footer .index-back, #div-add-blogs .form-footer .index-back {
     text-decoration: none;
     clear: both; }
-  /* line 172, ../sass/diary.scss */
+  /* line 137, ../sass/diary.scss */
   #div-view-blogs .form-footer #comment-area #comment-form input, #div-view-blogs .form-footer #comment-area #comment-form textarea, #div-view-blogs .form-footer #comment-area #comment-form button, #div-edit-blogs .form-footer #comment-area #comment-form input, #div-edit-blogs .form-footer #comment-area #comment-form textarea, #div-edit-blogs .form-footer #comment-area #comment-form button, #div-add-blogs .form-footer #comment-area #comment-form input, #div-add-blogs .form-footer #comment-area #comment-form textarea, #div-add-blogs .form-footer #comment-area #comment-form button {
     display: block; }
-  /* line 176, ../sass/diary.scss */
+  /* line 141, ../sass/diary.scss */
   #div-view-blogs .form-footer #comment-area #comment-form #comments .user-comments, #div-edit-blogs .form-footer #comment-area #comment-form #comments .user-comments, #div-add-blogs .form-footer #comment-area #comment-form #comments .user-comments {
     margin: 0 auto 1em;
     padding: 1em;
     width: 30em;
     border: 1px solid rgba(0, 0, 0, 0.1); }
-    /* line 181, ../sass/diary.scss */
+    /* line 146, ../sass/diary.scss */
     #div-view-blogs .form-footer #comment-area #comment-form #comments .user-comments .comment-sub, #div-edit-blogs .form-footer #comment-area #comment-form #comments .user-comments .comment-sub, #div-add-blogs .form-footer #comment-area #comment-form #comments .user-comments .comment-sub {
       text-align: left; }
-    /* line 184, ../sass/diary.scss */
+    /* line 149, ../sass/diary.scss */
     #div-view-blogs .form-footer #comment-area #comment-form #comments .user-comments hr.comment-division, #div-edit-blogs .form-footer #comment-area #comment-form #comments .user-comments hr.comment-division, #div-add-blogs .form-footer #comment-area #comment-form #comments .user-comments hr.comment-division {
       margin: 1em 0; }
-    /* line 187, ../sass/diary.scss */
+    /* line 152, ../sass/diary.scss */
     #div-view-blogs .form-footer #comment-area #comment-form #comments .user-comments .comment-info-left, #div-edit-blogs .form-footer #comment-area #comment-form #comments .user-comments .comment-info-left, #div-add-blogs .form-footer #comment-area #comment-form #comments .user-comments .comment-info-left {
       display: inline-block;
       width: 49%;
       text-align: left; }
-    /* line 192, ../sass/diary.scss */
+    /* line 157, ../sass/diary.scss */
     #div-view-blogs .form-footer #comment-area #comment-form #comments .user-comments .comment-info-right, #div-edit-blogs .form-footer #comment-area #comment-form #comments .user-comments .comment-info-right, #div-add-blogs .form-footer #comment-area #comment-form #comments .user-comments .comment-info-right {
       display: inline-block;
       width: 50%;
       text-align: right; }
-      /* line 196, ../sass/diary.scss */
+      /* line 161, ../sass/diary.scss */
       #div-view-blogs .form-footer #comment-area #comment-form #comments .user-comments .comment-info-right .span-author, #div-edit-blogs .form-footer #comment-area #comment-form #comments .user-comments .comment-info-right .span-author, #div-add-blogs .form-footer #comment-area #comment-form #comments .user-comments .comment-info-right .span-author {
         background-color: #68c39f;
         color: #f6f6f6;
@@ -1092,12 +1054,12 @@ div#diary-index {
         -ms-border-radius: 1px;
         -o-border-radius: 1px;
         border-radius: 1px; }
-  /* line 205, ../sass/diary.scss */
+  /* line 170, ../sass/diary.scss */
   #div-view-blogs .form-footer #comment-area #comment-form .new-comment, #div-edit-blogs .form-footer #comment-area #comment-form .new-comment, #div-add-blogs .form-footer #comment-area #comment-form .new-comment {
     width: 30em;
     margin: 0 auto;
     text-align: right; }
-    /* line 209, ../sass/diary.scss */
+    /* line 174, ../sass/diary.scss */
     #div-view-blogs .form-footer #comment-area #comment-form .new-comment .comment-index, #div-edit-blogs .form-footer #comment-area #comment-form .new-comment .comment-index, #div-add-blogs .form-footer #comment-area #comment-form .new-comment .comment-index {
       padding: 0.2em 0.4em;
       margin-top: 0.8em;
@@ -1108,22 +1070,22 @@ div#diary-index {
       -ms-border-radius: 2px;
       -o-border-radius: 2px;
       border-radius: 2px; }
-      /* line 216, ../sass/diary.scss */
+      /* line 181, ../sass/diary.scss */
       #div-view-blogs .form-footer #comment-area #comment-form .new-comment .comment-index.user-author, #div-edit-blogs .form-footer #comment-area #comment-form .new-comment .comment-index.user-author, #div-add-blogs .form-footer #comment-area #comment-form .new-comment .comment-index.user-author {
         background-color: #68c39f;
         color: #f6f6f6;
         margin-top: 0.8em;
         border: none; }
-    /* line 223, ../sass/diary.scss */
+    /* line 188, ../sass/diary.scss */
     #div-view-blogs .form-footer #comment-area #comment-form .new-comment #comment-author, #div-view-blogs .form-footer #comment-area #comment-form .new-comment #comment-url, #div-edit-blogs .form-footer #comment-area #comment-form .new-comment #comment-author, #div-edit-blogs .form-footer #comment-area #comment-form .new-comment #comment-url, #div-add-blogs .form-footer #comment-area #comment-form .new-comment #comment-author, #div-add-blogs .form-footer #comment-area #comment-form .new-comment #comment-url {
       width: 100%; }
-    /* line 226, ../sass/diary.scss */
+    /* line 191, ../sass/diary.scss */
     #div-view-blogs .form-footer #comment-area #comment-form .new-comment button, #div-edit-blogs .form-footer #comment-area #comment-form .new-comment button, #div-add-blogs .form-footer #comment-area #comment-form .new-comment button {
       width: 100%;
       padding: 1em 2em;
       margin: 1em auto; }
 
-/* line 239, ../sass/diary.scss */
+/* line 204, ../sass/diary.scss */
 div .container {
   margin: 0;
   padding: 0;
@@ -1132,7 +1094,7 @@ div .container {
   width: 100%;
   height: auto !important;
   height: 100%; }
-/* line 247, ../sass/diary.scss */
+/* line 212, ../sass/diary.scss */
 div .main {
   position: relative;
   float: left;
@@ -1140,13 +1102,13 @@ div .main {
   min-width: 600px;
   width: 100%;
   height: 100%; }
-/* line 255, ../sass/diary.scss */
+/* line 220, ../sass/diary.scss */
 div .line-up {
   margin: 0;
   padding: 0;
   margin-top: 50px; }
 
-/* line 261, ../sass/diary.scss */
+/* line 226, ../sass/diary.scss */
 .side-profile {
   margin: 0 auto;
   padding-top: 10px;
@@ -1156,11 +1118,11 @@ div .line-up {
   background-color: #60a633;
   text-align: center; }
 
-/* line 270, ../sass/diary.scss */
+/* line 235, ../sass/diary.scss */
 textarea.blog {
   width: 80%;
   height: 400px; }
-  /* line 273, ../sass/diary.scss */
+  /* line 238, ../sass/diary.scss */
   textarea.blog:hover {
     border: 3px solid #97F95A;
     opacity: 0.6;

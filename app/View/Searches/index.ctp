@@ -225,21 +225,17 @@ $(function() {
 			<a href="/products/view/${Product.id}" class="link"></a>
 			{{if Product.image_url != ""}}
 				<img src="${Product.image_url}" data-original="${Product.image_url}" class="cover" width="220px" height="auto">
-				<div class="cont-info">
-					<div class="cont-title product-name">
-						<p>${Product.name.replace(/<("[^"]*"|'[^']*'|[^'">])*>/g,'').substring(0,27) +""}</p>
-					</div>
-				</div>
 			{{else}}
 			<div class="div-noimage" style="width: 220px;height:220px">
 			<i class="fa fa-camera-retro"></i>
 			<p>No image</p>
 				<div class="div-noimage-outline">${Product.outline.replace(/<("[^"]*"|'[^']*'|[^'">])*>/g,'').substring(0,150) +"..."}</div>
 			</div>
+
+			{{/if}}
 			<div class="cont-info">
 				<p>${Product.name.replace(/<("[^"]*"|'[^']*'|[^'">])*>/g,'').substring(0,27) +""}</p>
 			</div>
-			{{/if}}
 
 		</div>
 	</div>
@@ -254,11 +250,6 @@ $(function() {
 			<a href="/blogs/view/${Blog.id}" class="link"></a>
 			{{if UsedBlogImage.length != 0}}
 				<img src="${UsedBlogImage[0].url}" data-original="${UsedBlogImage[0].url}" class="cover" width="220px" height="auto">
-				<div class="cont-info">
-					<div class="cont-title blog-title">
-						<p>${Blog.title.replace(/<("[^"]*"|'[^']*'|[^'">])*>/g,'').substring(0,27) +""}</p>
-					</div>
-				</div>
 			{{else}}
 				<div class="div-noimage" style="width: 220px;height:220px">
 					<i class="fa fa-camera-retro"></i>
@@ -268,11 +259,10 @@ $(function() {
 						${Blog.content.replace(/<("[^"]*"|'[^']*'|[^'">])*>/g,'').substring(0,150) +"..."}
 					</div>
 				</div>
-				<div class="cont-info">
-					<p>${Blog.title.replace(/<("[^"]*"|'[^']*'|[^'">])*>/g,'').substring(0,27) +""}</p>
-				</div>
 			{{/if}}
-
+			<div class="cont-info">
+				<p>${Blog.title.replace(/<("[^"]*"|'[^']*'|[^'">])*>/g,'').substring(0,27) +""}</p>
+			</div>
 		</div>
 	</div>
 </script>
