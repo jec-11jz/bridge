@@ -19,6 +19,28 @@
 	});
 
 </script>
+<script type="text/javascript">
+function openKCFinder(div) {
+    window.KCFinder = {
+        callBack: function(url) {
+            window.KCFinder = null;
+            div.innerHTML = '<div style="margin:5px">Loading...</div>';
+            var img = new Image();
+            img.src = url;
+            img.onload = function() {
+                div.innerHTML = '<img id="img" name="data[User][users_image]" src="' + url + '" />';
+                var img = document.getElementById('img');
+                img.style.width = '100%';
+                img.style.visibility = "visible";
+            }
+        }
+    };
+    window.open('/js/kcfinder/browse.php?type=images&dir=images/public',
+        'kcfinder_image', 'status=0, toolbar=0, location=0, menubar=0, ' +
+        'directories=0, resizable=1, scrollbars=0, width=800, height=600'
+    );
+}
+</script>
 
 
 <div class="form third-content-form">
@@ -70,7 +92,7 @@
 			</div>
 		
 			<div class="links-div div-image">
-				<a class="div-link" href=""></a>
+				<a class="div-link" href="openKCFinder(this)"></a>
 				<div class="div-left">
 					<i class="fa fa-picture-o"></i>
 				</div>
@@ -80,7 +102,7 @@
 			</div>
 
 			<div class="links-div div-edit">
-				<a class="div-link" href=""></a>
+				<a class="div-link" href="/users/edit"></a>
 				<div class="div-left">
 					<i class="fa fa-cog"></i>
 				</div>
