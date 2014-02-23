@@ -121,7 +121,6 @@ class UsersController extends AppController {
 	        if ($this->request->is('post') || $this->request->is('put')) {
 	        	$saved_data = $this->User->save($this->data, TRUE, array('nickname', 'email'));
 	            if ($saved_data) {
-	            	
 					//セッション情報の更新
 					$this->Session->write('Auth.User.nickname', $saved_data['User']['nickname']);
 					$this->Session->write('Auth.User.email', $saved_data['User']['email']);
@@ -137,10 +136,15 @@ class UsersController extends AppController {
 	            unset($this->request->data['User']['password']);
 	        }
         } else {
-        	$this->render('login');
+        	$this->render('edit');
         }
 		
-		$this->set('error', $this->User->validationErrors);
+		if ($this->User->validationErrors) {
+			$this->apiValidationError('User', $this->User->validationErrors);
+		} else {
+			$this->apiError('add error');
+		}
+		
     }
 	public function mypage() {
 		// show mypage.ctp
