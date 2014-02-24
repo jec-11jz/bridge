@@ -13,10 +13,6 @@ class Template extends AppModel {
 				'rule' => 'notEmpty',
 				'allowEmpty'=> false,
 				'message' => '必須項目です'
-			),
-			'isUnique' => array(
-				'rule' => 'isUnique',
-				'message' => 'duplicated'
 			)
 		)
     );
