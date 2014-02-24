@@ -187,6 +187,8 @@ $(function() {
 			        text: data['response'],
 			        how: 'append'
 			    });
+			   $('#comment-content').val("").end().find(":checked").prop("checked", false);
+			   location.reload();
 			},
 			error: function(xhr, xhrStatus){
 				$('#comment-message').flash_message({
@@ -199,10 +201,10 @@ $(function() {
 	$("#comments").hide(0);
 	$('#comment-list').click(function(){
 		if($("#comment-icon").hasClass('fa-chevron-down')){
-			$("#comments").show('fade',700);
+			$("#comments").show('fade',300);
 			$("#comment-icon").removeClass('fa-chevron-down').addClass('fa-chevron-up');
 		} else {
-			$("#comments").hide('fade',700);
+			$("#comments").hide('fade',100);
 			$("#comment-icon").removeClass('fa-chevron-up').addClass('fa-chevron-down');
 		}
 	})
