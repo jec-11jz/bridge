@@ -309,23 +309,24 @@ $(function() {
 			</div>
 		</div><!-- spoiler -->
 		<div id="related-tags"></div>
-		<div class="sort">
-			<span>並び替え：</span>
-		 	<select id="select-sort" class="sort-list">
-			    <option value="created DESC" selected="selected">新着順</option>
-			    <option value="created ASC">古い順</option>
-			    <option value="access_count DESC">人気順</option>
-			    <option value="access_count ASC">人気がない順</option>
-		 	</select>
-		</div><!-- sort -->
+
 	</div><!-- search-custom -->
 </div><!-- search -->
 
 
 <hr>
-
+<div class="div-sort">
+	<span>並び替え：</span>
+ 	<select id="select-sort" class="sort-list">
+	    <option value="created DESC" selected="selected">新着順</option>
+	    <option value="created ASC">古い順</option>
+	    <option value="access_count DESC">人気順</option>
+	    <option value="access_count ASC">人気がない順</option>
+ 	</select>
+</div><!-- sort -->
 
 <div id="search-result">
+
 	<div id="search-blogs-result"></div>
 	<div id="search-products-result"></div>
 </div>
