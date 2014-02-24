@@ -51,7 +51,7 @@ function openKCFinder(div) {
 		</div>
 		<div class="header-buttons">
 			<div class="links-div div-fav">
-				<a class="div-link" href=""></a>
+				<a class="div-link" href="/users/mypage"></a>
 				<div class="div-left">
 					<i class="fa fa-star-o"></i>
 				</div>
@@ -61,7 +61,7 @@ function openKCFinder(div) {
 			</div>
 		
 			<div class="links-div div-products">
-				<a class="div-link" href=""></a>
+				<a class="div-link" href="/users/mypage"></a>
 				<div class="div-left">
 					<i class="fa fa-star-o"></i>
 				</div>
