@@ -14,7 +14,7 @@ class Blog extends AppModel {
  		'UsedBlogImage' => array(
             'className'     => 'UsedBlogImage',
             'foreignKey'    => 'blog_id',
-            'order'         => 'UsedBlogImage.created DESC',
+            'order'         => 'UsedBlogImage.url',
             'dependent'     => true
         ), 
  		'Comment' => array(
@@ -26,7 +26,7 @@ class Blog extends AppModel {
  		'BlogsFavorite' => array(
             'className'     => 'BlogsFavorite',
             'foreignKey'    => 'blog_id',
-            'order'         => 'BlogsFavorite.url',
+            'order'         => 'BlogsFavorite.created',
             'dependent'     => true
         ), 
 	);

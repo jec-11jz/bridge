@@ -44,7 +44,7 @@
 				// most-popular-blog
 				var mostPopularBlog = $('#sb-most-popular-blog').tmpl(data['response']['mostPopularBlog']);
 				$('#sb-slider').append(mostPopularBlog);
-				//slicebox
+				// slicebox
 				Page = (function() {
 					$('#top-button').find('.new-product').addClass('current-category');
 					var $navArrows = $('#nav-arrows').hide(),
@@ -95,7 +95,7 @@
 	});
 </script>
 <script id="sb-new-product" type="text/x-jquery-tmpl">
-	<a href="/products/view/${Product.id}" class="top-link"></a>
+	<a href="/products/view/${Product.id}" class="link"></a>
 	<li id="new-product-list" class="image-list">
 		<img src="${Product.image_url}" alt="image1"/>
 		<div class="sb-description">
@@ -104,7 +104,7 @@
 	</li>
 </script>
 <script id="sb-most-popular-product" type="text/x-jquery-tmpl">
-	<a href="/products/view/${Product.id}" class="top-link"></a>
+	<a href="/products/view/${Product.id}" class="link"></a>
 	<li id="most-popular-product-list" class="image-list">
 		<img src="${Product.image_url}" alt="image1"/>
 		<div class="sb-description">
@@ -113,7 +113,7 @@
 	</li>
 </script>
 <script id="sb-new-blog" type="text/x-jquery-tmpl">
-	<a href="/blogs/view/${Blog.id}" class="top-link"></a>
+	<a href="/blogs/view/${Blog.id}" class="link"></a>
 	<li id="new-blog-list" class="image-list">
 		{{if UsedBlogImage.length != 0}}
 			<img src="${UsedBlogImage[0].url}" class="diary-pic">
@@ -129,7 +129,7 @@
 	</li>
 </script>
 <script id="sb-most-popular-blog" type="text/x-jquery-tmpl">
-	<a href="/blogs/view/${Blog.id}" class="top-link"></a>
+	<a href="/blogs/view/${Blog.id}" class="link"></a>
 	<li id="most-popular-blog-list" class="image-list">
 		{{if UsedBlogImage.length != 0}}
 			<img src="${UsedBlogImage[0].url}" class="diary-pic">
