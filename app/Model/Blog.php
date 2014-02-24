@@ -57,9 +57,11 @@ class Blog extends AppModel {
 	
 	public function getFavList($blogFavorites = array()) {
 		$arrayBlogs = array();
-		foreach($blogFavorites as $fav){
-			$result = $this->findById($fav['blog_id']);
-			array_push($arrayBlogs, $result);
+		if(is_array($blogFavorites)){
+			foreach($blogFavorites as $fav){
+				$result = $this->findById($fav['blog_id']);
+				array_push($arrayBlogs, $result);
+			}
 		}
 		
 		return $arrayBlogs;

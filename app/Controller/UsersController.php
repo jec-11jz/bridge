@@ -79,7 +79,7 @@ class UsersController extends AppController {
 		} else {
 			$this->Session->setFlash(__('登録に失敗しました'), 'default', array(), 'auth');
 		}
-		return $this->redirect($this->Auth->redirectUrl());
+		return $this->redirect($this->Auth->redirectUrl('/home/index'));
 	}
 
 	public function api_add() {
@@ -200,16 +200,18 @@ class UsersController extends AppController {
 		$user_info['BlogsFavorite'] = $this->Blog->getFavList($user_info['BlogsFavorite']);
 		$user_info['ProductsFavorite'] = $this->Product->getFavList($user_info['ProductsFavorite']);
 		
-		foreach($user_info['ProductsFavorite'] as &$productFavs){
-			foreach($productFavs['ProductsFavorite'] as $fav){
-				if($fav['user_id'] == $this->Auth->user('id')){
-					$productFavs['Product']['user_id'] = $fav['user_id'];
-					$productFavs['Product']['status'] = $fav['status'];
+		if(!empty($user_info['ProductsFavorite'])){
+			foreach($user_info['ProductsFavorite'] as &$productFavs){
+				foreach($productFavs['ProductsFavorite'] as $fav){
+					if($fav['user_id'] == $this->Auth->user('id')){
+						$productFavs['Product']['user_id'] = $fav['user_id'];
+						$productFavs['Product']['status'] = $fav['status'];
+					}
+					unset($productFavs['ProductsFavorite']);
 				}
-				unset($productFavs['ProductsFavorite']);
 			}
+			unset($productFavs);
 		}
-		unset($productFavs);
 		$this->apiSuccess($user_info);
 	}
 	
