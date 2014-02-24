@@ -17,5 +17,18 @@ class Template extends AppModel {
 		)
     );
 	
+	public function get_default_templates($user_id = null){
+		$arrayTemp = array();
+		
+		$arrayTemp = array(
+			array(
+				'Template' => array(
+					'name' => '映画',
+					'user_id' => $user_id
+				),
+			)
+		);
+	}
+	
 	
 }

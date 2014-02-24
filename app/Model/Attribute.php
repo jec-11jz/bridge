@@ -1,5 +1,6 @@
 <?php
 App::uses('AppModel', 'Model');
+App::uses('Attribute', 'Model');
 
 class Attribute extends AppModel {
 
