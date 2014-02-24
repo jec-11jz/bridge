@@ -233,21 +233,7 @@ $(function() {
 			</div>
 			
 		</div>
-		<div id="user-info" name="<?php echo h($loginInformation['User']['id']) ;?>">
-			<div class="user-profile">
-				<div class="div-profile">
-					<p>Profile</p>
-					<p><?php echo h($loginInformation['User']['profile']) ;?></p>
-				</div>
-				<div class="div-created">
-					<p>Created</p>
-					<p><?php echo h($loginInformation['User']['created']) ;?></p>
-				</div>
-			</div>
-			
-			<div id="message"></div>
-			<div id="user-blogs"></div>
-		</div>
+
 	</div><!-- form-body -->
 
 	<div class="form-footer"></div>

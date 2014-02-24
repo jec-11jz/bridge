@@ -57,7 +57,7 @@ $this->Html->script('dropdown/modernizr.custom.79639', array('inline' => false))
 	<?php else: ?>
 		<div id="dd" class="wrapper-dropdown-5 menu-user" tabindex="1"><p><?php echo $user['name']; ?> <i class="fa fa-caret-down"></i></p>
 			<ul class="dropdown">
-				<li><a href="/users/mypage"><i class="fa fa-user menu"></i>ユーザページ</a></li> 
+				<li><a href="/users/mypage"><i class="fa fa-user menu"></i>マイページ</a></li> 
 				<li><a href="/users/edit"><i class="fa fa-cog menu"></i> 設　定　</a></li>
 				<li><a href="/users/logout"><i class="fa fa-sign-out menu"></i>ログアウト</a></li>
 			</ul>

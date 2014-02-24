@@ -209,6 +209,7 @@ $(function() {
 	</div>
 
 	<div class="form-body">
+	
 		<div class="user-edit">
 			<div id="message"></div>
 			
