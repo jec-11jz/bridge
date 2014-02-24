@@ -155,7 +155,7 @@ $(function() {
 			url: "/api/products/add.json",
 			data: sendData,
 			success: function(data){
-			   location.href = "/products/index";
+			   location.href = "/searches/index";
 			},
 			error: function(xhr, xhrStatus) {
 			    $('#error-message').flash_message({
