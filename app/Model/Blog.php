@@ -26,7 +26,7 @@ class Blog extends AppModel {
  		'BlogsFavorite' => array(
             'className'     => 'BlogsFavorite',
             'foreignKey'    => 'blog_id',
-            'order'         => 'BlogsFavorite.created DESC',
+            'order'         => 'BlogsFavorite.created',
             'dependent'     => true
         ), 
 	);
