@@ -207,7 +207,7 @@ $(function() {
 			$("#comments").hide('fade',100);
 			$("#comment-icon").removeClass('fa-chevron-up').addClass('fa-chevron-down');
 		}
-	})
+	});
 	
 });
 </script>

@@ -101,7 +101,7 @@ $(function() {
 		arrayLoad['sort'] = $('#select-sort').val();
 		$("#btn-search").trigger("click")
 	});
-
+	
 	var diary = $('#search-result');
 	diary.masonry({
     	itemSelector: '.cont',
@@ -181,9 +181,19 @@ $(function() {
 		});
 	}
 	$('#check-blog').change(function(){
+		if($("#check-blog-icon").hasClass('fa-check-square-o')){
+			$("#check-blog-icon").removeClass('fa-check-square-o').addClass('fa-square-o');
+		} else {
+			$("#check-blog-icon").removeClass('fa-square-o').addClass('fa-check-square-o');
+		}
 		appendHide();
 	});
 	$('#check-product').change(function(){
+		if($("#check-product-icon").hasClass('fa-check-square-o')){
+			$("#check-product-icon").removeClass('fa-check-square-o').addClass('fa-square-o');
+		} else {
+			$("#check-product-icon").removeClass('fa-square-o').addClass('fa-check-square-o');
+		}
 		appendHide();
 	});
 	// click related tags
@@ -286,9 +296,9 @@ $(function() {
 		</div>
 		<div class="form-checkbox">
 			<input type="checkbox" name="blog" value="Blog" id="check-blog" class="checkbox-blog" checked="checked">
-			<label for="check-blog" class="label-checkbox-blog"><i class="fa fa-check-square-o"></i> BLOG</label>
+			<label for="check-blog" class="label-checkbox-blog"><i id="check-blog-icon" class="fa fa-check-square-o"></i> BLOG</label>
 			<input type="checkbox" name="product" value="Product" id="check-product" class="checkbox-product" checked="checked">
-			<label for="check-product" class="label-checkbox-product"><i class="fa fa-square-o"></i> PRODUCT</label>
+			<label for="check-product" class="label-checkbox-product"><i id="check-product-icon" class="fa fa-square-o"></i> PRODUCT</label>
 		</div>
 		<div class="spoiler">
 			<div class="right">
