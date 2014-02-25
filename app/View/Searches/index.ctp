@@ -11,7 +11,6 @@
 	$this->Html->script('masonry.pkgd', array('inline' => false));
 	$this->Html->script('imagesloaded', array('inline' => false));
 	$this->Html->script('automatic/jquery.montage', array('inline' => false));
-	
 ?>
 
 <script>

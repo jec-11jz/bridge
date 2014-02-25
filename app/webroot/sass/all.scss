@@ -34,7 +34,7 @@ div.page-title{
     color:$green;
   }
 }
-a:hover {
+a:hover , i:hover{
   color: $green;
   @include btn-fade;
 }

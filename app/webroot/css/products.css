@@ -199,7 +199,7 @@ div.page-title h1 {
   color: #68c39f; }
 
 /* line 37, ../sass/all.scss */
-a:hover {
+a:hover, i:hover {
   color: #68c39f;
   -webkit-transition: 0.2s;
   -moz-transition: 0.2s;
@@ -1014,6 +1014,18 @@ div.modal-content {
         -o-border-radius: 25px;
         border-radius: 25px; }
   /* line 118, ../sass/products.scss */
+  #div-add-products .form-body div.row, #div-view-products .form-body div.row, #div-edit-products .form-body div.row {
+    margin-top: 2em; }
+  /* line 121, ../sass/products.scss */
+  #div-add-products .form-body .div-button, #div-view-products .form-body .div-button, #div-edit-products .form-body .div-button {
+    margin-top: 2em; }
+    /* line 123, ../sass/products.scss */
+    #div-add-products .form-body .div-button i, #div-view-products .form-body .div-button i, #div-edit-products .form-body .div-button i {
+      color: #f6f6f6; }
+    /* line 126, ../sass/products.scss */
+    #div-add-products .form-body .div-button .btn-add-attribute, #div-view-products .form-body .div-button .btn-add-attribute, #div-edit-products .form-body .div-button .btn-add-attribute {
+      width: 15em; }
+  /* line 130, ../sass/products.scss */
   #div-add-products .form-body #product-data, #div-view-products .form-body #product-data, #div-edit-products .form-body #product-data {
     height: 30em;
     margin-top: 2em;
@@ -1023,27 +1035,21 @@ div.modal-content {
     -webkit-box-shadow: white -1px 1px 0 inset;
     -moz-box-shadow: white -1px 1px 0 inset;
     box-shadow: white -1px 1px 0 inset; }
-    /* line 126, ../sass/products.scss */
-    #div-add-products .form-body #product-data .div-button i, #div-view-products .form-body #product-data .div-button i, #div-edit-products .form-body #product-data .div-button i {
-      color: #f6f6f6; }
-    /* line 129, ../sass/products.scss */
-    #div-add-products .form-body #product-data .div-button .btn-add-attribute, #div-view-products .form-body #product-data .div-button .btn-add-attribute, #div-edit-products .form-body #product-data .div-button .btn-add-attribute {
-      width: 15em; }
-    /* line 133, ../sass/products.scss */
+    /* line 138, ../sass/products.scss */
     #div-add-products .form-body #product-data #tags-attribute, #div-view-products .form-body #product-data #tags-attribute, #div-edit-products .form-body #product-data #tags-attribute {
       margin-top: 2em; }
-      /* line 135, ../sass/products.scss */
+      /* line 140, ../sass/products.scss */
       #div-add-products .form-body #product-data #tags-attribute .tags-set, #div-view-products .form-body #product-data #tags-attribute .tags-set, #div-edit-products .form-body #product-data #tags-attribute .tags-set {
         position: relative;
         margin-bottom: 2em; }
-        /* line 138, ../sass/products.scss */
+        /* line 143, ../sass/products.scss */
         #div-add-products .form-body #product-data #tags-attribute .tags-set .tag-title, #div-view-products .form-body #product-data #tags-attribute .tags-set .tag-title, #div-edit-products .form-body #product-data #tags-attribute .tags-set .tag-title {
           width: 38em;
           margin-left: 1em;
           margin-bottom: 0.5em;
           display: inline-block;
           position: static; }
-        /* line 146, ../sass/products.scss */
+        /* line 151, ../sass/products.scss */
         #div-add-products .form-body #product-data #tags-attribute .tags-set .btn-delete-attribute, #div-view-products .form-body #product-data #tags-attribute .tags-set .btn-delete-attribute, #div-edit-products .form-body #product-data #tags-attribute .tags-set .btn-delete-attribute {
           font-size: 26px;
           position: absolute;
@@ -1059,14 +1065,14 @@ div.modal-content {
           /* line 91, ../sass/_my-mixin.scss */
           #div-add-products .form-body #product-data #tags-attribute .tags-set .btn-delete-attribute:hover, #div-view-products .form-body #product-data #tags-attribute .tags-set .btn-delete-attribute:hover, #div-edit-products .form-body #product-data #tags-attribute .tags-set .btn-delete-attribute:hover {
             background-color: #c61513; }
-        /* line 150, ../sass/products.scss */
+        /* line 155, ../sass/products.scss */
         #div-add-products .form-body #product-data #tags-attribute .tags-set .tagbox, #div-view-products .form-body #product-data #tags-attribute .tags-set .tagbox, #div-edit-products .form-body #product-data #tags-attribute .tags-set .tagbox {
           width: 600px; }
-/* line 161, ../sass/products.scss */
+/* line 166, ../sass/products.scss */
 #div-add-products .form-footer, #div-view-products .form-footer, #div-edit-products .form-footer {
   text-align: center;
   margin: 0 4em; }
-  /* line 164, ../sass/products.scss */
+  /* line 169, ../sass/products.scss */
   #div-add-products .form-footer .div-submit, #div-view-products .form-footer .div-submit, #div-edit-products .form-footer .div-submit {
     clear: both;
     text-align: right;

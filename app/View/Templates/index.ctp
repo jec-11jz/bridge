@@ -47,8 +47,17 @@ function openKCFinder(div) {
 	<div class="form-header">
 		<div class="header-back" id="cover" style="background: url('<?php echo h($user_info['User']['cover_image']); ?>') no-repeat center ;" alt=""></div>
 		<div class="header-user">
-			<span><?php echo h($user_info['User']['name']); ?></span>
-		</div>
+			<div class="user-potision">
+				<div class="div-user-image">
+					<a href="/users/mypage" class="link"></a>
+					<img id="user-img" class="user-image" src="<?php echo h($user_info['User']['users_image']) ;?>" >
+				</div>
+				<div class="div-user-name">
+					<span class="user-nickname"><?php echo h($user_info['User']['nickname']); ?></span>
+					<span class="user-name">ID: <?php echo h($user_info['User']['name']); ?></span>
+				</div>
+			</div>
+		</div><!-- header-user -->
 		<div class="header-buttons">
 			<div class="links-div div-fav">
 				<a class="div-link" href="/users/mypage"></a>
@@ -92,7 +101,7 @@ function openKCFinder(div) {
 			</div>
 		
 			<div class="links-div div-image">
-				<a class="div-link" href="openKCFinder(this)"></a>
+				<a class="div-link" href="openKCFinder"></a>
 				<div class="div-left">
 					<i class="fa fa-picture-o"></i>
 				</div>

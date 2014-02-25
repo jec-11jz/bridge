@@ -9,25 +9,34 @@
 ?>
 
 <div id="toppage">
+	<h2>Welecome to Bridge</h2>
 	<div class="div-search">
 		<input name="keywords" id="keywords" class="form-control main-search" value="" placeholder='Search  here...'>
 		<input type="submit" value="Search" class="btn-green button-search" id="btn-search">
 	</div>
-	<div id="top-button" class="top-area">
-		<h2>Welecome to Bridge</h2>
-		<button id="new-product" class="top-button">new product</button>
-		<button id="most-popular-product" class="top-button">most popular product</button>
-		<button id="new-blog" class="top-button">new blog</button>
-		<button id="most-popular-blog" class="top-button">most popular blog</button>
-	</div>
-	<div id="shadow" class="shadow"></div>
-	<div id="nav-arrows" class="nav-arrows">
-		<a href="#">Previous</a>
-		<a href="#">Next</a>
-	</div>
-	<div id="top-image">
-		<ul id="sb-slider" class="sb-slider"></ul>
-	</div>
+	<hr>
+	<div class="toppage-body">
+		<div id="top-button" class="top-area">
+			<button id="new-product" class="top-button">new product</button>
+			<button id="most-popular-product" class="top-button">most popular product</button>
+			<button id="new-blog" class="top-button">new blog</button>
+			<button id="most-popular-blog" class="top-button">most popular blog</button>
+		</div>
+
+		<div id="shadow" class="shadow"></div>
+		<div id="nav-arrows" class="nav-arrows">
+			<div class="arrows-left">
+				<a href="#"><i class="fa fa-angle-left"></i> Previous</a>
+			</div>
+			<div class="arrows-right">
+				<a>Next <i class="fa fa-angle-right"></i></a>
+			</div>
+		</div>
+		<div id="top-image">
+			<ul id="sb-slider" class="sb-slider"></ul>
+		</div>
+	</div> <!-- toppage-body -->
+
 </div><!-- toppage -->
 <script type="text/javascript">
 	$(document).ready( function(){
@@ -108,7 +117,18 @@
 <script id="sb-new-product" type="text/x-jquery-tmpl">
 	<a href="/products/view/${Product.id}" class="link"></a>
 	<li id="new-product-list" class="image-list">
-		<img src="${Product.image_url}" alt="image1"/>
+		{{if Product.image_url != null}}
+			<img src="${Product.image_url}" alt="image1"/>
+		{{else}}
+			<div class="div-noimage">
+				<i class="fa fa-camera-retro"></i>
+				<p>No image</p>
+
+				<div class="div-noimage-outline">
+					${Blog.content.replace(/<("[^"]*"|'[^']*'|[^'">])*>/g,'').substring(0,300) +"..."}
+				</div>
+			</div>
+		{{/if}}
 		<div class="sb-description">
 			<h3>${Product.name}</h3>
 		</div>
@@ -117,7 +137,18 @@
 <script id="sb-most-popular-product" type="text/x-jquery-tmpl">
 	<a href="/products/view/${Product.id}" class="link"></a>
 	<li id="most-popular-product-list" class="image-list">
-		<img src="${Product.image_url}" alt="image1"/>
+		{{if Product.image_url != null}}
+			<img src="${Product.image_url}" alt="image1"/>
+		{{else}}
+			<div class="div-noimage">
+				<i class="fa fa-camera-retro"></i>
+				<p>No image</p>
+
+				<div class="div-noimage-outline">
+					${Blog.content.replace(/<("[^"]*"|'[^']*'|[^'">])*>/g,'').substring(0,300) +"..."}
+				</div>
+			</div>
+		{{/if}}
 		<div class="sb-description">
 			<h3>${Product.name}</h3>
 		</div>
@@ -129,9 +160,13 @@
 		{{if UsedBlogImage.length != 0}}
 			<img src="${UsedBlogImage[0].url}" class="diary-pic">
 		{{else}}
-			<div class="text-index" style="width: 220px; height:200px">
-				[no images]<br/>
-				${Blog.content.replace(/<("[^"]*"|'[^']*'|[^'">])*>/g,'').substring(0,99) +""}
+			<div class="div-noimage">
+				<i class="fa fa-camera-retro"></i>
+				<p>No image</p>
+
+				<div class="div-noimage-outline">
+					${Blog.content.replace(/<("[^"]*"|'[^']*'|[^'">])*>/g,'').substring(0,300) +"..."}
+				</div>
 			</div>
 		{{/if}}
 		<div class="sb-description">
@@ -145,9 +180,13 @@
 		{{if UsedBlogImage.length != 0}}
 			<img src="${UsedBlogImage[0].url}" class="diary-pic">
 		{{else}}
-			<div class="text-index" style="width: 220px; height:200px">
-				[no images]<br/>
-				${Blog.content.replace(/<("[^"]*"|'[^']*'|[^'">])*>/g,'').substring(0,99) +""}
+			<div class="div-noimage">
+				<i class="fa fa-camera-retro"></i>
+				<p>No image</p>
+
+				<div class="div-noimage-outline">
+					${Blog.content.replace(/<("[^"]*"|'[^']*'|[^'">])*>/g,'').substring(0,300) +"..."}
+				</div>
 			</div>
 		{{/if}}
 		<div class="sb-description">
