@@ -55,25 +55,29 @@
       display: inline-block;
       label{
         width: 10em;padding: 0.5em 0;
-        color: $green;
-        border:1px solid $green;
+        color: $white;
+        cursor: pointer;
         @include border-radius(4px);
+        background-color: $green;
+        @include box-shadow(0 4px darken($green, 10%));
+        i{color: $white;}
       }
       .checkbox-blog{
         display: none;
         &:checked + .label-checkbox-blog{
-          background-color: $green;
+          background-color: darken($green, 15%);
+          @include box-shadow(0 4px darken($green, 15%));
           color: $white;
-          border:1px solid $green;
-          // padding: 0.5em 1em;
+          i{color:$white;}
         }
       }
       .checkbox-product{
         display: none;
         &:checked + .label-checkbox-product{
-          background-color: $green;
-          color: $white;border:1px solid $green;
-          // padding: 0.5em 1em;
+          background-color: darken($green, 15%);
+          @include box-shadow(0 4px darken($green, 15%));
+          color: $white;
+          i{color:$white;}
         }
       }
 

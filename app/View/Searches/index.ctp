@@ -285,18 +285,16 @@ $(function() {
 			Not<input type="hidden" name="not-key-tags" id="not-key-tags" class="form-control tags">
 		</div>
 		<div class="form-checkbox">
-			
 			<input type="checkbox" name="blog" value="Blog" id="check-blog" class="checkbox-blog" checked="checked">
-			<label for="check-blog" class="label-checkbox-blog">BLOG</label>
-			
+			<label for="check-blog" class="label-checkbox-blog"><i class="fa fa-check"></i> BLOG</label>
 			<input type="checkbox" name="product" value="Product" id="check-product" class="checkbox-product" checked="checked">
-			<label for="check-product" class="label-checkbox-product">PRODUCT</label>
+			<label for="check-product" class="label-checkbox-product"><i class="fa fa-check"></i> PRODUCT</label>
 		</div>
 		<div class="spoiler">
 			<div class="right">
 				<span>ネタバレ：</span>
 			 	<select name="minbeds" id="minbeds" class="list">
-				    <option value="1">1</option
+				    <option value="1">1</option>
 				    <option value="2">2</option>
 				    <option value="3">3</option>
 				    <option value="4">4</option>
