@@ -1,8 +1,11 @@
 @import "../sass/menu.scss";
 @import "tag/tags_custom.scss";
 
+
+
+
 #search{
-  margin: 65px auto;
+  margin: 65px auto 0 auto;
   text-align: center;
   .div-search{
     position: relative;
@@ -21,7 +24,7 @@
   
   #search-custom{
     #related-tags{
-      margin: 2em 2em;
+      margin: 2em 2em 0.5em 2em;
       padding: 1em 1em 0em 1em;
       background-color: #ECECE8;
       @include border-radius(2px);
@@ -50,15 +53,40 @@
     }
     .form-checkbox{
       display: inline-block;
-      .checkbox {
-        float: left;
-        margin: -5px 2px 0 0;
+      label{
+        width: 10em;padding: 0.5em 0;
+        color: $green;
+        border:1px solid $green;
+        @include border-radius(4px);
+      }
+      .checkbox-blog{
+        display: none;
+        &:checked + .label-checkbox-blog{
+          background-color: $green;
+          color: $white;
+          border:1px solid $green;
+          // padding: 0.5em 1em;
+        }
+      }
+      .checkbox-product{
+        display: none;
+        &:checked + .label-checkbox-product{
+          background-color: $green;
+          color: $white;border:1px solid $green;
+          // padding: 0.5em 1em;
+        }
+      }
+
+    }
+    .spoiler{
+      display: inline-block;
+      div#slider {
+        display: inline-block;
+        width: 200px;
+        margin: 0px 0 0 1em;
       }
     }
-    div#slider {
-      width: 200px;
-      margin: 1em auto;
-    }
+
   }
 }
 .div-sort{
@@ -136,3 +164,5 @@ div#search-result,#diary-index{
     background-color: #000;
   }
 }
+
+
