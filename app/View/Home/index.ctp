@@ -45,6 +45,7 @@
 			type: 'GET',
 			url: '/api/home/get_toppage_contents.json',
 			success: function(data){
+				console.log(data['response']);
 				// new-product
 				var newProduct = $('#sb-new-product').tmpl(data['response']['newProduct']);
 				$('#sb-slider').append(newProduct);
@@ -117,15 +118,15 @@
 <script id="sb-new-product" type="text/x-jquery-tmpl">
 	<a href="/products/view/${Product.id}" class="link"></a>
 	<li id="new-product-list" class="image-list">
-		{{if Product.image_url != null}}
-			<img src="${Product.image_url}" alt="image1"/>
+		{{if Product.image_url.length != 0 }}
+			<img src="${Product.image_url}" alt="no Image"/>
 		{{else}}
 			<div class="div-noimage">
 				<i class="fa fa-camera-retro"></i>
 				<p>No image</p>
-
+				
 				<div class="div-noimage-outline">
-					${Blog.content.replace(/<("[^"]*"|'[^']*'|[^'">])*>/g,'').substring(0,300) +"..."}
+					${Product.outline}
 				</div>
 			</div>
 		{{/if}}
@@ -137,7 +138,7 @@
 <script id="sb-most-popular-product" type="text/x-jquery-tmpl">
 	<a href="/products/view/${Product.id}" class="link"></a>
 	<li id="most-popular-product-list" class="image-list">
-		{{if Product.image_url != null}}
+		{{if Product.image_url.length != 0 }}
 			<img src="${Product.image_url}" alt="image1"/>
 		{{else}}
 			<div class="div-noimage">
@@ -145,7 +146,7 @@
 				<p>No image</p>
 
 				<div class="div-noimage-outline">
-					${Blog.content.replace(/<("[^"]*"|'[^']*'|[^'">])*>/g,'').substring(0,300) +"..."}
+					${Product.outline}
 				</div>
 			</div>
 		{{/if}}
