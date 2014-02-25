@@ -10,7 +10,7 @@ App::uses('CakeEmail', 'Network/Email');
  */
 class UsersController extends AppController {
 	//モデルの指定
-	public $uses = array('User', 'EmailAuth', 'UsersFriend', 'Blog', 'Product');
+	public $uses = array('User', 'EmailAuth', 'UsersFriend', 'Blog', 'Product', 'Template');
 	public $components = array('RequestHandler');
 
 	//AppControllerをオーバーライド
@@ -104,6 +104,7 @@ class UsersController extends AppController {
 		$this->request->data['User']['nickname'] = $this->request->data['User']['name'];
 		$result = $this->User->save($this->request->data);
 		if ($result) {
+			$this->Template->get_default_templates($result['User']['id']);
 			$this->Auth->login();
 			$this->__send_add_email($result['User']['id']);
 		}
