@@ -9,6 +9,10 @@
 ?>
 
 <div id="toppage">
+	<div class="div-search">
+		<input name="keywords" id="keywords" class="form-control main-search" value="" placeholder='Search  here...'>
+		<input type="submit" value="Search" class="btn-green button-search" id="btn-search">
+	</div>
 	<div id="top-button" class="top-area">
 		<h2>Welecome to Bridge</h2>
 		<button id="new-product" class="top-button">new product</button>
@@ -83,6 +87,13 @@
 				console.log('error');
 			}
 		});
+	});
+	
+	// click related tags
+	// fn search from tag
+	$('#btn-search').click(function(){
+		var keyword = $('#keywords').val();
+		location.href = '/searches/index/?keywords=' + keyword;
 	});
 	// change image when push the top-button
 	$(document).on('click', '.top-button', function(){

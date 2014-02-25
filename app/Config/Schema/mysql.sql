@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- ホスト: localhost
--- 生成日時: 2014 年 1 月 08 日 06:32
+-- 生成日時: 2014 年 2 月 24 日 04:18
 -- サーバのバージョン: 5.5.29
 -- PHP のバージョン: 5.4.10
 
@@ -20,8 +20,7 @@ SET time_zone = "+00:00";
 -- テーブルの構造 `attributes`
 --
 
-DROP TABLE IF EXISTS `attributes`;
-CREATE TABLE IF NOT EXISTS `attributes` (
+CREATE TABLE `attributes` (
   `id` char(36) NOT NULL,
   `name` varchar(30) NOT NULL,
   `created` datetime NOT NULL,
@@ -35,8 +34,7 @@ CREATE TABLE IF NOT EXISTS `attributes` (
 -- テーブルの構造 `attributes_tags`
 --
 
-DROP TABLE IF EXISTS `attributes_tags`;
-CREATE TABLE IF NOT EXISTS `attributes_tags` (
+CREATE TABLE `attributes_tags` (
   `id` char(36) NOT NULL,
   `attribute_id` char(36) NOT NULL,
   `tag_id` char(36) NOT NULL,
@@ -53,8 +51,7 @@ CREATE TABLE IF NOT EXISTS `attributes_tags` (
 -- テーブルの構造 `attributes_templates`
 --
 
-DROP TABLE IF EXISTS `attributes_templates`;
-CREATE TABLE IF NOT EXISTS `attributes_templates` (
+CREATE TABLE `attributes_templates` (
   `id` char(36) NOT NULL,
   `attribute_id` char(36) NOT NULL,
   `template_id` char(36) NOT NULL,
@@ -69,8 +66,7 @@ CREATE TABLE IF NOT EXISTS `attributes_templates` (
 -- テーブルの構造 `blogs`
 --
 
-DROP TABLE IF EXISTS `blogs`;
-CREATE TABLE IF NOT EXISTS `blogs` (
+CREATE TABLE `blogs` (
   `id` char(36) NOT NULL,
   `user_id` char(36) NOT NULL,
   `title` varchar(30) NOT NULL,
@@ -78,9 +74,11 @@ CREATE TABLE IF NOT EXISTS `blogs` (
   `thumbnail` varchar(255) DEFAULT NULL,
   `status` int(1) NOT NULL DEFAULT '0',
   `product_id` char(36) NOT NULL,
+  `spoiler` int(2) NOT NULL DEFAULT '5',
+  `simplified_content` text NOT NULL,
   `url` varchar(255) NOT NULL,
-  `trackback_count` int(5) NOT NULL,
-  `comment_count` int(5) NOT NULL,
+  `trackback_count` int(5) NOT NULL DEFAULT '0',
+  `access_count` int(10) NOT NULL DEFAULT '0' COMMENT '閲覧数',
   `trackback_id` char(36) NOT NULL,
   `updated` datetime NOT NULL,
   `created` datetime NOT NULL,
@@ -91,11 +89,24 @@ CREATE TABLE IF NOT EXISTS `blogs` (
 -- --------------------------------------------------------
 
 --
+-- テーブルの構造 `blogs_favorites`
+--
+
+CREATE TABLE `blogs_favorites` (
+  `id` char(36) NOT NULL,
+  `user_id` char(36) NOT NULL,
+  `blog_id` char(36) NOT NULL,
+  `created` datetime NOT NULL,
+  `modified` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
 -- テーブルの構造 `blogs_tags`
 --
 
-DROP TABLE IF EXISTS `blogs_tags`;
-CREATE TABLE IF NOT EXISTS `blogs_tags` (
+CREATE TABLE `blogs_tags` (
   `id` char(36) NOT NULL,
   `tag_id` char(36) NOT NULL,
   `blog_id` char(36) NOT NULL,
@@ -110,8 +121,7 @@ CREATE TABLE IF NOT EXISTS `blogs_tags` (
 -- テーブルの構造 `categories`
 --
 
-DROP TABLE IF EXISTS `categories`;
-CREATE TABLE IF NOT EXISTS `categories` (
+CREATE TABLE `categories` (
   `id` char(36) NOT NULL,
   `name` varchar(30) NOT NULL,
   `created` datetime NOT NULL,
@@ -125,15 +135,13 @@ CREATE TABLE IF NOT EXISTS `categories` (
 -- テーブルの構造 `comments`
 --
 
-DROP TABLE IF EXISTS `comments`;
-CREATE TABLE IF NOT EXISTS `comments` (
+CREATE TABLE `comments` (
   `id` char(36) NOT NULL,
   `author` varchar(30) NOT NULL,
-  `url` varchar(255) NOT NULL,
+  `url` varchar(255) DEFAULT NULL,
   `comment` text NOT NULL,
-  `write_time` datetime NOT NULL,
   `blog_id` char(36) NOT NULL,
-  `user_id` char(36) NOT NULL,
+  `user_id` char(36) DEFAULT NULL,
   `created` datetime NOT NULL,
   `modified` datetime NOT NULL,
   PRIMARY KEY (`id`)
@@ -145,8 +153,7 @@ CREATE TABLE IF NOT EXISTS `comments` (
 -- テーブルの構造 `email_auth`
 --
 
-DROP TABLE IF EXISTS `email_auth`;
-CREATE TABLE IF NOT EXISTS `email_auth` (
+CREATE TABLE `email_auth` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `user_id` char(36) NOT NULL,
   `token` varchar(255) NOT NULL,
@@ -156,7 +163,7 @@ CREATE TABLE IF NOT EXISTS `email_auth` (
   `acl` text NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `userId` (`user_id`,`token`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=13 ;
 
 -- --------------------------------------------------------
 
@@ -164,8 +171,7 @@ CREATE TABLE IF NOT EXISTS `email_auth` (
 -- テーブルの構造 `images`
 --
 
-DROP TABLE IF EXISTS `images`;
-CREATE TABLE IF NOT EXISTS `images` (
+CREATE TABLE `images` (
   `id` char(36) NOT NULL,
   `name` varchar(100) NOT NULL,
   `url` varchar(255) NOT NULL,
@@ -185,8 +191,7 @@ CREATE TABLE IF NOT EXISTS `images` (
 -- テーブルの構造 `items`
 --
 
-DROP TABLE IF EXISTS `items`;
-CREATE TABLE IF NOT EXISTS `items` (
+CREATE TABLE `items` (
   `id` char(36) NOT NULL,
   `name` varchar(30) NOT NULL,
   `created` datetime NOT NULL,
@@ -200,12 +205,12 @@ CREATE TABLE IF NOT EXISTS `items` (
 -- テーブルの構造 `products`
 --
 
-DROP TABLE IF EXISTS `products`;
-CREATE TABLE IF NOT EXISTS `products` (
+CREATE TABLE `products` (
   `id` char(36) NOT NULL,
   `name` varchar(255) NOT NULL,
   `outline` text NOT NULL,
   `image_url` varchar(255) NOT NULL,
+  `access_count` int(10) NOT NULL DEFAULT '0',
   `created` datetime NOT NULL,
   `modified` datetime NOT NULL,
   PRIMARY KEY (`id`)
@@ -214,11 +219,25 @@ CREATE TABLE IF NOT EXISTS `products` (
 -- --------------------------------------------------------
 
 --
+-- テーブルの構造 `products_favorites`
+--
+
+CREATE TABLE `products_favorites` (
+  `id` char(36) NOT NULL,
+  `user_id` char(36) NOT NULL,
+  `product_id` char(36) NOT NULL,
+  `status` int(1) NOT NULL DEFAULT '1' COMMENT '1 = want to see, 2 = watched',
+  `created` datetime NOT NULL,
+  `modified` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
 -- テーブルの構造 `products_tags`
 --
 
-DROP TABLE IF EXISTS `products_tags`;
-CREATE TABLE IF NOT EXISTS `products_tags` (
+CREATE TABLE `products_tags` (
   `id` char(36) NOT NULL,
   `tag_id` char(36) NOT NULL,
   `product_id` char(36) NOT NULL,
@@ -233,12 +252,10 @@ CREATE TABLE IF NOT EXISTS `products_tags` (
 -- テーブルの構造 `tags`
 --
 
-DROP TABLE IF EXISTS `tags`;
-CREATE TABLE IF NOT EXISTS `tags` (
+CREATE TABLE `tags` (
   `id` char(36) NOT NULL,
   `name` varchar(30) NOT NULL,
   `count` int(11) NOT NULL,
-  `type` int(2) NOT NULL DEFAULT '0',
   `created` datetime NOT NULL,
   `modified` datetime NOT NULL,
   PRIMARY KEY (`id`),
@@ -251,11 +268,12 @@ CREATE TABLE IF NOT EXISTS `tags` (
 -- テーブルの構造 `templates`
 --
 
-DROP TABLE IF EXISTS `templates`;
-CREATE TABLE IF NOT EXISTS `templates` (
+CREATE TABLE `templates` (
   `id` char(36) NOT NULL,
   `name` varchar(30) NOT NULL,
   `user_id` char(36) NOT NULL,
+  `template_id` char(36) DEFAULT NULL COMMENT 'グループID',
+  `status` int(1) NOT NULL DEFAULT '0',
   `created` datetime NOT NULL,
   `modified` datetime NOT NULL,
   PRIMARY KEY (`id`)
@@ -267,8 +285,7 @@ CREATE TABLE IF NOT EXISTS `templates` (
 -- テーブルの構造 `template_configurations`
 --
 
-DROP TABLE IF EXISTS `template_configurations`;
-CREATE TABLE IF NOT EXISTS `template_configurations` (
+CREATE TABLE `template_configurations` (
   `id` char(36) NOT NULL,
   `template_id` char(36) NOT NULL,
   `item_id` char(36) NOT NULL,
@@ -283,8 +300,7 @@ CREATE TABLE IF NOT EXISTS `template_configurations` (
 -- テーブルの構造 `trackback`
 --
 
-DROP TABLE IF EXISTS `trackback`;
-CREATE TABLE IF NOT EXISTS `trackback` (
+CREATE TABLE `trackback` (
   `id` char(36) NOT NULL,
   `trackback_blog_title` varchar(30) NOT NULL,
   `trackback_blog_url` char(255) NOT NULL,
@@ -302,8 +318,7 @@ CREATE TABLE IF NOT EXISTS `trackback` (
 -- テーブルの構造 `used_blog_images`
 --
 
-DROP TABLE IF EXISTS `used_blog_images`;
-CREATE TABLE IF NOT EXISTS `used_blog_images` (
+CREATE TABLE `used_blog_images` (
   `id` char(36) NOT NULL,
   `blog_id` char(36) NOT NULL,
   `user_id` char(36) NOT NULL,
@@ -319,17 +334,32 @@ CREATE TABLE IF NOT EXISTS `used_blog_images` (
 -- テーブルの構造 `users`
 --
 
-DROP TABLE IF EXISTS `users`;
-CREATE TABLE IF NOT EXISTS `users` (
+CREATE TABLE `users` (
   `id` char(36) NOT NULL,
   `name` varchar(30) NOT NULL,
   `password` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
   `nickname` varchar(30) NOT NULL,
   `profile` text,
+  `users_image` varchar(255) NOT NULL,
+  `cover_image` varchar(255) NOT NULL,
   `group_id` int(36) NOT NULL,
   `status` int(1) DEFAULT '0',
   `created` datetime DEFAULT NULL,
   `modified` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- テーブルの構造 `users_friends`
+--
+
+CREATE TABLE `users_friends` (
+  `id` char(36) NOT NULL,
+  `owner_id` char(36) NOT NULL,
+  `friend_id` char(36) NOT NULL,
+  `created` datetime NOT NULL,
+  `modified` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
