@@ -269,7 +269,7 @@
 				var i = new Image();
 				i.src = $current.find( 'img' ).attr( 'src' );
 				// self.realWidth = i.width;
-				self.realWidth = '37.500em';
+				self.realWidth = '60em';
 
 				// assuming all images with same size
 				self._setSize();

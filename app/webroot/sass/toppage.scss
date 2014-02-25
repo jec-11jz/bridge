@@ -1,72 +1,162 @@
-@import "compass/css3";
-@import "_my-mixin.scss";
-
-
+@import "menu.scss";
 
 
 #toppage {
   display: block;
   clear: both;
-}
-.clearFix {
-  clear: both;
-  display: block;
-}
-.top-area {
-  text-align:center;
-  margin:8.000em 0 3em 0;
-}
-.top-button {
-  display:inline-block;
-  border:4px solid #d8d8d8;
-  color:#EEE;
-  text-decoration:none;
-  padding:10px;
-  transition-duration: 0.2s;
-  border-radius: 5px; 
-}
-.current-category {
-  border: medium solid #45F290;
-}
-
-a.logo{
-  font-size: 30px;
-  text-align: center;
-  width: 100%;
-  z-index: 10;
-  &:hover{
-    color: #a2eb7f;
-    background-position: 0;
-    opacity: 0.6;
-    filter: alpha(opacity=60);
+  h2{
+    text-align: center;
+    margin-top: 3.5em
   }
-}
-div{
-  .logo{
-    width: 230px;
-    height: 230px;
-    border-radius: 20px;
-    margin: 15px 0px 10px 30px;
-    float: left;
-    z-index: 20;
-    &:hover{
-    border: 3px solid #97F95A;
-    opacity: 0.6;
-    filter: alpha(opacity=60);
+  .div-search{
+    position: relative;
+    width: 463px;
+    margin: 4em auto 2em auto;
+    text-align: left;
+    .form-control{
+      width: 390px;
+    }
+    .button-search{
+      padding: 7px 17px;
+      position: absolute;
+      right: 0px;top: 0;
     }
   }
-  
+  .toppage-body{
+    width: 50%;
+    margin: 0 auto;
+    .nav-arrows{
+      .arrows-left, .arrows-right{
+        float:left;
+        a{
+          display: block;
+          text-decoration: none;
+          // background-color: $green;
+          border:1px solid $grey;
+          padding: 0.2em 0.4em;
+          color: $grey;
+          cursor: pointer;
+          i{color: $grey;}
+        }
+        a:hover{
+          padding: 0.2em 0.4em;
+          background-color: $grey;
+          border:1px solid $grey;
+          color: $white;
+          i{color:$white;}
+        }
+      }
+      .arrows-right{
+        float: right;
+      }
 
-}
+    }
+    .top-area {
+      text-align:center;
+      margin:3em 0 3em 0;
+      .top-button {
+        display:inline-block;
+        text-decoration:none;
+        color:$white;
+        border: none;
+        padding:10px;
+        @include btn-fade;
+        @include border-radius(2px);
+        &.current-category {
+          background-color: $green;
+          color: $white;
+        }
+      }
+    } //top-area
+    .sb-slider {
+      margin-top: 3em;
+      position: relative;
+      overflow: hidden;
+      width: 100%;
+      list-style-type: none;
+      padding: 0;
+      clear: both;
+      li{
+        margin: 0;
+        padding: 0;
+        display: none;
+      }
+      img{
+        max-width: 100%;
+        display: block;
+        width: 100%;
+        color: #fff;
+      }
+      .div-noimage{
+        border:1px solid rgba(darken($grey,10%),0.6);
+        padding: 2em;
+        height: 20em; width: 100%;
+        i,p{
+          font-size: 13em;
+          @include opacity(0.1);
+          position: absolute;
+          top: 25%;left: 36%;
+        }
+        p{
+          font-size: 2em;
+          top: 86%;left: 42%;
+        }
+        .div-noimage-outline{
 
-div#slidr-img{
-  left: 7%;
-  width: 86%;
-  margin-top:20px;
-  z-index: 900;
-  img{
-    width: 100%;
+          font-size: 1em;
+          height: 100%;
+        }
+      }
+
+    }
   }
-    
 }
+
+/* Slicebox Style */
+
+
+.sb-slider li > a {
+  outline: none;
+}
+
+.sb-slider li > a img {
+  border: none;
+}
+
+
+.sb-description {
+  padding: 0.5em 1em;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  position: absolute;
+  background: rgba(108, 122, 137, 0.5);
+  color: $white;
+  @include transition(all 200ms);
+}
+
+.sb-slider li.sb-current .sb-description {
+  @include opacity(0.8);
+}
+
+.sb-perspective {
+  position: relative;
+}
+
+.sb-perspective > div {
+  position: absolute;
+  @include transform(preserve-3d);
+  @include backface-visibility(hidden);
+  
+}
+.sb-side {
+  margin: 0;
+  display: block;
+  position: absolute;
+  @include backface-visibility(hidden);
+  @include transform(preserve-3d);
+}
+
+
 

@@ -199,7 +199,7 @@ div.page-title h1 {
   color: #68c39f; }
 
 /* line 37, ../sass/all.scss */
-a:hover {
+a:hover, i:hover {
   color: #68c39f;
   -webkit-transition: 0.2s;
   -moz-transition: 0.2s;
