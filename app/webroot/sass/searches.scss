@@ -55,18 +55,17 @@
       display: inline-block;
       label{
         width: 10em;padding: 0.5em 0;
-        color: $white;
+        color: darken($green, 10%);
         cursor: pointer;
         @include border-radius(4px);
-        background-color: $green;
-        @include box-shadow(0 4px darken($green, 10%));
-        i{color: $white;}
+        border:1px solid darken($green, 10%);
+        i{color: darken($green, 10%);}
       }
       .checkbox-blog{
         display: none;
         &:checked + .label-checkbox-blog{
-          background-color: darken($green, 15%);
-          @include box-shadow(0 4px darken($green, 15%));
+          border:1px solid $green;
+          background-color: $green;
           color: $white;
           i{color:$white;}
         }
@@ -74,8 +73,8 @@
       .checkbox-product{
         display: none;
         &:checked + .label-checkbox-product{
-          background-color: darken($green, 15%);
-          @include box-shadow(0 4px darken($green, 15%));
+          border:1px solid $green;
+          background-color: $green;
           color: $white;
           i{color:$white;}
         }
@@ -84,6 +83,11 @@
     }
     .spoiler{
       display: inline-block;
+      select{
+        background-color: $white;
+        color: $black;
+        box-shadow: none;
+      }
       div#slider {
         display: inline-block;
         width: 200px;

@@ -286,13 +286,12 @@ $(function() {
 		</div>
 		<div class="form-checkbox">
 			<input type="checkbox" name="blog" value="Blog" id="check-blog" class="checkbox-blog" checked="checked">
-			<label for="check-blog" class="label-checkbox-blog"><i class="fa fa-check"></i> BLOG</label>
+			<label for="check-blog" class="label-checkbox-blog"><i class="fa fa-check-square-o"></i> BLOG</label>
 			<input type="checkbox" name="product" value="Product" id="check-product" class="checkbox-product" checked="checked">
-			<label for="check-product" class="label-checkbox-product"><i class="fa fa-check"></i> PRODUCT</label>
+			<label for="check-product" class="label-checkbox-product"><i class="fa fa-square-o"></i> PRODUCT</label>
 		</div>
 		<div class="spoiler">
 			<div class="right">
-				<span>ネタバレ：</span>
 			 	<select name="minbeds" id="minbeds" class="list">
 				    <option value="1">1</option>
 				    <option value="2">2</option>
