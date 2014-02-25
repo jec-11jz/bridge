@@ -38,10 +38,11 @@
 
 	var page = 1;
 	var count = 25;
+	var sort = $('#select-sort').val();
 	function loadBlogs() {
 		$.ajax({
 			type: 'GET',
-			url: 'http://bridge.com/api/blogs.json?count='+ count +'&page='+ page,
+			url: '/api/blogs.json?count='+ count +'&page='+ page + '&sort='+ sort,
 			success: function(data, dataType) {
 				blogs = $('#blogTemplate').tmpl(data['response']['blogs']);
 				$('#diary-index').append(blogs);
@@ -63,6 +64,12 @@
 		});
 		loadBlogs();
 		// setTimeout("loadBlogs();", 2000);
+	});
+	
+	// change sort
+	$('#select-sort').change(function(){
+		sort = $('#select-sort').val();
+		loadBlogs();
 	});
 </script>
 
@@ -172,7 +179,17 @@
 	</div><!-- form-header -->
 
 	<div class="form-body">
+		<div class="div-sort">
+			<span>並び替え：</span>
+		 	<select id="select-sort" class="sort-list">
+			    <option value="created_DESC" selected="selected">新着順</option>
+			    <option value="created_ASC">古い順</option>
+			    <option value="access_count_DESC">人気順</option>
+			    <option value="access_count_ASC">人気がない順</option>
+		 	</select>
+		</div><!-- sort -->
 		<div id="diary-index"></div>
+		
 	</div>
 </div>
 
