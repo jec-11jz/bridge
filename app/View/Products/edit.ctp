@@ -250,11 +250,12 @@ $(function(){
 				</select>
 			</div>
 			
+			<div class="div-button">
+				<button type="button" id="attribute" class="btn-add-attribute btn-blue add"><i class="fa fa-plus-circle"></i> add</button>
+				<button type="button" id="btn-delete" class="button btn-danger del"><i class="fa fa-trash-o"></i> delete all</button>	
+			</div>
 			<fieldset id="product-data">
-				<div class="div-button">
-					<button type="button" id="attribute" class="btn-add-attribute btn-blue add"><i class="fa fa-plus-circle"></i> add</button>
-					<button type="button" id="btn-delete" class="button btn-danger del"><i class="fa fa-trash-o"></i> delete all</button>	
-				</div>
+
 				<div id="tags-attribute">
 					<?php foreach($product['Attribute'] as $attribute) : ?>
 						<div id="<?php echo h($attribute['id']); ?>" class="attr tags-set">

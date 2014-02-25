@@ -115,6 +115,18 @@
       }
 
     }
+    div.row{
+      margin-top: 2em;
+    }
+    .div-button{
+      margin-top: 2em;
+      i{
+        color: $white;
+      }
+      .btn-add-attribute{
+        width: 15em;
+      }
+    }
     #product-data{
       height: 30em;
       margin-top: 2em;
@@ -122,14 +134,7 @@
       overflow:auto;
       @include line-box;
 
-      .div-button{
-        i{
-          color: $white;
-        }
-        .btn-add-attribute{
-          width: 15em;
-        }
-      }
+
       #tags-attribute{
         margin-top: 2em;
         .tags-set{

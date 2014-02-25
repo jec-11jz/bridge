@@ -4,9 +4,8 @@
 	$this->Html->css('mypage', null, array('inline' => false));
 	
 	$this->Html->script('//ajax.microsoft.com/ajax/jquery.templates/beta1/jquery.tmpl.min.js', array('inline' => false));
-	
-	
 ?>
+
 <!-- KCfinder読み込み -->
 <script type="text/javascript">
 function openKCFinder(div) {
@@ -144,7 +143,7 @@ $(function() {
 		</div>
 		<div class="header-buttons">
 			<div class="links-div div-fav">
-				<a class="div-link" href=""></a>
+				<a class="div-link" href="/user/mypage"></a>
 				<div class="div-left">
 					<i class="fa fa-star-o"></i>
 				</div>
@@ -154,7 +153,7 @@ $(function() {
 			</div>
 		
 			<div class="links-div div-products">
-				<a class="div-link" href=""></a>
+				<a class="div-link" href="/user/mypage"></a>
 				<div class="div-left">
 					<i class="fa fa-star-o"></i>
 				</div>
@@ -209,7 +208,7 @@ $(function() {
 	</div>
 
 	<div class="form-body">
-	
+
 		<div class="user-edit">
 			<div id="message"></div>
 			
@@ -218,7 +217,6 @@ $(function() {
 				</div>
 				<input type="button" id="btn-edit" class="btn-blue btn-submit" value="submit" />
 			</form>
-
 		</div> 
 	</div>
 
