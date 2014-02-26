@@ -15,6 +15,11 @@ class ProductsTag extends AppModel {
         )
     );
 	
+	public function __construct() {
+		parent::__construct();
+		$Tag = ClassRegistry::init('Tag');
+	}
+	
 	public function getProductIdFromCsvTags($csvTags = '') {
 		$Tag = ClassRegistry::init('Tag');
 		$arrayTagIds = $Tag->getTagId($csvTags);
@@ -47,5 +52,26 @@ class ProductsTag extends AppModel {
     	}
 		return true;
     }
+	
+		
+	public function getRelatedProducts($blog = array()){
+		$Tag = ClassRegistry::init('Tag');
+		$arrayProducts = array();
+		foreach($blog['Tag'] as $tag){
+			// high
+			$highTags = $Tag->find('all',array(
+				'conditions' => array('name like' => '%'. $tag['name'] .'%'),
+			));
+			foreach($highTags as $highTag){
+				$highResult['high'] = $this->findAllByTagId($highTag['Tag']['id']);
+				if(!empty($highResult['high'])){
+					$highResult['Priority'][]= 1;
+					array_push($arrayProducts, $highResult);
+				}
+			}
+		}
+		
+		return $arrayProducts;
+	}
 }
 ?>

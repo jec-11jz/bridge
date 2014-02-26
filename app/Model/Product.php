@@ -48,7 +48,7 @@ class Product extends AppModel {
 	public function __construct() {
 		parent::__construct();
 		$this->Attribute = ClassRegistry::init('Attribute');
-		$this->Tag       = ClassRegistry::init('Tag');
+		$this->Tag = ClassRegistry::init('Tag');
 	}
 
 	// MEMO
@@ -86,4 +86,5 @@ class Product extends AppModel {
 		
 		return $arrayProducts;
 	}
+
 }

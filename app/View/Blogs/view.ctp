@@ -110,6 +110,7 @@ $(function() {
 		url: '/api/blogs/view.json',
 		data: {'id': blog_id},
 		success: function(data){
+			console.log('/api/blogs/view.json');
 			console.log(data['response']);
 			// append tags
 			tags = $('#js-tag').tmpl(data['response']['Tag']);
@@ -125,6 +126,9 @@ $(function() {
 			// append comments
 			comments = $('#js-comments').tmpl(data['response']['Comment']);
 			$('#comments').append(comments);
+			// append related products
+			products = $('#js-related-products').tmpl(data['response']['RelatedProducts']);
+			$('#related-products').append(products);
 		},
 		error: function(xhr, xhrStatus) {
 			console.log(xhr);
@@ -247,6 +251,20 @@ $(function() {
 	<a name="/blogs/delete/${Blog.id}" class="fa fa-trash-o" id="confirm-delete"></a>
 	<div id="fav-message" class="div-message"></div>
 </script>
+<!-- tools -->
+<script id="js-related-products" type="text/x-jquery-tmpl">
+	{{each high}}
+		<div id="product-list">
+			<a href="/products/view/${Product.id}" class="link"></a>
+			{{if Product.image_url.length != 0}}
+				<img id="img-products" src="${Product.image_url}" style="width: 200px">
+			{{else}}
+				<span>No Image</span>
+			{{/if}}
+			<p>${Product.name}</p>
+		</div>
+	{{/each}}
+</script>
 
 <!-- html -->
 <div id="div-view-blogs" class="form second-content-form" name="<?php echo h($blog['Blog']['id']); ?>">
@@ -300,6 +318,9 @@ $(function() {
 			<div class="created-author">
 				<span><a href="/users/view/<?php echo h($blog['User']['id']); ?>" class="btn-green"><?php echo h($blog['User']['name']); ?></a></span>
 			</div>
+		</div>
+		<div id="related-products">
+			<legend>関連作品</legend>
 		</div>
 		<hr>
 		<div id="comment-area" >

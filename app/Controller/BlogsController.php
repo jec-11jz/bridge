@@ -2,7 +2,7 @@
 App::uses('AppController', 'Controller');
 
 class BlogsController extends AppController {
-    public $uses = array('Blog', 'UsedBlogImage', 'User', 'Tag', 'BlogsTag', 'BlogsFavorite', 'Comment');
+    public $uses = array('Blog', 'UsedBlogImage', 'User', 'Tag', 'BlogsTag', 'BlogsFavorite', 'Comment', 'ProductsTag');
 	public $components = array('RequestHandler');
 	
 	
@@ -225,13 +225,17 @@ class BlogsController extends AppController {
 			$this->apiError('not found', 0, 404);
 			return;
 		}
+		// favorite
 		$fav = $this->BlogsFavorite->findByUserIdAndBlogId($this->Auth->user('id'), $blog_id);
 		if(empty($fav)){
 			$blog['favorite'] = null;
 		} else {
 			$blog['favorite'] = $fav;
 		}
-	
+		
+		// related products
+		$products = $this->ProductsTag->getRelatedProducts($blog);
+		$blog['RelatedProducts'] = $products;
 		
 		$this->apiSuccess($blog);
 	}
