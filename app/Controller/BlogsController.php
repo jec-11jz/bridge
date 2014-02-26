@@ -30,19 +30,32 @@ class BlogsController extends AppController {
 		if (isset($this->request->query['page'])) {
 			$page = $this->request->query['page'];
 		}
+		// sort
 		$sort = 'created_DESC';
 		if (isset($this->request->query['sort'])) {
 			$sort = $this->request->query['sort'];
 		}
-		if($sort == 'created_DESC'){
+		// cheack sort
+		$sort_key = 'created';
+		$order = 'DESC';
+		if($sort == 'created_DESC') {
 			$sort_key = 'created';
 			$order = 'DESC';
+		} else if($sort == 'created_ASC') {
+			$sort_key = 'created';
+			$order = 'DESC';
+		} else if($sort == 'access_count_DESC') {
+			$sort_key = 'access_count';
+			$order = 'DESC';
+		} else {
+			$sort_key = 'access_count';
+			$order = 'ASC';
 		}
 		
 		$blogs = $this->Blog->findAllByUserId(
 			$this->Auth->user('id'),
 			array(),
-			array('Blog.'),
+			array('Blog.' . $sort_key => $order),
 			$count,
 			$page
 		);

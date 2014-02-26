@@ -298,10 +298,11 @@ $(function() {
 			<input type="checkbox" name="blog" value="Blog" id="check-blog" class="checkbox-blog" checked="checked">
 			<label for="check-blog" class="label-checkbox-blog"><i id="check-blog-icon" class="fa fa-check-square-o"></i> BLOG</label>
 			<input type="checkbox" name="product" value="Product" id="check-product" class="checkbox-product" checked="checked">
-			<label for="check-product" class="label-checkbox-product"><i id="check-product-icon" class="fa fa-square-o"></i> PRODUCT</label>
+			<label for="check-product" class="label-checkbox-product"><i id="check-product-icon" class="fa fa-check-square-o"></i> PRODUCT</label>
 		</div>
 		<div class="spoiler">
 			<div class="right">
+				<span>ネタバレ:</span>
 			 	<select name="minbeds" id="minbeds" class="list">
 				    <option value="1">1</option>
 				    <option value="2">2</option>
@@ -334,7 +335,6 @@ $(function() {
 </div><!-- sort -->
 
 <div id="search-result">
-
 	<div id="search-blogs-result"></div>
 	<div id="search-products-result"></div>
 </div>

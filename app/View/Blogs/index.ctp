@@ -11,8 +11,7 @@
 ?>
 
 <script>
-
-
+$(function() {
 	$("window").load(function() {
   		$("#body").removeClass("preload");
 	});
@@ -20,33 +19,24 @@
 	function addMenuEvent() {
 		$(".container-item").hover(function() {
 			setTimeout(function() {
-			$(".container-item").css("z-index","500")
+				$(".container-item").css("z-index","500")
 			}, 400);
 		});
 	}
 	
-	//画像読み込み後にレイアウト
-	// var $diary = $('#diary-index');
-	//レイアウト後に画像読み込み
-	$(window).on('scroll', function() {
-		var scrollHeight = $(document).height();
-		var scrollPosition = $(window).height() + $(window).scrollTop();
-		if ((scrollHeight - scrollPosition) / scrollHeight === 0) {
-			loadBlogs();
-		}
-	});
-
 	var page = 1;
 	var count = 25;
+	var scroll = true;
 	var sort = $('#select-sort').val();
 	function loadBlogs() {
+		console.log(sort);
 		$.ajax({
 			type: 'GET',
 			url: '/api/blogs.json?count='+ count +'&page='+ page + '&sort='+ sort,
 			success: function(data, dataType) {
 				blogs = $('#blogTemplate').tmpl(data['response']['blogs']);
 				$('#diary-index').append(blogs);
-				$('#diary-index').imagesLoaded(function() {
+				$('#blogs').imagesLoaded(function() {
 					$('.container-item').removeClass('hidden');
 					$('#diary-index').masonry('appended', blogs);
 				});
@@ -54,27 +44,49 @@
 			}
 		});
 	}
-	$(function(){
-		var diary = $('#diary-index');
-		diary.masonry({
+	var diary = $('#diary-index');
+	diary.masonry({
+    	itemSelector: '.container-item',
+     	isAnimated: true,
+		isFitWidth: true,
+		columnWidth: 1
+	});
+	loadBlogs();
+	// setTimeout("loadBlogs();", 2000);
+	
+	//画像読み込み後にレイアウト
+	//レイアウト後に画像読み込み
+	$(window).on('scroll', function() {
+		var scrollHeight = $(document).height();
+		var scrollPosition = $(window).height() + $(window).scrollTop();
+		if ((scrollHeight - scrollPosition) / scrollHeight === 0) {
+			if(scroll == true){
+				loadBlogs();
+			}
+		}
+	});
+	
+	// change sort
+	$('#select-sort').change(function(){
+		scroll = false;
+		sort = $('#select-sort').val();
+		$('div#js-blogs').remove();
+		page = 1;
+		$('#diary-index').masonry({
 	    	itemSelector: '.container-item',
 	     	isAnimated: true,
 			isFitWidth: true,
 			columnWidth: 1
 		});
 		loadBlogs();
-		// setTimeout("loadBlogs();", 2000);
+		scroll = true;
 	});
 	
-	// change sort
-	$('#select-sort').change(function(){
-		sort = $('#select-sort').val();
-		loadBlogs();
-	});
+});
 </script>
 
 <script id="blogTemplate" type="text/x-jquery-tmpl">
-	<div class="cont container-item hidden">
+	<div id="js-blogs" class="cont container-item hidden">
 		<div class="div-decoration-blogs">
 			<span>Blog</span>
 		</div>
@@ -96,7 +108,6 @@
 				<p>${Blog.title.replace(/<("[^"]*"|'[^']*'|[^'">])*>/g,'').substring(0,27) +""}</p>
 			</div>
 		</div> <!-- item -->
-
 	</div> <!-- container-item -->
 </script>
 
@@ -181,14 +192,16 @@
 	<div class="form-body">
 		<div class="div-sort">
 			<span>並び替え：</span>
-		 	<select id="select-sort" class="sort-list">
+		 	<select id="select-sort" name="sort" class="sort-list">
 			    <option value="created_DESC" selected="selected">新着順</option>
 			    <option value="created_ASC">古い順</option>
 			    <option value="access_count_DESC">人気順</option>
 			    <option value="access_count_ASC">人気がない順</option>
 		 	</select>
 		</div><!-- sort -->
-		<div id="diary-index"></div>
+		<div id="blogs">
+			<div id="diary-index"></div>
+		</div>
 		
 	</div>
 </div>
