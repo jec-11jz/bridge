@@ -4,8 +4,15 @@
 	$this->Html->css('jquery-ui-1.10.4.custom', null, array('inline' => false));
 	$this->Html->css('diary', null, array('inline' => false));
 
+
 	$this->Html->script('jquery-ui-1.10.4.custom', array('inline' => false));
 	$this->Html->script('//ajax.microsoft.com/ajax/jquery.templates/beta1/jquery.tmpl.min.js', array('inline' => false));
+	$this->Html->script('scroll/jquery.mousewheel.min.js', array('inline' => false));
+	$this->Html->script('scroll/jquery.kinetic.min.js', array('inline' => false));
+	$this->Html->script('scroll/jquery.smoothdivscroll-1.3-min.js', array('inline' => false));
+
+
+
 ?>
 <script>
 $(function() {
@@ -212,6 +219,16 @@ $(function() {
 			$("#comment-icon").removeClass('fa-chevron-up').addClass('fa-chevron-down');
 		}
 	});
+	$('#related-products').click(function() {
+		$("#related-products").smoothDivScroll({
+			mousewheelScrolling: "allDirections",
+			manualContinuousScrolling: false,
+			hotSpotScrolling: false,
+			mousewheelScrollingStep: 1,
+			touchScrolling: true
+		});
+	});
+		
 	
 });
 </script>
@@ -257,13 +274,18 @@ $(function() {
 		<div id="product-list">
 			<a href="/products/view/${Product.id}" class="link"></a>
 			{{if Product.image_url.length != 0}}
-				<img id="img-products" src="${Product.image_url}" style="width: 200px">
+				<img id="img-products" src="${Product.image_url}">
 			{{else}}
-				<span>No Image</span>
+				<img src="/img/div-noimage.png" style="width:160px;height:160px;">
+
 			{{/if}}
-			<p>${Product.name}</p>
+			<div class="cont-info">
+				<p>${Product.name}</p>
+			</div>
+			
 		</div>
 	{{/each}}
+
 </script>
 
 <!-- html -->
@@ -278,6 +300,11 @@ $(function() {
 		<div class="div-decoration"><span>Blogs</span></div>
 	</div>
 
+	<div class="form-body-top">
+		<legend>Related Products</legend>
+		<div id="related-products"></div>
+	</div>
+	
 	<div class="form-body">
 		<div id="<?php echo h($blog['Blog']['id']); ?>" class="blog-form">
 
@@ -316,11 +343,8 @@ $(function() {
 				<span><?php echo h($blog['Blog']['created']); ?></span>
 			</div>
 			<div class="created-author">
-				<span><a href="/users/view/<?php echo h($blog['User']['id']); ?>" class="btn-green"><?php echo h($blog['User']['name']); ?></a></span>
+				<span><a href="/users/view/<?php echo h($blog['User']['id']); ?>" class="btn-green"><?php echo h($blog['User']['nickname']); ?></a></span>
 			</div>
-		</div>
-		<div id="related-products">
-			<legend>関連作品</legend>
 		</div>
 		<hr>
 		<div id="comment-area" >
@@ -337,7 +361,7 @@ $(function() {
 						<input type="text" class="comment-index" id="comment-url" placeholder="url" />
 					<?php } else { ?>
 						
-						<input type="text" class="comment-index input-author" id="comment-author" value="<?php echo h($blog['login_user']['name']) ?>" placeholder="your name" />
+						<input type="text" class="comment-index input-author" id="comment-author" value="<?php echo h($blog['login_user']['nickname']) ?>" placeholder="your name" />
 						<input type="text" class="comment-index input-url" id="comment-url" value="/users/view/<?php echo h($blog['login_user']['id']) ?>" placeholder="url" />
 					<?php } ?>
 					

@@ -1051,6 +1051,10 @@ div.modal-content {
     .autocomplete ul li.over, .autocomplete ul li.selected {
       background-color: #33bfdb; }
 
+/* line 5, ../sass/searches.scss */
+body {
+  overflow-y: hidden; }
+
 /* line 7, ../sass/searches.scss */
 #search {
   margin: 65px auto 0 auto;
