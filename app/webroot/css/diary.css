@@ -940,6 +940,7 @@ div.scrollableArea {
     /* line 70, ../sass/diary.scss */
     #div-view-blogs .form-body-top #related-products #product-list, #div-edit-blogs .form-body-top #related-products #product-list, #div-add-blogs .form-body-top #related-products #product-list {
       float: left;
+      width: 160px;
       height: 160px;
       background-color: #3f3f3f;
       margin-left: 0.6em;

@@ -69,7 +69,7 @@ div.scrollableArea
       overflow: hidden;
       #product-list{
         float: left;
-        height: 160px;
+        width: 160px;height: 160px;
         background-color: $black;
         margin-left:0.6em;
         margin-top: 0.6em;
