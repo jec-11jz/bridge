@@ -69,7 +69,7 @@
 
 			// Autoscrolling
 			autoScrollingMode: "", // always, onStart or empty (no auto scrolling) String
-			autoScrollingDirection: "endlessLoopRight", // right, left, backAndForth, endlessLoopRight, endlessLoopLeft String
+			autoScrollingDirection: "backAndForth", // right, left, backAndForth, endlessLoopRight, endlessLoopLeft String
 			autoScrollingStep: 1, // Pixels
 			autoScrollingInterval: 10, // Milliseconds
 

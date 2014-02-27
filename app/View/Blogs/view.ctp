@@ -9,7 +9,7 @@
 	$this->Html->script('//ajax.microsoft.com/ajax/jquery.templates/beta1/jquery.tmpl.min.js', array('inline' => false));
 	$this->Html->script('scroll/jquery.mousewheel.min.js', array('inline' => false));
 	$this->Html->script('scroll/jquery.kinetic.min.js', array('inline' => false));
-	$this->Html->script('scroll/jquery.smoothdivscroll-1.3-min.js', array('inline' => false));
+	$this->Html->script('scroll/jquery.smoothDivScroll-1.3.js', array('inline' => false));
 
 
 
@@ -136,6 +136,8 @@ $(function() {
 			// append related products
 			products = $('#js-related-products').tmpl(data['response']['RelatedProducts']);
 			$('#related-products').append(products);
+			
+			smoothDivScroll();
 		},
 		error: function(xhr, xhrStatus) {
 			console.log(xhr);
@@ -219,15 +221,15 @@ $(function() {
 			$("#comment-icon").removeClass('fa-chevron-up').addClass('fa-chevron-down');
 		}
 	});
-	$('#related-products').click(function() {
+	function smoothDivScroll(){
 		$("#related-products").smoothDivScroll({
 			mousewheelScrolling: "allDirections",
 			manualContinuousScrolling: false,
 			hotSpotScrolling: false,
-			mousewheelScrollingStep: 1,
+			// mousewheelScrollingStep: 1,
 			touchScrolling: true
 		});
-	});
+	}
 		
 	
 });
@@ -272,7 +274,7 @@ $(function() {
 <script id="js-related-products" type="text/x-jquery-tmpl">
 	{{each high}}
 		<div id="product-list">
-			<a href="/products/view/${Product.id}" class="link"></a>
+			<a href="/products/view/${Product.id}" class="link hidden"></a>
 			{{if Product.image_url.length != 0}}
 				<img id="img-products" src="${Product.image_url}">
 			{{else}}
