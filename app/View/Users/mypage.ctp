@@ -74,7 +74,7 @@ $(function() {
 			$('#blog-fav-list').append(fav);
 			// products favorite
 			var fav = $('#js-products-favorite').tmpl(data['response']['ProductsFavorite']);
-			$('#fav-list').append(fav);
+			$('#product-fav-list').append(fav);
 		},
 		error: function(xhr, xhrStatus){
 			
@@ -109,6 +109,11 @@ $(function() {
 			}
 		});
 	});
+
+	$('#myTab a').click(function (e) {
+	  e.preventDefault()
+	  $(this).tab('show')
+	})
 })
 </script>
 <script id="js-user-edit" type="text/x-jquery-tmpl">
@@ -129,18 +134,24 @@ $(function() {
 	</div>
 </script>
 <script id="js-blogs-favorite" type="text/x-jquery-tmpl">
-	<li>${Blog.title}</li>
-	<li>${Blog.created}</li>
+	<a class="blog-color" href="/blogs/view/${Blog.id}">${Blog.title}</a>
+	${Blog.content}
+	<span class="blog-color">${Blog.created}</span>
+
+	<br>
 </script>
 <script id="js-products-favorite" type="text/x-jquery-tmpl">
-	<li>${Product.name}</li>
-	<li>${Product.created}</li>
+	<a class="product-color" href="/products/view/${Product.id}">${Product.name}</a>
+	<span class="product-color">${Product.created}</span>
 	{{if Product.status == 1}}
-		<li>観た！</li>
+		<span>観た！</span>
 	{{else}}
-		<li>観たい！</li>
+		<span>観たい！</span>
 	{{/if}}
+	<br>
 </script>
+
+
 
 <div class="form third-content-form">
 	<div class="form-header">
@@ -224,15 +235,23 @@ $(function() {
 
 	<div class="form-body">
 		<div id="fav-list">
-			<div id="blog-fav-list">
-				<legend>Blog fav</legend>
-				<ul id="blog-fav-list"></ul>
+			<div id="blog-fav-list" class="body-fav-blog">
+				<p class="blog-color">Blog fav</p>
+				<div id="blog-fav-list"></div>
 			</div>
-			<div id="product-fav-list">
-				<legend>Product fav</legend>
+
+			<ul class="nav nav-tabs" id="fav-list">
+			  <li class="active"><a href="#product-fav-list" data-toggle="tab">watched</a></li>
+			  <li><a href="#want" data-toggle="tab">want</a></li>
+			</ul>
+			<div class="tab-content">
+			  <div class="tab-pane active" id="product-fav-list"></div>
+			  <div class="tab-pane" id="want">...</div>
 			</div>
 			
 		</div>
+
+
 
 	</div><!-- form-body -->
 

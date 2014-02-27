@@ -927,11 +927,12 @@ div.modal-content {
         display: inline; }
     /* line 47, ../sass/products.scss */
     #div-add-products .form-body #tool-links .btn-want, #div-view-products .form-body #tool-links .btn-want, #div-edit-products .form-body #tool-links .btn-want {
-      background-color: #ffbe00; }
-    /* line 50, ../sass/products.scss */
+      background-color: #ffbe00;
+      margin-left: 1em; }
+    /* line 51, ../sass/products.scss */
     #div-add-products .form-body #tool-links:hover, #div-view-products .form-body #tool-links:hover, #div-edit-products .form-body #tool-links:hover {
       color: #f6f6f6; }
-  /* line 54, ../sass/products.scss */
+  /* line 55, ../sass/products.scss */
   #div-add-products .form-body #image, #div-view-products .form-body #image, #div-edit-products .form-body #image {
     display: inline-block;
     width: 18.75em;
@@ -941,7 +942,7 @@ div.modal-content {
     color: #fff;
     line-height: 25em;
     text-align: center; }
-  /* line 64, ../sass/products.scss */
+  /* line 65, ../sass/products.scss */
   #div-add-products .form-body .body-outline, #div-view-products .form-body .body-outline, #div-edit-products .form-body .body-outline {
     position: absolute;
     display: inline-block;
@@ -956,16 +957,16 @@ div.modal-content {
     -moz-box-shadow: white -1px 1px 0 inset;
     box-shadow: white -1px 1px 0 inset;
     background-color: #ECECE8; }
-    /* line 75, ../sass/products.scss */
+    /* line 76, ../sass/products.scss */
     #div-add-products .form-body .body-outline.outline-view, #div-view-products .form-body .body-outline.outline-view, #div-edit-products .form-body .body-outline.outline-view {
       margin-top: 4.3em; }
-    /* line 81, ../sass/products.scss */
+    /* line 82, ../sass/products.scss */
     #div-add-products .form-body .body-outline.edit, #div-view-products .form-body .body-outline.edit, #div-edit-products .form-body .body-outline.edit {
       background-color: #f6f6f6; }
-  /* line 85, ../sass/products.scss */
+  /* line 86, ../sass/products.scss */
   #div-add-products .form-body .product-info, #div-view-products .form-body .product-info, #div-edit-products .form-body .product-info {
     margin-left: 2em; }
-  /* line 89, ../sass/products.scss */
+  /* line 90, ../sass/products.scss */
   #div-add-products .form-body #tags-attribute-view, #div-view-products .form-body #tags-attribute-view, #div-edit-products .form-body #tags-attribute-view {
     position: relative;
     margin: 2em 0;
@@ -979,19 +980,19 @@ div.modal-content {
     -webkit-box-shadow: white -1px 1px 0 inset;
     -moz-box-shadow: white -1px 1px 0 inset;
     box-shadow: white -1px 1px 0 inset; }
-    /* line 95, ../sass/products.scss */
+    /* line 96, ../sass/products.scss */
     #div-add-products .form-body #tags-attribute-view .tags-set, #div-view-products .form-body #tags-attribute-view .tags-set, #div-edit-products .form-body #tags-attribute-view .tags-set {
       -webkit-box-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
       -moz-box-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
       box-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
       margin: 1px; }
-      /* line 98, ../sass/products.scss */
+      /* line 99, ../sass/products.scss */
       #div-add-products .form-body #tags-attribute-view .tags-set:last-child, #div-view-products .form-body #tags-attribute-view .tags-set:last-child, #div-edit-products .form-body #tags-attribute-view .tags-set:last-child {
         border: none;
         -webkit-box-shadow: 0 0 0 0;
         -moz-box-shadow: 0 0 0 0;
         box-shadow: 0 0 0 0; }
-      /* line 99, ../sass/products.scss */
+      /* line 100, ../sass/products.scss */
       #div-add-products .form-body #tags-attribute-view .tags-set .tag-title, #div-view-products .form-body #tags-attribute-view .tags-set .tag-title, #div-edit-products .form-body #tags-attribute-view .tags-set .tag-title {
         padding: 1.1em 1em;
         height: 100%;
@@ -1001,10 +1002,10 @@ div.modal-content {
         border-right: 1px solid rgba(0, 0, 0, 0.1);
         display: inline-block;
         background-color: #f6f6f6; }
-      /* line 109, ../sass/products.scss */
+      /* line 110, ../sass/products.scss */
       #div-add-products .form-body #tags-attribute-view .tags-set .attributes:last-child, #div-view-products .form-body #tags-attribute-view .tags-set .attributes:last-child, #div-edit-products .form-body #tags-attribute-view .tags-set .attributes:last-child {
         border: none; }
-      /* line 110, ../sass/products.scss */
+      /* line 111, ../sass/products.scss */
       #div-add-products .form-body #tags-attribute-view .tags-set .tag, #div-view-products .form-body #tags-attribute-view .tags-set .tag, #div-edit-products .form-body #tags-attribute-view .tags-set .tag {
         padding: 0.5em 0.6em;
         margin-left: 0.5em;
@@ -1013,19 +1014,19 @@ div.modal-content {
         -ms-border-radius: 25px;
         -o-border-radius: 25px;
         border-radius: 25px; }
-  /* line 118, ../sass/products.scss */
+  /* line 119, ../sass/products.scss */
   #div-add-products .form-body div.row, #div-view-products .form-body div.row, #div-edit-products .form-body div.row {
     margin-top: 2em; }
-  /* line 121, ../sass/products.scss */
+  /* line 122, ../sass/products.scss */
   #div-add-products .form-body .div-button, #div-view-products .form-body .div-button, #div-edit-products .form-body .div-button {
     margin-top: 2em; }
-    /* line 123, ../sass/products.scss */
+    /* line 124, ../sass/products.scss */
     #div-add-products .form-body .div-button i, #div-view-products .form-body .div-button i, #div-edit-products .form-body .div-button i {
       color: #f6f6f6; }
-    /* line 126, ../sass/products.scss */
+    /* line 127, ../sass/products.scss */
     #div-add-products .form-body .div-button .btn-add-attribute, #div-view-products .form-body .div-button .btn-add-attribute, #div-edit-products .form-body .div-button .btn-add-attribute {
       width: 15em; }
-  /* line 130, ../sass/products.scss */
+  /* line 131, ../sass/products.scss */
   #div-add-products .form-body #product-data, #div-view-products .form-body #product-data, #div-edit-products .form-body #product-data {
     height: 30em;
     margin-top: 2em;
@@ -1035,21 +1036,21 @@ div.modal-content {
     -webkit-box-shadow: white -1px 1px 0 inset;
     -moz-box-shadow: white -1px 1px 0 inset;
     box-shadow: white -1px 1px 0 inset; }
-    /* line 138, ../sass/products.scss */
+    /* line 139, ../sass/products.scss */
     #div-add-products .form-body #product-data #tags-attribute, #div-view-products .form-body #product-data #tags-attribute, #div-edit-products .form-body #product-data #tags-attribute {
       margin-top: 2em; }
-      /* line 140, ../sass/products.scss */
+      /* line 141, ../sass/products.scss */
       #div-add-products .form-body #product-data #tags-attribute .tags-set, #div-view-products .form-body #product-data #tags-attribute .tags-set, #div-edit-products .form-body #product-data #tags-attribute .tags-set {
         position: relative;
         margin-bottom: 2em; }
-        /* line 143, ../sass/products.scss */
+        /* line 144, ../sass/products.scss */
         #div-add-products .form-body #product-data #tags-attribute .tags-set .tag-title, #div-view-products .form-body #product-data #tags-attribute .tags-set .tag-title, #div-edit-products .form-body #product-data #tags-attribute .tags-set .tag-title {
           width: 38em;
           margin-left: 1em;
           margin-bottom: 0.5em;
           display: inline-block;
           position: static; }
-        /* line 151, ../sass/products.scss */
+        /* line 152, ../sass/products.scss */
         #div-add-products .form-body #product-data #tags-attribute .tags-set .btn-delete-attribute, #div-view-products .form-body #product-data #tags-attribute .tags-set .btn-delete-attribute, #div-edit-products .form-body #product-data #tags-attribute .tags-set .btn-delete-attribute {
           font-size: 26px;
           position: absolute;
@@ -1065,14 +1066,14 @@ div.modal-content {
           /* line 91, ../sass/_my-mixin.scss */
           #div-add-products .form-body #product-data #tags-attribute .tags-set .btn-delete-attribute:hover, #div-view-products .form-body #product-data #tags-attribute .tags-set .btn-delete-attribute:hover, #div-edit-products .form-body #product-data #tags-attribute .tags-set .btn-delete-attribute:hover {
             background-color: #c61513; }
-        /* line 155, ../sass/products.scss */
+        /* line 156, ../sass/products.scss */
         #div-add-products .form-body #product-data #tags-attribute .tags-set .tagbox, #div-view-products .form-body #product-data #tags-attribute .tags-set .tagbox, #div-edit-products .form-body #product-data #tags-attribute .tags-set .tagbox {
           width: 600px; }
-/* line 166, ../sass/products.scss */
+/* line 167, ../sass/products.scss */
 #div-add-products .form-footer, #div-view-products .form-footer, #div-edit-products .form-footer {
   text-align: center;
   margin: 0 4em; }
-  /* line 169, ../sass/products.scss */
+  /* line 170, ../sass/products.scss */
   #div-add-products .form-footer .div-submit, #div-view-products .form-footer .div-submit, #div-edit-products .form-footer .div-submit {
     clear: both;
     text-align: right;

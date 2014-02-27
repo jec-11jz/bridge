@@ -1,9 +1,8 @@
 <?php
-
 	$this->extend('/Common/index');
 
-	$this->Html->css('mypage', null, array('inline' => false));
 	$this->Html->css('searches', null, array('inline' => false));
+	$this->Html->css('mypage', null, array('inline' => false));
 
 	$this->Html->script('masonry.pkgd', array('inline' => false));
 	$this->Html->script('imagesloaded', array('inline' => false));
