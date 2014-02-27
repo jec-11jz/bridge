@@ -226,7 +226,9 @@ $(function() {
 			mousewheelScrolling: "allDirections",
 			manualContinuousScrolling: false,
 			hotSpotScrolling: false,
-			// mousewheelScrollingStep: 1,
+			// mousewheelScrollingStep: 10000,
+			// scrollToAnimationDuration: 5000,
+			mousewheelScrollingStep: 1,
 			touchScrolling: true
 		});
 	}
