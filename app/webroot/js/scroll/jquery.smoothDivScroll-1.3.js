@@ -54,14 +54,14 @@
 			hotSpotsVisibleTime: 5000, // Milliseconds
 			easingAfterHotSpotScrolling: true, // Boolean
 			easingAfterHotSpotScrollingDistance: 10, // Pixels
-			easingAfterHotSpotScrollingDuration: 300, // Milliseconds
+			easingAfterHotSpotScrollingDuration: 3, // Milliseconds
 			easingAfterHotSpotScrollingFunction: "easeOutQuart", // String
 
 			// Mousewheel scrolling
 			mousewheelScrolling: "", // vertical, horizontal, allDirections or empty (no mousewheel scrolling) String
 			mousewheelScrollingStep: 70, // Pixels
 			easingAfterMouseWheelScrolling: true, // Boolean
-			easingAfterMouseWheelScrollingDuration: 300, // Milliseconds
+			easingAfterMouseWheelScrollingDuration: 1, // Milliseconds
 			easingAfterMouseWheelScrollingFunction: "easeOutQuart", // String
 
 			// Manual scrolling (hotspot and/or mousewheel scrolling)
@@ -77,7 +77,7 @@
 			touchScrolling: false,
 
 			// Easing for when the scrollToElement method is used
-			scrollToAnimationDuration: 1000, // Milliseconds
+			scrollToAnimationDuration: 1, // Milliseconds
 			scrollToEasingFunction: "easeOutQuart" // String
 		},
 		_create: function () {

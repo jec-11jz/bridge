@@ -215,11 +215,11 @@ class BlogsController extends AppController {
 		}
 		$blog = $this->Blog->findById($blog_id);
 		if(is_null($this->Auth)){
-			$blog['auth'] = null;
+			$blog['auth'] = false;
 		} else if($blog['Blog']['user_id'] == $this->Auth->user('id')){
-			$blog['auth'] = 'author';
+			$blog['auth'] = true;
 		} else {
-			$blog['auth'] = 'another';
+			$blog['auth'] = false;
 		}
 		if (!$blog) {
 			$this->apiError('not found', 0, 404);

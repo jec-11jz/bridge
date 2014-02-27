@@ -226,7 +226,7 @@ $(function() {
 			mousewheelScrolling: "allDirections",
 			manualContinuousScrolling: false,
 			hotSpotScrolling: false,
-			// mousewheelScrollingStep: 1,
+			duration : 1,
 			touchScrolling: true
 		});
 	}
@@ -259,8 +259,11 @@ $(function() {
 </script>
 <!-- tools -->
 <script id="js-tools" type="text/x-jquery-tmpl">
-	
-	<a href="/blogs/edit/${Blog.id}" class="fa fa-pencil-square-o"></a>
+	{{if auth}}
+		<a href="/blogs/edit/${Blog.id}" class="fa fa-pencil-square-o"></a>
+	{{else}}
+		<a class="fa fa-pencil-square-o disabled"></a>
+	{{/if}}
 	
 	{{if favorite != null}}
 		<a class="fa fa-star checked"></a>
