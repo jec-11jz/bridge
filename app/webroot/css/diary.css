@@ -420,41 +420,46 @@ div.form.second-content-form .form-footer .btn-blue {
       /* line 222, ../sass/all.scss */
       .blog-tools .fa.fa-pencil-square-o::before {
         margin-left: 6px; }
-    /* line 224, ../sass/all.scss */
+      /* line 223, ../sass/all.scss */
+      .blog-tools .fa.fa-pencil-square-o.disabled {
+        color: #b9b9b9;
+        background: lightgrey;
+        border-color: #b9b9b9; }
+    /* line 229, ../sass/all.scss */
     .blog-tools .fa.fa-desktop {
       border: solid 1px #2eb2ff;
       color: #2eb2ff;
       line-height: 2.1em; }
-      /* line 228, ../sass/all.scss */
+      /* line 233, ../sass/all.scss */
       .blog-tools .fa.fa-desktop:hover {
         color: #008ee0;
         background-color: #2eb2ff; }
-      /* line 232, ../sass/all.scss */
+      /* line 237, ../sass/all.scss */
       .blog-tools .fa.fa-desktop:active {
         color: #006dad;
         background-color: #008ee0;
         border: solid 1px #008ee0; }
-    /* line 238, ../sass/all.scss */
+    /* line 243, ../sass/all.scss */
     .blog-tools .fa.fa-star {
       border: solid 1px #dcdc44;
       color: #dcdc44; }
-      /* line 241, ../sass/all.scss */
+      /* line 246, ../sass/all.scss */
       .blog-tools .fa.fa-star:hover {
         color: #c8c825;
         background-color: #dcdc44; }
-      /* line 245, ../sass/all.scss */
+      /* line 250, ../sass/all.scss */
       .blog-tools .fa.fa-star.checked {
         background-color: #dcdc44;
         color: #c8c825; }
-    /* line 250, ../sass/all.scss */
+    /* line 255, ../sass/all.scss */
     .blog-tools .fa.fa-trash-o {
       border: solid 1px #f06260;
       color: #f06260; }
-      /* line 253, ../sass/all.scss */
+      /* line 258, ../sass/all.scss */
       .blog-tools .fa.fa-trash-o:hover {
         color: #d61714;
         background-color: #f06260; }
-      /* line 257, ../sass/all.scss */
+      /* line 262, ../sass/all.scss */
       .blog-tools .fa.fa-trash-o:active {
         color: #a71210;
         background-color: #ec3431;
@@ -927,7 +932,7 @@ div.scrollableArea {
 /* line 61, ../sass/diary.scss */
 #div-view-blogs .form-body-top, #div-edit-blogs .form-body-top, #div-add-blogs .form-body-top {
   padding: 0.8em 1.5em;
-  background-color: #bfc9c9; }
+  background-color: #9CBBBB; }
   /* line 64, ../sass/diary.scss */
   #div-view-blogs .form-body-top legend, #div-edit-blogs .form-body-top legend, #div-add-blogs .form-body-top legend {
     color: #f6f6f6; }

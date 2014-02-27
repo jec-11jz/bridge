@@ -227,6 +227,7 @@ $(function() {
 			manualContinuousScrolling: false,
 			hotSpotScrolling: false,
 			duration : 1,
+			mousewheelScrollingStep: 1,
 			touchScrolling: true
 		});
 	}

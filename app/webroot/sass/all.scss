@@ -220,6 +220,11 @@ div.form.second-content-form{
         border-color: darken($orange, 10%);
       }
       &::before{margin-left:6px;}
+      &.disabled{
+        color: darken($col-black1, 20%);
+        background: darken($col-black1, 10%);
+        border-color: darken($col-black1, 20%);
+      }
     }
     &.fa-desktop{
       border:solid 1px $blue;
