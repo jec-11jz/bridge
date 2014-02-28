@@ -135,7 +135,6 @@ $(function() {
 </script>
 <script id="js-blogs-favorite" type="text/x-jquery-tmpl">
 	<a class="blog-color" href="/blogs/view/${Blog.id}">${Blog.title}</a>
-	${Blog.content}
 	<span class="blog-color">${Blog.created}</span>
 
 	<br>
