@@ -278,7 +278,7 @@ $(function() {
 <script id="js-related-products" type="text/x-jquery-tmpl">
 	{{each high}}
 		<div id="product-list">
-			<a href="/products/view/${Product.id}" class="link hidden"></a>
+			<a href="/products/view/${Product.id}" class="link"></a>
 			{{if Product.image_url.length != 0}}
 				<img id="img-products" src="${Product.image_url}">
 			{{else}}
