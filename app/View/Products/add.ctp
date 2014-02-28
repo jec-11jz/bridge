@@ -209,7 +209,6 @@ $(function(){
 </script>
 
 <div id="div-add-products" class="form second-content-form">
-<form method="post" action="/products/add">
 
 	<div class="form-header">
 		<div class="header-left">
@@ -265,7 +264,6 @@ $(function(){
 		</div>
 	</div>
 
-</form>
 </div>
 	
 

@@ -106,7 +106,7 @@ class UsersController extends AppController {
 		if ($result) {
 			$this->Template->get_default_templates($result['User']['id']);
 			$this->Auth->login();
-			$this->__send_add_email($result['User']['id']);
+			// $this->__send_add_email($result['User']['id']);
 		}
 		return $result;
 	}

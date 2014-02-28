@@ -99,7 +99,7 @@ $(function() {
 	// change sort
 	$('#select-sort').change(function(){
 		arrayLoad['sort'] = $('#select-sort').val();
-		$("#btn-search").trigger("click")
+		$("#btn-search").trigger("click");
 	});
 	
 	var diary = $('#search-result');
@@ -128,6 +128,12 @@ $(function() {
 				loadImage(arrayLoad);
 				arrayLoad['page']++;
 			}
+		}
+	});
+	
+	$("body").keypress( function( event ) {
+		if( event.which === 13 ){
+			$("#btn-search").trigger("click");
 		}
 	});
 

@@ -127,7 +127,7 @@ $(function() {
 		sendData['data'] = {};
 		// Product
 		sendData['data']['Product'] = {};
-		sendData['data']['Product']['id'] = $('#div-edit-products').find('form').attr('id');
+		sendData['data']['Product']['id'] = $('#p-form').attr('name');
 		$('#div-edit-products').find('.product-info').each(function(){
 			if($(this).val() != ""){
 				sendData['data']['Product'][$(this).attr('name')] = $(this).val();
@@ -209,7 +209,7 @@ $(function(){
 </script>
 
 <div id="div-edit-products" class="form second-content-form">
-	<form method="post" id="<?php echo h($product['Product']['id']); ?>" action="/products/edit/<?php echo h($product['Product']['id']); ?>">
+	<div name="<?php echo h($product['Product']['id']); ?>" id="p-form">
 		<div class="form-header">
 			<div class="header-left">
 				<a href="/products/index" class="header-link">Edit</a>
@@ -275,7 +275,7 @@ $(function(){
 				<input type="button" id="btn-register" class="btn-blue" value="登録" />
 			</div>
 		</div>
-	</form>
+	</div>
 </div>
 
 <!-- </div> -->
