@@ -9,7 +9,7 @@
 	$this->Html->script('//ajax.microsoft.com/ajax/jquery.templates/beta1/jquery.tmpl.min.js', array('inline' => false));
 	$this->Html->script('scroll/jquery.mousewheel.min.js', array('inline' => false));
 	$this->Html->script('scroll/jquery.kinetic.min.js', array('inline' => false));
-	$this->Html->script('scroll/jquery.smoothDivScroll-1.3.js', array('inline' => false));
+	$this->Html->script('scroll/jquery.smoothdivscroll-1.3-min.js', array('inline' => false));
 
 
 
